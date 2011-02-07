@@ -31,7 +31,7 @@ import xml.etree.ElementTree as ET
 from xml.dom import minidom
 
 
-#rajouter le genre, bordel  
+  
 
 class Export :
     
@@ -105,7 +105,7 @@ liste_fYield, liste_fMashed, liste_color, dNom, dAmount, dType, nbreDivers, list
                 fMashed.text = liste_fMashed[i-1]
 
             color = ET.SubElement(fermentable, 'COLOR')
-            color.text = str(liste_color[i-1])
+            color.text = str(liste_color[i-1]/1.97)
             
         miscs = ET.SubElement(recipe, 'MISCS')
         i = 0
