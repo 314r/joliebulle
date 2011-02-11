@@ -1,0 +1,20 @@
+include base.py
+include calculs.py
+include editdivers.py
+include editgrain.py
+include edithoublon.py
+include editlevures.py
+include editorG_ui.py
+include editorH_ui.py
+include editorM_ui.py
+include editorY_ui.py
+include export.py
+include main.py
+include reader.py
+include database.xml
+include launch.sh
+include joliebulle.desktop
+include README
+include COPYING
+recursive-include images *
+
