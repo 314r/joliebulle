@@ -171,7 +171,7 @@ class ImportBase :
                     
                     
                     
-            self.liste_levuresDetail.append (self.lLabo +' ' + self.lProd +' ' + self.lNom)
+            self.liste_levuresDetail.append (self.lNom+ ' ' + self.lLabo +' ' + self.lProd)
                     
                     
                     

@@ -299,7 +299,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         self.comboBoxH.addItems(self.base.liste_houblons)
         self.comboBoxH.setCurrentIndex(10)
         
-        self.comboBoxY.addItems(self.base.liste_levures)
+        self.comboBoxY.addItems(self.base.liste_levuresDetail)
         self.comboBoxY.setCurrentIndex(10)
         
         self.comboBoxM.addItems(self.base.liste_divers)
@@ -818,7 +818,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
                     
                     
                     
-            self.liste_levuresDetail.append (self.lLabo +' ' + self.lProd +' ' + self.lNom)
+            self.liste_levuresDetail.append (self.lNom+ ' ' + self.lLabo +' ' + self.lProd)
                     
                     
                     
