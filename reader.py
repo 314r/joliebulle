@@ -2,28 +2,10 @@
 
 # Form implementation generated from reading ui file 'reader.ui'
 #
-# Created: Sun Feb  6 14:51:56 2011
+# Created: Fri Feb 25 19:07:31 2011
 #      by: PyQt4 UI code generator 4.8.3
 #
 # WARNING! All changes made in this file will be lost!
-
-
-#JolieBulle 2.0
-#Copyright (C) 2010 Pierre Tavares
-
-#This program is free software; you can redistribute it and/or
-#modify it under the terms of the GNU General Public License
-#as published by the Free Software Foundation; either version 3
-#of the License, or (at your option) any later version.
-
-#This program is distributed in the hope that it will be useful,
-#but WITHOUT ANY WARRANTY; without even the implied warranty of
-#MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#GNU General Public License for more details.
-
-#You should have received a copy of the GNU General Public License
-#along with this program; if not, write to the Free Software
-#Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 from PyQt4 import QtCore, QtGui
 
@@ -294,9 +276,12 @@ class Ui_MainWindow(object):
         self.actionEditDivers.setObjectName(_fromUtf8("actionEditDivers"))
         self.actionEditLevures = QtGui.QAction(MainWindow)
         self.actionEditLevures.setObjectName(_fromUtf8("actionEditLevures"))
+        self.actionNouvelle_recette = QtGui.QAction(MainWindow)
+        self.actionNouvelle_recette.setObjectName(_fromUtf8("actionNouvelle_recette"))
         self.toolBar.addAction(self.actionOuvrir)
         self.toolBar.addAction(self.actionAbout)
         self.menuFichier.addAction(self.actionOuvrir_2)
+        self.menuFichier.addAction(self.actionNouvelle_recette)
         self.menuFichier.addAction(self.actionEnregistrer)
         self.menuFichier.addAction(self.actionEnregistrer_Sous)
         self.menuFichier.addAction(self.actionQuitter_2)
@@ -388,4 +373,5 @@ class Ui_MainWindow(object):
         self.actionEditHoublons.setText(QtGui.QApplication.translate("MainWindow", "Editer la base de Houblons", None, QtGui.QApplication.UnicodeUTF8))
         self.actionEditDivers.setText(QtGui.QApplication.translate("MainWindow", "Editer la base de Divers", None, QtGui.QApplication.UnicodeUTF8))
         self.actionEditLevures.setText(QtGui.QApplication.translate("MainWindow", "Editer la base de Levures", None, QtGui.QApplication.UnicodeUTF8))
+        self.actionNouvelle_recette.setText(QtGui.QApplication.translate("MainWindow", "Nouvelle recette", None, QtGui.QApplication.UnicodeUTF8))
 

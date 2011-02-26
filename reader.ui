@@ -585,6 +585,7 @@ p, li { white-space: pre-wrap; }
      <string>Fichier</string>
     </property>
     <addaction name="actionOuvrir_2"/>
+    <addaction name="actionNouvelle_recette"/>
     <addaction name="actionEnregistrer"/>
     <addaction name="actionEnregistrer_Sous"/>
     <addaction name="actionQuitter_2"/>
@@ -667,6 +668,11 @@ p, li { white-space: pre-wrap; }
   <action name="actionEditLevures">
    <property name="text">
     <string>Editer la base de Levures</string>
+   </property>
+  </action>
+  <action name="actionNouvelle_recette">
+   <property name="text">
+    <string>Nouvelle recette</string>
    </property>
   </action>
  </widget>
