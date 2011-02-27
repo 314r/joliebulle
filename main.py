@@ -1,4 +1,4 @@
-#!/usr/bin/python3.1
+#!/usr/bin/python3
 #­*­coding: utf­8 -­*­
 
 
@@ -34,6 +34,7 @@ from editgrain import *
 from edithoublon import *
 from editdivers import * 
 from editlevures import *
+from outilDens import *
 
 
 import xml.etree.ElementTree as ET
@@ -234,6 +235,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         self.dlgEditH = DialogH(self)
         self.dlgEditD = DialogD(self)
         self.dlgEditY = DialogL(self)
+        self.dlgOutilDens = DialogOutilDens(self)
         self.base = ImportBase()
         self.base.importBeerXML()
         self.s=0
@@ -250,6 +252,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         self.connect(self.actionEditLevures, QtCore.SIGNAL("triggered()"), self.editLevures)
         self.connect(self.actionEnregistrer_Sous, QtCore.SIGNAL("triggered()"), self.enregistrerSous)
         self.connect(self.actionAbout, QtCore.SIGNAL("triggered()"), self.about)
+        self.connect(self.actionCorrectionDens, QtCore.SIGNAL("triggered()"), self.outilDens)
         self.connect(self.doubleSpinBoxRendemt, QtCore.SIGNAL("valueChanged(QString)"), self.rendemt_changed)
         self.connect(self.doubleSpinBox_2Volume, QtCore.SIGNAL("valueChanged(QString)"), self.volume_changed)
         self.connect(self.pushButtonAjouter_2, QtCore.SIGNAL("clicked()"), self.ajouterF)
@@ -463,8 +466,11 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
     
     def editLevures(self) :
         self.dlgEditY.setModal(True)
-        self.dlgEditY.show()         
+        self.dlgEditY.show()     
         
+    def outilDens(self) : 
+        self.dlgOutilDens.setModal(True)
+        self.dlgOutilDens.show()
         
     def purge (self) :
         i = (AppWindow.nbreFer + AppWindow.nbreDivers + AppWindow.nbreHops + self.nbreLevures)
@@ -1218,3 +1224,7 @@ if __name__ == "__main__":
     main_window.show()
 
     app.exec_()
+
+
+
+#=((sgc-(calibc+288,9414)/(508929,2*(calibc+68,12963))*(B6calibc-3,9863)^2)/(1-(tempc+288,9414)/(508929,2*(tempc+68B6C5empc-3,9863)^2))-sgc

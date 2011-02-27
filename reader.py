@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'reader.ui'
 #
-# Created: Fri Feb 25 19:07:31 2011
+# Created: Sun Feb 27 21:35:51 2011
 #      by: PyQt4 UI code generator 4.8.3
 #
 # WARNING! All changes made in this file will be lost!
@@ -241,6 +241,8 @@ class Ui_MainWindow(object):
         self.menuFichier.setObjectName(_fromUtf8("menuFichier"))
         self.menuEdition = QtGui.QMenu(self.menuBar)
         self.menuEdition.setObjectName(_fromUtf8("menuEdition"))
+        self.menuOutils = QtGui.QMenu(self.menuBar)
+        self.menuOutils.setObjectName(_fromUtf8("menuOutils"))
         MainWindow.setMenuBar(self.menuBar)
         self.statusBar = QtGui.QStatusBar(MainWindow)
         self.statusBar.setObjectName(_fromUtf8("statusBar"))
@@ -278,6 +280,8 @@ class Ui_MainWindow(object):
         self.actionEditLevures.setObjectName(_fromUtf8("actionEditLevures"))
         self.actionNouvelle_recette = QtGui.QAction(MainWindow)
         self.actionNouvelle_recette.setObjectName(_fromUtf8("actionNouvelle_recette"))
+        self.actionCorrectionDens = QtGui.QAction(MainWindow)
+        self.actionCorrectionDens.setObjectName(_fromUtf8("actionCorrectionDens"))
         self.toolBar.addAction(self.actionOuvrir)
         self.toolBar.addAction(self.actionAbout)
         self.menuFichier.addAction(self.actionOuvrir_2)
@@ -289,8 +293,10 @@ class Ui_MainWindow(object):
         self.menuEdition.addAction(self.actionEditHoublons)
         self.menuEdition.addAction(self.actionEditDivers)
         self.menuEdition.addAction(self.actionEditLevures)
+        self.menuOutils.addAction(self.actionCorrectionDens)
         self.menuBar.addAction(self.menuFichier.menuAction())
         self.menuBar.addAction(self.menuEdition.menuAction())
+        self.menuBar.addAction(self.menuOutils.menuAction())
 
         self.retranslateUi(MainWindow)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
@@ -362,6 +368,7 @@ class Ui_MainWindow(object):
         self.toolBar.setWindowTitle(QtGui.QApplication.translate("MainWindow", "toolBar", None, QtGui.QApplication.UnicodeUTF8))
         self.menuFichier.setTitle(QtGui.QApplication.translate("MainWindow", "Fichier", None, QtGui.QApplication.UnicodeUTF8))
         self.menuEdition.setTitle(QtGui.QApplication.translate("MainWindow", "Edition", None, QtGui.QApplication.UnicodeUTF8))
+        self.menuOutils.setTitle(QtGui.QApplication.translate("MainWindow", "Outils", None, QtGui.QApplication.UnicodeUTF8))
         self.actionOuvrir.setText(QtGui.QApplication.translate("MainWindow", "Ouvrir", None, QtGui.QApplication.UnicodeUTF8))
         self.actionQuitter.setText(QtGui.QApplication.translate("MainWindow", "Quitter", None, QtGui.QApplication.UnicodeUTF8))
         self.actionAbout.setText(QtGui.QApplication.translate("MainWindow", "A propos", None, QtGui.QApplication.UnicodeUTF8))
@@ -374,4 +381,5 @@ class Ui_MainWindow(object):
         self.actionEditDivers.setText(QtGui.QApplication.translate("MainWindow", "Editer la base de Divers", None, QtGui.QApplication.UnicodeUTF8))
         self.actionEditLevures.setText(QtGui.QApplication.translate("MainWindow", "Editer la base de Levures", None, QtGui.QApplication.UnicodeUTF8))
         self.actionNouvelle_recette.setText(QtGui.QApplication.translate("MainWindow", "Nouvelle recette", None, QtGui.QApplication.UnicodeUTF8))
+        self.actionCorrectionDens.setText(QtGui.QApplication.translate("MainWindow", "Correction densimètre", None, QtGui.QApplication.UnicodeUTF8))
 

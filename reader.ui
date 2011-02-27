@@ -599,8 +599,15 @@ p, li { white-space: pre-wrap; }
     <addaction name="actionEditDivers"/>
     <addaction name="actionEditLevures"/>
    </widget>
+   <widget class="QMenu" name="menuOutils">
+    <property name="title">
+     <string>Outils</string>
+    </property>
+    <addaction name="actionCorrectionDens"/>
+   </widget>
    <addaction name="menuFichier"/>
    <addaction name="menuEdition"/>
+   <addaction name="menuOutils"/>
   </widget>
   <widget class="QStatusBar" name="statusBar"/>
   <action name="actionOuvrir">
@@ -673,6 +680,11 @@ p, li { white-space: pre-wrap; }
   <action name="actionNouvelle_recette">
    <property name="text">
     <string>Nouvelle recette</string>
+   </property>
+  </action>
+  <action name="actionCorrectionDens">
+   <property name="text">
+    <string>Correction densimètre</string>
    </property>
   </action>
  </widget>
