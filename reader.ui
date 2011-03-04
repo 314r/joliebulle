@@ -36,13 +36,6 @@ p, li { white-space: pre-wrap; }
        <widget class="QLineEdit" name="lineEditRecette"/>
       </item>
       <item>
-       <widget class="QLabel" name="labelRecetteV">
-        <property name="text">
-         <string/>
-        </property>
-       </widget>
-      </item>
-      <item>
        <spacer name="horizontalSpacer">
         <property name="orientation">
          <enum>Qt::Horizontal</enum>
@@ -604,6 +597,7 @@ p, li { white-space: pre-wrap; }
      <string>Outils</string>
     </property>
     <addaction name="actionCorrectionDens"/>
+    <addaction name="actionCalculAlc"/>
    </widget>
    <addaction name="menuFichier"/>
    <addaction name="menuEdition"/>
@@ -685,6 +679,11 @@ p, li { white-space: pre-wrap; }
   <action name="actionCorrectionDens">
    <property name="text">
     <string>Correction densimètre</string>
+   </property>
+  </action>
+  <action name="actionCalculAlc">
+   <property name="text">
+    <string>Calcul taux d'alcool</string>
    </property>
   </action>
  </widget>

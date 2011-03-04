@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'reader.ui'
 #
-# Created: Sun Feb 27 21:35:51 2011
+# Created: Fri Mar  4 16:14:50 2011
 #      by: PyQt4 UI code generator 4.8.3
 #
 # WARNING! All changes made in this file will be lost!
@@ -33,10 +33,6 @@ class Ui_MainWindow(object):
         self.lineEditRecette = QtGui.QLineEdit(self.centralwidget)
         self.lineEditRecette.setObjectName(_fromUtf8("lineEditRecette"))
         self.horizontalLayout.addWidget(self.lineEditRecette)
-        self.labelRecetteV = QtGui.QLabel(self.centralwidget)
-        self.labelRecetteV.setText(_fromUtf8(""))
-        self.labelRecetteV.setObjectName(_fromUtf8("labelRecetteV"))
-        self.horizontalLayout.addWidget(self.labelRecetteV)
         spacerItem = QtGui.QSpacerItem(40, 20, QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Minimum)
         self.horizontalLayout.addItem(spacerItem)
         self.verticalLayout.addLayout(self.horizontalLayout)
@@ -282,6 +278,8 @@ class Ui_MainWindow(object):
         self.actionNouvelle_recette.setObjectName(_fromUtf8("actionNouvelle_recette"))
         self.actionCorrectionDens = QtGui.QAction(MainWindow)
         self.actionCorrectionDens.setObjectName(_fromUtf8("actionCorrectionDens"))
+        self.actionCalculAlc = QtGui.QAction(MainWindow)
+        self.actionCalculAlc.setObjectName(_fromUtf8("actionCalculAlc"))
         self.toolBar.addAction(self.actionOuvrir)
         self.toolBar.addAction(self.actionAbout)
         self.menuFichier.addAction(self.actionOuvrir_2)
@@ -294,6 +292,7 @@ class Ui_MainWindow(object):
         self.menuEdition.addAction(self.actionEditDivers)
         self.menuEdition.addAction(self.actionEditLevures)
         self.menuOutils.addAction(self.actionCorrectionDens)
+        self.menuOutils.addAction(self.actionCalculAlc)
         self.menuBar.addAction(self.menuFichier.menuAction())
         self.menuBar.addAction(self.menuEdition.menuAction())
         self.menuBar.addAction(self.menuOutils.menuAction())
@@ -382,4 +381,5 @@ class Ui_MainWindow(object):
         self.actionEditLevures.setText(QtGui.QApplication.translate("MainWindow", "Editer la base de Levures", None, QtGui.QApplication.UnicodeUTF8))
         self.actionNouvelle_recette.setText(QtGui.QApplication.translate("MainWindow", "Nouvelle recette", None, QtGui.QApplication.UnicodeUTF8))
         self.actionCorrectionDens.setText(QtGui.QApplication.translate("MainWindow", "Correction densimètre", None, QtGui.QApplication.UnicodeUTF8))
+        self.actionCalculAlc.setText(QtGui.QApplication.translate("MainWindow", "Calcul taux d\'alcool", None, QtGui.QApplication.UnicodeUTF8))
 

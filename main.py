@@ -35,6 +35,7 @@ from edithoublon import *
 from editdivers import * 
 from editlevures import *
 from outilDens import *
+from outilAlc import *
 
 
 import xml.etree.ElementTree as ET
@@ -236,6 +237,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         self.dlgEditD = DialogD(self)
         self.dlgEditY = DialogL(self)
         self.dlgOutilDens = DialogOutilDens(self)
+        self.dlgOutilAlc = DialogAlc(self)
         self.base = ImportBase()
         self.base.importBeerXML()
         self.s=0
@@ -253,6 +255,8 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         self.connect(self.actionEnregistrer_Sous, QtCore.SIGNAL("triggered()"), self.enregistrerSous)
         self.connect(self.actionAbout, QtCore.SIGNAL("triggered()"), self.about)
         self.connect(self.actionCorrectionDens, QtCore.SIGNAL("triggered()"), self.outilDens)
+        self.connect(self.actionCalculAlc, QtCore.SIGNAL("triggered()"), self.outilAlc)
+        
         self.connect(self.doubleSpinBoxRendemt, QtCore.SIGNAL("valueChanged(QString)"), self.rendemt_changed)
         self.connect(self.doubleSpinBox_2Volume, QtCore.SIGNAL("valueChanged(QString)"), self.volume_changed)
         self.connect(self.pushButtonAjouter_2, QtCore.SIGNAL("clicked()"), self.ajouterF)
@@ -471,6 +475,10 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
     def outilDens(self) : 
         self.dlgOutilDens.setModal(True)
         self.dlgOutilDens.show()
+        
+    def outilAlc(self) :
+        self.dlgOutilAlc.setModal(True)
+        self.dlgOutilAlc.show()
         
     def purge (self) :
         i = (AppWindow.nbreFer + AppWindow.nbreDivers + AppWindow.nbreHops + self.nbreLevures)
