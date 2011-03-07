@@ -265,6 +265,9 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         self.connect(self.pushButtonAjouterM, QtCore.SIGNAL("clicked()"), self.ajouterM)
         self.connect(self.pushButtonEnlever, QtCore.SIGNAL("clicked()"), self.enlever)
         self.connect(self.pushButtonChangerStyle, QtCore.SIGNAL("clicked()"), self.modifierStyle)
+        self.connect(self.pushButtonVolMore, QtCore.SIGNAL("clicked()"), self.volMore)
+        self.connect(self.doubleSpinBoxVolPre, QtCore.SIGNAL("valueChanged(QString)"), self.volPreCalc)
+        
         self.connect(self.comboBoxStyle, QtCore.SIGNAL("currentIndexChanged(QString)"), self.addStyle)
         #self.connect(self.pushButtonEssai, QtCore.SIGNAL("clicked()"), self.essai)
         
@@ -315,6 +318,8 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         
         self.comboBoxStyle.hide()
         self.comboBoxStyle.addItems(self.baseStyleListe)
+
+        self.widgetVol.hide()
         
         self.nouvelle()
     # cette fonction est appelee chaque fois que les donnees du modele changent
@@ -714,6 +719,8 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
             self.spinBoxBoil.setValue(float(self.boil))
         except :
             self.spinBoxBoil.setValue (0)
+        self.doubleSpinBoxVolPre.setValue(float(self.volume))
+        
     
     
         #Ingredient fermentescibles
@@ -1033,6 +1040,11 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         self.labelIBUV.setText(str("%.0f" %(self.ibuTot)))
         self.labelAlcv.setText(str("%.1f" %(self.ABV)) + '%')
                         
+    def volPreCalc(self) :
+        indice = float(self.volume) / self.doubleSpinBoxVolPre.value()       
+        self.GUS = self.GU * indice
+        self.SG = 1+ (self.GUS/1000) 
+        self.labelSG.setText("%.3f" %self.SG)
         
         
     
@@ -1147,6 +1159,13 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
             self.comboBoxStyle.show()
         else :
                self.comboBoxStyle.hide()   
+
+    def volMore (self) :
+        if self.pushButtonVolMore.isChecked() :
+            self.widgetVol.show()
+        else :
+            self.widgetVol.hide()
+
                
     def nouvelle(self) :
         

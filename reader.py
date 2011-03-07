@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'reader.ui'
 #
-# Created: Fri Mar  4 16:14:50 2011
+# Created: Sat Mar  5 22:24:01 2011
 #      by: PyQt4 UI code generator 4.8.3
 #
 # WARNING! All changes made in this file will be lost!
@@ -67,6 +67,14 @@ class Ui_MainWindow(object):
         self.doubleSpinBox_2Volume = QtGui.QDoubleSpinBox(self.centralwidget)
         self.doubleSpinBox_2Volume.setObjectName(_fromUtf8("doubleSpinBox_2Volume"))
         self.horizontalLayout_4.addWidget(self.doubleSpinBox_2Volume)
+        self.pushButtonVolMore = QtGui.QPushButton(self.centralwidget)
+        self.pushButtonVolMore.setText(_fromUtf8(""))
+        icon2 = QtGui.QIcon()
+        icon2.addPixmap(QtGui.QPixmap(_fromUtf8("Images/more.png")), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.pushButtonVolMore.setIcon(icon2)
+        self.pushButtonVolMore.setCheckable(True)
+        self.pushButtonVolMore.setObjectName(_fromUtf8("pushButtonVolMore"))
+        self.horizontalLayout_4.addWidget(self.pushButtonVolMore)
         self.labelBoil = QtGui.QLabel(self.centralwidget)
         self.labelBoil.setObjectName(_fromUtf8("labelBoil"))
         self.horizontalLayout_4.addWidget(self.labelBoil)
@@ -82,13 +90,33 @@ class Ui_MainWindow(object):
         spacerItem2 = QtGui.QSpacerItem(40, 20, QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Minimum)
         self.horizontalLayout_4.addItem(spacerItem2)
         self.verticalLayout.addLayout(self.horizontalLayout_4)
+        self.widgetVol = QtGui.QWidget(self.centralwidget)
+        self.widgetVol.setObjectName(_fromUtf8("widgetVol"))
+        self.horizontalLayout_3 = QtGui.QHBoxLayout(self.widgetVol)
+        self.horizontalLayout_3.setMargin(0)
+        self.horizontalLayout_3.setObjectName(_fromUtf8("horizontalLayout_3"))
+        self.label = QtGui.QLabel(self.widgetVol)
+        self.label.setObjectName(_fromUtf8("label"))
+        self.horizontalLayout_3.addWidget(self.label)
+        self.doubleSpinBoxVolPre = QtGui.QDoubleSpinBox(self.widgetVol)
+        self.doubleSpinBoxVolPre.setObjectName(_fromUtf8("doubleSpinBoxVolPre"))
+        self.horizontalLayout_3.addWidget(self.doubleSpinBoxVolPre)
+        self.label_2 = QtGui.QLabel(self.widgetVol)
+        self.label_2.setObjectName(_fromUtf8("label_2"))
+        self.horizontalLayout_3.addWidget(self.label_2)
+        self.labelSG = QtGui.QLabel(self.widgetVol)
+        self.labelSG.setObjectName(_fromUtf8("labelSG"))
+        self.horizontalLayout_3.addWidget(self.labelSG)
+        spacerItem3 = QtGui.QSpacerItem(40, 20, QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Minimum)
+        self.horizontalLayout_3.addItem(spacerItem3)
+        self.verticalLayout.addWidget(self.widgetVol)
         self.horizontalLayout_6 = QtGui.QHBoxLayout()
         self.horizontalLayout_6.setObjectName(_fromUtf8("horizontalLayout_6"))
         self.checkBoxIng = QtGui.QCheckBox(self.centralwidget)
         self.checkBoxIng.setObjectName(_fromUtf8("checkBoxIng"))
         self.horizontalLayout_6.addWidget(self.checkBoxIng)
-        spacerItem3 = QtGui.QSpacerItem(40, 20, QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Minimum)
-        self.horizontalLayout_6.addItem(spacerItem3)
+        spacerItem4 = QtGui.QSpacerItem(40, 20, QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Minimum)
+        self.horizontalLayout_6.addItem(spacerItem4)
         self.verticalLayout.addLayout(self.horizontalLayout_6)
         self.labelFermentables = QtGui.QLabel(self.centralwidget)
         self.labelFermentables.setObjectName(_fromUtf8("labelFermentables"))
@@ -115,8 +143,8 @@ class Ui_MainWindow(object):
         self.verticalLayout.addWidget(self.tableViewF)
         self.horizontalLayout_5 = QtGui.QHBoxLayout()
         self.horizontalLayout_5.setObjectName(_fromUtf8("horizontalLayout_5"))
-        spacerItem4 = QtGui.QSpacerItem(40, 20, QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Minimum)
-        self.horizontalLayout_5.addItem(spacerItem4)
+        spacerItem5 = QtGui.QSpacerItem(40, 20, QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Minimum)
+        self.horizontalLayout_5.addItem(spacerItem5)
         self.pushButtonEnlever = QtGui.QPushButton(self.centralwidget)
         self.pushButtonEnlever.setObjectName(_fromUtf8("pushButtonEnlever"))
         self.horizontalLayout_5.addWidget(self.pushButtonEnlever)
@@ -171,8 +199,8 @@ class Ui_MainWindow(object):
         self.horizontalLayout_13.addWidget(self.pushButtonAjouterY)
         self.verticalLayout_3.addLayout(self.horizontalLayout_13)
         self.horizontalLayout_7.addLayout(self.verticalLayout_3)
-        spacerItem5 = QtGui.QSpacerItem(40, 20, QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Minimum)
-        self.horizontalLayout_7.addItem(spacerItem5)
+        spacerItem6 = QtGui.QSpacerItem(40, 20, QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Minimum)
+        self.horizontalLayout_7.addItem(spacerItem6)
         self.formLayout = QtGui.QFormLayout()
         self.formLayout.setFieldGrowthPolicy(QtGui.QFormLayout.ExpandingFieldsGrow)
         self.formLayout.setContentsMargins(-1, 0, -1, 0)
@@ -219,8 +247,8 @@ class Ui_MainWindow(object):
         self.labelAlcv.setObjectName(_fromUtf8("labelAlcv"))
         self.formLayout.setWidget(4, QtGui.QFormLayout.FieldRole, self.labelAlcv)
         self.horizontalLayout_7.addLayout(self.formLayout)
-        spacerItem6 = QtGui.QSpacerItem(40, 20, QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Minimum)
-        self.horizontalLayout_7.addItem(spacerItem6)
+        spacerItem7 = QtGui.QSpacerItem(40, 20, QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Minimum)
+        self.horizontalLayout_7.addItem(spacerItem7)
         self.verticalLayout.addLayout(self.horizontalLayout_7)
         MainWindow.setCentralWidget(self.centralwidget)
         self.toolBar = QtGui.QToolBar(MainWindow)
@@ -244,19 +272,19 @@ class Ui_MainWindow(object):
         self.statusBar.setObjectName(_fromUtf8("statusBar"))
         MainWindow.setStatusBar(self.statusBar)
         self.actionOuvrir = QtGui.QAction(MainWindow)
-        icon2 = QtGui.QIcon()
-        icon2.addPixmap(QtGui.QPixmap(_fromUtf8("Images/document-open.png")), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.actionOuvrir.setIcon(icon2)
+        icon3 = QtGui.QIcon()
+        icon3.addPixmap(QtGui.QPixmap(_fromUtf8("Images/document-open.png")), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.actionOuvrir.setIcon(icon3)
         self.actionOuvrir.setObjectName(_fromUtf8("actionOuvrir"))
         self.actionQuitter = QtGui.QAction(MainWindow)
-        icon3 = QtGui.QIcon()
-        icon3.addPixmap(QtGui.QPixmap(_fromUtf8("Images/application-exit.png")), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.actionQuitter.setIcon(icon3)
+        icon4 = QtGui.QIcon()
+        icon4.addPixmap(QtGui.QPixmap(_fromUtf8("Images/application-exit.png")), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.actionQuitter.setIcon(icon4)
         self.actionQuitter.setObjectName(_fromUtf8("actionQuitter"))
         self.actionAbout = QtGui.QAction(MainWindow)
-        icon4 = QtGui.QIcon()
-        icon4.addPixmap(QtGui.QPixmap(_fromUtf8("Images/help-about.png")), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.actionAbout.setIcon(icon4)
+        icon5 = QtGui.QIcon()
+        icon5.addPixmap(QtGui.QPixmap(_fromUtf8("Images/help-about.png")), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.actionAbout.setIcon(icon5)
         self.actionAbout.setObjectName(_fromUtf8("actionAbout"))
         self.actionEnregistrer = QtGui.QAction(MainWindow)
         self.actionEnregistrer.setObjectName(_fromUtf8("actionEnregistrer"))
@@ -328,6 +356,17 @@ class Ui_MainWindow(object):
 "p, li { white-space: pre-wrap; }\n"
 "</style></head><body style=\" font-family:\'Ubuntu\'; font-size:9pt; font-weight:400; font-style:normal;\">\n"
 "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:\'Droid Sans\'; font-weight:600;\">Rendement (%)</span></p></body></html>", None, QtGui.QApplication.UnicodeUTF8))
+        self.label.setText(QtGui.QApplication.translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
+"p, li { white-space: pre-wrap; }\n"
+"</style></head><body style=\" font-family:\'Ubuntu\'; font-size:9pt; font-weight:400; font-style:normal;\">\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-weight:600;\">Volume pré-ébullition</span></p></body></html>", None, QtGui.QApplication.UnicodeUTF8))
+        self.label_2.setText(QtGui.QApplication.translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
+"p, li { white-space: pre-wrap; }\n"
+"</style></head><body style=\" font-family:\'Ubuntu\'; font-size:9pt; font-weight:400; font-style:normal;\">\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-weight:600;\">Densité Spécifique pré-ébullition :</span></p></body></html>", None, QtGui.QApplication.UnicodeUTF8))
+        self.labelSG.setText(QtGui.QApplication.translate("MainWindow", "0", None, QtGui.QApplication.UnicodeUTF8))
         self.checkBoxIng.setText(QtGui.QApplication.translate("MainWindow", "Ajuster les ingrédients", None, QtGui.QApplication.UnicodeUTF8))
         self.labelFermentables.setText(QtGui.QApplication.translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
