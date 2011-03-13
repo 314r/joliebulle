@@ -43,10 +43,10 @@ class DialogL(QtGui.QDialog):
         self.base.importBeerXML() 
         
         self.ui.listWidgetLevures.addItems(self.base.liste_levuresDetail)
-        self.ui.comboBoxForme.addItem('Liquide')
-        self.ui.comboBoxForme.addItem('Poudre')
-        self.ui.comboBoxForme.addItem('Gélose')
-        self.ui.comboBoxForme.addItem('Culture')
+        self.ui.comboBoxForme.addItem(self.trUtf8('Liquide'))
+        self.ui.comboBoxForme.addItem(self.trUtf8('Poudre'))
+        self.ui.comboBoxForme.addItem(self.trUtf8('Gélose'))
+        self.ui.comboBoxForme.addItem(self.trUtf8('Culture'))
         
         self.connect(self.ui.listWidgetLevures, QtCore.SIGNAL("itemSelectionChanged ()"), self.voir)  
         self.connect(self.ui.pushButtonNouveau, QtCore.SIGNAL("clicked()"), self.nouveau)

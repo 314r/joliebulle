@@ -203,10 +203,3 @@ class ImportBase :
                 if nom.tag == 'TYPE' :
                         self.dType = nom.text
                         self.liste_dType.append(self.dType)
-
-
-
-
-        
-       
-

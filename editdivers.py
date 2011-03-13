@@ -43,12 +43,12 @@ class DialogD(QtGui.QDialog):
         self.base.importBeerXML()
         
         self.ui.listWidgetDivers.addItems(self.base.liste_divers)
-        self.ui.comboBoxType.addItem("Epice")
-        self.ui.comboBoxType.addItem("Clarifiant")
-        self.ui.comboBoxType.addItem("Traitement Eau")
-        self.ui.comboBoxType.addItem("Herbe")
-        self.ui.comboBoxType.addItem("Arôme")
-        self.ui.comboBoxType.addItem("Autre")
+        self.ui.comboBoxType.addItem(self.trUtf8("Epice"))
+        self.ui.comboBoxType.addItem(self.trUtf8("Clarifiant"))
+        self.ui.comboBoxType.addItem(self.trUtf8("Traitement Eau"))
+        self.ui.comboBoxType.addItem(self.trUtf8("Herbe"))
+        self.ui.comboBoxType.addItem(self.trUtf8("Arôme"))
+        self.ui.comboBoxType.addItem(self.trUtf8("Autre"))
         
         self.connect(self.ui.listWidgetDivers, QtCore.SIGNAL("itemSelectionChanged ()"), self.voir)
         self.connect(self.ui.pushButtonNouveau, QtCore.SIGNAL("clicked()"), self.nouveau)

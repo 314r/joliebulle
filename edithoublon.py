@@ -43,8 +43,8 @@ class DialogH(QtGui.QDialog):
         self.base.importBeerXML()
         
         self.ui.listWidgetHoublons.addItems(self.base.liste_houblons)
-        self.ui.comboBoxForme.addItem('Feuille')
-        self.ui.comboBoxForme.addItem('Pellet')
+        self.ui.comboBoxForme.addItem(self.trUtf8('Feuille'))
+        self.ui.comboBoxForme.addItem(self.trUtf8('Pellet'))
         self.connect(self.ui.listWidgetHoublons, QtCore.SIGNAL("itemSelectionChanged ()"), self.voir)  
         self.connect(self.ui.pushButtonNouveau, QtCore.SIGNAL("clicked()"), self.nouveau)
         self.connect(self.ui.pushButtonEnlever, QtCore.SIGNAL("clicked()"), self.enlever)
