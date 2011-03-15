@@ -11,7 +11,7 @@
     <message utf8="true">
         <location filename="main.py" line="1066"/>
         <source>&lt;h1&gt;JolieBulle&lt;/h1&gt; &lt;b&gt;version 2.0&lt;/b&gt;&lt;br/&gt;copyright (c) 2010-2011 Pierre Tavares&lt;p&gt; JoliBulle est un logiciel de lecture et de formulation de recettes de brassage.&lt;/p&gt;&lt;p&gt;&lt;a href =http://www.gnu.org/licenses/gpl-3.0.html&gt;Licence : Version 3 de la Licence Générale Publique GNU&lt;/a&gt;&lt;/p&gt;&lt;p&gt;Certaines icônes proviennent du pack Faenza par Tiheum (Matthieu James), également distribué sous licence GPL.&lt;/p&gt;</source>
-        <translation>&lt;h1&gt;JolieBulle&lt;/h1&gt; &lt;b&gt;version 2.0&lt;/b&gt;&lt;br/&gt;copyright (c) 2010-2011 Pierre Tavares&lt;p&gt;JolieBulle is a beer brewing software.&lt;/p&gt;&lt;p&gt;&lt;a href =http://www.gnu.org/licenses/gpl-3.0.html&gt;Licence : Version 3 de la Licence Générale Publique GNU&lt;/a&gt;&lt;/p&gt;&lt;p&gt;Some icons are from the Faenza pack byTiheum (Matthieu James), released under GPL&lt;/p&gt;</translation>
+        <translation>&lt;h1&gt;JolieBulle&lt;/h1&gt; &lt;b&gt;version 2.0&lt;/b&gt;&lt;br/&gt;copyright (c) 2010-2011 Pierre Tavares&lt;p&gt;JolieBulle is a beer brewing software.&lt;/p&gt;&lt;p&gt;&lt;a href =http://www.gnu.org/licenses/gpl-3.0.html&gt;Licence : Version 3 de la Licence Générale Publique GNU&lt;/a&gt;&lt;/p&gt;&lt;p&gt;Some icons are from the Faenza pack by Tiheum (Matthieu James), released under GPL.&lt;/p&gt;</translation>
     </message>
     <message>
         <location filename="main.py" line="1166"/>
