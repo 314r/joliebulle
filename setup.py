@@ -40,7 +40,7 @@ setup(name = "joliebulle",
                                             "Images/document-open.png",
                                             "Images/document-properties.png",
                                             "Images/help-about.png",
-                                            "Images/document-open.svg"
+                                            "Images/document-open.svg",
                                             "Images/more.png"])
                                                     ],
       scripts = ["joliebulle"],
