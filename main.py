@@ -256,7 +256,9 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         self.connect(self.actionAbout, QtCore.SIGNAL("triggered()"), self.about)
         self.connect(self.actionCorrectionDens, QtCore.SIGNAL("triggered()"), self.outilDens)
         self.connect(self.actionCalculAlc, QtCore.SIGNAL("triggered()"), self.outilAlc)
-        
+        self.connect(self.actionImprimer, QtCore.SIGNAL("triggered()"), self.printRecipe)
+         
+         
         self.connect(self.doubleSpinBoxRendemt, QtCore.SIGNAL("valueChanged(QString)"), self.rendemt_changed)
         self.connect(self.doubleSpinBox_2Volume, QtCore.SIGNAL("valueChanged(QString)"), self.volume_changed)
         self.connect(self.pushButtonAjouter_2, QtCore.SIGNAL("clicked()"), self.ajouterF)
@@ -1227,6 +1229,53 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
             
     def addStyle(self) :
         self.lineEditGenre.setText(self.comboBoxStyle.currentText())
+        
+        
+    def printRecipe (self) :
+        printer=QtGui.QPrinter()
+        info_texte = "<h1 style=\"font-family : Arial ;\">%s</h1> <br/>\
+                    <b>Style :</b> %s <br/> \
+                    <b>Volume :</b> %sL<b> ; Rendement :</b> %s%% <br/>\
+                    <h2>Liste des ingrédients</h2> "  \
+                    %(self.nomRecette, self.styleRecette, self.volume, self.rendement)
+        
+        grains_texte = "<h3 style =\" text-decoration : underline; \">Grains ou extraits</h3>"           
+        i = 0
+        while i < AppWindow.nbreFer :
+            i=i+1
+            grains_texte = grains_texte + "<b>"+ self.liste_ingr[i-1] + " : " + "</b>"+ str(self.liste_fAmount[i-1]) + "g" + "<br/>"
+        
+        houblons_texte = "<h3 style =\" text-decoration : underline; \">Houblons</h3>"
+        h = 0
+        while h < AppWindow.nbreHops : 
+            h = h+1        
+            houblons_texte = houblons_texte + "<b>" + self.liste_houblons[h-1] + "</b>" +  " (" +  str(self.liste_hAlpha[h-1]) +"%" + ", " + self.liste_hForm[h-1] +")" + " : " +"<b>"+ str(self.liste_hAmount[h-1]) + "g"+"</b>" +" pendant " +"<b>" +str(self.liste_hTime[h-1]) +"</b>"+ " minutes" + "<br/>"
+        
+        divers_texte = "<h3 style =\" text-decoration : underline; \">Divers</h3>"
+        m = 0
+        while  m < AppWindow.nbreDivers :
+            m = m + 1    
+            divers_texte = divers_texte +"<b>" +self.liste_divers[m-1] +"</b>"+" (" +self.liste_dType[m-1] +")" + " : " +"<b>" +str(self.liste_dAmount[m-1]) + "g" +"</b>"+"<br/>"
+           
+        levures_texte = "<h3 style =\" text-decoration : underline; \">Levures</h3>" 
+        l = 0
+        while l < self.nbreLevures : 
+            l = l+1
+            levures_texte = levures_texte + self.liste_levuresDetail[l-1] + "<br/>"
+           
+        texte = info_texte + grains_texte + houblons_texte + divers_texte + levures_texte
+        doc=QtGui.QTextDocument()
+
+        doc.setHtml(texte)
+
+            
+        
+        dialog = QtGui.QPrintDialog(printer)
+        dialog.setModal(True)
+        dialog.setWindowTitle("Print Document" )
+        # dialog.addEnabledOption(QAbstractPrintDialog.PrintSelection)
+        if dialog.exec_() == True:
+            doc.print_(printer)
        
         
         

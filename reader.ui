@@ -644,6 +644,7 @@ p, li { white-space: pre-wrap; }
     </property>
     <addaction name="actionOuvrir_2"/>
     <addaction name="actionNouvelle_recette"/>
+    <addaction name="actionImprimer"/>
     <addaction name="actionEnregistrer"/>
     <addaction name="actionEnregistrer_Sous"/>
     <addaction name="actionQuitter_2"/>
@@ -749,6 +750,11 @@ p, li { white-space: pre-wrap; }
   <action name="actionCalculAlc">
    <property name="text">
     <string>Calcul taux d'alcool</string>
+   </property>
+  </action>
+  <action name="actionImprimer">
+   <property name="text">
+    <string>Imprimer</string>
    </property>
   </action>
  </widget>

@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'reader.ui'
 #
-# Created: Sat Mar  5 22:24:01 2011
+# Created: Sun Mar 27 15:29:51 2011
 #      by: PyQt4 UI code generator 4.8.3
 #
 # WARNING! All changes made in this file will be lost!
@@ -308,10 +308,13 @@ class Ui_MainWindow(object):
         self.actionCorrectionDens.setObjectName(_fromUtf8("actionCorrectionDens"))
         self.actionCalculAlc = QtGui.QAction(MainWindow)
         self.actionCalculAlc.setObjectName(_fromUtf8("actionCalculAlc"))
+        self.actionImprimer = QtGui.QAction(MainWindow)
+        self.actionImprimer.setObjectName(_fromUtf8("actionImprimer"))
         self.toolBar.addAction(self.actionOuvrir)
         self.toolBar.addAction(self.actionAbout)
         self.menuFichier.addAction(self.actionOuvrir_2)
         self.menuFichier.addAction(self.actionNouvelle_recette)
+        self.menuFichier.addAction(self.actionImprimer)
         self.menuFichier.addAction(self.actionEnregistrer)
         self.menuFichier.addAction(self.actionEnregistrer_Sous)
         self.menuFichier.addAction(self.actionQuitter_2)
@@ -421,4 +424,5 @@ class Ui_MainWindow(object):
         self.actionNouvelle_recette.setText(QtGui.QApplication.translate("MainWindow", "Nouvelle recette", None, QtGui.QApplication.UnicodeUTF8))
         self.actionCorrectionDens.setText(QtGui.QApplication.translate("MainWindow", "Correction densimètre", None, QtGui.QApplication.UnicodeUTF8))
         self.actionCalculAlc.setText(QtGui.QApplication.translate("MainWindow", "Calcul taux d\'alcool", None, QtGui.QApplication.UnicodeUTF8))
+        self.actionImprimer.setText(QtGui.QApplication.translate("MainWindow", "Imprimer", None, QtGui.QApplication.UnicodeUTF8))
 
