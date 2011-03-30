@@ -38,13 +38,15 @@ from outilDens import *
 from outilAlc import *
 
 
+
 import xml.etree.ElementTree as ET
 
 class IngDelegate(QtGui.QItemDelegate):
     def __init__(self, parent=None):
         QtGui.QItemDelegate.__init__(self, parent)
     def createEditor(self, parent, option, index) :  
-        return editor
+        #return editor
+        pass
     def setEditorData(self, spinBox, index):
         pass
     def setModelData(self, spinBox, model, index):
@@ -55,7 +57,6 @@ class IngDelegate(QtGui.QItemDelegate):
 class AmountDelegate(QtGui.QItemDelegate):
     def __init__(self, parent=None):
             QtGui.QItemDelegate.__init__(self, parent)
-
 
 
     def createEditor(self, parent, option, index) :
@@ -82,11 +83,11 @@ class AmountDelegate(QtGui.QItemDelegate):
     def setModelData(self, spinBox, model, index):
         spinBox.interpretText()
         value = spinBox.value()
-        
-       
+           
         model.setData(index, value)
         
-        
+
+        self.emit( QtCore.SIGNAL( "pySig"))
         
         
     def updateEditorGeometry(self, editor, option, index):
@@ -274,14 +275,17 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         #self.connect(self.pushButtonEssai, QtCore.SIGNAL("clicked()"), self.essai)
         
         #Les modeles et vues du widget central
-        self.modele = QtGui.QStandardItemModel(0, 5)
+        self.modele = QtGui.QStandardItemModel(0, 6)
         self.connect(self.modele, QtCore.SIGNAL("dataChanged(QModelIndex,QModelIndex)"), self.reverseMVC)
         
-        liste_headers = [self.trUtf8("Ingrédients"),self.trUtf8("Quantité (g)"),self.trUtf8("Temps (min)"),self.trUtf8("Acide Alpha (%)"),self.trUtf8("Type")]
+        liste_headers = [self.trUtf8("Ingrédients"),self.trUtf8("Quantité (g)"),self.trUtf8("Temps (min)"),self.trUtf8("Acide Alpha (%)"),self.trUtf8("Type"),self.trUtf8("Proportion")]
         self.modele.setHorizontalHeaderLabels(liste_headers)
         
         self.deleg = AmountDelegate(self)
         self.tableViewF.setItemDelegateForColumn(1,self.deleg)
+        self.connect(self.deleg, QtCore.SIGNAL( "pySig"), self.foo)
+        
+        
         
         self.delegT = TimeDelegate(self)
         self.tableViewF.setItemDelegateForColumn(2,self.delegT)
@@ -294,6 +298,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         
         self.delegI = IngDelegate(self)
         self.tableViewF.setItemDelegateForColumn(0,self.delegI)
+        self.tableViewF.setItemDelegateForColumn(5,self.delegI)
 
         self.tableViewF.setModel(self.modele)
         self.tableViewF.setColumnWidth(0,250)
@@ -324,6 +329,15 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         self.widgetVol.hide()
         
         self.nouvelle()
+        
+    def foo (self) :
+        print("foo!")
+        i=0
+        while i < AppWindow.nbreFer :
+            i=i+1
+            for prop in self.liste_fProportion :
+                prop = QtGui.QStandardItem("%.0f" %(self.liste_fProportion[i-1]))
+                self.modele.setItem(i-1,5,prop)
     # cette fonction est appelee chaque fois que les donnees du modele changent
     def reverseMVC(self) : 
     
@@ -393,13 +407,11 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         
        
         self.calculs_recette()  
+        print (self.liste_fProportion)
         
 
     
-    def MVC(self) : 
-       
-        
-        
+    def MVC(self) :      
 
         
         i=0
@@ -414,6 +426,9 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
             for ftype in self.liste_fType :
                 ftype = QtGui.QStandardItem(self.liste_fType[i-1])
                 self.modele.setItem(i-1,4,ftype)
+            for prop in self.liste_fProportion :
+                prop = QtGui.QStandardItem("%.0f" %(self.liste_fProportion[i-1]))
+                self.modele.setItem(i-1,5,prop)
 
         
         
@@ -517,9 +532,10 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         self.liste_color.append(self.base.liste_color[i])
         self.liste_fMashed.append(self.base.liste_fMashed[i])       
         AppWindow.nbreFer = f + 1
-
+        self.calculs_recette()
         self.MVC()
         
+        print (self.liste_fProportion)
         
     def ajouterH(self) : 
         
@@ -544,6 +560,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         self.liste_hAlpha.append(self.base.liste_hAlpha[i])
         
         AppWindow.nbreHops = h + 1
+        self.calculs_recette()
         self.MVC()
         
      
@@ -618,51 +635,57 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         m = AppWindow.nbreDivers
         
         
-        
-        if indexLigne < f :
-            del self.liste_ingr[indexLigne]
-            del self.liste_fAmount[indexLigne]
-            del self.liste_fType[indexLigne]
-            del self.liste_fYield[indexLigne]
-            del self.liste_fMashed[indexLigne]
-            del self.liste_color[indexLigne]
-            self.modele.removeRow(indexLigne)
-            AppWindow.nbreFer = f - 1
-            self.reverseMVC()
-            
-        if indexLigne > f-1 and indexLigne < f+h :      
-            del self.liste_houblons[indexLigne-f]
-            del self.liste_hAmount[indexLigne-f]
-            del self.liste_hForm[indexLigne-f]
-            del self.liste_hTime[indexLigne-f]
-            del self.liste_hAlpha[indexLigne-f]
-            self.modele.removeRow(indexLigne)
-            AppWindow.nbreHops = h - 1
-            self.reverseMVC()   
-
-            
-        if indexLigne > f+h-1 and indexLigne < f+h+m :
-            del self.liste_divers[indexLigne-(f+h)]
-            del self.liste_dAmount[indexLigne-(f+h)]
-            del self.liste_dType[indexLigne-(f+h)]
-            self.modele.removeRow(indexLigne)
-            AppWindow.nbreDivers = m-1
-            self.reverseMVC()
-            
-        if indexLigne > f+h+m-1 and indexLigne < f+h+m+l :
-            del self.liste_levures[indexLigne-(f+h+m)]
-            del self.liste_lForm[indexLigne-(f+h+m)]
-            del self.liste_lLabo[indexLigne-(f+h+m)]
-            del self.liste_lProdid[indexLigne-(f+h+m)]
-            del self.liste_levureAtten[indexLigne-(f+h+m)]
-            del self.liste_levuresDetail[indexLigne-(f+h+m)]
-            self.modele.removeRow(indexLigne)
-            self.nbreLevures = l-1
-            self.reverseMVC()
-            
-        else :
+        if indexLigne < 0 :
             pass
-       
+        else :
+            if indexLigne < f :
+                del self.liste_ingr[indexLigne]
+                del self.liste_fAmount[indexLigne]
+                del self.liste_fType[indexLigne]
+                del self.liste_fYield[indexLigne]
+                del self.liste_fMashed[indexLigne]
+                del self.liste_color[indexLigne]
+                self.modele.removeRow(indexLigne)
+                AppWindow.nbreFer = f - 1
+                self.reverseMVC()
+                
+            if indexLigne > f-1 and indexLigne < f+h :      
+                del self.liste_houblons[indexLigne-f]
+                del self.liste_hAmount[indexLigne-f]
+                del self.liste_hForm[indexLigne-f]
+                del self.liste_hTime[indexLigne-f]
+                del self.liste_hAlpha[indexLigne-f]
+                self.modele.removeRow(indexLigne)
+                AppWindow.nbreHops = h - 1
+                self.reverseMVC()   
+
+                
+            if indexLigne > f+h-1 and indexLigne < f+h+m :
+                del self.liste_divers[indexLigne-(f+h)]
+                del self.liste_dAmount[indexLigne-(f+h)]
+                del self.liste_dType[indexLigne-(f+h)]
+                self.modele.removeRow(indexLigne)
+                AppWindow.nbreDivers = m-1
+                self.reverseMVC()
+                
+            if indexLigne > f+h+m-1 and indexLigne < f+h+m+l :
+                del self.liste_levures[indexLigne-(f+h+m)]
+                del self.liste_lForm[indexLigne-(f+h+m)]
+                del self.liste_lLabo[indexLigne-(f+h+m)]
+                del self.liste_lProdid[indexLigne-(f+h+m)]
+                del self.liste_levureAtten[indexLigne-(f+h+m)]
+                del self.liste_levuresDetail[indexLigne-(f+h+m)]
+                self.modele.removeRow(indexLigne)
+                self.nbreLevures = l-1
+                
+                self.reverseMVC()
+                
+            else :
+                pass
+            self.calculs_recette()
+            self.MVC()
+            print (self.liste_fProportion)
+            print ("index : " , indexLigne)
  
         
 
@@ -950,6 +973,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         self.liste_equivSucreMashed = list()
         self.liste_equivSucreNonMashed = list()
         
+        
         o = 0
         while o < AppWindow.nbreFer :
             o = o+1
@@ -977,6 +1001,18 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         
         self.GUF = self.GU*(1-self.atten)
         self.FG = 1 + self.GUF/1000
+        
+        
+        #calcul des proportions pour les grains
+        self.liste_fProportion = list()
+        poidsTot = sum(self.liste_fAmount)  
+        i = 0
+        while i < AppWindow.nbreFer :
+            i=i+1
+            propGrain = (self.liste_fAmount[i-1] / poidsTot)*100
+            self.liste_fProportion.append(propGrain)
+
+
 
         
         
@@ -1034,13 +1070,15 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
 
             
         
-        
+            
         
         self.labelOGV.setText(str("%.3f" %(self.OG)))
         self.labelFGV.setText(str("%.3f" %(self.FG)))
         self.labelEBCV.setText(str("%.0f" %(self.EBC)))
         self.labelIBUV.setText(str("%.0f" %(self.ibuTot)))
         self.labelAlcv.setText(str("%.1f" %(self.ABV)) + '%')
+        
+        
                         
     def volPreCalc(self) :
         indice = float(self.volume) / self.doubleSpinBoxVolPre.value()       
