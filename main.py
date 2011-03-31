@@ -127,6 +127,7 @@ class TimeDelegate(QtGui.QItemDelegate):
         
         #model.setData(index, QtCore.QVariant(value))
         model.setData(index, value)
+        self.emit( QtCore.SIGNAL( "pySig"))
                             
     def updateEditorGeometry(self, editor, option, index):
         editor.setGeometry(option.rect)
@@ -168,6 +169,7 @@ class AlphaDelegate(QtGui.QItemDelegate):
         
         
         model.setData(index, value)
+        self.emit( QtCore.SIGNAL( "pySig"))
                             
     def updateEditorGeometry(self, editor, option, index):
         editor.setGeometry(option.rect)
@@ -208,7 +210,7 @@ class ComboBoxDelegate(QtGui.QItemDelegate):
         value = editor.currentText()
         
         model.setData( index, value )
-        
+        self.emit( QtCore.SIGNAL( "pySig"))
        
 
        
@@ -283,18 +285,21 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         
         self.deleg = AmountDelegate(self)
         self.tableViewF.setItemDelegateForColumn(1,self.deleg)
-        self.connect(self.deleg, QtCore.SIGNAL( "pySig"), self.foo)
+        self.connect(self.deleg, QtCore.SIGNAL( "pySig"), self.modeleProportion)
         
         
         
         self.delegT = TimeDelegate(self)
         self.tableViewF.setItemDelegateForColumn(2,self.delegT)
+        self.connect(self.delegT, QtCore.SIGNAL( "pySig"), self.modeleProportion)
 
         self.delegA = AlphaDelegate(self)
         self.tableViewF.setItemDelegateForColumn(3,self.delegA)
+        self.connect(self.delegA, QtCore.SIGNAL( "pySig"), self.modeleProportion)
         
         self.delegC = ComboBoxDelegate(self)
         self.tableViewF.setItemDelegateForColumn(4,self.delegC)  
+        self.connect(self.delegC, QtCore.SIGNAL( "pySig"), self.modeleProportion)
         
         self.delegI = IngDelegate(self)
         self.tableViewF.setItemDelegateForColumn(0,self.delegI)
@@ -330,14 +335,25 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         
         self.nouvelle()
         
-    def foo (self) :
-        print("foo!")
+    def modeleProportion (self) :
+        #Cette fonction est appelée chaque fois que la quantité, les AA ou les temps sont modifiés, via un signal émit par les classes Delegate.
+        #Cette fonction inclu les données calculées dans le modèle.
+       
         i=0
         while i < AppWindow.nbreFer :
             i=i+1
             for prop in self.liste_fProportion :
-                prop = QtGui.QStandardItem("%.0f" %(self.liste_fProportion[i-1]))
+                prop = QtGui.QStandardItem("%.0f" %(self.liste_fProportion[i-1]) + "%")
                 self.modele.setItem(i-1,5,prop)
+                
+        h=0
+        while h < AppWindow.nbreHops :
+            h = h+1
+            for prop in self.liste_ibuPart :
+                prop = QtGui.QStandardItem("%.1f" %(self.liste_ibuPart[h-1]) + " IBU")
+                self.modele.setItem(i+h-1,5,prop)
+                
+         
     # cette fonction est appelee chaque fois que les donnees du modele changent
     def reverseMVC(self) : 
     
@@ -427,7 +443,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
                 ftype = QtGui.QStandardItem(self.liste_fType[i-1])
                 self.modele.setItem(i-1,4,ftype)
             for prop in self.liste_fProportion :
-                prop = QtGui.QStandardItem("%.0f" %(self.liste_fProportion[i-1]))
+                prop = QtGui.QStandardItem("%.0f" %(self.liste_fProportion[i-1]) + "%")
                 self.modele.setItem(i-1,5,prop)
 
         
@@ -451,6 +467,9 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
             for form in self.liste_hForm :
                 form = QtGui.QStandardItem(str(self.liste_hForm[h-1]))
                 self.modele.setItem(i+h-1,4,form)
+            for prop in self.liste_ibuPart :
+                prop = QtGui.QStandardItem("%.1f" %(self.liste_ibuPart[h-1]) + " IBU")
+                self.modele.setItem(i+h-1,5,prop)
             
 
 
