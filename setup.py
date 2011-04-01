@@ -5,7 +5,7 @@
 from distutils.core import setup
 
 setup(name = "joliebulle",
-      version = "2.1",
+      version = "2.15",
       description = "jolibulle, logiciel de brassage libre",
       author = "Pierre Tavares",
       author_email = "contact.314r@gmail.com",

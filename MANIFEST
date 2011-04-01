@@ -2,7 +2,6 @@
 COPYING
 README
 base.py
-calculs.py
 database.xml
 densimetre_ui.py
 editdivers.py
