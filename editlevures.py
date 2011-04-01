@@ -3,7 +3,7 @@
 
 
 
-#JolieBulle 2.1
+#JolieBulle 2.15
 #Copyright (C) 2010-2011 Pierre Tavares
 
 #This program is free software; you can redistribute it and/or
@@ -111,7 +111,7 @@ class DialogL(QtGui.QDialog):
         else :
             self.base.liste_lForm.insert(i, 'Dry')
         
-        self.base.liste_levuresDetail.insert(i, self.base.liste_lLabo[i] + ' ' + self.base.liste_lProdid[i] + ' ' + nom) 
+        self.base.liste_levuresDetail.insert(i, nom + ' ' + self.base.liste_lLabo[i] + ' ' + self.base.liste_lProdid[i]) 
             
         self.ui.listWidgetLevures.clear()
         self.ui.listWidgetLevures.addItems(self.base.liste_levuresDetail)

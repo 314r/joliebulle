@@ -3,7 +3,7 @@
 
 
 
-#JolieBulle 2.1
+#JolieBulle 2.15
 #Copyright (C) 2010-2011 Pierre Tavares
 
 #This program is free software; you can redistribute it and/or
