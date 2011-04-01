@@ -106,8 +106,12 @@ class DialogH(QtGui.QDialog):
         form.text = self.base.liste_hForm[i]
         
         root.insert(i + f, hop)
-        databaseXML = open('database.xml', 'w')
-        databaseXML.write(ET.tostring(root))
+        #databaseXML = open('database.xml', 'w')
+        #databaseXML.write(ET.tostring(root))
+        #databaseXML.close()
+        databaseXML = open('database.xml', 'wb')
+        database._setroot(root)
+        database.write(databaseXML, encoding="UTF-8")
         databaseXML.close()
         
         
@@ -138,8 +142,11 @@ class DialogH(QtGui.QDialog):
         iterator = root.getiterator("HOP")
         item = iterator[i] 
         root.remove(item)
-        databaseXML = open('database.xml', 'w')
-        databaseXML.write(ET.tostring(root))
-        databaseXML.close()            
-        
+        #databaseXML = open('database.xml', 'w')
+        #databaseXML.write(ET.tostring(root))
+        #databaseXML.close()            
+        databaseXML = open('database.xml', 'wb')
+        database._setroot(root)
+        database.write(databaseXML, encoding="UTF-8")
+        databaseXML.close()
         

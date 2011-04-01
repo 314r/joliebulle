@@ -120,8 +120,12 @@ class DialogD(QtGui.QDialog):
         dtype.text = self.base.liste_dType[i]
         
         root.insert(i + f + h, divers)
-        databaseXML = open('database.xml', 'w')
-        databaseXML.write(ET.tostring(root))
+        #databaseXML = open('database.xml', 'w')
+        #databaseXML.write(ET.tostring(root))
+        #databaseXML.close()
+        databaseXML = open('database.xml', 'wb')
+        database._setroot(root)
+        database.write(databaseXML, encoding="UTF-8")
         databaseXML.close()
         
     def nouveau(self) :
@@ -148,6 +152,10 @@ class DialogD(QtGui.QDialog):
         iterator = root.getiterator("MISC")
         item = iterator[i] 
         root.remove(item)
-        databaseXML = open('database.xml', 'w')
-        databaseXML.write(ET.tostring(root))
-        databaseXML.close()            
+        #databaseXML = open('database.xml', 'w')
+        #databaseXML.write(ET.tostring(root))
+        #databaseXML.close()   
+        databaseXML = open('database.xml', 'wb')
+        database._setroot(root)
+        database.write(databaseXML, encoding="UTF-8")
+        databaseXML.close()

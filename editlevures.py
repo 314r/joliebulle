@@ -134,8 +134,12 @@ class DialogL(QtGui.QDialog):
         atten.text = str(self.base.liste_levureAtten[i])
         
         root.insert(i + f + h + m, levure)
-        databaseXML = open('database.xml', 'w')
-        databaseXML.write(ET.tostring(root))
+        #databaseXML = open('database.xml', 'w')
+        #databaseXML.write(ET.tostring(root))
+        #databaseXML.close()
+        databaseXML = open('database.xml', 'wb')
+        database._setroot(root)
+        database.write(databaseXML, encoding="UTF-8")
         databaseXML.close()
         
     def nouveau(self) :
@@ -170,9 +174,12 @@ class DialogL(QtGui.QDialog):
         iterator = root.getiterator("YEAST")
         item = iterator[i] 
         root.remove(item)
-        databaseXML = open('database.xml', 'w')
-        databaseXML.write(ET.tostring(root))
-        databaseXML.close()  
-    
+        #databaseXML = open('database.xml', 'w')
+        #databaseXML.write(ET.tostring(root))
+        #databaseXML.close()  
+        databaseXML = open('database.xml', 'wb')
+        database._setroot(root)
+        database.write(databaseXML, encoding="UTF-8")
+        databaseXML.close()
         
         

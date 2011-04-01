@@ -1,7 +1,3 @@
-#!/usr/bin/python3.1
-#­*­coding: utf­8 -­*­
-
-
 
 #JolieBulle 2.1
 #Copyright (C) 2010-2011 Pierre Tavares
@@ -158,11 +154,13 @@ class Dialog(QtGui.QDialog):
         reco.text = self.base.liste_fMashed[i]
         
         root.insert(i, fermentable)
-        databaseXML = open('database.xml', 'w')
-        databaseXML.write(ET.tostring(root))
+        #databaseXML = open('database.xml', 'w')
+        #databaseXML.write(ET.tostring(root))
+        #databaseXML.close()
+        databaseXML = open('database.xml', 'wb')
+        database._setroot(root)
+        database.write(databaseXML, encoding="UTF-8")
         databaseXML.close()
-        
-       
         
 
         
@@ -197,10 +195,13 @@ class Dialog(QtGui.QDialog):
         iterator = root.getiterator("FERMENTABLE")
         item = iterator[i]
         root.remove(item)
-        databaseXML = open('database.xml', 'w')
-        databaseXML.write(ET.tostring(root))
-        databaseXML.close()     
-        
+        #databaseXML = open('database.xml', 'w')
+        #databaseXML.write(ET.tostring(root))
+        #databaseXML.close()     
+        databaseXML = open('database.xml', 'wb')
+        database._setroot(root)
+        database.write(databaseXML, encoding="UTF-8")
+        databaseXML.close()      
         
 
         
