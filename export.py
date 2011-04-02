@@ -144,5 +144,5 @@ liste_fYield, liste_fMashed, liste_color, dNom, dAmount, dType, nbreDivers, list
     def enregistrer(self,s) :
        # print (ET.tostring(self.recipes))
         
-        ET.ElementTree(self.recipes).write(s)
+        ET.ElementTree(self.recipes).write(s,encoding="utf-8")
 

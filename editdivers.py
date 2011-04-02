@@ -125,7 +125,7 @@ class DialogD(QtGui.QDialog):
         #databaseXML.close()
         databaseXML = open(database_file, 'wb')
         database._setroot(root)
-        database.write(databaseXML, encoding="UTF-8")
+        database.write(databaseXML, encoding="utf-8")
         databaseXML.close()
         
     def nouveau(self) :
@@ -157,5 +157,5 @@ class DialogD(QtGui.QDialog):
         #databaseXML.close()   
         databaseXML = open(database_file, 'wb')
         database._setroot(root)
-        database.write(databaseXML, encoding="UTF-8")
+        database.write(databaseXML, encoding="utf-8")
         databaseXML.close()
