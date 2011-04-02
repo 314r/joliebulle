@@ -27,7 +27,7 @@ import sys
 from PyQt4 import QtGui
 from PyQt4 import QtCore
 from base import *
-
+from globals import *
 from editorM_ui import *
 import xml.etree.ElementTree as ET
 from xml.dom import minidom
@@ -108,7 +108,7 @@ class DialogD(QtGui.QDialog):
         self.ui.listWidgetDivers.clear()
         self.ui.listWidgetDivers.addItems(self.base.liste_divers)
         
-        databaseXML = open('database.xml')
+        databaseXML = open(database_file)
         database = ET.parse(databaseXML)
         root= database.getroot()
         databaseXML.close()
@@ -123,7 +123,7 @@ class DialogD(QtGui.QDialog):
         #databaseXML = open('database.xml', 'w')
         #databaseXML.write(ET.tostring(root))
         #databaseXML.close()
-        databaseXML = open('database.xml', 'wb')
+        databaseXML = open(database_file, 'wb')
         database._setroot(root)
         database.write(databaseXML, encoding="UTF-8")
         databaseXML.close()
@@ -145,7 +145,7 @@ class DialogD(QtGui.QDialog):
         self.ui.listWidgetDivers.clear()
         self.ui.listWidgetDivers.addItems(self.base.liste_divers)
         
-        databaseXML = open('database.xml')
+        databaseXML = open(database_file)
         database = ET.parse(databaseXML)
         root= database.getroot()
         databaseXML.close()    
@@ -155,7 +155,7 @@ class DialogD(QtGui.QDialog):
         #databaseXML = open('database.xml', 'w')
         #databaseXML.write(ET.tostring(root))
         #databaseXML.close()   
-        databaseXML = open('database.xml', 'wb')
+        databaseXML = open(database_file, 'wb')
         database._setroot(root)
         database.write(databaseXML, encoding="UTF-8")
         databaseXML.close()

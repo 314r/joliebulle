@@ -13,6 +13,7 @@ editorH_ui.py
 editorM_ui.py
 editorY_ui.py
 export.py
+globals.py
 joliebulle
 joliebulle.desktop
 joliebulle_en.qm

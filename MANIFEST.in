@@ -1,5 +1,4 @@
 include base.py
-include calculs.py
 include densimetre_ui.py
 include editdivers.py
 include editgrain.py
@@ -10,6 +9,7 @@ include editorH_ui.py
 include editorM_ui.py
 include editorY_ui.py
 include export.py
+include globals.py
 include joliebulle_en.qm
 include main.py
 include outilAlc.py

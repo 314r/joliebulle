@@ -28,6 +28,7 @@ import sys
 from PyQt4 import QtGui
 from PyQt4 import QtCore
 import xml.etree.ElementTree as ET
+from globals import *
 
 
 
@@ -35,7 +36,7 @@ class ImportBase :
 
 
     def importBeerXML(self) :
-        fichierBeerXML = 'database.xml'
+        fichierBeerXML = database_file
         arbre = ET.parse(fichierBeerXML)
 
         presentation=arbre.find('.//RECIPE')

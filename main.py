@@ -22,7 +22,8 @@
 
 
 
-
+import os
+from sys import platform
 import PyQt4
 import sys
 from PyQt4 import QtGui
@@ -36,6 +37,7 @@ from editdivers import *
 from editlevures import *
 from outilDens import *
 from outilAlc import *
+from globals import *
 
 
 
@@ -234,7 +236,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
     def __init__(self, parent = None):
         QtGui.QMainWindow.__init__(self, parent)
         self.setupUi(self)
-        
+        self.initRep()
         self.dlgEditG = Dialog(self)
         self.dlgEditH = DialogH(self)
         self.dlgEditD = DialogD(self)
@@ -334,6 +336,24 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         self.widgetVol.hide()
         
         self.nouvelle()
+        
+    def initRep(self) :
+        
+        
+        home = QtCore.QDir(home_dir)
+        config = QtCore.QDir(config_dir)
+        print (config)
+        if not config.exists() :
+            print('non')
+            home.mkdir (config_dir)
+        else :
+            pass
+        database = QtCore.QFile(database_file)
+        if not database.exists() :
+            print('''pas de database''')
+            database.copy(database_root, database_file)
+        else :
+            pass
         
     def modeleProportion (self) :
         #Cette fonction est appelée chaque fois que la quantité, les AA ou les temps sont modifiés, via un signal émit par les classes Delegate.

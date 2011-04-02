@@ -28,6 +28,7 @@ import sys
 from PyQt4 import QtGui
 from PyQt4 import QtCore
 from base import *
+from globals import *
 
 from editorH_ui import *
 import xml.etree.ElementTree as ET
@@ -92,7 +93,7 @@ class DialogH(QtGui.QDialog):
         self.ui.listWidgetHoublons.clear()   
         self.ui.listWidgetHoublons.addItems(self.base.liste_houblons)    
         
-        databaseXML = open('database.xml')
+        databaseXML = open(database_file)
         database = ET.parse(databaseXML)
         root= database.getroot()
         databaseXML.close()  
@@ -106,10 +107,10 @@ class DialogH(QtGui.QDialog):
         form.text = self.base.liste_hForm[i]
         
         root.insert(i + f, hop)
-        #databaseXML = open('database.xml', 'w')
+        #databaseXML = open(database_file, 'w')
         #databaseXML.write(ET.tostring(root))
         #databaseXML.close()
-        databaseXML = open('database.xml', 'wb')
+        databaseXML = open(database_file, 'wb')
         database._setroot(root)
         database.write(databaseXML, encoding="UTF-8")
         databaseXML.close()
@@ -135,17 +136,17 @@ class DialogH(QtGui.QDialog):
         self.ui.listWidgetHoublons.clear()
         self.ui.listWidgetHoublons.addItems(self.base.liste_houblons)
          
-        databaseXML = open('database.xml')
+        databaseXML = open(database_file)
         database = ET.parse(databaseXML)
         root= database.getroot()
         databaseXML.close()    
         iterator = root.getiterator("HOP")
         item = iterator[i] 
         root.remove(item)
-        #databaseXML = open('database.xml', 'w')
+        #databaseXML = open(database_file, 'w')
         #databaseXML.write(ET.tostring(root))
         #databaseXML.close()            
-        databaseXML = open('database.xml', 'wb')
+        databaseXML = open(database_file, 'wb')
         database._setroot(root)
         database.write(databaseXML, encoding="UTF-8")
         databaseXML.close()

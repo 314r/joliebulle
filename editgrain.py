@@ -24,6 +24,7 @@ import sys
 from PyQt4 import QtGui
 from PyQt4 import QtCore
 from base import *
+from globals import *
 
 from editorG_ui import *
 import xml.etree.ElementTree as ET
@@ -37,7 +38,7 @@ class Dialog(QtGui.QDialog):
         self.ui.setupUi(self)
         self.base = ImportBase()
         self.base.importBeerXML()
-        databaseXML = open('database.xml')
+        databaseXML = open(database_file)
         database = ET.parse(databaseXML)
         
         self.ui.listWidgetGrains.addItems(self.base.liste_ingr)
@@ -136,7 +137,7 @@ class Dialog(QtGui.QDialog):
         self.ui.listWidgetGrains.addItems(self.base.liste_ingr)
         
         
-        databaseXML = open('database.xml')
+        databaseXML = open(database_file)
         database = ET.parse(databaseXML)
         root= database.getroot()
         databaseXML.close()
@@ -154,10 +155,10 @@ class Dialog(QtGui.QDialog):
         reco.text = self.base.liste_fMashed[i]
         
         root.insert(i, fermentable)
-        #databaseXML = open('database.xml', 'w')
+        #databaseXML = open(database_file, 'w')
         #databaseXML.write(ET.tostring(root))
         #databaseXML.close()
-        databaseXML = open('database.xml', 'wb')
+        databaseXML = open(database_file, 'wb')
         database._setroot(root)
         database.write(databaseXML, encoding="UTF-8")
         databaseXML.close()
@@ -188,17 +189,17 @@ class Dialog(QtGui.QDialog):
         self.ui.listWidgetGrains.clear()   
         self.ui.listWidgetGrains.addItems(self.base.liste_ingr)
         
-        databaseXML = open('database.xml')
+        databaseXML = open(database_file)
         database = ET.parse(databaseXML)
         root= database.getroot()
         databaseXML.close()
         iterator = root.getiterator("FERMENTABLE")
         item = iterator[i]
         root.remove(item)
-        #databaseXML = open('database.xml', 'w')
+        #databaseXML = open(database_file, 'w')
         #databaseXML.write(ET.tostring(root))
         #databaseXML.close()     
-        databaseXML = open('database.xml', 'wb')
+        databaseXML = open(database_file, 'wb')
         database._setroot(root)
         database.write(databaseXML, encoding="UTF-8")
         databaseXML.close()      

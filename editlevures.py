@@ -28,6 +28,7 @@ import sys
 from PyQt4 import QtGui
 from PyQt4 import QtCore
 from base import *
+from globals import *
 
 from editorY_ui import *
 import xml.etree.ElementTree as ET
@@ -116,7 +117,7 @@ class DialogL(QtGui.QDialog):
         self.ui.listWidgetLevures.clear()
         self.ui.listWidgetLevures.addItems(self.base.liste_levuresDetail)
         
-        databaseXML = open('database.xml')
+        databaseXML = open(database_file)
         database = ET.parse(databaseXML)
         root= database.getroot()
         databaseXML.close()  
@@ -134,10 +135,10 @@ class DialogL(QtGui.QDialog):
         atten.text = str(self.base.liste_levureAtten[i])
         
         root.insert(i + f + h + m, levure)
-        #databaseXML = open('database.xml', 'w')
+        #databaseXML = open(database_file, 'w')
         #databaseXML.write(ET.tostring(root))
         #databaseXML.close()
-        databaseXML = open('database.xml', 'wb')
+        databaseXML = open(database_file, 'wb')
         database._setroot(root)
         database.write(databaseXML, encoding="UTF-8")
         databaseXML.close()
@@ -167,17 +168,17 @@ class DialogL(QtGui.QDialog):
         self.ui.listWidgetLevures.clear()
         self.ui.listWidgetLevures.addItems(self.base.liste_levuresDetail)
         
-        databaseXML = open('database.xml')
+        databaseXML = open(database_file)
         database = ET.parse(databaseXML)
         root= database.getroot()
         databaseXML.close()    
         iterator = root.getiterator("YEAST")
         item = iterator[i] 
         root.remove(item)
-        #databaseXML = open('database.xml', 'w')
+        #databaseXML = open(database_file, 'w')
         #databaseXML.write(ET.tostring(root))
         #databaseXML.close()  
-        databaseXML = open('database.xml', 'wb')
+        databaseXML = open(database_file, 'wb')
         database._setroot(root)
         database.write(databaseXML, encoding="UTF-8")
         databaseXML.close()
