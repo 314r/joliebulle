@@ -345,7 +345,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         print (config)
         if not config.exists() :
             print('non')
-            home.mkdir (config_dir)
+            home.mkpath (config_dir)
         else :
             pass
         database = QtCore.QFile(database_file)

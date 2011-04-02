@@ -5,7 +5,10 @@ import os
 from sys import platform
 
 if platform == 'win32':
-    database_file = 'database.xml'
+    home_dir = os.path.expanduser("~")
+    config_dir = os.path.join(os.path.expanduser("~"), "AppData", "Local", "joliebulle")
+    database_file = os.path.join(os.path.expanduser("~"), "AppData", "Local", "joliebulle", "database.xml")
+    database_root = 'database.xml'
 else:
     home_dir = os.path.expanduser("~")
     config_dir = os.path.join(os.path.expanduser("~"), ".config", "joliebulle")
