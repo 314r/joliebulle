@@ -117,7 +117,7 @@ class DialogL(QtGui.QDialog):
         self.ui.listWidgetLevures.clear()
         self.ui.listWidgetLevures.addItems(self.base.liste_levuresDetail)
         
-        databaseXML = open(database_file)
+        databaseXML = codecs.open(database_file, encoding="utf-8")
         database = ET.parse(databaseXML)
         root= database.getroot()
         databaseXML.close()  
@@ -168,7 +168,7 @@ class DialogL(QtGui.QDialog):
         self.ui.listWidgetLevures.clear()
         self.ui.listWidgetLevures.addItems(self.base.liste_levuresDetail)
         
-        databaseXML = open(database_file)
+        databaseXML = codecs.open(database_file, encoding="utf-8")
         database = ET.parse(databaseXML)
         root= database.getroot()
         databaseXML.close()    

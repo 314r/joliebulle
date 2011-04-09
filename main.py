@@ -357,7 +357,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         
     def modeleProportion (self) :
         #Cette fonction est appelée chaque fois que la quantité, les AA ou les temps sont modifiés, via un signal émit par les classes Delegate.
-        #Cette fonction inclu les données calculées dans le modèle.
+        #Cette fonction inclut les données calculées dans le modèle.
        
         i=0
         while i < AppWindow.nbreFer :
@@ -1133,11 +1133,13 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
               self.trUtf8("Ouvrir un fichier"),
               "",
               )
-        
-        self.purge()
-        self.importBeerXML()
-        self.calculs_recette()
-        self.MVC()
+        if not self.s :
+            pass
+        else :
+            self.purge()
+            self.importBeerXML()
+            self.calculs_recette()
+            self.MVC()
         
 
     

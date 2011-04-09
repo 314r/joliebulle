@@ -1,3 +1,6 @@
+#!/usr/bin/python3
+#­*­coding: utf­8 -­*­
+
 
 #JolieBulle 2.15
 #Copyright (C) 2010-2011 Pierre Tavares
@@ -18,7 +21,7 @@
 
 
 
-
+import codecs
 import PyQt4
 import sys
 from PyQt4 import QtGui
@@ -137,7 +140,7 @@ class Dialog(QtGui.QDialog):
         self.ui.listWidgetGrains.addItems(self.base.liste_ingr)
         
         
-        databaseXML = open(database_file)
+        databaseXML = codecs.open(database_file,encoding="utf-8" )
         database = ET.parse(databaseXML)
         root= database.getroot()
         databaseXML.close()
@@ -189,7 +192,7 @@ class Dialog(QtGui.QDialog):
         self.ui.listWidgetGrains.clear()   
         self.ui.listWidgetGrains.addItems(self.base.liste_ingr)
         
-        databaseXML = open(database_file)
+        databaseXML = codecs.open(database_file, encoding='utf-8')
         database = ET.parse(databaseXML)
         root= database.getroot()
         databaseXML.close()

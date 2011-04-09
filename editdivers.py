@@ -1,4 +1,4 @@
-#!/usr/bin/python3.1
+#!/usr/bin/python3
 #­*­coding: utf­8 -­*­
 
 
@@ -21,7 +21,7 @@
 #Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 
-
+import codecs
 import PyQt4
 import sys
 from PyQt4 import QtGui
@@ -108,7 +108,7 @@ class DialogD(QtGui.QDialog):
         self.ui.listWidgetDivers.clear()
         self.ui.listWidgetDivers.addItems(self.base.liste_divers)
         
-        databaseXML = open(database_file)
+        databaseXML = codecs.open(database_file, encoding="utf-8")
         database = ET.parse(databaseXML)
         root= database.getroot()
         databaseXML.close()
@@ -145,7 +145,7 @@ class DialogD(QtGui.QDialog):
         self.ui.listWidgetDivers.clear()
         self.ui.listWidgetDivers.addItems(self.base.liste_divers)
         
-        databaseXML = open(database_file)
+        databaseXML = codecs.open(database_file, encoding="utf-8")
         database = ET.parse(databaseXML)
         root= database.getroot()
         databaseXML.close()    

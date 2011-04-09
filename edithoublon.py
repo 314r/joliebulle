@@ -93,7 +93,7 @@ class DialogH(QtGui.QDialog):
         self.ui.listWidgetHoublons.clear()   
         self.ui.listWidgetHoublons.addItems(self.base.liste_houblons)    
         
-        databaseXML = open(database_file)
+        databaseXML = codecs.open(database_file, encoding="utf-8")
         database = ET.parse(databaseXML)
         root= database.getroot()
         databaseXML.close()  
@@ -136,7 +136,7 @@ class DialogH(QtGui.QDialog):
         self.ui.listWidgetHoublons.clear()
         self.ui.listWidgetHoublons.addItems(self.base.liste_houblons)
          
-        databaseXML = open(database_file)
+        databaseXML = codecs.open(database_file, encoding="utf-8")
         database = ET.parse(databaseXML)
         root= database.getroot()
         databaseXML.close()    
