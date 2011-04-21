@@ -665,6 +665,7 @@ p, li { white-space: pre-wrap; }
     <addaction name="actionCorrectionDens"/>
     <addaction name="actionCalculAlc"/>
     <addaction name="actionDilution"/>
+    <addaction name="actionEvaporation"/>
    </widget>
    <addaction name="menuFichier"/>
    <addaction name="menuEdition"/>
@@ -761,6 +762,11 @@ p, li { white-space: pre-wrap; }
   <action name="actionDilution">
    <property name="text">
     <string>Dilution</string>
+   </property>
+  </action>
+  <action name="actionEvaporation">
+   <property name="text">
+    <string>Evaporation</string>
    </property>
   </action>
  </widget>

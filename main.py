@@ -38,6 +38,7 @@ from editlevures import *
 from outilDens import *
 from outilAlc import *
 from outilDilution import *
+from outilEvaporation import *
 from globals import *
 
 
@@ -245,6 +246,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         self.dlgOutilDens = DialogOutilDens(self)
         self.dlgOutilAlc = DialogAlc(self)
         self.dlgOutilDilution = DialogDilution(self)
+        self.dlgOutilEvaporation = DialogEvaporation(self)
         self.base = ImportBase()
         self.base.importBeerXML()
         self.s=0
@@ -264,8 +266,10 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         self.connect(self.actionCorrectionDens, QtCore.SIGNAL("triggered()"), self.outilDens)
         self.connect(self.actionCalculAlc, QtCore.SIGNAL("triggered()"), self.outilAlc)
         self.connect(self.actionDilution, QtCore.SIGNAL("triggered()"), self.outilDilution)
+        self.connect(self.actionEvaporation, QtCore.SIGNAL("triggered()"), self.outilEvaporation)
+        
+        
         self.connect(self.actionImprimer, QtCore.SIGNAL("triggered()"), self.printRecipe)
-         
          
         self.connect(self.doubleSpinBoxRendemt, QtCore.SIGNAL("valueChanged(QString)"), self.rendemt_changed)
         self.connect(self.doubleSpinBox_2Volume, QtCore.SIGNAL("valueChanged(QString)"), self.volume_changed)
@@ -547,6 +551,10 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
     def outilDilution(self) :
         self.dlgOutilDilution.setModal(True)
         self.dlgOutilDilution.show()
+      
+    def outilEvaporation (self) :
+        self.dlgOutilEvaporation.setModal(True)
+        self.dlgOutilEvaporation.show()
         
     def purge (self) :
         i = (AppWindow.nbreFer + AppWindow.nbreDivers + AppWindow.nbreHops + self.nbreLevures)
