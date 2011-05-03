@@ -32,12 +32,13 @@ class ExportHTML :
 
     def exportHtml (self) :
         
-        self.recetteHtmlHeader = ''' <!DOCTYPE html>\
-                                        <html lang="fr">\
-                                        <head>\
-                                                <title>recette</title>\
-                                                <meta charset="utf-8" />\
-                                        </head>\ '''
+        self.recetteHtmlHeader = ''' \
+        <!DOCTYPE html>\
+        <html lang="fr">\
+        <head>\
+        <title>recette</title>\
+        <meta charset="utf-8" />\
+        </head> '''
                                         
                                         
                                         
