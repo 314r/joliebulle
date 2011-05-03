@@ -44,5 +44,13 @@ class ExportHTML :
                                         
                                         
                                         
-    def enregistrerHtml(self) :
+    def enregistrerHtml(self,fileHtml) :
         pass
+        contenuTexte = self.self.recetteHtmlHeader.toPlainText()
+            if self.fileHtml.open(QtCore.QIODevice.WriteOnly) :
+                self.stream = QtCore.QTextStream(self.fileHtml)
+                self.stream << contenuTexte
+                                        
+            else :
+                self.new_file.close()
+                        

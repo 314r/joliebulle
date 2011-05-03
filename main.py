@@ -1253,7 +1253,9 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
                                                     self.trUtf8("Enregistrer dans un fichier"),
                                                     self.nomRecette,
                                                     "HTML (*.html)")    
-        exp.enregistrerHtml(self.h)
+        
+        self.fileHtml = QtCore.QFile(self.h)
+        exp.enregistrerHtml(self.fileHtml)
     
     def modifierStyle (self) :
         if self.pushButtonChangerStyle.isChecked () :
