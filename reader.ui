@@ -647,6 +647,7 @@ p, li { white-space: pre-wrap; }
     <addaction name="actionImprimer"/>
     <addaction name="actionEnregistrer"/>
     <addaction name="actionEnregistrer_Sous"/>
+    <addaction name="actionExporterHtml"/>
     <addaction name="actionQuitter_2"/>
    </widget>
    <widget class="QMenu" name="menuEdition">
@@ -767,6 +768,11 @@ p, li { white-space: pre-wrap; }
   <action name="actionEvaporation">
    <property name="text">
     <string>Evaporation</string>
+   </property>
+  </action>
+  <action name="actionExporterHtml">
+   <property name="text">
+    <string>Exporter vers html</string>
    </property>
   </action>
  </widget>

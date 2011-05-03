@@ -30,6 +30,7 @@ from PyQt4 import QtGui
 from PyQt4 import QtCore
 from reader import *
 from export import *
+from exportHTML import *
 from base import *
 from editgrain import *
 from edithoublon import *
@@ -257,11 +258,14 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         self.connect(self.actionOuvrir_2, QtCore.SIGNAL("triggered()"), self.ouvrir_clicked)
         self.connect(self.actionNouvelle_recette, QtCore.SIGNAL("triggered()"), self.purge)
         self.connect(self.actionEnregistrer, QtCore.SIGNAL("triggered()"), self.enregistrer)
+        self.connect(self.actionEnregistrer_Sous, QtCore.SIGNAL("triggered()"), self.enregistrerSous)
+        self.connect(self.actionExporterHtml, QtCore.SIGNAL("triggered()"), self.exporterHtml)
+        
         self.connect(self.actionEditGrains, QtCore.SIGNAL("triggered()"), self.editGrains)
         self.connect(self.actionEditHoublons, QtCore.SIGNAL("triggered()"), self.editHoublons)
         self.connect(self.actionEditDivers, QtCore.SIGNAL("triggered()"), self.editDivers)
         self.connect(self.actionEditLevures, QtCore.SIGNAL("triggered()"), self.editLevures)
-        self.connect(self.actionEnregistrer_Sous, QtCore.SIGNAL("triggered()"), self.enregistrerSous)
+        
         self.connect(self.actionAbout, QtCore.SIGNAL("triggered()"), self.about)
         self.connect(self.actionCorrectionDens, QtCore.SIGNAL("triggered()"), self.outilDens)
         self.connect(self.actionCalculAlc, QtCore.SIGNAL("triggered()"), self.outilAlc)
@@ -1242,7 +1246,14 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
                                                     self.nomRecette,
                                                     "BeerXML (*.xml)")
         exp.exportXML(self.nomRecette, self.styleRecette, self.volume, self.boil, self.rendement, AppWindow.nbreHops, self.liste_houblons, self.liste_hAmount, self.liste_hForm, self.liste_hTime, self.liste_hAlpha, AppWindow.nbreFer, self.fNom, self.fAmount ,self.fType, self.fYield, self.fMashed, self.color, self.liste_ingr, self.liste_fAmount, self.liste_fType, self.liste_fYield, self.liste_fMashed, self.liste_color, self.dNom, self.dAmount, self.dType, AppWindow.nbreDivers, self.liste_divers, self.liste_dAmount, self.liste_dType, self.nbreLevures, self.lNom, self.lForm, self.lLabo, self.lProd, self.lAtten, self.liste_levures, self.liste_lForm, self.liste_lLabo, self.liste_lProdid, self.liste_levureAtten)
-        exp.enregistrer(self.s)                        
+        exp.enregistrer(self.s)  
+    def exporterHtml (self) :
+        exp = ExportHTML()
+        self.h = QtGui.QFileDialog.getSaveFileName (self,
+                                                    self.trUtf8("Enregistrer dans un fichier"),
+                                                    self.nomRecette,
+                                                    "HTML (*.html)")    
+        exp.enregistrerHtml(self.h)
     
     def modifierStyle (self) :
         if self.pushButtonChangerStyle.isChecked () :

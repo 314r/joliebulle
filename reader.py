@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'reader.ui'
 #
-# Created: Thu Apr 21 18:53:06 2011
+# Created: Tue May  3 22:45:02 2011
 #      by: PyQt4 UI code generator 4.8.3
 #
 # WARNING! All changes made in this file will be lost!
@@ -314,6 +314,8 @@ class Ui_MainWindow(object):
         self.actionDilution.setObjectName(_fromUtf8("actionDilution"))
         self.actionEvaporation = QtGui.QAction(MainWindow)
         self.actionEvaporation.setObjectName(_fromUtf8("actionEvaporation"))
+        self.actionExporterHtml = QtGui.QAction(MainWindow)
+        self.actionExporterHtml.setObjectName(_fromUtf8("actionExporterHtml"))
         self.toolBar.addAction(self.actionOuvrir)
         self.toolBar.addAction(self.actionAbout)
         self.menuFichier.addAction(self.actionOuvrir_2)
@@ -321,6 +323,7 @@ class Ui_MainWindow(object):
         self.menuFichier.addAction(self.actionImprimer)
         self.menuFichier.addAction(self.actionEnregistrer)
         self.menuFichier.addAction(self.actionEnregistrer_Sous)
+        self.menuFichier.addAction(self.actionExporterHtml)
         self.menuFichier.addAction(self.actionQuitter_2)
         self.menuEdition.addAction(self.actionEditGrains)
         self.menuEdition.addAction(self.actionEditHoublons)
@@ -433,4 +436,5 @@ class Ui_MainWindow(object):
         self.actionImprimer.setText(QtGui.QApplication.translate("MainWindow", "Imprimer", None, QtGui.QApplication.UnicodeUTF8))
         self.actionDilution.setText(QtGui.QApplication.translate("MainWindow", "Dilution", None, QtGui.QApplication.UnicodeUTF8))
         self.actionEvaporation.setText(QtGui.QApplication.translate("MainWindow", "Evaporation", None, QtGui.QApplication.UnicodeUTF8))
+        self.actionExporterHtml.setText(QtGui.QApplication.translate("MainWindow", "Exporter vers html", None, QtGui.QApplication.UnicodeUTF8))
 
