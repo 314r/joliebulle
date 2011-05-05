@@ -30,7 +30,7 @@ from PyQt4 import QtCore
 
 class ExportHTML : 
 
-    def exportHtml (self, nomRecette, styleRecette, volume, boil, nbreFer, liste_ingr, liste_fAmount, nbreHops,liste_houblons, liste_hAlpha,liste_hForm,liste_hAmount,liste_hTime ) :
+    def exportHtml (self, nomRecette, styleRecette, volume, boil, nbreFer, liste_ingr, liste_fAmount, nbreHops,liste_houblons, liste_hAlpha,liste_hForm,liste_hAmount,liste_hTime, nbreDivers,liste_divers, liste_dType, liste_dAmount) :
         
         self.recetteHtmlHeader = '''
 <!DOCTYPE html>
@@ -58,10 +58,15 @@ Durée d'ébullition : ''' + boil + ''' minutes <br/>'''
             h = h+1        
             houblons_texte = houblons_texte + '''<b>''' + liste_houblons[h-1] + '''</b>''' +  ''' (''' +  str(liste_hAlpha[h-1]) +'''%''' + ''', ''' + liste_hForm[h-1] +''')''' + ''' : ''' +'''<b>'''+ str(liste_hAmount[h-1]) + '''g'''+'''</b>''' +''' pendant ''' +'''<b>''' +str(liste_hTime[h-1]) +'''</b>'''+ ''' minutes''' + '''<br/>'''
         
-        
+        divers_texte = ''' '''
+        m = 0
+        while  m < nbreDivers :
+            m = m + 1    
+            divers_texte = divers_texte +'''<b>''' +liste_divers[m-1] +'''</b>'''+''' (''' +liste_dType[m-1] +''')''' + ''' : ''' +'''<b>''' +str(liste_dAmount[m-1]) + '''g''' +'''</b>'''+'''<br/>'''
+           
         
 
-        self.ing = grains_texte + houblons_texte
+        self.ing = grains_texte + houblons_texte + divers_texte
 
 
                                         

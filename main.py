@@ -1256,7 +1256,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
                                                     "HTML (*.html)")    
         
         self.fileHtml = QtCore.QFile(self.h)
-        exp.exportHtml(self.nomRecette,self.styleRecette, self.volume, self.boil, AppWindow.nbreFer, self.liste_ingr, self.liste_fAmount, AppWindow.nbreHops, self.liste_houblons, self.liste_hAlpha, self.liste_hForm, self.liste_hAmount, self.liste_hTime)
+        exp.exportHtml(self.nomRecette,self.styleRecette, self.volume, self.boil, AppWindow.nbreFer, self.liste_ingr, self.liste_fAmount, AppWindow.nbreHops, self.liste_houblons, self.liste_hAlpha, self.liste_hForm, self.liste_hAmount, self.liste_hTime, AppWindow.nbreDivers, self.liste_divers, self.liste_dType, self.liste_dAmount)
         
         exp.enregistrerHtml(self.fileHtml)
     
