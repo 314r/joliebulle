@@ -46,6 +46,15 @@ h1 { font-size: 2em; margin-bottom: 0; text-align:center;}
 h2 { font-size: 1.5em; line-height: 1; margin-bottom: 1em; padding-bottom:0.75em; padding-top:0.75em;border-bottom:solid 1px #ddd; border-top:solid 1px #ddd;}
 h3 { font-size: 1.2em; line-height: 1.25; margin-bottom: 1.25em; }
 .genre {font-style:italic; text-align:center;color:#ddd;margin-top:0;padding-top:0;border:0;}
+.footer { width:700px;
+margin:auto; 
+margin-top:4em;
+margin-bottom:4em;
+padding:0.5em;
+background-color:#eeeeee;
+border-bottom :1px solid #cccccc;
+border-top :1px solid #cccccc;
+text-align : center;}
 </style>
 </head>
 <body>
@@ -86,6 +95,7 @@ Recette prévue pour un brassin de ''' + str(volume) +''' litres <br/>'''
         self.recetteHtmlProfil = ''' <h2>Profil</h2>''' + ''' <p><b>Rendement : </b>''' + str(rendement) + '''% <br/>''' + '''<b>Densité initiale : </b>''' + str("%.3f" %(OG)) + '''<br/>''' + '''<b>Densité finale : </b>''' + str("%.3f" %(FG)) + '''<br/>'''+ '''<b>Teinte : </b>''' + str("%.0f" %(EBC)) + ''' EBC<br/>'''+ '''<b>Amertume : </b>''' + str("%.0f" %(IBU)) + ''' IBU<br/>''' + ''' <b>Alcool (vol): </b>''' + str("%.0f" %(ABV)) + ''' %</p>'''              
 
         self.recetteHtmlFooter = '''
+<footer class="footer">Une recette générée par JolieBulle, logiciel de brassage libre</footer>
 </body>
 </html>'''
                                         
