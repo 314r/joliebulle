@@ -38,45 +38,56 @@ class ExportHTML :
 <head>
 <title>''' + nomRecette +'''</title>
 <meta charset="utf-8" />
+<style type="text/css">
+html { font-size:100.01%; }
+body {width:960px;margin:auto;line-height: 1.5;color: #222;text-align:center; font-size:80%}
+h1,h2,h3,h4,h5,h6 { font-weight: normal; color: #111; }
+h1 { font-size: 2em; margin-bottom: 0; text-align:center;}
+h2 { font-size: 1.5em; line-height: 1; margin-bottom: 1em; padding-bottom:0.75em; padding-top:0.75em;border-bottom:solid 1px #ddd; border-top:solid 1px #ddd;}
+h3 { font-size: 1.2em; line-height: 1.25; margin-bottom: 1.25em; }
+.genre {font-style:italic; text-align:center;color:#ddd;margin-top:0;padding-top:0;border:0;}
+</style>
 </head>
 <body>
 <h1>''' + nomRecette + '''</h1>
-<h2>''' + styleRecette + '''</h2>'''
+<h2 class="genre">''' + styleRecette + '''</h2>'''
 
         self.recetteHtmlInfo = '''
-Recette prévue pour un brassin de ''' + boil +''' litres <br/>
-Durée d'ébullition : ''' + boil + ''' minutes <br/>'''
-        grains_texte='''<h2>Grains</h2> '''
+Recette prévue pour un brassin de ''' + str(volume) +''' litres <br/>'''
+
+        grains_texte='''<h3>Grains</h3> '''
         i = 0
         while i < nbreFer :
             i=i+1
             grains_texte = grains_texte + '''<b>'''+ liste_ingr[i-1] + ''' : ''' + '''</b>'''+ str(liste_fAmount[i-1]) + '''g'''+'''<br/>'''
           
-        houblons_texte='''<h2>Houblons</h2> '''  
+        houblons_texte='''<h3>Houblons</h3> '''  
         h = 0
         while h < nbreHops : 
             h = h+1        
             houblons_texte = houblons_texte + '''<b>''' + liste_houblons[h-1] + '''</b>''' +  ''' (''' +  str(liste_hAlpha[h-1]) +'''%''' + ''', ''' + liste_hForm[h-1] +''')''' + ''' : ''' +'''<b>'''+ str(liste_hAmount[h-1]) + '''g'''+'''</b>''' +''' pendant ''' +'''<b>''' +str(liste_hTime[h-1]) +'''</b>'''+ ''' minutes d'ébullition''' + '''<br/>'''
         
-        divers_texte = '''<h2>Ingrédients divers</h2> '''
+        divers_texte = '''<h3>Ingrédients divers</h3> '''
         m = 0
         while  m < nbreDivers :
             m = m + 1    
             divers_texte = divers_texte +'''<b>''' +liste_divers[m-1] +'''</b>'''+''' (''' +liste_dType[m-1] +''')''' + ''' : ''' +'''<b>''' +str(liste_dAmount[m-1]) + '''g''' +'''</b>'''+'''<br/>'''
         
-        levures_texte = '''<h2>Levures</h2> '''
+        levures_texte = '''<h3>Levures</h3> '''
         l = 0
         while l < nbreLevures : 
             l = l+1
             levures_texte = levures_texte + liste_levuresDetail[l-1] + '''<br/>'''
         
 
-        self.recetteHtmlIng = grains_texte + houblons_texte + divers_texte + levures_texte
+        self.recetteHtmlIng = ''' <h2>Ingrédients</h2>''' + grains_texte + houblons_texte + divers_texte + levures_texte
         
         
-        self.recetteHtmlProfil = ''' <h2>Profil</h2>''' + '''<p> Rendement : ''' + str(rendement) + '''% </p>''' + '''<p> Densité initiale : ''' + str("%.3f" %(OG)) + '''</p>''' + '''<p> Densité finale : ''' + str("%.3f" %(FG)) + '''</p>'''+ '''<p> Teinte : ''' + str("%.0f" %(EBC)) + ''' EBC</p>'''+ '''<p> Amertume : ''' + str("%.0f" %(IBU)) + ''' IBU</p>''' + '''<p> Alcool (vol): ''' + str("%.0f" %(ABV)) + ''' %</p>'''              
+        self.recetteHtmlProfil = ''' <h2>Profil</h2>''' + ''' <p>Rendement : ''' + str(rendement) + '''% <br/>''' + '''Densité initiale : ''' + str("%.3f" %(OG)) + '''<br/>''' + '''Densité finale : ''' + str("%.3f" %(FG)) + '''<br/>'''+ '''Teinte : ''' + str("%.0f" %(EBC)) + ''' EBC<br/>'''+ '''Amertume : ''' + str("%.0f" %(IBU)) + ''' IBU<br/>''' + ''' Alcool (vol): ''' + str("%.0f" %(ABV)) + ''' %</p>'''              
 
-                                        
+        self.recetteHtmlFooter = '''
+</body>
+</html>'''
                                         
                                         
                                         
@@ -84,7 +95,7 @@ Durée d'ébullition : ''' + boil + ''' minutes <br/>'''
                                         
     def enregistrerHtml(self,fileHtml) :
         #self.exportHtml(nomRecette)
-        contenuTexte = self.recetteHtmlHeader + self.recetteHtmlInfo + self.recetteHtmlIng + self.recetteHtmlProfil
+        contenuTexte = self.recetteHtmlHeader + self.recetteHtmlInfo + self.recetteHtmlIng + self.recetteHtmlProfil + self.recetteHtmlFooter
         if  fileHtml.open(QtCore.QIODevice.WriteOnly) :
             self.stream = QtCore.QTextStream(fileHtml)
             self.stream << contenuTexte
