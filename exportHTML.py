@@ -83,7 +83,7 @@ Recette prévue pour un brassin de ''' + str(volume) +''' litres <br/>'''
         self.recetteHtmlIng = ''' <h2>Ingrédients</h2>''' + grains_texte + houblons_texte + divers_texte + levures_texte
         
         
-        self.recetteHtmlProfil = ''' <h2>Profil</h2>''' + ''' <p>Rendement : ''' + str(rendement) + '''% <br/>''' + '''Densité initiale : ''' + str("%.3f" %(OG)) + '''<br/>''' + '''Densité finale : ''' + str("%.3f" %(FG)) + '''<br/>'''+ '''Teinte : ''' + str("%.0f" %(EBC)) + ''' EBC<br/>'''+ '''Amertume : ''' + str("%.0f" %(IBU)) + ''' IBU<br/>''' + ''' Alcool (vol): ''' + str("%.0f" %(ABV)) + ''' %</p>'''              
+        self.recetteHtmlProfil = ''' <h2>Profil</h2>''' + ''' <p><b>Rendement : </b>''' + str(rendement) + '''% <br/>''' + '''<b>Densité initiale : </b>''' + str("%.3f" %(OG)) + '''<br/>''' + '''<b>Densité finale : </b>''' + str("%.3f" %(FG)) + '''<br/>'''+ '''<b>Teinte : </b>''' + str("%.0f" %(EBC)) + ''' EBC<br/>'''+ '''<b>Amertume : </b>''' + str("%.0f" %(IBU)) + ''' IBU<br/>''' + ''' <b>Alcool (vol): </b>''' + str("%.0f" %(ABV)) + ''' %</p>'''              
 
         self.recetteHtmlFooter = '''
 </body>
