@@ -1229,6 +1229,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         exp=Export()
         self.nomRecette = self.lineEditRecette.text()
         self.styleRecette = self.lineEditGenre.text()
+        self.boil = self.spinBoxBoil.value()
         if not self.s : 
             self.enregistrerSous()
             
@@ -1243,6 +1244,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         exp=Export()
         self.nomRecette = self.lineEditRecette.text()  
         self.styleRecette = self.lineEditGenre.text()
+        self.boil = self.spinBoxBoil.value()
         self.s = QtGui.QFileDialog.getSaveFileName (self,
                                                     self.trUtf8("Enregistrer dans un fichier"),
                                                     self.nomRecette,
