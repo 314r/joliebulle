@@ -95,7 +95,7 @@ Recette prévue pour un brassin de ''' + str(volume) +''' litres <br/>'''
         self.recetteHtmlProfil = ''' <h2>Profil</h2>''' + ''' <p><b>Rendement : </b>''' + str(rendement) + '''% <br/>''' + '''<b>Densité initiale : </b>''' + str("%.3f" %(OG)) + '''<br/>''' + '''<b>Densité finale : </b>''' + str("%.3f" %(FG)) + '''<br/>'''+ '''<b>Teinte : </b>''' + str("%.0f" %(EBC)) + ''' EBC<br/>'''+ '''<b>Amertume : </b>''' + str("%.0f" %(IBU)) + ''' IBU<br/>''' + ''' <b>Alcool (vol): </b>''' + str("%.0f" %(ABV)) + ''' %</p>'''              
 
         self.recetteHtmlFooter = '''
-<footer class="footer">Une recette générée par JolieBulle, logiciel de brassage libre</footer>
+<footer class="footer">Une recette générée par JolieBulle, logiciel de brassage libre.</footer>
 </body>
 </html>'''
                                         
