@@ -2,8 +2,8 @@
 
 # Form implementation generated from reading ui file 'reader.ui'
 #
-# Created: Tue May  3 22:45:02 2011
-#      by: PyQt4 UI code generator 4.8.3
+# Created: Thu May 12 16:23:34 2011
+#      by: PyQt4 UI code generator 4.8.4
 #
 # WARNING! All changes made in this file will be lost!
 
@@ -316,6 +316,8 @@ class Ui_MainWindow(object):
         self.actionEvaporation.setObjectName(_fromUtf8("actionEvaporation"))
         self.actionExporterHtml = QtGui.QAction(MainWindow)
         self.actionExporterHtml.setObjectName(_fromUtf8("actionExporterHtml"))
+        self.actionPaliers = QtGui.QAction(MainWindow)
+        self.actionPaliers.setObjectName(_fromUtf8("actionPaliers"))
         self.toolBar.addAction(self.actionOuvrir)
         self.toolBar.addAction(self.actionAbout)
         self.menuFichier.addAction(self.actionOuvrir_2)
@@ -333,6 +335,7 @@ class Ui_MainWindow(object):
         self.menuOutils.addAction(self.actionCalculAlc)
         self.menuOutils.addAction(self.actionDilution)
         self.menuOutils.addAction(self.actionEvaporation)
+        self.menuOutils.addAction(self.actionPaliers)
         self.menuBar.addAction(self.menuFichier.menuAction())
         self.menuBar.addAction(self.menuEdition.menuAction())
         self.menuBar.addAction(self.menuOutils.menuAction())
@@ -437,4 +440,5 @@ class Ui_MainWindow(object):
         self.actionDilution.setText(QtGui.QApplication.translate("MainWindow", "Dilution", None, QtGui.QApplication.UnicodeUTF8))
         self.actionEvaporation.setText(QtGui.QApplication.translate("MainWindow", "Evaporation", None, QtGui.QApplication.UnicodeUTF8))
         self.actionExporterHtml.setText(QtGui.QApplication.translate("MainWindow", "Exporter vers html", None, QtGui.QApplication.UnicodeUTF8))
+        self.actionPaliers.setText(QtGui.QApplication.translate("MainWindow", "Assistant paliers", None, QtGui.QApplication.UnicodeUTF8))
 

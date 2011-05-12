@@ -40,6 +40,7 @@ from outilDens import *
 from outilAlc import *
 from outilDilution import *
 from outilEvaporation import *
+from outilPaliers import * 
 from globals import *
 
 
@@ -248,6 +249,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         self.dlgOutilAlc = DialogAlc(self)
         self.dlgOutilDilution = DialogDilution(self)
         self.dlgOutilEvaporation = DialogEvaporation(self)
+        self.dlgOutilPaliers = DialogPaliers(self)
         self.base = ImportBase()
         self.base.importBeerXML()
         self.s=0
@@ -271,6 +273,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         self.connect(self.actionCalculAlc, QtCore.SIGNAL("triggered()"), self.outilAlc)
         self.connect(self.actionDilution, QtCore.SIGNAL("triggered()"), self.outilDilution)
         self.connect(self.actionEvaporation, QtCore.SIGNAL("triggered()"), self.outilEvaporation)
+        self.connect(self.actionPaliers, QtCore.SIGNAL("triggered()"), self.outilPaliers)
         
         
         self.connect(self.actionImprimer, QtCore.SIGNAL("triggered()"), self.printRecipe)
@@ -559,6 +562,12 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
     def outilEvaporation (self) :
         self.dlgOutilEvaporation.setModal(True)
         self.dlgOutilEvaporation.show()
+        
+    def outilPaliers (self) :
+        self.dlgOutilPaliers.setModal(True)
+        self.dlgOutilPaliers.show()
+        
+    
         
     def purge (self) :
         i = (AppWindow.nbreFer + AppWindow.nbreDivers + AppWindow.nbreHops + self.nbreLevures)

@@ -667,6 +667,7 @@ p, li { white-space: pre-wrap; }
     <addaction name="actionCalculAlc"/>
     <addaction name="actionDilution"/>
     <addaction name="actionEvaporation"/>
+    <addaction name="actionPaliers"/>
    </widget>
    <addaction name="menuFichier"/>
    <addaction name="menuEdition"/>
@@ -773,6 +774,11 @@ p, li { white-space: pre-wrap; }
   <action name="actionExporterHtml">
    <property name="text">
     <string>Exporter vers html</string>
+   </property>
+  </action>
+  <action name="actionPaliers">
+   <property name="text">
+    <string>Assistant paliers</string>
    </property>
   </action>
  </widget>
