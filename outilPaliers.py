@@ -25,6 +25,7 @@ from outilPaliers_ui import *
 
 
 class DialogPaliers(QtGui.QDialog):
+    
     def __init__(self, parent = None):
         QtGui.QDialog.__init__(self,parent)
         self.ui = Ui_DialogPaliers()
@@ -57,9 +58,15 @@ class DialogPaliers(QtGui.QDialog):
         self.ui.label_8.hide()
         self.ui.doubleSpinBoxStartWater.hide()
         self.ui.label_9.hide()
+        self.ui.label_4.show()
+        self.ui.doubleSpinBoxGrainT.show()  
         self.tStrike = self.tTarget + (0.4*(self.tTarget-self.tGrain)/self.ratio) + self.fudgeFactor
-        self.ui.labelTempWater.setText("%.1f" %self.tStrike)
-        self.ui.labelRatio.setText("%.1f" %self.ratio)
+        if self.tStrike > 100 :
+            self.ui.labelTempWater.setText ('''Au dessus du point d'ébullition. Augmentez la quantité d'eau.''')
+            self.ui.labelRatio.setText("%.1f" %self.ratio)        
+        else :
+            self.ui.labelTempWater.setText("%.1f" %self.tStrike)
+            self.ui.labelRatio.setText("%.1f" %self.ratio)
     
     def mashMode(self) :
         #Vm = Wgrain (0.4 + ratio)
@@ -68,10 +75,17 @@ class DialogPaliers(QtGui.QDialog):
         self.ui.doubleSpinBoxMashTemp.show()  
         self.ui.label_8.show()
         self.ui.label_9.show()
+        self.ui.label_4.hide()
+        self.ui.doubleSpinBoxGrainT.hide()     
         self.ratio = self.ui.doubleSpinBoxStartWater.value()/ self.ui.doubleSpinBoxGrainW.value()
         self.vStrike = self.ui.doubleSpinBoxAddedVolume.value()
         self.tMash = self.ui.doubleSpinBoxMashTemp.value()
-        self.vm = self.ui.doubleSpinBoxGrainW * (0.4 * ratio)
-        self.tStrike = (self.tTarget*(self.vStrike+self.vm) - (self.vm*self.tMash)) / self.vStrike
-        self.ui.labelTempWater.setText("%.1f" %self.tStrike)
-        self.ui.labelRatio.setText("%.1f" %self.ratio)
+        self.vm = self.ui.doubleSpinBoxGrainW.value() * (0.4 + self.ratio)
+        self.tStrike = ((self.tTarget*(self.vStrike+self.vm) - (self.vm*self.tMash)) / self.vStrike) + self.fudgeFactor
+        self.ratio = (self.ui.doubleSpinBoxAddedVolume.value() + self.ui.doubleSpinBoxStartWater.value())/ self.ui.doubleSpinBoxGrainW.value()
+        if self.tStrike > 100 :
+            self.ui.labelTempWater.setText ('''Au dessus du point d'ébullition. Augmentez la quantité d'eau.''')
+            self.ui.labelRatio.setText("%.1f" %self.ratio)
+        else :
+            self.ui.labelTempWater.setText("%.1f" %self.tStrike)
+            self.ui.labelRatio.setText("%.1f" %self.ratio)

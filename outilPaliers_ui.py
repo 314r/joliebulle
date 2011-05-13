@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'outilPaliers.ui'
 #
-# Created: Fri May 13 09:12:54 2011
+# Created: Fri May 13 10:33:10 2011
 #      by: PyQt4 UI code generator 4.8.4
 #
 # WARNING! All changes made in this file will be lost!
@@ -83,14 +83,19 @@ class Ui_DialogPaliers(object):
         self.comboBoxPaliers.setObjectName(_fromUtf8("comboBoxPaliers"))
         self.formLayout.setWidget(1, QtGui.QFormLayout.FieldRole, self.comboBoxPaliers)
         self.doubleSpinBoxMashTemp = QtGui.QDoubleSpinBox(DialogPaliers)
+        self.doubleSpinBoxMashTemp.setProperty(_fromUtf8("value"), 65.0)
         self.doubleSpinBoxMashTemp.setObjectName(_fromUtf8("doubleSpinBoxMashTemp"))
         self.formLayout.setWidget(6, QtGui.QFormLayout.FieldRole, self.doubleSpinBoxMashTemp)
         self.label_9 = QtGui.QLabel(DialogPaliers)
         self.label_9.setObjectName(_fromUtf8("label_9"))
         self.formLayout.setWidget(7, QtGui.QFormLayout.LabelRole, self.label_9)
         self.doubleSpinBoxStartWater = QtGui.QDoubleSpinBox(DialogPaliers)
+        self.doubleSpinBoxStartWater.setProperty(_fromUtf8("value"), 6.0)
         self.doubleSpinBoxStartWater.setObjectName(_fromUtf8("doubleSpinBoxStartWater"))
         self.formLayout.setWidget(7, QtGui.QFormLayout.FieldRole, self.doubleSpinBoxStartWater)
+        self.label_10 = QtGui.QLabel(DialogPaliers)
+        self.label_10.setObjectName(_fromUtf8("label_10"))
+        self.formLayout.setWidget(1, QtGui.QFormLayout.LabelRole, self.label_10)
         self.gridLayout.addLayout(self.formLayout, 1, 0, 1, 1)
 
         self.retranslateUi(DialogPaliers)
@@ -147,4 +152,9 @@ class Ui_DialogPaliers(object):
 "p, li { white-space: pre-wrap; }\n"
 "</style></head><body style=\" font-family:\'Droid Sans\'; font-size:9pt; font-weight:400; font-style:normal;\">\n"
 "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-weight:600;\">Volume d\'eau dans la maîche (L)</span></p></body></html>", None, QtGui.QApplication.UnicodeUTF8))
+        self.label_10.setText(QtGui.QApplication.translate("DialogPaliers", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
+"p, li { white-space: pre-wrap; }\n"
+"</style></head><body style=\" font-family:\'Droid Sans\'; font-size:9pt; font-weight:400; font-style:normal;\">\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-weight:600;\">Mode</span></p></body></html>", None, QtGui.QApplication.UnicodeUTF8))
 
