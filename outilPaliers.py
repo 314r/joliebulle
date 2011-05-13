@@ -62,7 +62,7 @@ class DialogPaliers(QtGui.QDialog):
         self.ui.doubleSpinBoxGrainT.show()  
         self.tStrike = self.tTarget + (0.4*(self.tTarget-self.tGrain)/self.ratio) + self.fudgeFactor
         if self.tStrike > 100 :
-            self.ui.labelTempWater.setText ('''Au dessus du point d'ébullition. Augmentez la quantité d'eau.''')
+            self.ui.labelTempWater.setText ('''Au-dessus du point d'ébullition. Augmentez la quantité d'eau.''')
             self.ui.labelRatio.setText("%.1f" %self.ratio)        
         else :
             self.ui.labelTempWater.setText("%.1f" %self.tStrike)
@@ -84,7 +84,7 @@ class DialogPaliers(QtGui.QDialog):
         self.tStrike = ((self.tTarget*(self.vStrike+self.vm) - (self.vm*self.tMash)) / self.vStrike) + self.fudgeFactor
         self.ratio = (self.ui.doubleSpinBoxAddedVolume.value() + self.ui.doubleSpinBoxStartWater.value())/ self.ui.doubleSpinBoxGrainW.value()
         if self.tStrike > 100 :
-            self.ui.labelTempWater.setText ('''Au dessus du point d'ébullition. Augmentez la quantité d'eau.''')
+            self.ui.labelTempWater.setText ('''Au-dessus du point d'ébullition. Augmentez la quantité d'eau.''')
             self.ui.labelRatio.setText("%.1f" %self.ratio)
         else :
             self.ui.labelTempWater.setText("%.1f" %self.tStrike)
