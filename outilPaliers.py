@@ -38,6 +38,8 @@ class DialogPaliers(QtGui.QDialog):
         self.connect(self.ui.doubleSpinBoxGrainW, QtCore.SIGNAL("valueChanged(QString)"), self.mode)
         self.connect(self.ui.doubleSpinBoxGrainT, QtCore.SIGNAL("valueChanged(QString)"), self.mode)
         self.connect(self.ui.doubleSpinBoxFudgeFactor, QtCore.SIGNAL("valueChanged(QString)"), self.mode)
+        self.connect(self.ui.doubleSpinBoxMashTemp, QtCore.SIGNAL("valueChanged(QString)"), self.mode)
+        self.connect(self.ui.doubleSpinBoxStartWater, QtCore.SIGNAL("valueChanged(QString)"), self.mode)
         
     def mode(self) :
         self.tTarget = self.ui.doubleSpinBoxTargetTemp.value()
@@ -50,8 +52,7 @@ class DialogPaliers(QtGui.QDialog):
             self.mashMode()
             
     def strikeMode(self) :
-        #Tstrike = [Ttarget + (0.4 * (Ttarget - Tgrain) / ratio)] + FF  
-        
+        #Tstrike = [Ttarget + (0.4 * (Ttarget - Tgrain) / ratio)] + FF       
         self.ui.doubleSpinBoxMashTemp.hide()
         self.ui.label_8.hide()
         self.ui.doubleSpinBoxStartWater.hide()
@@ -61,7 +62,16 @@ class DialogPaliers(QtGui.QDialog):
         self.ui.labelRatio.setText("%.1f" %self.ratio)
     
     def mashMode(self) :
+        #Vm = Wgrain (0.4 + ratio)
+        #Tstrike = (Ttarget*(Vstrike+Vm) - (Vm*Tmash)) / Vstrike
         self.ui.doubleSpinBoxStartWater.show()
         self.ui.doubleSpinBoxMashTemp.show()  
         self.ui.label_8.show()
         self.ui.label_9.show()
+        self.ratio = self.ui.doubleSpinBoxStartWater.value()/ self.ui.doubleSpinBoxGrainW.value()
+        self.vStrike = self.ui.doubleSpinBoxAddedVolume.value()
+        self.tMash = self.ui.doubleSpinBoxMashTemp.value()
+        self.vm = self.ui.doubleSpinBoxGrainW * (0.4 * ratio)
+        self.tStrike = (self.tTarget*(self.vStrike+self.vm) - (self.vm*self.tMash)) / self.vStrike
+        self.ui.labelTempWater.setText("%.1f" %self.tStrike)
+        self.ui.labelRatio.setText("%.1f" %self.ratio)
