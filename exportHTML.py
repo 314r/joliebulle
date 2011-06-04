@@ -18,17 +18,19 @@
 
 
 
-
+import codecs
 import PyQt4
 import sys
 from PyQt4 import QtGui
 from PyQt4 import QtCore
+from base import *
+from globals import *
 
 
 
   
 
-class ExportHTML : 
+class ExportHTML(QtGui.QDialog) : 
 
     def exportHtml (self, nomRecette, styleRecette, volume, boil, nbreFer, liste_ingr, liste_fAmount, nbreHops,liste_houblons, liste_hAlpha,liste_hForm,liste_hAmount,liste_hTime, nbreDivers,liste_divers, liste_dType, liste_dAmount, nbreLevures, liste_levuresDetail, rendement, OG, FG, EBC, IBU, ABV) :
         
@@ -61,43 +63,43 @@ text-align : center;}
 <h1>''' + nomRecette + '''</h1>
 <h2 class="genre">''' + styleRecette + '''</h2>'''
 
-        self.recetteHtmlInfo = '''
-Recette prévue pour un brassin de ''' + str(volume) +''' litres <br/>'''
+        self.recetteHtmlInfo = self.trUtf8('''
+Recette prévue pour un brassin de ''') + str(volume) + self.trUtf8(''' litres <br/>''')
 
-        grains_texte='''<h3>Grains</h3> '''
+        grains_texte=self.trUtf8('''<h3>Grains</h3> ''')
         i = 0
         while i < nbreFer :
             i=i+1
             grains_texte = grains_texte + '''<b>'''+ liste_ingr[i-1] + ''' : ''' + '''</b>'''+ str(liste_fAmount[i-1]) + '''g'''+'''<br/>'''
           
-        houblons_texte='''<h3>Houblons</h3> '''  
+        houblons_texte=self.trUtf8('''<h3>Houblons</h3> ''')  
         h = 0
         while h < nbreHops : 
             h = h+1        
-            houblons_texte = houblons_texte + '''<b>''' + liste_houblons[h-1] + '''</b>''' +  ''' (''' +  str(liste_hAlpha[h-1]) +'''%''' + ''', ''' + liste_hForm[h-1] +''')''' + ''' : ''' +'''<b>'''+ str(liste_hAmount[h-1]) + '''g'''+'''</b>''' +''' pendant ''' +'''<b>''' +str(liste_hTime[h-1]) +'''</b>'''+ ''' minutes d'ébullition''' + '''<br/>'''
+            houblons_texte = houblons_texte + '''<b>''' + liste_houblons[h-1] + '''</b>''' +  ''' (''' +  str(liste_hAlpha[h-1]) +'''%''' + ''', ''' + liste_hForm[h-1] +''')''' + ''' : ''' +'''<b>'''+ str(liste_hAmount[h-1]) + '''g'''+'''</b>''' +self.trUtf8(''' pendant ''') +'''<b>''' +str(liste_hTime[h-1]) +'''</b>'''+ self.trUtf8(''' minutes d'ébullition''') + '''<br/>'''
         
-        divers_texte = '''<h3>Ingrédients divers</h3> '''
+        divers_texte = self.trUtf8('''<h3>Ingrédients divers</h3> ''')
         m = 0
         while  m < nbreDivers :
             m = m + 1    
             divers_texte = divers_texte +'''<b>''' +liste_divers[m-1] +'''</b>'''+''' (''' +liste_dType[m-1] +''')''' + ''' : ''' +'''<b>''' +str(liste_dAmount[m-1]) + '''g''' +'''</b>'''+'''<br/>'''
         
-        levures_texte = '''<h3>Levures</h3> '''
+        levures_texte = self.trUtf8('''<h3>Levures</h3> ''')
         l = 0
         while l < nbreLevures : 
             l = l+1
             levures_texte = levures_texte + liste_levuresDetail[l-1] + '''<br/>'''
         
 
-        self.recetteHtmlIng = ''' <h2>Ingrédients</h2>''' + grains_texte + houblons_texte + divers_texte + levures_texte
+        self.recetteHtmlIng = self.trUtf8(''' <h2>Ingrédients</h2>''') + grains_texte + houblons_texte + divers_texte + levures_texte
         
         
-        self.recetteHtmlProfil = ''' <h2>Profil</h2>''' + ''' <p><b>Rendement : </b>''' + str(rendement) + '''% <br/>''' + '''<b>Densité initiale : </b>''' + str("%.3f" %(OG)) + '''<br/>''' + '''<b>Densité finale : </b>''' + str("%.3f" %(FG)) + '''<br/>'''+ '''<b>Teinte : </b>''' + str("%.0f" %(EBC)) + ''' EBC<br/>'''+ '''<b>Amertume : </b>''' + str("%.0f" %(IBU)) + ''' IBU<br/>''' + ''' <b>Alcool (vol): </b>''' + str("%.0f" %(ABV)) + ''' %</p>'''              
+        self.recetteHtmlProfil = self.trUtf8(''' <h2>Profil</h2>''') + self.trUtf8(''' <p><b>Rendement : </b>''') + str(rendement) + '''% <br/>''' + self.trUtf8('''<b>Densité initiale : </b>''') + str("%.3f" %(OG)) + '''<br/>''' + self.trUtf8('''<b>Densité finale : </b>''') + str("%.3f" %(FG)) + '''<br/>'''+ self.trUtf8('''<b>Teinte : </b>''') + str("%.0f" %(EBC)) + ''' EBC<br/>'''+ self.trUtf8('''<b>Amertume : </b>''') + str("%.0f" %(IBU)) + ''' IBU<br/>''' + self.trUtf8(''' <b>Alcool (vol): </b>''') + str("%.0f" %(ABV)) + ''' %</p>'''              
 
-        self.recetteHtmlFooter = '''
+        self.recetteHtmlFooter =self.trUtf8( '''
 <footer class="footer">Une recette générée par JolieBulle, logiciel de brassage libre.</footer>
 </body>
-</html>'''
+</html>''')
                                         
                                         
                                         
@@ -109,7 +111,7 @@ Recette prévue pour un brassin de ''' + str(volume) +''' litres <br/>'''
         if  fileHtml.open(QtCore.QIODevice.WriteOnly) :
             self.stream = QtCore.QTextStream(fileHtml)
             self.stream << contenuTexte
-                                        
+                                     
         else :
             fileHtml.close()
                         

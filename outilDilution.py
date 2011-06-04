@@ -53,10 +53,7 @@ class DialogDilution(QtGui.QDialog):
         self.volumeFinal = self.volumeInitial + self.volumeAjoute
         
         self.densFinale = ((self.volumeInitial*self.densInitiale) + (self.volumeAjoute*self.densAjout)) / self.volumeFinal
-        
-        print ("le volume final est : ", self.volumeFinal)
-        print("la densité finale est : ", self.densFinale)
-        
+               
         self.ui.labelVolFinal.setText("<b>%.1f</b>" %self.volumeFinal)
         self.ui.labelDensFinal.setText("<b>%.3f</b>" %self.densFinale)
         
