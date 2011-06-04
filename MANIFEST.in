@@ -8,6 +8,7 @@ include editorG_ui.py
 include editorH_ui.py
 include editorM_ui.py
 include editorY_ui.py
+include exportHTML.py
 include export.py
 include globals.py
 include joliebulle_en.qm
@@ -15,6 +16,12 @@ include main.py
 include outilAlc.py
 include outilAlc_ui.py
 include outilDens.py
+include outilDilution.py
+include outilDilution_ui.py
+include outilEvaporation.py
+include outilEvaporation_ui.py
+include outilPaliers.py
+include outilPaliers_ui.py
 include reader.py
 include database.xml
 include launch.sh
