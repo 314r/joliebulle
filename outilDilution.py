@@ -39,7 +39,7 @@ class DialogDilution(QtGui.QDialog):
         self.connect(self.ui.doubleSpinBoxDensInitiale, QtCore.SIGNAL("valueChanged(QString)"), self.calculDilution)
         self.connect(self.ui.doubleSpinBoxVolAjoute, QtCore.SIGNAL("valueChanged(QString)"), self.calculDilution)
         self.connect(self.ui.doubleSpinBoxDensAjout, QtCore.SIGNAL("valueChanged(QString)"), self.calculDilution)
- 
+        self.connect(self.ui.doubleSpinBoxVolFinal, QtCore.SIGNAL("valueChanged(QString)"), self.calculVolumeReverse)
  
     def calculDilution (self) :
         
@@ -54,8 +54,16 @@ class DialogDilution(QtGui.QDialog):
         
         self.densFinale = ((self.volumeInitial*self.densInitiale) + (self.volumeAjoute*self.densAjout)) / self.volumeFinal
                
-        self.ui.labelVolFinal.setText("<b>%.1f</b>" %self.volumeFinal)
+        self.ui.doubleSpinBoxVolFinal.setValue(self.volumeFinal)
         self.ui.labelDensFinal.setText("<b>%.3f</b>" %self.densFinale)
+        
+    def calculVolumeReverse (self) :
+        self.volumeFinal = self.ui.doubleSpinBoxVolFinal.value()
+        self.volumeAjoute = self.volumeFinal - self.volumeInitial
+        
+        self.ui.doubleSpinBoxVolAjoute.setValue(self.volumeAjoute)
+        
+        print (self.volumeAjoute)
         
     
         
