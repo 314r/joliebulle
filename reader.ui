@@ -635,7 +635,7 @@ p, li { white-space: pre-wrap; }
      <x>0</x>
      <y>0</y>
      <width>1169</width>
-     <height>21</height>
+     <height>19</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuFichier">
@@ -658,6 +658,7 @@ p, li { white-space: pre-wrap; }
     <addaction name="actionEditHoublons"/>
     <addaction name="actionEditDivers"/>
     <addaction name="actionEditLevures"/>
+    <addaction name="actionRestaurerIngredients"/>
    </widget>
    <widget class="QMenu" name="menuOutils">
     <property name="title">
@@ -779,6 +780,11 @@ p, li { white-space: pre-wrap; }
   <action name="actionPaliers">
    <property name="text">
     <string>Assistant paliers</string>
+   </property>
+  </action>
+  <action name="actionRestaurerIngredients">
+   <property name="text">
+    <string>Restaurer la base des ingrédients</string>
    </property>
   </action>
  </widget>

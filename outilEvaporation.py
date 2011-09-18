@@ -42,6 +42,8 @@ class DialogEvaporation(QtGui.QDialog):
         self.connect(self.ui.doubleSpinBoxTauxRefroi, QtCore.SIGNAL("valueChanged(QString)"), self.calculEvaporation)
         
  
+ 
+        
     def calculEvaporation (self): 
         
         self.volPre = self.ui.doubleSpinBoxPreVol.value()
@@ -49,6 +51,7 @@ class DialogEvaporation(QtGui.QDialog):
         self.tauxEvap = self.ui.doubleSpinBoxTauxEvap.value()
         self.tempsEbu = self.ui.spinBoxEbu.value()
         self.tauxRefroi = self.ui.doubleSpinBoxTauxRefroi.value()
+        self.volFinal = self.ui.doubleSpinBoxVolF.value()
         
         #volume evapore :
         self.volEvap = self.volPre * self.tauxEvap / 100
@@ -70,8 +73,26 @@ class DialogEvaporation(QtGui.QDialog):
         
         self.ui.labelEvapEbu.setText("<b>%.1f</b>" %self.volEvap)
         self.ui.labelEvapRefroi.setText("<b>%.1f</b>" %self.volRefroi) 
-        self.ui.labelVolF.setText("<b>%.1f</b>" %self.volFinal)
+        self.ui.doubleSpinBoxVolF.setValue(self.volFinal)
         self.ui.labelSg.setText("<b>%.3f</b>" %self.sgFinale)
+        
+        
+        
+    def calculVolPre (self) :
+ 
+
+        self.volFinal = self.ui.doubleSpinBoxVolF.value()
+        
+        
+        
+        self.volPre = ((self.sgFinale * self.volFinal) + (self.volEvap * self.volRefroi)) / self.sgPre
+        
+
+        
+        
+        
+        
+        print (self.volPre)
         
         
         

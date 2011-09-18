@@ -267,6 +267,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         self.connect(self.actionEditHoublons, QtCore.SIGNAL("triggered()"), self.editHoublons)
         self.connect(self.actionEditDivers, QtCore.SIGNAL("triggered()"), self.editDivers)
         self.connect(self.actionEditLevures, QtCore.SIGNAL("triggered()"), self.editLevures)
+        self.connect(self.actionRestaurerIngredients, QtCore.SIGNAL("triggered()"), self.restoreDataBase)
         
         self.connect(self.actionAbout, QtCore.SIGNAL("triggered()"), self.about)
         self.connect(self.actionCorrectionDens, QtCore.SIGNAL("triggered()"), self.outilDens)
@@ -368,6 +369,16 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
             database.copy(database_root, database_file)
         else :
             pass
+        
+    def restoreDataBase(self) :
+        
+        home = QtCore.QDir(home_dir)
+        config = QtCore.QDir(config_dir)
+        database = QtCore.QFile(database_file)
+        database.remove(database_file)
+        database.copy(database_root, database_file)
+        print ("fait")
+        
         
     def modeleProportion (self) :
         #Cette fonction est appelée chaque fois que la quantité, les AA ou les temps sont modifiés, via un signal émit par les classes Delegate.

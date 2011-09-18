@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'outilDilution.ui'
 #
-# Created: Thu Sep 15 21:43:33 2011
+# Created: Fri Sep 16 14:52:22 2011
 #      by: PyQt4 UI code generator 4.8.5
 #
 # WARNING! All changes made in this file will be lost!
@@ -97,14 +97,6 @@ class Ui_DialogDilution(object):
 "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-weight:600;\">Densité spécifique finale : </span></p></body></html>", None, QtGui.QApplication.UnicodeUTF8))
         self.label_7.setObjectName(_fromUtf8("label_7"))
         self.formLayout.setWidget(8, QtGui.QFormLayout.LabelRole, self.label_7)
-        self.labelDensFinal = QtGui.QLabel(DialogDilution)
-        self.labelDensFinal.setText(QtGui.QApplication.translate("DialogDilution", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
-"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
-"p, li { white-space: pre-wrap; }\n"
-"</style></head><body style=\" font-family:\'Droid Sans\'; font-size:9pt; font-weight:400; font-style:normal;\">\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-weight:600;\">1.000</span></p></body></html>", None, QtGui.QApplication.UnicodeUTF8))
-        self.labelDensFinal.setObjectName(_fromUtf8("labelDensFinal"))
-        self.formLayout.setWidget(8, QtGui.QFormLayout.FieldRole, self.labelDensFinal)
         spacerItem = QtGui.QSpacerItem(20, 40, QtGui.QSizePolicy.Minimum, QtGui.QSizePolicy.Expanding)
         self.formLayout.setItem(2, QtGui.QFormLayout.LabelRole, spacerItem)
         spacerItem1 = QtGui.QSpacerItem(20, 40, QtGui.QSizePolicy.Minimum, QtGui.QSizePolicy.Expanding)
@@ -114,6 +106,14 @@ class Ui_DialogDilution(object):
         self.doubleSpinBoxVolFinal = QtGui.QDoubleSpinBox(DialogDilution)
         self.doubleSpinBoxVolFinal.setObjectName(_fromUtf8("doubleSpinBoxVolFinal"))
         self.formLayout.setWidget(6, QtGui.QFormLayout.FieldRole, self.doubleSpinBoxVolFinal)
+        self.labelDensFinal = QtGui.QLabel(DialogDilution)
+        self.labelDensFinal.setText(QtGui.QApplication.translate("DialogDilution", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
+"p, li { white-space: pre-wrap; }\n"
+"</style></head><body style=\" font-family:\'Droid Sans\'; font-size:9pt; font-weight:400; font-style:normal;\">\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-weight:600;\">1.000</span></p></body></html>", None, QtGui.QApplication.UnicodeUTF8))
+        self.labelDensFinal.setObjectName(_fromUtf8("labelDensFinal"))
+        self.formLayout.setWidget(8, QtGui.QFormLayout.FieldRole, self.labelDensFinal)
         self.gridLayout.addLayout(self.formLayout, 0, 0, 1, 1)
         self.buttonBox = QtGui.QDialogButtonBox(DialogDilution)
         self.buttonBox.setStandardButtons(QtGui.QDialogButtonBox.Close)

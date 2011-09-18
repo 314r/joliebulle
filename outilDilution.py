@@ -58,12 +58,13 @@ class DialogDilution(QtGui.QDialog):
         self.ui.labelDensFinal.setText("<b>%.3f</b>" %self.densFinale)
         
     def calculVolumeReverse (self) :
+        
         self.volumeFinal = self.ui.doubleSpinBoxVolFinal.value()
         self.volumeAjoute = self.volumeFinal - self.volumeInitial
         
         self.ui.doubleSpinBoxVolAjoute.setValue(self.volumeAjoute)
         
-        print (self.volumeAjoute)
+       
         
     
         
