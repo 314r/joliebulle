@@ -375,9 +375,18 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         home = QtCore.QDir(home_dir)
         config = QtCore.QDir(config_dir)
         database = QtCore.QFile(database_file)
-        database.remove(database_file)
-        database.copy(database_root, database_file)
-        print ("fait")
+        confirmation = QmessageBox.question(self,
+                                    self.trUtf8("Remplacer la base ?"),
+                                    self.trUtf8("La base des ingrédients actuelle va être effacée et remplacée par la base originale. Toutes vos modifications vont être effacées. <br> Continuer ?"),
+                                    QMessageBox.Yes | QMessageBox.No)
+        if (confirmation == QMessageBox.Yes):
+ 
+            database.remove(database_file)
+            database.copy(database_root, database_file)
+        else :
+            
+            pass
+        
         
         
     def modeleProportion (self) :
