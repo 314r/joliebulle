@@ -38,9 +38,13 @@ class DialogOutilDens(QtGui.QDialog):
         self.ui = Ui_DialogDensimetre()
         self.ui.setupUi(self)
         
-        self.connect(self.ui.doubleSpinBoxTempEchan, QtCore.SIGNAL("valueChanged(QString)"), self.corrDens)
-        self.connect(self.ui.doubleSpinBoxTempCalib, QtCore.SIGNAL("valueChanged(QString)"), self.corrDens)
-        self.connect(self.ui.doubleSpinBoxDens, QtCore.SIGNAL("valueChanged(QString)"), self.corrDens)
+        #self.connect(self.ui.doubleSpinBoxTempEchan, QtCore.SIGNAL("valueChanged(QString)"), self.corrDens)
+        #self.connect(self.ui.doubleSpinBoxTempCalib, QtCore.SIGNAL("valueChanged(QString)"), self.corrDens)
+        #self.connect(self.ui.doubleSpinBoxDens, QtCore.SIGNAL("valueChanged(QString)"), self.corrDens)
+        
+        self.ui.doubleSpinBoxTempEchan.valueChanged.connect(self.corrDens)
+        self.ui.doubleSpinBoxTempCalib.valueChanged.connect(self.corrDens)
+        self.ui.doubleSpinBoxDens.valueChanged.connect(self.corrDens)
         
     def corrDens (self) :
         
