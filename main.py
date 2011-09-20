@@ -262,6 +262,8 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         self.connect(self.actionEnregistrer, QtCore.SIGNAL("triggered()"), self.enregistrer)
         self.connect(self.actionEnregistrer_Sous, QtCore.SIGNAL("triggered()"), self.enregistrerSous)
         self.connect(self.actionExporterHtml, QtCore.SIGNAL("triggered()"), self.exporterHtml)
+        self.connect(self.actionRecharger, QtCore.SIGNAL("triggered()"), self.recharger)
+        
         
         self.connect(self.actionEditGrains, QtCore.SIGNAL("triggered()"), self.editGrains)
         self.connect(self.actionEditHoublons, QtCore.SIGNAL("triggered()"), self.editHoublons)
@@ -1368,6 +1370,12 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
             self.spinBoxBoil.setValue(float(self.boil))
         except :
             self.spinBoxBoil.setValue (0)
+            
+    def recharger(self) :
+            self.purge()
+            self.importBeerXML()
+            self.calculs_recette()
+            self.MVC()
             
         
         

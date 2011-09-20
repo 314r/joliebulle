@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'reader.ui'
 #
-# Created: Sun Sep 18 20:34:57 2011
+# Created: Mon Sep 19 19:42:07 2011
 #      by: PyQt4 UI code generator 4.8.5
 #
 # WARNING! All changes made in this file will be lost!
@@ -418,10 +418,14 @@ class Ui_MainWindow(object):
         self.actionRestaurerIngredients = QtGui.QAction(MainWindow)
         self.actionRestaurerIngredients.setText(QtGui.QApplication.translate("MainWindow", "Restaurer la base des ingrédients", None, QtGui.QApplication.UnicodeUTF8))
         self.actionRestaurerIngredients.setObjectName(_fromUtf8("actionRestaurerIngredients"))
+        self.actionRecharger = QtGui.QAction(MainWindow)
+        self.actionRecharger.setText(QtGui.QApplication.translate("MainWindow", "Recharger", None, QtGui.QApplication.UnicodeUTF8))
+        self.actionRecharger.setObjectName(_fromUtf8("actionRecharger"))
         self.toolBar.addAction(self.actionOuvrir)
         self.toolBar.addAction(self.actionAbout)
         self.menuFichier.addAction(self.actionOuvrir_2)
         self.menuFichier.addAction(self.actionNouvelle_recette)
+        self.menuFichier.addAction(self.actionRecharger)
         self.menuFichier.addAction(self.actionImprimer)
         self.menuFichier.addAction(self.actionEnregistrer)
         self.menuFichier.addAction(self.actionEnregistrer_Sous)
