@@ -37,9 +37,11 @@ class DialogAlc(QtGui.QDialog):
         self.ui = Ui_DialogAlc()
         self.ui.setupUi(self) 
         
-        self.connect(self.ui.doubleSpinBoxDI, QtCore.SIGNAL("valueChanged(QString)"), self.calcAlc)
-        self.connect(self.ui.doubleSpinBoxDF, QtCore.SIGNAL("valueChanged(QString)"), self.calcAlc)
-
+        #self.connect(self.ui.doubleSpinBoxDI, QtCore.SIGNAL("valueChanged(QString)"), self.calcAlc)
+        #self.connect(self.ui.doubleSpinBoxDF, QtCore.SIGNAL("valueChanged(QString)"), self.calcAlc)
+        
+        self.ui.doubleSpinBoxDI.valueChanged.connect(self.calcAlc)
+        self.ui.doubleSpinBoxDF.valueChanged.connect(self.calcAlc)
         
     def calcAlc(self) :
         self.OG = self.ui.doubleSpinBoxDI.value()
