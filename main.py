@@ -8,7 +8,7 @@
 
 #This program is free software; you can redistribute it and/or
 #modify it under the terms of the GNU General Public License
-#as published by the Free Software Foundation; either version 3
+#as published by the Free Software Foundation; either version 3        
 #of the License, or (at your option) any later version.
 
 #This program is distributed in the hope that it will be useful,
@@ -89,7 +89,7 @@ class AmountDelegate(QtGui.QItemDelegate):
     def setModelData(self, spinBox, model, index):
         spinBox.interpretText()
         value = spinBox.value()
-           
+        
         model.setData(index, value)
         
 
@@ -207,7 +207,7 @@ class ComboBoxDelegate(QtGui.QItemDelegate):
             value = 0
         else :
             value = 1
-       
+    
         
         comboBox.setCurrentIndex(value)
         
@@ -217,9 +217,9 @@ class ComboBoxDelegate(QtGui.QItemDelegate):
         
         model.setData( index, value )
         self.emit( QtCore.SIGNAL( "pySig"))
-       
+    
 
-       
+    
 
     def updateEditorGeometry( self, editor, option, index ):
 
@@ -236,7 +236,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
     
         
         
-  
+
     def __init__(self, parent = None):
         QtGui.QMainWindow.__init__(self, parent)
         self.setupUi(self)
@@ -263,6 +263,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         self.connect(self.actionEnregistrer_Sous, QtCore.SIGNAL("triggered()"), self.enregistrerSous)
         self.connect(self.actionExporterHtml, QtCore.SIGNAL("triggered()"), self.exporterHtml)
         self.connect(self.actionRecharger, QtCore.SIGNAL("triggered()"), self.recharger)
+        self.connect(self.actionSwitch, QtCore.SIGNAL("triggered()"), self.switch)
         
         
         self.connect(self.actionEditGrains, QtCore.SIGNAL("triggered()"), self.editGrains)
@@ -280,7 +281,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         
         
         self.connect(self.actionImprimer, QtCore.SIGNAL("triggered()"), self.printRecipe)
-         
+        
         self.connect(self.doubleSpinBoxRendemt, QtCore.SIGNAL("valueChanged(QString)"), self.rendemt_changed)
         self.connect(self.doubleSpinBox_2Volume, QtCore.SIGNAL("valueChanged(QString)"), self.volume_changed)
         self.connect(self.pushButtonAjouter_2, QtCore.SIGNAL("clicked()"), self.ajouterF)
@@ -372,6 +373,9 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         else :
             pass
         
+    def switch(self) :
+        self.stackedWidget.setCurrentIndex(1)
+        
     def restoreDataBase(self) :
         
         home = QtCore.QDir(home_dir)
@@ -394,7 +398,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
     def modeleProportion (self) :
         #Cette fonction est appelée chaque fois que la quantité, les AA ou les temps sont modifiés, via un signal émit par les classes Delegate.
         #Cette fonction inclut les données calculées dans le modèle.
-       
+    
         i=0
         while i < AppWindow.nbreFer :
             i=i+1
@@ -409,7 +413,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
                 prop = QtGui.QStandardItem("%.1f" %(self.liste_ibuPart[h-1]) + " IBU")
                 self.modele.setItem(i+h-1,5,prop)
                 
-         
+        
     # cette fonction est appelee chaque fois que les donnees du modele changent
     def reverseMVC(self) : 
     
@@ -431,13 +435,13 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
             
             
             
-  
+
             
         h = 0
         while h < AppWindow.nbreHops :
             h = h+1
             
- 
+
             for index in self.liste_hAmount :
                 index = self.modele.index(i+h-1,1)
                 value = self.modele.data(index, QtCore.Qt.DisplayRole)
@@ -462,8 +466,8 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
                 
 
             
-       
-   
+    
+
         
         
         m = 0 
@@ -474,10 +478,10 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
                 value = self.modele.data(index, QtCore.Qt.DisplayRole)
                 self.liste_dAmount[m-1] = float(value)
             
-       
+    
         
         
-       
+    
         self.calculs_recette()  
         print (self.liste_fProportion)
         
@@ -539,8 +543,8 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
                 self.modele.setItem(i+h+m-1, 0, item)
                 
             for amount in self.liste_dAmount : 
-                  amount = QtGui.QStandardItem("%.0f" %(self.liste_dAmount[m-1]) )
-                  self.modele.setItem(i+h+m-1, 1, amount)
+                amount = QtGui.QStandardItem("%.0f" %(self.liste_dAmount[m-1]) )
+                self.modele.setItem(i+h+m-1, 1, amount)
 
 
 
@@ -580,7 +584,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
     def outilDilution(self) :
         self.dlgOutilDilution.setModal(True)
         self.dlgOutilDilution.show()
-      
+    
     def outilEvaporation (self) :
         self.dlgOutilEvaporation.setModal(True)
         self.dlgOutilEvaporation.show()
@@ -602,7 +606,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         
         
 
-       
+    
     def ajouterF(self) :
 
         
@@ -652,7 +656,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         self.calculs_recette()
         self.MVC()
         
-     
+    
     def ajouterM(self) :
         
         l = self.nbreLevures
@@ -665,7 +669,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         itemD = QtGui.QStandardItem(self.base.liste_divers[i])
         item_dAmount = QtGui.QStandardItem(0)
         item_dType = QtGui.QStandardItem(self.base.liste_dType[i])
- 
+
         
         self.modele.insertRow(f+h+m)
         
@@ -676,11 +680,11 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         AppWindow.nbreDivers = m +1
         self.MVC()
         
-       
+    
 
-     
-     
-     
+    
+    
+    
     def ajouterY(self) :
         l = self.nbreLevures
         f = AppWindow.nbreFer
@@ -698,7 +702,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         
         self.modele.insertRow(f+h+m+l)
         
-       
+    
         
         self.liste_levures.append(self.base.liste_levures[i])
         self.liste_lForm.append(self.base.liste_lForm[i])
@@ -710,10 +714,10 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         self.nbreLevures = l + 1
         self.MVC()
         
-         
-         
         
-         
+        
+        
+        
     
     def enlever(self) :
         selection = self.tableViewF.selectionModel()
@@ -775,7 +779,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
             self.MVC()
             print (self.liste_fProportion)
             print ("index : " , indexLigne)
- 
+
         
 
 
@@ -806,7 +810,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
             if nom.tag == "NAME" : 
                     self.nomRecette = nom.text
             
-             
+            
         for nom in style :
             if nom.tag == "NAME" : 
                 self.styleRecette = nom.text
@@ -992,8 +996,8 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
                     self.liste_dAmount.append(self.dAmount)
                     
                 if nom.tag == 'TYPE' :
-                     self.dType = nom.text
-                     self.liste_dType.append(self.dType)
+                    self.dType = nom.text
+                    self.liste_dType.append(self.dType)
 
         
         
@@ -1180,9 +1184,9 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         
         
         self.s = QtGui.QFileDialog.getOpenFileName(self,
-              self.trUtf8("Ouvrir un fichier"),
-              "",
-              )
+            self.trUtf8("Ouvrir un fichier"),
+            "",
+            )
         if not self.s :
             pass
         else :
@@ -1220,7 +1224,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
             self.calculs_recette()
             
     def volume_changed(self) :
-      
+    
         if self.checkBoxIng.isChecked() :
             ratio = self.doubleSpinBox_2Volume.value()/float(self.volume)
             
@@ -1301,7 +1305,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         if self.pushButtonChangerStyle.isChecked () :
             self.comboBoxStyle.show()
         else :
-               self.comboBoxStyle.hide()   
+            self.comboBoxStyle.hide()   
 
     def volMore (self) :
         if self.pushButtonVolMore.isChecked() :
@@ -1309,7 +1313,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         else :
             self.widgetVol.hide()
 
-               
+            
     def nouvelle(self) :
         
         self.nomRecette = self.trUtf8('Nouvelle Recette')
@@ -1409,13 +1413,13 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         while  m < AppWindow.nbreDivers :
             m = m + 1    
             divers_texte = divers_texte +"<b>" +self.liste_divers[m-1] +"</b>"+" (" +self.liste_dType[m-1] +")" + " : " +"<b>" +str(self.liste_dAmount[m-1]) + "g" +"</b>"+"<br/>"
-           
+        
         levures_texte = "<h3 style =\" text-decoration : underline; \">Levures</h3>" 
         l = 0
         while l < self.nbreLevures : 
             l = l+1
             levures_texte = levures_texte + self.liste_levuresDetail[l-1] + "<br/>"
-           
+        
         texte = info_texte + grains_texte + houblons_texte + divers_texte + levures_texte
         doc=QtGui.QTextDocument()
 
@@ -1429,7 +1433,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         # dialog.addEnabledOption(QAbstractPrintDialog.PrintSelection)
         if dialog.exec_() == True:
             doc.print_(printer)
-       
+    
         
         
 
