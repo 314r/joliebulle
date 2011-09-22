@@ -12,6 +12,7 @@ if platform == 'win32':
 else:
     home_dir = os.path.expanduser("~")
     config_dir = os.path.join(os.path.expanduser("~"), ".config", "joliebulle")
+    recettes_dir = os.path.join(os.path.expanduser("~"), ".config", "joliebulle", "recettes")
     database_file = os.path.join(os.path.expanduser("~"), ".config", "joliebulle", "database.xml")
     database_root = '/usr/share/joliebulle/database.xml'
 

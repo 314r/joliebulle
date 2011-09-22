@@ -332,11 +332,11 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         
         #La bibliotheque
         self.modeleBiblio = QtGui.QFileSystemModel()
-        self.modeleBiblio.setRootPath("/home/pierre")
+        self.modeleBiblio.setRootPath(recettes_dir)
         
-        self.treeViewBiblio.setModel(self.modeleBiblio)
-        self.treeViewBiblio.setRootIndex(self.modeleBiblio.index("/home/pierre"))
-        self.connect(self.treeViewBiblio, QtCore.SIGNAL("clicked(const QModelIndex &)"), self.selectionRecette)
+        self.listViewBiblio.setModel(self.modeleBiblio)
+        self.listViewBiblio.setRootIndex(self.modeleBiblio.index(recettes_dir))
+        self.connect(self.listViewBiblio, QtCore.SIGNAL("clicked(const QModelIndex &)"), self.selectionRecette)
 
 
 
@@ -369,7 +369,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         
     def selectionRecette(self):
     
-        selection = self.treeViewBiblio.selectionModel()
+        selection = self.listViewBiblio.selectionModel()
         self.indexRecette = selection.currentIndex()
         self.chemin =self.modeleBiblio.filePath (self.indexRecette)
         print(self.chemin)
@@ -399,6 +399,9 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
             database.copy(database_root, database_file)
         else :
             pass
+        recettes = QtCore.QFile(recettes_dir)
+        if not recettes.exists() :
+            home.mkpath(recettes_dir)
         
     def switch(self) :
         self.stackedWidget.setCurrentIndex(1)

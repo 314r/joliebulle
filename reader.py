@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'reader.ui'
 #
-# Created: Thu Sep 22 15:09:41 2011
+# Created: Thu Sep 22 17:51:11 2011
 #      by: PyQt4 UI code generator 4.8.5
 #
 # WARNING! All changes made in this file will be lost!
@@ -352,9 +352,9 @@ class Ui_MainWindow(object):
         self.gridLayout_3 = QtGui.QGridLayout(self.widget)
         self.gridLayout_3.setMargin(0)
         self.gridLayout_3.setObjectName(_fromUtf8("gridLayout_3"))
-        self.treeViewBiblio = QtGui.QTreeView(self.widget)
-        self.treeViewBiblio.setObjectName(_fromUtf8("treeViewBiblio"))
-        self.gridLayout_3.addWidget(self.treeViewBiblio, 0, 0, 1, 1)
+        self.listViewBiblio = QtGui.QListView(self.widget)
+        self.listViewBiblio.setObjectName(_fromUtf8("listViewBiblio"))
+        self.gridLayout_3.addWidget(self.listViewBiblio, 0, 0, 1, 1)
         self.gridLayout_2.addWidget(self.widget, 0, 0, 1, 1)
         self.stackedWidget.addWidget(self.page_2)
         self.verticalLayout.addWidget(self.stackedWidget)
@@ -368,7 +368,7 @@ class Ui_MainWindow(object):
         self.toolBar.setObjectName(_fromUtf8("toolBar"))
         MainWindow.addToolBar(QtCore.Qt.TopToolBarArea, self.toolBar)
         self.menuBar = QtGui.QMenuBar(MainWindow)
-        self.menuBar.setGeometry(QtCore.QRect(0, 0, 1169, 19))
+        self.menuBar.setGeometry(QtCore.QRect(0, 0, 1169, 23))
         self.menuBar.setObjectName(_fromUtf8("menuBar"))
         self.menuFichier = QtGui.QMenu(self.menuBar)
         self.menuFichier.setTitle(QtGui.QApplication.translate("MainWindow", "Fichier", None, QtGui.QApplication.UnicodeUTF8))
@@ -484,7 +484,7 @@ class Ui_MainWindow(object):
         self.menuBar.addAction(self.menuOutils.menuAction())
 
         self.retranslateUi(MainWindow)
-        self.stackedWidget.setCurrentIndex(0)
+        self.stackedWidget.setCurrentIndex(1)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
     def retranslateUi(self, MainWindow):
