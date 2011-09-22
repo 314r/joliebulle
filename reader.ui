@@ -644,8 +644,28 @@ p, li { white-space: pre-wrap; }
         <item row="0" column="0">
          <widget class="QWidget" name="widget" native="true">
           <layout class="QGridLayout" name="gridLayout_3">
+           <property name="margin">
+            <number>0</number>
+           </property>
            <item row="0" column="0">
-            <widget class="QListView" name="listViewBiblio"/>
+            <widget class="QListView" name="listViewBiblio">
+             <property name="styleSheet">
+              <string notr="true">background-color: rgb(116, 116, 116);
+color: rgb(255, 255, 255);</string>
+             </property>
+             <property name="movement">
+              <enum>QListView::Static</enum>
+             </property>
+             <property name="flow">
+              <enum>QListView::LeftToRight</enum>
+             </property>
+             <property name="spacing">
+              <number>30</number>
+             </property>
+             <property name="viewMode">
+              <enum>QListView::IconMode</enum>
+             </property>
+            </widget>
            </item>
           </layout>
          </widget>

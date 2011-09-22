@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'reader.ui'
 #
-# Created: Thu Sep 22 17:51:11 2011
+# Created: Thu Sep 22 23:53:46 2011
 #      by: PyQt4 UI code generator 4.8.5
 #
 # WARNING! All changes made in this file will be lost!
@@ -351,8 +351,15 @@ class Ui_MainWindow(object):
         self.widget.setObjectName(_fromUtf8("widget"))
         self.gridLayout_3 = QtGui.QGridLayout(self.widget)
         self.gridLayout_3.setMargin(0)
+        self.gridLayout_3.setMargin(0)
         self.gridLayout_3.setObjectName(_fromUtf8("gridLayout_3"))
         self.listViewBiblio = QtGui.QListView(self.widget)
+        self.listViewBiblio.setStyleSheet(_fromUtf8("background-color: rgb(116, 116, 116);\n"
+"color: rgb(255, 255, 255);"))
+        self.listViewBiblio.setMovement(QtGui.QListView.Static)
+        self.listViewBiblio.setFlow(QtGui.QListView.LeftToRight)
+        self.listViewBiblio.setSpacing(30)
+        self.listViewBiblio.setViewMode(QtGui.QListView.IconMode)
         self.listViewBiblio.setObjectName(_fromUtf8("listViewBiblio"))
         self.gridLayout_3.addWidget(self.listViewBiblio, 0, 0, 1, 1)
         self.gridLayout_2.addWidget(self.widget, 0, 0, 1, 1)
