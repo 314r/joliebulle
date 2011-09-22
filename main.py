@@ -253,6 +253,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         self.base = ImportBase()
         self.base.importBeerXML()
         self.s=0
+        self.nbreLevures = 0
         
         self.baseStyleListe = [self.trUtf8('Générique'), '1A. Lite American Lager', '1B. Standard American Lager', '1C. Premium American Lager', '1D. Munich Helles', '1E. Dortmunder Export', '2A. German Pilsner (Pils)', '2B. Bohemian Pilsener', '2C. Classic American Pilsner', '3A. Vienna Lager', '3B. Oktoberfest/Märzen', '4A. Dark American Lager', '4B. Munich Dunkel', '4C. Schwarzbier (Black Beer)', '5A. Maibock/Helles Bock', '5B. Traditional Bock', '5C. Doppelbock', '5D. Eisbock', '6A. Cream Ale', '6B. Blonde Ale', '6C. Kölsch', '6D. American Wheat or Rye Beer', '7A. Northern German Altbier', '7B. California Common Beer', '7C. Düsseldorf Altbier', '8A. Standard/Ordinary Bitter', '8B. Special/Best/Premium Bitter', '8C. Extra Special/Strong Bitter (English Pale Ale)', '9A. Scottish Light 60/-', '9B. Scottish Heavy 70/-', '9C. Scottish Export 80/- ', '9D. Irish Red Ale', '9E. Strong Scotch Ale', '10A. American Pale Ale', '10B. American Amber Ale', '10C. American Brown Ale', '11A. Mild','11B. Southern English Brown', '11C. Northern English Brown Ale', '12A. Brown Porter', '12B. Robust Porter', '12C. Baltic Porter', '13A. Dry Stout', '13B. Sweet Stout', '13C. Oatmeal Stout', '13D. Foreign Extra Stout', '13E. American Stout', '13F. Russian Imperial Stout', '14A. English IPA', '14B. American IPA', '14C. Imperial IPA','15A. Weizen/Weissbier', '15B. Dunkelweizen', '15C. Weizenbock', '15D. Roggenbier (German Rye Beer)','16A. Witbier', '16B. Belgian Pale Ale', '16C. Saison', '16D. Bière de Garde', '16E. Belgian Specialty Ale', '17A. Berliner Weisse', '17B. Flanders Red Ale', '17C. Flanders Brown Ale/Oud Bruin', '17D. Straight (Unblended) Lambic', '17E. Gueuze', '17F. Fruit Lambic', '18A. Belgian Blond Ale', '18B. Belgian Dubbel', '18C. Belgian Tripel', '18D. Belgian Golden Strong Ale', '18E. Belgian Dark Strong Ale', '19A. Old Ale', '19B. English Barleywine', '19C. American Barleywine', '20. Fruit Beer', '21A. Spice, Herb, or Vegetable Beer', '21B. Christmas/Winter Specialty Spiced Beer', '22A. Classic Rauchbier', '22B. Other Smoked Beer', '22C. Wood-Aged Beer', '23. Specialty Beer', '24A. Dry Mead', '24B. Semi-sweet Mead', '24C. Sweet Mead', '25A. Cyser', '25B. Pyment', '25C. Other Fruit Melomel', '26A. Metheglin', '26B. Braggot', '26C. Open Category Mead', '27A. Common Cider', '27B. English Cider', '27C. French Cider', '27D. Common Perry', '27E. Traditional Perry', '28A. New England Cider', '28B. Fruit Cider', '28C. Applewine', '28D. Other Specialty Cider/Perry']
         #Les connections
@@ -293,6 +294,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         self.connect(self.pushButtonVolMore, QtCore.SIGNAL("clicked()"), self.volMore)
         self.connect(self.doubleSpinBoxVolPre, QtCore.SIGNAL("valueChanged(QString)"), self.volPreCalc)
         
+        
         self.connect(self.comboBoxStyle, QtCore.SIGNAL("currentIndexChanged(QString)"), self.addStyle)
         #self.connect(self.pushButtonEssai, QtCore.SIGNAL("clicked()"), self.essai)
         
@@ -328,6 +330,15 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         self.tableViewF.setModel(self.modele)
         self.tableViewF.setColumnWidth(0,250)
         
+        #La bibliotheque
+        self.modeleBiblio = QtGui.QFileSystemModel()
+        self.modeleBiblio.setRootPath("/home/pierre")
+        
+        self.treeViewBiblio.setModel(self.modeleBiblio)
+        self.treeViewBiblio.setRootIndex(self.modeleBiblio.index("/home/pierre"))
+        self.connect(self.treeViewBiblio, QtCore.SIGNAL("clicked(const QModelIndex &)"), self.selectionRecette)
+
+
 
         
         ##on cree un modele pour les ingredients dispo dans la base
@@ -355,6 +366,22 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         
         self.nouvelle()
         
+        
+    def selectionRecette(self):
+    
+        selection = self.treeViewBiblio.selectionModel()
+        self.indexRecette = selection.currentIndex()
+        self.chemin =self.modeleBiblio.filePath (self.indexRecette)
+        print(self.chemin)
+        self.purge()
+        
+        self.s = self.chemin
+        
+        self.importBeerXML()
+        self.calculs_recette()
+        self.MVC()
+        self.stackedWidget.setCurrentIndex(0)
+              
     def initRep(self) :
         
         
@@ -375,6 +402,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         
     def switch(self) :
         self.stackedWidget.setCurrentIndex(1)
+
         
     def restoreDataBase(self) :
         
@@ -787,7 +815,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
     
     def importBeerXML(self) :
         fichierBeerXML = self.s
-
+        print(self.s)
         
 
         arbre = ET.parse(fichierBeerXML)

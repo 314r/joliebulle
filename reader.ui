@@ -28,7 +28,7 @@
        <number>1</number>
       </property>
       <property name="currentIndex">
-       <number>1</number>
+       <number>0</number>
       </property>
       <widget class="QWidget" name="page">
        <layout class="QGridLayout" name="gridLayout">
@@ -627,16 +627,6 @@ p, li { white-space: pre-wrap; }
           <zorder></zorder>
           <zorder></zorder>
           <zorder></zorder>
-          <zorder></zorder>
-          <zorder>labelFermentables</zorder>
-          <zorder></zorder>
-          <zorder>widgetVol</zorder>
-          <zorder>tableViewF</zorder>
-          <zorder></zorder>
-          <zorder></zorder>
-          <zorder></zorder>
-          <zorder></zorder>
-          <zorder></zorder>
           <zorder>labelFermentables</zorder>
           <zorder></zorder>
           <zorder>widgetVol</zorder>
@@ -701,7 +691,7 @@ p, li { white-space: pre-wrap; }
      <x>0</x>
      <y>0</y>
      <width>1169</width>
-     <height>23</height>
+     <height>19</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuFichier">
