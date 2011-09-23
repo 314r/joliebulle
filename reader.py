@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'reader.ui'
 #
-# Created: Thu Sep 22 23:53:46 2011
+# Created: Fri Sep 23 10:47:49 2011
 #      by: PyQt4 UI code generator 4.8.5
 #
 # WARNING! All changes made in this file will be lost!
@@ -386,6 +386,9 @@ class Ui_MainWindow(object):
         self.menuOutils = QtGui.QMenu(self.menuBar)
         self.menuOutils.setTitle(QtGui.QApplication.translate("MainWindow", "Outils", None, QtGui.QApplication.UnicodeUTF8))
         self.menuOutils.setObjectName(_fromUtf8("menuOutils"))
+        self.menuVue = QtGui.QMenu(self.menuBar)
+        self.menuVue.setTitle(QtGui.QApplication.translate("MainWindow", "Vue", None, QtGui.QApplication.UnicodeUTF8))
+        self.menuVue.setObjectName(_fromUtf8("menuVue"))
         MainWindow.setMenuBar(self.menuBar)
         self.statusBar = QtGui.QStatusBar(MainWindow)
         self.statusBar.setObjectName(_fromUtf8("statusBar"))
@@ -465,7 +468,32 @@ class Ui_MainWindow(object):
         self.actionSwitch = QtGui.QAction(MainWindow)
         self.actionSwitch.setText(QtGui.QApplication.translate("MainWindow", "switch", None, QtGui.QApplication.UnicodeUTF8))
         self.actionSwitch.setObjectName(_fromUtf8("actionSwitch"))
+        self.actionVueEditeur = QtGui.QAction(MainWindow)
+        self.actionVueEditeur.setText(QtGui.QApplication.translate("MainWindow", "Editeur de recette", None, QtGui.QApplication.UnicodeUTF8))
+        self.actionVueEditeur.setObjectName(_fromUtf8("actionVueEditeur"))
+        self.actionVueBibliotheque = QtGui.QAction(MainWindow)
+        self.actionVueBibliotheque.setText(QtGui.QApplication.translate("MainWindow", "Bibiliothèque de recette", None, QtGui.QApplication.UnicodeUTF8))
+        self.actionVueBibliotheque.setToolTip(QtGui.QApplication.translate("MainWindow", "Bibiliothèque de recettes", None, QtGui.QApplication.UnicodeUTF8))
+        self.actionVueBibliotheque.setObjectName(_fromUtf8("actionVueBibliotheque"))
+        self.actionVueEditeurToolBar = QtGui.QAction(MainWindow)
+        self.actionVueEditeurToolBar.setCheckable(True)
+        self.actionVueEditeurToolBar.setChecked(True)
+        icon6 = QtGui.QIcon()
+        icon6.addPixmap(QtGui.QPixmap(_fromUtf8("Images/edit.png")), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.actionVueEditeurToolBar.setIcon(icon6)
+        self.actionVueEditeurToolBar.setText(QtGui.QApplication.translate("MainWindow", "Editeur", None, QtGui.QApplication.UnicodeUTF8))
+        self.actionVueEditeurToolBar.setObjectName(_fromUtf8("actionVueEditeurToolBar"))
+        self.actionVueBibliothequeToolBar = QtGui.QAction(MainWindow)
+        self.actionVueBibliothequeToolBar.setCheckable(True)
+        icon7 = QtGui.QIcon()
+        icon7.addPixmap(QtGui.QPixmap(_fromUtf8("Images/library.png")), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.actionVueBibliothequeToolBar.setIcon(icon7)
+        self.actionVueBibliothequeToolBar.setText(QtGui.QApplication.translate("MainWindow", "Bibiliothèque", None, QtGui.QApplication.UnicodeUTF8))
+        self.actionVueBibliothequeToolBar.setToolTip(QtGui.QApplication.translate("MainWindow", "Bibiliothèque de recettes", None, QtGui.QApplication.UnicodeUTF8))
+        self.actionVueBibliothequeToolBar.setObjectName(_fromUtf8("actionVueBibliothequeToolBar"))
         self.toolBar.addAction(self.actionOuvrir)
+        self.toolBar.addAction(self.actionVueEditeurToolBar)
+        self.toolBar.addAction(self.actionVueBibliothequeToolBar)
         self.toolBar.addAction(self.actionAbout)
         self.menuFichier.addAction(self.actionOuvrir_2)
         self.menuFichier.addAction(self.actionNouvelle_recette)
@@ -486,12 +514,15 @@ class Ui_MainWindow(object):
         self.menuOutils.addAction(self.actionDilution)
         self.menuOutils.addAction(self.actionEvaporation)
         self.menuOutils.addAction(self.actionPaliers)
+        self.menuVue.addAction(self.actionVueEditeur)
+        self.menuVue.addAction(self.actionVueBibliotheque)
         self.menuBar.addAction(self.menuFichier.menuAction())
+        self.menuBar.addAction(self.menuVue.menuAction())
         self.menuBar.addAction(self.menuEdition.menuAction())
         self.menuBar.addAction(self.menuOutils.menuAction())
 
         self.retranslateUi(MainWindow)
-        self.stackedWidget.setCurrentIndex(1)
+        self.stackedWidget.setCurrentIndex(0)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
     def retranslateUi(self, MainWindow):

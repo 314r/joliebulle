@@ -264,7 +264,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         self.connect(self.actionEnregistrer_Sous, QtCore.SIGNAL("triggered()"), self.enregistrerSous)
         self.connect(self.actionExporterHtml, QtCore.SIGNAL("triggered()"), self.exporterHtml)
         self.connect(self.actionRecharger, QtCore.SIGNAL("triggered()"), self.recharger)
-        self.connect(self.actionSwitch, QtCore.SIGNAL("triggered()"), self.switch)
+        #self.connect(self.actionSwitch, QtCore.SIGNAL("triggered()"), self.switch)
         
         
         self.connect(self.actionEditGrains, QtCore.SIGNAL("triggered()"), self.editGrains)
@@ -279,6 +279,17 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         self.connect(self.actionDilution, QtCore.SIGNAL("triggered()"), self.outilDilution)
         self.connect(self.actionEvaporation, QtCore.SIGNAL("triggered()"), self.outilEvaporation)
         self.connect(self.actionPaliers, QtCore.SIGNAL("triggered()"), self.outilPaliers)
+        
+        #Les vues
+        self.connect(self.actionVueEditeur, QtCore.SIGNAL("triggered()"), self.switchToEditor)
+        self.connect(self.actionVueBibliotheque, QtCore.SIGNAL("triggered()"), self.switchToLibrary)
+        
+        self.connect(self.actionVueEditeurToolBar, QtCore.SIGNAL("triggered()"), self.switchToEditor)
+        self.connect(self.actionVueBibliothequeToolBar, QtCore.SIGNAL("triggered()"), self.switchToLibrary)
+        
+        #############################################################################################
+        #############################################################################################
+        
         
         
         self.connect(self.actionImprimer, QtCore.SIGNAL("triggered()"), self.printRecipe)
@@ -381,6 +392,9 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         self.calculs_recette()
         self.MVC()
         self.stackedWidget.setCurrentIndex(0)
+        self.actionVueEditeurToolBar.setChecked(True)
+        self.actionVueBibliothequeToolBar.setChecked(False)
+        
               
     def initRep(self) :
         
@@ -403,9 +417,15 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         if not recettes.exists() :
             home.mkpath(recettes_dir)
         
-    def switch(self) :
-        self.stackedWidget.setCurrentIndex(1)
-
+    def switchToEditor(self) :
+        self.stackedWidget.setCurrentIndex(0)
+        self.actionVueEditeurToolBar.setChecked(True)
+        self.actionVueBibliothequeToolBar.setChecked(False)
+        
+    def switchToLibrary(self) :
+        self.stackedWidget.setCurrentIndex(1)        
+        self.actionVueEditeurToolBar.setChecked(False)
+        self.actionVueBibliothequeToolBar.setChecked(True)
         
     def restoreDataBase(self) :
         

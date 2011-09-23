@@ -28,7 +28,7 @@
        <number>1</number>
       </property>
       <property name="currentIndex">
-       <number>1</number>
+       <number>0</number>
       </property>
       <widget class="QWidget" name="page">
        <layout class="QGridLayout" name="gridLayout">
@@ -627,7 +627,6 @@ p, li { white-space: pre-wrap; }
           <zorder></zorder>
           <zorder></zorder>
           <zorder>labelFermentables</zorder>
-          <zorder></zorder>
           <zorder>widgetVol</zorder>
          </widget>
         </item>
@@ -702,6 +701,8 @@ color: rgb(255, 255, 255);</string>
     <bool>false</bool>
    </attribute>
    <addaction name="actionOuvrir"/>
+   <addaction name="actionVueEditeurToolBar"/>
+   <addaction name="actionVueBibliothequeToolBar"/>
    <addaction name="actionAbout"/>
   </widget>
   <widget class="QMenuBar" name="menuBar">
@@ -747,7 +748,15 @@ color: rgb(255, 255, 255);</string>
     <addaction name="actionEvaporation"/>
     <addaction name="actionPaliers"/>
    </widget>
+   <widget class="QMenu" name="menuVue">
+    <property name="title">
+     <string>Vue</string>
+    </property>
+    <addaction name="actionVueEditeur"/>
+    <addaction name="actionVueBibliotheque"/>
+   </widget>
    <addaction name="menuFichier"/>
+   <addaction name="menuVue"/>
    <addaction name="menuEdition"/>
    <addaction name="menuOutils"/>
   </widget>
@@ -872,6 +881,49 @@ color: rgb(255, 255, 255);</string>
   <action name="actionSwitch">
    <property name="text">
     <string>switch</string>
+   </property>
+  </action>
+  <action name="actionVueEditeur">
+   <property name="text">
+    <string>Editeur de recette</string>
+   </property>
+  </action>
+  <action name="actionVueBibliotheque">
+   <property name="text">
+    <string>Bibiliothèque de recette</string>
+   </property>
+   <property name="toolTip">
+    <string>Bibiliothèque de recettes</string>
+   </property>
+  </action>
+  <action name="actionVueEditeurToolBar">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="checked">
+    <bool>true</bool>
+   </property>
+   <property name="icon">
+    <iconset>
+     <normaloff>Images/edit.png</normaloff>Images/edit.png</iconset>
+   </property>
+   <property name="text">
+    <string>Editeur</string>
+   </property>
+  </action>
+  <action name="actionVueBibliothequeToolBar">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="icon">
+    <iconset>
+     <normaloff>Images/library.png</normaloff>Images/library.png</iconset>
+   </property>
+   <property name="text">
+    <string>Bibiliothèque</string>
+   </property>
+   <property name="toolTip">
+    <string>Bibiliothèque de recettes</string>
    </property>
   </action>
  </widget>
