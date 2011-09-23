@@ -652,6 +652,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         AppWindow.nbreFer = 0
         AppWindow.nbreHops = 0
         AppWindow.nbreDivers = 0
+        self.s = 0
         self.nouvelle()
         
         
@@ -1427,10 +1428,15 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
             self.spinBoxBoil.setValue (0)
             
     def recharger(self) :
-            self.purge()
-            self.importBeerXML()
-            self.calculs_recette()
-            self.MVC()
+        i = (AppWindow.nbreFer + AppWindow.nbreDivers + AppWindow.nbreHops + self.nbreLevures)
+        self.modele.removeRows(0,i)
+        AppWindow.nbreFer = 0
+        AppWindow.nbreHops = 0
+        AppWindow.nbreDivers = 0
+        self.nouvelle()
+        self.importBeerXML()
+        self.calculs_recette()
+        self.MVC()
             
         
         
