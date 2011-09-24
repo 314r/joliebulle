@@ -401,7 +401,6 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
     def menuBiblio(self,position) :
        menu = QtGui.QMenu()
        EditeurAction = menu.addAction("Editeur de recette")
-       RenommerAction = menu.addAction("Renommer")
        SupprimerAction = menu.addAction("Supprimer")
        action = menu.exec_(self.listViewBiblio.mapToGlobal(position))
        if action == EditeurAction:
