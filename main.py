@@ -348,6 +348,9 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         self.listViewBiblio.setModel(self.modeleBiblio)
         self.listViewBiblio.setRootIndex(self.modeleBiblio.index(recettes_dir))
         self.connect(self.listViewBiblio, QtCore.SIGNAL("clicked(const QModelIndex &)"), self.selectionRecette)
+        
+        self.listViewBiblio.setContextMenuPolicy(QtCore.Qt.CustomContextMenu) 
+        self.connect(self.listViewBiblio, QtCore.SIGNAL("customContextMenuRequested(const QPoint &)"), self.menuBiblio)
 
 
 
@@ -394,6 +397,13 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         self.stackedWidget.setCurrentIndex(0)
         self.actionVueEditeurToolBar.setChecked(True)
         self.actionVueBibliothequeToolBar.setChecked(False)
+        
+    def menuBiblio(self,position) :
+       menu = QtGui.QMenu()
+       quitAction = menu.addAction("Quit")
+       action = menu.exec_(self.listViewBiblio.mapToGlobal(position))
+       if action == quitAction:
+          print('toto')
         
               
     def initRep(self) :
