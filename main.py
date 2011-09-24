@@ -412,7 +412,17 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
     def supprimerBiblio (self) :
         selection = self.listViewBiblio.selectionModel()
         self.indexRecette = selection.currentIndex()
-        self.modeleBiblio.remove(self.indexRecette)
+        confirmation = QtGui.QMessageBox.question(self,
+                            self.trUtf8("Supprimer"),
+                            self.trUtf8("La recette sera définitivement supprimée <br/> Continuer ?"),
+                            QtGui.QMessageBox.Yes | QtGui.QMessageBox.No)
+        if (confirmation == QtGui.QMessageBox.Yes):
+            self.modeleBiblio.remove(self.indexRecette)
+        else :      
+            pass
+        
+        
+
         
         
               
