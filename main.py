@@ -404,8 +404,16 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
        RenommerAction = menu.addAction("Renommer")
        SupprimerAction = menu.addAction("Supprimer")
        action = menu.exec_(self.listViewBiblio.mapToGlobal(position))
-       if action == quitAction:
-          print('toto')
+       if action == EditeurAction:
+          self.switchToEditor()
+       if action == SupprimerAction:
+          self.supprimerBiblio()  
+          
+    def supprimerBiblio (self) :
+        selection = self.listViewBiblio.selectionModel()
+        self.indexRecette = selection.currentIndex()
+        self.modeleBiblio.remove(self.indexRecette)
+        
         
               
     def initRep(self) :
