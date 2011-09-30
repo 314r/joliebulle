@@ -1367,7 +1367,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         self.boil = self.spinBoxBoil.value()
         self.s = QtGui.QFileDialog.getSaveFileName (self,
                                                     self.trUtf8("Enregistrer dans un fichier"),
-                                                    self.nomRecette,
+                                                    recettes_dir + "/" + self.nomRecette,
                                                     "BeerXML (*.xml)")
         exp.exportXML(self.nomRecette, self.styleRecette, self.volume, self.boil, self.rendement, AppWindow.nbreHops, self.liste_houblons, self.liste_hAmount, self.liste_hForm, self.liste_hTime, self.liste_hAlpha, AppWindow.nbreFer, self.fNom, self.fAmount ,self.fType, self.fYield, self.fMashed, self.color, self.liste_ingr, self.liste_fAmount, self.liste_fType, self.liste_fYield, self.liste_fMashed, self.liste_color, self.dNom, self.dAmount, self.dType, AppWindow.nbreDivers, self.liste_divers, self.liste_dAmount, self.liste_dType, self.nbreLevures, self.lNom, self.lForm, self.lLabo, self.lProd, self.lAtten, self.liste_levures, self.liste_lForm, self.liste_lLabo, self.liste_lProdid, self.liste_levureAtten)
         exp.enregistrer(self.s)  
