@@ -1266,7 +1266,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         
         self.s = QtGui.QFileDialog.getOpenFileName(self,
             self.trUtf8("Ouvrir un fichier"),
-            "",
+            home_dir,
             )
         if not self.s :
             pass
