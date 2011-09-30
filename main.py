@@ -382,7 +382,6 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         
         
     def selectionRecette(self):
-    
         selection = self.listViewBiblio.selectionModel()
         self.indexRecette = selection.currentIndex()
         self.chemin =self.modeleBiblio.filePath (self.indexRecette)

@@ -7,6 +7,7 @@ from sys import platform
 if platform == 'win32':
     home_dir = os.path.expanduser("~")
     config_dir = os.path.join(os.path.expanduser("~"), "AppData", "Local", "joliebulle")
+    recettes_dir = os.path.join(os.path.expanduser("~"), "AppData", "Local", "joliebulle", "recettes")
     database_file = os.path.join(os.path.expanduser("~"), "AppData", "Local", "joliebulle", "database.xml")
     database_root = 'database.xml'
 else:
