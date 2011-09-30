@@ -1261,9 +1261,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         self.labelSG.setText("%.3f" %self.SG)
         
         
-    def ouvrir_clicked (self) : 
-        
-        
+    def ouvrir_clicked (self) :    
         self.s = QtGui.QFileDialog.getOpenFileName(self,
             self.trUtf8("Ouvrir un fichier"),
             home_dir,
