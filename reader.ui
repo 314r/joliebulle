@@ -700,10 +700,14 @@ color: rgb(255, 255, 255);</string>
    <attribute name="toolBarBreak">
     <bool>false</bool>
    </attribute>
-   <addaction name="actionOuvrir"/>
    <addaction name="actionVueEditeurToolBar"/>
    <addaction name="actionVueBibliothequeToolBar"/>
-   <addaction name="actionAbout"/>
+   <addaction name="separator"/>
+   <addaction name="actionEnregistrerToolBar"/>
+   <addaction name="actionImprimer"/>
+   <addaction name="separator"/>
+   <addaction name="actionNouvelle_recette"/>
+   <addaction name="actionRecharger"/>
   </widget>
   <widget class="QMenuBar" name="menuBar">
    <property name="geometry">
@@ -726,7 +730,6 @@ color: rgb(255, 255, 255);</string>
     <addaction name="actionEnregistrer_Sous"/>
     <addaction name="actionExporterHtml"/>
     <addaction name="actionQuitter_2"/>
-    <addaction name="actionSwitch"/>
    </widget>
    <widget class="QMenu" name="menuEdition">
     <property name="title">
@@ -755,10 +758,17 @@ color: rgb(255, 255, 255);</string>
     <addaction name="actionVueEditeur"/>
     <addaction name="actionVueBibliotheque"/>
    </widget>
+   <widget class="QMenu" name="menuAide">
+    <property name="title">
+     <string>Aide</string>
+    </property>
+    <addaction name="actionAbout"/>
+   </widget>
    <addaction name="menuFichier"/>
    <addaction name="menuVue"/>
    <addaction name="menuEdition"/>
    <addaction name="menuOutils"/>
+   <addaction name="menuAide"/>
   </widget>
   <widget class="QStatusBar" name="statusBar"/>
   <action name="actionOuvrir">
@@ -829,6 +839,10 @@ color: rgb(255, 255, 255);</string>
    </property>
   </action>
   <action name="actionNouvelle_recette">
+   <property name="icon">
+    <iconset>
+     <normaloff>Images/more.png</normaloff>Images/more.png</iconset>
+   </property>
    <property name="text">
     <string>Nouvelle recette</string>
    </property>
@@ -844,6 +858,10 @@ color: rgb(255, 255, 255);</string>
    </property>
   </action>
   <action name="actionImprimer">
+   <property name="icon">
+    <iconset>
+     <normaloff>Images/print.png</normaloff>Images/print.png</iconset>
+   </property>
    <property name="text">
     <string>Imprimer</string>
    </property>
@@ -874,6 +892,10 @@ color: rgb(255, 255, 255);</string>
    </property>
   </action>
   <action name="actionRecharger">
+   <property name="icon">
+    <iconset>
+     <normaloff>Images/reload.png</normaloff>Images/reload.png</iconset>
+   </property>
    <property name="text">
     <string>Recharger</string>
    </property>
@@ -924,6 +946,15 @@ color: rgb(255, 255, 255);</string>
    </property>
    <property name="toolTip">
     <string>Bibiliothèque de recettes</string>
+   </property>
+  </action>
+  <action name="actionEnregistrerToolBar">
+   <property name="icon">
+    <iconset>
+     <normaloff>Images/save.png</normaloff>Images/save.png</iconset>
+   </property>
+   <property name="text">
+    <string>&amp;Enregistrer</string>
    </property>
   </action>
  </widget>

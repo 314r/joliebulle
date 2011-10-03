@@ -261,6 +261,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         self.connect(self.actionOuvrir_2, QtCore.SIGNAL("triggered()"), self.ouvrir_clicked)
         self.connect(self.actionNouvelle_recette, QtCore.SIGNAL("triggered()"), self.purge)
         self.connect(self.actionEnregistrer, QtCore.SIGNAL("triggered()"), self.enregistrer)
+        self.connect(self.actionEnregistrerToolBar, QtCore.SIGNAL("triggered()"), self.enregistrer)
         self.connect(self.actionEnregistrer_Sous, QtCore.SIGNAL("triggered()"), self.enregistrerSous)
         self.connect(self.actionExporterHtml, QtCore.SIGNAL("triggered()"), self.exporterHtml)
         self.connect(self.actionRecharger, QtCore.SIGNAL("triggered()"), self.recharger)
