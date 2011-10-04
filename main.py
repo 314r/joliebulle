@@ -282,6 +282,8 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         self.connect(self.actionPaliers, QtCore.SIGNAL("triggered()"), self.outilPaliers)
         
         #Les vues
+        #####################################################################################
+        #####################################################################################
         self.connect(self.actionVueEditeur, QtCore.SIGNAL("triggered()"), self.switchToEditor)
         self.connect(self.actionVueBibliotheque, QtCore.SIGNAL("triggered()"), self.switchToLibrary)
         
@@ -343,15 +345,19 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         self.tableViewF.setColumnWidth(0,250)
         
         #La bibliotheque
+        ###################################################################################################################
+        ###################################################################################################################
         self.modeleBiblio = QtGui.QFileSystemModel()
         self.modeleBiblio.setRootPath(recettes_dir)
         
         self.listViewBiblio.setModel(self.modeleBiblio)
         self.listViewBiblio.setRootIndex(self.modeleBiblio.index(recettes_dir))
-        self.connect(self.listViewBiblio, QtCore.SIGNAL("clicked(const QModelIndex &)"), self.selectionRecette)
+        self.connect(self.listViewBiblio, QtCore.SIGNAL("doubleClicked(const QModelIndex &)"), self.selectionRecette)
         
         self.listViewBiblio.setContextMenuPolicy(QtCore.Qt.CustomContextMenu) 
         self.connect(self.listViewBiblio, QtCore.SIGNAL("customContextMenuRequested(const QPoint &)"), self.menuBiblio)
+        ############################################################################################################################
+        ############################################################################################################################
 
 
 
