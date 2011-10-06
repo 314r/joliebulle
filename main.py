@@ -1275,7 +1275,12 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         if not self.s :
             pass
         else :
-            self.purge()
+            i = (AppWindow.nbreFer + AppWindow.nbreDivers + AppWindow.nbreHops + self.nbreLevures)
+            self.modele.removeRows(0,i)
+            AppWindow.nbreFer = 0
+            AppWindow.nbreHops = 0
+            AppWindow.nbreDivers = 0
+            self.nouvelle()
             self.importBeerXML()
             self.calculs_recette()
             self.MVC()
