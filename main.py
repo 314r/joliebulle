@@ -92,11 +92,15 @@ class AmountDelegate(QtGui.QItemDelegate):
         a = champs.rfind(" ")
         print ("a est égal à :", a)
         if a > 0 :
-            value = int(champs[:a])
+            if champs[a+1:] == "g"
+                value = int(champs[:a])
+            if champs[a+1:] == "kg"
+                value = int(champs[:a]) * 1000
         else :
             value = int(lineEdit.text())        
         #value = int(lineEdit.text())
         print ("la valeur renvoyée est :", value)
+        print("l'unité est :", champs[a+1:])
         model.setData(index, value)
         
 
