@@ -32,10 +32,16 @@ outilPaliers_ui.py
 reader.py
 setup.cfg
 setup.py
+Images/add.png
 Images/application-exit.png
 Images/bulle.png
 Images/document-open.png
 Images/document-open.svg
 Images/document-properties.png
+Images/edit.png
 Images/help-about.png
+Images/library.png
 Images/more.png
+Images/print.png
+Images/reload.png
+Images/save.png

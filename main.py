@@ -73,23 +73,30 @@ class AmountDelegate(QtGui.QItemDelegate):
 
         row=index.row()
         if row < i+h+m:
-            editor = QtGui.QSpinBox(parent)
-            editor.setMinimum(0)
-            editor.setMaximum(20000)
+            editor = QtGui.QLineEdit(parent)
+            #editor.setMinimum(0)
+            #editor.setMaximum(20000)
             editor.installEventFilter(self)
 
             return editor
 
-    def setEditorData(self, spinBox, index):
+    def setEditorData(self, lineEdit, index):
         value= int(index.model().data(index, QtCore.Qt.DisplayRole))
 
-        spinBox.setValue(value)
-        spinBox.setSuffix(" g")
+        lineEdit.setText(str(value))
+        #spinBox.setSuffix(" g")
 
-    def setModelData(self, spinBox, model, index):
-        spinBox.interpretText()
-        value = spinBox.value()
-        
+    def setModelData(self, lineEdit, model, index):
+        #spinBox.interpretText()
+        champs =lineEdit.text()
+        a = champs.rfind(" ")
+        print ("a est égal à :", a)
+        if a > 0 :
+            value = int(champs[:a])
+        else :
+            value = int(lineEdit.text())        
+        #value = int(lineEdit.text())
+        print ("la valeur renvoyée est :", value)
         model.setData(index, value)
         
 
@@ -451,6 +458,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         recettes = QtCore.QFile(recettes_dir)
         if not recettes.exists() :
             home.mkpath(recettes_dir)
+    
         
     def switchToEditor(self) :
         self.stackedWidget.setCurrentIndex(0)
@@ -484,7 +492,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
     def modeleProportion (self) :
         #Cette fonction est appelée chaque fois que la quantité, les AA ou les temps sont modifiés, via un signal émit par les classes Delegate.
         #Cette fonction inclut les données calculées dans le modèle.
-    
+        
         i=0
         while i < AppWindow.nbreFer :
             i=i+1
@@ -498,6 +506,8 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
             for prop in self.liste_ibuPart :
                 prop = QtGui.QStandardItem("%.1f" %(self.liste_ibuPart[h-1]) + " IBU")
                 self.modele.setItem(i+h-1,5,prop)
+                
+        self.displayProfile()
                 
         
     # cette fonction est appelee chaque fois que les donnees du modele changent
@@ -569,7 +579,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         
     
         self.calculs_recette()  
-        print (self.liste_fProportion)
+        print("la densité initiale est de : ", self.OG)
         
 
     
@@ -1248,10 +1258,9 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         
         self.ABV = 0.130*((self.OG-1) -(self.FG-1))*1000
 
-            
+        self.displayProfile()
         
-            
-        
+    def displayProfile(self) :     
         self.labelOGV.setText(str("%.3f" %(self.OG)))
         self.labelFGV.setText(str("%.3f" %(self.FG)))
         self.labelEBCV.setText(str("%.0f" %(self.EBC)))

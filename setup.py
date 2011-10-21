@@ -5,7 +5,7 @@
 from distutils.core import setup
 
 setup(name = "joliebulle",
-      version = "2.2",
+      version = "2.3",
       description = "jolibulle, logiciel de brassage libre",
       author = "Pierre Tavares",
       author_email = "contact.314r@gmail.com",
@@ -43,12 +43,18 @@ setup(name = "joliebulle",
                                      ]),
                       ("applications", ["joliebulle.desktop"]),
                       ("joliebulle/Images", ["Images/application-exit.png",
+                                            "Images/add.png",
                                             "Images/bulle.png",
                                             "Images/document-open.png",
                                             "Images/document-properties.png",
+                                            "Images/edit.png",
                                             "Images/help-about.png",
+                                            "Images/library.png",
                                             "Images/document-open.svg",
-                                            "Images/more.png"])
+                                            "Images/more.png",
+                                            "Images/print.png",
+                                            "Images/reload.png",
+                                            "Images/save.png",])
                                                     ],
       scripts = ["joliebulle"],
       long_description = ""          
