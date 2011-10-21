@@ -92,10 +92,14 @@ class AmountDelegate(QtGui.QItemDelegate):
         a = champs.rfind(" ")
         print ("a est égal à :", a)
         if a > 0 :
-            if champs[a+1:] == "g"
+            if champs[a+1:] == "g" :
                 value = int(champs[:a])
-            if champs[a+1:] == "kg"
-                value = int(champs[:a]) * 1000
+            if champs[a+1:] == "kg" :
+                value = (float(champs[:a])) * 1000
+            if champs[a+1:] == "oz" : 
+                value = int((float(champs[:a])) * 28.349)
+            if champs[a+1:] == "lb" : 
+                value = int((float(champs[:a])) * 453.59237)             
         else :
             value = int(lineEdit.text())        
         #value = int(lineEdit.text())
