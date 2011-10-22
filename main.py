@@ -363,6 +363,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         ###################################################################################################################
         ###################################################################################################################
         self.modeleBiblio = QtGui.QFileSystemModel()
+        self.modeleBiblio.setReadOnly(False)
         self.modeleBiblio.setRootPath(recettes_dir)
         
         self.listViewBiblio.setModel(self.modeleBiblio)
@@ -371,6 +372,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         
         self.listViewBiblio.setContextMenuPolicy(QtCore.Qt.CustomContextMenu) 
         self.connect(self.listViewBiblio, QtCore.SIGNAL("customContextMenuRequested(const QPoint &)"), self.menuBiblio)
+        #self.listViewBiblio.setEditTriggers(QtGui.QAbstractItemView.SelectedClicked | QtGui.QAbstractItemView.AnyKeyPressed) 
         ############################################################################################################################
         ############################################################################################################################
 
@@ -423,11 +425,14 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
        menu = QtGui.QMenu()
        EditeurAction = menu.addAction("Editeur de recette")
        SupprimerAction = menu.addAction("Supprimer")
+       RenommerAction  = menu.addAction("Renommer")
        action = menu.exec_(self.listViewBiblio.mapToGlobal(position))
        if action == EditeurAction:
           self.switchToEditor()
        if action == SupprimerAction:
           self.supprimerBiblio()  
+       if action == RenommerAction:
+          self.renommerBiblio() 
           
     def supprimerBiblio (self) :
         selection = self.listViewBiblio.selectionModel()
@@ -440,8 +445,13 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
             self.modeleBiblio.remove(self.indexRecette)
         else :      
             pass
+    
+    def renommerBiblio (self) :
+        selection = self.listViewBiblio.selectionModel()
+        self.indexRecette = selection.currentIndex()
+        self.listViewBiblio.edit(self.indexRecette)
         
-        
+
 
         
         
