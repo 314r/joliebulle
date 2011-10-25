@@ -408,32 +408,53 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
     def selectionRecette(self):
         selection = self.listViewBiblio.selectionModel()
         self.indexRecette = selection.currentIndex()
-        self.chemin =self.modeleBiblio.filePath (self.indexRecette)
-        print(self.chemin)
-        self.purge()
+        if self.modeleBiblio.isDir(self.indexRecette) == True :
+            self.navFolder()
+            
         
-        self.s = self.chemin
-        
-        self.importBeerXML()
-        self.calculs_recette()
-        self.MVC()
-        self.stackedWidget.setCurrentIndex(0)
-        self.actionVueEditeurToolBar.setChecked(True)
-        self.actionVueBibliothequeToolBar.setChecked(False)
+        else :
+
+            self.chemin =self.modeleBiblio.filePath (self.indexRecette)
+            print(self.chemin)
+            self.purge()
+            
+            self.s = self.chemin
+            
+            self.importBeerXML()
+            self.calculs_recette()
+            self.MVC()
+            self.stackedWidget.setCurrentIndex(0)
+            self.actionVueEditeurToolBar.setChecked(True)
+            self.actionVueBibliothequeToolBar.setChecked(False)
+
         
     def menuBiblio(self,position) :
-       menu = QtGui.QMenu()
-       EditeurAction = menu.addAction("Editeur de recette")
-       SupprimerAction = menu.addAction("Supprimer")
-       RenommerAction  = menu.addAction("Renommer")
-       action = menu.exec_(self.listViewBiblio.mapToGlobal(position))
-       if action == EditeurAction:
-          self.switchToEditor()
-       if action == SupprimerAction:
-          self.supprimerBiblio()  
-       if action == RenommerAction:
-          self.renommerBiblio() 
-          
+        menu = QtGui.QMenu()
+        EditeurAction = menu.addAction("Editeur de recette")
+        SupprimerAction = menu.addAction("Supprimer")
+        RenommerAction  = menu.addAction("Renommer")
+        FolderAction = menu.addAction("Créer un dossier")
+        UpAction = menu.addAction("Remonter")
+        CopyAction = menu.addAction("Copier")
+        PasteAction = menu.addAction("Coller")
+               
+        action = menu.exec_(self.listViewBiblio.mapToGlobal(position))
+        if action == EditeurAction:
+            self.switchToEditor()
+        if action == SupprimerAction:
+            self.supprimerBiblio()  
+        if action == RenommerAction:
+            self.renommerBiblio() 
+        if action == FolderAction:
+            self.createFolder()   
+        if action == UpAction :
+            self.upFolder()
+        if action == CopyAction :
+            self.copy()
+        if action == PasteAction :
+            self.paste()
+            
+                        
     def supprimerBiblio (self) :
         selection = self.listViewBiblio.selectionModel()
         self.indexRecette = selection.currentIndex()
@@ -451,14 +472,46 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         self.indexRecette = selection.currentIndex()
         self.listViewBiblio.edit(self.indexRecette)
         
-
-
+    def createFolder(self) :
+        selection = self.listViewBiblio.selectionModel()
+        self.indexRecette = selection.currentIndex()
+        text = "nouveau dossier"
+        recettes = QtCore.QFile(recettes_dir)
+        path = recettes_dir + "/" + text
+        os.mkdir(path)
         
+    def navFolder(self) :
+        selection = self.listViewBiblio.selectionModel()
+        self.indexRecette = selection.currentIndex()        
+        self.listViewBiblio.setRootIndex(self.indexRecette)
+        #self.modeleBiblio.setRootPath("/home/pierre/.config/joliebulle/recettes/nouveau dossier")
+        
+    def upFolder(self) :
+        self.listViewBiblio.setRootIndex(self.listViewBiblio.rootIndex().parent())
+        
+    def copy (self) :
+        data = QtCore.QMimeData()
+        selection = self.listViewBiblio.selectionModel()
+        self.indexRecette = selection.currentIndex()  
+        path = self.modeleBiblio.filePath(self.indexRecette)
+        url = QtCore.QUrl.fromLocalFile(path)
+        self.lurl = [url]
+        data.setUrls(self.lurl)
+        clipboard = app.clipboard()
+        clipboard.setMimeData(data)
+              
+    def paste (self) :
+        clipboard = app.clipboard()
+        data = clipboard.mimeData()
+        file = QtCore.QFile()
+        file.setFileName(self.lurl[0].toLocalFile())
+        info = QtCore.QFileInfo(file.fileName())
+        name= info.fileName()
+        path = self.modeleBiblio.filePath(self.listViewBiblio.rootIndex()) + "/" + name
+        file.copy(path)
         
               
-    def initRep(self) :
-        
-        
+    def initRep(self) :   
         home = QtCore.QDir(home_dir)
         config = QtCore.QDir(config_dir)
         print (config)
