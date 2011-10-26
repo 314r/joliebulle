@@ -430,17 +430,24 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         
     def menuBiblio(self,position) :
         menu = QtGui.QMenu()
-        EditeurAction = menu.addAction("Editeur de recette")
-        SupprimerAction = menu.addAction("Supprimer")
+        #EditeurAction = menu.addAction("Editeur de recette")
         RenommerAction  = menu.addAction("Renommer")
-        FolderAction = menu.addAction("Créer un dossier")
-        UpAction = menu.addAction("Remonter")
+        SupprimerAction = menu.addAction("Supprimer")        
         CopyAction = menu.addAction("Copier")
         PasteAction = menu.addAction("Coller")
+        FolderAction = menu.addAction("Créer un dossier")
+        UpAction = menu.addAction("Remonter")
+
+        
+        PasteAction.setEnabled(False)
+        clipboard = app.clipboard()
+        data = clipboard.mimeData
+        if clipboard.mimeData().hasUrls() :
+            PasteAction.setEnabled(True)
                
         action = menu.exec_(self.listViewBiblio.mapToGlobal(position))
-        if action == EditeurAction:
-            self.switchToEditor()
+        #if action == EditeurAction:
+          #  self.switchToEditor()
         if action == SupprimerAction:
             self.supprimerBiblio()  
         if action == RenommerAction:
@@ -476,9 +483,10 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         selection = self.listViewBiblio.selectionModel()
         self.indexRecette = selection.currentIndex()
         text = "nouveau dossier"
-        recettes = QtCore.QFile(recettes_dir)
-        path = recettes_dir + "/" + text
+       # recettes = QtCore.QFile(recettes_dir)
+        path = self.modeleBiblio.filePath(self.listViewBiblio.rootIndex()) + "/" + text
         os.mkdir(path)
+        
         
     def navFolder(self) :
         selection = self.listViewBiblio.selectionModel()
