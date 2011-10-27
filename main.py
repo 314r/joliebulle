@@ -29,6 +29,7 @@ import sys
 from PyQt4 import QtGui
 from PyQt4 import QtCore
 from reader import *
+from settings import *
 from export import *
 from exportHTML import *
 from base import *
@@ -41,6 +42,7 @@ from outilAlc import *
 from outilDilution import *
 from outilEvaporation import *
 from outilPaliers import * 
+from preferences import *
 from globals import *
 
 
@@ -255,6 +257,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
     def __init__(self, parent = None):
         QtGui.QMainWindow.__init__(self, parent)
         self.setupUi(self)
+        self.settings = Settings()
         self.initRep()
         self.dlgEditG = Dialog(self)
         self.dlgEditH = DialogH(self)
@@ -265,6 +268,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         self.dlgOutilDilution = DialogDilution(self)
         self.dlgOutilEvaporation = DialogEvaporation(self)
         self.dlgOutilPaliers = DialogPaliers(self)
+        self.dlgPref = DialogPref(self)
         self.base = ImportBase()
         self.base.importBeerXML()
         self.s=0
@@ -295,6 +299,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         self.connect(self.actionDilution, QtCore.SIGNAL("triggered()"), self.outilDilution)
         self.connect(self.actionEvaporation, QtCore.SIGNAL("triggered()"), self.outilEvaporation)
         self.connect(self.actionPaliers, QtCore.SIGNAL("triggered()"), self.outilPaliers)
+        self.connect(self.actionPreferences, QtCore.SIGNAL("triggered()"), self.dialogPreferences)
         
         #Les vues
         #####################################################################################
@@ -767,6 +772,10 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
     def outilPaliers (self) :
         self.dlgOutilPaliers.setModal(True)
         self.dlgOutilPaliers.show()
+        
+    def dialogPreferences (self) :
+        self.dlgPref.setModal(True)
+        self.dlgPref.show()
         
     
         

@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'reader.ui'
 #
-# Created: Tue Oct  4 23:26:49 2011
+# Created: Thu Oct 27 23:17:37 2011
 #      by: PyQt4 UI code generator 4.8.5
 #
 # WARNING! All changes made in this file will be lost!
@@ -507,6 +507,9 @@ class Ui_MainWindow(object):
         self.actionEnregistrerToolBar.setIcon(icon10)
         self.actionEnregistrerToolBar.setText(QtGui.QApplication.translate("MainWindow", "&Enregistrer", None, QtGui.QApplication.UnicodeUTF8))
         self.actionEnregistrerToolBar.setObjectName(_fromUtf8("actionEnregistrerToolBar"))
+        self.actionPreferences = QtGui.QAction(MainWindow)
+        self.actionPreferences.setText(QtGui.QApplication.translate("MainWindow", "Préférences", None, QtGui.QApplication.UnicodeUTF8))
+        self.actionPreferences.setObjectName(_fromUtf8("actionPreferences"))
         self.toolBar.addAction(self.actionVueEditeurToolBar)
         self.toolBar.addAction(self.actionVueBibliothequeToolBar)
         self.toolBar.addSeparator()
@@ -528,6 +531,7 @@ class Ui_MainWindow(object):
         self.menuEdition.addAction(self.actionEditDivers)
         self.menuEdition.addAction(self.actionEditLevures)
         self.menuEdition.addAction(self.actionRestaurerIngredients)
+        self.menuEdition.addAction(self.actionPreferences)
         self.menuOutils.addAction(self.actionCorrectionDens)
         self.menuOutils.addAction(self.actionCalculAlc)
         self.menuOutils.addAction(self.actionDilution)

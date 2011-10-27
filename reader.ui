@@ -740,6 +740,7 @@ color: rgb(255, 255, 255);</string>
     <addaction name="actionEditDivers"/>
     <addaction name="actionEditLevures"/>
     <addaction name="actionRestaurerIngredients"/>
+    <addaction name="actionPreferences"/>
    </widget>
    <widget class="QMenu" name="menuOutils">
     <property name="title">
@@ -955,6 +956,11 @@ color: rgb(255, 255, 255);</string>
    </property>
    <property name="text">
     <string>&amp;Enregistrer</string>
+   </property>
+  </action>
+  <action name="actionPreferences">
+   <property name="text">
+    <string>Préférences</string>
    </property>
   </action>
  </widget>
