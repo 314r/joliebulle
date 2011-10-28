@@ -34,7 +34,7 @@ class DialogPref(QtGui.QDialog):
     def accepted(self) :    
         print("okidoki")
         if platform == 'win32' :
-            pass
+            settings.conf.setValue("pathWin32", self.ui.lineEditPathLib.text())
         else :
             settings.conf.setValue("pathUnix", self.ui.lineEditPathLib.text())
             print (settings.conf.value("pathUnix"))
