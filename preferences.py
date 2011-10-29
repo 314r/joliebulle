@@ -23,18 +23,25 @@ class DialogPref(QtGui.QDialog):
         
         self.ui.pushButtonChangeLib.clicked.connect(self.changePushed)
         self.ui.buttonBox.accepted.connect(self.accepted)
+        self.ui.buttonBox.rejected.connect(self.rejected)
         
     def changePushed (self) :
         self.d = QtGui.QFileDialog.getExistingDirectory(self,
             self.trUtf8("Choisir un dossier"),
             home_dir,
             )
-        self.ui.lineEditPathLib.setText(self.d)
+        if not self.d :
+            pass
+        else :
+            self.ui.lineEditPathLib.setText(self.d)
         
     def accepted(self) :    
-        print("okidoki")
+        
         if platform == 'win32' :
             settings.conf.setValue("pathWin32", self.ui.lineEditPathLib.text())
         else :
             settings.conf.setValue("pathUnix", self.ui.lineEditPathLib.text())
             print (settings.conf.value("pathUnix"))
+            
+    def rejected (self) :
+        self.ui.lineEditPathLib.setText(recettes_dir)
