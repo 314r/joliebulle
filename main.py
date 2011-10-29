@@ -333,6 +333,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         
         self.connect(self.comboBoxStyle, QtCore.SIGNAL("currentIndexChanged(QString)"), self.addStyle)
         #self.connect(self.pushButtonEssai, QtCore.SIGNAL("clicked()"), self.essai)
+        self.connect(self.comboBoxType, QtCore.SIGNAL("currentIndexChanged(QString)"), self.typeChanged)
         
         #Les modeles et vues du widget central
         self.modele = QtGui.QStandardItemModel(0, 6)
@@ -1002,6 +1003,12 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
             if nom.tag == "NAME" : 
                     self.nomRecette = nom.text
             
+        self.brewer =''
+        for brewer in presentation :
+            if brewer.tag == "BREWER" :
+                self.brewer = brewer.text
+               
+        
             
         for nom in style :
             if nom.tag == "NAME" : 
@@ -1043,6 +1050,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
             self.comboBoxType.setCurrentIndex(1)
         else :
             self.comboBoxType.setCurrentIndex(0)
+        self.lineEditBrewer.setText(self.brewer)
             
         
     
@@ -1466,24 +1474,32 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         else :
             self.volume = self.doubleSpinBox_2Volume.value()
             self.calculs_recette()
-        
+            
+    def typeChanged (self) :
+        if self.comboBoxType.currentIndex() == 0 :
+            self.typeRecette = "All Grain"
+        if self.comboBoxType.currentIndex() == 1 :   
+            self.typeRecette = "Extract"
+        if self.comboBoxType.currentIndex() == 2 :
+            self.typeRecette = "Partial Mash"
 
     def enregistrer (self) :
         exp=Export()
         self.nomRecette = self.lineEditRecette.text()
-        self.styleRecette = self.lineEditGenre.text()
+        self.styleRecette = self.lineEditGenre.text()   
+        self.brewer = self.lineEditBrewer.text()        
         self.boil = self.spinBoxBoil.value()
         if not self.s : 
             #self.enregistrerSous()
             recettes = QtCore.QFile(recettes_dir)
             self.s =  recettes_dir +"/" + self.nomRecette + ".xml"
-            print("ceci est le chemin :", self.s)
-            exp.exportXML(self.nomRecette, self.styleRecette, self.volume, self.boil, self.rendement, AppWindow.nbreHops, self.liste_houblons, self.liste_hAmount, self.liste_hForm, self.liste_hTime, self.liste_hAlpha, AppWindow.nbreFer, self.fNom, self.fAmount ,self.fType, self.fYield, self.fMashed, self.color, self.liste_ingr, self.liste_fAmount, self.liste_fType, self.liste_fYield, self.liste_fMashed, self.liste_color, self.dNom, self.dAmount, self.dType, AppWindow.nbreDivers, self.liste_divers, self.liste_dAmount, self.liste_dType, self.nbreLevures, self.lNom, self.lForm, self.lLabo, self.lProd, self.lAtten, self.liste_levures, self.liste_lForm, self.liste_lLabo, self.liste_lProdid, self.liste_levureAtten)
+            
+            exp.exportXML(self.nomRecette, self.styleRecette, self.typeRecette, self.brewer, self.volume, self.boil, self.rendement, AppWindow.nbreHops, self.liste_houblons, self.liste_hAmount, self.liste_hForm, self.liste_hTime, self.liste_hAlpha, AppWindow.nbreFer, self.fNom, self.fAmount ,self.fType, self.fYield, self.fMashed, self.color, self.liste_ingr, self.liste_fAmount, self.liste_fType, self.liste_fYield, self.liste_fMashed, self.liste_color, self.dNom, self.dAmount, self.dType, AppWindow.nbreDivers, self.liste_divers, self.liste_dAmount, self.liste_dType, self.nbreLevures, self.lNom, self.lForm, self.lLabo, self.lProd, self.lAtten, self.liste_levures, self.liste_lForm, self.liste_lLabo, self.liste_lProdid, self.liste_levureAtten)
             exp.enregistrer(self.s)
         else :
 
             
-            exp.exportXML(self.nomRecette, self.styleRecette, self.volume, self.boil, self.rendement, AppWindow.nbreHops, self.liste_houblons, self.liste_hAmount, self.liste_hForm, self.liste_hTime, self.liste_hAlpha, AppWindow.nbreFer, self.fNom, self.fAmount ,self.fType, self.fYield, self.fMashed, self.color, self.liste_ingr, self.liste_fAmount, self.liste_fType, self.liste_fYield, self.liste_fMashed, self.liste_color, self.dNom, self.dAmount, self.dType, AppWindow.nbreDivers, self.liste_divers, self.liste_dAmount, self.liste_dType, self.nbreLevures, self.lNom, self.lForm, self.lLabo, self.lProd, self.lAtten, self.liste_levures, self.liste_lForm, self.liste_lLabo, self.liste_lProdid, self.liste_levureAtten)
+            exp.exportXML(self.nomRecette, self.styleRecette, self.typeRecette, self.brewer, self.volume, self.boil, self.rendement, AppWindow.nbreHops, self.liste_houblons, self.liste_hAmount, self.liste_hForm, self.liste_hTime, self.liste_hAlpha, AppWindow.nbreFer, self.fNom, self.fAmount ,self.fType, self.fYield, self.fMashed, self.color, self.liste_ingr, self.liste_fAmount, self.liste_fType, self.liste_fYield, self.liste_fMashed, self.liste_color, self.dNom, self.dAmount, self.dType, AppWindow.nbreDivers, self.liste_divers, self.liste_dAmount, self.liste_dType, self.nbreLevures, self.lNom, self.lForm, self.lLabo, self.lProd, self.lAtten, self.liste_levures, self.liste_lForm, self.liste_lLabo, self.liste_lProdid, self.liste_levureAtten)
             exp.enregistrer(self.s)
     
         
@@ -1491,12 +1507,13 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         exp=Export()
         self.nomRecette = self.lineEditRecette.text()  
         self.styleRecette = self.lineEditGenre.text()
+        self.brewer = self.lineEditBrewer.text()  
         self.boil = self.spinBoxBoil.value()
         self.s = QtGui.QFileDialog.getSaveFileName (self,
                                                     self.trUtf8("Enregistrer dans un fichier"),
                                                     recettes_dir + "/" + self.nomRecette,
                                                     "BeerXML (*.xml)")
-        exp.exportXML(self.nomRecette, self.styleRecette, self.volume, self.boil, self.rendement, AppWindow.nbreHops, self.liste_houblons, self.liste_hAmount, self.liste_hForm, self.liste_hTime, self.liste_hAlpha, AppWindow.nbreFer, self.fNom, self.fAmount ,self.fType, self.fYield, self.fMashed, self.color, self.liste_ingr, self.liste_fAmount, self.liste_fType, self.liste_fYield, self.liste_fMashed, self.liste_color, self.dNom, self.dAmount, self.dType, AppWindow.nbreDivers, self.liste_divers, self.liste_dAmount, self.liste_dType, self.nbreLevures, self.lNom, self.lForm, self.lLabo, self.lProd, self.lAtten, self.liste_levures, self.liste_lForm, self.liste_lLabo, self.liste_lProdid, self.liste_levureAtten)
+        exp.exportXML(self.nomRecette, self.styleRecette, self.typeRecette, self.brewer, self.volume, self.boil, self.rendement, AppWindow.nbreHops, self.liste_houblons, self.liste_hAmount, self.liste_hForm, self.liste_hTime, self.liste_hAlpha, AppWindow.nbreFer, self.fNom, self.fAmount ,self.fType, self.fYield, self.fMashed, self.color, self.liste_ingr, self.liste_fAmount, self.liste_fType, self.liste_fYield, self.liste_fMashed, self.liste_color, self.dNom, self.dAmount, self.dType, AppWindow.nbreDivers, self.liste_divers, self.liste_dAmount, self.liste_dType, self.nbreLevures, self.lNom, self.lForm, self.lLabo, self.lProd, self.lAtten, self.liste_levures, self.liste_lForm, self.liste_lLabo, self.liste_lProdid, self.liste_levureAtten)
         exp.enregistrer(self.s)  
     def exporterHtml (self) :
         self.nomRecette = self.lineEditRecette.text()
