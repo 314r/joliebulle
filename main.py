@@ -522,6 +522,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         name= info.fileName()
         path = self.modeleBiblio.filePath(self.listViewBiblio.rootIndex()) + "/" + name
         file.copy(path)
+        clipboard.clear()
         
               
     def initRep(self) :   
