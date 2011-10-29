@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'reader.ui'
 #
-# Created: Sat Oct 29 16:11:36 2011
+# Created: Sat Oct 29 16:59:39 2011
 #      by: PyQt4 UI code generator 4.8.5
 #
 # WARNING! All changes made in this file will be lost!
@@ -93,12 +93,12 @@ class Ui_MainWindow(object):
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
 "</style></head><body style=\" font-family:\'Droid Sans\'; font-size:10pt; font-weight:400; font-style:normal;\">\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-weight:600;\">Auteur :</span></p></body></html>", None, QtGui.QApplication.UnicodeUTF8))
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-weight:600;\">Brasseur :</span></p></body></html>", None, QtGui.QApplication.UnicodeUTF8))
         self.label_3.setObjectName(_fromUtf8("label_3"))
         self.formLayout_3.setWidget(0, QtGui.QFormLayout.LabelRole, self.label_3)
-        self.lineEditAuthor = QtGui.QLineEdit(self.widgetEditeur)
-        self.lineEditAuthor.setObjectName(_fromUtf8("lineEditAuthor"))
-        self.formLayout_3.setWidget(0, QtGui.QFormLayout.FieldRole, self.lineEditAuthor)
+        self.lineEditBrewer = QtGui.QLineEdit(self.widgetEditeur)
+        self.lineEditBrewer.setObjectName(_fromUtf8("lineEditBrewer"))
+        self.formLayout_3.setWidget(0, QtGui.QFormLayout.FieldRole, self.lineEditBrewer)
         self.label_4 = QtGui.QLabel(self.widgetEditeur)
         self.label_4.setText(QtGui.QApplication.translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"

@@ -276,7 +276,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         
         self.baseStyleListe = [self.trUtf8('Générique'), '1A. Lite American Lager', '1B. Standard American Lager', '1C. Premium American Lager', '1D. Munich Helles', '1E. Dortmunder Export', '2A. German Pilsner (Pils)', '2B. Bohemian Pilsener', '2C. Classic American Pilsner', '3A. Vienna Lager', '3B. Oktoberfest/Märzen', '4A. Dark American Lager', '4B. Munich Dunkel', '4C. Schwarzbier (Black Beer)', '5A. Maibock/Helles Bock', '5B. Traditional Bock', '5C. Doppelbock', '5D. Eisbock', '6A. Cream Ale', '6B. Blonde Ale', '6C. Kölsch', '6D. American Wheat or Rye Beer', '7A. Northern German Altbier', '7B. California Common Beer', '7C. Düsseldorf Altbier', '8A. Standard/Ordinary Bitter', '8B. Special/Best/Premium Bitter', '8C. Extra Special/Strong Bitter (English Pale Ale)', '9A. Scottish Light 60/-', '9B. Scottish Heavy 70/-', '9C. Scottish Export 80/- ', '9D. Irish Red Ale', '9E. Strong Scotch Ale', '10A. American Pale Ale', '10B. American Amber Ale', '10C. American Brown Ale', '11A. Mild','11B. Southern English Brown', '11C. Northern English Brown Ale', '12A. Brown Porter', '12B. Robust Porter', '12C. Baltic Porter', '13A. Dry Stout', '13B. Sweet Stout', '13C. Oatmeal Stout', '13D. Foreign Extra Stout', '13E. American Stout', '13F. Russian Imperial Stout', '14A. English IPA', '14B. American IPA', '14C. Imperial IPA','15A. Weizen/Weissbier', '15B. Dunkelweizen', '15C. Weizenbock', '15D. Roggenbier (German Rye Beer)','16A. Witbier', '16B. Belgian Pale Ale', '16C. Saison', '16D. Bière de Garde', '16E. Belgian Specialty Ale', '17A. Berliner Weisse', '17B. Flanders Red Ale', '17C. Flanders Brown Ale/Oud Bruin', '17D. Straight (Unblended) Lambic', '17E. Gueuze', '17F. Fruit Lambic', '18A. Belgian Blond Ale', '18B. Belgian Dubbel', '18C. Belgian Tripel', '18D. Belgian Golden Strong Ale', '18E. Belgian Dark Strong Ale', '19A. Old Ale', '19B. English Barleywine', '19C. American Barleywine', '20. Fruit Beer', '21A. Spice, Herb, or Vegetable Beer', '21B. Christmas/Winter Specialty Spiced Beer', '22A. Classic Rauchbier', '22B. Other Smoked Beer', '22C. Wood-Aged Beer', '23. Specialty Beer', '24A. Dry Mead', '24B. Semi-sweet Mead', '24C. Sweet Mead', '25A. Cyser', '25B. Pyment', '25C. Other Fruit Melomel', '26A. Metheglin', '26B. Braggot', '26C. Open Category Mead', '27A. Common Cider', '27B. English Cider', '27C. French Cider', '27D. Common Perry', '27E. Traditional Perry', '28A. New England Cider', '28B. Fruit Cider', '28C. Applewine', '28D. Other Specialty Cider/Perry']
        
-        self.typesList = ["Extrait", "Partial mash","Tout grain"]
+        self.typesList = ["Tout grain", "Extrait", "Partial mash"]
         #Les connections
         self.connect(self.actionOuvrir, QtCore.SIGNAL("triggered()"), self.ouvrir_clicked)
         self.connect(self.actionOuvrir_2, QtCore.SIGNAL("triggered()"), self.ouvrir_clicked)
@@ -408,7 +408,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         self.comboBoxStyle.addItems(self.baseStyleListe)
         
         self.comboBoxType.addItems(self.typesList)
-        self.comboBoxType.setCurrentIndex(2)
+        self.comboBoxType.setCurrentIndex(0)
 
         self.widgetVol.hide()
         
@@ -779,6 +779,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         self.dlgOutilPaliers.setModal(True)
         self.dlgOutilPaliers.show()
         
+        
     def dialogPreferences (self) :
         self.dlgPref.setModal(True)
         self.dlgPref.show()
@@ -1005,6 +1006,11 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         for nom in style :
             if nom.tag == "NAME" : 
                 self.styleRecette = nom.text
+        
+        self.typeRecette=''
+        for typeRecette in presentation :
+            if typeRecette.tag == "TYPE" : 
+                self.typeRecette = typeRecette.text
                 
         for batch_size in presentation :
             if batch_size.tag == "BATCH_SIZE" : 
@@ -1029,6 +1035,15 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         except :
             self.spinBoxBoil.setValue (0)
         self.doubleSpinBoxVolPre.setValue(float(self.volume))
+        if self.typeRecette == "All Grain" :
+            self.comboBoxType.setCurrentIndex(0)
+        elif self.typeRecette == "Partial Mash" :
+            self.comboBoxType.setCurrentIndex(2)
+        elif self.typeRecette == "Extract" :
+            self.comboBoxType.setCurrentIndex(1)
+        else :
+            self.comboBoxType.setCurrentIndex(0)
+            
         
     
     
