@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'reader.ui'
 #
-# Created: Thu Oct 27 23:17:37 2011
+# Created: Sat Oct 29 14:43:19 2011
 #      by: PyQt4 UI code generator 4.8.5
 #
 # WARNING! All changes made in this file will be lost!
@@ -356,7 +356,10 @@ class Ui_MainWindow(object):
         self.listViewBiblio = QtGui.QListView(self.widget)
         self.listViewBiblio.setStyleSheet(_fromUtf8("background-color: rgb(116, 116, 116);\n"
 "color: rgb(255, 255, 255);"))
-        self.listViewBiblio.setMovement(QtGui.QListView.Static)
+        self.listViewBiblio.setDragEnabled(True)
+        self.listViewBiblio.setDragDropMode(QtGui.QAbstractItemView.InternalMove)
+        self.listViewBiblio.setDefaultDropAction(QtCore.Qt.MoveAction)
+        self.listViewBiblio.setMovement(QtGui.QListView.Free)
         self.listViewBiblio.setFlow(QtGui.QListView.LeftToRight)
         self.listViewBiblio.setSpacing(30)
         self.listViewBiblio.setViewMode(QtGui.QListView.IconMode)

@@ -652,8 +652,17 @@ p, li { white-space: pre-wrap; }
               <string notr="true">background-color: rgb(116, 116, 116);
 color: rgb(255, 255, 255);</string>
              </property>
+             <property name="dragEnabled">
+              <bool>true</bool>
+             </property>
+             <property name="dragDropMode">
+              <enum>QAbstractItemView::InternalMove</enum>
+             </property>
+             <property name="defaultDropAction">
+              <enum>Qt::MoveAction</enum>
+             </property>
              <property name="movement">
-              <enum>QListView::Static</enum>
+              <enum>QListView::Free</enum>
              </property>
              <property name="flow">
               <enum>QListView::LeftToRight</enum>
