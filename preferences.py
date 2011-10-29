@@ -21,6 +21,7 @@ class DialogPref(QtGui.QDialog):
         self.ui.setupUi(self)
         self.ui.lineEditPathLib.setText(recettes_dir)
         
+        #les connections
         self.ui.pushButtonChangeLib.clicked.connect(self.changePushed)
         self.ui.buttonBox.accepted.connect(self.accepted)
         self.ui.buttonBox.rejected.connect(self.rejected)

@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'reader.ui'
 #
-# Created: Sat Oct 29 14:43:19 2011
+# Created: Sat Oct 29 16:11:36 2011
 #      by: PyQt4 UI code generator 4.8.5
 #
 # WARNING! All changes made in this file will be lost!
@@ -37,12 +37,14 @@ class Ui_MainWindow(object):
         self.widgetEditeur = QtGui.QWidget(self.page)
         self.widgetEditeur.setObjectName(_fromUtf8("widgetEditeur"))
         self.verticalLayout_2 = QtGui.QVBoxLayout(self.widgetEditeur)
-        self.verticalLayout_2.setSpacing(6)
-        self.verticalLayout_2.setMargin(0)
         self.verticalLayout_2.setMargin(0)
         self.verticalLayout_2.setObjectName(_fromUtf8("verticalLayout_2"))
-        self.horizontalLayout = QtGui.QHBoxLayout()
-        self.horizontalLayout.setObjectName(_fromUtf8("horizontalLayout"))
+        self.horizontalLayout_2 = QtGui.QHBoxLayout()
+        self.horizontalLayout_2.setObjectName(_fromUtf8("horizontalLayout_2"))
+        self.formLayout_2 = QtGui.QFormLayout()
+        self.formLayout_2.setFieldGrowthPolicy(QtGui.QFormLayout.AllNonFixedFieldsGrow)
+        self.formLayout_2.setLabelAlignment(QtCore.Qt.AlignRight|QtCore.Qt.AlignTrailing|QtCore.Qt.AlignVCenter)
+        self.formLayout_2.setObjectName(_fromUtf8("formLayout_2"))
         self.labelRecette = QtGui.QLabel(self.widgetEditeur)
         self.labelRecette.setText(QtGui.QApplication.translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
@@ -50,15 +52,10 @@ class Ui_MainWindow(object):
 "</style></head><body style=\" font-family:\'Droid Sans\'; font-size:9pt; font-weight:400; font-style:normal;\">\n"
 "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-weight:600;\">Nom de la recette :</span></p></body></html>", None, QtGui.QApplication.UnicodeUTF8))
         self.labelRecette.setObjectName(_fromUtf8("labelRecette"))
-        self.horizontalLayout.addWidget(self.labelRecette)
+        self.formLayout_2.setWidget(0, QtGui.QFormLayout.LabelRole, self.labelRecette)
         self.lineEditRecette = QtGui.QLineEdit(self.widgetEditeur)
         self.lineEditRecette.setObjectName(_fromUtf8("lineEditRecette"))
-        self.horizontalLayout.addWidget(self.lineEditRecette)
-        spacerItem = QtGui.QSpacerItem(40, 20, QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Minimum)
-        self.horizontalLayout.addItem(spacerItem)
-        self.verticalLayout_2.addLayout(self.horizontalLayout)
-        self.horizontalLayout_2 = QtGui.QHBoxLayout()
-        self.horizontalLayout_2.setObjectName(_fromUtf8("horizontalLayout_2"))
+        self.formLayout_2.setWidget(0, QtGui.QFormLayout.FieldRole, self.lineEditRecette)
         self.labelGenre = QtGui.QLabel(self.widgetEditeur)
         self.labelGenre.setText(QtGui.QApplication.translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
@@ -66,10 +63,12 @@ class Ui_MainWindow(object):
 "</style></head><body style=\" font-family:\'Droid Sans\'; font-size:9pt; font-weight:400; font-style:normal;\">\n"
 "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-weight:600;\">Genre :</span></p></body></html>", None, QtGui.QApplication.UnicodeUTF8))
         self.labelGenre.setObjectName(_fromUtf8("labelGenre"))
-        self.horizontalLayout_2.addWidget(self.labelGenre)
+        self.formLayout_2.setWidget(1, QtGui.QFormLayout.LabelRole, self.labelGenre)
+        self.horizontalLayout = QtGui.QHBoxLayout()
+        self.horizontalLayout.setObjectName(_fromUtf8("horizontalLayout"))
         self.lineEditGenre = QtGui.QLineEdit(self.widgetEditeur)
         self.lineEditGenre.setObjectName(_fromUtf8("lineEditGenre"))
-        self.horizontalLayout_2.addWidget(self.lineEditGenre)
+        self.horizontalLayout.addWidget(self.lineEditGenre)
         self.pushButtonChangerStyle = QtGui.QPushButton(self.widgetEditeur)
         self.pushButtonChangerStyle.setToolTip(QtGui.QApplication.translate("MainWindow", "Liste de styles BJCP", None, QtGui.QApplication.UnicodeUTF8))
         self.pushButtonChangerStyle.setText(_fromUtf8(""))
@@ -78,12 +77,42 @@ class Ui_MainWindow(object):
         self.pushButtonChangerStyle.setIcon(icon1)
         self.pushButtonChangerStyle.setCheckable(True)
         self.pushButtonChangerStyle.setObjectName(_fromUtf8("pushButtonChangerStyle"))
-        self.horizontalLayout_2.addWidget(self.pushButtonChangerStyle)
+        self.horizontalLayout.addWidget(self.pushButtonChangerStyle)
         self.comboBoxStyle = QtGui.QComboBox(self.widgetEditeur)
         self.comboBoxStyle.setObjectName(_fromUtf8("comboBoxStyle"))
-        self.horizontalLayout_2.addWidget(self.comboBoxStyle)
-        spacerItem1 = QtGui.QSpacerItem(40, 20, QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Minimum)
-        self.horizontalLayout_2.addItem(spacerItem1)
+        self.horizontalLayout.addWidget(self.comboBoxStyle)
+        self.formLayout_2.setLayout(1, QtGui.QFormLayout.FieldRole, self.horizontalLayout)
+        self.horizontalLayout_2.addLayout(self.formLayout_2)
+        self.formLayout_3 = QtGui.QFormLayout()
+        self.formLayout_3.setFieldGrowthPolicy(QtGui.QFormLayout.AllNonFixedFieldsGrow)
+        self.formLayout_3.setLabelAlignment(QtCore.Qt.AlignRight|QtCore.Qt.AlignTrailing|QtCore.Qt.AlignVCenter)
+        self.formLayout_3.setContentsMargins(20, -1, -1, -1)
+        self.formLayout_3.setObjectName(_fromUtf8("formLayout_3"))
+        self.label_3 = QtGui.QLabel(self.widgetEditeur)
+        self.label_3.setText(QtGui.QApplication.translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
+"p, li { white-space: pre-wrap; }\n"
+"</style></head><body style=\" font-family:\'Droid Sans\'; font-size:10pt; font-weight:400; font-style:normal;\">\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-weight:600;\">Auteur :</span></p></body></html>", None, QtGui.QApplication.UnicodeUTF8))
+        self.label_3.setObjectName(_fromUtf8("label_3"))
+        self.formLayout_3.setWidget(0, QtGui.QFormLayout.LabelRole, self.label_3)
+        self.lineEditAuthor = QtGui.QLineEdit(self.widgetEditeur)
+        self.lineEditAuthor.setObjectName(_fromUtf8("lineEditAuthor"))
+        self.formLayout_3.setWidget(0, QtGui.QFormLayout.FieldRole, self.lineEditAuthor)
+        self.label_4 = QtGui.QLabel(self.widgetEditeur)
+        self.label_4.setText(QtGui.QApplication.translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
+"p, li { white-space: pre-wrap; }\n"
+"</style></head><body style=\" font-family:\'Droid Sans\'; font-size:10pt; font-weight:400; font-style:normal;\">\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-weight:600;\">Type :</span></p></body></html>", None, QtGui.QApplication.UnicodeUTF8))
+        self.label_4.setObjectName(_fromUtf8("label_4"))
+        self.formLayout_3.setWidget(1, QtGui.QFormLayout.LabelRole, self.label_4)
+        self.comboBoxType = QtGui.QComboBox(self.widgetEditeur)
+        self.comboBoxType.setObjectName(_fromUtf8("comboBoxType"))
+        self.formLayout_3.setWidget(1, QtGui.QFormLayout.FieldRole, self.comboBoxType)
+        self.horizontalLayout_2.addLayout(self.formLayout_3)
+        spacerItem = QtGui.QSpacerItem(40, 20, QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Minimum)
+        self.horizontalLayout_2.addItem(spacerItem)
         self.verticalLayout_2.addLayout(self.horizontalLayout_2)
         self.horizontalLayout_4 = QtGui.QHBoxLayout()
         self.horizontalLayout_4.setSpacing(10)
@@ -129,8 +158,8 @@ class Ui_MainWindow(object):
         self.doubleSpinBoxRendemt = QtGui.QDoubleSpinBox(self.widgetEditeur)
         self.doubleSpinBoxRendemt.setObjectName(_fromUtf8("doubleSpinBoxRendemt"))
         self.horizontalLayout_4.addWidget(self.doubleSpinBoxRendemt)
-        spacerItem2 = QtGui.QSpacerItem(40, 20, QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Minimum)
-        self.horizontalLayout_4.addItem(spacerItem2)
+        spacerItem1 = QtGui.QSpacerItem(1112, 20, QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Minimum)
+        self.horizontalLayout_4.addItem(spacerItem1)
         self.verticalLayout_2.addLayout(self.horizontalLayout_4)
         self.widgetVol = QtGui.QWidget(self.widgetEditeur)
         self.widgetVol.setObjectName(_fromUtf8("widgetVol"))
@@ -160,8 +189,8 @@ class Ui_MainWindow(object):
         self.labelSG.setText(QtGui.QApplication.translate("MainWindow", "0", None, QtGui.QApplication.UnicodeUTF8))
         self.labelSG.setObjectName(_fromUtf8("labelSG"))
         self.horizontalLayout_3.addWidget(self.labelSG)
-        spacerItem3 = QtGui.QSpacerItem(40, 20, QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Minimum)
-        self.horizontalLayout_3.addItem(spacerItem3)
+        spacerItem2 = QtGui.QSpacerItem(40, 20, QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Minimum)
+        self.horizontalLayout_3.addItem(spacerItem2)
         self.verticalLayout_2.addWidget(self.widgetVol)
         self.horizontalLayout_6 = QtGui.QHBoxLayout()
         self.horizontalLayout_6.setObjectName(_fromUtf8("horizontalLayout_6"))
@@ -169,8 +198,8 @@ class Ui_MainWindow(object):
         self.checkBoxIng.setText(QtGui.QApplication.translate("MainWindow", "Ajuster les ingrédients", None, QtGui.QApplication.UnicodeUTF8))
         self.checkBoxIng.setObjectName(_fromUtf8("checkBoxIng"))
         self.horizontalLayout_6.addWidget(self.checkBoxIng)
-        spacerItem4 = QtGui.QSpacerItem(40, 20, QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Minimum)
-        self.horizontalLayout_6.addItem(spacerItem4)
+        spacerItem3 = QtGui.QSpacerItem(40, 20, QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Minimum)
+        self.horizontalLayout_6.addItem(spacerItem3)
         self.verticalLayout_2.addLayout(self.horizontalLayout_6)
         self.labelFermentables = QtGui.QLabel(self.widgetEditeur)
         self.labelFermentables.setText(QtGui.QApplication.translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
@@ -202,8 +231,8 @@ class Ui_MainWindow(object):
         self.verticalLayout_2.addWidget(self.tableViewF)
         self.horizontalLayout_5 = QtGui.QHBoxLayout()
         self.horizontalLayout_5.setObjectName(_fromUtf8("horizontalLayout_5"))
-        spacerItem5 = QtGui.QSpacerItem(40, 20, QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Minimum)
-        self.horizontalLayout_5.addItem(spacerItem5)
+        spacerItem4 = QtGui.QSpacerItem(40, 20, QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Minimum)
+        self.horizontalLayout_5.addItem(spacerItem4)
         self.pushButtonEnlever = QtGui.QPushButton(self.widgetEditeur)
         self.pushButtonEnlever.setText(QtGui.QApplication.translate("MainWindow", "Enlever", None, QtGui.QApplication.UnicodeUTF8))
         self.pushButtonEnlever.setObjectName(_fromUtf8("pushButtonEnlever"))
@@ -263,8 +292,8 @@ class Ui_MainWindow(object):
         self.horizontalLayout_13.addWidget(self.pushButtonAjouterY)
         self.verticalLayout_3.addLayout(self.horizontalLayout_13)
         self.horizontalLayout_7.addLayout(self.verticalLayout_3)
-        spacerItem6 = QtGui.QSpacerItem(40, 20, QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Minimum)
-        self.horizontalLayout_7.addItem(spacerItem6)
+        spacerItem5 = QtGui.QSpacerItem(40, 20, QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Minimum)
+        self.horizontalLayout_7.addItem(spacerItem5)
         self.formLayout = QtGui.QFormLayout()
         self.formLayout.setFieldGrowthPolicy(QtGui.QFormLayout.ExpandingFieldsGrow)
         self.formLayout.setContentsMargins(-1, 0, -1, 0)
@@ -336,8 +365,8 @@ class Ui_MainWindow(object):
         self.labelAlcv.setObjectName(_fromUtf8("labelAlcv"))
         self.formLayout.setWidget(4, QtGui.QFormLayout.FieldRole, self.labelAlcv)
         self.horizontalLayout_7.addLayout(self.formLayout)
-        spacerItem7 = QtGui.QSpacerItem(40, 20, QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Minimum)
-        self.horizontalLayout_7.addItem(spacerItem7)
+        spacerItem6 = QtGui.QSpacerItem(40, 20, QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Minimum)
+        self.horizontalLayout_7.addItem(spacerItem6)
         self.verticalLayout_2.addLayout(self.horizontalLayout_7)
         self.gridLayout.addWidget(self.widgetEditeur, 0, 0, 1, 1)
         self.stackedWidget.addWidget(self.page)
