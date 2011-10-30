@@ -41,7 +41,7 @@ class Dialog(QtGui.QDialog):
         self.ui.setupUi(self)
         self.base = ImportBase()
         self.base.importBeerXML()
-        databaseXML = open(database_file)
+        databaseXML = open(database_file,encoding='utf-8')
         database = ET.parse(databaseXML)
         
         self.ui.listWidgetGrains.addItems(self.base.liste_ingr)

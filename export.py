@@ -45,7 +45,7 @@ class Export :
 
 
     
-    def exportXML(self,nomRecette, styleRecette, typeRecette, brewer, volume, boil, rendement, nbreHops, liste_houblons,
+    def exportXML(self,nomRecette, styleRecette, typeRecette, brewer, volume, boil, rendement, OG, FG, nbreHops, liste_houblons,
 liste_hAmount, liste_hForm, liste_hTime, liste_hAlpha, nbreFer, fNom, fAmount,
 fType, fYield, fMashed, color, liste_ingr, liste_fAmount, liste_fType,
 liste_fYield, liste_fMashed, liste_color, dNom, dAmount, dType, nbreDivers, liste_divers, liste_dAmount, liste_dType, nbreLevures, lNom, lForm, lLabo, lProd, lAtten, liste_levures, liste_lForm, liste_lLabo, liste_lProdid, liste_levureAtten) :
@@ -55,6 +55,7 @@ liste_fYield, liste_fMashed, liste_color, dNom, dAmount, dType, nbreDivers, list
         name = ET.SubElement(recipe, 'NAME')
         name.text = nomRecette
         version = ET.SubElement(recipe, 'VERSION')
+        version.text = "1"
         type = ET.SubElement(recipe, 'TYPE')
         type.text = typeRecette
         brewerR = ET.SubElement(recipe, 'BREWER')
@@ -69,6 +70,11 @@ liste_fYield, liste_fMashed, liste_color, dNom, dAmount, dType, nbreDivers, list
         boil_time.text = str(boil)
         efficiency = ET.SubElement(recipe, 'EFFICIENCY')
         efficiency.text = str(rendement)
+        originalGravity = ET.SubElement(recipe, 'OG')
+        originalGravity.text = str(OG)
+        finalGravity = ET.SubElement(recipe, 'FG')
+        finalGravity.text = str(FG)
+        
         hops = ET.SubElement(recipe, 'HOPS')
         i=0
         while i < nbreHops :
