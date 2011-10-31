@@ -335,6 +335,11 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         #self.connect(self.pushButtonEssai, QtCore.SIGNAL("clicked()"), self.essai)
         self.connect(self.comboBoxType, QtCore.SIGNAL("currentIndexChanged(QString)"), self.typeChanged)
         
+        
+        #On connecte ici les signaux émits à la fermeture des fenêtres d'édition de la base
+        #self.connect(self.dlgEditG, QtCore.SIGNAL( "baseChanged"), self.baseReload)
+        self.dlgEditG.baseChanged.connect(self.baseReload)
+        
         #Les modeles et vues du widget central
         self.modele = QtGui.QStandardItemModel(0, 6)
         self.connect(self.modele, QtCore.SIGNAL("dataChanged(QModelIndex,QModelIndex)"), self.reverseMVC)
@@ -415,6 +420,22 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         
         self.nouvelle()
         
+    def baseReload (self): 
+        print("tagada tsoin tsoin")
+        self.base.importBeerXML()
+        
+        self.comboBox.clear()
+        self.comboBox.addItems(self.base.liste_ingr)
+        self.comboBox.setCurrentIndex(10)
+        
+        self.comboBoxH.addItems(self.base.liste_houblons)
+        self.comboBoxH.setCurrentIndex(10)
+        
+        self.comboBoxY.addItems(self.base.liste_levuresDetail)
+        self.comboBoxY.setCurrentIndex(10)
+        
+        self.comboBoxM.addItems(self.base.liste_divers)
+        self.comboBoxM.setCurrentIndex(0)
         
     def selectionRecette(self):
         selection = self.listViewBiblio.selectionModel()
