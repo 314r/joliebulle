@@ -337,8 +337,14 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         
         
         #On connecte ici les signaux émits à la fermeture des fenêtres d'édition de la base
+        #########################################################################################
+        ##########################################################################################
         #self.connect(self.dlgEditG, QtCore.SIGNAL( "baseChanged"), self.baseReload)
         self.dlgEditG.baseChanged.connect(self.baseReload)
+        self.dlgEditH.baseChanged.connect(self.baseReload)
+        self.dlgEditD.baseChanged.connect(self.baseReload)
+        self.dlgEditY.baseChanged.connect(self.baseReload)
+        
         
         #Les modeles et vues du widget central
         self.modele = QtGui.QStandardItemModel(0, 6)
@@ -428,12 +434,15 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         self.comboBox.addItems(self.base.liste_ingr)
         self.comboBox.setCurrentIndex(10)
         
+        self.comboBoxH.clear()
         self.comboBoxH.addItems(self.base.liste_houblons)
         self.comboBoxH.setCurrentIndex(10)
         
+        self.comboBoxY.clear()
         self.comboBoxY.addItems(self.base.liste_levuresDetail)
         self.comboBoxY.setCurrentIndex(10)
         
+        self.comboBoxM.clear()
         self.comboBoxM.addItems(self.base.liste_divers)
         self.comboBoxM.setCurrentIndex(0)
         
