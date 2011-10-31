@@ -112,6 +112,7 @@ class Dialog(QtGui.QDialog):
             
             
     def ajouter (self) :
+        self.base.importBeerXML()
         
         #Attention aux unités. Dans la base xml la couleur est en srm, dans la liste de la base la couleur est convertie en EBC
         
@@ -190,6 +191,7 @@ class Dialog(QtGui.QDialog):
         self.ui.comboBoxType.setCurrentIndex(0)
         
     def enlever (self) :
+        self.base.importBeerXML()
         i = self.ui.listWidgetGrains.currentRow()
         del self.base.liste_ingr[i]
         del self.base.liste_fYield[i]

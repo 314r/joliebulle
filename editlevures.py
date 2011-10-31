@@ -91,6 +91,7 @@ class DialogL(QtGui.QDialog):
             self.ui.comboBoxForme.setCurrentIndex(0)
             
     def ajouter(self) :
+        self.base.importBeerXML()
         nom = self.ui.lineEditNom.text()
         self.base.liste_levures.append(nom)
         self.base.liste_levures.sort()
@@ -160,6 +161,7 @@ class DialogL(QtGui.QDialog):
         self.ui.spinBoxAtten.setValue(0)
         
     def enlever(self) :
+        self.base.importBeerXML()
         i = self.ui.listWidgetLevures.currentRow()
         del self.base.liste_levures[i]
         del self.base.liste_lLabo[i]

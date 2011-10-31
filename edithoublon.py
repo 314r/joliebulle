@@ -77,7 +77,7 @@ class DialogH(QtGui.QDialog):
             self.ui.comboBoxForme.setCurrentIndex(0)
 
     def ajouter(self) :
-      
+        self.base.importBeerXML()
         nom = self.ui.lineEditNom.text()
         self.base.liste_houblons.append(nom)
         self.base.liste_houblons.sort()
@@ -129,6 +129,7 @@ class DialogH(QtGui.QDialog):
         self.ui.comboBoxForme.setCurrentIndex(0)
         
     def enlever(self) :
+        self.base.importBeerXML()
         i = self.ui.listWidgetHoublons.currentRow()
         f = len(self.base.liste_ingr)
         

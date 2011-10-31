@@ -86,6 +86,7 @@ class DialogD(QtGui.QDialog):
             self.ui.comboBoxType.setCurrentIndex(0)
             
     def ajouter(self) :
+        self.base.importBeerXML()
         nom = self.ui.lineEditNom.text()
         self.base.liste_divers.append(nom)
         self.base.liste_divers.sort()
@@ -140,6 +141,7 @@ class DialogD(QtGui.QDialog):
         self.ui.comboBoxType.setCurrentIndex(0)
         
     def enlever(self) :
+        self.base.importBeerXML()
         i = self.ui.listWidgetDivers.currentRow()
         
         del self.base.liste_divers[i]
