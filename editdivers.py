@@ -35,6 +35,7 @@ from xml.dom import minidom
 
 
 class DialogD(QtGui.QDialog):
+    baseChanged = QtCore.pyqtSignal()
     def __init__(self, parent = None):
         QtGui.QDialog.__init__(self,parent)
         self.ui = Ui_Dialog()
@@ -54,10 +55,12 @@ class DialogD(QtGui.QDialog):
         self.connect(self.ui.pushButtonNouveau, QtCore.SIGNAL("clicked()"), self.nouveau)
         self.connect(self.ui.pushButtonEnlever, QtCore.SIGNAL("clicked()"), self.enlever)
         self.connect(self.ui.pushButtonAjouter, QtCore.SIGNAL("clicked()"), self.ajouter)
+        self.ui.buttonBox.rejected.connect(self.rejected)
         
         self.ui.lineEditNom.setEnabled(False)
         self.ui.comboBoxType.setEnabled(False)
         self.ui.pushButtonAjouter.setEnabled(False)
+        
         
         
     def voir(self) :
@@ -159,3 +162,6 @@ class DialogD(QtGui.QDialog):
         database._setroot(root)
         database.write(databaseXML, encoding="utf-8")
         databaseXML.close()
+        
+    def rejected(self) :     
+        self.baseChanged.emit()    
