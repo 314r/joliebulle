@@ -22,7 +22,10 @@ include outilEvaporation.py
 include outilEvaporation_ui.py
 include outilPaliers.py
 include outilPaliers_ui.py
+include preferences.py
+include preferences_ui.py
 include reader.py
+include settings.py
 include database.xml
 include launch.sh
 include joliebulle.desktop
