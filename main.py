@@ -431,8 +431,8 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         self.widgetVol.hide()
         
         self.nouvelle()
-        self.colorPreview()
-        self.widgetIngredients.hide()
+ 
+        #self.widgetIngredients.hide()
         
     def colorPreview (self) :
         #color = QtGui.QColor(255,0,0,127)
@@ -440,7 +440,16 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         #palette.setColor(QtGui.QPalette.Background, color) 
         #self.widgetColor.setBackgroundRole(QtGui.QPalette.Background)
         #self.widgetColor.setPalette(palette)
-        color = "rgb(235,228,47)"
+        self.colorTuppleSrm = ('FFE699', 'FFD878', 'FFCA5A', 'FFBF42', 'FBB123', 'F8A600', 'F39C00', 'EA8F00', 'E58500', 'DE7C00', 'D77200', 'CF6900', 'CB6200', 'C35900','BB5100', 'B54C00', 'B04500', 'A63E00', 'A13700', '9B3200', '952D00', '8E2900', '882300', '821E00', '7B1A00', '771900', '701400', '6A0E00', '660D00','5E0B00','5A0A02','600903', '520907', '4C0505', '470606', '440607', '3F0708', '3B0607', '3A070B', '36080A')
+        
+        colorRef= round(self.EBC/1.97)
+        
+        if colorRef >= 30 :
+            color = "#" + self.colorTuppleSrm[30]
+        elif colorRef <= 1 :
+            color = "#" + self.colorTuppleSrm[0]
+        else :
+            color = "#" + self.colorTuppleSrm[colorRef-1]
         self.widgetColor.setStyleSheet("background-color :" + color)
         
         
@@ -1416,6 +1425,8 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
             self.liste_mcuPart.append(self.mcuPart)
         self.mcuTot = sum(self.liste_mcuPart) 
         self.EBC = 2.939*(self.mcuTot**0.6859)
+        
+        self.colorPreview()
 
         
         #calcul ABV
