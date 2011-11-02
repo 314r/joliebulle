@@ -2,8 +2,8 @@
 
 # Form implementation generated from reading ui file 'reader.ui'
 #
-# Created: Sat Oct 29 16:59:39 2011
-#      by: PyQt4 UI code generator 4.8.5
+# Created: Wed Nov  2 22:26:35 2011
+#      by: PyQt4 UI code generator 4.8.6
 #
 # WARNING! All changes made in this file will be lost!
 
@@ -17,15 +17,15 @@ except AttributeError:
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName(_fromUtf8("MainWindow"))
-        MainWindow.resize(1169, 733)
+        MainWindow.resize(1169, 723)
         MainWindow.setWindowTitle(QtGui.QApplication.translate("MainWindow", "JolieBulle", None, QtGui.QApplication.UnicodeUTF8))
         icon = QtGui.QIcon()
         icon.addPixmap(QtGui.QPixmap(_fromUtf8("Images/bulle.png")), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         MainWindow.setWindowIcon(icon)
         self.centralwidget = QtGui.QWidget(MainWindow)
         self.centralwidget.setObjectName(_fromUtf8("centralwidget"))
-        self.verticalLayout = QtGui.QVBoxLayout(self.centralwidget)
-        self.verticalLayout.setObjectName(_fromUtf8("verticalLayout"))
+        self.gridLayout_4 = QtGui.QGridLayout(self.centralwidget)
+        self.gridLayout_4.setObjectName(_fromUtf8("gridLayout_4"))
         self.stackedWidget = QtGui.QStackedWidget(self.centralwidget)
         self.stackedWidget.setFrameShape(QtGui.QFrame.NoFrame)
         self.stackedWidget.setLineWidth(1)
@@ -114,93 +114,6 @@ class Ui_MainWindow(object):
         spacerItem = QtGui.QSpacerItem(40, 20, QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Minimum)
         self.horizontalLayout_2.addItem(spacerItem)
         self.verticalLayout_2.addLayout(self.horizontalLayout_2)
-        self.horizontalLayout_4 = QtGui.QHBoxLayout()
-        self.horizontalLayout_4.setSpacing(10)
-        self.horizontalLayout_4.setObjectName(_fromUtf8("horizontalLayout_4"))
-        self.label_2Volume = QtGui.QLabel(self.widgetEditeur)
-        self.label_2Volume.setText(QtGui.QApplication.translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
-"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
-"p, li { white-space: pre-wrap; }\n"
-"</style></head><body style=\" font-family:\'Ubuntu\'; font-size:9pt; font-weight:400; font-style:normal;\">\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:\'Droid Sans\'; font-weight:600;\">Volume (L)</span></p></body></html>", None, QtGui.QApplication.UnicodeUTF8))
-        self.label_2Volume.setObjectName(_fromUtf8("label_2Volume"))
-        self.horizontalLayout_4.addWidget(self.label_2Volume)
-        self.doubleSpinBox_2Volume = QtGui.QDoubleSpinBox(self.widgetEditeur)
-        self.doubleSpinBox_2Volume.setObjectName(_fromUtf8("doubleSpinBox_2Volume"))
-        self.horizontalLayout_4.addWidget(self.doubleSpinBox_2Volume)
-        self.pushButtonVolMore = QtGui.QPushButton(self.widgetEditeur)
-        self.pushButtonVolMore.setText(_fromUtf8(""))
-        icon2 = QtGui.QIcon()
-        icon2.addPixmap(QtGui.QPixmap(_fromUtf8("Images/more.png")), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.pushButtonVolMore.setIcon(icon2)
-        self.pushButtonVolMore.setCheckable(True)
-        self.pushButtonVolMore.setObjectName(_fromUtf8("pushButtonVolMore"))
-        self.horizontalLayout_4.addWidget(self.pushButtonVolMore)
-        self.labelBoil = QtGui.QLabel(self.widgetEditeur)
-        self.labelBoil.setText(QtGui.QApplication.translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
-"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
-"p, li { white-space: pre-wrap; }\n"
-"</style></head><body style=\" font-family:\'Ubuntu\'; font-size:9pt; font-weight:400; font-style:normal;\">\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:\'Droid Sans\'; font-weight:600;\">Ebullition (min)</span></p></body></html>", None, QtGui.QApplication.UnicodeUTF8))
-        self.labelBoil.setObjectName(_fromUtf8("labelBoil"))
-        self.horizontalLayout_4.addWidget(self.labelBoil)
-        self.spinBoxBoil = QtGui.QSpinBox(self.widgetEditeur)
-        self.spinBoxBoil.setObjectName(_fromUtf8("spinBoxBoil"))
-        self.horizontalLayout_4.addWidget(self.spinBoxBoil)
-        self.labelRendement = QtGui.QLabel(self.widgetEditeur)
-        self.labelRendement.setText(QtGui.QApplication.translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
-"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
-"p, li { white-space: pre-wrap; }\n"
-"</style></head><body style=\" font-family:\'Ubuntu\'; font-size:9pt; font-weight:400; font-style:normal;\">\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:\'Droid Sans\'; font-weight:600;\">Rendement (%)</span></p></body></html>", None, QtGui.QApplication.UnicodeUTF8))
-        self.labelRendement.setObjectName(_fromUtf8("labelRendement"))
-        self.horizontalLayout_4.addWidget(self.labelRendement)
-        self.doubleSpinBoxRendemt = QtGui.QDoubleSpinBox(self.widgetEditeur)
-        self.doubleSpinBoxRendemt.setObjectName(_fromUtf8("doubleSpinBoxRendemt"))
-        self.horizontalLayout_4.addWidget(self.doubleSpinBoxRendemt)
-        spacerItem1 = QtGui.QSpacerItem(1112, 20, QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Minimum)
-        self.horizontalLayout_4.addItem(spacerItem1)
-        self.verticalLayout_2.addLayout(self.horizontalLayout_4)
-        self.widgetVol = QtGui.QWidget(self.widgetEditeur)
-        self.widgetVol.setObjectName(_fromUtf8("widgetVol"))
-        self.horizontalLayout_3 = QtGui.QHBoxLayout(self.widgetVol)
-        self.horizontalLayout_3.setMargin(0)
-        self.horizontalLayout_3.setObjectName(_fromUtf8("horizontalLayout_3"))
-        self.label = QtGui.QLabel(self.widgetVol)
-        self.label.setText(QtGui.QApplication.translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
-"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
-"p, li { white-space: pre-wrap; }\n"
-"</style></head><body style=\" font-family:\'Ubuntu\'; font-size:9pt; font-weight:400; font-style:normal;\">\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-weight:600;\">Volume pré-ébullition</span></p></body></html>", None, QtGui.QApplication.UnicodeUTF8))
-        self.label.setObjectName(_fromUtf8("label"))
-        self.horizontalLayout_3.addWidget(self.label)
-        self.doubleSpinBoxVolPre = QtGui.QDoubleSpinBox(self.widgetVol)
-        self.doubleSpinBoxVolPre.setObjectName(_fromUtf8("doubleSpinBoxVolPre"))
-        self.horizontalLayout_3.addWidget(self.doubleSpinBoxVolPre)
-        self.label_2 = QtGui.QLabel(self.widgetVol)
-        self.label_2.setText(QtGui.QApplication.translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
-"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
-"p, li { white-space: pre-wrap; }\n"
-"</style></head><body style=\" font-family:\'Ubuntu\'; font-size:9pt; font-weight:400; font-style:normal;\">\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-weight:600;\">Densité Spécifique pré-ébullition :</span></p></body></html>", None, QtGui.QApplication.UnicodeUTF8))
-        self.label_2.setObjectName(_fromUtf8("label_2"))
-        self.horizontalLayout_3.addWidget(self.label_2)
-        self.labelSG = QtGui.QLabel(self.widgetVol)
-        self.labelSG.setText(QtGui.QApplication.translate("MainWindow", "0", None, QtGui.QApplication.UnicodeUTF8))
-        self.labelSG.setObjectName(_fromUtf8("labelSG"))
-        self.horizontalLayout_3.addWidget(self.labelSG)
-        spacerItem2 = QtGui.QSpacerItem(40, 20, QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Minimum)
-        self.horizontalLayout_3.addItem(spacerItem2)
-        self.verticalLayout_2.addWidget(self.widgetVol)
-        self.horizontalLayout_6 = QtGui.QHBoxLayout()
-        self.horizontalLayout_6.setObjectName(_fromUtf8("horizontalLayout_6"))
-        self.checkBoxIng = QtGui.QCheckBox(self.widgetEditeur)
-        self.checkBoxIng.setText(QtGui.QApplication.translate("MainWindow", "Ajuster les ingrédients", None, QtGui.QApplication.UnicodeUTF8))
-        self.checkBoxIng.setObjectName(_fromUtf8("checkBoxIng"))
-        self.horizontalLayout_6.addWidget(self.checkBoxIng)
-        spacerItem3 = QtGui.QSpacerItem(40, 20, QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Minimum)
-        self.horizontalLayout_6.addItem(spacerItem3)
-        self.verticalLayout_2.addLayout(self.horizontalLayout_6)
         self.labelFermentables = QtGui.QLabel(self.widgetEditeur)
         self.labelFermentables.setText(QtGui.QApplication.translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
@@ -209,6 +122,8 @@ class Ui_MainWindow(object):
 "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-weight:600;\">Ingredients : </span></p></body></html>", None, QtGui.QApplication.UnicodeUTF8))
         self.labelFermentables.setObjectName(_fromUtf8("labelFermentables"))
         self.verticalLayout_2.addWidget(self.labelFermentables)
+        self.horizontalLayout_4 = QtGui.QHBoxLayout()
+        self.horizontalLayout_4.setObjectName(_fromUtf8("horizontalLayout_4"))
         self.tableViewF = QtGui.QTableView(self.widgetEditeur)
         sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Expanding)
         sizePolicy.setHorizontalStretch(0)
@@ -228,147 +143,283 @@ class Ui_MainWindow(object):
         self.tableViewF.verticalHeader().setVisible(False)
         self.tableViewF.verticalHeader().setDefaultSectionSize(22)
         self.tableViewF.verticalHeader().setStretchLastSection(False)
-        self.verticalLayout_2.addWidget(self.tableViewF)
+        self.horizontalLayout_4.addWidget(self.tableViewF)
+        self.verticalLayout_2.addLayout(self.horizontalLayout_4)
         self.horizontalLayout_5 = QtGui.QHBoxLayout()
         self.horizontalLayout_5.setObjectName(_fromUtf8("horizontalLayout_5"))
-        spacerItem4 = QtGui.QSpacerItem(40, 20, QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Minimum)
-        self.horizontalLayout_5.addItem(spacerItem4)
+        self.checkBoxIng = QtGui.QCheckBox(self.widgetEditeur)
+        self.checkBoxIng.setText(QtGui.QApplication.translate("MainWindow", "Ajuster les ingrédients (verrouiller le profil)", None, QtGui.QApplication.UnicodeUTF8))
+        self.checkBoxIng.setObjectName(_fromUtf8("checkBoxIng"))
+        self.horizontalLayout_5.addWidget(self.checkBoxIng)
+        spacerItem1 = QtGui.QSpacerItem(40, 20, QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Minimum)
+        self.horizontalLayout_5.addItem(spacerItem1)
         self.pushButtonEnlever = QtGui.QPushButton(self.widgetEditeur)
         self.pushButtonEnlever.setText(QtGui.QApplication.translate("MainWindow", "Enlever", None, QtGui.QApplication.UnicodeUTF8))
         self.pushButtonEnlever.setObjectName(_fromUtf8("pushButtonEnlever"))
         self.horizontalLayout_5.addWidget(self.pushButtonEnlever)
         self.verticalLayout_2.addLayout(self.horizontalLayout_5)
-        self.horizontalLayout_7 = QtGui.QHBoxLayout()
+        self.widgetIngredients = QtGui.QWidget(self.widgetEditeur)
+        self.widgetIngredients.setObjectName(_fromUtf8("widgetIngredients"))
+        self.horizontalLayout_7 = QtGui.QHBoxLayout(self.widgetIngredients)
+        self.horizontalLayout_7.setMargin(0)
         self.horizontalLayout_7.setObjectName(_fromUtf8("horizontalLayout_7"))
         self.verticalLayout_3 = QtGui.QVBoxLayout()
         self.verticalLayout_3.setContentsMargins(-1, 0, -1, -1)
         self.verticalLayout_3.setObjectName(_fromUtf8("verticalLayout_3"))
         self.horizontalLayout_10 = QtGui.QHBoxLayout()
         self.horizontalLayout_10.setObjectName(_fromUtf8("horizontalLayout_10"))
-        self.comboBox = QtGui.QComboBox(self.widgetEditeur)
+        self.comboBox = QtGui.QComboBox(self.widgetIngredients)
         self.comboBox.setMinimumSize(QtCore.QSize(170, 0))
         self.comboBox.setMaximumSize(QtCore.QSize(170, 16777215))
         self.comboBox.setObjectName(_fromUtf8("comboBox"))
         self.horizontalLayout_10.addWidget(self.comboBox)
-        self.pushButtonAjouter_2 = QtGui.QPushButton(self.widgetEditeur)
+        self.pushButtonAjouter_2 = QtGui.QPushButton(self.widgetIngredients)
         self.pushButtonAjouter_2.setText(QtGui.QApplication.translate("MainWindow", "Ajouter Grain", None, QtGui.QApplication.UnicodeUTF8))
         self.pushButtonAjouter_2.setObjectName(_fromUtf8("pushButtonAjouter_2"))
         self.horizontalLayout_10.addWidget(self.pushButtonAjouter_2)
         self.verticalLayout_3.addLayout(self.horizontalLayout_10)
         self.horizontalLayout_11 = QtGui.QHBoxLayout()
         self.horizontalLayout_11.setObjectName(_fromUtf8("horizontalLayout_11"))
-        self.comboBoxH = QtGui.QComboBox(self.widgetEditeur)
+        self.comboBoxH = QtGui.QComboBox(self.widgetIngredients)
         self.comboBoxH.setMinimumSize(QtCore.QSize(170, 0))
         self.comboBoxH.setMaximumSize(QtCore.QSize(170, 16777215))
         self.comboBoxH.setObjectName(_fromUtf8("comboBoxH"))
         self.horizontalLayout_11.addWidget(self.comboBoxH)
-        self.pushButtonAjouterH = QtGui.QPushButton(self.widgetEditeur)
+        self.pushButtonAjouterH = QtGui.QPushButton(self.widgetIngredients)
         self.pushButtonAjouterH.setText(QtGui.QApplication.translate("MainWindow", "Ajouter Houblon", None, QtGui.QApplication.UnicodeUTF8))
         self.pushButtonAjouterH.setObjectName(_fromUtf8("pushButtonAjouterH"))
         self.horizontalLayout_11.addWidget(self.pushButtonAjouterH)
         self.verticalLayout_3.addLayout(self.horizontalLayout_11)
         self.horizontalLayout_12 = QtGui.QHBoxLayout()
         self.horizontalLayout_12.setObjectName(_fromUtf8("horizontalLayout_12"))
-        self.comboBoxM = QtGui.QComboBox(self.widgetEditeur)
+        self.comboBoxM = QtGui.QComboBox(self.widgetIngredients)
         self.comboBoxM.setMinimumSize(QtCore.QSize(170, 0))
         self.comboBoxM.setMaximumSize(QtCore.QSize(170, 16777215))
         self.comboBoxM.setObjectName(_fromUtf8("comboBoxM"))
         self.horizontalLayout_12.addWidget(self.comboBoxM)
-        self.pushButtonAjouterM = QtGui.QPushButton(self.widgetEditeur)
+        self.pushButtonAjouterM = QtGui.QPushButton(self.widgetIngredients)
         self.pushButtonAjouterM.setText(QtGui.QApplication.translate("MainWindow", "Ajouter Divers", None, QtGui.QApplication.UnicodeUTF8))
         self.pushButtonAjouterM.setObjectName(_fromUtf8("pushButtonAjouterM"))
         self.horizontalLayout_12.addWidget(self.pushButtonAjouterM)
         self.verticalLayout_3.addLayout(self.horizontalLayout_12)
         self.horizontalLayout_13 = QtGui.QHBoxLayout()
         self.horizontalLayout_13.setObjectName(_fromUtf8("horizontalLayout_13"))
-        self.comboBoxY = QtGui.QComboBox(self.widgetEditeur)
+        self.comboBoxY = QtGui.QComboBox(self.widgetIngredients)
         self.comboBoxY.setMinimumSize(QtCore.QSize(170, 0))
         self.comboBoxY.setMaximumSize(QtCore.QSize(170, 16777215))
         self.comboBoxY.setObjectName(_fromUtf8("comboBoxY"))
         self.horizontalLayout_13.addWidget(self.comboBoxY)
-        self.pushButtonAjouterY = QtGui.QPushButton(self.widgetEditeur)
+        self.pushButtonAjouterY = QtGui.QPushButton(self.widgetIngredients)
         self.pushButtonAjouterY.setText(QtGui.QApplication.translate("MainWindow", "Ajouter Levure", None, QtGui.QApplication.UnicodeUTF8))
         self.pushButtonAjouterY.setObjectName(_fromUtf8("pushButtonAjouterY"))
         self.horizontalLayout_13.addWidget(self.pushButtonAjouterY)
         self.verticalLayout_3.addLayout(self.horizontalLayout_13)
         self.horizontalLayout_7.addLayout(self.verticalLayout_3)
-        spacerItem5 = QtGui.QSpacerItem(40, 20, QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Minimum)
-        self.horizontalLayout_7.addItem(spacerItem5)
+        spacerItem2 = QtGui.QSpacerItem(40, 20, QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Minimum)
+        self.horizontalLayout_7.addItem(spacerItem2)
+        spacerItem3 = QtGui.QSpacerItem(40, 20, QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Minimum)
+        self.horizontalLayout_7.addItem(spacerItem3)
+        self.verticalLayout_2.addWidget(self.widgetIngredients)
+        self.gridLayout.addWidget(self.widgetEditeur, 1, 0, 1, 1)
+        self.widgetProfile = QtGui.QWidget(self.page)
+        self.widgetProfile.setObjectName(_fromUtf8("widgetProfile"))
+        self.verticalLayout_6 = QtGui.QVBoxLayout(self.widgetProfile)
+        self.verticalLayout_6.setContentsMargins(20, -1, -1, -1)
+        self.verticalLayout_6.setObjectName(_fromUtf8("verticalLayout_6"))
+        spacerItem4 = QtGui.QSpacerItem(20, 40, QtGui.QSizePolicy.Minimum, QtGui.QSizePolicy.Expanding)
+        self.verticalLayout_6.addItem(spacerItem4)
+        self.verticalLayout_4 = QtGui.QVBoxLayout()
+        self.verticalLayout_4.setContentsMargins(-1, -1, -1, 10)
+        self.verticalLayout_4.setObjectName(_fromUtf8("verticalLayout_4"))
+        self.label_7 = QtGui.QLabel(self.widgetProfile)
+        self.label_7.setText(QtGui.QApplication.translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
+"p, li { white-space: pre-wrap; }\n"
+"</style></head><body style=\" font-family:\'Ubuntu\'; font-size:11pt; font-weight:400; font-style:normal;\">\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:9pt; font-weight:600;\">CONTEXTE</span></p></body></html>", None, QtGui.QApplication.UnicodeUTF8))
+        self.label_7.setObjectName(_fromUtf8("label_7"))
+        self.verticalLayout_4.addWidget(self.label_7)
+        self.verticalLayout_6.addLayout(self.verticalLayout_4)
+        self.formLayout_4 = QtGui.QFormLayout()
+        self.formLayout_4.setFieldGrowthPolicy(QtGui.QFormLayout.AllNonFixedFieldsGrow)
+        self.formLayout_4.setObjectName(_fromUtf8("formLayout_4"))
+        self.labelRendement = QtGui.QLabel(self.widgetProfile)
+        self.labelRendement.setText(QtGui.QApplication.translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
+"p, li { white-space: pre-wrap; }\n"
+"</style></head><body style=\" font-family:\'Ubuntu\'; font-size:11pt; font-weight:400; font-style:normal;\">\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:\'Droid Sans\'; font-size:9pt;\">Rendement (%)</span></p></body></html>", None, QtGui.QApplication.UnicodeUTF8))
+        self.labelRendement.setObjectName(_fromUtf8("labelRendement"))
+        self.formLayout_4.setWidget(0, QtGui.QFormLayout.LabelRole, self.labelRendement)
+        self.doubleSpinBoxRendemt = QtGui.QDoubleSpinBox(self.widgetProfile)
+        self.doubleSpinBoxRendemt.setObjectName(_fromUtf8("doubleSpinBoxRendemt"))
+        self.formLayout_4.setWidget(0, QtGui.QFormLayout.FieldRole, self.doubleSpinBoxRendemt)
+        self.labelBoil = QtGui.QLabel(self.widgetProfile)
+        self.labelBoil.setText(QtGui.QApplication.translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
+"p, li { white-space: pre-wrap; }\n"
+"</style></head><body style=\" font-family:\'Ubuntu\'; font-size:11pt; font-weight:400; font-style:normal;\">\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:\'Droid Sans\'; font-size:9pt;\">Ebullition (min)</span></p></body></html>", None, QtGui.QApplication.UnicodeUTF8))
+        self.labelBoil.setObjectName(_fromUtf8("labelBoil"))
+        self.formLayout_4.setWidget(1, QtGui.QFormLayout.LabelRole, self.labelBoil)
+        self.spinBoxBoil = QtGui.QSpinBox(self.widgetProfile)
+        self.spinBoxBoil.setObjectName(_fromUtf8("spinBoxBoil"))
+        self.formLayout_4.setWidget(1, QtGui.QFormLayout.FieldRole, self.spinBoxBoil)
+        self.label_2Volume = QtGui.QLabel(self.widgetProfile)
+        self.label_2Volume.setText(QtGui.QApplication.translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
+"p, li { white-space: pre-wrap; }\n"
+"</style></head><body style=\" font-family:\'Ubuntu\'; font-size:11pt; font-weight:400; font-style:normal;\">\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:\'Droid Sans\'; font-size:9pt;\">Volume (L)</span></p></body></html>", None, QtGui.QApplication.UnicodeUTF8))
+        self.label_2Volume.setObjectName(_fromUtf8("label_2Volume"))
+        self.formLayout_4.setWidget(3, QtGui.QFormLayout.LabelRole, self.label_2Volume)
+        self.doubleSpinBox_2Volume = QtGui.QDoubleSpinBox(self.widgetProfile)
+        self.doubleSpinBox_2Volume.setObjectName(_fromUtf8("doubleSpinBox_2Volume"))
+        self.formLayout_4.setWidget(3, QtGui.QFormLayout.FieldRole, self.doubleSpinBox_2Volume)
+        self.pushButtonVolMore = QtGui.QPushButton(self.widgetProfile)
+        self.pushButtonVolMore.setText(_fromUtf8(""))
+        icon2 = QtGui.QIcon()
+        icon2.addPixmap(QtGui.QPixmap(_fromUtf8("Images/more.png")), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.pushButtonVolMore.setIcon(icon2)
+        self.pushButtonVolMore.setCheckable(True)
+        self.pushButtonVolMore.setObjectName(_fromUtf8("pushButtonVolMore"))
+        self.formLayout_4.setWidget(5, QtGui.QFormLayout.FieldRole, self.pushButtonVolMore)
+        self.verticalLayout_6.addLayout(self.formLayout_4)
+        self.widgetVol = QtGui.QWidget(self.widgetProfile)
+        self.widgetVol.setObjectName(_fromUtf8("widgetVol"))
+        self.formLayout_5 = QtGui.QFormLayout(self.widgetVol)
+        self.formLayout_5.setMargin(0)
+        self.formLayout_5.setObjectName(_fromUtf8("formLayout_5"))
+        self.label = QtGui.QLabel(self.widgetVol)
+        self.label.setText(QtGui.QApplication.translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
+"p, li { white-space: pre-wrap; }\n"
+"</style></head><body style=\" font-family:\'Ubuntu\'; font-size:11pt; font-weight:400; font-style:normal;\">\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:9pt;\">Volume pré-ébullition</span></p></body></html>", None, QtGui.QApplication.UnicodeUTF8))
+        self.label.setObjectName(_fromUtf8("label"))
+        self.formLayout_5.setWidget(0, QtGui.QFormLayout.LabelRole, self.label)
+        self.doubleSpinBoxVolPre = QtGui.QDoubleSpinBox(self.widgetVol)
+        self.doubleSpinBoxVolPre.setObjectName(_fromUtf8("doubleSpinBoxVolPre"))
+        self.formLayout_5.setWidget(0, QtGui.QFormLayout.FieldRole, self.doubleSpinBoxVolPre)
+        self.labelSG = QtGui.QLabel(self.widgetVol)
+        self.labelSG.setText(QtGui.QApplication.translate("MainWindow", "0", None, QtGui.QApplication.UnicodeUTF8))
+        self.labelSG.setObjectName(_fromUtf8("labelSG"))
+        self.formLayout_5.setWidget(1, QtGui.QFormLayout.FieldRole, self.labelSG)
+        self.label_2 = QtGui.QLabel(self.widgetVol)
+        self.label_2.setText(QtGui.QApplication.translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
+"p, li { white-space: pre-wrap; }\n"
+"</style></head><body style=\" font-family:\'Ubuntu\'; font-size:11pt; font-weight:400; font-style:normal;\">\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:9pt;\">Densité  pré-ébullition :</span></p></body></html>", None, QtGui.QApplication.UnicodeUTF8))
+        self.label_2.setObjectName(_fromUtf8("label_2"))
+        self.formLayout_5.setWidget(1, QtGui.QFormLayout.LabelRole, self.label_2)
+        self.verticalLayout_6.addWidget(self.widgetVol)
+        self.verticalLayout_5 = QtGui.QVBoxLayout()
+        self.verticalLayout_5.setContentsMargins(-1, 35, -1, 10)
+        self.verticalLayout_5.setObjectName(_fromUtf8("verticalLayout_5"))
+        self.label_6 = QtGui.QLabel(self.widgetProfile)
+        self.label_6.setText(QtGui.QApplication.translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
+"p, li { white-space: pre-wrap; }\n"
+"</style></head><body style=\" font-family:\'Ubuntu\'; font-size:11pt; font-weight:400; font-style:normal;\">\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:9pt; font-weight:600;\">PROFIL</span></p></body></html>", None, QtGui.QApplication.UnicodeUTF8))
+        self.label_6.setObjectName(_fromUtf8("label_6"))
+        self.verticalLayout_5.addWidget(self.label_6)
+        self.verticalLayout_6.addLayout(self.verticalLayout_5)
         self.formLayout = QtGui.QFormLayout()
         self.formLayout.setFieldGrowthPolicy(QtGui.QFormLayout.ExpandingFieldsGrow)
-        self.formLayout.setContentsMargins(-1, 0, -1, 0)
+        self.formLayout.setContentsMargins(-1, 0, -1, 35)
         self.formLayout.setHorizontalSpacing(6)
         self.formLayout.setObjectName(_fromUtf8("formLayout"))
-        self.labelOG = QtGui.QLabel(self.widgetEditeur)
+        self.labelOG = QtGui.QLabel(self.widgetProfile)
         self.labelOG.setText(QtGui.QApplication.translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
-"</style></head><body style=\" font-family:\'Droid Sans\'; font-size:9pt; font-weight:400; font-style:normal;\">\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-weight:600;\">Densité Initiale :</span></p></body></html>", None, QtGui.QApplication.UnicodeUTF8))
+"</style></head><body style=\" font-family:\'Ubuntu\'; font-size:11pt; font-weight:400; font-style:normal;\">\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:\'Droid Sans\'; font-size:9pt;\">Densité Initiale :</span></p></body></html>", None, QtGui.QApplication.UnicodeUTF8))
         self.labelOG.setAlignment(QtCore.Qt.AlignRight|QtCore.Qt.AlignTrailing|QtCore.Qt.AlignVCenter)
         self.labelOG.setObjectName(_fromUtf8("labelOG"))
-        self.formLayout.setWidget(0, QtGui.QFormLayout.LabelRole, self.labelOG)
-        self.labelOGV = QtGui.QLabel(self.widgetEditeur)
+        self.formLayout.setWidget(2, QtGui.QFormLayout.LabelRole, self.labelOG)
+        self.labelOGV = QtGui.QLabel(self.widgetProfile)
         self.labelOGV.setText(_fromUtf8(""))
         self.labelOGV.setObjectName(_fromUtf8("labelOGV"))
-        self.formLayout.setWidget(0, QtGui.QFormLayout.FieldRole, self.labelOGV)
-        self.labelFG = QtGui.QLabel(self.widgetEditeur)
+        self.formLayout.setWidget(2, QtGui.QFormLayout.FieldRole, self.labelOGV)
+        self.labelFG = QtGui.QLabel(self.widgetProfile)
         self.labelFG.setText(QtGui.QApplication.translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
-"</style></head><body style=\" font-family:\'Droid Sans\'; font-size:9pt; font-weight:400; font-style:normal;\">\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-weight:600;\">Densité Finale :</span></p></body></html>", None, QtGui.QApplication.UnicodeUTF8))
+"</style></head><body style=\" font-family:\'Ubuntu\'; font-size:11pt; font-weight:400; font-style:normal;\">\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:\'Droid Sans\'; font-size:9pt;\">Densité Finale :</span></p></body></html>", None, QtGui.QApplication.UnicodeUTF8))
         self.labelFG.setAlignment(QtCore.Qt.AlignRight|QtCore.Qt.AlignTrailing|QtCore.Qt.AlignVCenter)
         self.labelFG.setObjectName(_fromUtf8("labelFG"))
-        self.formLayout.setWidget(1, QtGui.QFormLayout.LabelRole, self.labelFG)
-        self.labelFGV = QtGui.QLabel(self.widgetEditeur)
+        self.formLayout.setWidget(3, QtGui.QFormLayout.LabelRole, self.labelFG)
+        self.labelFGV = QtGui.QLabel(self.widgetProfile)
         self.labelFGV.setText(_fromUtf8(""))
         self.labelFGV.setObjectName(_fromUtf8("labelFGV"))
-        self.formLayout.setWidget(1, QtGui.QFormLayout.FieldRole, self.labelFGV)
-        self.labelEBC = QtGui.QLabel(self.widgetEditeur)
+        self.formLayout.setWidget(3, QtGui.QFormLayout.FieldRole, self.labelFGV)
+        self.labelEBC = QtGui.QLabel(self.widgetProfile)
         self.labelEBC.setText(QtGui.QApplication.translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
-"</style></head><body style=\" font-family:\'Droid Sans\'; font-size:9pt; font-weight:400; font-style:normal;\">\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-weight:600;\">EBC :</span></p></body></html>", None, QtGui.QApplication.UnicodeUTF8))
+"</style></head><body style=\" font-family:\'Ubuntu\'; font-size:11pt; font-weight:400; font-style:normal;\">\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:\'Droid Sans\'; font-size:9pt;\">EBC :</span></p></body></html>", None, QtGui.QApplication.UnicodeUTF8))
         self.labelEBC.setAlignment(QtCore.Qt.AlignRight|QtCore.Qt.AlignTrailing|QtCore.Qt.AlignVCenter)
         self.labelEBC.setObjectName(_fromUtf8("labelEBC"))
-        self.formLayout.setWidget(2, QtGui.QFormLayout.LabelRole, self.labelEBC)
-        self.labelEBCV = QtGui.QLabel(self.widgetEditeur)
+        self.formLayout.setWidget(4, QtGui.QFormLayout.LabelRole, self.labelEBC)
+        self.labelEBCV = QtGui.QLabel(self.widgetProfile)
         self.labelEBCV.setText(_fromUtf8(""))
         self.labelEBCV.setObjectName(_fromUtf8("labelEBCV"))
-        self.formLayout.setWidget(2, QtGui.QFormLayout.FieldRole, self.labelEBCV)
-        self.labelIBU = QtGui.QLabel(self.widgetEditeur)
+        self.formLayout.setWidget(4, QtGui.QFormLayout.FieldRole, self.labelEBCV)
+        self.labelIBU = QtGui.QLabel(self.widgetProfile)
         self.labelIBU.setText(QtGui.QApplication.translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
-"</style></head><body style=\" font-family:\'Droid Sans\'; font-size:9pt; font-weight:400; font-style:normal;\">\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-weight:600;\">IBU :</span></p></body></html>", None, QtGui.QApplication.UnicodeUTF8))
+"</style></head><body style=\" font-family:\'Ubuntu\'; font-size:11pt; font-weight:400; font-style:normal;\">\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:\'Droid Sans\'; font-size:9pt;\">IBU :</span></p></body></html>", None, QtGui.QApplication.UnicodeUTF8))
         self.labelIBU.setAlignment(QtCore.Qt.AlignRight|QtCore.Qt.AlignTrailing|QtCore.Qt.AlignVCenter)
         self.labelIBU.setObjectName(_fromUtf8("labelIBU"))
-        self.formLayout.setWidget(3, QtGui.QFormLayout.LabelRole, self.labelIBU)
-        self.labelIBUV = QtGui.QLabel(self.widgetEditeur)
+        self.formLayout.setWidget(5, QtGui.QFormLayout.LabelRole, self.labelIBU)
+        self.labelIBUV = QtGui.QLabel(self.widgetProfile)
         self.labelIBUV.setText(_fromUtf8(""))
         self.labelIBUV.setObjectName(_fromUtf8("labelIBUV"))
-        self.formLayout.setWidget(3, QtGui.QFormLayout.FieldRole, self.labelIBUV)
-        self.labelAlc = QtGui.QLabel(self.widgetEditeur)
+        self.formLayout.setWidget(5, QtGui.QFormLayout.FieldRole, self.labelIBUV)
+        self.labelAlc = QtGui.QLabel(self.widgetProfile)
         self.labelAlc.setText(QtGui.QApplication.translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
-"</style></head><body style=\" font-family:\'Droid Sans\'; font-size:9pt; font-weight:400; font-style:normal;\">\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-weight:600;\">Alc :</span></p></body></html>", None, QtGui.QApplication.UnicodeUTF8))
+"</style></head><body style=\" font-family:\'Ubuntu\'; font-size:11pt; font-weight:400; font-style:normal;\">\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:\'Droid Sans\'; font-size:9pt;\">Alc :</span></p></body></html>", None, QtGui.QApplication.UnicodeUTF8))
         self.labelAlc.setAlignment(QtCore.Qt.AlignRight|QtCore.Qt.AlignTrailing|QtCore.Qt.AlignVCenter)
         self.labelAlc.setObjectName(_fromUtf8("labelAlc"))
-        self.formLayout.setWidget(4, QtGui.QFormLayout.LabelRole, self.labelAlc)
-        self.labelAlcv = QtGui.QLabel(self.widgetEditeur)
+        self.formLayout.setWidget(6, QtGui.QFormLayout.LabelRole, self.labelAlc)
+        self.labelAlcv = QtGui.QLabel(self.widgetProfile)
         self.labelAlcv.setText(_fromUtf8(""))
         self.labelAlcv.setObjectName(_fromUtf8("labelAlcv"))
-        self.formLayout.setWidget(4, QtGui.QFormLayout.FieldRole, self.labelAlcv)
-        self.horizontalLayout_7.addLayout(self.formLayout)
-        spacerItem6 = QtGui.QSpacerItem(40, 20, QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Minimum)
-        self.horizontalLayout_7.addItem(spacerItem6)
-        self.verticalLayout_2.addLayout(self.horizontalLayout_7)
-        self.gridLayout.addWidget(self.widgetEditeur, 0, 0, 1, 1)
+        self.formLayout.setWidget(6, QtGui.QFormLayout.FieldRole, self.labelAlcv)
+        self.verticalLayout_6.addLayout(self.formLayout)
+        self.verticalLayout_7 = QtGui.QVBoxLayout()
+        self.verticalLayout_7.setContentsMargins(-1, -1, -1, 10)
+        self.verticalLayout_7.setObjectName(_fromUtf8("verticalLayout_7"))
+        self.label_5 = QtGui.QLabel(self.widgetProfile)
+        self.label_5.setText(QtGui.QApplication.translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
+"p, li { white-space: pre-wrap; }\n"
+"</style></head><body style=\" font-family:\'Ubuntu\'; font-size:11pt; font-weight:400; font-style:normal;\">\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:9pt; font-weight:600;\">APERÇU</span></p></body></html>", None, QtGui.QApplication.UnicodeUTF8))
+        self.label_5.setObjectName(_fromUtf8("label_5"))
+        self.verticalLayout_7.addWidget(self.label_5)
+        self.verticalLayout_6.addLayout(self.verticalLayout_7)
+        self.verticalLayout = QtGui.QVBoxLayout()
+        self.verticalLayout.setObjectName(_fromUtf8("verticalLayout"))
+        self.widgetColor = QtGui.QWidget(self.widgetProfile)
+        self.widgetColor.setMinimumSize(QtCore.QSize(30, 10))
+        self.widgetColor.setStyleSheet(_fromUtf8(""))
+        self.widgetColor.setObjectName(_fromUtf8("widgetColor"))
+        self.verticalLayout.addWidget(self.widgetColor)
+        self.verticalLayout_6.addLayout(self.verticalLayout)
+        spacerItem5 = QtGui.QSpacerItem(20, 40, QtGui.QSizePolicy.Minimum, QtGui.QSizePolicy.Expanding)
+        self.verticalLayout_6.addItem(spacerItem5)
+        self.gridLayout.addWidget(self.widgetProfile, 1, 1, 1, 1)
         self.stackedWidget.addWidget(self.page)
         self.page_2 = QtGui.QWidget()
         self.page_2.setObjectName(_fromUtf8("page_2"))
@@ -396,7 +447,7 @@ class Ui_MainWindow(object):
         self.gridLayout_3.addWidget(self.listViewBiblio, 0, 0, 1, 1)
         self.gridLayout_2.addWidget(self.widget, 0, 0, 1, 1)
         self.stackedWidget.addWidget(self.page_2)
-        self.verticalLayout.addWidget(self.stackedWidget)
+        self.gridLayout_4.addWidget(self.stackedWidget, 0, 0, 1, 1)
         MainWindow.setCentralWidget(self.centralwidget)
         self.toolBar = QtGui.QToolBar(MainWindow)
         self.toolBar.setMinimumSize(QtCore.QSize(0, 0))
@@ -407,7 +458,7 @@ class Ui_MainWindow(object):
         self.toolBar.setObjectName(_fromUtf8("toolBar"))
         MainWindow.addToolBar(QtCore.Qt.TopToolBarArea, self.toolBar)
         self.menuBar = QtGui.QMenuBar(MainWindow)
-        self.menuBar.setGeometry(QtCore.QRect(0, 0, 1169, 23))
+        self.menuBar.setGeometry(QtCore.QRect(0, 0, 1169, 25))
         self.menuBar.setObjectName(_fromUtf8("menuBar"))
         self.menuFichier = QtGui.QMenu(self.menuBar)
         self.menuFichier.setTitle(QtGui.QApplication.translate("MainWindow", "Fichier", None, QtGui.QApplication.UnicodeUTF8))

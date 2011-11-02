@@ -353,6 +353,8 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         liste_headers = [self.trUtf8("Ingrédients"),self.trUtf8("Quantité (g)"),self.trUtf8("Temps (min)"),self.trUtf8("Acide Alpha (%)"),self.trUtf8("Type"),self.trUtf8("Proportion")]
         self.modele.setHorizontalHeaderLabels(liste_headers)
         
+        
+        
         self.deleg = AmountDelegate(self)
         self.tableViewF.setItemDelegateForColumn(1,self.deleg)
         self.connect(self.deleg, QtCore.SIGNAL( "pySig"), self.modeleProportion)
@@ -376,7 +378,11 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         self.tableViewF.setItemDelegateForColumn(5,self.delegI)
 
         self.tableViewF.setModel(self.modele)
+        
+        self.tableViewF.resizeColumnsToContents()
         self.tableViewF.setColumnWidth(0,250)
+        self.tableViewF.setColumnWidth(1,150)
+        self.tableViewF.setColumnWidth(4,150)
         
         #La bibliotheque
         ###################################################################################################################
@@ -425,6 +431,18 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         self.widgetVol.hide()
         
         self.nouvelle()
+        self.colorPreview()
+        self.widgetIngredients.hide()
+        
+    def colorPreview (self) :
+        #color = QtGui.QColor(255,0,0,127)
+        #palette = QtGui.QPalette()
+        #palette.setColor(QtGui.QPalette.Background, color) 
+        #self.widgetColor.setBackgroundRole(QtGui.QPalette.Background)
+        #self.widgetColor.setPalette(palette)
+        color = "rgb(235,228,47)"
+        self.widgetColor.setStyleSheet("background-color :" + color)
+        
         
     def baseReload (self): 
         print("tagada tsoin tsoin")
