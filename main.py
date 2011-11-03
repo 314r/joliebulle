@@ -345,6 +345,9 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         self.dlgEditD.baseChanged.connect(self.baseReload)
         self.dlgEditY.baseChanged.connect(self.baseReload)
         
+        #Signal pour l'affichage du widget de modif des ingrédients
+        self.pushButtonChangeIngredients.clicked.connect(self.displayIngredients) 
+        
         
         #Les modeles et vues du widget central
         self.modele = QtGui.QStandardItemModel(0, 6)
@@ -432,14 +435,12 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         
         self.nouvelle()
  
-        #self.widgetIngredients.hide()
+        self.widgetIngredients.hide()
         
+    #Une fonction qui gère l'aperçu des couleurs. 
+    #Contient un tupple avec plusieurs références de couleurs, classées par rang selon la valeur SRM.
+    #################################################################################################
     def colorPreview (self) :
-        #color = QtGui.QColor(255,0,0,127)
-        #palette = QtGui.QPalette()
-        #palette.setColor(QtGui.QPalette.Background, color) 
-        #self.widgetColor.setBackgroundRole(QtGui.QPalette.Background)
-        #self.widgetColor.setPalette(palette)
         self.colorTuppleSrm = ('FFE699', 'FFD878', 'FFCA5A', 'FFBF42', 'FBB123', 'F8A600', 'F39C00', 'EA8F00', 'E58500', 'DE7C00', 'D77200', 'CF6900', 'CB6200', 'C35900','BB5100', 'B54C00', 'B04500', 'A63E00', 'A13700', '9B3200', '952D00', '8E2900', '882300', '821E00', '7B1A00', '771900', '701400', '6A0E00', '660D00','5E0B00','5A0A02','600903', '520907', '4C0505', '470606', '440607', '3F0708', '3B0607', '3A070B', '36080A')
         
         colorRef= round(self.EBC/1.97)
@@ -453,8 +454,16 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         self.widgetColor.setStyleSheet("background-color :" + color)
         
         
+    def displayIngredients(self) :
+        if self.pushButtonChangeIngredients.isChecked() :
+            self.widgetIngredients.show()
+        else :
+            self.widgetIngredients.hide()
+        
+        
+    #Une fonction qui recharge les combobox qd la base d'ingrédients a été modifiée. Pratique.
+    #############################################################################################   
     def baseReload (self): 
-        print("tagada tsoin tsoin")
         self.base.importBeerXML()
         
         self.comboBox.clear()

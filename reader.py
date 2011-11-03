@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'reader.ui'
 #
-# Created: Wed Nov  2 22:26:35 2011
+# Created: Thu Nov  3 18:35:26 2011
 #      by: PyQt4 UI code generator 4.8.6
 #
 # WARNING! All changes made in this file will be lost!
@@ -153,10 +153,11 @@ class Ui_MainWindow(object):
         self.horizontalLayout_5.addWidget(self.checkBoxIng)
         spacerItem1 = QtGui.QSpacerItem(40, 20, QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Minimum)
         self.horizontalLayout_5.addItem(spacerItem1)
-        self.pushButtonEnlever = QtGui.QPushButton(self.widgetEditeur)
-        self.pushButtonEnlever.setText(QtGui.QApplication.translate("MainWindow", "Enlever", None, QtGui.QApplication.UnicodeUTF8))
-        self.pushButtonEnlever.setObjectName(_fromUtf8("pushButtonEnlever"))
-        self.horizontalLayout_5.addWidget(self.pushButtonEnlever)
+        self.pushButtonChangeIngredients = QtGui.QPushButton(self.widgetEditeur)
+        self.pushButtonChangeIngredients.setText(QtGui.QApplication.translate("MainWindow", "Modifier Ingrédients", None, QtGui.QApplication.UnicodeUTF8))
+        self.pushButtonChangeIngredients.setCheckable(True)
+        self.pushButtonChangeIngredients.setObjectName(_fromUtf8("pushButtonChangeIngredients"))
+        self.horizontalLayout_5.addWidget(self.pushButtonChangeIngredients)
         self.verticalLayout_2.addLayout(self.horizontalLayout_5)
         self.widgetIngredients = QtGui.QWidget(self.widgetEditeur)
         self.widgetIngredients.setObjectName(_fromUtf8("widgetIngredients"))
@@ -217,17 +218,20 @@ class Ui_MainWindow(object):
         self.horizontalLayout_7.addLayout(self.verticalLayout_3)
         spacerItem2 = QtGui.QSpacerItem(40, 20, QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Minimum)
         self.horizontalLayout_7.addItem(spacerItem2)
-        spacerItem3 = QtGui.QSpacerItem(40, 20, QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Minimum)
-        self.horizontalLayout_7.addItem(spacerItem3)
+        self.pushButtonEnlever = QtGui.QPushButton(self.widgetIngredients)
+        self.pushButtonEnlever.setText(QtGui.QApplication.translate("MainWindow", "Enlever", None, QtGui.QApplication.UnicodeUTF8))
+        self.pushButtonEnlever.setObjectName(_fromUtf8("pushButtonEnlever"))
+        self.horizontalLayout_7.addWidget(self.pushButtonEnlever)
         self.verticalLayout_2.addWidget(self.widgetIngredients)
         self.gridLayout.addWidget(self.widgetEditeur, 1, 0, 1, 1)
         self.widgetProfile = QtGui.QWidget(self.page)
+        self.widgetProfile.setStyleSheet(_fromUtf8(""))
         self.widgetProfile.setObjectName(_fromUtf8("widgetProfile"))
         self.verticalLayout_6 = QtGui.QVBoxLayout(self.widgetProfile)
-        self.verticalLayout_6.setContentsMargins(20, -1, -1, -1)
+        self.verticalLayout_6.setContentsMargins(30, -1, -1, -1)
         self.verticalLayout_6.setObjectName(_fromUtf8("verticalLayout_6"))
-        spacerItem4 = QtGui.QSpacerItem(20, 40, QtGui.QSizePolicy.Minimum, QtGui.QSizePolicy.Expanding)
-        self.verticalLayout_6.addItem(spacerItem4)
+        spacerItem3 = QtGui.QSpacerItem(20, 40, QtGui.QSizePolicy.Minimum, QtGui.QSizePolicy.Expanding)
+        self.verticalLayout_6.addItem(spacerItem3)
         self.verticalLayout_4 = QtGui.QVBoxLayout()
         self.verticalLayout_4.setContentsMargins(-1, -1, -1, 10)
         self.verticalLayout_4.setObjectName(_fromUtf8("verticalLayout_4"))
@@ -417,8 +421,8 @@ class Ui_MainWindow(object):
         self.widgetColor.setObjectName(_fromUtf8("widgetColor"))
         self.verticalLayout.addWidget(self.widgetColor)
         self.verticalLayout_6.addLayout(self.verticalLayout)
-        spacerItem5 = QtGui.QSpacerItem(20, 40, QtGui.QSizePolicy.Minimum, QtGui.QSizePolicy.Expanding)
-        self.verticalLayout_6.addItem(spacerItem5)
+        spacerItem4 = QtGui.QSpacerItem(20, 40, QtGui.QSizePolicy.Minimum, QtGui.QSizePolicy.Expanding)
+        self.verticalLayout_6.addItem(spacerItem4)
         self.gridLayout.addWidget(self.widgetProfile, 1, 1, 1, 1)
         self.stackedWidget.addWidget(self.page)
         self.page_2 = QtGui.QWidget()
