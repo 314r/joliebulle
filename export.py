@@ -106,8 +106,11 @@ liste_fYield, liste_fMashed, liste_color, dNom, dAmount, dType, nbreDivers, list
             hNom.text = liste_houblons[i-1]
             hAmount = ET.SubElement(hop, 'AMOUNT')
             hAmount.text = str(liste_hAmount[i-1]/1000)
-            hForm = ET.SubElement(hop, 'FORM')
-            hForm.text = str(liste_hForm[i-1])
+            try :
+                hForm = ET.SubElement(hop, 'FORM')
+                hForm.text = str(liste_hForm[i-1])
+            except:
+                pass
             hTime = ET.SubElement(hop, 'TIME')
             hTime.text = str(liste_hTime[i-1])
             hAlpha = ET.SubElement(hop, 'ALPHA')
@@ -132,12 +135,14 @@ liste_fYield, liste_fMashed, liste_color, dNom, dAmount, dType, nbreDivers, list
             fType.text = liste_fType[i-1]
             fYield = ET.SubElement(fermentable,'YIELD')
             fYield.text = str(liste_fYield[i-1])
-             
-            fMashed = ET.SubElement(fermentable,'RECOMMEND_MASH')
-            if not liste_fMashed :
+            try:
+                fMashed = ET.SubElement(fermentable,'RECOMMEND_MASH')
+                if not liste_fMashed :
+                    pass
+                else :
+                    fMashed.text = liste_fMashed[i-1]
+            except :
                 pass
-            else :
-                fMashed.text = liste_fMashed[i-1]
 
             color = ET.SubElement(fermentable, 'COLOR')
             color.text = str(liste_color[i-1]/1.97)
@@ -169,12 +174,21 @@ liste_fYield, liste_fMashed, liste_color, dNom, dAmount, dType, nbreDivers, list
             lType = ET.SubElement(yeast ,'TYPE')
             lType = 'Ale'
             lNom.text = liste_levures [i-1]
-            lForm = ET.SubElement(yeast, 'FORM')
-            lForm.text = liste_lForm[i-1]
-            lLabo = ET.SubElement(yeast, 'LABORATORY')
-            lLabo.text = liste_lLabo[i-1]
-            lProd = ET.SubElement(yeast, 'PRODUCT_ID')
-            lProd.text = liste_lProdid[i-1]
+            try :
+                lForm = ET.SubElement(yeast, 'FORM')
+                lForm.text = liste_lForm[i-1]
+            except :
+                pass
+            try :
+                lLabo = ET.SubElement(yeast, 'LABORATORY')
+                lLabo.text = liste_lLabo[i-1]
+            except :
+                pass
+            try :
+                lProd = ET.SubElement(yeast, 'PRODUCT_ID')
+                lProd.text = liste_lProdid[i-1]
+            except :
+                pass
             lAtten = ET.SubElement(yeast, 'ATTENUATION')
             lAtten.text = str(liste_levureAtten[i-1])
             
