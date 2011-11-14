@@ -60,9 +60,29 @@ liste_fYield, liste_fMashed, liste_color, dNom, dAmount, dType, nbreDivers, list
         type.text = typeRecette
         brewerR = ET.SubElement(recipe, 'BREWER')
         brewerR.text = brewer
+        
+        
         style = ET.SubElement(recipe, 'STYLE')
         sNom = ET.SubElement(style, 'NAME')
         sNom.text = styleRecette
+        sVersion = ET.SubElement(style, 'VERSION')
+        sVersion.text = '1'
+        sCategory = ET.SubElement(style, 'CATEGORY')
+        sCategoryNumber = ET.SubElement (style, 'CATEGORY_NUMBER')
+        sStyleLetter = ET.SubElement (style, 'STYLE_LETTER')
+        sStyleGuide = ET.SubElement (style, 'STYLE_GUIDE')
+        sType =ET.SubElement(style, 'TYPE')
+        sType.text = 'Ale'
+        sOgMin = ET.SubElement (style, 'OG_MIN')
+        sOgMax = ET.SubElement (style, 'OG_MAX')
+        sFgMin = ET.SubElement (style, 'FG_MIN')
+        sFgMax = ET.SubElement (style, 'FG_MAX')
+        sIbuMin = ET.SubElement (style, 'IBU_MIN')
+        sIbuMax = ET.SubElement (style, 'IBU_MAX')
+        sColorMin = ET.SubElement (style, 'COLOR_MIN')
+        sColorMax = ET.SubElement (style, 'COLOR_MAX')
+        
+        
         batch_size = ET.SubElement(recipe, 'BATCH_SIZE')
         batch_size.text = str(volume)
         boil_size = ET.SubElement(recipe, 'BOIL_SIZE')
@@ -81,6 +101,8 @@ liste_fYield, liste_fMashed, liste_color, dNom, dAmount, dType, nbreDivers, list
             i = i+1
             hop = ET.SubElement(hops, 'HOP')
             hNom = ET.SubElement(hop, 'NAME')
+            hVersion = ET.SubElement(hop, 'VERSION')
+            hVersion.text = '1'
             hNom.text = liste_houblons[i-1]
             hAmount = ET.SubElement(hop, 'AMOUNT')
             hAmount.text = str(liste_hAmount[i-1]/1000)
@@ -90,6 +112,9 @@ liste_fYield, liste_fMashed, liste_color, dNom, dAmount, dType, nbreDivers, list
             hTime.text = str(liste_hTime[i-1])
             hAlpha = ET.SubElement(hop, 'ALPHA')
             hAlpha.text = str(liste_hAlpha[i-1])
+            hUse = ET.SubElement(hop, 'USE')
+            hUse.text = 'Boil'
+            
 
         fermentables = ET.SubElement(recipe, 'FERMENTABLES')
         
@@ -99,6 +124,8 @@ liste_fYield, liste_fMashed, liste_color, dNom, dAmount, dType, nbreDivers, list
             fermentable = ET.SubElement(fermentables, 'FERMENTABLE')
             fNom = ET.SubElement(fermentable,'NAME')
             fNom.text = liste_ingr[i-1]
+            fVersion = ET.SubElement(fermentable, 'VERSION')
+            fVersion.text = '1'            
             fAmount = ET.SubElement(fermentable, 'AMOUNT')
             fAmount.text = str(liste_fAmount[i-1]/1000)
             fType = ET.SubElement(fermentable, 'TYPE')
@@ -122,10 +149,14 @@ liste_fYield, liste_fMashed, liste_color, dNom, dAmount, dType, nbreDivers, list
             misc = ET.SubElement(miscs, 'MISC')
             dNom = ET.SubElement(misc, 'NAME')
             dNom.text = liste_divers[i-1]
+            dVersion = ET.SubElement(misc, 'VERSION')
+            dVersion.text = '1'
             dAmount = ET.SubElement(misc, 'AMOUNT')
             dAmount.text = str(liste_dAmount[i-1]/1000)
             dType = ET.SubElement(misc, 'TYPE')
             dType.text = liste_dType[i-1]
+            dUse = ET.SubElement(misc, 'USE')
+            dUse.text = 'Boil'
         
         yeasts=ET.SubElement(recipe, 'YEASTS')  
         i = 0  
@@ -133,6 +164,10 @@ liste_fYield, liste_fMashed, liste_color, dNom, dAmount, dType, nbreDivers, list
             i = i+1
             yeast = ET.SubElement(yeasts, 'YEAST')
             lNom = ET.SubElement(yeast, 'NAME')
+            lVersion = ET.SubElement(yeast, 'VERSION')
+            lVersion.text = '1'
+            lType = ET.SubElement(yeast ,'TYPE')
+            lType = 'Ale'
             lNom.text = liste_levures [i-1]
             lForm = ET.SubElement(yeast, 'FORM')
             lForm.text = liste_lForm[i-1]
@@ -143,6 +178,8 @@ liste_fYield, liste_fMashed, liste_color, dNom, dAmount, dType, nbreDivers, list
             lAtten = ET.SubElement(yeast, 'ATTENUATION')
             lAtten.text = str(liste_levureAtten[i-1])
             
+        waters=ET.SubElement(recipe, 'WATERS')
+        mash=ET.SubElement(recipe, 'MASH')            
         
         #print (ET.tostring(recipes))
         #print (self.prettify(recipes))
