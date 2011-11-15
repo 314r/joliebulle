@@ -239,6 +239,13 @@ p, li { white-space: pre-wrap; }
               </spacer>
              </item>
              <item>
+              <widget class="QPushButton" name="pushButtonRecipeNotes">
+               <property name="text">
+                <string>Notes</string>
+               </property>
+              </widget>
+             </item>
+             <item>
               <widget class="QPushButton" name="pushButtonChangeIngredients">
                <property name="text">
                 <string>Modifier Ingrédients</string>
@@ -777,6 +784,26 @@ color: rgb(255, 255, 255);</string>
             </widget>
            </item>
           </layout>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="page_3">
+       <layout class="QGridLayout" name="gridLayout_5">
+        <property name="margin">
+         <number>0</number>
+        </property>
+        <property name="spacing">
+         <number>6</number>
+        </property>
+        <item row="0" column="0">
+         <widget class="QTextEdit" name="textEditRecipeNotes"/>
+        </item>
+        <item row="1" column="0">
+         <widget class="QDialogButtonBox" name="buttonBoxRecipeNotes">
+          <property name="standardButtons">
+           <set>QDialogButtonBox::Cancel|QDialogButtonBox::Ok</set>
+          </property>
          </widget>
         </item>
        </layout>

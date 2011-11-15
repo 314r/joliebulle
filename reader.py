@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'reader.ui'
 #
-# Created: Sun Nov 13 23:07:11 2011
+# Created: Tue Nov 15 18:46:42 2011
 #      by: PyQt4 UI code generator 4.8.6
 #
 # WARNING! All changes made in this file will be lost!
@@ -153,6 +153,10 @@ class Ui_MainWindow(object):
         self.horizontalLayout_5.addWidget(self.checkBoxIng)
         spacerItem1 = QtGui.QSpacerItem(40, 20, QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Minimum)
         self.horizontalLayout_5.addItem(spacerItem1)
+        self.pushButtonRecipeNotes = QtGui.QPushButton(self.widgetEditeur)
+        self.pushButtonRecipeNotes.setText(QtGui.QApplication.translate("MainWindow", "Notes", None, QtGui.QApplication.UnicodeUTF8))
+        self.pushButtonRecipeNotes.setObjectName(_fromUtf8("pushButtonRecipeNotes"))
+        self.horizontalLayout_5.addWidget(self.pushButtonRecipeNotes)
         self.pushButtonChangeIngredients = QtGui.QPushButton(self.widgetEditeur)
         self.pushButtonChangeIngredients.setText(QtGui.QApplication.translate("MainWindow", "Modifier Ingrédients", None, QtGui.QApplication.UnicodeUTF8))
         self.pushButtonChangeIngredients.setCheckable(True)
@@ -451,6 +455,20 @@ class Ui_MainWindow(object):
         self.gridLayout_3.addWidget(self.listViewBiblio, 0, 0, 1, 1)
         self.gridLayout_2.addWidget(self.widget, 0, 0, 1, 1)
         self.stackedWidget.addWidget(self.page_2)
+        self.page_3 = QtGui.QWidget()
+        self.page_3.setObjectName(_fromUtf8("page_3"))
+        self.gridLayout_5 = QtGui.QGridLayout(self.page_3)
+        self.gridLayout_5.setMargin(0)
+        self.gridLayout_5.setSpacing(6)
+        self.gridLayout_5.setObjectName(_fromUtf8("gridLayout_5"))
+        self.textEditRecipeNotes = QtGui.QTextEdit(self.page_3)
+        self.textEditRecipeNotes.setObjectName(_fromUtf8("textEditRecipeNotes"))
+        self.gridLayout_5.addWidget(self.textEditRecipeNotes, 0, 0, 1, 1)
+        self.buttonBoxRecipeNotes = QtGui.QDialogButtonBox(self.page_3)
+        self.buttonBoxRecipeNotes.setStandardButtons(QtGui.QDialogButtonBox.Cancel|QtGui.QDialogButtonBox.Ok)
+        self.buttonBoxRecipeNotes.setObjectName(_fromUtf8("buttonBoxRecipeNotes"))
+        self.gridLayout_5.addWidget(self.buttonBoxRecipeNotes, 1, 0, 1, 1)
+        self.stackedWidget.addWidget(self.page_3)
         self.gridLayout_4.addWidget(self.stackedWidget, 0, 0, 1, 1)
         MainWindow.setCentralWidget(self.centralwidget)
         self.toolBar = QtGui.QToolBar(MainWindow)

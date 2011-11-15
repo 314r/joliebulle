@@ -32,7 +32,7 @@ from globals import *
 
 class ExportHTML(QtGui.QDialog) : 
 
-    def exportHtml (self, nomRecette, styleRecette, volume, boil, nbreFer, liste_ingr, liste_fAmount, nbreHops,liste_houblons, liste_hAlpha,liste_hForm,liste_hAmount,liste_hTime, nbreDivers,liste_divers, liste_dType, liste_dAmount, nbreLevures, liste_levuresDetail, rendement, OG, FG, EBC, IBU, ABV) :
+    def exportHtml (self, nomRecette, styleRecette, volume, boil, nbreFer, liste_ingr, liste_fAmount, nbreHops,liste_houblons, liste_hAlpha,liste_hForm,liste_hAmount,liste_hTime, nbreDivers,liste_divers, liste_dType, liste_dAmount, nbreLevures, liste_levuresDetail, rendement, OG, FG, EBC, IBU, ABV, recipeNotes) :
         
         self.recetteHtmlHeader = '''
 <!DOCTYPE html>
@@ -96,6 +96,8 @@ Recette prévue pour un brassin de ''') + str(volume) + self.trUtf8(''' litres <
         
         self.recetteHtmlProfil = self.trUtf8(''' <h2>Profil</h2>''') + self.trUtf8(''' <p><b>Rendement : </b>''') + str(rendement) + '''% <br/>''' + self.trUtf8('''<b>Densité initiale : </b>''') + str("%.3f" %(OG)) + '''<br/>''' + self.trUtf8('''<b>Densité finale : </b>''') + str("%.3f" %(FG)) + '''<br/>'''+ self.trUtf8('''<b>Teinte : </b>''') + str("%.0f" %(EBC)) + ''' EBC<br/>'''+ self.trUtf8('''<b>Amertume : </b>''') + str("%.0f" %(IBU)) + ''' IBU<br/>''' + self.trUtf8(''' <b>Alcool (vol): </b>''') + str("%.0f" %(ABV)) + ''' %</p>'''              
 
+        self.recipeNotes = self.trUtf8(''' <h2>Notes</h2>''') + '''<p>''' + recipeNotes + ''' </p> '''
+
         self.recetteHtmlFooter =self.trUtf8( '''
 <footer class="footer">Une recette générée par JolieBulle, logiciel de brassage libre.</footer>
 </body>
@@ -107,7 +109,7 @@ Recette prévue pour un brassin de ''') + str(volume) + self.trUtf8(''' litres <
                                         
     def enregistrerHtml(self,fileHtml) :
         #self.exportHtml(nomRecette)
-        contenuTexte = self.recetteHtmlHeader + self.recetteHtmlInfo + self.recetteHtmlIng + self.recetteHtmlProfil + self.recetteHtmlFooter
+        contenuTexte = self.recetteHtmlHeader + self.recetteHtmlInfo + self.recetteHtmlIng + self.recetteHtmlProfil + self.recipeNotes + self.recetteHtmlFooter
         if  fileHtml.open(QtCore.QIODevice.WriteOnly) :
             self.stream = QtCore.QTextStream(fileHtml)
             self.stream << contenuTexte

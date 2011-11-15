@@ -48,7 +48,7 @@ class Export :
     def exportXML(self,nomRecette, styleRecette, typeRecette, brewer, volume, boil, rendement, OG, FG, nbreHops, liste_houblons,
 liste_hAmount, liste_hForm, liste_hTime, liste_hAlpha, nbreFer, fNom, fAmount,
 fType, fYield, fMashed, color, liste_ingr, liste_fAmount, liste_fType,
-liste_fYield, liste_fMashed, liste_color, dNom, dAmount, dType, nbreDivers, liste_divers, liste_dAmount, liste_dType, nbreLevures, lNom, lForm, lLabo, lProd, lAtten, liste_levures, liste_lForm, liste_lLabo, liste_lProdid, liste_levureAtten) :
+liste_fYield, liste_fMashed, liste_color, dNom, dAmount, dType, nbreDivers, liste_divers, liste_dAmount, liste_dType, nbreLevures, lNom, lForm, lLabo, lProd, lAtten, liste_levures, liste_lForm, liste_lLabo, liste_lProdid, liste_levureAtten, recipeNotes) :
 
         self.recipes = ET.Element('RECIPES')
         recipe = ET.SubElement(self.recipes, 'RECIPE')
@@ -193,7 +193,12 @@ liste_fYield, liste_fMashed, liste_color, dNom, dAmount, dType, nbreDivers, list
             lAtten.text = str(liste_levureAtten[i-1])
             
         waters=ET.SubElement(recipe, 'WATERS')
-        mash=ET.SubElement(recipe, 'MASH')            
+        mash=ET.SubElement(recipe, 'MASH') 
+        try :
+            notes = ET.SubElement(recipe, 'NOTES') 
+            notes.text = recipeNotes   
+        except :
+            pass       
         
         #print (ET.tostring(recipes))
         #print (self.prettify(recipes))
