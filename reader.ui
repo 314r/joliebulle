@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1309</width>
-    <height>678</height>
+    <width>1171</width>
+    <height>677</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -851,8 +851,8 @@ color: rgb(255, 255, 255);</string>
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1309</width>
-     <height>25</height>
+     <width>1171</width>
+     <height>23</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuFichier">
