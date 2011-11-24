@@ -9,6 +9,7 @@ FORMS            += outilAlc.ui
 FORMS            += outilDilution.ui
 FORMS            += outilEvaporation.ui
 FORMS            += outilPaliers.ui
+FORMS            += preferences.ui
 
 SOURCES          += main.py
 SOURCES          += editdivers.py
