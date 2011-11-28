@@ -1503,7 +1503,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
     def about(self) : 
         QtGui.QMessageBox.about(self,
                 self.trUtf8("A propos"),
-                self.trUtf8("<h1>JolieBulle</h1> <b>version 2.3</b><br/>copyright (c) 2010-2011 Pierre Tavares<p> JolieBulle est un logiciel de lecture et de formulation de recettes de brassage.</p><p><a href =http://www.gnu.org/licenses/gpl-3.0.html>Licence : Version 3 de la Licence Générale Publique GNU</a></p><p>Certaines icônes proviennent du pack Faenza par Tiheum (Matthieu James), également distribué sous licence GPL.</p>"))
+                self.trUtf8("<h1>JolieBulle</h1> <b>version 2.4</b><br/>copyright (c) 2010-2011 Pierre Tavares<p> JolieBulle est un logiciel de lecture et de formulation de recettes de brassage.</p><p><a href =http://www.gnu.org/licenses/gpl-3.0.html>Licence : Version 3 de la Licence Générale Publique GNU</a></p><p>Certaines icônes proviennent du pack Faenza par Tiheum (Matthieu James), également distribué sous licence GPL.</p>"))
         
             
     def rendemt_changed(self) :

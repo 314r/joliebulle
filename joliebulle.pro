@@ -23,5 +23,6 @@ SOURCES          += outilDens.py
 SOURCES          += outilDilution.py
 SOURCES          += outilEvaporation.py
 SOURCES          += outilPaliers.py
+SOURCES          += preferences.py
 
 TRANSLATIONS     += joliebulle_en.ts
