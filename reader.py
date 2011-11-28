@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'reader.ui'
 #
-# Created: Sat Nov 26 12:50:06 2011
+# Created: Mon Nov 28 22:37:35 2011
 #      by: PyQt4 UI code generator 4.8.6
 #
 # WARNING! All changes made in this file will be lost!
@@ -153,16 +153,16 @@ class Ui_MainWindow(object):
         self.horizontalLayout_5.addWidget(self.checkBoxIng)
         spacerItem1 = QtGui.QSpacerItem(40, 20, QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Minimum)
         self.horizontalLayout_5.addItem(spacerItem1)
-        self.pushButtonRecipeNotes = QtGui.QPushButton(self.widgetEditeur)
-        self.pushButtonRecipeNotes.setText(QtGui.QApplication.translate("MainWindow", "Notes", None, QtGui.QApplication.UnicodeUTF8))
-        self.pushButtonRecipeNotes.setObjectName(_fromUtf8("pushButtonRecipeNotes"))
-        self.horizontalLayout_5.addWidget(self.pushButtonRecipeNotes)
         self.pushButtonChangeIngredients = QtGui.QPushButton(self.widgetEditeur)
-        self.pushButtonChangeIngredients.setText(QtGui.QApplication.translate("MainWindow", "Modifier Ingrédients", None, QtGui.QApplication.UnicodeUTF8))
+        self.pushButtonChangeIngredients.setText(QtGui.QApplication.translate("MainWindow", "Ajouter/Enlever", None, QtGui.QApplication.UnicodeUTF8))
         self.pushButtonChangeIngredients.setCheckable(True)
         self.pushButtonChangeIngredients.setObjectName(_fromUtf8("pushButtonChangeIngredients"))
         self.horizontalLayout_5.addWidget(self.pushButtonChangeIngredients)
         self.verticalLayout_2.addLayout(self.horizontalLayout_5)
+        self.gridLayout_6 = QtGui.QGridLayout()
+        self.gridLayout_6.setContentsMargins(0, -1, -1, -1)
+        self.gridLayout_6.setObjectName(_fromUtf8("gridLayout_6"))
+        self.verticalLayout_2.addLayout(self.gridLayout_6)
         self.widgetIngredients = QtGui.QWidget(self.widgetEditeur)
         self.widgetIngredients.setObjectName(_fromUtf8("widgetIngredients"))
         self.horizontalLayout_7 = QtGui.QHBoxLayout(self.widgetIngredients)
@@ -291,7 +291,7 @@ class Ui_MainWindow(object):
         self.pushButtonVolMore.setIcon(icon2)
         self.pushButtonVolMore.setCheckable(True)
         self.pushButtonVolMore.setObjectName(_fromUtf8("pushButtonVolMore"))
-        self.formLayout_4.setWidget(5, QtGui.QFormLayout.FieldRole, self.pushButtonVolMore)
+        self.formLayout_4.setWidget(4, QtGui.QFormLayout.FieldRole, self.pushButtonVolMore)
         self.verticalLayout_6.addLayout(self.formLayout_4)
         self.widgetVol = QtGui.QWidget(self.widgetProfile)
         self.widgetVol.setObjectName(_fromUtf8("widgetVol"))
@@ -322,6 +322,10 @@ class Ui_MainWindow(object):
         self.label_2.setObjectName(_fromUtf8("label_2"))
         self.formLayout_5.setWidget(1, QtGui.QFormLayout.LabelRole, self.label_2)
         self.verticalLayout_6.addWidget(self.widgetVol)
+        self.pushButtonRecipeNotes = QtGui.QPushButton(self.widgetProfile)
+        self.pushButtonRecipeNotes.setText(QtGui.QApplication.translate("MainWindow", "Notes", None, QtGui.QApplication.UnicodeUTF8))
+        self.pushButtonRecipeNotes.setObjectName(_fromUtf8("pushButtonRecipeNotes"))
+        self.verticalLayout_6.addWidget(self.pushButtonRecipeNotes)
         self.verticalLayout_5 = QtGui.QVBoxLayout()
         self.verticalLayout_5.setContentsMargins(-1, 35, -1, 10)
         self.verticalLayout_5.setObjectName(_fromUtf8("verticalLayout_5"))
@@ -480,7 +484,7 @@ class Ui_MainWindow(object):
         self.toolBar.setObjectName(_fromUtf8("toolBar"))
         MainWindow.addToolBar(QtCore.Qt.TopToolBarArea, self.toolBar)
         self.menuBar = QtGui.QMenuBar(MainWindow)
-        self.menuBar.setGeometry(QtCore.QRect(0, 0, 1218, 25))
+        self.menuBar.setGeometry(QtCore.QRect(0, 0, 1218, 23))
         self.menuBar.setObjectName(_fromUtf8("menuBar"))
         self.menuFichier = QtGui.QMenu(self.menuBar)
         self.menuFichier.setTitle(QtGui.QApplication.translate("MainWindow", "Fichier", None, QtGui.QApplication.UnicodeUTF8))
