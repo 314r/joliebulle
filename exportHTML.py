@@ -32,7 +32,7 @@ from globals import *
 
 class ExportHTML(QtGui.QDialog) : 
 
-    def exportHtml (self, nomRecette, styleRecette, volume, boil, nbreFer, liste_ingr, liste_fAmount, nbreHops,liste_houblons, liste_hAlpha,liste_hForm,liste_hAmount,liste_hTime, nbreDivers,liste_divers, liste_dType, liste_dAmount, nbreLevures, liste_levuresDetail, rendement, OG, FG, EBC, IBU, ABV, recipeNotes) :
+    def exportHtml (self, nomRecette, styleRecette, volume, boil, nbreFer, liste_ingr, liste_fAmount, nbreHops,liste_houblons, liste_hAlpha,liste_hForm,liste_hAmount,liste_hTime, nbreDivers,liste_divers, liste_dType, liste_dAmount, liste_dTime, nbreLevures, liste_levuresDetail, rendement, OG, FG, EBC, IBU, ABV, recipeNotes) :
         
         self.recetteHtmlHeader = '''
 <!DOCTYPE html>
@@ -82,7 +82,7 @@ Recette prévue pour un brassin de ''') + str(volume) + self.trUtf8(''' litres <
         m = 0
         while  m < nbreDivers :
             m = m + 1    
-            divers_texte = divers_texte +'''<b>''' +liste_divers[m-1] +'''</b>'''+''' (''' +liste_dType[m-1] +''')''' + ''' : ''' +'''<b>''' +str(liste_dAmount[m-1]) + '''g''' +'''</b>'''+ +self.trUtf8(''' pendant ''') +'''<b>''' +str(liste_hTime[h-1]) +'''</b>'''+ self.trUtf8(''' minutes''') + '''<br/>'''
+            divers_texte = divers_texte +'''<b>''' + liste_divers[m-1] +'''</b>'''+''' (''' +liste_dType[m-1] +''')''' + ''' : ''' +'''<b>''' +str(liste_dAmount[m-1]) + '''g''' +'''</b>'''+''' pendant ''' + '''<b>''' + str(liste_dTime[h-1]) + '''</b>''' + self.trUtf8(''' minutes''') +'''<br/>'''
         
         levures_texte = self.trUtf8('''<h3>Levures</h3> ''')
         l = 0
@@ -96,7 +96,7 @@ Recette prévue pour un brassin de ''') + str(volume) + self.trUtf8(''' litres <
         
         self.recetteHtmlProfil = self.trUtf8(''' <h2>Profil</h2>''') + self.trUtf8(''' <p><b>Rendement : </b>''') + str(rendement) + '''% <br/>''' + self.trUtf8('''<b>Densité initiale : </b>''') + str("%.3f" %(OG)) + '''<br/>''' + self.trUtf8('''<b>Densité finale : </b>''') + str("%.3f" %(FG)) + '''<br/>'''+ self.trUtf8('''<b>Teinte : </b>''') + str("%.0f" %(EBC)) + ''' EBC<br/>'''+ self.trUtf8('''<b>Amertume : </b>''') + str("%.0f" %(IBU)) + ''' IBU<br/>''' + self.trUtf8(''' <b>Alcool (vol): </b>''') + str("%.0f" %(ABV)) + ''' %</p>'''              
 
-        self.recipeNotes = self.trUtf8(''' <h2>Notes</h2>''') + '''<p>''' + recipeNotes + ''' </p> '''
+        self.recipeNotes = self.trUtf8(''' <h2>Notes</h2>''') + '''<p>''' + str(recipeNotes) + ''' </p> '''
 
         self.recetteHtmlFooter =self.trUtf8( '''
 <footer class="footer">Une recette générée par JolieBulle, logiciel de brassage libre.</footer>
