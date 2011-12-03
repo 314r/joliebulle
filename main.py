@@ -1316,7 +1316,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
                 if nom.tag == 'TIME' :
                     self.dTime = float(nom.text)
                     self.liste_dTime.append(self.dTime)
-        print(self.liste_dTime)
+       
 
         
         
