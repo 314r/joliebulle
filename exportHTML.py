@@ -82,7 +82,7 @@ Recette prévue pour un brassin de ''') + str(volume) + self.trUtf8(''' litres <
         m = 0
         while  m < nbreDivers :
             m = m + 1    
-            divers_texte = divers_texte +'''<b>''' +liste_divers[m-1] +'''</b>'''+''' (''' +liste_dType[m-1] +''')''' + ''' : ''' +'''<b>''' +str(liste_dAmount[m-1]) + '''g''' +'''</b>'''+'''<br/>'''
+            divers_texte = divers_texte +'''<b>''' +liste_divers[m-1] +'''</b>'''+''' (''' +liste_dType[m-1] +''')''' + ''' : ''' +'''<b>''' +str(liste_dAmount[m-1]) + '''g''' +'''</b>'''+ +self.trUtf8(''' pendant ''') +'''<b>''' +str(liste_hTime[h-1]) +'''</b>'''+ self.trUtf8(''' minutes''') + '''<br/>'''
         
         levures_texte = self.trUtf8('''<h3>Levures</h3> ''')
         l = 0
