@@ -128,9 +128,10 @@ class TimeDelegate(QtGui.QItemDelegate):
         self.listeF = AppWindow()
         i=self.listeF.nbreFer
         h=self.listeF.nbreHops
+        m=self.listeF.nbreDivers
 
         row=index.row()
-        if row > i-1 and row < i+h:
+        if row > i-1 and row < i+h+m:
             editor = QtGui.QSpinBox(parent)
             editor.setMinimum(0)
             editor.setMaximum(20000)
@@ -747,7 +748,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
             for index in self.liste_dTime :
                 index = self.modele.index(i+h+m-1,2)
                 value = self.modele.data(index, QtCore.Qt.DisplayRole)  
-                self.liste_dTime[h-1] = float(value)
+                self.liste_dTime[m-1] = float(value)
             
     
         
@@ -1591,6 +1592,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
 
     def enregistrer (self) :
         exp=Export()
+        print ('''la liste pas enregistrée :''' , self.liste_dTime)
         self.nomRecette = self.lineEditRecette.text()
         self.styleRecette = self.lineEditGenre.text()   
         self.brewer = self.lineEditBrewer.text()        
