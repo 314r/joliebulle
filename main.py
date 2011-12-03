@@ -1294,6 +1294,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         self.dNom = ''
         self.dAmount = 0
         self.dType = ''
+        self.dTime = 0
         
         
         m = 0
