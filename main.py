@@ -743,13 +743,18 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
                 index = self.modele.index(i+h+m-1,1)
                 value = self.modele.data(index, QtCore.Qt.DisplayRole)
                 self.liste_dAmount[m-1] = float(value)
+                
+            for index in self.liste_dTime :
+                index = self.modele.index(i+h+m-1,2)
+                value = self.modele.data(index, QtCore.Qt.DisplayRole)  
+                self.liste_dTime[h-1] = float(value)
             
     
         
         
     
         self.calculs_recette()  
-        print("la densité initiale est de : ", self.OG)
+       
         
 
     
@@ -811,6 +816,10 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
             for amount in self.liste_dAmount : 
                 amount = QtGui.QStandardItem("%.0f" %(self.liste_dAmount[m-1]) )
                 self.modele.setItem(i+h+m-1, 1, amount)
+                
+            for time in self.liste_dTime :
+                time = QtGui.QStandardItem("%.0f" %(self.liste_dTime[m-1]) )
+                self.modele.setItem(i+h+m-1, 2, time)
 
 
 
@@ -941,6 +950,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         itemD = QtGui.QStandardItem(self.base.liste_divers[i])
         item_dAmount = QtGui.QStandardItem(0)
         item_dType = QtGui.QStandardItem(self.base.liste_dType[i])
+        item_dTime = QtGui.QStandardItem(0)
 
         
         self.modele.insertRow(f+h+m)
@@ -948,6 +958,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         self.liste_divers.append(self.base.liste_divers[i])
         self.liste_dAmount.append(0)
         self.liste_dType.append(self.base.liste_dType[i])
+        self.liste_dTime.append(0)
         
         AppWindow.nbreDivers = m +1
         self.MVC()
@@ -1029,9 +1040,11 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
                 del self.liste_divers[indexLigne-(f+h)]
                 del self.liste_dAmount[indexLigne-(f+h)]
                 del self.liste_dType[indexLigne-(f+h)]
+                del self.liste_dTime[indexLigne-(f+h)]
                 self.modele.removeRow(indexLigne)
                 AppWindow.nbreDivers = m-1
                 self.reverseMVC()
+                
                 
             if indexLigne > f+h+m-1 and indexLigne < f+h+m+l :
                 del self.liste_levures[indexLigne-(f+h+m)]
@@ -1276,6 +1289,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         self.liste_divers = list ()
         self.liste_dAmount = list ()
         self.liste_dType = list ()
+        self.liste_dTime = list()
         self.dNom = ''
         self.dAmount = 0
         self.dType = ''
@@ -1296,6 +1310,11 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
                 if nom.tag == 'TYPE' :
                     self.dType = nom.text
                     self.liste_dType.append(self.dType)
+                  
+                if nom.tag == 'TIME' :
+                    self.dTime = float(nom.text)
+                    self.liste_dTime.append(self.dTime)
+        print(self.liste_dTime)
 
         
         
@@ -1686,6 +1705,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         self.dNom = ''
         self.dAmount = 0
         self.dType = ''
+        self.liste_dTime = list()
         
         self.lineEditRecette.setText(self.nomRecette)
         self.lineEditGenre.setText(self.styleRecette)
