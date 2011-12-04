@@ -362,7 +362,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         self.modele = QtGui.QStandardItemModel(0, 6)
         self.connect(self.modele, QtCore.SIGNAL("dataChanged(QModelIndex,QModelIndex)"), self.reverseMVC)
         
-        liste_headers = [self.trUtf8("Ingrédients"),self.trUtf8("Quantité (g)"),self.trUtf8("Temps (min)"),self.trUtf8("Acide Alpha (%)"),self.trUtf8("Type"),self.trUtf8("Proportion")]
+        liste_headers = [self.trUtf8("Ingrédients"),self.trUtf8("Quantité (g)"),self.trUtf8("Temps (min)"),self.trUtf8("Acide Alpha (%)"),self.trUtf8("Type"),self.trUtf8("Proportion"), self.trUtf8("Étape")]
         self.modele.setHorizontalHeaderLabels(liste_headers)
         
         
@@ -394,7 +394,9 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         self.tableViewF.resizeColumnsToContents()
         self.tableViewF.setColumnWidth(0,250)
         self.tableViewF.setColumnWidth(1,150)
+        self.tableViewF.setColumnWidth(3,150)
         self.tableViewF.setColumnWidth(4,150)
+        self.tableViewF.setColumnWidth(6,150)
         
         #La bibliotheque
         ###################################################################################################################
