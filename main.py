@@ -1041,7 +1041,10 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
                 del self.liste_divers[indexLigne-(f+h)]
                 del self.liste_dAmount[indexLigne-(f+h)]
                 del self.liste_dType[indexLigne-(f+h)]
-                del self.liste_dTime[indexLigne-(f+h)]
+                try :
+                    del self.liste_dTime[indexLigne-(f+h)]
+                except :
+                    pass
                 self.modele.removeRow(indexLigne)
                 AppWindow.nbreDivers = m-1
                 self.reverseMVC()
