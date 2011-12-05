@@ -793,10 +793,10 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
                     pass
                 else :
                     self.liste_hForm[h-1] = str(value)
-            for index in self.liste_hUse :
-                index = self.modele.index(i+h-1,6)
-                value = str(self.modele.data(index, QtCore.Qt.DisplayRole))    
-                self.liste_hUse[h-1] = str(value) 
+#            for index in self.liste_hUse :
+#                index = self.modele.index(i+h-1,6)
+#                value = str(self.modele.data(index, QtCore.Qt.DisplayRole))    
+#                self.liste_hUse[h-1] = str(value) 
 
         
         
