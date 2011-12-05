@@ -46,7 +46,7 @@ class Export :
 
     
     def exportXML(self,nomRecette, styleRecette, typeRecette, brewer, volume, boil, rendement, OG, FG, nbreHops, liste_houblons,
-liste_hAmount, liste_hForm, liste_hTime, liste_hAlpha, nbreFer, fNom, fAmount,
+liste_hAmount, liste_hForm, liste_hTime, liste_hAlpha, liste_hUse, nbreFer, fNom, fAmount,
 fType, fYield, fMashed, color, liste_ingr, liste_fAmount, liste_fType,
 liste_fYield, liste_fMashed, liste_color, dNom, dAmount, dType, nbreDivers, liste_divers, liste_dAmount, liste_dType, liste_dTime, nbreLevures, lNom, lForm, lLabo, lProd, lAtten, liste_levures, liste_lForm, liste_lLabo, liste_lProdid, liste_levureAtten, recipeNotes) :
 
@@ -116,7 +116,7 @@ liste_fYield, liste_fMashed, liste_color, dNom, dAmount, dType, nbreDivers, list
             hAlpha = ET.SubElement(hop, 'ALPHA')
             hAlpha.text = str(liste_hAlpha[i-1])
             hUse = ET.SubElement(hop, 'USE')
-            hUse.text = 'Boil'
+            hUse.text = str(liste_hUse[i-1])
             
 
         fermentables = ET.SubElement(recipe, 'FERMENTABLES')
