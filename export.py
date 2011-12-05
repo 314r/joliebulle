@@ -161,7 +161,10 @@ liste_fYield, liste_fMashed, liste_color, dNom, dAmount, dType, nbreDivers, list
             dType = ET.SubElement(misc, 'TYPE')
             dType.text = liste_dType[i-1]
             dTime = ET.SubElement(misc, 'TIME')
-            dTime.text = str(liste_dTime[i-1])
+            try :
+                dTime.text = str(liste_dTime[i-1])
+            except :
+                dTime.text = str(0)
             dUse = ET.SubElement(misc, 'USE')
             dUse.text = 'Boil'
         
