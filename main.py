@@ -448,7 +448,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         
         self.delegUse = UseDelegate(self)
         self.tableViewF.setItemDelegateForColumn(6,self.delegUse)
-        
+        self.connect(self.delegUse, QtCore.SIGNAL( "pySig"), self.modeleProportion)
         
 
         self.tableViewF.setModel(self.modele)
@@ -994,6 +994,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         item_hForm = QtGui.QStandardItem(self.base.liste_hForm[i])
         item_hTime = QtGui.QStandardItem(0)
         item_hAlpha = QtGui.QStandardItem(self.base.liste_hAlpha[i])
+        item_hUse = QtGui.QStandardItem('Boil')
         
         self.modele.insertRow(f+h)
         
@@ -1004,6 +1005,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         self.liste_hForm.append('Leaf')
         self.liste_hTime.append(0)
         self.liste_hAlpha.append(self.base.liste_hAlpha[i])
+        self.liste_hUse.append('Boil')
         
         AppWindow.nbreHops = h + 1
         self.calculs_recette()
@@ -1103,6 +1105,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
                 del self.liste_hForm[indexLigne-f]
                 del self.liste_hTime[indexLigne-f]
                 del self.liste_hAlpha[indexLigne-f]
+                del self.liste_hUse[indexLigne-f]
                 self.modele.removeRow(indexLigne)
                 AppWindow.nbreHops = h - 1
                 self.reverseMVC()   
