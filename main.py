@@ -844,6 +844,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
             for prop in self.liste_fProportion :
                 prop = QtGui.QStandardItem("%.0f" %(self.liste_fProportion[i-1]) + "%")
                 self.modele.setItem(i-1,5,prop)
+            step = QtGui.QStandardItem("Mash")
 
         
         
