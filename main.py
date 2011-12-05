@@ -1527,7 +1527,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
             self.mgAA = (self.liste_hAlpha[i-1]/100)*self.liste_hAmount[i-1]*1000 / float(self.volume)
             if self.liste_hForm[i-1] == 'Pellet' :
                 self.ibuPart = (self.mgAA * self.aaUtil) + 0.1*(self.mgAA * self.aaUtil)
-            elif self.liste_hUse[i-1] == 'Dry Hop' or self.liste_hUse[i-1] == 'Aroma' or self.liste_hUse[i-1] == 'Dry Hopping'
+            elif self.liste_hUse[i-1] == 'Dry Hop' or self.liste_hUse[i-1] == 'Aroma' or self.liste_hUse[i-1] == 'Dry Hopping' :
                 self.ibuPart = 0
             else :
                 self.ibuPart = self.mgAA * self.aaUtil 
