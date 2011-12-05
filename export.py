@@ -116,7 +116,10 @@ liste_fYield, liste_fMashed, liste_color, dNom, dAmount, dType, nbreDivers, list
             hAlpha = ET.SubElement(hop, 'ALPHA')
             hAlpha.text = str(liste_hAlpha[i-1])
             hUse = ET.SubElement(hop, 'USE')
-            hUse.text = str(liste_hUse[i-1])
+            try :
+                hUse.text = str(liste_hUse[i-1])
+            except :
+                hUse.text = 'Boil'
             
 
         fermentables = ET.SubElement(recipe, 'FERMENTABLES')

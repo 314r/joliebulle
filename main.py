@@ -793,10 +793,14 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
                     pass
                 else :
                     self.liste_hForm[h-1] = str(value)
-#            for index in self.liste_hUse :
-#                index = self.modele.index(i+h-1,6)
-#                value = str(self.modele.data(index, QtCore.Qt.DisplayRole))    
-#                self.liste_hUse[h-1] = str(value) 
+            for index in self.liste_hUse :
+                index = self.modele.index(i+h-1,6)
+                value = str(self.modele.data(index, QtCore.Qt.DisplayRole))
+                if value == 'None' or value == '' :
+                    pass
+                else :
+                    self.liste_hUse[h-1] = str(value)
+
 
         
         
@@ -862,12 +866,13 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
             for form in self.liste_hForm :
                 form = QtGui.QStandardItem(str(self.liste_hForm[h-1]))
                 self.modele.setItem(i+h-1,4,form)
-            for prop in self.liste_ibuPart :
-                prop = QtGui.QStandardItem("%.1f" %(self.liste_ibuPart[h-1]) + " IBU")
-                self.modele.setItem(i+h-1,5,prop)
             for use in self.liste_hUse :
                 use = QtGui.QStandardItem(str(self.liste_hUse[h-1]))
                 self.modele.setItem(i+h-1,6,use)
+            for prop in self.liste_ibuPart :
+                prop = QtGui.QStandardItem("%.1f" %(self.liste_ibuPart[h-1]) + " IBU")
+                self.modele.setItem(i+h-1,5,prop)
+
                  
 
 
