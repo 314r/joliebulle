@@ -48,7 +48,7 @@ class Export :
     def exportXML(self,nomRecette, styleRecette, typeRecette, brewer, volume, boil, rendement, OG, FG, nbreHops, liste_houblons,
 liste_hAmount, liste_hForm, liste_hTime, liste_hAlpha, liste_hUse, nbreFer, fNom, fAmount,
 fType, fYield, fMashed, color, liste_ingr, liste_fAmount, liste_fType,
-liste_fYield, liste_fMashed, liste_color, dNom, dAmount, dType, nbreDivers, liste_divers, liste_dAmount, liste_dType, liste_dTime, nbreLevures, lNom, lForm, lLabo, lProd, lAtten, liste_levures, liste_lForm, liste_lLabo, liste_lProdid, liste_levureAtten, recipeNotes) :
+liste_fYield, liste_fMashed, liste_color, dNom, dAmount, dType, nbreDivers, liste_divers, liste_dAmount, liste_dType, liste_dTime, liste_dUse, nbreLevures, lNom, lForm, lLabo, lProd, lAtten, liste_levures, liste_lForm, liste_lLabo, liste_lProdid, liste_levureAtten, recipeNotes) :
 
         self.recipes = ET.Element('RECIPES')
         recipe = ET.SubElement(self.recipes, 'RECIPE')
@@ -169,7 +169,10 @@ liste_fYield, liste_fMashed, liste_color, dNom, dAmount, dType, nbreDivers, list
             except :
                 dTime.text = str(0)
             dUse = ET.SubElement(misc, 'USE')
-            dUse.text = 'Boil'
+            try :
+                dUse.text = str(liste_dUse[i-1])
+            except :
+                dUse.text = 'Boil'
         
         yeasts=ET.SubElement(recipe, 'YEASTS')  
         i = 0  

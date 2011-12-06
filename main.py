@@ -257,6 +257,7 @@ class UseDelegate(QtGui.QItemDelegate):
 
         i=self.listeF.nbreFer
         h=self.listeF.nbreHops
+        m = self.listeF.nbreDivers
         row=index.row()
         if row > i-1 and row < i+h :
             editor = QtGui.QComboBox( parent )
@@ -265,23 +266,50 @@ class UseDelegate(QtGui.QItemDelegate):
             editor.insertItem(2,'Mash')
             editor.insertItem(3,'First Wort')
             editor.insertItem(4,'Aroma')
+        if row >i+h-1 and row < i+h+m:
+            editor = QtGui.QComboBox( parent )
+            editor.insertItem(0,'Boil')
+            editor.insertItem(1,'Mash')
+            editor.insertItem(2,'Primary')
+            editor.insertItem(3,'Secondary')
+            editor.insertItem(4,'Bottling')
 
         return editor
 
     def setEditorData( self, comboBoxUse, index ):
         value = index.model().data(index, QtCore.Qt.DisplayRole)
-        if value == 'Boil' : 
-            value = 0
-        elif value == 'Dry Hop' :
-            value = 1
-        elif value == 'Mash' :
-            value = 2        
-        elif value == 'First Wort' :
-            value = 3    
-        elif value == 'Aroma' :
-            value = 4
-        else :
-            value = 0  
+        i=self.listeF.nbreFer
+        h=self.listeF.nbreHops
+        m = self.listeF.nbreDivers
+        row=index.row()
+        if row > i-1 and row < i+h :  
+            if value == 'Boil' : 
+                value = 0
+            elif value == 'Dry Hop' :
+                value = 1
+            elif value == 'Mash' :
+                value = 2        
+            elif value == 'First Wort' :
+                value = 3    
+            elif value == 'Aroma' :
+                value = 4
+            else :
+                value = 0 
+                 
+        elif row >i+h-1 and row < i+h+m : 
+            if value == 'Boil' : 
+                value = 0
+            elif value == 'Mash' :
+                value = 1
+            elif value == 'Primary' :
+                value = 2        
+            elif value == 'Secondary' :
+                value = 3    
+            elif value == 'Bottling' :
+                value = 4
+            else :
+                value = 0      
+         
     
         
         comboBoxUse.setCurrentIndex(value)
@@ -816,7 +844,14 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
                 index = self.modele.index(i+h+m-1,2)
                 value = self.modele.data(index, QtCore.Qt.DisplayRole)  
                 self.liste_dTime[m-1] = float(value)
-            
+                
+            for index in self.liste_dUse :
+                index = self.modele.index(i+h+m-1,6)
+                value = str(self.modele.data(index, QtCore.Qt.DisplayRole))
+                if value == 'None' or value == '' :
+                    pass
+                else :
+                    self.liste_dUse[m-1] = str(value)            
     
         
         
@@ -844,7 +879,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
             for prop in self.liste_fProportion :
                 prop = QtGui.QStandardItem("%.0f" %(self.liste_fProportion[i-1]) + "%")
                 self.modele.setItem(i-1,5,prop)
-            step = QtGui.QStandardItem("Mash")
+
 
         
         
@@ -893,6 +928,10 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
             for time in self.liste_dTime :
                 time = QtGui.QStandardItem("%.0f" %(self.liste_dTime[m-1]) )
                 self.modele.setItem(i+h+m-1, 2, time)
+            for use in self.liste_dUse :
+                use = QtGui.QStandardItem(str(self.liste_dUse[m-1]) )
+                self.modele.setItem(i+h+m-1, 6, use)               
+             
 
 
 
@@ -1026,7 +1065,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         item_dAmount = QtGui.QStandardItem(0)
         item_dType = QtGui.QStandardItem(self.base.liste_dType[i])
         item_dTime = QtGui.QStandardItem(0)
-
+        item_dUse = QtGui.QStandardItem('Boil')
         
         self.modele.insertRow(f+h+m)
         
@@ -1034,6 +1073,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         self.liste_dAmount.append(0)
         self.liste_dType.append(self.base.liste_dType[i])
         self.liste_dTime.append(0)
+        self.liste_dUse.append('Boil')
         
         AppWindow.nbreDivers = m +1
         self.MVC()
@@ -1120,6 +1160,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
                     del self.liste_dTime[indexLigne-(f+h)]
                 except :
                     pass
+                del self.liste_dUse[indexLigne-(f+h)]
                 self.modele.removeRow(indexLigne)
                 AppWindow.nbreDivers = m-1
                 self.reverseMVC()
@@ -1372,6 +1413,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         self.liste_dAmount = list ()
         self.liste_dType = list ()
         self.liste_dTime = list()
+        self.liste_dUse = list()
         self.dNom = ''
         self.dAmount = 0
         self.dType = ''
@@ -1397,6 +1439,11 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
                 if nom.tag == 'TIME' :
                     self.dTime = float(nom.text)
                     self.liste_dTime.append(self.dTime)
+                  
+                if nom.tag == 'USE' :
+                    self.dUse = (nom.text)
+                    self.liste_dUse.append(self.dUse)
+                    
        
 
         
@@ -1676,7 +1723,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
 
     def enregistrer (self) :
         exp=Export()
-        print ('''la liste des usages :''' , self.liste_hUse)
+        print ('''la liste des usages :''' , self.liste_dUse)
         self.nomRecette = self.lineEditRecette.text()
         self.styleRecette = self.lineEditGenre.text()   
         self.brewer = self.lineEditBrewer.text()        
@@ -1688,12 +1735,12 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
             
 
 
-            exp.exportXML(self.nomRecette, self.styleRecette, self.typeRecette, self.brewer, self.volume, self.boil, self.rendement,self.OG, self.FG, AppWindow.nbreHops, self.liste_houblons, self.liste_hAmount, self.liste_hForm, self.liste_hTime, self.liste_hAlpha,self.liste_hUse, AppWindow.nbreFer, self.fNom, self.fAmount ,self.fType, self.fYield, self.fMashed, self.color, self.liste_ingr, self.liste_fAmount, self.liste_fType, self.liste_fYield, self.liste_fMashed, self.liste_color, self.dNom, self.dAmount, self.dType, AppWindow.nbreDivers, self.liste_divers, self.liste_dAmount, self.liste_dType, self.liste_dTime, self.nbreLevures, self.lNom, self.lForm, self.lLabo, self.lProd, self.lAtten, self.liste_levures, self.liste_lForm, self.liste_lLabo, self.liste_lProdid, self.liste_levureAtten, self.recipeNotes)
+            exp.exportXML(self.nomRecette, self.styleRecette, self.typeRecette, self.brewer, self.volume, self.boil, self.rendement,self.OG, self.FG, AppWindow.nbreHops, self.liste_houblons, self.liste_hAmount, self.liste_hForm, self.liste_hTime, self.liste_hAlpha,self.liste_hUse, AppWindow.nbreFer, self.fNom, self.fAmount ,self.fType, self.fYield, self.fMashed, self.color, self.liste_ingr, self.liste_fAmount, self.liste_fType, self.liste_fYield, self.liste_fMashed, self.liste_color, self.dNom, self.dAmount, self.dType, AppWindow.nbreDivers, self.liste_divers, self.liste_dAmount, self.liste_dType, self.liste_dTime,self.liste_dUse, self.nbreLevures, self.lNom, self.lForm, self.lLabo, self.lProd, self.lAtten, self.liste_levures, self.liste_lForm, self.liste_lLabo, self.liste_lProdid, self.liste_levureAtten, self.recipeNotes)
             exp.enregistrer(self.s)
         else :
 
             
-            exp.exportXML(self.nomRecette, self.styleRecette, self.typeRecette, self.brewer, self.volume, self.boil, self.rendement, self.OG, self.FG,AppWindow.nbreHops, self.liste_houblons, self.liste_hAmount, self.liste_hForm, self.liste_hTime, self.liste_hAlpha,self.liste_hUse, AppWindow.nbreFer, self.fNom, self.fAmount ,self.fType, self.fYield, self.fMashed, self.color, self.liste_ingr, self.liste_fAmount, self.liste_fType, self.liste_fYield, self.liste_fMashed, self.liste_color, self.dNom, self.dAmount, self.dType, AppWindow.nbreDivers, self.liste_divers, self.liste_dAmount, self.liste_dType, self.liste_dTime, self.nbreLevures, self.lNom, self.lForm, self.lLabo, self.lProd, self.lAtten, self.liste_levures, self.liste_lForm, self.liste_lLabo, self.liste_lProdid, self.liste_levureAtten, self.recipeNotes)
+            exp.exportXML(self.nomRecette, self.styleRecette, self.typeRecette, self.brewer, self.volume, self.boil, self.rendement, self.OG, self.FG,AppWindow.nbreHops, self.liste_houblons, self.liste_hAmount, self.liste_hForm, self.liste_hTime, self.liste_hAlpha,self.liste_hUse, AppWindow.nbreFer, self.fNom, self.fAmount ,self.fType, self.fYield, self.fMashed, self.color, self.liste_ingr, self.liste_fAmount, self.liste_fType, self.liste_fYield, self.liste_fMashed, self.liste_color, self.dNom, self.dAmount, self.dType, AppWindow.nbreDivers, self.liste_divers, self.liste_dAmount, self.liste_dType, self.liste_dTime,self.liste_dUse, self.nbreLevures, self.lNom, self.lForm, self.lLabo, self.lProd, self.lAtten, self.liste_levures, self.liste_lForm, self.liste_lLabo, self.liste_lProdid, self.liste_levureAtten, self.recipeNotes)
             exp.enregistrer(self.s)
     
         
@@ -1707,7 +1754,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
                                                     self.trUtf8("Enregistrer dans un fichier"),
                                                     recettes_dir + "/" + self.nomRecette,
                                                     "BeerXML (*.xml)")
-        exp.exportXML(self.nomRecette, self.styleRecette, self.typeRecette, self.brewer, self.volume, self.boil, self.rendement,self.OG, self.FG, AppWindow.nbreHops, self.liste_houblons, self.liste_hAmount, self.liste_hForm, self.liste_hTime, self.liste_hAlpha, self.liste_hUse, AppWindow.nbreFer, self.fNom, self.fAmount ,self.fType, self.fYield, self.fMashed, self.color, self.liste_ingr, self.liste_fAmount, self.liste_fType, self.liste_fYield, self.liste_fMashed, self.liste_color, self.dNom, self.dAmount, self.dType, AppWindow.nbreDivers, self.liste_divers, self.liste_dAmount, self.liste_dType, self.liste_dTime, self.nbreLevures, self.lNom, self.lForm, self.lLabo, self.lProd, self.lAtten, self.liste_levures, self.liste_lForm, self.liste_lLabo, self.liste_lProdid, self.liste_levureAtten, self.recipeNotes)
+        exp.exportXML(self.nomRecette, self.styleRecette, self.typeRecette, self.brewer, self.volume, self.boil, self.rendement,self.OG, self.FG, AppWindow.nbreHops, self.liste_houblons, self.liste_hAmount, self.liste_hForm, self.liste_hTime, self.liste_hAlpha, self.liste_hUse, AppWindow.nbreFer, self.fNom, self.fAmount ,self.fType, self.fYield, self.fMashed, self.color, self.liste_ingr, self.liste_fAmount, self.liste_fType, self.liste_fYield, self.liste_fMashed, self.liste_color, self.dNom, self.dAmount, self.dType, AppWindow.nbreDivers, self.liste_divers, self.liste_dAmount, self.liste_dType, self.liste_dTime, self.liste_dUse, self.nbreLevures, self.lNom, self.lForm, self.lLabo, self.lProd, self.lAtten, self.liste_levures, self.liste_lForm, self.liste_lLabo, self.liste_lProdid, self.liste_levureAtten, self.recipeNotes)
         exp.enregistrer(self.s)  
     def exporterHtml (self) :
         self.nomRecette = self.lineEditRecette.text()
@@ -1793,6 +1840,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         self.dAmount = 0
         self.dType = ''
         self.liste_dTime = list()
+        self.liste_dUse = list()
         
         self.lineEditRecette.setText(self.nomRecette)
         self.lineEditGenre.setText(self.styleRecette)
