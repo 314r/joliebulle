@@ -261,18 +261,18 @@ class UseDelegate(QtGui.QItemDelegate):
         row=index.row()
         if row > i-1 and row < i+h :
             editor = QtGui.QComboBox( parent )
-            editor.insertItem(0,'Boil')
+            editor.insertItem(0,'Ébullition')
             editor.insertItem(1,'Dry Hop')
-            editor.insertItem(2,'Mash')
-            editor.insertItem(3,'First Wort')
-            editor.insertItem(4,'Aroma')
+            editor.insertItem(2,'Empâtage')
+            editor.insertItem(3,'Premier Moût')
+            editor.insertItem(4,'Arôme')
         if row >i+h-1 and row < i+h+m:
             editor = QtGui.QComboBox( parent )
-            editor.insertItem(0,'Boil')
-            editor.insertItem(1,'Mash')
-            editor.insertItem(2,'Primary')
-            editor.insertItem(3,'Secondary')
-            editor.insertItem(4,'Bottling')
+            editor.insertItem(0,'Ébullition')
+            editor.insertItem(1,'Empâtage')
+            editor.insertItem(2,'Primaire')
+            editor.insertItem(3,'Secondaire')
+            editor.insertItem(4,'Embouteillage')
 
         return editor
 
@@ -283,29 +283,29 @@ class UseDelegate(QtGui.QItemDelegate):
         m = self.listeF.nbreDivers
         row=index.row()
         if row > i-1 and row < i+h :  
-            if value == 'Boil' : 
+            if value == 'Ébullition' : 
                 value = 0
-            elif value == 'Dry Hop' :
+            elif value == self.trUtf8('Dry Hop') :
                 value = 1
-            elif value == 'Mash' :
+            elif value == 'Empâtage' :
                 value = 2        
-            elif value == 'First Wort' :
+            elif value == 'Premier Moût' :
                 value = 3    
-            elif value == 'Aroma' :
+            elif value == 'Arôme' :
                 value = 4
             else :
                 value = 0 
                  
         elif row >i+h-1 and row < i+h+m : 
-            if value == 'Boil' : 
+            if value == 'Ébullition' : 
                 value = 0
-            elif value == 'Mash' :
+            elif value == 'Empâtage' :
                 value = 1
-            elif value == 'Primary' :
+            elif value == 'Primaire' :
                 value = 2        
-            elif value == 'Secondary' :
+            elif value == 'Secondaire' :
                 value = 3    
-            elif value == 'Bottling' :
+            elif value == 'Embouteillage' :
                 value = 4
             else :
                 value = 0      
@@ -1353,9 +1353,23 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
                     self.liste_hAlpha.append(self.hAlpha)  
                 
                 if nom.tag == 'USE' :
-                    self.hUse = nom.text               
-                    self.liste_hUse.append(self.hUse)
-                
+                    self.hUse = nom.text     
+                    if self.hUse == 'Boil' :
+                        self.hUse = 'Ébullition'          
+                        self.liste_hUse.append(self.hUse)
+                    if self.hUse == 'Dry Hop' or self.hUse == 'Dry Hopping':
+                        self.hUse = 'Dry Hop'          
+                        self.liste_hUse.append(self.hUse)
+                    if self.hUse == 'Mash' :
+                        self.hUse = 'Empâtage'          
+                        self.liste_hUse.append(self.hUse)
+                    if self.hUse == 'First Wort' :
+                        self.hUse = 'Premier Moût'          
+                        self.liste_hUse.append(self.hUse) 
+                    if self.hUse == 'Aroma' :
+                        self.hUse = 'Arôme'          
+                        self.liste_hUse.append(self.hUse) 
+                                        
                                                             
 
         
@@ -1442,8 +1456,22 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
                   
                 if nom.tag == 'USE' :
                     self.dUse = (nom.text)
-                    self.liste_dUse.append(self.dUse)
-                    
+                    if self.dUse == 'Boil' :
+                        self.dUse = 'Ébullition'
+                        self.liste_dUse.append(self.dUse)
+                    if self.dUse == 'Mash' :
+                        self.dUse = 'Empâtage'
+                        self.liste_dUse.append(self.dUse)
+                    if self.dUse == 'Primary' :
+                        self.dUse = 'Primaire'
+                        self.liste_dUse.append(self.dUse)
+                    if self.dUse == 'Secondary' :
+                        self.dUse = 'Secondaire'
+                        self.liste_dUse.append(self.dUse)
+                    if self.dUse == 'Bottling' :
+                        self.dUse = 'Embouteillage'
+                        self.liste_dUse.append(self.dUse)
+                        
        
 
         

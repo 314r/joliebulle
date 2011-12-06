@@ -117,7 +117,16 @@ liste_fYield, liste_fMashed, liste_color, dNom, dAmount, dType, nbreDivers, list
             hAlpha.text = str(liste_hAlpha[i-1])
             hUse = ET.SubElement(hop, 'USE')
             try :
-                hUse.text = str(liste_hUse[i-1])
+                if str(liste_hUse[i-1]) == 'Ébullition' :
+                    hUse.text = 'Boil'
+                if str(liste_hUse[i-1]) == 'Dry Hop' or str(liste_hUse[i-1]) == 'Dry Hopping' :
+                    hUse.text = 'Dry Hop'  
+                if str(liste_hUse[i-1]) == 'Empâtage' :
+                    hUse.text = 'Mash'
+                if str(liste_hUse[i-1]) == 'Premier Moût' :
+                    hUse.text = 'First Wort' 
+                if str(liste_hUse[i-1]) == 'Arôme' :
+                    hUse.text = 'Aroma'  
             except :
                 hUse.text = 'Boil'
             
@@ -170,7 +179,16 @@ liste_fYield, liste_fMashed, liste_color, dNom, dAmount, dType, nbreDivers, list
                 dTime.text = str(0)
             dUse = ET.SubElement(misc, 'USE')
             try :
-                dUse.text = str(liste_dUse[i-1])
+                if str(liste_dUse[i-1]) == 'Ébullition' : 
+                    dUse.text = 'Boil'
+                if str(liste_dUse[i-1]) == 'Empâtage' : 
+                    dUse.text = 'Mash'
+                if str(liste_dUse[i-1]) == 'Primaire' : 
+                    dUse.text = 'Primary'        
+                if str(liste_dUse[i-1]) == 'Secondaire' : 
+                    dUse.text = 'Secondary'
+                if str(liste_dUse[i-1]) == 'Embouteillage' : 
+                    dUse.text = 'Bottling'       
             except :
                 dUse.text = 'Boil'
         
