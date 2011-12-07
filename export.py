@@ -106,11 +106,17 @@ liste_fYield, liste_fMashed, liste_color, dNom, dAmount, dType, nbreDivers, list
             hNom.text = liste_houblons[i-1]
             hAmount = ET.SubElement(hop, 'AMOUNT')
             hAmount.text = str(liste_hAmount[i-1]/1000)
+            hForm = ET.SubElement(hop, 'FORM')
             try :
-                hForm = ET.SubElement(hop, 'FORM')
-                hForm.text = str(liste_hForm[i-1])
+                if str(liste_hForm[i-1]) == 'Feuille' :
+                    hForm.text = 'Leaf'
+                if str(liste_hForm[i-1]) == 'Pellet' :
+                    hForm.text = 'Pellet'
+                if str(liste_hForm[i-1]) == 'Cône' :
+                    hForm.text = 'Plug'   
             except:
-                pass
+                hForm.text = 'Leaf'
+                
             hTime = ET.SubElement(hop, 'TIME')
             hTime.text = str(liste_hTime[i-1])
             hAlpha = ET.SubElement(hop, 'ALPHA')
@@ -129,6 +135,7 @@ liste_fYield, liste_fMashed, liste_color, dNom, dAmount, dType, nbreDivers, list
                     hUse.text = 'Aroma'  
             except :
                 hUse.text = 'Boil'
+            
             
 
         fermentables = ET.SubElement(recipe, 'FERMENTABLES')

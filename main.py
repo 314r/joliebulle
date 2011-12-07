@@ -216,14 +216,17 @@ class ComboBoxDelegate(QtGui.QItemDelegate):
         if row > i-1 and row < i+h :
             editor = QtGui.QComboBox( parent )
             editor.insertItem(0,'Pellet')
-            editor.insertItem(1,'Leaf')
+            editor.insertItem(1,'Feuille')
+            editor.insertItem(2,'Cône')
         return editor
 
     def setEditorData( self, comboBox, index ):
         value = index.model().data(index, QtCore.Qt.DisplayRole)
         if value == 'Pellet' : 
             value = 0
-        else :
+        elif value == 'Cône' :
+            value = 2
+        else : 
             value = 1
     
         
@@ -1034,7 +1037,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         item_hForm = QtGui.QStandardItem(self.base.liste_hForm[i])
         item_hTime = QtGui.QStandardItem(0)
         item_hAlpha = QtGui.QStandardItem(self.base.liste_hAlpha[i])
-        item_hUse = QtGui.QStandardItem('Boil')
+        item_hUse = QtGui.QStandardItem('Ébullition')
         
         self.modele.insertRow(f+h)
         
@@ -1042,10 +1045,10 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         
         self.liste_houblons.append(self.base.liste_houblons[i])
         self.liste_hAmount.append(0)
-        self.liste_hForm.append('Leaf')
+        self.liste_hForm.append('Feuille')
         self.liste_hTime.append(0)
         self.liste_hAlpha.append(self.base.liste_hAlpha[i])
-        self.liste_hUse.append('Boil')
+        self.liste_hUse.append('Ébullition')
         
         AppWindow.nbreHops = h + 1
         self.calculs_recette()
@@ -1065,7 +1068,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         item_dAmount = QtGui.QStandardItem(0)
         item_dType = QtGui.QStandardItem(self.base.liste_dType[i])
         item_dTime = QtGui.QStandardItem(0)
-        item_dUse = QtGui.QStandardItem('Boil')
+        item_dUse = QtGui.QStandardItem('Ébullition')
         
         self.modele.insertRow(f+h+m)
         
@@ -1073,7 +1076,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         self.liste_dAmount.append(0)
         self.liste_dType.append(self.base.liste_dType[i])
         self.liste_dTime.append(0)
-        self.liste_dUse.append('Boil')
+        self.liste_dUse.append('Ébullition')
         
         AppWindow.nbreDivers = m +1
         self.MVC()
@@ -1340,7 +1343,16 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
                     self.liste_hAmount.append(self.hAmount)
                     
                 if nom.tag =='FORM' :
-                    self.hForm = nom.text 
+                    self.hForm = nom.text
+                    if self.hForm == 'Pellet' :
+                        self.hForm = 'Pellet'
+                    elif self.hForm == 'Leaf' :
+                        self.hForm = 'Feuille'  
+                    elif self.hForm == 'Plug' :
+                        self.hForm = 'Cône'   
+                    else :
+                        self.hForm = 'Feuille'
+                                         
                     self.liste_hForm.append(self.hForm)
                     
                 if nom.tag =='TIME' :
@@ -1356,23 +1368,21 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
                     self.hUse = nom.text     
                     if self.hUse == 'Boil' :
                         self.hUse = 'Ébullition'          
-                        self.liste_hUse.append(self.hUse)
-                    if self.hUse == 'Dry Hop' or self.hUse == 'Dry Hopping':
-                        self.hUse = 'Dry Hop'          
-                        self.liste_hUse.append(self.hUse)
-                    if self.hUse == 'Mash' :
-                        self.hUse = 'Empâtage'          
-                        self.liste_hUse.append(self.hUse)
-                    if self.hUse == 'First Wort' :
-                        self.hUse = 'Premier Moût'          
-                        self.liste_hUse.append(self.hUse) 
-                    if self.hUse == 'Aroma' :
-                        self.hUse = 'Arôme'          
-                        self.liste_hUse.append(self.hUse) 
+                    elif self.hUse == 'Dry Hop' or self.hUse == 'Dry Hopping':
+                        self.hUse = 'Dry Hop'           
+                    elif self.hUse == 'Mash' :
+                        self.hUse = 'Empâtage'             
+                    elif self.hUse == 'First Wort' :
+                        self.hUse = 'Premier Moût'             
+                    elif self.hUse == 'Aroma' :
+                        self.hUse = 'Arôme' 
+                    else :
+                        self.hUse = 'Boil'             
+                    self.liste_hUse.append(self.hUse) 
                                         
                                                             
 
-        
+        print("liste des formes :", self.liste_hForm)
         
         #Levure 
         self.nbreLevures = len(levures)
@@ -1752,6 +1762,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
     def enregistrer (self) :
         exp=Export()
         print ('''la liste des usages :''' , self.liste_dUse)
+        print("liste des formes :", self.liste_hForm)
         self.nomRecette = self.lineEditRecette.text()
         self.styleRecette = self.lineEditGenre.text()   
         self.brewer = self.lineEditBrewer.text()        
