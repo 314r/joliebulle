@@ -56,13 +56,14 @@ class Dialog(QtGui.QDialog):
         self.ui.comboBoxReco.addItem(self.trUtf8('Oui'))
         self.ui.comboBoxReco.addItem(self.trUtf8('Non'))
         
-        self.ui.spinBoxCouleur.setMaximum(1000)
+        self.ui.spinBoxCouleur.setMaximum(10000)
         self.ui.spinBoxRendmt.setMaximum(1000)
         
         self.connect(self.ui.listWidgetGrains, QtCore.SIGNAL("itemSelectionChanged ()"), self.voir)
         self.connect(self.ui.pushButtonNouveau, QtCore.SIGNAL("clicked()"), self.nouveau)
         self.connect(self.ui.pushButtonEnlever, QtCore.SIGNAL("clicked()"), self.enlever)
         self.connect(self.ui.pushButtonAjouter, QtCore.SIGNAL("clicked()"), self.ajouter)
+        self.ui.radioButtonEBC.toggled.connect(self.toggleUnits)
         self.ui.buttonBox.rejected.connect(self.rejected)
         
         
@@ -73,6 +74,8 @@ class Dialog(QtGui.QDialog):
         self.ui.spinBoxCouleur.setEnabled(False)
         self.ui.pushButtonAjouter.setEnabled(False)
         self.ui.pushButtonAjouter.setEnabled(False)
+        self.ui.radioButtonSRM.setEnabled(False)
+        self.ui.radioButtonEBC.setEnabled(False)
         
     def voir (self) :
         i = self.ui.listWidgetGrains.currentRow()
@@ -84,6 +87,9 @@ class Dialog(QtGui.QDialog):
         self.ui.spinBoxCouleur.setEnabled(True)
         self.ui.pushButtonAjouter.setEnabled(True)
         self.ui.pushButtonAjouter.setEnabled(True)
+        self.ui.radioButtonSRM.setEnabled(True)
+        self.ui.radioButtonEBC.setEnabled(True)        
+        self.ui.radioButtonSRM.setChecked(True)
         
         self.ui.lineEditNom.setText(self.base.liste_ingr[i])
         self.ui.spinBoxRendmt.setValue(self.base.liste_fYield[i])
@@ -109,7 +115,12 @@ class Dialog(QtGui.QDialog):
         else :
             self.ui.comboBoxReco.setCurrentIndex(0)
             
-            
+    def toggleUnits (self) :
+        
+        if self.ui.radioButtonEBC.isChecked() :
+            self.ui.spinBoxCouleur.setValue(round(self.ui.spinBoxCouleur.value()*1.97))
+        else :
+            self.ui.spinBoxCouleur.setValue(round(self.ui.spinBoxCouleur.value()/1.97))
             
     def ajouter (self) :
         self.base.importBeerXML()
@@ -123,6 +134,7 @@ class Dialog(QtGui.QDialog):
         
 
         self.base.liste_fYield.insert(i, self.ui.spinBoxRendmt.value())
+        self.ui.radioButtonSRM.setChecked(True)
         self.base.liste_color.insert(i, self.ui.spinBoxCouleur.value()*1.97)
         
         if self.ui.comboBoxType.currentIndex() is 0 :
@@ -189,6 +201,7 @@ class Dialog(QtGui.QDialog):
         self.ui.spinBoxRendmt.setValue(0)
         self.ui.comboBoxReco.setCurrentIndex(0)
         self.ui.comboBoxType.setCurrentIndex(0)
+        
         
     def enlever (self) :
         self.base.importBeerXML()
