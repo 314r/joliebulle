@@ -92,7 +92,6 @@ class AmountDelegate(QtGui.QItemDelegate):
         #spinBox.interpretText()
         champs =lineEdit.text()
         a = champs.rfind(" ")
-        print ("a est égal à :", a)
         if a > 0 :
             if champs[a+1:] == "g" :
                 value = int(champs[:a])
@@ -105,8 +104,6 @@ class AmountDelegate(QtGui.QItemDelegate):
         else :
             value = int(lineEdit.text())        
         #value = int(lineEdit.text())
-        print ("la valeur renvoyée est :", value)
-        print("l'unité est :", champs[a+1:])
         model.setData(index, value)
         
 
@@ -215,16 +212,16 @@ class ComboBoxDelegate(QtGui.QItemDelegate):
         row=index.row()
         if row > i-1 and row < i+h :
             editor = QtGui.QComboBox( parent )
-            editor.insertItem(0,'Pellet')
-            editor.insertItem(1,'Feuille')
-            editor.insertItem(2,'Cône')
+            editor.insertItem(0,self.trUtf8('Pellet'))
+            editor.insertItem(1,self.trUtf8('Feuille'))
+            editor.insertItem(2,self.trUtf8('Cône'))
         return editor
 
     def setEditorData( self, comboBox, index ):
         value = index.model().data(index, QtCore.Qt.DisplayRole)
-        if value == 'Pellet' : 
+        if value == self.trUtf8('Pellet') : 
             value = 0
-        elif value == 'Cône' :
+        elif value == self.trUtf8('Cône') :
             value = 2
         else : 
             value = 1
@@ -264,18 +261,18 @@ class UseDelegate(QtGui.QItemDelegate):
         row=index.row()
         if row > i-1 and row < i+h :
             editor = QtGui.QComboBox( parent )
-            editor.insertItem(0,'Ébullition')
-            editor.insertItem(1,'Dry Hop')
-            editor.insertItem(2,'Empâtage')
-            editor.insertItem(3,'Premier Moût')
-            editor.insertItem(4,'Arôme')
+            editor.insertItem(0,self.trUtf8('Ébullition'))
+            editor.insertItem(1,self.trUtf8('Dry Hop'))
+            editor.insertItem(2,self.trUtf8('Empâtage'))
+            editor.insertItem(3,self.trUtf8('Premier Moût'))
+            editor.insertItem(4,self.trUtf8('Arôme'))
         if row >i+h-1 and row < i+h+m:
             editor = QtGui.QComboBox( parent )
-            editor.insertItem(0,'Ébullition')
-            editor.insertItem(1,'Empâtage')
-            editor.insertItem(2,'Primaire')
-            editor.insertItem(3,'Secondaire')
-            editor.insertItem(4,'Embouteillage')
+            editor.insertItem(0,self.trUtf8('Ébullition'))
+            editor.insertItem(1,self.trUtf8('Empâtage'))
+            editor.insertItem(2,self.trUtf8('Primaire'))
+            editor.insertItem(3,self.trUtf8('Secondaire'))
+            editor.insertItem(4,self.trUtf8('Embouteillage'))
 
         return editor
 
@@ -286,29 +283,29 @@ class UseDelegate(QtGui.QItemDelegate):
         m = self.listeF.nbreDivers
         row=index.row()
         if row > i-1 and row < i+h :  
-            if value == 'Ébullition' : 
+            if value == self.trUtf8('Ébullition') : 
                 value = 0
             elif value == self.trUtf8('Dry Hop') :
                 value = 1
-            elif value == 'Empâtage' :
+            elif value == self.trUtf8('Empâtage') :
                 value = 2        
-            elif value == 'Premier Moût' :
+            elif value == self.trUtf8('Premier Moût') :
                 value = 3    
-            elif value == 'Arôme' :
+            elif value == self.trUtf8('Arôme') :
                 value = 4
             else :
                 value = 0 
                  
         elif row >i+h-1 and row < i+h+m : 
-            if value == 'Ébullition' : 
+            if value == self.trUtf8('Ébullition') : 
                 value = 0
-            elif value == 'Empâtage' :
+            elif value == self.trUtf8('Empâtage') :
                 value = 1
-            elif value == 'Primaire' :
+            elif value == self.trUtf8('Primaire') :
                 value = 2        
-            elif value == 'Secondaire' :
+            elif value == self.trUtf8('Secondaire') :
                 value = 3    
-            elif value == 'Embouteillage' :
+            elif value == self.trUtf8('Embouteillage') :
                 value = 4
             else :
                 value = 0      
@@ -612,12 +609,12 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
     def menuBiblio(self,position) :
         menu = QtGui.QMenu()
         #EditeurAction = menu.addAction("Editeur de recette")
-        RenommerAction  = menu.addAction("Renommer")
-        SupprimerAction = menu.addAction("Supprimer")        
-        CopyAction = menu.addAction("Copier")
-        PasteAction = menu.addAction("Coller")
-        FolderAction = menu.addAction("Créer un dossier")
-        UpAction = menu.addAction("Remonter")
+        RenommerAction  = menu.addAction(self.trUtf8("Renommer"))
+        SupprimerAction = menu.addAction(self.trUtf8("Supprimer"))        
+        CopyAction = menu.addAction(self.trUtf8("Copier"))
+        PasteAction = menu.addAction(self.trUtf8("Coller"))
+        FolderAction = menu.addAction(self.trUtf8("Créer un dossier"))
+        UpAction = menu.addAction(self.trUtf8("Remonter"))
 
         
         PasteAction.setEnabled(False)
@@ -663,7 +660,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
     def createFolder(self) :
         selection = self.listViewBiblio.selectionModel()
         self.indexRecette = selection.currentIndex()
-        text = "nouveau dossier"
+        text = self.trUtf8("nouveau dossier")
        # recettes = QtCore.QFile(recettes_dir)
         path = self.modeleBiblio.filePath(self.listViewBiblio.rootIndex()) + "/" + text
         os.mkdir(path)
@@ -706,13 +703,11 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         config = QtCore.QDir(config_dir)
         print (config)
         if not config.exists() :
-            print('non')
             home.mkpath (config_dir)
         else :
             pass
         database = QtCore.QFile(database_file)
         if not database.exists() :
-            print('''pas de database''')
             database.copy(database_root, database_file)
         else :
             pass
@@ -748,12 +743,10 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         if (confirmation == QtGui.QMessageBox.Yes):
             database.remove(database_file)
             database.copy(database_root, database_file)
-            print("fait")
         else :
             
             pass
-        
-        
+                
         
     def modeleProportion (self) :
         #Cette fonction est appelée chaque fois que la quantité, les AA ou les temps sont modifiés, via un signal émit par les classes Delegate.
@@ -1037,7 +1030,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         item_hForm = QtGui.QStandardItem(self.base.liste_hForm[i])
         item_hTime = QtGui.QStandardItem(0)
         item_hAlpha = QtGui.QStandardItem(self.base.liste_hAlpha[i])
-        item_hUse = QtGui.QStandardItem('Ébullition')
+        item_hUse = QtGui.QStandardItem(self.trUtf8('''Ébullition'''))
         
         self.modele.insertRow(f+h)
         
@@ -1045,10 +1038,10 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         
         self.liste_houblons.append(self.base.liste_houblons[i])
         self.liste_hAmount.append(0)
-        self.liste_hForm.append('Feuille')
+        self.liste_hForm.append(self.trUtf8('Feuille'))
         self.liste_hTime.append(0)
         self.liste_hAlpha.append(self.base.liste_hAlpha[i])
-        self.liste_hUse.append('Ébullition')
+        self.liste_hUse.append(self.trUtf8('''Ébullition'''))
         
         AppWindow.nbreHops = h + 1
         self.calculs_recette()
@@ -1068,7 +1061,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         item_dAmount = QtGui.QStandardItem(0)
         item_dType = QtGui.QStandardItem(self.base.liste_dType[i])
         item_dTime = QtGui.QStandardItem(0)
-        item_dUse = QtGui.QStandardItem('Ébullition')
+        item_dUse = QtGui.QStandardItem(self.trUtf8('''Ébullition'''))
         
         self.modele.insertRow(f+h+m)
         
@@ -1076,7 +1069,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         self.liste_dAmount.append(0)
         self.liste_dType.append(self.base.liste_dType[i])
         self.liste_dTime.append(0)
-        self.liste_dUse.append('Ébullition')
+        self.liste_dUse.append(self.trUtf8('''Ébullition'''))
         
         AppWindow.nbreDivers = m +1
         self.MVC()
@@ -1345,13 +1338,13 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
                 if nom.tag =='FORM' :
                     self.hForm = nom.text
                     if self.hForm == 'Pellet' :
-                        self.hForm = 'Pellet'
+                        self.hForm = self.trUtf8('Pellet')
                     elif self.hForm == 'Leaf' :
-                        self.hForm = 'Feuille'  
+                        self.hForm = self.trUtf8('Feuille')  
                     elif self.hForm == 'Plug' :
-                        self.hForm = 'Cône'   
+                        self.hForm = self.trUtf8('Cône')   
                     else :
-                        self.hForm = 'Feuille'
+                        self.hForm = self.trUtf8('Feuille')
                                          
                     self.liste_hForm.append(self.hForm)
                     
@@ -1367,22 +1360,20 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
                 if nom.tag == 'USE' :
                     self.hUse = nom.text     
                     if self.hUse == 'Boil' :
-                        self.hUse = 'Ébullition'          
+                        self.hUse = self.trUtf8('''Ébullition''')          
                     elif self.hUse == 'Dry Hop' or self.hUse == 'Dry Hopping':
-                        self.hUse = 'Dry Hop'           
+                        self.hUse = self.trUtf8('Dry Hop')           
                     elif self.hUse == 'Mash' :
-                        self.hUse = 'Empâtage'             
+                        self.hUse = self.trUtf8('Empâtage')             
                     elif self.hUse == 'First Wort' :
-                        self.hUse = 'Premier Moût'             
+                        self.hUse = self.trUtf8('Premier Moût')             
                     elif self.hUse == 'Aroma' :
-                        self.hUse = 'Arôme' 
+                        self.hUse = self.trUtf8('Arôme') 
                     else :
                         self.hUse = 'Boil'             
                     self.liste_hUse.append(self.hUse) 
                                         
                                                             
-
-        print("liste des formes :", self.liste_hForm)
         
         #Levure 
         self.nbreLevures = len(levures)
@@ -1467,19 +1458,19 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
                 if nom.tag == 'USE' :
                     self.dUse = (nom.text)
                     if self.dUse == 'Boil' :
-                        self.dUse = 'Ébullition'
+                        self.dUse = self.trUtf8('Ébullition')
                         self.liste_dUse.append(self.dUse)
                     if self.dUse == 'Mash' :
-                        self.dUse = 'Empâtage'
+                        self.dUse = self.trUtf8('Empâtage')
                         self.liste_dUse.append(self.dUse)
                     if self.dUse == 'Primary' :
-                        self.dUse = 'Primaire'
+                        self.dUse = self.trUtf8('Primaire')
                         self.liste_dUse.append(self.dUse)
                     if self.dUse == 'Secondary' :
-                        self.dUse = 'Secondaire'
+                        self.dUse = self.trUtf8('Secondaire')
                         self.liste_dUse.append(self.dUse)
                     if self.dUse == 'Bottling' :
-                        self.dUse = 'Embouteillage'
+                        self.dUse = self.trUtf8('Embouteillage')
                         self.liste_dUse.append(self.dUse)
                         
        

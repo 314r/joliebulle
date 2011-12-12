@@ -33,7 +33,7 @@ from xml.dom import minidom
 
   
 
-class Export :
+class Export (QtCore.QObject):
     
     
     def prettify(self,elem):
@@ -107,15 +107,15 @@ liste_fYield, liste_fMashed, liste_color, dNom, dAmount, dType, nbreDivers, list
             hAmount = ET.SubElement(hop, 'AMOUNT')
             hAmount.text = str(liste_hAmount[i-1]/1000)
             hForm = ET.SubElement(hop, 'FORM')
-            try :
-                if str(liste_hForm[i-1]) == 'Feuille' :
-                    hForm.text = 'Leaf'
-                if str(liste_hForm[i-1]) == 'Pellet' :
-                    hForm.text = 'Pellet'
-                if str(liste_hForm[i-1]) == 'Cône' :
-                    hForm.text = 'Plug'   
-            except:
+#            try :
+            if str(liste_hForm[i-1]) == self.trUtf8('''Feuille''') :
                 hForm.text = 'Leaf'
+            if str(liste_hForm[i-1]) == self.trUtf8('''Pellet''') :
+                hForm.text = 'Pellet'
+            if str(liste_hForm[i-1]) == self.trUtf8('''Cône''') :
+                hForm.text = 'Plug'   
+#            except:
+#                hForm.text = 'Leaf'
                 
             hTime = ET.SubElement(hop, 'TIME')
             hTime.text = str(liste_hTime[i-1])
@@ -123,15 +123,15 @@ liste_fYield, liste_fMashed, liste_color, dNom, dAmount, dType, nbreDivers, list
             hAlpha.text = str(liste_hAlpha[i-1])
             hUse = ET.SubElement(hop, 'USE')
             try :
-                if str(liste_hUse[i-1]) == 'Ébullition' :
+                if str(liste_hUse[i-1]) == self.trUtf8('''Ébullition''') :
                     hUse.text = 'Boil'
-                if str(liste_hUse[i-1]) == 'Dry Hop' or str(liste_hUse[i-1]) == 'Dry Hopping' :
+                if str(liste_hUse[i-1]) == self.trUtf8('Dry Hop') or str(liste_hUse[i-1]) == 'Dry Hopping' :
                     hUse.text = 'Dry Hop'  
-                if str(liste_hUse[i-1]) == 'Empâtage' :
+                if str(liste_hUse[i-1]) == self.trUtf8('''Empâtage''') :
                     hUse.text = 'Mash'
-                if str(liste_hUse[i-1]) == 'Premier Moût' :
+                if str(liste_hUse[i-1]) == self.trUtf8('''Premier Moût''') :
                     hUse.text = 'First Wort' 
-                if str(liste_hUse[i-1]) == 'Arôme' :
+                if str(liste_hUse[i-1]) == self.trUtf8('''Arôme''') :
                     hUse.text = 'Aroma'  
             except :
                 hUse.text = 'Boil'
@@ -186,15 +186,15 @@ liste_fYield, liste_fMashed, liste_color, dNom, dAmount, dType, nbreDivers, list
                 dTime.text = str(0)
             dUse = ET.SubElement(misc, 'USE')
             try :
-                if str(liste_dUse[i-1]) == 'Ébullition' : 
+                if str(liste_dUse[i-1]) == self.trUtf8('''Ébullition''') : 
                     dUse.text = 'Boil'
-                if str(liste_dUse[i-1]) == 'Empâtage' : 
+                if str(liste_dUse[i-1]) == self.trUtf8('''Empâtage''') : 
                     dUse.text = 'Mash'
-                if str(liste_dUse[i-1]) == 'Primaire' : 
+                if str(liste_dUse[i-1]) == self.trUtf8('''Primaire''') : 
                     dUse.text = 'Primary'        
-                if str(liste_dUse[i-1]) == 'Secondaire' : 
+                if str(liste_dUse[i-1]) == self.trUtf8('''Secondaire''') : 
                     dUse.text = 'Secondary'
-                if str(liste_dUse[i-1]) == 'Embouteillage' : 
+                if str(liste_dUse[i-1]) == self.trUtf8('''Embouteillage''') : 
                     dUse.text = 'Bottling'       
             except :
                 dUse.text = 'Boil'
