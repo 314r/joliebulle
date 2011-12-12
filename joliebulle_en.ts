@@ -4,7 +4,7 @@
 <context>
     <name>AppWindow</name>
     <message>
-        <location filename="main.py" line="1504"/>
+        <location filename="main.py" line="1691"/>
         <source>A propos</source>
         <translation>About</translation>
     </message>
@@ -14,52 +14,52 @@
         <translation type="obsolete">&lt;h1&gt;JolieBulle&lt;/h1&gt; &lt;b&gt;version 2.0&lt;/b&gt;&lt;br/&gt;copyright (c) 2010-2011 Pierre Tavares&lt;p&gt;JolieBulle is a beer brewing software.&lt;/p&gt;&lt;p&gt;&lt;a href =http://www.gnu.org/licenses/gpl-3.0.html&gt;Licence : Version 3 de la Licence Générale Publique GNU&lt;/a&gt;&lt;/p&gt;&lt;p&gt;Some icons are from the Faenza pack by Tiheum (Matthieu James), released under GPL.&lt;/p&gt;</translation>
     </message>
     <message>
-        <location filename="main.py" line="1637"/>
+        <location filename="main.py" line="1826"/>
         <source>Nouvelle Recette</source>
         <translation>New Recipe</translation>
     </message>
     <message utf8="true">
-        <location filename="main.py" line="1641"/>
+        <location filename="main.py" line="1830"/>
         <source>Générique</source>
         <translation>Generic</translation>
     </message>
     <message utf8="true">
-        <location filename="main.py" line="364"/>
+        <location filename="main.py" line="450"/>
         <source>Ingrédients</source>
         <translation>Ingredients</translation>
     </message>
     <message utf8="true">
-        <location filename="main.py" line="364"/>
+        <location filename="main.py" line="450"/>
         <source>Quantité (g)</source>
         <translation>Amount (g)</translation>
     </message>
     <message>
-        <location filename="main.py" line="364"/>
+        <location filename="main.py" line="450"/>
         <source>Temps (min)</source>
         <translation>Time (min)</translation>
     </message>
     <message>
-        <location filename="main.py" line="364"/>
+        <location filename="main.py" line="450"/>
         <source>Acide Alpha (%)</source>
         <translation>Alpha Acid (%)</translation>
     </message>
     <message>
-        <location filename="main.py" line="364"/>
+        <location filename="main.py" line="450"/>
         <source>Type</source>
         <translation>Type</translation>
     </message>
     <message>
-        <location filename="main.py" line="1483"/>
+        <location filename="main.py" line="1670"/>
         <source>Ouvrir un fichier</source>
         <translation>Open file</translation>
     </message>
     <message>
-        <location filename="main.py" line="1612"/>
+        <location filename="main.py" line="1801"/>
         <source>Enregistrer dans un fichier</source>
         <translation>Save in a file</translation>
     </message>
     <message>
-        <location filename="main.py" line="364"/>
+        <location filename="main.py" line="450"/>
         <source>Proportion</source>
         <translation>Ratio</translation>
     </message>
@@ -74,22 +74,22 @@
         <translation type="obsolete">&lt;h1&gt;JolieBulle&lt;/h1&gt; &lt;b&gt;version 2.2&lt;/b&gt;&lt;br/&gt;copyright (c) 2010-2011 Pierre Tavares&lt;p&gt; JolieBulle is a beer brewing software.&lt;/p&gt;&lt;p&gt;&lt;a href =http://www.gnu.org/licenses/gpl-3.0.html&gt;Licence :GPL v3&lt;/a&gt;&lt;/p&gt;&lt;p&gt;Some icons come from the Faenza pack by Tiheum (Matthieu James), also provided under GPL&lt;/p&gt;</translation>
     </message>
     <message>
-        <location filename="main.py" line="553"/>
+        <location filename="main.py" line="646"/>
         <source>Supprimer</source>
         <translation>Remove</translation>
     </message>
     <message utf8="true">
-        <location filename="main.py" line="553"/>
+        <location filename="main.py" line="646"/>
         <source>La recette sera définitivement supprimée &lt;br/&gt; Continuer ?</source>
         <translation>The recipe will be removed.&lt;br/&gt; Continue ?</translation>
     </message>
     <message>
-        <location filename="main.py" line="648"/>
+        <location filename="main.py" line="739"/>
         <source>Remplacer la base ?</source>
         <translation>Restore database</translation>
     </message>
     <message utf8="true">
-        <location filename="main.py" line="648"/>
+        <location filename="main.py" line="739"/>
         <source>La base des ingrédients actuelle va être effacée et remplacée par la base originale. Toutes vos modifications vont être effacées. Un redémarrage de l&apos;application sera nécessaire.&lt;br&gt; Continuer ?</source>
         <translation>The ingredients database is going to be removed and replaced by the original one. All changes you made will be removed. You will have to reboot JolieBulle. &lt;br/&gt; Continue ?</translation>
     </message>
@@ -99,9 +99,117 @@
         <translation type="obsolete">&lt;h1&gt;JolieBulle&lt;/h1&gt; &lt;b&gt;version 2.3&lt;/b&gt;&lt;br/&gt;copyright (c) 2010-2011 Pierre Tavares&lt;p&gt;JolieBulle is a beer brewing software.&lt;/p&gt;&lt;p&gt;&lt;a href =http://www.gnu.org/licenses/gpl-3.0.html&gt;Licence : Version 3 de la Licence Générale Publique GNU&lt;/a&gt;&lt;/p&gt;&lt;p&gt;Some icons are from the Faenza pack by Tiheum (Matthieu James), released under GPL.&lt;/p&gt;</translation>
     </message>
     <message utf8="true">
-        <location filename="main.py" line="1504"/>
+        <location filename="main.py" line="1691"/>
         <source>&lt;h1&gt;JolieBulle&lt;/h1&gt; &lt;b&gt;version 2.4&lt;/b&gt;&lt;br/&gt;copyright (c) 2010-2011 Pierre Tavares&lt;p&gt; JolieBulle est un logiciel de lecture et de formulation de recettes de brassage.&lt;/p&gt;&lt;p&gt;&lt;a href =http://www.gnu.org/licenses/gpl-3.0.html&gt;Licence : Version 3 de la Licence Générale Publique GNU&lt;/a&gt;&lt;/p&gt;&lt;p&gt;Certaines icônes proviennent du pack Faenza par Tiheum (Matthieu James), également distribué sous licence GPL.&lt;/p&gt;</source>
         <translation>&lt;h1&gt;JolieBulle&lt;/h1&gt; &lt;b&gt;version 2.4&lt;/b&gt;&lt;br/&gt;copyright (c) 2010-2011 Pierre Tavares&lt;p&gt;JolieBulle is a beer brewing software.&lt;/p&gt;&lt;p&gt;&lt;a href =http://www.gnu.org/licenses/gpl-3.0.html&gt;Licence : Version 3 de la Licence Générale Publique GNU&lt;/a&gt;&lt;/p&gt;&lt;p&gt;Some icons are from the Faenza pack by Tiheum (Matthieu James), released under GPL.&lt;/p&gt;</translation>
+    </message>
+    <message utf8="true">
+        <location filename="main.py" line="450"/>
+        <source>Étape</source>
+        <translation>Step</translation>
+    </message>
+    <message>
+        <location filename="main.py" line="612"/>
+        <source>Renommer</source>
+        <translation>Rename</translation>
+    </message>
+    <message>
+        <location filename="main.py" line="614"/>
+        <source>Copier</source>
+        <translation>Copy</translation>
+    </message>
+    <message>
+        <location filename="main.py" line="615"/>
+        <source>Coller</source>
+        <translation>Paste</translation>
+    </message>
+    <message utf8="true">
+        <location filename="main.py" line="616"/>
+        <source>Créer un dossier</source>
+        <translation>New folder</translation>
+    </message>
+    <message>
+        <location filename="main.py" line="617"/>
+        <source>Remonter</source>
+        <translation>Up</translation>
+    </message>
+    <message>
+        <location filename="main.py" line="663"/>
+        <source>nouveau dossier</source>
+        <translation>new folder</translation>
+    </message>
+    <message utf8="true">
+        <location filename="main.py" line="1461"/>
+        <source>Ébullition</source>
+        <translation>Boil</translation>
+    </message>
+    <message>
+        <location filename="main.py" line="1347"/>
+        <source>Feuille</source>
+        <translation>Leaf</translation>
+    </message>
+    <message>
+        <location filename="main.py" line="1341"/>
+        <source>Pellet</source>
+        <translation>Pellet</translation>
+    </message>
+    <message utf8="true">
+        <location filename="main.py" line="1345"/>
+        <source>Cône</source>
+        <translation>Plug</translation>
+    </message>
+    <message>
+        <location filename="main.py" line="1365"/>
+        <source>Dry Hop</source>
+        <translation>Dry Hop</translation>
+    </message>
+    <message utf8="true">
+        <location filename="main.py" line="1464"/>
+        <source>Empâtage</source>
+        <translation>Mash</translation>
+    </message>
+    <message utf8="true">
+        <location filename="main.py" line="1369"/>
+        <source>Premier Moût</source>
+        <translation>First Wort</translation>
+    </message>
+    <message utf8="true">
+        <location filename="main.py" line="1371"/>
+        <source>Arôme</source>
+        <translation>Aroma</translation>
+    </message>
+    <message>
+        <location filename="main.py" line="1467"/>
+        <source>Primaire</source>
+        <translation>Primary</translation>
+    </message>
+    <message>
+        <location filename="main.py" line="1470"/>
+        <source>Secondaire</source>
+        <translation>Secondary</translation>
+    </message>
+    <message>
+        <location filename="main.py" line="1473"/>
+        <source>Embouteillage</source>
+        <translation>Bottling</translation>
+    </message>
+</context>
+<context>
+    <name>ComboBoxDelegate</name>
+    <message>
+        <location filename="main.py" line="222"/>
+        <source>Pellet</source>
+        <translation>Pellet</translation>
+    </message>
+    <message>
+        <location filename="main.py" line="216"/>
+        <source>Feuille</source>
+        <translation>Leaf</translation>
+    </message>
+    <message utf8="true">
+        <location filename="main.py" line="224"/>
+        <source>Cône</source>
+        <translation>Plug</translation>
     </message>
 </context>
 <context>
@@ -138,7 +246,7 @@ p, li { white-space: pre-wrap; }
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Type&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="editorG.ui" line="54"/>
+        <location filename="editorG.ui" line="51"/>
         <source>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
@@ -157,14 +265,14 @@ p, li { white-space: pre-wrap; }
 p, li { white-space: pre-wrap; }
 &lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;Ubuntu&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:&apos;Droid Sans&apos;; font-weight:600;&quot;&gt;Couleur (SRM !)&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+        <translation type="obsolete">&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
 &lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;Ubuntu&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:&apos;Droid Sans&apos;; font-weight:600;&quot;&gt;Color (SRM !)&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message utf8="true">
-        <location filename="editorG.ui" line="82"/>
+        <location filename="editorG.ui" line="101"/>
         <source>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
@@ -290,6 +398,29 @@ p, li { white-space: pre-wrap; }
         <location filename="editgrain.py" line="57"/>
         <source>Non</source>
         <translation>No</translation>
+    </message>
+    <message>
+        <location filename="editorG.ui" line="65"/>
+        <source>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;Droid Sans&apos;; font-size:10pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:9pt; font-weight:600;&quot;&gt;Couleur&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;Droid Sans&apos;; font-size:10pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:9pt; font-weight:600;&quot;&gt;Color&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+    </message>
+    <message>
+        <location filename="editorG.ui" line="85"/>
+        <source>SRM</source>
+        <translation>SRM</translation>
+    </message>
+    <message>
+        <location filename="editorG.ui" line="92"/>
+        <source>EBC</source>
+        <translation>EBC</translation>
     </message>
 </context>
 <context>
@@ -890,7 +1021,7 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>DialogPref</name>
     <message>
-        <location filename="preferences.py" line="30"/>
+        <location filename="preferences.py" line="54"/>
         <source>Choisir un dossier</source>
         <translation>Choose a folder</translation>
     </message>
@@ -993,6 +1124,11 @@ Recette prévue pour un brassin de </source>
         <location filename="exportHTML.py" line="98"/>
         <source> &lt;h2&gt;Notes&lt;/h2&gt;</source>
         <translation> &lt;h2&gt;Notes&lt;/h2&gt;</translation>
+    </message>
+    <message>
+        <location filename="exportHTML.py" line="84"/>
+        <source> minutes</source>
+        <translation> minutes</translation>
     </message>
 </context>
 <context>
@@ -1612,6 +1748,49 @@ p, li { white-space: pre-wrap; }
         <location filename="preferences.ui" line="49"/>
         <source>Changer</source>
         <translation>Change</translation>
+    </message>
+</context>
+<context>
+    <name>UseDelegate</name>
+    <message utf8="true">
+        <location filename="main.py" line="300"/>
+        <source>Ébullition</source>
+        <translation>Boil</translation>
+    </message>
+    <message>
+        <location filename="main.py" line="288"/>
+        <source>Dry Hop</source>
+        <translation>Dry Hop</translation>
+    </message>
+    <message utf8="true">
+        <location filename="main.py" line="302"/>
+        <source>Empâtage</source>
+        <translation>Mash</translation>
+    </message>
+    <message utf8="true">
+        <location filename="main.py" line="292"/>
+        <source>Premier Moût</source>
+        <translation>First Wort</translation>
+    </message>
+    <message utf8="true">
+        <location filename="main.py" line="294"/>
+        <source>Arôme</source>
+        <translation>Aroma</translation>
+    </message>
+    <message>
+        <location filename="main.py" line="304"/>
+        <source>Primaire</source>
+        <translation>Primary</translation>
+    </message>
+    <message>
+        <location filename="main.py" line="306"/>
+        <source>Secondaire</source>
+        <translation>Secondary</translation>
+    </message>
+    <message>
+        <location filename="main.py" line="308"/>
+        <source>Embouteillage</source>
+        <translation>Bottling</translation>
     </message>
 </context>
 </TS>
