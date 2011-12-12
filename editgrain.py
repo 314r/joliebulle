@@ -195,6 +195,9 @@ class Dialog(QtGui.QDialog):
         self.ui.comboBoxReco.setEnabled(True)
         self.ui.spinBoxCouleur.setEnabled(True)
         self.ui.pushButtonAjouter.setEnabled(True)
+        self.ui.radioButtonSRM.setEnabled(True)
+        self.ui.radioButtonEBC.setEnabled(True)        
+        self.ui.radioButtonSRM.setChecked(True)
         
         self.ui.lineEditNom.setText('')
         self.ui.spinBoxCouleur.setValue(0)
