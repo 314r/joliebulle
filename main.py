@@ -1614,13 +1614,20 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
             i = i+1
             self.aaUtil = self.liste_btFactor[i-1]*self.bignessFactor
             self.mgAA = (self.liste_hAlpha[i-1]/100)*self.liste_hAmount[i-1]*1000 / float(self.volume)
-            if self.liste_hForm[i-1] == 'Pellet' :
-                self.ibuPart = (self.mgAA * self.aaUtil) + 0.1*(self.mgAA * self.aaUtil)
-            elif self.liste_hUse[i-1] == 'Dry Hop' or self.liste_hUse[i-1] == 'Aroma' or self.liste_hUse[i-1] == 'Arôme' or self.liste_hUse[i-1] == 'Dry Hopping' :
-                self.ibuPart = 0
-            else :
-                self.ibuPart = self.mgAA * self.aaUtil 
-            self.liste_ibuPart.append(self.ibuPart)
+            try :
+                if self.liste_hUse[i-1] == 'Dry Hop' or self.liste_hUse[i-1] == 'Aroma' or self.liste_hUse[i-1] == 'Arôme' or self.liste_hUse[i-1] == 'Dry Hopping' :
+                    self.ibuPart = 0
+                elif self.liste_hForm[i-1] == 'Pellet' :
+                    self.ibuPart = (self.mgAA * self.aaUtil) + 0.1*(self.mgAA * self.aaUtil)
+                else :
+                    self.ibuPart = self.mgAA * self.aaUtil 
+                self.liste_ibuPart.append(self.ibuPart)
+            except:
+                if self.liste_hForm[i-1] == 'Pellet' :
+                    self.ibuPart = (self.mgAA * self.aaUtil) + 0.1*(self.mgAA * self.aaUtil)
+                else :
+                    self.ibuPart = self.mgAA * self.aaUtil 
+                self.liste_ibuPart.append(self.ibuPart)
             
 
         self.ibuTot = sum(self.liste_ibuPart)
