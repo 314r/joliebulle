@@ -1,4 +1,8 @@
-#JolieBulle 2.4
+#!/usr/bin/python3
+#­*­coding: utf­8 -­*­
+
+
+#JolieBulle 2.5
 #Copyright (C) 2010-2011 Pierre Tavares
 
 #This program is free software; you can redistribute it and/or
