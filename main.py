@@ -1759,7 +1759,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
 
     def enregistrer (self) :
         exp=Export()
-        print ('''la liste des usages :''' , self.liste_dUse)
+        print ('''la liste des usages :''' , self.liste_hUse)
         print("liste des formes :", self.liste_hForm)
         self.nomRecette = self.lineEditRecette.text()
         self.styleRecette = self.lineEditGenre.text()   

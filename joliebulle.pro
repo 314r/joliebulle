@@ -17,6 +17,7 @@ SOURCES          += editgrain.py
 SOURCES          += edithoublon.py
 SOURCES          += editlevures.py
 
+SOURCES          += export.py
 SOURCES          += exportHTML.py
 SOURCES          += outilAlc.py
 SOURCES          += outilDens.py

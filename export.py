@@ -31,9 +31,11 @@ import xml.etree.ElementTree as ET
 from xml.dom import minidom
 
 
+
   
 
 class Export (QtCore.QObject):
+
     
     
     def prettify(self,elem):
@@ -116,6 +118,8 @@ liste_fYield, liste_fMashed, liste_color, dNom, dAmount, dType, nbreDivers, list
                 hForm.text = 'Plug'   
 #            except:
 #                hForm.text = 'Leaf'
+
+            print(self.trUtf8('''Feuille'''))
                 
             hTime = ET.SubElement(hop, 'TIME')
             hTime.text = str(liste_hTime[i-1])
@@ -245,4 +249,6 @@ liste_fYield, liste_fMashed, liste_color, dNom, dAmount, dType, nbreDivers, list
        # print (ET.tostring(self.recipes))
         
         ET.ElementTree(self.recipes).write(s,encoding="utf-8")
+        
+
 

@@ -101,7 +101,7 @@
     <message utf8="true">
         <location filename="main.py" line="1691"/>
         <source>&lt;h1&gt;JolieBulle&lt;/h1&gt; &lt;b&gt;version 2.4&lt;/b&gt;&lt;br/&gt;copyright (c) 2010-2011 Pierre Tavares&lt;p&gt; JolieBulle est un logiciel de lecture et de formulation de recettes de brassage.&lt;/p&gt;&lt;p&gt;&lt;a href =http://www.gnu.org/licenses/gpl-3.0.html&gt;Licence : Version 3 de la Licence Générale Publique GNU&lt;/a&gt;&lt;/p&gt;&lt;p&gt;Certaines icônes proviennent du pack Faenza par Tiheum (Matthieu James), également distribué sous licence GPL.&lt;/p&gt;</source>
-        <translation>&lt;h1&gt;JolieBulle&lt;/h1&gt; &lt;b&gt;version 2.4&lt;/b&gt;&lt;br/&gt;copyright (c) 2010-2011 Pierre Tavares&lt;p&gt;JolieBulle is a beer brewing software.&lt;/p&gt;&lt;p&gt;&lt;a href =http://www.gnu.org/licenses/gpl-3.0.html&gt;Licence : Version 3 de la Licence Générale Publique GNU&lt;/a&gt;&lt;/p&gt;&lt;p&gt;Some icons are from the Faenza pack by Tiheum (Matthieu James), released under GPL.&lt;/p&gt;</translation>
+        <translation type="obsolete">&lt;h1&gt;JolieBulle&lt;/h1&gt; &lt;b&gt;version 2.4&lt;/b&gt;&lt;br/&gt;copyright (c) 2010-2011 Pierre Tavares&lt;p&gt;JolieBulle is a beer brewing software.&lt;/p&gt;&lt;p&gt;&lt;a href =http://www.gnu.org/licenses/gpl-3.0.html&gt;Licence : Version 3 de la Licence Générale Publique GNU&lt;/a&gt;&lt;/p&gt;&lt;p&gt;Some icons are from the Faenza pack by Tiheum (Matthieu James), released under GPL.&lt;/p&gt;</translation>
     </message>
     <message utf8="true">
         <location filename="main.py" line="450"/>
@@ -192,6 +192,11 @@
         <location filename="main.py" line="1473"/>
         <source>Embouteillage</source>
         <translation>Bottling</translation>
+    </message>
+    <message utf8="true">
+        <location filename="main.py" line="1691"/>
+        <source>&lt;h1&gt;JolieBulle&lt;/h1&gt; &lt;b&gt;version 2.5&lt;/b&gt;&lt;br/&gt;copyright (c) 2010-2011 Pierre Tavares&lt;p&gt; JolieBulle est un logiciel de lecture et de formulation de recettes de brassage.&lt;/p&gt;&lt;p&gt;&lt;a href =http://www.gnu.org/licenses/gpl-3.0.html&gt;Licence : Version 3 de la Licence Générale Publique GNU&lt;/a&gt;&lt;/p&gt;&lt;p&gt;Certaines icônes proviennent du pack Faenza par Tiheum (Matthieu James), également distribué sous licence GPL.&lt;/p&gt;</source>
+        <translation>&lt;h1&gt;JolieBulle&lt;/h1&gt; &lt;b&gt;version 2.5&lt;/b&gt;&lt;br/&gt;copyright (c) 2010-2011 Pierre Tavares&lt;p&gt;JolieBulle is a beer brewing software.&lt;/p&gt;&lt;p&gt;&lt;a href =http://www.gnu.org/licenses/gpl-3.0.html&gt;Licence : Version 3 de la Licence Générale Publique GNU&lt;/a&gt;&lt;/p&gt;&lt;p&gt;Some icons are from the Faenza pack by Tiheum (Matthieu James), released under GPL.&lt;/p&gt;</translation>
     </message>
 </context>
 <context>
@@ -863,17 +868,17 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>DialogPaliers</name>
     <message utf8="true">
-        <location filename="outilPaliers.py" line="33"/>
+        <location filename="outilPaliers.py" line="37"/>
         <source>empâtage</source>
         <translation>initial strike</translation>
     </message>
     <message>
-        <location filename="outilPaliers.py" line="33"/>
+        <location filename="outilPaliers.py" line="37"/>
         <source>palier</source>
         <translation>step</translation>
     </message>
     <message utf8="true">
-        <location filename="outilPaliers.py" line="87"/>
+        <location filename="outilPaliers.py" line="91"/>
         <source>Au-dessus du point d&apos;ébullition. Augmentez la quantité d&apos;eau.</source>
         <translation>Above boiling point. Add more water.</translation>
     </message>
@@ -1024,6 +1029,64 @@ p, li { white-space: pre-wrap; }
         <location filename="preferences.py" line="54"/>
         <source>Choisir un dossier</source>
         <translation>Choose a folder</translation>
+    </message>
+</context>
+<context>
+    <name>Export</name>
+    <message>
+        <location filename="export.py" line="122"/>
+        <source>Feuille</source>
+        <translation>Leaf</translation>
+    </message>
+    <message>
+        <location filename="export.py" line="115"/>
+        <source>Pellet</source>
+        <translation>Pellet</translation>
+    </message>
+    <message utf8="true">
+        <location filename="export.py" line="117"/>
+        <source>Cône</source>
+        <translation>Plug</translation>
+    </message>
+    <message utf8="true">
+        <location filename="export.py" line="193"/>
+        <source>Ébullition</source>
+        <translation>Boil</translation>
+    </message>
+    <message>
+        <location filename="export.py" line="132"/>
+        <source>Dry Hop</source>
+        <translation>Dry Hop</translation>
+    </message>
+    <message utf8="true">
+        <location filename="export.py" line="195"/>
+        <source>Empâtage</source>
+        <translation>Mash</translation>
+    </message>
+    <message utf8="true">
+        <location filename="export.py" line="136"/>
+        <source>Premier Moût</source>
+        <translation>First Wort</translation>
+    </message>
+    <message utf8="true">
+        <location filename="export.py" line="138"/>
+        <source>Arôme</source>
+        <translation>Aroma</translation>
+    </message>
+    <message>
+        <location filename="export.py" line="197"/>
+        <source>Primaire</source>
+        <translation>Primary</translation>
+    </message>
+    <message>
+        <location filename="export.py" line="199"/>
+        <source>Secondaire</source>
+        <translation>Secondary</translation>
+    </message>
+    <message>
+        <location filename="export.py" line="201"/>
+        <source>Embouteillage</source>
+        <translation>Bottling</translation>
     </message>
 </context>
 <context>
