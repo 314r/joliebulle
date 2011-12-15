@@ -1479,21 +1479,11 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         
         #Brassin
         self.bNom = ''
-        if not brassin : 
-            self.bNom = ''
-        else :
-            for nom in brassin :
-                if nom.tag == 'NAME' :
-                    self.bNom = nom.text
+        for nom in brassin :
+            if nom.tag == 'NAME' :
+                self.bNom = nom.text
 
-
-
-
-                    
-        
-        
-        
-        
+     
         #Paliers
 
         self.nbrePaliers = len(paliers)
@@ -1525,11 +1515,17 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
                 if nom.tag == 'STEP_TEMP' :
                     self.pTemp = float(nom.text)
                     self.liste_pTemp.append(self.pTemp)
-                    
-        
+                     
                 if nom.tag == 'INFUSE_AMOUNT' :
                     self.pQte = float(nom.text)
-                    self.liste_pQte.append(self.pQte)   
+                    self.liste_pQte.append(self.pQte)
+                    
+        self.comboBoxBrassageProfils.addItem(self.bNom)
+        
+        
+        print(self.liste_paliers)
+        print(self.liste_pType)
+        
         return AppWindow.nbreFer
                     
     def calculs_recette (self) :

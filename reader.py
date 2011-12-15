@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'reader.ui'
 #
-# Created: Sun Dec  4 13:43:56 2011
+# Created: Tue Dec 13 22:20:05 2011
 #      by: PyQt4 UI code generator 4.8.6
 #
 # WARNING! All changes made in this file will be lost!
@@ -36,9 +36,9 @@ class Ui_MainWindow(object):
         self.gridLayout.setObjectName(_fromUtf8("gridLayout"))
         self.widgetEditeur = QtGui.QWidget(self.page)
         self.widgetEditeur.setObjectName(_fromUtf8("widgetEditeur"))
-        self.verticalLayout_2 = QtGui.QVBoxLayout(self.widgetEditeur)
-        self.verticalLayout_2.setMargin(0)
-        self.verticalLayout_2.setObjectName(_fromUtf8("verticalLayout_2"))
+        self.gridLayout_7 = QtGui.QGridLayout(self.widgetEditeur)
+        self.gridLayout_7.setMargin(0)
+        self.gridLayout_7.setObjectName(_fromUtf8("gridLayout_7"))
         self.horizontalLayout_2 = QtGui.QHBoxLayout()
         self.horizontalLayout_2.setObjectName(_fromUtf8("horizontalLayout_2"))
         self.formLayout_2 = QtGui.QFormLayout()
@@ -113,7 +113,7 @@ class Ui_MainWindow(object):
         self.horizontalLayout_2.addLayout(self.formLayout_3)
         spacerItem = QtGui.QSpacerItem(40, 20, QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Minimum)
         self.horizontalLayout_2.addItem(spacerItem)
-        self.verticalLayout_2.addLayout(self.horizontalLayout_2)
+        self.gridLayout_7.addLayout(self.horizontalLayout_2, 0, 0, 1, 1)
         self.labelFermentables = QtGui.QLabel(self.widgetEditeur)
         self.labelFermentables.setText(QtGui.QApplication.translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
@@ -121,7 +121,7 @@ class Ui_MainWindow(object):
 "</style></head><body style=\" font-family:\'Droid Sans\'; font-size:9pt; font-weight:400; font-style:normal;\">\n"
 "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-weight:600;\">Ingredients : </span></p></body></html>", None, QtGui.QApplication.UnicodeUTF8))
         self.labelFermentables.setObjectName(_fromUtf8("labelFermentables"))
-        self.verticalLayout_2.addWidget(self.labelFermentables)
+        self.gridLayout_7.addWidget(self.labelFermentables, 1, 0, 1, 1)
         self.horizontalLayout_4 = QtGui.QHBoxLayout()
         self.horizontalLayout_4.setObjectName(_fromUtf8("horizontalLayout_4"))
         self.tableViewF = QtGui.QTableView(self.widgetEditeur)
@@ -144,7 +144,7 @@ class Ui_MainWindow(object):
         self.tableViewF.verticalHeader().setDefaultSectionSize(22)
         self.tableViewF.verticalHeader().setStretchLastSection(False)
         self.horizontalLayout_4.addWidget(self.tableViewF)
-        self.verticalLayout_2.addLayout(self.horizontalLayout_4)
+        self.gridLayout_7.addLayout(self.horizontalLayout_4, 2, 0, 1, 1)
         self.horizontalLayout_5 = QtGui.QHBoxLayout()
         self.horizontalLayout_5.setObjectName(_fromUtf8("horizontalLayout_5"))
         self.checkBoxIng = QtGui.QCheckBox(self.widgetEditeur)
@@ -158,11 +158,11 @@ class Ui_MainWindow(object):
         self.pushButtonChangeIngredients.setCheckable(True)
         self.pushButtonChangeIngredients.setObjectName(_fromUtf8("pushButtonChangeIngredients"))
         self.horizontalLayout_5.addWidget(self.pushButtonChangeIngredients)
-        self.verticalLayout_2.addLayout(self.horizontalLayout_5)
+        self.gridLayout_7.addLayout(self.horizontalLayout_5, 3, 0, 1, 1)
         self.gridLayout_6 = QtGui.QGridLayout()
         self.gridLayout_6.setContentsMargins(0, -1, -1, -1)
         self.gridLayout_6.setObjectName(_fromUtf8("gridLayout_6"))
-        self.verticalLayout_2.addLayout(self.gridLayout_6)
+        self.gridLayout_7.addLayout(self.gridLayout_6, 4, 0, 1, 1)
         self.widgetIngredients = QtGui.QWidget(self.widgetEditeur)
         self.widgetIngredients.setObjectName(_fromUtf8("widgetIngredients"))
         self.horizontalLayout_7 = QtGui.QHBoxLayout(self.widgetIngredients)
@@ -226,7 +226,28 @@ class Ui_MainWindow(object):
         self.pushButtonEnlever.setText(QtGui.QApplication.translate("MainWindow", "Enlever", None, QtGui.QApplication.UnicodeUTF8))
         self.pushButtonEnlever.setObjectName(_fromUtf8("pushButtonEnlever"))
         self.horizontalLayout_7.addWidget(self.pushButtonEnlever)
-        self.verticalLayout_2.addWidget(self.widgetIngredients)
+        self.gridLayout_7.addWidget(self.widgetIngredients, 5, 0, 1, 1)
+        self.horizontalLayout_3 = QtGui.QHBoxLayout()
+        self.horizontalLayout_3.setObjectName(_fromUtf8("horizontalLayout_3"))
+        self.comboBoxBrassageProfils = QtGui.QComboBox(self.widgetEditeur)
+        self.comboBoxBrassageProfils.setMinimumSize(QtCore.QSize(250, 0))
+        self.comboBoxBrassageProfils.setObjectName(_fromUtf8("comboBoxBrassageProfils"))
+        self.horizontalLayout_3.addWidget(self.comboBoxBrassageProfils)
+        self.pushButtonDetailsBrassage = QtGui.QPushButton(self.widgetEditeur)
+        self.pushButtonDetailsBrassage.setText(QtGui.QApplication.translate("MainWindow", "Détails", None, QtGui.QApplication.UnicodeUTF8))
+        self.pushButtonDetailsBrassage.setObjectName(_fromUtf8("pushButtonDetailsBrassage"))
+        self.horizontalLayout_3.addWidget(self.pushButtonDetailsBrassage)
+        spacerItem3 = QtGui.QSpacerItem(40, 20, QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Minimum)
+        self.horizontalLayout_3.addItem(spacerItem3)
+        self.gridLayout_7.addLayout(self.horizontalLayout_3, 7, 0, 1, 1)
+        self.label_8 = QtGui.QLabel(self.widgetEditeur)
+        self.label_8.setText(QtGui.QApplication.translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
+"p, li { white-space: pre-wrap; }\n"
+"</style></head><body style=\" font-family:\'Droid Sans\'; font-size:10pt; font-weight:400; font-style:normal;\">\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-weight:600;\">Brassage :</span></p></body></html>", None, QtGui.QApplication.UnicodeUTF8))
+        self.label_8.setObjectName(_fromUtf8("label_8"))
+        self.gridLayout_7.addWidget(self.label_8, 6, 0, 1, 1)
         self.gridLayout.addWidget(self.widgetEditeur, 1, 0, 1, 1)
         self.widgetProfile = QtGui.QWidget(self.page)
         self.widgetProfile.setStyleSheet(_fromUtf8(""))
@@ -234,8 +255,8 @@ class Ui_MainWindow(object):
         self.verticalLayout_6 = QtGui.QVBoxLayout(self.widgetProfile)
         self.verticalLayout_6.setContentsMargins(30, -1, -1, -1)
         self.verticalLayout_6.setObjectName(_fromUtf8("verticalLayout_6"))
-        spacerItem3 = QtGui.QSpacerItem(20, 40, QtGui.QSizePolicy.Minimum, QtGui.QSizePolicy.Expanding)
-        self.verticalLayout_6.addItem(spacerItem3)
+        spacerItem4 = QtGui.QSpacerItem(20, 40, QtGui.QSizePolicy.Minimum, QtGui.QSizePolicy.Expanding)
+        self.verticalLayout_6.addItem(spacerItem4)
         self.verticalLayout_4 = QtGui.QVBoxLayout()
         self.verticalLayout_4.setContentsMargins(-1, -1, -1, 10)
         self.verticalLayout_4.setObjectName(_fromUtf8("verticalLayout_4"))
@@ -429,8 +450,8 @@ class Ui_MainWindow(object):
         self.widgetColor.setObjectName(_fromUtf8("widgetColor"))
         self.verticalLayout.addWidget(self.widgetColor)
         self.verticalLayout_6.addLayout(self.verticalLayout)
-        spacerItem4 = QtGui.QSpacerItem(20, 40, QtGui.QSizePolicy.Minimum, QtGui.QSizePolicy.Expanding)
-        self.verticalLayout_6.addItem(spacerItem4)
+        spacerItem5 = QtGui.QSpacerItem(20, 40, QtGui.QSizePolicy.Minimum, QtGui.QSizePolicy.Expanding)
+        self.verticalLayout_6.addItem(spacerItem5)
         self.gridLayout.addWidget(self.widgetProfile, 1, 1, 1, 1)
         self.stackedWidget.addWidget(self.page)
         self.page_2 = QtGui.QWidget()
@@ -484,7 +505,7 @@ class Ui_MainWindow(object):
         self.toolBar.setObjectName(_fromUtf8("toolBar"))
         MainWindow.addToolBar(QtCore.Qt.TopToolBarArea, self.toolBar)
         self.menuBar = QtGui.QMenuBar(MainWindow)
-        self.menuBar.setGeometry(QtCore.QRect(0, 0, 1293, 25))
+        self.menuBar.setGeometry(QtCore.QRect(0, 0, 1293, 23))
         self.menuBar.setObjectName(_fromUtf8("menuBar"))
         self.menuFichier = QtGui.QMenu(self.menuBar)
         self.menuFichier.setTitle(QtGui.QApplication.translate("MainWindow", "Fichier", None, QtGui.QApplication.UnicodeUTF8))
