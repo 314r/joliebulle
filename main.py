@@ -429,6 +429,13 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         #self.connect(self.pushButtonEssai, QtCore.SIGNAL("clicked()"), self.essai)
         self.connect(self.comboBoxType, QtCore.SIGNAL("currentIndexChanged(QString)"), self.typeChanged)
         
+        #######################################################################################################
+        # profil de brassage
+        #########################################################################################################
+        self.pushButtonMashDetails.clicked.connect(self.mashDetails)
+        self.listWidgetSteps.itemSelectionChanged.connect (self.stepDetails)
+        self.buttonBoxMashDetails.rejected.connect(self.mashRejected)
+        self.buttonBoxMashDetails.accepted.connect(self.mashAccepted)
         
         #On connecte ici les signaux émits à la fermeture des fenêtres d'édition de la base
         #########################################################################################
@@ -728,6 +735,11 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         
     def switchToNotes(self) :
         self.stackedWidget.setCurrentIndex(2)        
+        self.actionVueEditeurToolBar.setChecked(False)
+        self.actionVueBibliothequeToolBar.setChecked(False)
+        
+    def switchToMash(self) :
+        self.stackedWidget.setCurrentIndex(3)        
         self.actionVueEditeurToolBar.setChecked(False)
         self.actionVueBibliothequeToolBar.setChecked(False)
         
@@ -1491,7 +1503,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         self.liste_pType = list()
         self.liste_pTime = list()
         self.liste_pTemp = list()
-        self.liste_pQte = list()
+        self.liste_pVol = list()
         
         
         
@@ -1518,9 +1530,9 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
                      
                 if nom.tag == 'INFUSE_AMOUNT' :
                     self.pQte = float(nom.text)
-                    self.liste_pQte.append(self.pQte)
+                    self.liste_pVol.append(self.pQte)
                     
-        self.comboBoxBrassageProfils.addItem(self.bNom)
+        self.lineEditBrewingProfile.setText(self.bNom)
         
         
         print(self.liste_paliers)
@@ -1913,6 +1925,24 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
     def recipeNotesRejected (self) :
         self.switchToEditor()
         
+        
+    def mashDetails(self) :
+        self.switchToMash()
+        self.listWidgetSteps.clear()
+        self.listWidgetSteps.addItems(self.liste_paliers)
+        
+    def stepDetails(self) :
+        i = self.listWidgetSteps.currentRow()
+        self.lineEditStepName.setText(self.liste_paliers[i])
+        self.doubleSpinBoxStepTime.setValue(float(self.liste_pTime[i]))
+        self.doubleSpinBoxStepTemp.setValue(float(self.liste_pTemp[i]))
+        self.doubleSpinBoxStepVol.setValue(float(self.liste_pVol[i]))
+        
+    def mashRejected (self) :
+        self.switchToEditor()
+        
+    def mashAccepted (self) :
+        self.switchToEditor()        
         
     def printRecipe (self) :
         printer=QtGui.QPrinter()
