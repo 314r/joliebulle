@@ -42,6 +42,7 @@ from outilAlc import *
 from outilDilution import *
 from outilEvaporation import *
 from outilPaliers import * 
+from stepEditWindow import *
 from preferences import *
 from globals import *
 
@@ -355,6 +356,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         self.dlgOutilEvaporation = DialogEvaporation(self)
         self.dlgOutilPaliers = DialogPaliers(self)
         self.dlgPref = DialogPref(self)
+        self.dlgStep = DialogStep(self)
         self.base = ImportBase()
         self.base.importBeerXML()
         self.s=0
@@ -430,12 +432,15 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         self.connect(self.comboBoxType, QtCore.SIGNAL("currentIndexChanged(QString)"), self.typeChanged)
         
         #######################################################################################################
-        # profil de brassage
-        #########################################################################################################
+        # Profil de brassage       #########################################################################################################
         self.pushButtonMashDetails.clicked.connect(self.mashDetails)
         self.listWidgetSteps.itemSelectionChanged.connect (self.stepDetails)
         self.buttonBoxMashDetails.rejected.connect(self.mashRejected)
         self.buttonBoxMashDetails.accepted.connect(self.mashAccepted)
+#        self.comboBoxStepType.addItems(["Infusion", "Température", "Décoction"])
+        self.pushButtonStepEdit.clicked.connect(self.stepEdit)
+        self.dlgStep.stepChanged.connect(self.stepReload)
+        
         
         #On connecte ici les signaux émits à la fermeture des fenêtres d'édition de la base
         #########################################################################################
@@ -1494,8 +1499,14 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         for nom in brassin :
             if nom.tag == 'NAME' :
                 self.bNom = nom.text
-
-     
+            if nom.tag == 'GRAIN_TEMP' :
+                self.mashGrainTemp = nom.text
+            if nom.tag == 'TUN_TEMP' :
+                self.mashTunTemp = nom.text
+            if nom.tag == 'SPARGE_TEMP' :
+                self.spargeTemp = nom.text
+            if nom.tag == 'PH' :
+                self.mashPh = nom.text
         #Paliers
 
         self.nbrePaliers = len(paliers)
@@ -1514,14 +1525,23 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
             for nom in paliers [p-1] :
                 if nom.tag == 'NAME' :
                     self.pNom = nom.text
-                    self.liste_paliers.append(self.pNom)    
+                    self.liste_paliers.append(self.pNom)
                     
                 if nom.tag == 'TYPE' :
                     self.pType = nom.text
-                    self.liste_pType.append(self.pType)
+                    if self.pType == 'Infusion' :
+                        self.pType = self.trUtf8('''Infusion''')
+                        self.liste_pType.append(self.pType)
+                    if self.pType == '''Temperature''' :
+                        self.pType = self.trUtf8('''Température''')
+                        self.liste_pType.append(self.pType)
+                    if self.pType == '''Decoction''' :
+                        self.pType = self.trUtf8('''Décoction''')
+                        self.liste_pType.append(self.pType)  
+                    
                     
                 if nom.tag == 'STEP_TIME' :
-                    self.pTime = nom.text
+                    self.pTime = float(nom.text)
                     self.liste_pTime.append(self.pTime)
                     
                 if nom.tag == 'STEP_TEMP' :
@@ -1933,16 +1953,46 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         
     def stepDetails(self) :
         i = self.listWidgetSteps.currentRow()
-        self.lineEditStepName.setText(self.liste_paliers[i])
-        self.doubleSpinBoxStepTime.setValue(float(self.liste_pTime[i]))
-        self.doubleSpinBoxStepTemp.setValue(float(self.liste_pTemp[i]))
-        self.doubleSpinBoxStepVol.setValue(float(self.liste_pVol[i]))
+#        self.lineEditStepName.setText(self.liste_paliers[i])
+#        if self.liste_pType[i] == self.trUtf8('''Infusion''') :
+#            self.comboBoxStepType.setCurrentIndex(0)
+#        elif self.liste_pType[i] == self.trUtf8('''Température''') :
+#            self.comboBoxStepType.setCurrentIndex(1)
+#        elif self.liste_pType[i] == self.trUtf8('''Décoction''') :
+#            self.comboBoxStepType.setCurrentIndex(2)              
+#        self.doubleSpinBoxStepTime.setValue(float(self.liste_pTime[i]))
+#        self.doubleSpinBoxStepTemp.setValue(float(self.liste_pTemp[i]))
+#        self.doubleSpinBoxStepVol.setValue(float(self.liste_pVol[i]))
+        self.labelStepName.setTextFormat(QtCore.Qt.RichText)
+        self.labelStepName.setText("<b>" + self.liste_paliers[i] +"</b>")
+        
+        self.labelStepType.setText(self.liste_pType[i])
+        self.labelStepTemp.setText("%.1f" %(self.liste_pTemp[i]))
+        self.labelStepTime.setText("%.0f" %(self.liste_pTime[i]))
+        self.labelStepVol.setText("%.1f" %(self.liste_pVol[i]))
+        
+    def stepEdit(self) :
+        i = self.listWidgetSteps.currentRow()
+        self.dlgStep.show()
+        self.dlgStep.fields (self.liste_paliers[i],self.liste_pType[i],self.liste_pTime[i], self.liste_pTemp[i], self.liste_pVol[i] )
+    
+    def stepReload(self, stepName, stepType, stepTime, stepTemp ,stepVol) :
+        i = self.listWidgetSteps.currentRow()
+        self.liste_paliers[i] = stepName
+        self.liste_pType[i] = stepType
+        self.liste_pTemp[i] = stepTemp
+        self.liste_pTime[i] = stepTime
+        self.liste_pVol[i] = stepVol
+        self.stepDetails()
+        self.listWidgetSteps.clear()
+        self.listWidgetSteps.addItems(self.liste_paliers)
         
     def mashRejected (self) :
         self.switchToEditor()
         
     def mashAccepted (self) :
-        self.switchToEditor()        
+        self.switchToEditor()
+                
         
     def printRecipe (self) :
         printer=QtGui.QPrinter()
