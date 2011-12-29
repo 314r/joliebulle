@@ -33,6 +33,7 @@ from settings import *
 from export import *
 from exportHTML import *
 from base import *
+from importMashXml import *
 from editgrain import *
 from edithoublon import *
 from editdivers import * 
@@ -358,6 +359,9 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         self.dlgPref = DialogPref(self)
         self.dlgStep = DialogStep(self)
         self.base = ImportBase()
+        self.mashProfilesBase = ImportMash()
+        self.mashProfilesBase.importBeerXML()
+        
         self.base.importBeerXML()
         self.s=0
         self.nbreLevures = 0
@@ -1948,6 +1952,8 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         
     def mashDetails(self) :
         self.switchToMash()
+        self.listWidgetMashProfiles.clear()
+        self.listWidgetMashProfiles.addItem(self.bNom)
         self.listWidgetSteps.clear()
         self.listWidgetSteps.addItems(self.liste_paliers)
         

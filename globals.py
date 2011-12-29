@@ -22,5 +22,6 @@ else:
     database_file = os.path.join(os.path.expanduser("~"), ".config", "joliebulle", "database.xml")
     database_root = '/usr/share/joliebulle/database.xml'
     #essai = settings.conf.value("pathUnix")
+    mash_file = os.path.join(os.path.expanduser("~"), ".config", "joliebulle", "mash.xml")
 
 
