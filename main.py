@@ -439,6 +439,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         # Profil de brassage       #########################################################################################################
         self.pushButtonMashDetails.clicked.connect(self.mashDetails)
         self.listWidgetSteps.itemSelectionChanged.connect (self.stepDetails)
+        self.listWidgetMashProfiles.itemSelectionChanged.connect (self.mashClicked)
         self.buttonBoxMashDetails.rejected.connect(self.mashRejected)
         self.buttonBoxMashDetails.accepted.connect(self.mashAccepted)
 #        self.comboBoxStepType.addItems(["Infusion", "Température", "Décoction"])
@@ -1949,33 +1950,67 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
     def recipeNotesRejected (self) :
         self.switchToEditor()
         
-        
-    def mashDetails(self) :
+    def seeMash(self) :
         self.switchToMash()
-        self.listWidgetMashProfiles.clear()
-        self.listWidgetMashProfiles.addItem(self.bNom)
-        self.listWidgetSteps.clear()
-        self.listWidgetSteps.addItems(self.liste_paliers)
+        self.listWidgetMashProfiles.clear() 
+#        print(self.mashProfilesBase.listMash)
+        self.numMash = self.mashProfilesBase.numMash
+        self.numSteps = self.mashProfilesBase.numSteps
+        self.listMash = self.mashProfilesBase.listMash
+        self.listStepsAll = list()
+        
+        for name in self.listMash :
+           self.listWidgetMashProfiles.addItem(name['name'])
+        
+        
+        for steps in self.listMash :
+            dicStep = steps['mashSteps']
+            self.listStepsAll.append(dicStep)
+            
+            
+    def mashClicked(self) :
+        self.listWidgetSteps.clear()         
+        index = self.listWidgetMashProfiles.currentRow()
+        self.listSteps = self.listStepsAll[index]
+        for stepName in self.listSteps :
+            self.listWidgetSteps.addItem(stepName['name'])
+#        print (self.listSteps)
+     
+                
+    def mashDetails(self) :
+#        self.switchToMash()
+#        self.listWidgetMashProfiles.clear()
+#        self.listWidgetMashProfiles.addItem(self.bNom)
+#        self.listWidgetSteps.clear()
+#        self.listWidgetSteps.addItems(self.liste_paliers)
+        self.seeMash()
         
     def stepDetails(self) :
         i = self.listWidgetSteps.currentRow()
-#        self.lineEditStepName.setText(self.liste_paliers[i])
-#        if self.liste_pType[i] == self.trUtf8('''Infusion''') :
-#            self.comboBoxStepType.setCurrentIndex(0)
-#        elif self.liste_pType[i] == self.trUtf8('''Température''') :
-#            self.comboBoxStepType.setCurrentIndex(1)
-#        elif self.liste_pType[i] == self.trUtf8('''Décoction''') :
-#            self.comboBoxStepType.setCurrentIndex(2)              
-#        self.doubleSpinBoxStepTime.setValue(float(self.liste_pTime[i]))
-#        self.doubleSpinBoxStepTemp.setValue(float(self.liste_pTemp[i]))
-#        self.doubleSpinBoxStepVol.setValue(float(self.liste_pVol[i]))
+        self.listStepName = list()
+        self.listStepType = list()
+        self.listStepTemp = list()
+        self.listStepTime = list()
+        self.listStepVol = list()  
+        for stepName in self.listSteps :
+            self.listStepName.append(stepName['name'])
+        for stepType in self.listSteps :
+            self.listStepType.append(stepType['type'])
+        for stepTime in self.listSteps :
+            self.listStepTime.append(float(stepTime['stepTime']))
+        for stepTemp in self.listSteps :
+            self.listStepTemp.append(float(stepTemp['stepTemp']))
+        for stepVol in self.listSteps :
+            self.listStepVol.append(float(stepVol['stepVol']))
+            
         self.labelStepName.setTextFormat(QtCore.Qt.RichText)
-        self.labelStepName.setText("<b>" + self.liste_paliers[i] +"</b>")
+        self.labelStepName.setText("<b>" + self.listStepName[i] +"</b>")            
+        self.labelStepType.setText(self.listStepType[i])
+        self.labelStepTemp.setText("%.1f" %(self.listStepTemp[i]))
+        self.labelStepTime.setText("%.0f" %(self.listStepTime[i]))  
+        self.labelStepVol.setText("%.1f" %(self.listStepVol[i]))   
+            
         
-        self.labelStepType.setText(self.liste_pType[i])
-        self.labelStepTemp.setText("%.1f" %(self.liste_pTemp[i]))
-        self.labelStepTime.setText("%.0f" %(self.liste_pTime[i]))
-        self.labelStepVol.setText("%.1f" %(self.liste_pVol[i]))
         
     def stepEdit(self) :
         i = self.listWidgetSteps.currentRow()

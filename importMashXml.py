@@ -59,6 +59,24 @@ class ImportMash :
                     dic = self.listMash[i-1]
                     dic['ph'] = self.mashPh
             
+            for nom in mash[i-1] :
+                if nom.tag == 'GRAIN_TEMP' :
+                    self.mashGrainTemp = nom.text
+                    dic = self.listMash[i-1]
+                    dic['grainTemp'] = self.mashGrainTemp
+                    
+            for nom in mash[i-1] :
+                if nom.tag == 'TUN_TEMP' :
+                    self.mashTunTemp = nom.text
+                    dic = self.listMash[i-1]
+                    dic['tunTemp'] = self.mashTunTemp
+
+            for nom in mash[i-1] :
+                if nom.tag == 'SPARGE_TEMP' :
+                    self.mashSpargeTemp = nom.text
+                    dic = self.listMash[i-1]
+                    dic['spargeTemp'] = self.mashSpargeTemp            
+            
                     
             steps = mash[i-1].findall('.//MASH_STEP')
             self.numSteps = len(steps)
@@ -81,7 +99,17 @@ class ImportMash :
                     if nom.tag == 'STEP_TIME' :   
                          self.stepTime = nom.text
                          dicStep = self.listSteps[j-1]
-                         dicStep['stepTime']= self.stepTime  
+                         dicStep['stepTime']= self.stepTime 
+                for nom in steps[j-1] :
+                    if nom.tag == 'STEP_TEMP' :
+                         self.stepTemp = nom.text
+                         dicStep = self.listSteps[j-1]
+                         dicStep['stepTemp']= self.stepTemp
+                for nom in steps[j-1] :
+                    if nom.tag == 'INFUSE_AMOUNT' :
+                         self.stepVol = nom.text
+                         dicStep = self.listSteps[j-1]
+                         dicStep['stepVol']= self.stepVol
                     
         print (self.listMash)
             

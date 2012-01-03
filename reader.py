@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'reader.ui'
 #
-# Created: Wed Dec 28 23:03:59 2011
+# Created: Tue Jan  3 18:56:45 2012
 #      by: PyQt4 UI code generator 4.9
 #
 # WARNING! All changes made in this file will be lost!
@@ -422,9 +422,30 @@ class Ui_MainWindow(object):
         self.label_17 = QtGui.QLabel(self.page_4)
         self.label_17.setObjectName(_fromUtf8("label_17"))
         self.formLayout_7.setWidget(1, QtGui.QFormLayout.LabelRole, self.label_17)
-        self.label_18 = QtGui.QLabel(self.page_4)
-        self.label_18.setObjectName(_fromUtf8("label_18"))
-        self.formLayout_7.setWidget(1, QtGui.QFormLayout.FieldRole, self.label_18)
+        self.labelMashPh = QtGui.QLabel(self.page_4)
+        self.labelMashPh.setObjectName(_fromUtf8("labelMashPh"))
+        self.formLayout_7.setWidget(1, QtGui.QFormLayout.FieldRole, self.labelMashPh)
+        self.labelMashName = QtGui.QLabel(self.page_4)
+        self.labelMashName.setObjectName(_fromUtf8("labelMashName"))
+        self.formLayout_7.setWidget(0, QtGui.QFormLayout.FieldRole, self.labelMashName)
+        self.label_20 = QtGui.QLabel(self.page_4)
+        self.label_20.setObjectName(_fromUtf8("label_20"))
+        self.formLayout_7.setWidget(2, QtGui.QFormLayout.LabelRole, self.label_20)
+        self.labelMashGrainTemp = QtGui.QLabel(self.page_4)
+        self.labelMashGrainTemp.setObjectName(_fromUtf8("labelMashGrainTemp"))
+        self.formLayout_7.setWidget(2, QtGui.QFormLayout.FieldRole, self.labelMashGrainTemp)
+        self.label_22 = QtGui.QLabel(self.page_4)
+        self.label_22.setObjectName(_fromUtf8("label_22"))
+        self.formLayout_7.setWidget(3, QtGui.QFormLayout.LabelRole, self.label_22)
+        self.labelMashTunTemp = QtGui.QLabel(self.page_4)
+        self.labelMashTunTemp.setObjectName(_fromUtf8("labelMashTunTemp"))
+        self.formLayout_7.setWidget(3, QtGui.QFormLayout.FieldRole, self.labelMashTunTemp)
+        self.label_24 = QtGui.QLabel(self.page_4)
+        self.label_24.setObjectName(_fromUtf8("label_24"))
+        self.formLayout_7.setWidget(4, QtGui.QFormLayout.LabelRole, self.label_24)
+        self.labelMashSpargeTemp = QtGui.QLabel(self.page_4)
+        self.labelMashSpargeTemp.setObjectName(_fromUtf8("labelMashSpargeTemp"))
+        self.formLayout_7.setWidget(4, QtGui.QFormLayout.FieldRole, self.labelMashSpargeTemp)
         self.horizontalLayout_14.addLayout(self.formLayout_7)
         self.verticalLayout_10.addLayout(self.horizontalLayout_14)
         self.gridLayout_8.addLayout(self.verticalLayout_10, 0, 0, 1, 1)
@@ -642,7 +663,7 @@ class Ui_MainWindow(object):
         self.menuBar.addAction(self.menuAide.menuAction())
 
         self.retranslateUi(MainWindow)
-        self.stackedWidget.setCurrentIndex(3)
+        self.stackedWidget.setCurrentIndex(0)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
     def retranslateUi(self, MainWindow):
@@ -760,9 +781,16 @@ class Ui_MainWindow(object):
 "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-weight:600;\">Profil de brassage :</span></p></body></html>", None, QtGui.QApplication.UnicodeUTF8))
         self.pushButton_2.setText(QtGui.QApplication.translate("MainWindow", "PushButton", None, QtGui.QApplication.UnicodeUTF8))
         self.pushButton_3.setText(QtGui.QApplication.translate("MainWindow", "PushButton", None, QtGui.QApplication.UnicodeUTF8))
-        self.label_16.setText(QtGui.QApplication.translate("MainWindow", "TextLabel", None, QtGui.QApplication.UnicodeUTF8))
-        self.label_17.setText(QtGui.QApplication.translate("MainWindow", "TextLabel", None, QtGui.QApplication.UnicodeUTF8))
-        self.label_18.setText(QtGui.QApplication.translate("MainWindow", "TextLabel", None, QtGui.QApplication.UnicodeUTF8))
+        self.label_16.setText(QtGui.QApplication.translate("MainWindow", "<html><head/><body><p><span style=\" font-weight:600;\">Nom :</span></p></body></html>", None, QtGui.QApplication.UnicodeUTF8))
+        self.label_17.setText(QtGui.QApplication.translate("MainWindow", "<html><head/><body><p><span style=\" font-weight:600;\">pH :</span></p></body></html>", None, QtGui.QApplication.UnicodeUTF8))
+        self.labelMashPh.setText(QtGui.QApplication.translate("MainWindow", "0", None, QtGui.QApplication.UnicodeUTF8))
+        self.labelMashName.setText(QtGui.QApplication.translate("MainWindow", "Aucun", None, QtGui.QApplication.UnicodeUTF8))
+        self.label_20.setText(QtGui.QApplication.translate("MainWindow", "<html><head/><body><p><span style=\" font-weight:600;\">Température grain :</span></p></body></html>", None, QtGui.QApplication.UnicodeUTF8))
+        self.labelMashGrainTemp.setText(QtGui.QApplication.translate("MainWindow", "0 °C", None, QtGui.QApplication.UnicodeUTF8))
+        self.label_22.setText(QtGui.QApplication.translate("MainWindow", "<html><head/><body><p><span style=\" font-weight:600;\">Température cuve :</span></p></body></html>", None, QtGui.QApplication.UnicodeUTF8))
+        self.labelMashTunTemp.setText(QtGui.QApplication.translate("MainWindow", "0 °C", None, QtGui.QApplication.UnicodeUTF8))
+        self.label_24.setText(QtGui.QApplication.translate("MainWindow", "<html><head/><body><p><span style=\" font-weight:600;\">Température rinçage :</span></p></body></html>", None, QtGui.QApplication.UnicodeUTF8))
+        self.labelMashSpargeTemp.setText(QtGui.QApplication.translate("MainWindow", "0 °C", None, QtGui.QApplication.UnicodeUTF8))
         self.label_14.setText(QtGui.QApplication.translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
