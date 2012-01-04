@@ -111,7 +111,7 @@ class ImportMash :
                          dicStep = self.listSteps[j-1]
                          dicStep['stepVol']= self.stepVol
                     
-        print (self.listMash)
+        
             
         
         

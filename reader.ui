@@ -1014,7 +1014,7 @@ p, li { white-space: pre-wrap; }
                  </widget>
                 </item>
                 <item>
-                 <widget class="QPushButton" name="pushButton">
+                 <widget class="QPushButton" name="pushButtonNewStep">
                   <property name="text">
                    <string>Nouveau palier</string>
                   </property>

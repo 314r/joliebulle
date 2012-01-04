@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'reader.ui'
 #
-# Created: Tue Jan  3 18:56:45 2012
+# Created: Wed Jan  4 16:33:55 2012
 #      by: PyQt4 UI code generator 4.9
 #
 # WARNING! All changes made in this file will be lost!
@@ -466,9 +466,9 @@ class Ui_MainWindow(object):
         self.pushButtonStepRemove = QtGui.QPushButton(self.page_4)
         self.pushButtonStepRemove.setObjectName(_fromUtf8("pushButtonStepRemove"))
         self.horizontalLayout_6.addWidget(self.pushButtonStepRemove)
-        self.pushButton = QtGui.QPushButton(self.page_4)
-        self.pushButton.setObjectName(_fromUtf8("pushButton"))
-        self.horizontalLayout_6.addWidget(self.pushButton)
+        self.pushButtonNewStep = QtGui.QPushButton(self.page_4)
+        self.pushButtonNewStep.setObjectName(_fromUtf8("pushButtonNewStep"))
+        self.horizontalLayout_6.addWidget(self.pushButtonNewStep)
         self.verticalLayout_2.addLayout(self.horizontalLayout_6)
         self.horizontalLayout_8.addLayout(self.verticalLayout_2)
         self.formLayout_6 = QtGui.QFormLayout()
@@ -797,7 +797,7 @@ class Ui_MainWindow(object):
 "</style></head><body style=\" font-family:\'Droid Sans\'; font-size:10pt; font-weight:400; font-style:normal;\">\n"
 "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-weight:600;\">Paliers :</span></p></body></html>", None, QtGui.QApplication.UnicodeUTF8))
         self.pushButtonStepRemove.setText(QtGui.QApplication.translate("MainWindow", "Enlever", None, QtGui.QApplication.UnicodeUTF8))
-        self.pushButton.setText(QtGui.QApplication.translate("MainWindow", "Nouveau palier", None, QtGui.QApplication.UnicodeUTF8))
+        self.pushButtonNewStep.setText(QtGui.QApplication.translate("MainWindow", "Nouveau palier", None, QtGui.QApplication.UnicodeUTF8))
         self.label_10.setText(QtGui.QApplication.translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"

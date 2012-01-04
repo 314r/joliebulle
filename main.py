@@ -445,7 +445,8 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
 #        self.comboBoxStepType.addItems(["Infusion", "Température", "Décoction"])
         self.pushButtonStepEdit.clicked.connect(self.stepEdit)
         self.dlgStep.stepChanged.connect(self.stepReload)
-        
+        self.pushButtonStepRemove.clicked.connect(self.removeStep)
+        self.pushButtonNewStep.clicked.connect(self.addStep)
         
         #On connecte ici les signaux émits à la fermeture des fenêtres d'édition de la base
         #########################################################################################
@@ -1972,10 +1973,17 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         self.listWidgetSteps.clear()         
         index = self.listWidgetMashProfiles.currentRow()
         self.listSteps = self.listStepsAll[index]
+        self.dicMashDetail = self.listMash[index]
         for stepName in self.listSteps :
             self.listWidgetSteps.addItem(stepName['name'])
-#        print (self.listSteps)
-     
+            
+        self.labelStepName.setTextFormat(QtCore.Qt.RichText)   
+        self.labelMashName.setText("<b>" + self.dicMashDetail['name'] + "</b>")
+        self.labelMashPh.setText("%.1f" %float(self.dicMashDetail['ph']))
+        self.labelMashGrainTemp.setText("%.1f" %float(self.dicMashDetail['grainTemp']))
+        self.labelMashTunTemp.setText("%.1f" %float(self.dicMashDetail['tunTemp']))
+        self.labelMashSpargeTemp.setText("%.1f" %float(self.dicMashDetail['spargeTemp']))
+            
                 
     def mashDetails(self) :
 #        self.switchToMash()
@@ -2015,18 +2023,43 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
     def stepEdit(self) :
         i = self.listWidgetSteps.currentRow()
         self.dlgStep.show()
-        self.dlgStep.fields (self.liste_paliers[i],self.liste_pType[i],self.liste_pTime[i], self.liste_pTemp[i], self.liste_pVol[i] )
+        self.dlgStep.fields (self.listStepName[i], self.listStepType[i], self.listStepTime[i], self.listStepTemp[i], self.listStepVol[i])
     
     def stepReload(self, stepName, stepType, stepTime, stepTemp ,stepVol) :
+        f = self.listWidgetMashProfiles.currentRow()
         i = self.listWidgetSteps.currentRow()
-        self.liste_paliers[i] = stepName
-        self.liste_pType[i] = stepType
-        self.liste_pTemp[i] = stepTemp
-        self.liste_pTime[i] = stepTime
-        self.liste_pVol[i] = stepVol
+        self.listStepName[i] = stepName
+        self.listStepType[i] = stepType
+        self.listStepTemp[i] = stepTemp
+        self.listStepTime[i] = stepTime
+        self.listStepVol[i] = stepVol
+        dicCurrentStep = {}
+        dicCurrentStep = {'name' : stepName, 'type' : stepType, 'stepTime' : stepTime, 'stepTemp' : stepTemp, 'stepVol' : stepVol}
+        del self.listSteps[i]
+        self.listSteps.insert(i, dicCurrentStep) 
+        self.listWidgetSteps.clear() 
+        self.mashDetails()
         self.stepDetails()
-        self.listWidgetSteps.clear()
-        self.listWidgetSteps.addItems(self.liste_paliers)
+        self.listWidgetMashProfiles.setCurrentRow(f)
+        self.listWidgetSteps.setCurrentRow(i)
+        
+        
+    def removeStep(self) :
+        i = self.listWidgetSteps.currentRow()
+        del self.listSteps[i]
+        self.mashDetails()
+        
+    def addStep(self) :
+        f = self.listWidgetMashProfiles.currentRow()
+        dicNewStep = {'name' : 'Nouveau Palier', 'type' : 'Infusion', 'stepTime' : '0', 'stepTemp' : '0', 'stepVol' : '0'}
+        self.listSteps.append(dicNewStep)
+        i = len(self.listSteps)
+        self.listWidgetMashProfiles.setCurrentRow(f)
+        self.mashDetails()
+        self.stepDetails()      
+        self.listWidgetMashProfiles.setCurrentRow(f)
+        self.listWidgetSteps.setCurrentRow(i-1)
+        self.stepEdit()
         
     def mashRejected (self) :
         self.switchToEditor()
