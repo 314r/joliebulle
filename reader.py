@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'reader.ui'
 #
-# Created: Wed Jan  4 16:33:55 2012
+# Created: Thu Jan  5 18:48:06 2012
 #      by: PyQt4 UI code generator 4.9
 #
 # WARNING! All changes made in this file will be lost!
@@ -405,12 +405,12 @@ class Ui_MainWindow(object):
         self.verticalLayout_8.addWidget(self.listWidgetMashProfiles)
         self.horizontalLayout_9 = QtGui.QHBoxLayout()
         self.horizontalLayout_9.setObjectName(_fromUtf8("horizontalLayout_9"))
-        self.pushButton_2 = QtGui.QPushButton(self.page_4)
-        self.pushButton_2.setObjectName(_fromUtf8("pushButton_2"))
-        self.horizontalLayout_9.addWidget(self.pushButton_2)
-        self.pushButton_3 = QtGui.QPushButton(self.page_4)
-        self.pushButton_3.setObjectName(_fromUtf8("pushButton_3"))
-        self.horizontalLayout_9.addWidget(self.pushButton_3)
+        self.pushButtonRemoveProfile = QtGui.QPushButton(self.page_4)
+        self.pushButtonRemoveProfile.setObjectName(_fromUtf8("pushButtonRemoveProfile"))
+        self.horizontalLayout_9.addWidget(self.pushButtonRemoveProfile)
+        self.pushButtonNewProfile = QtGui.QPushButton(self.page_4)
+        self.pushButtonNewProfile.setObjectName(_fromUtf8("pushButtonNewProfile"))
+        self.horizontalLayout_9.addWidget(self.pushButtonNewProfile)
         self.verticalLayout_8.addLayout(self.horizontalLayout_9)
         self.horizontalLayout_14.addLayout(self.verticalLayout_8)
         self.formLayout_7 = QtGui.QFormLayout()
@@ -446,6 +446,9 @@ class Ui_MainWindow(object):
         self.labelMashSpargeTemp = QtGui.QLabel(self.page_4)
         self.labelMashSpargeTemp.setObjectName(_fromUtf8("labelMashSpargeTemp"))
         self.formLayout_7.setWidget(4, QtGui.QFormLayout.FieldRole, self.labelMashSpargeTemp)
+        self.pushButtonMashEdit = QtGui.QPushButton(self.page_4)
+        self.pushButtonMashEdit.setObjectName(_fromUtf8("pushButtonMashEdit"))
+        self.formLayout_7.setWidget(5, QtGui.QFormLayout.LabelRole, self.pushButtonMashEdit)
         self.horizontalLayout_14.addLayout(self.formLayout_7)
         self.verticalLayout_10.addLayout(self.horizontalLayout_14)
         self.gridLayout_8.addLayout(self.verticalLayout_10, 0, 0, 1, 1)
@@ -779,8 +782,8 @@ class Ui_MainWindow(object):
 "p, li { white-space: pre-wrap; }\n"
 "</style></head><body style=\" font-family:\'Droid Sans\'; font-size:10pt; font-weight:400; font-style:normal;\">\n"
 "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-weight:600;\">Profil de brassage :</span></p></body></html>", None, QtGui.QApplication.UnicodeUTF8))
-        self.pushButton_2.setText(QtGui.QApplication.translate("MainWindow", "PushButton", None, QtGui.QApplication.UnicodeUTF8))
-        self.pushButton_3.setText(QtGui.QApplication.translate("MainWindow", "PushButton", None, QtGui.QApplication.UnicodeUTF8))
+        self.pushButtonRemoveProfile.setText(QtGui.QApplication.translate("MainWindow", "Enlever", None, QtGui.QApplication.UnicodeUTF8))
+        self.pushButtonNewProfile.setText(QtGui.QApplication.translate("MainWindow", "Nouveau profil", None, QtGui.QApplication.UnicodeUTF8))
         self.label_16.setText(QtGui.QApplication.translate("MainWindow", "<html><head/><body><p><span style=\" font-weight:600;\">Nom :</span></p></body></html>", None, QtGui.QApplication.UnicodeUTF8))
         self.label_17.setText(QtGui.QApplication.translate("MainWindow", "<html><head/><body><p><span style=\" font-weight:600;\">pH :</span></p></body></html>", None, QtGui.QApplication.UnicodeUTF8))
         self.labelMashPh.setText(QtGui.QApplication.translate("MainWindow", "0", None, QtGui.QApplication.UnicodeUTF8))
@@ -791,6 +794,7 @@ class Ui_MainWindow(object):
         self.labelMashTunTemp.setText(QtGui.QApplication.translate("MainWindow", "0 °C", None, QtGui.QApplication.UnicodeUTF8))
         self.label_24.setText(QtGui.QApplication.translate("MainWindow", "<html><head/><body><p><span style=\" font-weight:600;\">Température rinçage :</span></p></body></html>", None, QtGui.QApplication.UnicodeUTF8))
         self.labelMashSpargeTemp.setText(QtGui.QApplication.translate("MainWindow", "0 °C", None, QtGui.QApplication.UnicodeUTF8))
+        self.pushButtonMashEdit.setText(QtGui.QApplication.translate("MainWindow", "Modifier", None, QtGui.QApplication.UnicodeUTF8))
         self.label_14.setText(QtGui.QApplication.translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"

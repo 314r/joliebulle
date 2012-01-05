@@ -883,16 +883,16 @@ p, li { white-space: pre-wrap; }
               <item>
                <layout class="QHBoxLayout" name="horizontalLayout_9">
                 <item>
-                 <widget class="QPushButton" name="pushButton_2">
+                 <widget class="QPushButton" name="pushButtonRemoveProfile">
                   <property name="text">
-                   <string>PushButton</string>
+                   <string>Enlever</string>
                   </property>
                  </widget>
                 </item>
                 <item>
-                 <widget class="QPushButton" name="pushButton_3">
+                 <widget class="QPushButton" name="pushButtonNewProfile">
                   <property name="text">
-                   <string>PushButton</string>
+                   <string>Nouveau profil</string>
                   </property>
                  </widget>
                 </item>
@@ -975,6 +975,13 @@ p, li { white-space: pre-wrap; }
                <widget class="QLabel" name="labelMashSpargeTemp">
                 <property name="text">
                  <string>0 °C</string>
+                </property>
+               </widget>
+              </item>
+              <item row="5" column="0">
+               <widget class="QPushButton" name="pushButtonMashEdit">
+                <property name="text">
+                 <string>Modifier</string>
                 </property>
                </widget>
               </item>

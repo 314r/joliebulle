@@ -44,6 +44,7 @@ from outilDilution import *
 from outilEvaporation import *
 from outilPaliers import * 
 from stepEditWindow import *
+from mashEditWindow import *
 from preferences import *
 from globals import *
 
@@ -358,6 +359,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         self.dlgOutilPaliers = DialogPaliers(self)
         self.dlgPref = DialogPref(self)
         self.dlgStep = DialogStep(self)
+        self.dlgMash = DialogMash(self)
         self.base = ImportBase()
         self.mashProfilesBase = ImportMash()
         self.mashProfilesBase.importBeerXML()
@@ -447,6 +449,8 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         self.dlgStep.stepChanged.connect(self.stepReload)
         self.pushButtonStepRemove.clicked.connect(self.removeStep)
         self.pushButtonNewStep.clicked.connect(self.addStep)
+        self.pushButtonMashEdit.clicked.connect(self.mashEdit)
+        self.dlgMash.mashChanged.connect(self.mashReload)
         
         #On connecte ici les signaux émits à la fermeture des fenêtres d'édition de la base
         #########################################################################################
@@ -1932,10 +1936,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         self.importBeerXML()
         self.calculs_recette()
         self.MVC()
-            
-        
-        
-            
+                        
     def addStyle(self) :
         self.lineEditGenre.setText(self.comboBoxStyle.currentText())
         
@@ -1961,9 +1962,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         self.listStepsAll = list()
         
         for name in self.listMash :
-           self.listWidgetMashProfiles.addItem(name['name'])
-        
-        
+           self.listWidgetMashProfiles.addItem(name['name'])    
         for steps in self.listMash :
             dicStep = steps['mashSteps']
             self.listStepsAll.append(dicStep)
@@ -1983,6 +1982,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         self.labelMashGrainTemp.setText("%.1f" %float(self.dicMashDetail['grainTemp']))
         self.labelMashTunTemp.setText("%.1f" %float(self.dicMashDetail['tunTemp']))
         self.labelMashSpargeTemp.setText("%.1f" %float(self.dicMashDetail['spargeTemp']))
+        print(self.dicMashDetail)
             
                 
     def mashDetails(self) :
@@ -1992,6 +1992,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
 #        self.listWidgetSteps.clear()
 #        self.listWidgetSteps.addItems(self.liste_paliers)
         self.seeMash()
+        
         
     def stepDetails(self) :
         i = self.listWidgetSteps.currentRow()
@@ -2060,6 +2061,18 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         self.listWidgetMashProfiles.setCurrentRow(f)
         self.listWidgetSteps.setCurrentRow(i-1)
         self.stepEdit()
+        
+        
+    def mashEdit(self) :
+        i = self.listWidgetMashProfiles.currentRow()
+        self.dlgMash.show()
+        self.dlgMash.fields(self.dicMashDetail['name'],self.dicMashDetail['ph'],self.dicMashDetail['grainTemp'],self.dicMashDetail['tunTemp'],self.dicMashDetail['spargeTemp'])
+        
+    def mashReload(self,name,ph,grainT,tunT,spargeT) :
+        f = self.listWidgetMashProfiles.currentRow()
+        self.dicMashDetail['name'] = name
+        self.dicMashDetail['ph'] = ph
+        print(self.dicMashDetail)
         
     def mashRejected (self) :
         self.switchToEditor()
