@@ -451,6 +451,11 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         self.pushButtonNewStep.clicked.connect(self.addStep)
         self.pushButtonMashEdit.clicked.connect(self.mashEdit)
         self.dlgMash.mashChanged.connect(self.mashReload)
+        self.pushButtonNewProfile.clicked.connect(self.addMash)
+        self.pushButtonRemoveProfile.clicked.connect(self.removeMash)
+        
+        
+        self.popMashCombo()
         
         #On connecte ici les signaux émits à la fermeture des fenêtres d'édition de la base
         #########################################################################################
@@ -1952,6 +1957,12 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
     def recipeNotesRejected (self) :
         self.switchToEditor()
         
+    def popMashCombo (self):
+        self.listMash = self.mashProfilesBase.listMash
+        self.comboBoxMashProfiles.clear() 
+        for name in self.listMash :
+           self.comboBoxMashProfiles.addItem(name['name'])
+        
     def seeMash(self) :
         self.switchToMash()
         self.listWidgetMashProfiles.clear() 
@@ -1960,7 +1971,10 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         self.numSteps = self.mashProfilesBase.numSteps
         self.listMash = self.mashProfilesBase.listMash
         self.listStepsAll = list()
+        self.popMashList()
         
+    def popMashList(self) :
+        self.listWidgetMashProfiles.clear() 
         for name in self.listMash :
            self.listWidgetMashProfiles.addItem(name['name'])    
         for steps in self.listMash :
@@ -1992,6 +2006,8 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
 #        self.listWidgetSteps.clear()
 #        self.listWidgetSteps.addItems(self.liste_paliers)
         self.seeMash()
+        i = self.comboBoxMashProfiles.currentIndex()
+        self.listWidgetMashProfiles.setCurrentRow(i)
         
         
     def stepDetails(self) :
@@ -2039,7 +2055,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         del self.listSteps[i]
         self.listSteps.insert(i, dicCurrentStep) 
         self.listWidgetSteps.clear() 
-        self.mashDetails()
+        self.seeMash()
         self.stepDetails()
         self.listWidgetMashProfiles.setCurrentRow(f)
         self.listWidgetSteps.setCurrentRow(i)
@@ -2048,7 +2064,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
     def removeStep(self) :
         i = self.listWidgetSteps.currentRow()
         del self.listSteps[i]
-        self.mashDetails()
+        self.seeMash()
         
     def addStep(self) :
         f = self.listWidgetMashProfiles.currentRow()
@@ -2056,7 +2072,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         self.listSteps.append(dicNewStep)
         i = len(self.listSteps)
         self.listWidgetMashProfiles.setCurrentRow(f)
-        self.mashDetails()
+        self.seeMash()
         self.stepDetails()      
         self.listWidgetMashProfiles.setCurrentRow(f)
         self.listWidgetSteps.setCurrentRow(i-1)
@@ -2072,13 +2088,34 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         f = self.listWidgetMashProfiles.currentRow()
         self.dicMashDetail['name'] = name
         self.dicMashDetail['ph'] = ph
-        print(self.dicMashDetail)
+        self.dicMashDetail['grainTemp'] = grainT
+        self.dicMashDetail['tunTemp'] = tunT
+        self.dicMashDetail['spargeTemp'] = spargeT
+        del self.listMash[f]
+        self.listMash.insert(f, self.dicMashDetail)
+        self.popMashList()
+        self.listWidgetMashProfiles.setCurrentRow(f)
+        
+#        print(self.dicMashDetail)
+
+    def addMash(self) :
+        dicNewMash = {'name' : 'Nouveau profil', 'grainTemp' : '0', 'tunTemp' : '0', 'spargeTemp' : '0', 'ph' : '0', 'mashSteps' : [{'name' : 'Nouveau Palier', 'type' : 'Infusion', 'stepTime' : '0', 'stepTemp' : '0', 'stepVol' : '0'}]}
+        self.listMash.append(dicNewMash)
+        self.seeMash()
+        
+    def removeMash(self) :
+        i = self.listWidgetMashProfiles.currentRow()
+        del self.listMash[i]
+        self.seeMash()
         
     def mashRejected (self) :
         self.switchToEditor()
         
     def mashAccepted (self) :
+        i = self.listWidgetMashProfiles.currentRow()
         self.switchToEditor()
+        self.comboBoxMashProfiles.setCurrentIndex(i)
+        
                 
         
     def printRecipe (self) :

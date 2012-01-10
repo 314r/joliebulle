@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'reader.ui'
 #
-# Created: Thu Jan  5 18:48:06 2012
+# Created: Tue Jan 10 15:19:10 2012
 #      by: PyQt4 UI code generator 4.9
 #
 # WARNING! All changes made in this file will be lost!
@@ -56,9 +56,10 @@ class Ui_MainWindow(object):
         self.gridLayout_7.addLayout(self.gridLayout_6, 4, 0, 1, 1)
         self.horizontalLayout_3 = QtGui.QHBoxLayout()
         self.horizontalLayout_3.setObjectName(_fromUtf8("horizontalLayout_3"))
-        self.lineEditBrewingProfile = QtGui.QLineEdit(self.widgetEditeur)
-        self.lineEditBrewingProfile.setObjectName(_fromUtf8("lineEditBrewingProfile"))
-        self.horizontalLayout_3.addWidget(self.lineEditBrewingProfile)
+        self.comboBoxMashProfiles = QtGui.QComboBox(self.widgetEditeur)
+        self.comboBoxMashProfiles.setMinimumSize(QtCore.QSize(400, 0))
+        self.comboBoxMashProfiles.setObjectName(_fromUtf8("comboBoxMashProfiles"))
+        self.horizontalLayout_3.addWidget(self.comboBoxMashProfiles)
         self.pushButtonMashDetails = QtGui.QPushButton(self.widgetEditeur)
         self.pushButtonMashDetails.setObjectName(_fromUtf8("pushButtonMashDetails"))
         self.horizontalLayout_3.addWidget(self.pushButtonMashDetails)

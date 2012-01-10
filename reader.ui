@@ -79,7 +79,14 @@
            <item row="7" column="0">
             <layout class="QHBoxLayout" name="horizontalLayout_3">
              <item>
-              <widget class="QLineEdit" name="lineEditBrewingProfile"/>
+              <widget class="QComboBox" name="comboBoxMashProfiles">
+               <property name="minimumSize">
+                <size>
+                 <width>400</width>
+                 <height>0</height>
+                </size>
+               </property>
+              </widget>
              </item>
              <item>
               <widget class="QPushButton" name="pushButtonMashDetails">
