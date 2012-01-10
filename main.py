@@ -456,6 +456,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         
         
         self.popMashCombo()
+        self.comboBoxMashProfiles.currentIndexChanged.connect(self.mashComboChanged)
         
         #On connecte ici les signaux émits à la fermeture des fenêtres d'édition de la base
         #########################################################################################
@@ -1962,6 +1963,12 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         self.comboBoxMashProfiles.clear() 
         for name in self.listMash :
            self.comboBoxMashProfiles.addItem(name['name'])
+           
+    def mashComboChanged (self) :
+        i =self.comboBoxMashProfiles.currentIndex()
+        self.currentMash = self.mashProfilesBase.listMash[i]
+        print(self.currentMash)
+        
         
     def seeMash(self) :
         self.switchToMash()
@@ -1996,7 +2003,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         self.labelMashGrainTemp.setText("%.1f" %float(self.dicMashDetail['grainTemp']))
         self.labelMashTunTemp.setText("%.1f" %float(self.dicMashDetail['tunTemp']))
         self.labelMashSpargeTemp.setText("%.1f" %float(self.dicMashDetail['spargeTemp']))
-        print(self.dicMashDetail)
+#        print(self.dicMashDetail)
             
                 
     def mashDetails(self) :
