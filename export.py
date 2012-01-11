@@ -50,7 +50,7 @@ class Export (QtCore.QObject):
     def exportXML(self,nomRecette, styleRecette, typeRecette, brewer, volume, boil, rendement, OG, FG, nbreHops, liste_houblons,
 liste_hAmount, liste_hForm, liste_hTime, liste_hAlpha, liste_hUse, nbreFer, fNom, fAmount,
 fType, fYield, fMashed, color, liste_ingr, liste_fAmount, liste_fType,
-liste_fYield, liste_fMashed, liste_color, dNom, dAmount, dType, nbreDivers, liste_divers, liste_dAmount, liste_dType, liste_dTime, liste_dUse, nbreLevures, lNom, lForm, lLabo, lProd, lAtten, liste_levures, liste_lForm, liste_lLabo, liste_lProdid, liste_levureAtten, recipeNotes) :
+liste_fYield, liste_fMashed, liste_color, dNom, dAmount, dType, nbreDivers, liste_divers, liste_dAmount, liste_dType, liste_dTime, liste_dUse, nbreLevures, lNom, lForm, lLabo, lProd, lAtten, liste_levures, liste_lForm, liste_lLabo, liste_lProdid, liste_levureAtten, recipeNotes, mashProfile) :
 
         self.recipes = ET.Element('RECIPES')
         recipe = ET.SubElement(self.recipes, 'RECIPE')
@@ -234,6 +234,41 @@ liste_fYield, liste_fMashed, liste_color, dNom, dAmount, dType, nbreDivers, list
             
         waters=ET.SubElement(recipe, 'WATERS')
         mash=ET.SubElement(recipe, 'MASH') 
+        mName = ET.SubElement(mash, 'NAME')
+        mName.text = mashProfile['name']
+        mVersion = ET.SubElement(mash, 'VERSION')
+        mVersion.text = '1'
+        mGrainTemp = ET.SubElement(mash, 'GRAIN_TEMP')
+        mGrainTemp.text = mashProfile['grainTemp']
+        mTunTemp = ET.SubElement(mash, 'TUN_TEMP')
+        mTunTemp.text = mashProfile['tunTemp']
+        mPh = ET.SubElement(mash, 'PH')
+        mPh.text = mashProfile['ph']
+        mSteps = ET.SubElement(mash, 'MASH_STEPS')
+        
+        listSteps = mashProfile['mashSteps']
+        lenSteps = len(listSteps)
+        i = 0
+        while i < lenSteps :
+            i = i+1
+            mashStep =ET.SubElement(mSteps, 'MASH_STEP')           
+            dicStep = listSteps[i-1]
+            stepName = ET.SubElement(mashStep, 'NAME')
+            stepName.text = dicStep['name']
+            stepVersion = ET.SubElement(mashStep, 'VERSION')
+            stepVersion.text = '1'
+            stepType = ET.SubElement(mashStep, 'TYPE')
+            stepType.text = dicStep['type']
+            stepTime = ET.SubElement(mashStep, 'STEP_TIME')
+            stepTime.text = dicStep['stepTime']
+            stepTemp = ET.SubElement(mashStep, 'STEP_TEMP')
+            stepTemp.text = dicStep['stepTemp']
+            stepVol = ET.SubElement(mashStep, 'INFUSE_AMOUNT')
+            stepVol.text = dicStep['stepVol']
+            
+        
+        
+        
         try :
             notes = ET.SubElement(recipe, 'NOTES') 
             notes.text = recipeNotes   
