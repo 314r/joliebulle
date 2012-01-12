@@ -1230,8 +1230,8 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         hops = arbre.findall('.//HOP')
         levures = arbre.findall('.//YEAST')
         misc = arbre.findall('.//MISC')
-        brassin = arbre.find('.//MASH')
-        paliers = arbre.findall('.//MASH_STEP')
+        mash = arbre.find('.//MASH')
+        
         
         
         
@@ -1511,10 +1511,10 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         
         
         #Brassin
-        self.bNom = ''
-        for nom in brassin :
+        self.currentMash={}
+        for nom in mash :
             if nom.tag == 'NAME' :
-                self.bNom = nom.text
+                self.mashName = nom.text
             if nom.tag == 'GRAIN_TEMP' :
                 self.mashGrainTemp = nom.text
             if nom.tag == 'TUN_TEMP' :
@@ -1523,56 +1523,97 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
                 self.spargeTemp = nom.text
             if nom.tag == 'PH' :
                 self.mashPh = nom.text
+        self.currentMash['name'] = self.mashName
+        self.currentMash['ph'] = self.mashPh   
+        self.currentMash['grainTemp'] = self.mashGrainTemp
+        self.currentMash['tunTemp'] = self.mashTunTemp
+        self.currentMash['spargeTemp'] = self.spargeTemp
+           
         #Paliers
+        mashStep = mash.findall('.//MASH_STEP')
+        listSteps =[]
+        numSteps = len(mashStep)
+        self.currentMash['mashSteps'] = listSteps
+        j=0
+        while j < numSteps :
+            j=j+1
+            for item in mashStep[j-1]:
+                if item.tag == 'NAME' :
+                    stepName = item.text
+                    listSteps.append({'name' : stepName})
+            for item in mashStep[j-1]: 
+                if item.tag == 'TYPE' :
+                    stepType = item.text
+                    dicStep = listSteps[j-1]
+                    dicStep['type']= stepType  
+            for item in mashStep[j-1]: 
+                if item.tag == 'STEP_TIME' :
+                    stepTime = item.text
+                    dicStep = listSteps[j-1]
+                    dicStep['stepTime']= stepTime        
+            for item in mashStep[j-1]: 
+                if item.tag == 'STEP_TEMP' :
+                    stepTemp = item.text
+                    dicStep = listSteps[j-1]
+                    dicStep['stepTemp']= stepTemp
+            for item in mashStep[j-1]: 
+                if item.tag == 'INFUSE_AMOUNT' :
+                    stepVol = item.text
+                    dicStep = listSteps[j-1]
+                    dicStep['stepVol']= stepVol
+                                        
+        print(self.currentMash)
 
-        self.nbrePaliers = len(paliers)
-        self.liste_paliers = list()
-        self.liste_pType = list()
-        self.liste_pTime = list()
-        self.liste_pTemp = list()
-        self.liste_pVol = list()
-        
-        
-        
-        
-        p = 0
-        while p < self.nbrePaliers : 
-            p = p+1
-            for nom in paliers [p-1] :
-                if nom.tag == 'NAME' :
-                    self.pNom = nom.text
-                    self.liste_paliers.append(self.pNom)
-                    
-                if nom.tag == 'TYPE' :
-                    self.pType = nom.text
-                    if self.pType == 'Infusion' :
-                        self.pType = self.trUtf8('''Infusion''')
-                        self.liste_pType.append(self.pType)
-                    if self.pType == '''Temperature''' :
-                        self.pType = self.trUtf8('''Température''')
-                        self.liste_pType.append(self.pType)
-                    if self.pType == '''Decoction''' :
-                        self.pType = self.trUtf8('''Décoction''')
-                        self.liste_pType.append(self.pType)  
-                    
-                    
-                if nom.tag == 'STEP_TIME' :
-                    self.pTime = float(nom.text)
-                    self.liste_pTime.append(self.pTime)
-                    
-                if nom.tag == 'STEP_TEMP' :
-                    self.pTemp = float(nom.text)
-                    self.liste_pTemp.append(self.pTemp)
-                     
-                if nom.tag == 'INFUSE_AMOUNT' :
-                    self.pQte = float(nom.text)
-                    self.liste_pVol.append(self.pQte)
-                    
-        self.lineEditBrewingProfile.setText(self.bNom)
-        
-        
-        print(self.liste_paliers)
-        print(self.liste_pType)
+
+
+#        self.nbrePaliers = len(paliers)
+#        self.liste_paliers = list()
+#        self.liste_pType = list()
+#        self.liste_pTime = list()
+#        self.liste_pTemp = list()
+#        self.liste_pVol = list()
+#        
+#        
+#        
+#        
+#        p = 0
+#        while p < self.nbrePaliers : 
+#            p = p+1
+#            for nom in paliers [p-1] :
+#                if nom.tag == 'NAME' :
+#                    self.pNom = nom.text
+#                    self.liste_paliers.append(self.pNom)
+#                    
+#                if nom.tag == 'TYPE' :
+#                    self.pType = nom.text
+#                    if self.pType == 'Infusion' :
+#                        self.pType = self.trUtf8('''Infusion''')
+#                        self.liste_pType.append(self.pType)
+#                    if self.pType == '''Temperature''' :
+#                        self.pType = self.trUtf8('''Température''')
+#                        self.liste_pType.append(self.pType)
+#                    if self.pType == '''Decoction''' :
+#                        self.pType = self.trUtf8('''Décoction''')
+#                        self.liste_pType.append(self.pType)  
+#                    
+#                    
+#                if nom.tag == 'STEP_TIME' :
+#                    self.pTime = float(nom.text)
+#                    self.liste_pTime.append(self.pTime)
+#                    
+#                if nom.tag == 'STEP_TEMP' :
+#                    self.pTemp = float(nom.text)
+#                    self.liste_pTemp.append(self.pTemp)
+#                     
+#                if nom.tag == 'INFUSE_AMOUNT' :
+#                    self.pQte = float(nom.text)
+#                    self.liste_pVol.append(self.pQte)
+#                    
+#        self.lineEditBrewingProfile.setText(self.bNom)
+#        
+#        
+#        print(self.liste_paliers)
+#        print(self.liste_pType)
         
         return AppWindow.nbreFer
                     
