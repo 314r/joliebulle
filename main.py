@@ -456,6 +456,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         
         
         self.popMashCombo()
+        self.comboBoxMashProfiles.setCurrentIndex(-1)
         self.comboBoxMashProfiles.currentIndexChanged.connect(self.mashComboChanged)
         
         #On connecte ici les signaux émits à la fermeture des fenêtres d'édition de la base
@@ -1504,65 +1505,77 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
                         self.liste_dUse.append(self.dUse)
                     if self.dUse == 'Bottling' :
                         self.dUse = self.trUtf8('Embouteillage')
-                        self.liste_dUse.append(self.dUse)
-                        
-       
-
-        
+                        self.liste_dUse.append(self.dUse)      
         
         #Brassin
         self.currentMash={}
-        for nom in mash :
-            if nom.tag == 'NAME' :
-                self.mashName = nom.text
-            if nom.tag == 'GRAIN_TEMP' :
-                self.mashGrainTemp = nom.text
-            if nom.tag == 'TUN_TEMP' :
-                self.mashTunTemp = nom.text
-            if nom.tag == 'SPARGE_TEMP' :
-                self.spargeTemp = nom.text
-            if nom.tag == 'PH' :
-                self.mashPh = nom.text
-        self.currentMash['name'] = self.mashName
-        self.currentMash['ph'] = self.mashPh   
-        self.currentMash['grainTemp'] = self.mashGrainTemp
-        self.currentMash['tunTemp'] = self.mashTunTemp
-        self.currentMash['spargeTemp'] = self.spargeTemp
+        try :
+            for nom in mash :
+                if nom.tag == 'NAME' :
+                    self.mashName = nom.text
+                if nom.tag == 'GRAIN_TEMP' :
+                    self.mashGrainTemp = nom.text
+                if nom.tag == 'TUN_TEMP' :
+                    self.mashTunTemp = nom.text
+                if nom.tag == 'SPARGE_TEMP' :
+                    self.spargeTemp = nom.text
+                if nom.tag == 'PH' :
+                    self.mashPh = nom.text
+            self.currentMash['name'] = self.mashName
+            self.currentMash['ph'] = self.mashPh   
+            self.currentMash['grainTemp'] = self.mashGrainTemp
+            self.currentMash['tunTemp'] = self.mashTunTemp
+            self.currentMash['spargeTemp'] = self.spargeTemp
+        except :
+            pass
            
         #Paliers
-        mashStep = mash.findall('.//MASH_STEP')
+        try :
+            mashStep = mash.findall('.//MASH_STEP')
+            numSteps = len(mashStep)
+        except :
+            pass
         listSteps =[]
-        numSteps = len(mashStep)
+        
         self.currentMash['mashSteps'] = listSteps
-        j=0
-        while j < numSteps :
-            j=j+1
-            for item in mashStep[j-1]:
-                if item.tag == 'NAME' :
-                    stepName = item.text
-                    listSteps.append({'name' : stepName})
-            for item in mashStep[j-1]: 
-                if item.tag == 'TYPE' :
-                    stepType = item.text
-                    dicStep = listSteps[j-1]
-                    dicStep['type']= stepType  
-            for item in mashStep[j-1]: 
-                if item.tag == 'STEP_TIME' :
-                    stepTime = item.text
-                    dicStep = listSteps[j-1]
-                    dicStep['stepTime']= stepTime        
-            for item in mashStep[j-1]: 
-                if item.tag == 'STEP_TEMP' :
-                    stepTemp = item.text
-                    dicStep = listSteps[j-1]
-                    dicStep['stepTemp']= stepTemp
-            for item in mashStep[j-1]: 
-                if item.tag == 'INFUSE_AMOUNT' :
-                    stepVol = item.text
-                    dicStep = listSteps[j-1]
-                    dicStep['stepVol']= stepVol
-                                        
-        print(self.currentMash)
+        try :
+            j=0
+            while j < numSteps :
+                j=j+1
+                for item in mashStep[j-1]:
+                    if item.tag == 'NAME' :
+                        stepName = item.text
+                        listSteps.append({'name' : stepName})
+                for item in mashStep[j-1]: 
+                    if item.tag == 'TYPE' :
+                        stepType = item.text
+                        dicStep = listSteps[j-1]
+                        dicStep['type']= stepType  
+                for item in mashStep[j-1]: 
+                    if item.tag == 'STEP_TIME' :
+                        stepTime = item.text
+                        dicStep = listSteps[j-1]
+                        dicStep['stepTime']= stepTime        
+                for item in mashStep[j-1]: 
+                    if item.tag == 'STEP_TEMP' :
+                        stepTemp = item.text
+                        dicStep = listSteps[j-1]
+                        dicStep['stepTemp']= stepTemp
+                for item in mashStep[j-1]: 
+                    if item.tag == 'INFUSE_AMOUNT' :
+                        stepVol = item.text
+                        dicStep = listSteps[j-1]
+                        dicStep['stepVol']= stepVol
+                                            
+            print(self.currentMash)
+            self.mashProfilesBase.listMash.append(self.currentMash)
+        except :
+            pass
+        try :  
+            self.popMashCombo()
+            self.comboBoxMashProfiles.setCurrentIndex(len(self.listMash)-1)
+        except :
+            pass
 
 
 
@@ -2043,7 +2056,10 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         self.labelMashPh.setText("%.1f" %float(self.dicMashDetail['ph']))
         self.labelMashGrainTemp.setText("%.1f" %float(self.dicMashDetail['grainTemp']))
         self.labelMashTunTemp.setText("%.1f" %float(self.dicMashDetail['tunTemp']))
-        self.labelMashSpargeTemp.setText("%.1f" %float(self.dicMashDetail['spargeTemp']))
+        try :
+            self.labelMashSpargeTemp.setText("%.1f" %float(self.dicMashDetail['spargeTemp']))
+        except :
+            pass
 #        print(self.dicMashDetail)
             
                 
@@ -2161,8 +2177,11 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         
     def mashAccepted (self) :
         i = self.listWidgetMashProfiles.currentRow()
+        self.currentMash = self.listMash[i]
+        self.popMashCombo()
         self.switchToEditor()
         self.comboBoxMashProfiles.setCurrentIndex(i)
+        print(self.currentMash)
         
                 
         

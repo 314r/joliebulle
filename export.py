@@ -233,17 +233,20 @@ liste_fYield, liste_fMashed, liste_color, dNom, dAmount, dType, nbreDivers, list
             lAtten.text = str(liste_levureAtten[i-1])
             
         waters=ET.SubElement(recipe, 'WATERS')
+        
         mash=ET.SubElement(recipe, 'MASH') 
         mName = ET.SubElement(mash, 'NAME')
         mName.text = mashProfile['name']
         mVersion = ET.SubElement(mash, 'VERSION')
         mVersion.text = '1'
         mGrainTemp = ET.SubElement(mash, 'GRAIN_TEMP')
-        mGrainTemp.text = mashProfile['grainTemp']
+        mGrainTemp.text = str(mashProfile['grainTemp'])
         mTunTemp = ET.SubElement(mash, 'TUN_TEMP')
-        mTunTemp.text = mashProfile['tunTemp']
+        mTunTemp.text = str(mashProfile['tunTemp'])
+        mSpargeTemp = ET.SubElement(mash, 'SPARGE_TEMP')
+        mSpargeTemp.text = str(mashProfile['spargeTemp'])
         mPh = ET.SubElement(mash, 'PH')
-        mPh.text = mashProfile['ph']
+        mPh.text = str(mashProfile['ph'])
         mSteps = ET.SubElement(mash, 'MASH_STEPS')
         
         listSteps = mashProfile['mashSteps']
@@ -260,11 +263,11 @@ liste_fYield, liste_fMashed, liste_color, dNom, dAmount, dType, nbreDivers, list
             stepType = ET.SubElement(mashStep, 'TYPE')
             stepType.text = dicStep['type']
             stepTime = ET.SubElement(mashStep, 'STEP_TIME')
-            stepTime.text = dicStep['stepTime']
+            stepTime.text = str(dicStep['stepTime'])
             stepTemp = ET.SubElement(mashStep, 'STEP_TEMP')
-            stepTemp.text = dicStep['stepTemp']
+            stepTemp.text = str(dicStep['stepTemp'])
             stepVol = ET.SubElement(mashStep, 'INFUSE_AMOUNT')
-            stepVol.text = dicStep['stepVol']
+            stepVol.text = str(dicStep['stepVol'])
             
         
         
