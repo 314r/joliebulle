@@ -1986,6 +1986,14 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         except :
             self.spinBoxBoil.setValue (0)
             
+        self.listMash = list()
+        self.currentMash = {}
+        self.listStepsAll = list()
+        self.dicMashDetail = {}
+        self.mashProfilesBase.listMash = list()
+        self.mashProfilesBase.importBeerXML()
+        
+        
     def recharger(self) :
         i = (AppWindow.nbreFer + AppWindow.nbreDivers + AppWindow.nbreHops + self.nbreLevures)
         self.modele.removeRows(0,i)
