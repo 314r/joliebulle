@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>1293</width>
-    <height>713</height>
+    <height>715</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -864,6 +864,30 @@ color: rgb(255, 255, 255);</string>
       </widget>
       <widget class="QWidget" name="page_4">
        <layout class="QGridLayout" name="gridLayout_8">
+        <property name="bottomMargin">
+         <number>0</number>
+        </property>
+        <item row="1" column="1">
+         <layout class="QHBoxLayout" name="horizontalLayout_15">
+          <property name="topMargin">
+           <number>9</number>
+          </property>
+          <item>
+           <widget class="QDialogButtonBox" name="buttonBoxMashDetails">
+            <property name="standardButtons">
+             <set>QDialogButtonBox::Cancel|QDialogButtonBox::Ok</set>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="pushButtonSaveProfile">
+            <property name="text">
+             <string>Enregistrer le profil</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
         <item row="0" column="0">
          <layout class="QVBoxLayout" name="verticalLayout_10">
           <property name="rightMargin">
@@ -1151,13 +1175,6 @@ p, li { white-space: pre-wrap; }
            </layout>
           </item>
          </layout>
-        </item>
-        <item row="1" column="1">
-         <widget class="QDialogButtonBox" name="buttonBoxMashDetails">
-          <property name="standardButtons">
-           <set>QDialogButtonBox::Cancel|QDialogButtonBox::Ok</set>
-          </property>
-         </widget>
         </item>
        </layout>
       </widget>

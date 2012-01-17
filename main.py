@@ -45,6 +45,7 @@ from outilEvaporation import *
 from outilPaliers import * 
 from stepEditWindow import *
 from mashEditWindow import *
+from exportMash import *
 from preferences import *
 from globals import *
 
@@ -363,6 +364,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         self.base = ImportBase()
         self.mashProfilesBase = ImportMash()
         self.mashProfilesBase.importBeerXML()
+        self.mashProfileExport = ExportMash()
         
         self.base.importBeerXML()
         self.s=0
@@ -458,6 +460,8 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         self.popMashCombo()
         self.comboBoxMashProfiles.setCurrentIndex(-1)
         self.comboBoxMashProfiles.currentIndexChanged.connect(self.mashComboChanged)
+        
+        self.pushButtonSaveProfile.clicked.connect(self.saveProfile)
         
         #On connecte ici les signaux émits à la fermeture des fenêtres d'édition de la base
         #########################################################################################
@@ -2190,6 +2194,9 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         self.switchToEditor()
         self.comboBoxMashProfiles.setCurrentIndex(i)
         print(self.currentMash)
+        
+    def saveProfile(self) : 
+        self.mashProfileExport.export(self.listMash)
         
                 
         

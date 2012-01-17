@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'reader.ui'
 #
-# Created: Thu Jan 12 21:46:34 2012
+# Created: Tue Jan 17 21:35:33 2012
 #      by: PyQt4 UI code generator 4.9
 #
 # WARNING! All changes made in this file will be lost!
@@ -17,7 +17,7 @@ except AttributeError:
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName(_fromUtf8("MainWindow"))
-        MainWindow.resize(1293, 713)
+        MainWindow.resize(1293, 715)
         icon = QtGui.QIcon()
         icon.addPixmap(QtGui.QPixmap(_fromUtf8("Images/bulle.png")), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         MainWindow.setWindowIcon(icon)
@@ -390,7 +390,19 @@ class Ui_MainWindow(object):
         self.page_4 = QtGui.QWidget()
         self.page_4.setObjectName(_fromUtf8("page_4"))
         self.gridLayout_8 = QtGui.QGridLayout(self.page_4)
+        self.gridLayout_8.setContentsMargins(-1, -1, -1, 0)
         self.gridLayout_8.setObjectName(_fromUtf8("gridLayout_8"))
+        self.horizontalLayout_15 = QtGui.QHBoxLayout()
+        self.horizontalLayout_15.setContentsMargins(-1, 9, -1, -1)
+        self.horizontalLayout_15.setObjectName(_fromUtf8("horizontalLayout_15"))
+        self.buttonBoxMashDetails = QtGui.QDialogButtonBox(self.page_4)
+        self.buttonBoxMashDetails.setStandardButtons(QtGui.QDialogButtonBox.Cancel|QtGui.QDialogButtonBox.Ok)
+        self.buttonBoxMashDetails.setObjectName(_fromUtf8("buttonBoxMashDetails"))
+        self.horizontalLayout_15.addWidget(self.buttonBoxMashDetails)
+        self.pushButtonSaveProfile = QtGui.QPushButton(self.page_4)
+        self.pushButtonSaveProfile.setObjectName(_fromUtf8("pushButtonSaveProfile"))
+        self.horizontalLayout_15.addWidget(self.pushButtonSaveProfile)
+        self.gridLayout_8.addLayout(self.horizontalLayout_15, 1, 1, 1, 1)
         self.verticalLayout_10 = QtGui.QVBoxLayout()
         self.verticalLayout_10.setContentsMargins(-1, -1, 20, -1)
         self.verticalLayout_10.setObjectName(_fromUtf8("verticalLayout_10"))
@@ -515,10 +527,6 @@ class Ui_MainWindow(object):
         self.horizontalLayout_8.addLayout(self.formLayout_6)
         self.verticalLayout_9.addLayout(self.horizontalLayout_8)
         self.gridLayout_8.addLayout(self.verticalLayout_9, 0, 1, 1, 1)
-        self.buttonBoxMashDetails = QtGui.QDialogButtonBox(self.page_4)
-        self.buttonBoxMashDetails.setStandardButtons(QtGui.QDialogButtonBox.Cancel|QtGui.QDialogButtonBox.Ok)
-        self.buttonBoxMashDetails.setObjectName(_fromUtf8("buttonBoxMashDetails"))
-        self.gridLayout_8.addWidget(self.buttonBoxMashDetails, 1, 1, 1, 1)
         self.stackedWidget.addWidget(self.page_4)
         self.gridLayout_4.addWidget(self.stackedWidget, 0, 0, 1, 1)
         MainWindow.setCentralWidget(self.centralwidget)
@@ -778,6 +786,7 @@ class Ui_MainWindow(object):
 "p, li { white-space: pre-wrap; }\n"
 "</style></head><body style=\" font-family:\'Droid Sans\'; font-size:10pt; font-weight:400; font-style:normal;\">\n"
 "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:\'Ubuntu\'; font-size:9pt; font-weight:600;\">TEINTE</span></p></body></html>", None, QtGui.QApplication.UnicodeUTF8))
+        self.pushButtonSaveProfile.setText(QtGui.QApplication.translate("MainWindow", "Enregistrer le profil", None, QtGui.QApplication.UnicodeUTF8))
         self.label_15.setText(QtGui.QApplication.translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
