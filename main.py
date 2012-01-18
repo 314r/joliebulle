@@ -1997,6 +1997,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         self.dicMashDetail = {}
         self.mashProfilesBase.listMash = list()
         self.mashProfilesBase.importBeerXML()
+        self.comboBoxMashProfiles.setCurrentIndex(-1)
         
         
     def recharger(self) :
