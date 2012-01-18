@@ -1579,7 +1579,8 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
             self.popMashCombo()
             self.comboBoxMashProfiles.setCurrentIndex(len(self.listMash)-1)
         except :
-            pass
+            self.comboBoxMashProfiles.setCurrentIndex(-1)
+            
 
 
 
@@ -2070,6 +2071,10 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         self.labelMashTunTemp.setText("%.1f" %float(self.dicMashDetail['tunTemp']))
         try :
             self.labelMashSpargeTemp.setText("%.1f" %float(self.dicMashDetail['spargeTemp']))
+        except :
+            pass
+        try :
+            self.listWidgetSteps.setCurrentRow(0)
         except :
             pass
 #        print(self.dicMashDetail)
