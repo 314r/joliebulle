@@ -12,6 +12,7 @@ import os
 from sys import platform
 import PyQt4
 import sys
+from operator import itemgetter
 from PyQt4 import QtGui
 from PyQt4 import QtCore
 from preferences import *
@@ -25,6 +26,7 @@ class ExportMash :
         
         self.database = ET.Element('DATABASE')
         numMash = len(listMash)
+        listMash = sorted(listMash, key=itemgetter('name')) 
         i = 0
         while i < numMash :
             i=i+1
@@ -63,14 +65,11 @@ class ExportMash :
                 stepTime.text = dicStep['stepTime']
                 stepVol = ET.SubElement(step, 'INFUSE_AMOUNT')
                 stepVol.text = dicStep['stepVol']
-                
-                
+          
             
             
-            
-            
-        
-        ET.ElementTree(self.database).write('/home/pierre/essai.xml',encoding="utf-8")
+    def enregistrer (self, s) :    
+        ET.ElementTree(self.database).write(s,encoding="utf-8")
             
             
                 

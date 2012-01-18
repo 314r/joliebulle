@@ -2197,6 +2197,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         
     def saveProfile(self) : 
         self.mashProfileExport.export(self.listMash)
+        self.mashProfileExport.enregistrer(mash_file)
         
                 
         
