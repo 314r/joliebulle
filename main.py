@@ -2203,6 +2203,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         dicNewMash = {'name' : 'Nouveau profil', 'grainTemp' : '0', 'tunTemp' : '0', 'spargeTemp' : '0', 'ph' : '0', 'mashSteps' : [{'name' : 'Nouveau Palier', 'type' : 'Infusion', 'stepTime' : '0', 'stepTemp' : '0', 'stepVol' : '0'}]}
         self.listMash.append(dicNewMash)
         self.seeMash()
+        self.listWidgetMashProfiles.setCurrentRow(len(self.listMash)-1)
         
     def removeMash(self) :
         i = self.listWidgetMashProfiles.currentRow()
