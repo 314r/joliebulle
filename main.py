@@ -2013,7 +2013,10 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         self.dicMashDetail = {}
         self.mashProfilesBase.listMash = list()
         self.mashProfilesBase.importBeerXML()
+        self.mashName=None
+        self.popMashCombo()
         self.comboBoxMashProfiles.setCurrentIndex(-1)
+
         
         
     def recharger(self) :
