@@ -1512,7 +1512,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
                         self.liste_dUse.append(self.dUse)      
         
         #Brassin
-        self.currentMash={}
+        
         try :
             for nom in mash :
                 if nom.tag == 'NAME' :
@@ -1525,11 +1525,17 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
                     self.spargeTemp = nom.text
                 if nom.tag == 'PH' :
                     self.mashPh = nom.text
-            self.currentMash['name'] = self.mashName
-            self.currentMash['ph'] = self.mashPh   
-            self.currentMash['grainTemp'] = self.mashGrainTemp
-            self.currentMash['tunTemp'] = self.mashTunTemp
-            self.currentMash['spargeTemp'] = self.spargeTemp
+                    
+            if self.mashName is not None :       
+                self.currentMash={}
+                print('ouhouh !!!!!')
+                self.currentMash['name'] = self.mashName
+                self.currentMash['ph'] = self.mashPh   
+                self.currentMash['grainTemp'] = self.mashGrainTemp
+                self.currentMash['tunTemp'] = self.mashTunTemp
+                self.currentMash['spargeTemp'] = self.spargeTemp
+            else :
+                pass
         except :
             pass
            
@@ -1537,11 +1543,14 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         try :
             mashStep = mash.findall('.//MASH_STEP')
             numSteps = len(mashStep)
+            listSteps =[]
+            if self.mashName is not None :
+                self.currentMash['mashSteps'] = listSteps
+            else :
+                pass
         except :
             pass
-        listSteps =[]
-        
-        self.currentMash['mashSteps'] = listSteps
+
         try :
             j=0
             while j < numSteps :
@@ -1572,12 +1581,19 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
                         dicStep['stepVol']= stepVol
                                             
             print(self.currentMash)
-            self.mashProfilesBase.listMash.append(self.currentMash)
+            if self.mashName is not None :
+                self.mashProfilesBase.listMash.append(self.currentMash)
+            else :
+                pass
         except :
             pass
         try :  
             self.popMashCombo()
-            self.comboBoxMashProfiles.setCurrentIndex(len(self.listMash)-1)
+            if self.mashName is not None :
+                self.comboBoxMashProfiles.setCurrentIndex(len(self.listMash)-1)
+                print("c'est fait man !!!!'")
+            else :
+                self.comboBoxMashProfiles.setCurrentIndex(-1)
         except :
             self.comboBoxMashProfiles.setCurrentIndex(-1)
             
