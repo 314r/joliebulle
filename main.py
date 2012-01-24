@@ -747,6 +747,9 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         recettes = QtCore.QFile(recettes_dir)
         if not recettes.exists() :
             home.mkpath(recettes_dir)
+        mash  = QtCore.QFile(mash_file)
+        if not mash.exists() :
+            mash.copy(mash_root, mash_file)
     
         
     def switchToEditor(self) :
