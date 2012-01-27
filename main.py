@@ -784,6 +784,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         self.stackedWidget.setCurrentIndex(4)        
         self.actionVueEditeurToolBar.setChecked(False)
         self.actionVueBibliothequeToolBar.setChecked(False)
+        self.BrewdayModeCalc()
         
     def restoreDataBase(self) :
         
@@ -2240,6 +2241,10 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
     def saveProfile(self) : 
         self.mashProfileExport.export(self.listMash)
         self.mashProfileExport.enregistrer(mash_file)
+        
+        
+    def BrewdayModeCalc(self) : 
+        
         
                 
         
