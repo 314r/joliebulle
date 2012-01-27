@@ -2,8 +2,8 @@
 
 # Form implementation generated from reading ui file 'preferences.ui'
 #
-# Created: Thu Oct 27 23:32:24 2011
-#      by: PyQt4 UI code generator 4.8.5
+# Created: Fri Jan 27 11:39:24 2012
+#      by: PyQt4 UI code generator 4.9
 #
 # WARNING! All changes made in this file will be lost!
 
@@ -18,7 +18,6 @@ class Ui_Preferences(object):
     def setupUi(self, Preferences):
         Preferences.setObjectName(_fromUtf8("Preferences"))
         Preferences.resize(400, 300)
-        Preferences.setWindowTitle(QtGui.QApplication.translate("Preferences", "Préférences", None, QtGui.QApplication.UnicodeUTF8))
         self.verticalLayout = QtGui.QVBoxLayout(Preferences)
         self.verticalLayout.setObjectName(_fromUtf8("verticalLayout"))
         self.tabWidget = QtGui.QTabWidget(Preferences)
@@ -29,11 +28,6 @@ class Ui_Preferences(object):
         self.verticalLayout_2 = QtGui.QVBoxLayout(self.Bibliotheque)
         self.verticalLayout_2.setObjectName(_fromUtf8("verticalLayout_2"))
         self.label = QtGui.QLabel(self.Bibliotheque)
-        self.label.setText(QtGui.QApplication.translate("Preferences", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
-"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
-"p, li { white-space: pre-wrap; }\n"
-"</style></head><body style=\" font-family:\'Droid Sans\'; font-size:10pt; font-weight:400; font-style:normal;\">\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-weight:600;\">Emplacement de la bibliothèque : </span></p></body></html>", None, QtGui.QApplication.UnicodeUTF8))
         self.label.setObjectName(_fromUtf8("label"))
         self.verticalLayout_2.addWidget(self.label)
         self.horizontalLayout = QtGui.QHBoxLayout()
@@ -42,13 +36,33 @@ class Ui_Preferences(object):
         self.lineEditPathLib.setObjectName(_fromUtf8("lineEditPathLib"))
         self.horizontalLayout.addWidget(self.lineEditPathLib)
         self.pushButtonChangeLib = QtGui.QPushButton(self.Bibliotheque)
-        self.pushButtonChangeLib.setText(QtGui.QApplication.translate("Preferences", "Changer", None, QtGui.QApplication.UnicodeUTF8))
         self.pushButtonChangeLib.setObjectName(_fromUtf8("pushButtonChangeLib"))
         self.horizontalLayout.addWidget(self.pushButtonChangeLib)
         self.verticalLayout_2.addLayout(self.horizontalLayout)
         spacerItem = QtGui.QSpacerItem(20, 40, QtGui.QSizePolicy.Minimum, QtGui.QSizePolicy.Expanding)
         self.verticalLayout_2.addItem(spacerItem)
         self.tabWidget.addTab(self.Bibliotheque, _fromUtf8(""))
+        self.tab = QtGui.QWidget()
+        self.tab.setObjectName(_fromUtf8("tab"))
+        self.gridLayout = QtGui.QGridLayout(self.tab)
+        self.gridLayout.setObjectName(_fromUtf8("gridLayout"))
+        self.formLayout = QtGui.QFormLayout()
+        self.formLayout.setFieldGrowthPolicy(QtGui.QFormLayout.AllNonFixedFieldsGrow)
+        self.formLayout.setObjectName(_fromUtf8("formLayout"))
+        self.label_2 = QtGui.QLabel(self.tab)
+        self.label_2.setObjectName(_fromUtf8("label_2"))
+        self.formLayout.setWidget(0, QtGui.QFormLayout.LabelRole, self.label_2)
+        self.spinBoxBoilOff = QtGui.QSpinBox(self.tab)
+        self.spinBoxBoilOff.setObjectName(_fromUtf8("spinBoxBoilOff"))
+        self.formLayout.setWidget(0, QtGui.QFormLayout.FieldRole, self.spinBoxBoilOff)
+        self.label_3 = QtGui.QLabel(self.tab)
+        self.label_3.setObjectName(_fromUtf8("label_3"))
+        self.formLayout.setWidget(1, QtGui.QFormLayout.LabelRole, self.label_3)
+        self.spinBoxCooling = QtGui.QSpinBox(self.tab)
+        self.spinBoxCooling.setObjectName(_fromUtf8("spinBoxCooling"))
+        self.formLayout.setWidget(1, QtGui.QFormLayout.FieldRole, self.spinBoxCooling)
+        self.gridLayout.addLayout(self.formLayout, 0, 0, 1, 1)
+        self.tabWidget.addTab(self.tab, _fromUtf8(""))
         self.verticalLayout.addWidget(self.tabWidget)
         self.buttonBox = QtGui.QDialogButtonBox(Preferences)
         self.buttonBox.setOrientation(QtCore.Qt.Horizontal)
@@ -57,11 +71,21 @@ class Ui_Preferences(object):
         self.verticalLayout.addWidget(self.buttonBox)
 
         self.retranslateUi(Preferences)
-        self.tabWidget.setCurrentIndex(0)
+        self.tabWidget.setCurrentIndex(1)
         QtCore.QObject.connect(self.buttonBox, QtCore.SIGNAL(_fromUtf8("accepted()")), Preferences.accept)
         QtCore.QObject.connect(self.buttonBox, QtCore.SIGNAL(_fromUtf8("rejected()")), Preferences.reject)
         QtCore.QMetaObject.connectSlotsByName(Preferences)
 
     def retranslateUi(self, Preferences):
+        Preferences.setWindowTitle(QtGui.QApplication.translate("Preferences", "Préférences", None, QtGui.QApplication.UnicodeUTF8))
+        self.label.setText(QtGui.QApplication.translate("Preferences", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
+"p, li { white-space: pre-wrap; }\n"
+"</style></head><body style=\" font-family:\'Droid Sans\'; font-size:10pt; font-weight:400; font-style:normal;\">\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-weight:600;\">Emplacement de la bibliothèque : </span></p></body></html>", None, QtGui.QApplication.UnicodeUTF8))
+        self.pushButtonChangeLib.setText(QtGui.QApplication.translate("Preferences", "Changer", None, QtGui.QApplication.UnicodeUTF8))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.Bibliotheque), QtGui.QApplication.translate("Preferences", "Bibliothèque", None, QtGui.QApplication.UnicodeUTF8))
+        self.label_2.setText(QtGui.QApplication.translate("Preferences", "Taux d\'évaporation (%/h) :", None, QtGui.QApplication.UnicodeUTF8))
+        self.label_3.setText(QtGui.QApplication.translate("Preferences", "Pertes par refroidissement (%) :", None, QtGui.QApplication.UnicodeUTF8))
+        self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab), QtGui.QApplication.translate("Preferences", "Brassage", None, QtGui.QApplication.UnicodeUTF8))
 

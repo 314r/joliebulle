@@ -537,6 +537,12 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         #self.listViewBiblio.setEditTriggers(QtGui.QAbstractItemView.SelectedClicked | QtGui.QAbstractItemView.AnyKeyPressed) 
         ############################################################################################################################
         ############################################################################################################################
+        
+        #Brewday Mode
+        ###############################
+        ###############################
+        
+        self.pushButtonBrewdayMode.clicked.connect(self.switchToBrewday)
 
 
 
@@ -750,6 +756,8 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         mash  = QtCore.QFile(mash_file)
         if not mash.exists() :
             mash.copy(mash_root, mash_file)
+        else :
+            pass
     
         
     def switchToEditor(self) :
@@ -769,6 +777,11 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         
     def switchToMash(self) :
         self.stackedWidget.setCurrentIndex(3)        
+        self.actionVueEditeurToolBar.setChecked(False)
+        self.actionVueBibliothequeToolBar.setChecked(False)
+        
+    def switchToBrewday(self) :
+        self.stackedWidget.setCurrentIndex(4)        
         self.actionVueEditeurToolBar.setChecked(False)
         self.actionVueBibliothequeToolBar.setChecked(False)
         

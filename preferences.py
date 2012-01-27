@@ -44,6 +44,8 @@ class DialogPref(QtGui.QDialog):
         self.ui = Ui_Preferences()
         self.ui.setupUi(self)
         self.ui.lineEditPathLib.setText(recettes_dir)
+        self.ui.spinBoxBoilOff.setValue(int(settings.conf.value("BoilOffRate")))
+        self.ui.spinBoxCooling.setValue(int(settings.conf.value("CoolingLoss")))
         
         #les connections
         self.ui.pushButtonChangeLib.clicked.connect(self.changePushed)
@@ -67,6 +69,9 @@ class DialogPref(QtGui.QDialog):
         else :
             settings.conf.setValue("pathUnix", self.ui.lineEditPathLib.text())
             print (settings.conf.value("pathUnix"))
+            
+        settings.conf.setValue("BoilOffRate", self.ui.spinBoxBoilOff.value())
+        settings.conf.setValue("CoolingLoss", self.ui.spinBoxCooling.value())
             
     def rejected (self) :
         self.ui.lineEditPathLib.setText(recettes_dir)
