@@ -56,7 +56,7 @@ class CalcBrewday :
         self.strikeTemp = (float(Ttarget) + (0.4 * (float(Ttarget) - int(grainTemp)) / ratio)) + float(fudgeFactor) 
         
     def calcStrikeVol(self, grainWeight, ratio) :
-        self.strikeVol = float(grainWeight) * float(ratio)
+        self.strikeVol = float(grainWeight) * float(ratio) / 1000
         
         
         

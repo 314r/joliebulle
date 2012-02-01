@@ -2261,6 +2261,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         self.brewCalc.calcStrikeVol(self.grainWeight, self.doubleSpinBoxRatio.value())
         print(self.brewCalc.strikeVol)
         
+        
                 
         
     def printRecipe (self) :
