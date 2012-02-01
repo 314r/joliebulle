@@ -1681,6 +1681,8 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         self.liste_equivSucreMashed = list()
         self.liste_equivSucreNonMashed = list()
         
+        self.grainWeight = sum(self.liste_fAmount)
+        
         
         o = 0
         while o < AppWindow.nbreFer :
@@ -2256,6 +2258,8 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         strikeTargetTemp = strikeStep['stepTemp']
         self.brewCalc.calcStrikeTemp(strikeTargetTemp, self.doubleSpinBoxRatio.value())
         print(self.brewCalc.strikeTemp)
+        self.brewCalc.calcStrikeVol(self.grainWeight, self.doubleSpinBoxRatio.value())
+        print(self.brewCalc.strikeVol)
         
                 
         
