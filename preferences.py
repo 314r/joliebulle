@@ -44,9 +44,16 @@ class DialogPref(QtGui.QDialog):
         self.ui = Ui_Preferences()
         self.ui.setupUi(self)
         self.ui.lineEditPathLib.setText(recettes_dir)
-        self.ui.spinBoxBoilOff.setValue(int(settings.conf.value("BoilOffRate")))
-        self.ui.spinBoxCooling.setValue(int(settings.conf.value("CoolingLoss")))
-        
+        try :
+            self.ui.spinBoxBoilOff.setValue(int(settings.conf.value("BoilOffRate")))
+            self.ui.spinBoxCooling.setValue(int(settings.conf.value("CoolingLoss")))
+        except :
+            pass
+        try :
+            self.ui.spinBoxGrainTemp.setValue(int(settings.conf.value("GrainTemp")))
+            self.ui.doubleSpinBoxFudgeFactor.setValue(int(settings.conf.value("FudgeFactor")))
+        except :
+            pass
         #les connections
         self.ui.pushButtonChangeLib.clicked.connect(self.changePushed)
         self.ui.buttonBox.accepted.connect(self.accepted)
@@ -72,6 +79,9 @@ class DialogPref(QtGui.QDialog):
             
         settings.conf.setValue("BoilOffRate", self.ui.spinBoxBoilOff.value())
         settings.conf.setValue("CoolingLoss", self.ui.spinBoxCooling.value())
+        settings.conf.setValue("GrainTemp", self.ui.spinBoxGrainTemp.value())
+        settings.conf.setValue("FudgeFactor", self.ui.doubleSpinBoxFudgeFactor.value())
+        
             
     def rejected (self) :
         self.ui.lineEditPathLib.setText(recettes_dir)

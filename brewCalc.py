@@ -37,17 +37,23 @@ from globals import *
 class CalcBrewday :
 
     def calcPreBoilVolume(self, volF, boilTime) :
-    
         coolingLossRate = int(settings.conf.value("CoolingLoss")) / 100
-        boilOffRate = int(settings.conf.value("BoilOffRate")) / 100
-    
+        boilOffRate = int(settings.conf.value("BoilOffRate")) / 100   
         self.volPreCool = int(volF)/(1-coolingLossRate)
         #ne pas oublier que le temps d'ébu est en minutes et le taux d'évap par heure
         self.volPreBoil = self.volPreCool/(1-(boilOffRate*int(boilTime)/60))
         
-    def calcPreBoilSg(self, GU,volF) :
-    
+    def calcPreBoilSg(self, GU,volF) :  
         ratio = int(volF)/self.volPreBoil
         GUS = GU * ratio
         self.preBoilSg = 1 + (GUS/1000)
+        
+    def calcStrikeTemp(self, Ttarget, ratio) :
+#        Tstrike = [Ttarget + (0.4 * (Ttarget - Tgrain) / ratio)] + FF  
+#        ratio = self.doubleSpinBoxRatio.value()
+        fudgeFactor = float(settings.conf.value("FudgeFactor"))
+        grainTemp = int(settings.conf.value("GrainTemp"))
+        self.strikeTemp = (float(Ttarget) + (0.4 * (float(Ttarget) - int(grainTemp)) / ratio)) + float(fudgeFactor) 
+        
+        
         

@@ -545,6 +545,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         ###############################
         
         self.pushButtonBrewdayMode.clicked.connect(self.switchToBrewday)
+        self.doubleSpinBoxRatio.valueChanged.connect(self.switchToBrewday)
 
 
 
@@ -1610,7 +1611,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
             self.popMashCombo()
             if self.mashName is not None :
                 self.comboBoxMashProfiles.setCurrentIndex(len(self.listMash)-1)
-                print("c'est fait man !!!!'")
+                
             else :
                 self.comboBoxMashProfiles.setCurrentIndex(-1)
         except :
@@ -2250,7 +2251,11 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         print(self.brewCalc.volPreCool, self.brewCalc.volPreBoil)
         self.brewCalc.calcPreBoilSg(self.GU, self.volume)
         print(self.brewCalc.preBoilSg)
-        
+        listSteps = self.currentMash['mashSteps']
+        strikeStep = listSteps[0]
+        strikeTargetTemp = strikeStep['stepTemp']
+        self.brewCalc.calcStrikeTemp(strikeTargetTemp, self.doubleSpinBoxRatio.value())
+        print(self.brewCalc.strikeTemp)
         
                 
         

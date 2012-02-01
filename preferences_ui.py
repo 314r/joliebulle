@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'preferences.ui'
 #
-# Created: Fri Jan 27 11:39:24 2012
+# Created: Wed Feb  1 20:43:01 2012
 #      by: PyQt4 UI code generator 4.9
 #
 # WARNING! All changes made in this file will be lost!
@@ -61,6 +61,18 @@ class Ui_Preferences(object):
         self.spinBoxCooling = QtGui.QSpinBox(self.tab)
         self.spinBoxCooling.setObjectName(_fromUtf8("spinBoxCooling"))
         self.formLayout.setWidget(1, QtGui.QFormLayout.FieldRole, self.spinBoxCooling)
+        self.label_4 = QtGui.QLabel(self.tab)
+        self.label_4.setObjectName(_fromUtf8("label_4"))
+        self.formLayout.setWidget(2, QtGui.QFormLayout.LabelRole, self.label_4)
+        self.spinBoxGrainTemp = QtGui.QSpinBox(self.tab)
+        self.spinBoxGrainTemp.setObjectName(_fromUtf8("spinBoxGrainTemp"))
+        self.formLayout.setWidget(2, QtGui.QFormLayout.FieldRole, self.spinBoxGrainTemp)
+        self.label_5 = QtGui.QLabel(self.tab)
+        self.label_5.setObjectName(_fromUtf8("label_5"))
+        self.formLayout.setWidget(3, QtGui.QFormLayout.LabelRole, self.label_5)
+        self.doubleSpinBoxFudgeFactor = QtGui.QDoubleSpinBox(self.tab)
+        self.doubleSpinBoxFudgeFactor.setObjectName(_fromUtf8("doubleSpinBoxFudgeFactor"))
+        self.formLayout.setWidget(3, QtGui.QFormLayout.FieldRole, self.doubleSpinBoxFudgeFactor)
         self.gridLayout.addLayout(self.formLayout, 0, 0, 1, 1)
         self.tabWidget.addTab(self.tab, _fromUtf8(""))
         self.verticalLayout.addWidget(self.tabWidget)
@@ -87,5 +99,7 @@ class Ui_Preferences(object):
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.Bibliotheque), QtGui.QApplication.translate("Preferences", "Bibliothèque", None, QtGui.QApplication.UnicodeUTF8))
         self.label_2.setText(QtGui.QApplication.translate("Preferences", "Taux d\'évaporation (%/h) :", None, QtGui.QApplication.UnicodeUTF8))
         self.label_3.setText(QtGui.QApplication.translate("Preferences", "Pertes par refroidissement (%) :", None, QtGui.QApplication.UnicodeUTF8))
+        self.label_4.setText(QtGui.QApplication.translate("Preferences", "Température du grain :", None, QtGui.QApplication.UnicodeUTF8))
+        self.label_5.setText(QtGui.QApplication.translate("Preferences", "Facteur de correction des températures :", None, QtGui.QApplication.UnicodeUTF8))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab), QtGui.QApplication.translate("Preferences", "Brassage", None, QtGui.QApplication.UnicodeUTF8))
 
