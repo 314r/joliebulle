@@ -47,6 +47,7 @@ from stepEditWindow import *
 from mashEditWindow import *
 from exportMash import *
 from preferences import *
+from brewCalc import *
 from globals import *
 
 
@@ -365,6 +366,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         self.mashProfilesBase = ImportMash()
         self.mashProfilesBase.importBeerXML()
         self.mashProfileExport = ExportMash()
+        self.brewCalc = CalcBrewday()
         
         self.base.importBeerXML()
         self.s=0
@@ -2244,6 +2246,10 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         
         
     def BrewdayModeCalc(self) : 
+        self.brewCalc.calcPreBoilVolume(self.volume, self.boil)
+        print(self.brewCalc.volPreCool, self.brewCalc.volPreBoil)
+        self.brewCalc.calcPreBoilSg(self.GU, self.volume)
+        print(self.brewCalc.preBoilSg)
         
         
                 
