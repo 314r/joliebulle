@@ -54,6 +54,11 @@ class DialogPref(QtGui.QDialog):
             self.ui.doubleSpinBoxFudgeFactor.setValue(int(settings.conf.value("FudgeFactor")))
         except :
             pass
+        try :
+            self.ui.doubleSpinBoxGrainRetention.setValue(int(settings.conf.value("GrainRetention")))
+        except :
+            pass
+            
         #les connections
         self.ui.pushButtonChangeLib.clicked.connect(self.changePushed)
         self.ui.buttonBox.accepted.connect(self.accepted)
@@ -81,6 +86,7 @@ class DialogPref(QtGui.QDialog):
         settings.conf.setValue("CoolingLoss", self.ui.spinBoxCooling.value())
         settings.conf.setValue("GrainTemp", self.ui.spinBoxGrainTemp.value())
         settings.conf.setValue("FudgeFactor", self.ui.doubleSpinBoxFudgeFactor.value())
+        settings.conf.setValue("GrainRetention", self.ui.doubleSpinBoxGrainRetention.value())
         
             
     def rejected (self) :

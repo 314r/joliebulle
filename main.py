@@ -2248,18 +2248,70 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         self.mashProfileExport.enregistrer(mash_file)
         
         
-    def BrewdayModeCalc(self) : 
+    def BrewdayModeCalc(self) :     
+        self.widgetInfusion.hide()
         self.brewCalc.calcPreBoilVolume(self.volume, self.boil)
         print(self.brewCalc.volPreCool, self.brewCalc.volPreBoil)
         self.brewCalc.calcPreBoilSg(self.GU, self.volume)
         print(self.brewCalc.preBoilSg)
+        
         listSteps = self.currentMash['mashSteps']
         strikeStep = listSteps[0]
         strikeTargetTemp = strikeStep['stepTemp']
+        strikeName = strikeStep['name']
+        
+        self.tableWidgetStepsBrewday.setRowCount(len(listSteps))
+        
+        
         self.brewCalc.calcStrikeTemp(strikeTargetTemp, self.doubleSpinBoxRatio.value())
         print(self.brewCalc.strikeTemp)
         self.brewCalc.calcStrikeVol(self.grainWeight, self.doubleSpinBoxRatio.value())
         print(self.brewCalc.strikeVol)
+        self.brewCalc.calcMashVolume(self.grainWeight)
+        print(self.brewCalc.grainVolume, self.brewCalc.mashVolumeStrike)
+        self.brewCalc.calcGrainRetention(self.grainWeight)
+        
+        #on traite les paliers autres que l'empâtage
+        listVol = []
+        listVol.append(self.brewCalc.strikeVol)
+        listTemp = []
+        listName = []
+        
+        i = 0
+        while i < len(listSteps)-1 :
+            i = i+1 
+            step = listSteps[i]
+            stepName = step['name']
+            stepVol =  float(step['stepVol'])
+            stepTemp = float(step['stepTemp'])
+            
+            
+            listName.append(stepName)
+            listTemp.append(stepTemp)
+            if i == 1 :
+                mashTemp = strikeTargetTemp
+            elif i != 1 :
+                mashTemp = listTemp[i-2]
+            
+            
+            self.brewCalc.calcInfusionStep(i, self.grainWeight, listVol, stepTemp, mashTemp )
+#            print('la liste des temp :',listTemp)
+            print('palier :', self.grainWeight, listVol, stepTemp, mashTemp )
+            print('le volume à infuser est  : ', self.brewCalc.InfuseVol)
+            listVol.append(self.brewCalc.InfuseVol)
+            self.tableWidgetStepsBrewday.setItem(i,0,QtGui.QTableWidgetItem(stepName))
+            self.tableWidgetStepsBrewday.setItem(i,1,QtGui.QTableWidgetItem("%.1f" %(self.brewCalc.InfuseVol)))
+
+            
+            
+
+        
+          
+        self.tableWidgetStepsBrewday.setItem(0,0,QtGui.QTableWidgetItem(strikeName))
+        self.tableWidgetStepsBrewday.setItem(0,1,QtGui.QTableWidgetItem(str(self.brewCalc.strikeVol)))
+        
+        
+            
         
         
                 

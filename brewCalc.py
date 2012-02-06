@@ -58,5 +58,29 @@ class CalcBrewday :
     def calcStrikeVol(self, grainWeight, ratio) :
         self.strikeVol = float(grainWeight) * float(ratio) / 1000
         
+    def calcMashVolume(self, grainWeight) :
+        self.grainVolume = float(grainWeight) * 1.5 / 1000
+        self.mashVolumeStrike = self.grainVolume + self.strikeVol
+        
+    def calcGrainRetention(self, grainWeight) :
+        grainRetentionRate = float(settings.conf.value("GrainRetention"))
+        self.grainRetention = grainRetentionRate * grainWeight
+        
+    def calcInfusionStep(self, i, grainWeight, listVol, Ttarget, Tmash) :
+        #Vm = Wgrain (0.4 + ratio)
+        #Tstrike = (Ttarget*(Vstrike+Vm) - (Vm*Tmash)) / Vstrike
+
+        actualVol = sum(listVol[0:i+1])
+        ratio =  actualVol / (float(grainWeight)/ 1000)
+        Vm = (float(grainWeight)/1000) * (0.4 + ratio)
+        
+        #on fixe par défaut la temp d'infusion à 90° et on détermine le volume
+#        Vstrike=((Ttarget*Vm) - (Vm * Tmash)) / (Tstrike - Ttarget)
+        
+        Tstrike = 90 - float(settings.conf.value("FudgeFactor"))
+        self.InfuseVol = ((float(Ttarget)*Vm) - (Vm * float(Tmash))) / (Tstrike - float(Ttarget))
+        print('ratio', ratio)
+        
+        
         
         

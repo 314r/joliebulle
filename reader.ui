@@ -1230,7 +1230,14 @@ p, li { white-space: pre-wrap; }
           </widget>
          </item>
          <item row="0" column="1">
-          <widget class="QDoubleSpinBox" name="doubleSpinBoxRatio"/>
+          <widget class="QDoubleSpinBox" name="doubleSpinBoxRatio">
+           <property name="singleStep">
+            <double>0.500000000000000</double>
+           </property>
+           <property name="value">
+            <double>3.000000000000000</double>
+           </property>
+          </widget>
          </item>
          <item row="1" column="0">
           <widget class="QLabel" name="label_25">
@@ -1279,8 +1286,8 @@ p, li { white-space: pre-wrap; }
        <widget class="QWidget" name="layoutWidget">
         <property name="geometry">
          <rect>
-          <x>9</x>
-          <y>409</y>
+          <x>10</x>
+          <y>540</y>
           <width>294</width>
           <height>52</height>
          </rect>
@@ -1319,6 +1326,198 @@ p, li { white-space: pre-wrap; }
            <property name="text">
             <string>1.000</string>
            </property>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+       <widget class="QTableWidget" name="tableWidgetStepsBrewday">
+        <property name="geometry">
+         <rect>
+          <x>445</x>
+          <y>11</y>
+          <width>681</width>
+          <height>371</height>
+         </rect>
+        </property>
+        <property name="editTriggers">
+         <set>QAbstractItemView::DoubleClicked</set>
+        </property>
+        <property name="alternatingRowColors">
+         <bool>true</bool>
+        </property>
+        <property name="selectionBehavior">
+         <enum>QAbstractItemView::SelectRows</enum>
+        </property>
+        <property name="showGrid">
+         <bool>false</bool>
+        </property>
+        <property name="rowCount">
+         <number>0</number>
+        </property>
+        <property name="columnCount">
+         <number>4</number>
+        </property>
+        <attribute name="horizontalHeaderCascadingSectionResizes">
+         <bool>false</bool>
+        </attribute>
+        <attribute name="horizontalHeaderDefaultSectionSize">
+         <number>175</number>
+        </attribute>
+        <attribute name="horizontalHeaderStretchLastSection">
+         <bool>true</bool>
+        </attribute>
+        <attribute name="verticalHeaderVisible">
+         <bool>false</bool>
+        </attribute>
+        <attribute name="verticalHeaderDefaultSectionSize">
+         <number>22</number>
+        </attribute>
+        <attribute name="verticalHeaderStretchLastSection">
+         <bool>false</bool>
+        </attribute>
+        <column>
+         <property name="text">
+          <string>Palier</string>
+         </property>
+        </column>
+        <column>
+         <property name="text">
+          <string>Volume d'eau</string>
+         </property>
+        </column>
+        <column>
+         <property name="text">
+          <string>Température de l'eau</string>
+         </property>
+        </column>
+        <column>
+         <property name="text">
+          <string>Ratio</string>
+         </property>
+        </column>
+       </widget>
+       <widget class="QWidget" name="widgetInfusion" native="true">
+        <property name="geometry">
+         <rect>
+          <x>20</x>
+          <y>150</y>
+          <width>200</width>
+          <height>290</height>
+         </rect>
+        </property>
+        <layout class="QVBoxLayout" name="verticalLayout_11">
+         <item>
+          <widget class="QWidget" name="widgetStep1" native="true">
+           <layout class="QHBoxLayout" name="horizontalLayout_19">
+            <item>
+             <widget class="QLabel" name="label_31">
+              <property name="text">
+               <string>Palier 1 :</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QDoubleSpinBox" name="doubleSpinBoxVolStep1"/>
+            </item>
+            <item>
+             <widget class="QDoubleSpinBox" name="doubleSpinBoxWaterTempStep1"/>
+            </item>
+           </layout>
+          </widget>
+         </item>
+         <item>
+          <widget class="QWidget" name="widgetStep2" native="true">
+           <layout class="QHBoxLayout" name="horizontalLayout_18">
+            <item>
+             <widget class="QLabel" name="label_32">
+              <property name="text">
+               <string>Palier 2 :</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QDoubleSpinBox" name="doubleSpinBoxVolStep1_2"/>
+            </item>
+            <item>
+             <widget class="QDoubleSpinBox" name="doubleSpinBoxWaterTempStep1_2"/>
+            </item>
+           </layout>
+          </widget>
+         </item>
+         <item>
+          <widget class="QWidget" name="widgetStep3" native="true">
+           <layout class="QHBoxLayout" name="horizontalLayout_20">
+            <item>
+             <widget class="QLabel" name="label_33">
+              <property name="text">
+               <string>Palier 3 :</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QDoubleSpinBox" name="doubleSpinBoxVolStep1_3"/>
+            </item>
+            <item>
+             <widget class="QDoubleSpinBox" name="doubleSpinBoxWaterTempStep1_3"/>
+            </item>
+           </layout>
+          </widget>
+         </item>
+         <item>
+          <widget class="QWidget" name="widgetStep4" native="true">
+           <layout class="QHBoxLayout" name="horizontalLayout_21">
+            <item>
+             <widget class="QLabel" name="label_34">
+              <property name="text">
+               <string>Palier 4 :</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QDoubleSpinBox" name="doubleSpinBoxVolStep1_4"/>
+            </item>
+            <item>
+             <widget class="QDoubleSpinBox" name="doubleSpinBoxWaterTempStep1_4"/>
+            </item>
+           </layout>
+          </widget>
+         </item>
+         <item>
+          <widget class="QWidget" name="widgetStep5" native="true">
+           <layout class="QHBoxLayout" name="horizontalLayout_22">
+            <item>
+             <widget class="QLabel" name="label_35">
+              <property name="text">
+               <string>Palier 5 :</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QDoubleSpinBox" name="doubleSpinBoxVolStep1_5"/>
+            </item>
+            <item>
+             <widget class="QDoubleSpinBox" name="doubleSpinBoxWaterTempStep1_5"/>
+            </item>
+           </layout>
+          </widget>
+         </item>
+         <item>
+          <widget class="QWidget" name="widgetStep6" native="true">
+           <layout class="QHBoxLayout" name="horizontalLayout_23">
+            <item>
+             <widget class="QLabel" name="label_36">
+              <property name="text">
+               <string>Palier 6 :</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QDoubleSpinBox" name="doubleSpinBoxVolStep1_6"/>
+            </item>
+            <item>
+             <widget class="QDoubleSpinBox" name="doubleSpinBoxWaterTempStep1_6"/>
+            </item>
+           </layout>
           </widget>
          </item>
         </layout>

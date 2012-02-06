@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'preferences.ui'
 #
-# Created: Wed Feb  1 20:43:01 2012
+# Created: Thu Feb  2 14:31:06 2012
 #      by: PyQt4 UI code generator 4.9
 #
 # WARNING! All changes made in this file will be lost!
@@ -73,6 +73,12 @@ class Ui_Preferences(object):
         self.doubleSpinBoxFudgeFactor = QtGui.QDoubleSpinBox(self.tab)
         self.doubleSpinBoxFudgeFactor.setObjectName(_fromUtf8("doubleSpinBoxFudgeFactor"))
         self.formLayout.setWidget(3, QtGui.QFormLayout.FieldRole, self.doubleSpinBoxFudgeFactor)
+        self.label_6 = QtGui.QLabel(self.tab)
+        self.label_6.setObjectName(_fromUtf8("label_6"))
+        self.formLayout.setWidget(4, QtGui.QFormLayout.LabelRole, self.label_6)
+        self.doubleSpinBoxGrainRetention = QtGui.QDoubleSpinBox(self.tab)
+        self.doubleSpinBoxGrainRetention.setObjectName(_fromUtf8("doubleSpinBoxGrainRetention"))
+        self.formLayout.setWidget(4, QtGui.QFormLayout.FieldRole, self.doubleSpinBoxGrainRetention)
         self.gridLayout.addLayout(self.formLayout, 0, 0, 1, 1)
         self.tabWidget.addTab(self.tab, _fromUtf8(""))
         self.verticalLayout.addWidget(self.tabWidget)
@@ -101,5 +107,6 @@ class Ui_Preferences(object):
         self.label_3.setText(QtGui.QApplication.translate("Preferences", "Pertes par refroidissement (%) :", None, QtGui.QApplication.UnicodeUTF8))
         self.label_4.setText(QtGui.QApplication.translate("Preferences", "Température du grain :", None, QtGui.QApplication.UnicodeUTF8))
         self.label_5.setText(QtGui.QApplication.translate("Preferences", "Facteur de correction des températures :", None, QtGui.QApplication.UnicodeUTF8))
+        self.label_6.setText(QtGui.QApplication.translate("Preferences", "Rétention d\'eau par le grain (l/kg) :", None, QtGui.QApplication.UnicodeUTF8))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab), QtGui.QApplication.translate("Preferences", "Brassage", None, QtGui.QApplication.UnicodeUTF8))
 

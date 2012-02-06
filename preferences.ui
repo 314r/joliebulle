@@ -117,6 +117,16 @@ p, li { white-space: pre-wrap; }
          <item row="3" column="1">
           <widget class="QDoubleSpinBox" name="doubleSpinBoxFudgeFactor"/>
          </item>
+         <item row="4" column="0">
+          <widget class="QLabel" name="label_6">
+           <property name="text">
+            <string>Rétention d'eau par le grain (l/kg) :</string>
+           </property>
+          </widget>
+         </item>
+         <item row="4" column="1">
+          <widget class="QDoubleSpinBox" name="doubleSpinBoxGrainRetention"/>
+         </item>
         </layout>
        </item>
       </layout>
