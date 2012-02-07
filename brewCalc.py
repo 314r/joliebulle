@@ -78,8 +78,10 @@ class CalcBrewday :
 #        Vstrike=((Ttarget*Vm) - (Vm * Tmash)) / (Tstrike - Ttarget)
         
         Tstrike = 90 - float(settings.conf.value("FudgeFactor"))
-        self.InfuseVol = ((float(Ttarget)*Vm) - (Vm * float(Tmash))) / (Tstrike - float(Ttarget))
+        self.infuseVol = ((float(Ttarget)*Vm) - (Vm * float(Tmash))) / (Tstrike - float(Ttarget))
         print('ratio', ratio)
+        
+        self.newRatio = (actualVol + self.infuseVol) / (float(grainWeight)/ 1000)
         
         
         

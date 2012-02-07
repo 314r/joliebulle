@@ -48,6 +48,7 @@ from mashEditWindow import *
 from exportMash import *
 from preferences import *
 from brewCalc import *
+from stepAdjustWindow import *
 from globals import *
 
 
@@ -362,6 +363,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         self.dlgPref = DialogPref(self)
         self.dlgStep = DialogStep(self)
         self.dlgMash = DialogMash(self)
+        self.dlgStepBrewday = DialogStepAdjust(self)
         self.base = ImportBase()
         self.mashProfilesBase = ImportMash()
         self.mashProfilesBase.importBeerXML()
@@ -546,6 +548,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         
         self.pushButtonBrewdayMode.clicked.connect(self.switchToBrewday)
         self.doubleSpinBoxRatio.valueChanged.connect(self.switchToBrewday)
+        self.pushButtonAdjustStep.clicked.connect(self.stepAdjustBrewday)
 
 
 
@@ -1038,6 +1041,11 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
     def dialogPreferences (self) :
         self.dlgPref.setModal(True)
         self.dlgPref.show()
+        
+    def stepAdjustBrewday(self) :
+        self.dlgStepBrewday.setModal(True)
+        self.dlgStepBrewday.show()
+        self.dlgStepBrewday.setFields('toto', 'toto', 'toto', 'toto')
         
     
         
@@ -2295,21 +2303,18 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
             
             
             self.brewCalc.calcInfusionStep(i, self.grainWeight, listVol, stepTemp, mashTemp )
-#            print('la liste des temp :',listTemp)
-            print('palier :', self.grainWeight, listVol, stepTemp, mashTemp )
-            print('le volume à infuser est  : ', self.brewCalc.InfuseVol)
-            listVol.append(self.brewCalc.InfuseVol)
-            self.tableWidgetStepsBrewday.setItem(i,0,QtGui.QTableWidgetItem(stepName))
-            self.tableWidgetStepsBrewday.setItem(i,1,QtGui.QTableWidgetItem("%.1f" %(self.brewCalc.InfuseVol)))
 
-            
-            
+            listVol.append(self.brewCalc.infuseVol)
+            self.tableWidgetStepsBrewday.setItem(i,0,QtGui.QTableWidgetItem(stepName))
+            self.tableWidgetStepsBrewday.setItem(i,1,QtGui.QTableWidgetItem("%.1f" %(self.brewCalc.infuseVol)))
+            self.tableWidgetStepsBrewday.setItem(i,2,QtGui.QTableWidgetItem(str(90)))
+            self.tableWidgetStepsBrewday.setItem(i,3,QtGui.QTableWidgetItem("%.1f" %(self.brewCalc.newRatio)))          
 
         
           
         self.tableWidgetStepsBrewday.setItem(0,0,QtGui.QTableWidgetItem(strikeName))
         self.tableWidgetStepsBrewday.setItem(0,1,QtGui.QTableWidgetItem(str(self.brewCalc.strikeVol)))
-        
+        self.tableWidgetStepsBrewday.setItem(0,2,QtGui.QTableWidgetItem("%.1f" %(self.brewCalc.strikeTemp)))
         
             
         

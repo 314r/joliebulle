@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'reader.ui'
 #
-# Created: Mon Feb  6 20:56:44 2012
+# Created: Tue Feb  7 14:24:13 2012
 #      by: PyQt4 UI code generator 4.9
 #
 # WARNING! All changes made in this file will be lost!
@@ -720,6 +720,9 @@ class Ui_MainWindow(object):
         self.doubleSpinBoxWaterTempStep1_6.setObjectName(_fromUtf8("doubleSpinBoxWaterTempStep1_6"))
         self.horizontalLayout_23.addWidget(self.doubleSpinBoxWaterTempStep1_6)
         self.verticalLayout_11.addWidget(self.widgetStep6)
+        self.pushButtonAdjustStep = QtGui.QPushButton(self.page_5)
+        self.pushButtonAdjustStep.setGeometry(QtCore.QRect(870, 390, 85, 27))
+        self.pushButtonAdjustStep.setObjectName(_fromUtf8("pushButtonAdjustStep"))
         self.stackedWidget.addWidget(self.page_5)
         self.gridLayout_4.addWidget(self.stackedWidget, 0, 0, 1, 1)
         MainWindow.setCentralWidget(self.centralwidget)
@@ -1064,6 +1067,7 @@ class Ui_MainWindow(object):
         self.label_34.setText(QtGui.QApplication.translate("MainWindow", "Palier 4 :", None, QtGui.QApplication.UnicodeUTF8))
         self.label_35.setText(QtGui.QApplication.translate("MainWindow", "Palier 5 :", None, QtGui.QApplication.UnicodeUTF8))
         self.label_36.setText(QtGui.QApplication.translate("MainWindow", "Palier 6 :", None, QtGui.QApplication.UnicodeUTF8))
+        self.pushButtonAdjustStep.setText(QtGui.QApplication.translate("MainWindow", "PushButton", None, QtGui.QApplication.UnicodeUTF8))
         self.toolBar.setWindowTitle(QtGui.QApplication.translate("MainWindow", "toolBar", None, QtGui.QApplication.UnicodeUTF8))
         self.menuFichier.setTitle(QtGui.QApplication.translate("MainWindow", "Fichier", None, QtGui.QApplication.UnicodeUTF8))
         self.menuEdition.setTitle(QtGui.QApplication.translate("MainWindow", "Edition", None, QtGui.QApplication.UnicodeUTF8))

@@ -1522,6 +1522,19 @@ p, li { white-space: pre-wrap; }
          </item>
         </layout>
        </widget>
+       <widget class="QPushButton" name="pushButtonAdjustStep">
+        <property name="geometry">
+         <rect>
+          <x>870</x>
+          <y>390</y>
+          <width>85</width>
+          <height>27</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>PushButton</string>
+        </property>
+       </widget>
       </widget>
      </widget>
     </item>
