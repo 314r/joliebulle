@@ -29,6 +29,7 @@ from PyQt4 import QtCore
 from base import *
 from globals import *
 from stepAdjust_ui import *
+from brewCalc import *
 
 class DialogStepAdjust(QtGui.QDialog):
     
@@ -36,7 +37,45 @@ class DialogStepAdjust(QtGui.QDialog):
         QtGui.QDialog.__init__(self,parent)
         self.ui = Ui_DialogStepBrewday()
         self.ui.setupUi(self)
+        self.brewCalc = CalcBrewday()
+        self.ui.doubleSpinBoxWaterTemp.valueChanged.connect(self.waterTempChanged)
         
-    def setFields (self, targetTemp, targetRatio, infuseAmount, waterTemp) :
+        
+    def setFields (self, targetTemp, targetRatio, infuseAmount, waterTemp, grainWeight, listVol, currentRow, listTemp) :
+        self.ui.labelTargetTemp.setText(str(targetTemp))
+        self.ui.doubleSpinBoxTargetRatio.setValue(float(targetRatio))
+        self.ui.doubleSpinBoxInfuseAmount.setValue(float(infuseAmount))
+        self.ui.doubleSpinBoxWaterTemp.setValue(float(waterTemp))
+        self.grainWeight = float(grainWeight)
+        self.listVol = listVol
+        self.currentRow = currentRow
+        self.targetTemp = targetTemp
+        self.listTemp = listTemp
+        
+    def waterTempChanged(self) :
+        waterTemp = self.ui.doubleSpinBoxWaterTemp.value()
+        i = self.currentRow
+
+        mashTemp = self.listTemp[i-2] 
+        
+        self.brewCalc.calcInfusionStep(self.currentRow-1, self.grainWeight, self.listVol, self.targetTemp, mashTemp, waterTemp)
+        print(self.currentRow, self.grainWeight, self.listVol, self.targetTemp, mashTemp, waterTemp)
+        self.infuseVol = self.brewCalc.infuseVol
+        self.ui.doubleSpinBoxInfuseAmount.setValue(float(self.infuseVol))
+        self.listVol[i] = self.ui.doubleSpinBoxInfuseAmount.value()
+        
+        ################### A revoir !
+        
+    def infuseAmountChanged(self) :
+        pass
+
+
+
+        
+        
+    def targetRatioChanged(self) : 
+        pass
+        
     
-        print(targetTemp, targetRatio, infuseAmount, waterTemp)
+        
+        

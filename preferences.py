@@ -51,7 +51,7 @@ class DialogPref(QtGui.QDialog):
             pass
         try :
             self.ui.spinBoxGrainTemp.setValue(int(settings.conf.value("GrainTemp")))
-            self.ui.doubleSpinBoxFudgeFactor.setValue(int(settings.conf.value("FudgeFactor")))
+            self.ui.doubleSpinBoxFudgeFactor.setValue(float(settings.conf.value("FudgeFactor")))
         except :
             pass
         try :
