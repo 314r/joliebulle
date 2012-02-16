@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'stepAdjust.ui'
 #
-# Created: Tue Feb  7 14:44:02 2012
+# Created: Tue Feb 14 22:00:12 2012
 #      by: PyQt4 UI code generator 4.9
 #
 # WARNING! All changes made in this file will be lost!
@@ -38,6 +38,7 @@ class Ui_DialogStepBrewday(object):
         self.label_4.setObjectName(_fromUtf8("label_4"))
         self.formLayout.setWidget(3, QtGui.QFormLayout.LabelRole, self.label_4)
         self.doubleSpinBoxTargetRatio = QtGui.QDoubleSpinBox(DialogStepBrewday)
+        self.doubleSpinBoxTargetRatio.setEnabled(False)
         self.doubleSpinBoxTargetRatio.setObjectName(_fromUtf8("doubleSpinBoxTargetRatio"))
         self.formLayout.setWidget(1, QtGui.QFormLayout.FieldRole, self.doubleSpinBoxTargetRatio)
         self.doubleSpinBoxInfuseAmount = QtGui.QDoubleSpinBox(DialogStepBrewday)

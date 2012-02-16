@@ -52,7 +52,11 @@
       </widget>
      </item>
      <item row="1" column="1">
-      <widget class="QDoubleSpinBox" name="doubleSpinBoxTargetRatio"/>
+      <widget class="QDoubleSpinBox" name="doubleSpinBoxTargetRatio">
+       <property name="enabled">
+        <bool>false</bool>
+       </property>
+      </widget>
      </item>
      <item row="2" column="1">
       <widget class="QDoubleSpinBox" name="doubleSpinBoxInfuseAmount"/>

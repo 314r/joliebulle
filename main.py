@@ -550,6 +550,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         self.doubleSpinBoxRatio.valueChanged.connect(self.switchToBrewday)
         self.pushButtonAdjustStep.clicked.connect(self.stepAdjustBrewday)
         self.tableWidgetStepsBrewday.itemSelectionChanged.connect(self.tableWidgetStepsBrewday_currentRowChanged)
+        self.dlgStepBrewday.stepAdjustBrewdayClosed.connect(self.stepAdjustBrewday_closed)
 
 
 
@@ -1046,7 +1047,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
     def stepAdjustBrewday(self) :
         self.dlgStepBrewday.setModal(True)
         self.dlgStepBrewday.show()
-        self.dlgStepBrewday.setFields(self.brewdayCurrentStepTargetTemp, self.brewdayCurrentStepRatio, self.brewdayCurrentStepInfuseAmount, self.brewdayCurrentStepWaterTemp, self.grainWeight, self.stepsListVol, self.brewdayCurrentRow, self.brewdayListTemp)
+        self.dlgStepBrewday.setFields(self.brewdayCurrentStepTargetTemp, self.brewdayCurrentStepRatio, self.brewdayCurrentStepInfuseAmount, self.brewdayCurrentStepWaterTemp, self.grainWeight, self.stepsListVol, self.brewdayCurrentRow, self.brewdayListTemp, self.strikeTargetTemp)
         
     
         
@@ -2291,7 +2292,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
             i = i+1 
             step = listSteps[i]
             stepName = step['name']
-            stepVol =  float(step['stepVol'])
+#            stepVol =  float(step['stepVol'])
             stepTemp = float(step['stepTemp'])
             
             
@@ -2306,6 +2307,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
             self.brewCalc.calcInfusionStep(i, self.grainWeight, listVol, stepTemp, mashTemp, 90 )
 
             listVol.append(self.brewCalc.infuseVol)
+            
             self.tableWidgetStepsBrewday.setItem(i,0,QtGui.QTableWidgetItem(stepName))
             self.tableWidgetStepsBrewday.setItem(i,1,QtGui.QTableWidgetItem("%.1f" %(self.brewCalc.infuseVol)))
             self.tableWidgetStepsBrewday.setItem(i,2,QtGui.QTableWidgetItem(str(90)))
@@ -2337,6 +2339,40 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
             self.brewdayCurrentStepTargetTemp = strikeTargetTemp
         else :
             self.brewdayCurrentStepTargetTemp = self.brewdayListTemp[i-1]
+            
+    def stepAdjustBrewday_closed (self, targetRatio, infuseAmount, waterTemp,listVol, currentRow, listTemp) :
+        print(targetRatio, infuseAmount, waterTemp,listVol, currentRow, listTemp)
+        #on insère les nouvelles données dans la table
+        self.tableWidgetStepsBrewday.setItem(currentRow,1,QtGui.QTableWidgetItem(str(infuseAmount)))
+        self.tableWidgetStepsBrewday.setItem(currentRow,2,QtGui.QTableWidgetItem("%.1f" %(waterTemp)))
+        self.tableWidgetStepsBrewday.setItem(currentRow,3,QtGui.QTableWidgetItem("%.1f" %(targetRatio)))
+        #il faut tout recalculer après la ligne modifiée
+        listSteps = self.currentMash['mashSteps']
+        
+        i = currentRow
+
+        while i < len(listSteps) - 1 :
+            i = i+1
+            step = listSteps[i]
+            stepTemp = float(step['stepTemp'])
+            if i == 1 :
+                strikeStep = listSteps[0]
+                strikeTargetTemp = strikeStep['stepTemp']
+                mashTemp = strikeTargetTemp
+            else :
+                mashTemp = self.brewdayListTemp[i-2]
+            self.brewCalc.calcInfusionStep(i-1, self.grainWeight, listVol, stepTemp, mashTemp, 90 )
+            listVol.append(self.brewCalc.infuseVol)
+            self.tableWidgetStepsBrewday.setItem(i,1,QtGui.QTableWidgetItem("%.1f" %(self.brewCalc.infuseVol)))
+            self.tableWidgetStepsBrewday.setItem(i,3,QtGui.QTableWidgetItem("%.1f" %(self.brewCalc.newRatio)))
+            
+            
+
+            
+#            print('température du moût', mashTemp)
+            
+            
+
                    
         
     def printRecipe (self) :
