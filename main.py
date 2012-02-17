@@ -547,7 +547,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         ###############################
         
         self.pushButtonBrewdayMode.clicked.connect(self.switchToBrewday)
-        self.doubleSpinBoxRatio.valueChanged.connect(self.switchToBrewday)
+        
         self.pushButtonAdjustStep.clicked.connect(self.stepAdjustBrewday)
         self.tableWidgetStepsBrewday.itemSelectionChanged.connect(self.tableWidgetStepsBrewday_currentRowChanged)
         self.dlgStepBrewday.stepAdjustBrewdayClosed.connect(self.stepAdjustBrewday_closed)
@@ -2259,11 +2259,15 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         
         
     def BrewdayModeCalc(self) :     
-        self.widgetInfusion.hide()
+        
         self.brewCalc.calcPreBoilVolume(self.volume, self.boil)
         print(self.brewCalc.volPreCool, self.brewCalc.volPreBoil)
         self.brewCalc.calcPreBoilSg(self.GU, self.volume)
         print(self.brewCalc.preBoilSg)
+        
+        self.labelPreBoilVol.setText("%.1f" %(self.brewCalc.volPreBoil) + " " + "L")
+        self.labelPreBoilGravity.setText("%.3f" %(self.brewCalc.preBoilSg))
+        
         
         listSteps = self.currentMash['mashSteps']
         strikeStep = listSteps[0]
@@ -2273,9 +2277,9 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         self.tableWidgetStepsBrewday.setRowCount(len(listSteps))
         
         
-        self.brewCalc.calcStrikeTemp(strikeTargetTemp, self.doubleSpinBoxRatio.value())
+        self.brewCalc.calcStrikeTemp(strikeTargetTemp, 3)
         print(self.brewCalc.strikeTemp)
-        self.brewCalc.calcStrikeVol(self.grainWeight, self.doubleSpinBoxRatio.value())
+        self.brewCalc.calcStrikeVol(self.grainWeight, 3)
         print(self.brewCalc.strikeVol)
         self.brewCalc.calcMashVolume(self.grainWeight)
         print(self.brewCalc.grainVolume, self.brewCalc.mashVolumeStrike)
