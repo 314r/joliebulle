@@ -21,7 +21,7 @@ class DialogStep(QtGui.QDialog):
         self.ui.comboBoxStepType.currentIndexChanged.connect(self.valueChanged)
         self.ui.doubleSpinBoxStepTime.valueChanged.connect(self.valueChanged)
         self.ui.doubleSpinBoxStepTemp.valueChanged.connect(self.valueChanged)
-        self.ui.doubleSpinBoxStepVol.valueChanged.connect(self.valueChanged)
+#        self.ui.doubleSpinBoxStepVol.valueChanged.connect(self.valueChanged)
         
         self.ui.buttonBox.accepted.connect(self.accepted)
         
@@ -37,7 +37,7 @@ class DialogStep(QtGui.QDialog):
             self.ui.comboBoxStepType.setCurrentIndex(2)              
         self.ui.doubleSpinBoxStepTime.setValue(float(stepTime))
         self.ui.doubleSpinBoxStepTemp.setValue(float(stepTemp))
-        self.ui.doubleSpinBoxStepVol.setValue(float(stepVol))
+#        self.ui.doubleSpinBoxStepVol.setValue(float(stepVol))
         
         
     def valueChanged (self) :
@@ -50,7 +50,7 @@ class DialogStep(QtGui.QDialog):
             self.stepType = self.trUtf8('''Décoction''') 
         self.stepTime = self.ui.doubleSpinBoxStepTime.value()
         self.stepTemp = self.ui.doubleSpinBoxStepTemp.value()
-        self.stepVol = self.ui.doubleSpinBoxStepVol.value()
+        self.stepVol = 0
         
     def accepted(self) :
         self.stepChanged.emit(self.stepName,self.stepType,self.stepTime,self.stepTemp,self.stepVol) 

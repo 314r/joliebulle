@@ -17,8 +17,8 @@ class DialogMash(QtGui.QDialog):
         self.ui.setupUi(self)
         self.ui.lineEditName.textChanged.connect(self.valueChanged)
         self.ui.doubleSpinBoxPh.valueChanged.connect(self.valueChanged)
-        self.ui.doubleSpinBoxGrainT.valueChanged.connect(self.valueChanged)
-        self.ui.doubleSpinBoxTunT.valueChanged.connect(self.valueChanged)
+#        self.ui.doubleSpinBoxGrainT.valueChanged.connect(self.valueChanged)
+#        self.ui.doubleSpinBoxTunT.valueChanged.connect(self.valueChanged)
         self.ui.doubleSpinBoxSpargeT.valueChanged.connect(self.valueChanged)
         
         self.ui.buttonBox.accepted.connect(self.accepted)
@@ -26,15 +26,15 @@ class DialogMash(QtGui.QDialog):
     def fields(self,name,ph,grainT,tunT,spargeT) :
         self.ui.lineEditName.setText(name)
         self.ui.doubleSpinBoxPh.setValue(float(ph))
-        self.ui.doubleSpinBoxGrainT.setValue(float(grainT))
-        self.ui.doubleSpinBoxTunT.setValue(float(tunT))
+#        self.ui.doubleSpinBoxGrainT.setValue(float(grainT))
+#        self.ui.doubleSpinBoxTunT.setValue(float(tunT))
         self.ui.doubleSpinBoxSpargeT.setValue(float(spargeT))
         
     def valueChanged(self) :
         self.name = self.ui.lineEditName.text()
         self.ph = self.ui.doubleSpinBoxPh.value()
-        self.grainT = self.ui.doubleSpinBoxGrainT.value()
-        self.tunT = self.ui.doubleSpinBoxTunT.value()
+        self.grainT = 0
+        self.tunT = 0
         self.spargeT =self.ui.doubleSpinBoxSpargeT.value()
         
     def accepted(self) :

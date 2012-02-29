@@ -2098,6 +2098,10 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         self.listMash = self.mashProfilesBase.listMash
         self.listStepsAll = list()
         self.popMashList()
+        self.pushButtonMashEdit.setEnabled(False)
+        self.pushButtonRemoveProfile.setEnabled(False)
+        self.pushButtonStepRemove.setEnabled(False)
+        self.pushButtonStepEdit.setEnabled(False)
         
     def popMashList(self) :
         self.listWidgetMashProfiles.clear() 
@@ -2119,8 +2123,8 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         self.labelStepName.setTextFormat(QtCore.Qt.RichText)   
         self.labelMashName.setText("<b>" + self.dicMashDetail['name'] + "</b>")
         self.labelMashPh.setText("%.1f" %float(self.dicMashDetail['ph']))
-        self.labelMashGrainTemp.setText("%.1f" %float(self.dicMashDetail['grainTemp']))
-        self.labelMashTunTemp.setText("%.1f" %float(self.dicMashDetail['tunTemp']))
+#        self.labelMashGrainTemp.setText("%.1f" %float(self.dicMashDetail['grainTemp']))
+#        self.labelMashTunTemp.setText("%.1f" %float(self.dicMashDetail['tunTemp']))
         try :
             self.labelMashSpargeTemp.setText("%.1f" %float(self.dicMashDetail['spargeTemp']))
         except :
@@ -2130,6 +2134,8 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         except :
             pass
 #        print(self.dicMashDetail)
+        self.pushButtonMashEdit.setEnabled(True)
+        self.pushButtonRemoveProfile.setEnabled(True)
             
                 
     def mashDetails(self) :
@@ -2166,7 +2172,9 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         self.labelStepType.setText(self.listStepType[i])
         self.labelStepTemp.setText("%.1f" %(self.listStepTemp[i]))
         self.labelStepTime.setText("%.0f" %(self.listStepTime[i]))  
-        self.labelStepVol.setText("%.1f" %(self.listStepVol[i]))   
+#        self.labelStepVol.setText("%.1f" %(self.listStepVol[i]))   
+        self.pushButtonStepRemove.setEnabled(True)
+        self.pushButtonStepEdit.setEnabled(True)
             
         
         
@@ -2221,8 +2229,8 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         f = self.listWidgetMashProfiles.currentRow()
         self.dicMashDetail['name'] = name
         self.dicMashDetail['ph'] = ph
-        self.dicMashDetail['grainTemp'] = grainT
-        self.dicMashDetail['tunTemp'] = tunT
+        self.dicMashDetail['grainTemp'] = 20
+        self.dicMashDetail['tunTemp'] = 20
         self.dicMashDetail['spargeTemp'] = spargeT
         del self.listMash[f]
         self.listMash.insert(f, self.dicMashDetail)
@@ -2232,7 +2240,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
 #        print(self.dicMashDetail)
 
     def addMash(self) :
-        dicNewMash = {'name' : 'Nouveau profil', 'grainTemp' : '0', 'tunTemp' : '0', 'spargeTemp' : '0', 'ph' : '0', 'mashSteps' : [{'name' : 'Nouveau Palier', 'type' : 'Infusion', 'stepTime' : '0', 'stepTemp' : '0', 'stepVol' : '0'}]}
+        dicNewMash = {'name' : 'Nouveau profil', 'grainTemp' : '0', 'tunTemp' : '0', 'spargeTemp' : '78', 'ph' : '5.4', 'mashSteps' : [{'name' : 'Nouveau Palier', 'type' : 'Infusion', 'stepTime' : '0', 'stepTemp' : '0', 'stepVol' : '0'}]}
         self.listMash.append(dicNewMash)
         self.seeMash()
         self.listWidgetMashProfiles.setCurrentRow(len(self.listMash)-1)

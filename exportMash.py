@@ -43,9 +43,9 @@ class ExportMash :
 #            tunTemp.text = dicMash['tunTemp']
             tunTemp.text = '20'
             ph = ET.SubElement(mash, 'PH')
-            ph.text = dicMash['ph']
+            ph.text = str(dicMash['ph'])
             spargeTemp = ET.SubElement(mash, 'SPARGE_TEMP')
-            spargeTemp.text =dicMash['spargeTemp']
+            spargeTemp.text =str(dicMash['spargeTemp'])
             steps = ET.SubElement(mash, 'MASH_STEPS')
             
             listSteps = dicMash['mashSteps']
@@ -62,11 +62,12 @@ class ExportMash :
                 stepType = ET.SubElement(step, 'TYPE')
                 stepType.text = dicStep['type']
                 stepTemp = ET.SubElement(step, 'STEP_TEMP')
-                stepTemp.text = dicStep['stepTemp']
+                stepTemp.text = str(dicStep['stepTemp'])
                 stepTime = ET.SubElement(step, 'STEP_TIME')
-                stepTime.text = dicStep['stepTime']
+                stepTime.text = str(dicStep['stepTime'])
                 stepVol = ET.SubElement(step, 'INFUSE_AMOUNT')
-                stepVol.text = dicStep['stepVol']
+#                stepVol.text = dicStep['stepVol']
+                stepVol.text = '0'
           
             
             
