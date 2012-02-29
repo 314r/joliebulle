@@ -72,8 +72,8 @@ class DialogStepAdjust(QtGui.QDialog):
                 mashTemp = self.listTemp[i-2] 
             
             self.brewCalc.calcInfusionStep(self.currentRow-1, self.grainWeight, self.listVol, self.targetTemp, mashTemp, waterTemp)
-            print('ce qui est passé :',self.currentRow, self.grainWeight, self.listVol, self.targetTemp, mashTemp, waterTemp)
-            print('la liste des temperatures :', self.listTemp)
+#            print('ce qui est passé :',self.currentRow, self.grainWeight, self.listVol, self.targetTemp, mashTemp, waterTemp)
+#            print('la liste des temperatures :', self.listTemp)
             self.infuseVol = self.brewCalc.infuseVol
             self.ui.doubleSpinBoxInfuseAmount.blockSignals(True)
             self.ui.doubleSpinBoxInfuseAmount.setValue(float(self.infuseVol))
@@ -116,7 +116,7 @@ class DialogStepAdjust(QtGui.QDialog):
             #Tstrike = (Ttarget*(Vstrike+Vm) - (Vm*Tmash)) / Vstrike
             actualVol = sum(self.listVol[0:i])
             ratio = actualVol / (self.grainWeight/1000)
-            print('actualvol :', actualVol)
+#            print('actualvol :', actualVol)
             Vm = (self.grainWeight/1000)*(0.4+ratio)
             self.waterTemp = ((self.targetTemp*(self.ui.doubleSpinBoxInfuseAmount.value()+Vm)-(Vm*float(mashTemp))) / self.ui.doubleSpinBoxInfuseAmount.value()) + float(settings.conf.value("FudgeFactor"))
             self.ui.doubleSpinBoxWaterTemp.blockSignals(True)

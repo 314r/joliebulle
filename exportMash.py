@@ -37,9 +37,11 @@ class ExportMash :
             mashName = ET.SubElement(mash, 'NAME')
             mashName.text = dicMash['name']
             grainTemp = ET.SubElement(mash, 'GRAIN_TEMP')
-            grainTemp.text = dicMash['grainTemp']
+#            grainTemp.text = dicMash['grainTemp']
+            grainTemp.text = '20'
             tunTemp = ET.SubElement(mash, 'TUN_TEMP')
-            tunTemp.text = dicMash['tunTemp']
+#            tunTemp.text = dicMash['tunTemp']
+            tunTemp.text = '20'
             ph = ET.SubElement(mash, 'PH')
             ph.text = dicMash['ph']
             spargeTemp = ET.SubElement(mash, 'SPARGE_TEMP')

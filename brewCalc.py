@@ -64,7 +64,7 @@ class CalcBrewday :
         
     def calcGrainRetention(self, grainWeight) :
         grainRetentionRate = float(settings.conf.value("GrainRetention"))
-        self.grainRetention = grainRetentionRate * grainWeight
+        self.grainRetention = grainRetentionRate * grainWeight / 1000
         
     def calcInfusionStep(self, i, grainWeight, listVol, Ttarget, Tmash, Tstrike) :
         #Vm = Wgrain (0.4 + ratio)
@@ -89,6 +89,16 @@ class CalcBrewday :
 #        print('temp cible :',Ttarget)
         
         self.newRatio = (actualVol + self.infuseVol) / (float(grainWeight)/ 1000)
+        
+    def calcSpargeVol(self, listVol, preBoilVol, grainRetention) :
+#        print('listVol :', listVol)
+#        print('preBoil :', preBoilVol)
+#        print('preBoil :' ,grainRetention)
+        if (sum(listVol) - grainRetention) > preBoilVol :
+#            print('volume trop élevé')
+            self.spargeVol = 0
+        else :
+            self.spargeVol = preBoilVol - (sum(listVol) - grainRetention)
         
         
         

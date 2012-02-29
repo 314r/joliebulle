@@ -2325,6 +2325,9 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         self.tableWidgetStepsBrewday.setItem(0,3,QtGui.QTableWidgetItem("%.1f" %(self.brewCalc.strikeVol/(self.grainWeight/1000))))
         
         self.stepsListVol = listVol
+        
+        self.brewCalc.calcSpargeVol(self.stepsListVol, self.brewCalc.volPreBoil, self.brewCalc.grainRetention)
+#        print('volume de rinçage :', self.brewCalc.spargeVol)
             
         
     def tableWidgetStepsBrewday_currentRowChanged (self) :
@@ -2345,7 +2348,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
             self.brewdayCurrentStepTargetTemp = self.brewdayListTemp[i-1]
             
     def stepAdjustBrewday_closed (self, targetRatio, infuseAmount, waterTemp,listVol, currentRow, listTemp) :
-        print(targetRatio, infuseAmount, waterTemp,listVol, currentRow, listTemp)
+        print('liste :', targetRatio, infuseAmount, waterTemp,listVol, currentRow, listTemp)
         #on insère les nouvelles données dans la table
         self.tableWidgetStepsBrewday.setItem(currentRow,1,QtGui.QTableWidgetItem(str(infuseAmount)))
         self.tableWidgetStepsBrewday.setItem(currentRow,2,QtGui.QTableWidgetItem("%.1f" %(waterTemp)))
@@ -2354,6 +2357,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         listSteps = self.currentMash['mashSteps']
         
         i = currentRow
+        
 
         while i < len(listSteps) - 1 :
             i = i+1
@@ -2366,16 +2370,19 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
             else :
                 mashTemp = self.brewdayListTemp[i-2]
             self.brewCalc.calcInfusionStep(i-1, self.grainWeight, listVol, stepTemp, mashTemp, 90 )
-            listVol.append(self.brewCalc.infuseVol)
+#            listVol.append(self.brewCalc.infuseVol)
+            listVol[i] = self.brewCalc.infuseVol
             self.tableWidgetStepsBrewday.setItem(i,1,QtGui.QTableWidgetItem("%.1f" %(self.brewCalc.infuseVol)))
             self.tableWidgetStepsBrewday.setItem(i,3,QtGui.QTableWidgetItem("%.1f" %(self.brewCalc.newRatio)))
+            self.tableWidgetStepsBrewday.setItem(i,2,QtGui.QTableWidgetItem("%.1f" %(90)))
             
             
 
             
 #            print('température du moût', mashTemp)
             
-            
+        self.brewCalc.calcSpargeVol(self.stepsListVol, self.brewCalc.volPreBoil, self.brewCalc.grainRetention)
+#        print('volume de rinçage :', self.brewCalc.spargeVol)
 
                    
         
