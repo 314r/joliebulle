@@ -66,7 +66,7 @@ class CalcBrewday :
         grainRetentionRate = float(settings.conf.value("GrainRetention"))
         self.grainRetention = grainRetentionRate * grainWeight / 1000
         
-    def calcInfusionStep(self, i, grainWeight, listVol, Ttarget, Tmash, Tstrike) :
+    def calcInfusionStep(self, i, grainWeight, listVol, Ttarget, Tmash, Tstrike, stepType) :
         #Vm = Wgrain (0.4 + ratio)
         #Tstrike = (Ttarget*(Vstrike+Vm) - (Vm*Tmash)) / Vstrike
 
@@ -78,8 +78,14 @@ class CalcBrewday :
 #        Vstrike=((Ttarget*Vm) - (Vm * Tmash)) / (Tstrike - Ttarget)
         
         Tstrike = Tstrike - float(settings.conf.value("FudgeFactor"))
-        self.infuseVol = ((float(Ttarget)*Vm) - (Vm * float(Tmash))) / (Tstrike - float(Ttarget))
-        
+        if stepType == 'Infusion' :
+            self.infuseVol = ((float(Ttarget)*Vm) - (Vm * float(Tmash))) / (Tstrike - float(Ttarget))
+            self.newRatio = (actualVol + self.infuseVol) / (float(grainWeight)/ 1000)
+        elif stepType == 'Temperature' :
+            self.infuseVol = 0
+            self.newRatio = ratio
+        else :
+            print('type non pris en charge')
 #        print('actualvol :', actualVol)
 #        print('ratio :', ratio)
 #        print('vm',Vm)
@@ -88,7 +94,7 @@ class CalcBrewday :
 #        print('listvol :', listVol)
 #        print('temp cible :',Ttarget)
         
-        self.newRatio = (actualVol + self.infuseVol) / (float(grainWeight)/ 1000)
+            
         
     def calcSpargeVol(self, listVol, preBoilVol, grainRetention) :
 #        print('listVol :', listVol)

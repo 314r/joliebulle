@@ -71,7 +71,7 @@ class DialogStepAdjust(QtGui.QDialog):
             else :
                 mashTemp = self.listTemp[i-2] 
             
-            self.brewCalc.calcInfusionStep(self.currentRow-1, self.grainWeight, self.listVol, self.targetTemp, mashTemp, waterTemp)
+            self.brewCalc.calcInfusionStep(self.currentRow-1, self.grainWeight, self.listVol, self.targetTemp, mashTemp, waterTemp, 'Infusion')
 #            print('ce qui est passé :',self.currentRow, self.grainWeight, self.listVol, self.targetTemp, mashTemp, waterTemp)
 #            print('la liste des temperatures :', self.listTemp)
             self.infuseVol = self.brewCalc.infuseVol

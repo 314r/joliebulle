@@ -45,9 +45,9 @@ class DialogStep(QtGui.QDialog):
         if self.ui.comboBoxStepType.currentIndex() is 0 :
             self.stepType = self.trUtf8('''Infusion''')  
         elif self.ui.comboBoxStepType.currentIndex() is 1 :
-            self.stepType = self.trUtf8('''Température''') 
+            self.stepType = self.trUtf8('''Temperature''') 
         elif self.ui.comboBoxStepType.currentIndex() is 2 :
-            self.stepType = self.trUtf8('''Décoction''') 
+            self.stepType = self.trUtf8('''Decoction''') 
         self.stepTime = self.ui.doubleSpinBoxStepTime.value()
         self.stepTemp = self.ui.doubleSpinBoxStepTemp.value()
         self.stepVol = 0
