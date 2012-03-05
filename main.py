@@ -2272,8 +2272,18 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
     
         if self.radioButtonClassicBrew.isChecked() :
             self.labelNoSparge.hide()
+            self.labelSparge1.show()
+            self.labelSparge2.show()
+            self.labelSpargeTemp.show()
+            self.labelSpargeVol.show()            
         else :
             self.labelNoSparge.show()
+            self.labelSparge1.hide()
+            self.labelSparge2.hide()
+            self.labelSpargeTemp.hide()
+            self.labelSpargeVol.hide()
+            
+        self.labelNoDecoction.hide()
                 
         self.brewCalc.calcPreBoilVolume(self.volume, self.boil)
         print(self.brewCalc.volPreCool, self.brewCalc.volPreBoil)
@@ -2290,6 +2300,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         strikeStep = listSteps[0]
         strikeTargetTemp = strikeStep['stepTemp']
         strikeName = strikeStep['name']
+        strikeTime = strikeStep['stepTime']
         
         self.tableWidgetStepsBrewday.setRowCount(len(listSteps))
         
@@ -2317,7 +2328,8 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
                 stepName = step['name']
     #            stepVol =  float(step['stepVol'])
                 stepTemp = float(step['stepTemp'])
-                stepType= step['type']            
+                stepType= step['type']  
+                stepTime = step['stepTime']          
                 
                 listName.append(stepName)
                 self.brewdayListTemp.append(stepTemp)
@@ -2338,7 +2350,11 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
                     self.tableWidgetStepsBrewday.setItem(i,2,QtGui.QTableWidgetItem(str(90)))
                 elif stepType == 'Temperature' :
                     self.tableWidgetStepsBrewday.setItem(i,2,QtGui.QTableWidgetItem(str(0)))
-                self.tableWidgetStepsBrewday.setItem(i,3,QtGui.QTableWidgetItem("%.1f" %(self.brewCalc.newRatio)))          
+                else : 
+                    self.labelNoDecoction.show()
+                    
+                self.tableWidgetStepsBrewday.setItem(i,3,QtGui.QTableWidgetItem("%.1f" %(self.brewCalc.newRatio))) 
+                self.tableWidgetStepsBrewday.setItem(i,4,QtGui.QTableWidgetItem("%.1f" %(stepTemp) + "°C, " + stepTime +" min"))         
 
             
               
@@ -2346,6 +2362,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
             self.tableWidgetStepsBrewday.setItem(0,1,QtGui.QTableWidgetItem(str(self.brewCalc.strikeVol)))
             self.tableWidgetStepsBrewday.setItem(0,2,QtGui.QTableWidgetItem("%.1f" %(self.brewCalc.strikeTemp)))
             self.tableWidgetStepsBrewday.setItem(0,3,QtGui.QTableWidgetItem("%.1f" %(self.brewCalc.strikeVol/(self.grainWeight/1000))))
+            self.tableWidgetStepsBrewday.setItem(0,4,QtGui.QTableWidgetItem(strikeTargetTemp + "°C, " + strikeTime +" min"))
             
             self.stepsListVol = listVol
             
