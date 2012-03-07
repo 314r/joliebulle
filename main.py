@@ -793,7 +793,11 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         self.stackedWidget.setCurrentIndex(4)        
         self.actionVueEditeurToolBar.setChecked(False)
         self.actionVueBibliothequeToolBar.setChecked(False)
-        self.brewdayModeCalc()
+        if self.brewdayLock == 1 :
+            pass
+        else :
+            self.brewdayModeCalc()
+        
         
     def restoreDataBase(self) :
         
@@ -2049,6 +2053,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         self.mashName=None
         self.popMashCombo()
         self.comboBoxMashProfiles.setCurrentIndex(-1)
+        self.brewdayLock = 0
 
         
         
@@ -2269,6 +2274,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         
     def brewdayModeCalc(self) :
         self.labelWarningBiab.hide() 
+        self.brewdayLock = 1
     
         if self.radioButtonClassicBrew.isChecked() :
             self.labelNoSparge.hide()
