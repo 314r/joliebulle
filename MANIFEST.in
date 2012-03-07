@@ -1,4 +1,5 @@
 include base.py
+include brewCalc.py
 include densimetre_ui.py
 include editdivers.py
 include editgrain.py
@@ -10,9 +11,14 @@ include editorM_ui.py
 include editorY_ui.py
 include exportHTML.py
 include export.py
+include exportMash.py
 include globals.py
+include importmashXml.py
 include joliebulle_en.qm
 include main.py
+include mash.xml
+include mashEditor_ui.py
+include mashEditWindow.py
 include outilAlc.py
 include outilAlc_ui.py
 include outilDens.py
@@ -26,6 +32,10 @@ include preferences.py
 include preferences_ui.py
 include reader.py
 include settings.py
+include stepAdjust_ui.py
+include stepAdjustWindow.py
+include stepEditor_ui.py
+include stepEditWindow.py
 include database.xml
 include launch.sh
 include joliebulle.desktop
