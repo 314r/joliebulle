@@ -797,6 +797,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
             pass
         else :
             self.brewdayModeCalc()
+        print ("lock",self.brewdayLock)
         
         
     def restoreDataBase(self) :
@@ -1687,6 +1688,10 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         return AppWindow.nbreFer
                     
     def calculs_recette (self) :
+        
+        #on remet le verrou à 0, il va falloir recalculer en repassant en brewday mode
+        self.brewdayLock = 0
+    
         #Calculs sur les ingredients fermentescibles
         #GU = 383.89*equivSucre/volFinal *rendement
         #si extrait ou sucre ne pas tenir compte du rendement du brassage
@@ -2090,9 +2095,13 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
            self.comboBoxMashProfiles.addItem(name['name'])
            
     def mashComboChanged (self) :
+        #on remet le verrou à 0, il va falloir recalculer en repassant en brewday mode
+        self.brewdayLock = 0
         i =self.comboBoxMashProfiles.currentIndex()
         self.currentMash = self.mashProfilesBase.listMash[i]
         print(self.currentMash)
+        print("lock", self.brewdayLock)
+        
         
         
     def seeMash(self) :
@@ -2232,6 +2241,9 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         self.dlgMash.fields(self.dicMashDetail['name'],self.dicMashDetail['ph'],self.dicMashDetail['grainTemp'],self.dicMashDetail['tunTemp'],self.dicMashDetail['spargeTemp'])
         
     def mashReload(self,name,ph,grainT,tunT,spargeT) :
+        #on remet le verrou à 0, il va falloir recalculer en repassant en brewday mode
+        self.brewdayLock = 0
+        
         f = self.listWidgetMashProfiles.currentRow()
         self.dicMashDetail['name'] = name
         self.dicMashDetail['ph'] = ph
@@ -2292,9 +2304,9 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         self.labelNoDecoction.hide()
                 
         self.brewCalc.calcPreBoilVolume(self.volume, self.boil)
-        print(self.brewCalc.volPreCool, self.brewCalc.volPreBoil)
+        
         self.brewCalc.calcPreBoilSg(self.GU, self.volume)
-        print(self.brewCalc.preBoilSg)
+       
         
         self.labelPreBoilVol.setText("%.1f" %(self.brewCalc.volPreBoil) + " " + "L")
         self.labelPreBoilGravity.setText("%.3f" %(self.brewCalc.preBoilSg))
@@ -2302,6 +2314,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         
         listSteps = self.currentMash['mashSteps']
         spargeTemp = float(self.currentMash['spargeTemp'])
+#        print("la liste en breday mode", listSteps)
         
         strikeStep = listSteps[0]
         strikeTargetTemp = strikeStep['stepTemp']
@@ -2313,6 +2326,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
 #       si on n'est pas dans le cas d'un BIAB
         if self.radioButtonClassicBrew.isChecked() :
             self.brewCalc.calcStrikeTemp(strikeTargetTemp, 3)
+            print("la tempet envoyée ", strikeTargetTemp)
             print(self.brewCalc.strikeTemp)
             self.brewCalc.calcStrikeVol(self.grainWeight, 3)
             print(self.brewCalc.strikeVol)
