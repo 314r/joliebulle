@@ -797,6 +797,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
             pass
         else :
             self.brewdayModeCalc()
+        self.tableWidgetStepsBrewday.setCurrentCell(0,0)
         print ("lock",self.brewdayLock)
         
         
@@ -1054,6 +1055,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         self.dlgStepBrewday.setModal(True)
         self.dlgStepBrewday.show()
         self.dlgStepBrewday.setFields(self.brewdayCurrentStepTargetTemp, self.brewdayCurrentStepRatio, self.brewdayCurrentStepInfuseAmount, self.brewdayCurrentStepWaterTemp, self.grainWeight, self.stepsListVol, self.brewdayCurrentRow, self.brewdayListTemp, self.strikeTargetTemp)
+        print("envoyé !",self.brewdayCurrentStepTargetTemp,self.strikeTargetTemp )
         
     
         
@@ -2099,6 +2101,8 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         self.brewdayLock = 0
         i =self.comboBoxMashProfiles.currentIndex()
         self.currentMash = self.mashProfilesBase.listMash[i]
+        self.tableWidgetStepsBrewday_currentRowChanged()
+        
         print(self.currentMash)
         print("lock", self.brewdayLock)
         
@@ -2481,7 +2485,8 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         self.brewCalc.calcSpargeVol(self.stepsListVol, self.brewCalc.volPreBoil, self.brewCalc.grainRetention)
 #        print('volume de rinçage :', self.brewCalc.spargeVol)
 
-                   
+        self.tableWidgetStepsBrewday_currentRowChanged()
+        
         
     def printRecipe (self) :
         printer=QtGui.QPrinter()
