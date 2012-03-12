@@ -1054,6 +1054,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         self.dlgPref.show()
         
     def stepAdjustBrewday(self) :
+        self.tableWidgetStepsBrewday_currentRowChanged()
         self.dlgStepBrewday.setModal(True)
         self.dlgStepBrewday.show()
         self.dlgStepBrewday.setFields(self.brewdayCurrentStepTargetTemp, self.brewdayCurrentStepRatio, self.brewdayCurrentStepInfuseAmount, self.brewdayCurrentStepWaterTemp, self.grainWeight, self.stepsListVol, self.brewdayCurrentRow, self.brewdayListTemp, self.strikeTargetTemp)
@@ -2388,7 +2389,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
             self.tableWidgetStepsBrewday.setItem(0,1,QtGui.QTableWidgetItem(str(self.brewCalc.strikeVol)))
             self.tableWidgetStepsBrewday.setItem(0,2,QtGui.QTableWidgetItem("%.1f" %(self.brewCalc.strikeTemp)))
             self.tableWidgetStepsBrewday.setItem(0,3,QtGui.QTableWidgetItem("%.1f" %(self.brewCalc.strikeVol/(self.grainWeight/1000))))
-            self.tableWidgetStepsBrewday.setItem(0,4,QtGui.QTableWidgetItem(strikeTargetTemp + "°C, " + strikeTime +" min"))
+            self.tableWidgetStepsBrewday.setItem(0,4,QtGui.QTableWidgetItem(str(strikeTargetTemp) + "°C, " + str(strikeTime) +" min"))
             
             self.stepsListVol = listVol
             
@@ -2420,6 +2421,8 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
                     self.labelWarningBiab.show()
                 else :
                     pass
+                    
+        
                       
                 
             
