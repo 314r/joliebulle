@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'reader.ui'
 #
-# Created: Mon Mar  5 18:59:57 2012
+# Created: Mon Mar 12 15:51:14 2012
 #      by: PyQt4 UI code generator 4.9.1
 #
 # WARNING! All changes made in this file will be lost!
@@ -240,6 +240,8 @@ class Ui_MainWindow(object):
         self.labelBoil.setObjectName(_fromUtf8("labelBoil"))
         self.formLayout_4.setWidget(1, QtGui.QFormLayout.LabelRole, self.labelBoil)
         self.spinBoxBoil = QtGui.QSpinBox(self.widgetProfile)
+        self.spinBoxBoil.setMaximum(999)
+        self.spinBoxBoil.setSingleStep(10)
         self.spinBoxBoil.setObjectName(_fromUtf8("spinBoxBoil"))
         self.formLayout_4.setWidget(1, QtGui.QFormLayout.FieldRole, self.spinBoxBoil)
         self.label_2Volume = QtGui.QLabel(self.widgetProfile)
@@ -266,6 +268,8 @@ class Ui_MainWindow(object):
         self.label.setObjectName(_fromUtf8("label"))
         self.formLayout_5.setWidget(0, QtGui.QFormLayout.LabelRole, self.label)
         self.doubleSpinBoxVolPre = QtGui.QDoubleSpinBox(self.widgetVol)
+        self.doubleSpinBoxVolPre.setMaximum(999.0)
+        self.doubleSpinBoxVolPre.setSingleStep(10.0)
         self.doubleSpinBoxVolPre.setObjectName(_fromUtf8("doubleSpinBoxVolPre"))
         self.formLayout_5.setWidget(0, QtGui.QFormLayout.FieldRole, self.doubleSpinBoxVolPre)
         self.labelSG = QtGui.QLabel(self.widgetVol)
@@ -681,7 +685,7 @@ class Ui_MainWindow(object):
         self.toolBar.setObjectName(_fromUtf8("toolBar"))
         MainWindow.addToolBar(QtCore.Qt.TopToolBarArea, self.toolBar)
         self.menuBar = QtGui.QMenuBar(MainWindow)
-        self.menuBar.setGeometry(QtCore.QRect(0, 0, 1293, 23))
+        self.menuBar.setGeometry(QtCore.QRect(0, 0, 1293, 20))
         self.menuBar.setObjectName(_fromUtf8("menuBar"))
         self.menuFichier = QtGui.QMenu(self.menuBar)
         self.menuFichier.setObjectName(_fromUtf8("menuFichier"))

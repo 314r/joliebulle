@@ -403,6 +403,8 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         self.connect(self.actionPaliers, QtCore.SIGNAL("triggered()"), self.outilPaliers)
         self.connect(self.actionPreferences, QtCore.SIGNAL("triggered()"), self.dialogPreferences)
         
+        self.spinBoxBoil.valueChanged.connect(self.unlockBrewdayMode)
+        
         #Les vues
         #####################################################################################
         #####################################################################################
@@ -2307,7 +2309,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
             
         self.labelNoDecoction.hide()
                 
-        self.brewCalc.calcPreBoilVolume(self.volume, self.boil)
+        self.brewCalc.calcPreBoilVolume(self.volume, self.spinBoxBoil.value())
         
         self.brewCalc.calcPreBoilSg(self.GU, self.volume)
        
@@ -2486,6 +2488,9 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
 #        print('volume de rinçage :', self.brewCalc.spargeVol)
 
         self.tableWidgetStepsBrewday_currentRowChanged()
+        
+    def unlockBrewdayMode (self) :  
+        self.brewdayLock = 0 
         
         
     def printRecipe (self) :
