@@ -2529,7 +2529,10 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
             levures_texte = levures_texte + self.liste_levuresDetail[l-1] + "<br/>"
         
         notes_texte = "<h2>Notes</h2>"
-        notes_texte = notes_texte + self.recipeNotes + "<br/>"
+        try :
+            notes_texte = notes_texte + self.recipeNotes + "<br/>"
+        except :
+            notes_texte = notes_texte + "pas de notes" + "<br/>"
         
         texte = info_texte + grains_texte + houblons_texte + divers_texte + levures_texte + notes_texte
         doc=QtGui.QTextDocument()
