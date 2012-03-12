@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'reader.ui'
 #
-# Created: Mon Mar 12 15:51:14 2012
+# Created: Mon Mar 12 16:32:02 2012
 #      by: PyQt4 UI code generator 4.9.1
 #
 # WARNING! All changes made in this file will be lost!
@@ -685,7 +685,7 @@ class Ui_MainWindow(object):
         self.toolBar.setObjectName(_fromUtf8("toolBar"))
         MainWindow.addToolBar(QtCore.Qt.TopToolBarArea, self.toolBar)
         self.menuBar = QtGui.QMenuBar(MainWindow)
-        self.menuBar.setGeometry(QtCore.QRect(0, 0, 1293, 20))
+        self.menuBar.setGeometry(QtCore.QRect(0, 0, 1293, 23))
         self.menuBar.setObjectName(_fromUtf8("menuBar"))
         self.menuFichier = QtGui.QMenu(self.menuBar)
         self.menuFichier.setObjectName(_fromUtf8("menuFichier"))
@@ -830,7 +830,7 @@ class Ui_MainWindow(object):
         self.checkBoxIng.setText(QtGui.QApplication.translate("MainWindow", "Ajuster les ingrédients (verrouiller le profil)", None, QtGui.QApplication.UnicodeUTF8))
         self.pushButtonChangeIngredients.setText(QtGui.QApplication.translate("MainWindow", "Ajouter/Enlever", None, QtGui.QApplication.UnicodeUTF8))
         self.pushButtonMashDetails.setText(QtGui.QApplication.translate("MainWindow", "Détails", None, QtGui.QApplication.UnicodeUTF8))
-        self.pushButtonBrewdayMode.setText(QtGui.QApplication.translate("MainWindow", "Brewday Mode", None, QtGui.QApplication.UnicodeUTF8))
+        self.pushButtonBrewdayMode.setText(QtGui.QApplication.translate("MainWindow", "Mode Brassage", None, QtGui.QApplication.UnicodeUTF8))
         self.pushButtonAjouter_2.setText(QtGui.QApplication.translate("MainWindow", "Ajouter Grain", None, QtGui.QApplication.UnicodeUTF8))
         self.pushButtonAjouterH.setText(QtGui.QApplication.translate("MainWindow", "Ajouter Houblon", None, QtGui.QApplication.UnicodeUTF8))
         self.pushButtonAjouterM.setText(QtGui.QApplication.translate("MainWindow", "Ajouter Divers", None, QtGui.QApplication.UnicodeUTF8))
