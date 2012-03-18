@@ -769,6 +769,17 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
             mash.copy(mash_root, mash_file)
         else :
             pass
+        # on configure des valeurs par défaut
+        if not settings.conf.contains("BoilOffRate") :
+            settings.conf.setValue("BoilOffRate", 10)
+        if not settings.conf.contains("CoolingLoss") :
+            settings.conf.setValue("CoolingLoss", 5)
+        if not settings.conf.contains("GrainTemp") :
+            settings.conf.setValue("GrainTemp", 20)
+        if not settings.conf.contains("FudgeFactor") :
+            settings.conf.setValue("FudgeFactor", 1.7)
+        if not settings.conf.contains("GrainRetention") :
+            settings.conf.setValue("GrainRetention", 1)
     
         
     def switchToEditor(self) :
