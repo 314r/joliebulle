@@ -1,6 +1,6 @@
 
 #JolieBulle 2.4
-#Copyright (C) 2010-2011 Pierre Tavares
+#Copyright (C) 2010-2012 Pierre Tavares
 
 #This program is free software; you can redistribute it and/or
 #modify it under the terms of the GNU General Public License
