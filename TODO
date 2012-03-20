@@ -4,5 +4,6 @@ Revoir design de la page d'édition des profils. OK
 verif que brewday mode fonctionne apres création d'un profil ou modif. OK
 nouveaux parametres de brassage en cas d'upgrade. OK
 mettre un fichier mash.xml propre.
-Mettre à jour setup.py
+Mettre à jour setup.py.
+Disable brewday mode push button.
 
