@@ -2,6 +2,7 @@
 COPYING
 README
 base.py
+brewCalc.py
 database.xml
 densimetre_ui.py
 editdivers.py
@@ -14,12 +15,17 @@ editorM_ui.py
 editorY_ui.py
 export.py
 exportHTML.py
+exportMash.py
 globals.py
+importMashXml.py
 joliebulle
 joliebulle.desktop
 joliebulle_en.qm
 launch.sh
 main.py
+mash.xml
+mashEditWindow.py
+mashEditor_ui.py
 outilAlc.py
 outilAlc_ui.py
 outilDens.py
@@ -35,6 +41,10 @@ reader.py
 settings.py
 setup.cfg
 setup.py
+stepAdjustWindow.py
+stepAdjust_ui.py
+stepEditWindow.py
+stepEditor_ui.py
 Images/add.png
 Images/application-exit.png
 Images/bulle.png
