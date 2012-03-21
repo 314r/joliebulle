@@ -466,8 +466,15 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         self.popMashCombo()
         self.comboBoxMashProfiles.setCurrentIndex(-1)
         self.comboBoxMashProfiles.currentIndexChanged.connect(self.mashComboChanged)
+
         
         self.pushButtonSaveProfile.clicked.connect(self.saveProfile)
+
+        ##############################################################################
+        # Le bouton brewday mode
+        ################################################################################
+
+        self.pushButtonBrewdayMode.setEnabled(False)
         
         #On connecte ici les signaux émits à la fermeture des fenêtres d'édition de la base
         #########################################################################################
@@ -2113,9 +2120,11 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
     def mashComboChanged (self) :
         #on remet le verrou à 0, il va falloir recalculer en repassant en brewday mode
         self.brewdayLock = 0
+        self.enableBrewdayMode()
         i =self.comboBoxMashProfiles.currentIndex()
         self.currentMash = self.mashProfilesBase.listMash[i]
         self.tableWidgetStepsBrewday_currentRowChanged()
+        
         
         print(self.currentMash)
         print("lock", self.brewdayLock)
@@ -2505,6 +2514,12 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         
     def unlockBrewdayMode (self) :  
         self.brewdayLock = 0 
+
+    def enableBrewdayMode(self) :
+        if self.comboBoxMashProfiles.currentIndex() == -1 :
+            self.pushButtonBrewdayMode.setEnabled(False)
+        else :
+            self.pushButtonBrewdayMode.setEnabled(True)
         
         
     def printRecipe (self) :
