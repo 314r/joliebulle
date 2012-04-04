@@ -14,6 +14,7 @@ if platform == 'win32':
     recettes_dir = settings.conf.value("pathWin32", os.path.join(os.path.expanduser("~"), "AppData", "Local", "joliebulle", "recettes"))
     database_file = os.path.join(os.path.expanduser("~"), "AppData", "Local", "joliebulle", "database.xml")
     database_root = 'database.xml'
+    mash_root = 'mash.xml'
     mash_file = os.path.join(os.path.expanduser("~"), "AppData", "Local", "joliebulle", "mash.xml")
     database_root = 'mash.xml'
 else:
