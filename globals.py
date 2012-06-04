@@ -16,7 +16,7 @@ if platform == 'win32':
     database_root = 'database.xml'
     mash_root = 'mash.xml'
     mash_file = os.path.join(os.path.expanduser("~"), "AppData", "Local", "joliebulle", "mash.xml")
-    database_root = 'mash.xml'
+    
 else:
     home_dir = os.path.expanduser("~")
     config_dir = os.path.join(os.path.expanduser("~"), ".config", "joliebulle")
