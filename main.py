@@ -347,6 +347,9 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         
 
     def __init__(self, parent = None):
+
+        
+
         QtGui.QMainWindow.__init__(self, parent)
         self.setupUi(self)
         self.settings = Settings()
@@ -594,6 +597,16 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         self.nouvelle()
  
         self.widgetIngredients.hide()
+
+
+        
+        argumentsList=QtGui.QApplication.arguments()
+        if len(argumentsList) > 1 :
+            print("le chemin:",argumentsList[1])
+            recipePath= argumentsList[1]
+            self.openRecipeFile(recipePath)
+        else:
+            pass
         
     #Une fonction qui gère l'aperçu des couleurs. 
     #Contient un tupple avec plusieurs références de couleurs, classées par rang selon la valeur SRM.
@@ -1868,7 +1881,17 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
             self.calculs_recette()
             self.MVC()
             self.switchToEditor()
-        
+       
+    def openRecipeFile(self,filePath):
+        self.s = filePath
+        AppWindow.nbreFer = 0
+        AppWindow.nbreHops = 0
+        AppWindow.nbreDivers = 0
+        self.nouvelle()
+        self.importBeerXML()
+        self.calculs_recette()
+        self.MVC()
+        self.switchToEditor()
 
     
     def about(self) : 
@@ -2574,7 +2597,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         if dialog.exec_() == True:
             doc.print_(printer)
     
-        
+    
         
 
 if __name__ == "__main__":
@@ -2587,8 +2610,7 @@ if __name__ == "__main__":
     #~ translator.load(("qt_") +locale, QtCore.QLibraryInfo.location(QtCore.QLibraryInfo.TranslationsPath))
     translator.load('joliebulle_' + locale)
     app.installTranslator(translator)
-    
-        
+
     main_window = AppWindow()
     main_window.show()
 
