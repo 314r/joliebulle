@@ -599,14 +599,30 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         self.widgetIngredients.hide()
 
 
-        
+        # print("argv:",sys.argv)
+
+##############################################################################################################
+######## Des essais    ########################################################################################
+
+
         argumentsList=QtGui.QApplication.arguments()
         if len(argumentsList) > 1 :
+            print("la liste d'arguments:",argumentsList)
             print("le chemin:",argumentsList[1])
-            recipePath= argumentsList[1]
-            self.openRecipeFile(recipePath)
+            # for part in argumentsList :
+            #     recipePath=recipePath + " " + part
+            try:
+                recipePath= argumentsList[1]
+                for part in argumentsList[2:] :
+                    recipePath= recipePath +" " + part
+                
+                self.openRecipeFile(recipePath)
+            except :
+                pass
         else:
             pass
+########################################################################################################################
+####################################################################################################################
         
     #Une fonction qui gère l'aperçu des couleurs. 
     #Contient un tupple avec plusieurs références de couleurs, classées par rang selon la valeur SRM.
