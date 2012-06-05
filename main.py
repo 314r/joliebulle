@@ -601,8 +601,8 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
 
         # print("argv:",sys.argv)
 
-##############################################################################################################
-######## Des essais    ########################################################################################
+###################################################################################################
+######## gestion des arguments au lancement du programme  #########################################
 
 
         argumentsList=QtGui.QApplication.arguments()
@@ -621,6 +621,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
                 pass
         else:
             pass
+            
 ########################################################################################################################
 ####################################################################################################################
         
@@ -2539,7 +2540,10 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
             listVol[i] = self.brewCalc.infuseVol
             self.tableWidgetStepsBrewday.setItem(i,1,QtGui.QTableWidgetItem("%.1f" %(self.brewCalc.infuseVol)))
             self.tableWidgetStepsBrewday.setItem(i,3,QtGui.QTableWidgetItem("%.1f" %(self.brewCalc.newRatio)))
-            self.tableWidgetStepsBrewday.setItem(i,2,QtGui.QTableWidgetItem("%.1f" %(90)))
+            if stepType == 'Infusion' :
+                self.tableWidgetStepsBrewday.setItem(i,2,QtGui.QTableWidgetItem("%.1f" %(90)))
+            else :
+                self.tableWidgetStepsBrewday.setItem(i,2,QtGui.QTableWidgetItem("%.1f" %(0)))
             
             
 
