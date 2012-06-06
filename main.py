@@ -1165,7 +1165,14 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         
         self.liste_houblons.append(self.base.liste_houblons[i])
         self.liste_hAmount.append(0)
-        self.liste_hForm.append(self.trUtf8('Feuille'))
+        if self.base.liste_hForm[i] == "Plug" :
+            self.liste_hForm.append(self.trUtf8('''Cône'''))
+        elif self.base.liste_hForm[i] == "Leaf" :
+            self.liste_hForm.append(self.trUtf8('''Feuille'''))
+        elif self.base.liste_hForm[i] == "Pellet" :
+            self.liste_hForm.append(self.trUtf8('''Pellet'''))
+        else :
+            self.liste_hForm.append(self.trUtf8('''Cône'''))
         self.liste_hTime.append(0)
         self.liste_hAlpha.append(self.base.liste_hAlpha[i])
         self.liste_hUse.append(self.trUtf8('''Ébullition'''))

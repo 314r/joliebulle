@@ -38,7 +38,7 @@ class DialogStep(QtGui.QDialog):
         self.ui.doubleSpinBoxStepTime.setValue(float(stepTime))
         self.ui.doubleSpinBoxStepTemp.setValue(float(stepTemp))
 #        self.ui.doubleSpinBoxStepVol.setValue(float(stepVol))
-        print("et le type eeeeest :", stepType)
+        
         
         
     def valueChanged (self) :
