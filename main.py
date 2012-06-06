@@ -1130,8 +1130,8 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         f = AppWindow.nbreFer
         i=self.comboBox.currentIndex()
         
-        item = QtGui.QStandardItem(self.base.liste_ingr[i])
-        item_fAmount = QtGui.QStandardItem(0)
+        # item = QtGui.QStandardItem(self.base.liste_ingr[i])
+        # item_fAmount = QtGui.QStandardItem(0)
         self.modele.insertRow(f)
 
         self.liste_ingr.append(self.base.liste_ingr[i])
@@ -1152,12 +1152,12 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         h = AppWindow.nbreHops
         i = self.comboBoxH.currentIndex()
         
-        itemH = QtGui.QStandardItem(self.base.liste_houblons[i])
-        item_hAmount = QtGui.QStandardItem(0)
-        item_hForm = QtGui.QStandardItem(self.base.liste_hForm[i])
-        item_hTime = QtGui.QStandardItem(0)
-        item_hAlpha = QtGui.QStandardItem(self.base.liste_hAlpha[i])
-        item_hUse = QtGui.QStandardItem(self.trUtf8('''Ébullition'''))
+        # itemH = QtGui.QStandardItem(self.base.liste_houblons[i])
+        # item_hAmount = QtGui.QStandardItem(0)
+        # item_hForm = QtGui.QStandardItem(self.base.liste_hForm[i])
+        # item_hTime = QtGui.QStandardItem(0)
+        # item_hAlpha = QtGui.QStandardItem(self.base.liste_hAlpha[i])
+        # item_hUse = QtGui.QStandardItem(self.trUtf8('''Ébullition'''))
         
         self.modele.insertRow(f+h)
         
@@ -1191,11 +1191,11 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         
         i = self.comboBoxM.currentIndex()
         
-        itemD = QtGui.QStandardItem(self.base.liste_divers[i])
-        item_dAmount = QtGui.QStandardItem(0)
-        item_dType = QtGui.QStandardItem(self.base.liste_dType[i])
-        item_dTime = QtGui.QStandardItem(0)
-        item_dUse = QtGui.QStandardItem(self.trUtf8('''Ébullition'''))
+        # itemD = QtGui.QStandardItem(self.base.liste_divers[i])
+        # item_dAmount = QtGui.QStandardItem(0)
+        # item_dType = QtGui.QStandardItem(self.base.liste_dType[i])
+        # item_dTime = QtGui.QStandardItem(0)
+        # item_dUse = QtGui.QStandardItem(self.trUtf8('''Ébullition'''))
         
         self.modele.insertRow(f+h+m)
         
@@ -1221,12 +1221,12 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         
         i = self.comboBoxY.currentIndex()
         
-        itemY = QtGui.QStandardItem(self.base.liste_levures[i])
-        item_lForm = QtGui.QStandardItem(self.base.liste_lForm[i])
-        item_lLabo = QtGui.QStandardItem(self.base.liste_lLabo[i])
-        item_lProdid = QtGui.QStandardItem(self.base.liste_lProdid[i])
-        item_levureAtten = QtGui.QStandardItem(self.base.liste_levureAtten[i])
-        item_levuresDetail =QtGui.QStandardItem(self.base.liste_levuresDetail[i])
+        # itemY = QtGui.QStandardItem(self.base.liste_levures[i])
+        # item_lForm = QtGui.QStandardItem(self.base.liste_lForm[i])
+        # item_lLabo = QtGui.QStandardItem(self.base.liste_lLabo[i])
+        # item_lProdid = QtGui.QStandardItem(self.base.liste_lProdid[i])
+        # item_levureAtten = QtGui.QStandardItem(self.base.liste_levureAtten[i])
+        # item_levuresDetail =QtGui.QStandardItem(self.base.liste_levuresDetail[i])
         
         self.modele.insertRow(f+h+m+l)
         
