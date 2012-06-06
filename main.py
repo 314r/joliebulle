@@ -2337,6 +2337,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         self.listWidgetSteps.clear() 
         
     def mashRejected (self) :
+        self.mashProfilesBase.importBeerXML()
         self.switchToEditor()
         
     def mashAccepted (self) :
