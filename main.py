@@ -2334,6 +2334,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         i = self.listWidgetMashProfiles.currentRow()
         del self.listMash[i]
         self.seeMash()
+        self.listWidgetSteps.clear() 
         
     def mashRejected (self) :
         self.switchToEditor()
