@@ -352,6 +352,38 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
 
         QtGui.QMainWindow.__init__(self, parent)
         self.setupUi(self)
+
+        bouton1=QtGui.QPushButton("Bibliothèque")
+        bouton2=QtGui.QPushButton("Editeur")
+        bouton3=QtGui.QPushButton("Brassage")
+
+        left_spacer = QtGui.QWidget()
+        left_spacer.setSizePolicy(QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Expanding)
+
+        right_spacer = QtGui.QWidget()
+        right_spacer.setSizePolicy(QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Expanding)
+
+
+        monLayout=QtGui.QHBoxLayout()
+
+        self.toolBar.addWidget(left_spacer)
+        
+        
+        monLayout.addWidget(bouton1)
+        monLayout.addWidget(bouton2)
+        monLayout.addWidget(bouton3)
+        
+       
+
+        self.widget89=QtGui.QWidget()
+        
+
+        self.widget89.setLayout(monLayout)
+        self.toolBar.addWidget(self.widget89)
+        self.toolBar.addWidget(right_spacer)
+
+       
+
         self.settings = Settings()
         self.initRep()
         self.dlgEditG = Dialog(self)
