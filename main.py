@@ -353,9 +353,26 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         QtGui.QMainWindow.__init__(self, parent)
         self.setupUi(self)
 
-        bouton1=QtGui.QPushButton("Bibliothèque")
-        bouton2=QtGui.QPushButton("Editeur")
-        bouton3=QtGui.QPushButton("Brassage")
+#####################################################################################################
+#####################################################################################################
+
+        self.buttonLibrary=QtGui.QPushButton("Bibliothèque")
+        self.buttonLibrary.setCheckable(True)
+        self.buttonEditor=QtGui.QPushButton("Editeur")
+        self.buttonEditor.setCheckable(True)
+        self.buttonBrewday=QtGui.QPushButton("Brassage")
+        self.buttonBrewday.setCheckable(True)
+
+        self.buttonMenu=QtGui.QPushButton("")
+        self.buttonMenu.setIcon(QtGui.QIcon("Images/config.png"))
+        self.buttonMenu.setIconSize(QtCore.QSize(24,24))
+        self.buttonMenu.setFlat(True)
+
+        self.buttonSave=QtGui.QPushButton("")
+        self.buttonSave.setIcon(QtGui.QIcon("Images/save.png"))
+        self.buttonSave.setIconSize(QtCore.QSize(24,24))
+        self.buttonSave.setFlat(True)
+        
 
         left_spacer = QtGui.QWidget()
         left_spacer.setSizePolicy(QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Expanding)
@@ -363,26 +380,67 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         right_spacer = QtGui.QWidget()
         right_spacer.setSizePolicy(QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Expanding)
 
-
         monLayout=QtGui.QHBoxLayout()
 
+        self.toolBar.addWidget(self.buttonSave)
         self.toolBar.addWidget(left_spacer)
         
         
-        monLayout.addWidget(bouton1)
-        monLayout.addWidget(bouton2)
-        monLayout.addWidget(bouton3)
+        monLayout.addWidget(self.buttonLibrary)
+        monLayout.addWidget(self.buttonEditor)
+        monLayout.addWidget(self.buttonBrewday)
         
        
 
-        self.widget89=QtGui.QWidget()
+        self.widgetToolBar=QtGui.QWidget()
         
 
-        self.widget89.setLayout(monLayout)
-        self.toolBar.addWidget(self.widget89)
+        self.widgetToolBar.setLayout(monLayout)
+        self.toolBar.addWidget(self.widgetToolBar)
         self.toolBar.addWidget(right_spacer)
+        self.toolBar.addWidget(self.buttonMenu)
 
        
+        generalMenu = QtGui.QMenu()
+        # le menu fichier
+        menuFile=generalMenu.addMenu('''Fichier''')
+        menuFile.addAction(self.actionOuvrir_2)
+        menuFile.addAction(self.actionNouvelle_recette)
+        menuFile.addAction(self.actionRecharger)
+        menuFile.addAction(self.actionImprimer)
+        menuFile.addAction(self.actionEnregistrer)
+        menuFile.addAction(self.actionEnregistrer_Sous)
+        menuFile.addAction(self.actionExporterHtml)
+        menuFile.addAction(self.actionQuitter_2)
+
+        # le menu ingredients
+        menuIngredients=generalMenu.addMenu('''Ingrédients''')
+        menuIngredients.addAction(self.actionEditGrains)
+        menuIngredients.addAction(self.actionEditHoublons)
+        menuIngredients.addAction(self.actionEditDivers)
+        menuIngredients.addAction(self.actionEditLevures)
+        menuIngredients.addAction(self.actionRestaurerIngredients)
+
+        # le menu outils
+        menuTools=generalMenu.addMenu('''Outils''')
+        menuTools.addAction(self.actionCorrectionDens)
+        menuTools.addAction(self.actionCalculAlc)
+        menuTools.addAction(self.actionDilution)
+        menuTools.addAction(self.actionEvaporation)
+        menuTools.addAction(self.actionPaliers)
+
+
+        generalMenu.addAction(self.actionPreferences)
+        self.buttonMenu.setMenu(generalMenu)
+
+######################################################################################
+######################################################################################
+
+
+
+
+
+
 
         self.settings = Settings()
         self.initRep()
@@ -448,6 +506,11 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         
         self.connect(self.actionVueEditeurToolBar, QtCore.SIGNAL("triggered()"), self.switchToEditor)
         self.connect(self.actionVueBibliothequeToolBar, QtCore.SIGNAL("triggered()"), self.switchToLibrary)
+
+        self.connect(self.buttonEditor, QtCore.SIGNAL("clicked()"),self.switchToEditor)
+        self.connect(self.buttonLibrary, QtCore.SIGNAL("clicked()"), self.switchToLibrary)
+        self.connect(self.buttonBrewday, QtCore.SIGNAL("clicked()"), self.switchToBrewday)
+
         
         #############################################################################################
         #############################################################################################
@@ -855,26 +918,41 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         self.stackedWidget.setCurrentIndex(0)
         self.actionVueEditeurToolBar.setChecked(True)
         self.actionVueBibliothequeToolBar.setChecked(False)
+        self.buttonEditor.setChecked(True)
+        self.buttonLibrary.setChecked(False)
+        self.buttonBrewday.setChecked(False)
         
     def switchToLibrary(self) :
         self.stackedWidget.setCurrentIndex(1)        
         self.actionVueEditeurToolBar.setChecked(False)
         self.actionVueBibliothequeToolBar.setChecked(True)
+        self.buttonEditor.setChecked(False)
+        self.buttonLibrary.setChecked(True)
+        self.buttonBrewday.setChecked(False)
         
     def switchToNotes(self) :
         self.stackedWidget.setCurrentIndex(2)        
         self.actionVueEditeurToolBar.setChecked(False)
         self.actionVueBibliothequeToolBar.setChecked(False)
+        self.buttonEditor.setChecked(False)
+        self.buttonLibrary.setChecked(False)
+        self.buttonBrewday.setChecked(False)
         
     def switchToMash(self) :
         self.stackedWidget.setCurrentIndex(3)        
         self.actionVueEditeurToolBar.setChecked(False)
         self.actionVueBibliothequeToolBar.setChecked(False)
+        self.buttonEditor.setChecked(False)
+        self.buttonLibrary.setChecked(False)
+        self.buttonBrewday.setChecked(False)
         
     def switchToBrewday(self) :
         self.stackedWidget.setCurrentIndex(4)        
         self.actionVueEditeurToolBar.setChecked(False)
         self.actionVueBibliothequeToolBar.setChecked(False)
+        self.buttonEditor.setChecked(False)
+        self.buttonLibrary.setChecked(False)
+        self.buttonBrewday.setChecked(True)
         if self.brewdayLock == 1 :
             pass
         else :
