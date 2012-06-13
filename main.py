@@ -53,6 +53,7 @@ from globals import *
 
 
 
+
 import xml.etree.ElementTree as ET
 
 class IngDelegate(QtGui.QItemDelegate):
@@ -646,6 +647,19 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         self.listViewBiblio.setContextMenuPolicy(QtCore.Qt.CustomContextMenu) 
         self.connect(self.listViewBiblio, QtCore.SIGNAL("customContextMenuRequested(const QPoint &)"), self.menuBiblio)
         #self.listViewBiblio.setEditTriggers(QtGui.QAbstractItemView.SelectedClicked | QtGui.QAbstractItemView.AnyKeyPressed) 
+
+
+        self.treeViewBiblio.setModel(self.modeleBiblio)
+        self.treeViewBiblio.setRootIndex(self.modeleBiblio.index(recettes_dir))
+        self.treeViewBiblio.setColumnHidden(1,True)
+        self.treeViewBiblio.setColumnHidden(2,True)
+        self.treeViewBiblio.setColumnHidden(3,True)
+
+        self.webViewBiblio.setHtml('''<html><p>hello world</p></html>''')
+        self.connect(self.treeViewBiblio, QtCore.SIGNAL("doubleClicked(const QModelIndex &)"), self.selectionRecette2)
+        self.connect(self.treeViewBiblio, QtCore.SIGNAL("clicked(const QModelIndex &)"), self.viewRecipeBiblio)
+
+        self.pushButtonEditCurrentRecipe.clicked.connect(self.editCurrentRecipe)
         ############################################################################################################################
         ############################################################################################################################
         
@@ -766,14 +780,13 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
     def selectionRecette(self):
         selection = self.listViewBiblio.selectionModel()
         self.indexRecette = selection.currentIndex()
+
         if self.modeleBiblio.isDir(self.indexRecette) == True :
             self.navFolder()
-            
         
         else :
 
             self.chemin =self.modeleBiblio.filePath (self.indexRecette)
-            print(self.chemin)
             self.purge()
             
             self.s = self.chemin
@@ -784,6 +797,54 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
             self.stackedWidget.setCurrentIndex(0)
             self.actionVueEditeurToolBar.setChecked(True)
             self.actionVueBibliothequeToolBar.setChecked(False)
+
+    def selectionRecette2(self):
+        selection = self.treeViewBiblio.selectionModel()
+        self.indexRecette = selection.currentIndex()
+
+        self.chemin =self.modeleBiblio.filePath (self.indexRecette)
+        
+        self.purge()
+        
+        self.s = self.chemin
+        
+        self.importBeerXML()
+        self.calculs_recette()
+        self.MVC()
+        self.stackedWidget.setCurrentIndex(0)
+        self.actionVueEditeurToolBar.setChecked(True)
+        self.actionVueBibliothequeToolBar.setChecked(False)    
+
+    def viewRecipeBiblio(self) :
+        selection = self.treeViewBiblio.selectionModel()
+        self.indexRecette = selection.currentIndex()
+
+        self.chemin =self.modeleBiblio.filePath (self.indexRecette)
+        
+        self.purge()
+        
+        self.s = self.chemin
+        
+        self.importBeerXML()
+        self.calculs_recette()
+        exp = ExportHTML()
+        exp.exportHtml(self.nomRecette,self.styleRecette, self.volume, self.boil, AppWindow.nbreFer, self.liste_ingr, self.liste_fAmount, AppWindow.nbreHops, self.liste_houblons, self.liste_hAlpha, self.liste_hForm, self.liste_hAmount, self.liste_hTime, AppWindow.nbreDivers, self.liste_divers, self.liste_dType, self.liste_dAmount, self.liste_dTime, self.nbreLevures, self.liste_levuresDetail,self.rendement, self.OG, self.FG, self.EBC, self.ibuTot ,self.ABV, self.recipeNotes)
+        exp.generateHtml()
+        print(exp.generatedHtml)
+        self.webViewBiblio.setHtml(exp.generatedHtml)
+
+    def editCurrentRecipe(self):
+        self.switchToEditor()
+        self.s = self.chemin
+        
+        self.importBeerXML()
+        self.calculs_recette()
+        self.MVC()
+        self.stackedWidget.setCurrentIndex(0)
+        self.actionVueEditeurToolBar.setChecked(True)
+        self.actionVueBibliothequeToolBar.setChecked(False) 
+
+
 
         
     def menuBiblio(self,position) :
@@ -2670,11 +2731,13 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
     def unlockBrewdayMode (self) :  
         self.brewdayLock = 0 
 
-    # def enableBrewdayMode(self) :
-    #     if self.comboBoxMashProfiles.currentIndex() == -1 :
-    #         self.pushButtonBrewdayMode.setEnabled(False)
-    #     else :
-    #         self.pushButtonBrewdayMode.setEnabled(True)
+    def enableBrewdayMode(self) :
+        if self.comboBoxMashProfiles.currentIndex() == -1 :
+            # self.pushButtonBrewdayMode.setEnabled(False)
+            pass
+        else :
+            # self.pushButtonBrewdayMode.setEnabled(True)
+            pass
         
         
     def printRecipe (self) :

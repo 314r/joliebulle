@@ -104,7 +104,8 @@ Recette prévue pour un brassin de ''') + str(volume) + self.trUtf8(''' litres <
 </html>''')
                                         
                                         
-                                        
+    def generateHtml(self) :
+        self.generatedHtml = self.recetteHtmlHeader + self.recetteHtmlInfo + self.recetteHtmlIng + self.recetteHtmlProfil + self.recipeNotes + self.recetteHtmlFooter                                      
                                         
                                         
     def enregistrerHtml(self,fileHtml) :

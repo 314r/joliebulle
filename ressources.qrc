@@ -1,0 +1,7 @@
+<RCC>
+  <qresource prefix="home">
+    <file>Images/evolution-tasks.png</file>
+    <file>Images/glade.png</file>
+    <file>Images/stock_bookmark.png</file>
+  </qresource>
+</RCC>

@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'reader.ui'
 #
-# Created: Wed Jun 13 16:09:28 2012
+# Created: Wed Jun 13 23:13:05 2012
 #      by: PyQt4 UI code generator 4.9.1
 #
 # WARNING! All changes made in this file will be lost!
@@ -672,7 +672,38 @@ class Ui_MainWindow(object):
         spacerItem13 = QtGui.QSpacerItem(20, 40, QtGui.QSizePolicy.Minimum, QtGui.QSizePolicy.Expanding)
         self.gridLayout_12.addItem(spacerItem13, 4, 0, 1, 1)
         self.stackedWidget.addWidget(self.page_5)
+        self.page_6 = QtGui.QWidget()
+        self.page_6.setObjectName(_fromUtf8("page_6"))
+        self.gridLayout_13 = QtGui.QGridLayout(self.page_6)
+        self.gridLayout_13.setMargin(0)
+        self.gridLayout_13.setSpacing(6)
+        self.gridLayout_13.setObjectName(_fromUtf8("gridLayout_13"))
+        self.horizontalLayout_20 = QtGui.QHBoxLayout()
+        self.horizontalLayout_20.setObjectName(_fromUtf8("horizontalLayout_20"))
+        self.treeViewBiblio = QtGui.QTreeView(self.page_6)
+        self.treeViewBiblio.setMaximumSize(QtCore.QSize(300, 16777215))
+        self.treeViewBiblio.setEditTriggers(QtGui.QAbstractItemView.NoEditTriggers)
+        self.treeViewBiblio.setAlternatingRowColors(True)
+        self.treeViewBiblio.setRootIsDecorated(True)
+        self.treeViewBiblio.setAnimated(True)
+        self.treeViewBiblio.setHeaderHidden(True)
+        self.treeViewBiblio.setObjectName(_fromUtf8("treeViewBiblio"))
+        self.horizontalLayout_20.addWidget(self.treeViewBiblio)
+        self.webViewBiblio = QtWebKit.QWebView(self.page_6)
+        sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Expanding)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.webViewBiblio.sizePolicy().hasHeightForWidth())
+        self.webViewBiblio.setSizePolicy(sizePolicy)
+        self.webViewBiblio.setUrl(QtCore.QUrl(_fromUtf8("about:blank")))
+        self.webViewBiblio.setObjectName(_fromUtf8("webViewBiblio"))
+        self.horizontalLayout_20.addWidget(self.webViewBiblio)
+        self.gridLayout_13.addLayout(self.horizontalLayout_20, 0, 0, 1, 1)
+        self.stackedWidget.addWidget(self.page_6)
         self.gridLayout_4.addWidget(self.stackedWidget, 0, 0, 1, 1)
+        self.pushButtonEditCurrentRecipe = QtGui.QPushButton(self.centralwidget)
+        self.pushButtonEditCurrentRecipe.setObjectName(_fromUtf8("pushButtonEditCurrentRecipe"))
+        self.gridLayout_4.addWidget(self.pushButtonEditCurrentRecipe, 1, 0, 1, 1)
         MainWindow.setCentralWidget(self.centralwidget)
         self.toolBar = QtGui.QToolBar(MainWindow)
         self.toolBar.setMinimumSize(QtCore.QSize(0, 0))
@@ -776,7 +807,7 @@ class Ui_MainWindow(object):
         self.actionBrewdayMode.setObjectName(_fromUtf8("actionBrewdayMode"))
 
         self.retranslateUi(MainWindow)
-        self.stackedWidget.setCurrentIndex(0)
+        self.stackedWidget.setCurrentIndex(5)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
     def retranslateUi(self, MainWindow):
@@ -961,6 +992,7 @@ class Ui_MainWindow(object):
         self.groupBox_3.setTitle(QtGui.QApplication.translate("MainWindow", "Méthode de brassage", None, QtGui.QApplication.UnicodeUTF8))
         self.radioButtonClassicBrew.setText(QtGui.QApplication.translate("MainWindow", "Classique", None, QtGui.QApplication.UnicodeUTF8))
         self.radioButtonBIAB.setText(QtGui.QApplication.translate("MainWindow", "Volume complet (BIAB)", None, QtGui.QApplication.UnicodeUTF8))
+        self.pushButtonEditCurrentRecipe.setText(QtGui.QApplication.translate("MainWindow", "PushButton", None, QtGui.QApplication.UnicodeUTF8))
         self.toolBar.setWindowTitle(QtGui.QApplication.translate("MainWindow", "toolBar", None, QtGui.QApplication.UnicodeUTF8))
         self.actionOuvrir.setText(QtGui.QApplication.translate("MainWindow", "Ouvrir", None, QtGui.QApplication.UnicodeUTF8))
         self.actionQuitter.setText(QtGui.QApplication.translate("MainWindow", "Quitter", None, QtGui.QApplication.UnicodeUTF8))
@@ -995,3 +1027,5 @@ class Ui_MainWindow(object):
         self.actionBrewdayMode.setText(QtGui.QApplication.translate("MainWindow", "Brassage", None, QtGui.QApplication.UnicodeUTF8))
         self.actionBrewdayMode.setToolTip(QtGui.QApplication.translate("MainWindow", "Mode brassage", None, QtGui.QApplication.UnicodeUTF8))
 
+from PyQt4 import QtWebKit
+import ressources_rc
