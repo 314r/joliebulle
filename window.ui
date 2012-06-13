@@ -96,6 +96,13 @@
               </widget>
              </item>
              <item>
+              <widget class="QPushButton" name="pushButtonBrewdayMode">
+               <property name="text">
+                <string>Mode Brassage</string>
+               </property>
+              </widget>
+             </item>
+             <item>
               <spacer name="horizontalSpacer_2">
                <property name="orientation">
                 <enum>Qt::Horizontal</enum>
@@ -1602,11 +1609,6 @@ p, li { white-space: pre-wrap; }
      <height>0</height>
     </size>
    </property>
-   <property name="font">
-    <font>
-     <pointsize>10</pointsize>
-    </font>
-   </property>
    <property name="windowTitle">
     <string>toolBar</string>
    </property>
@@ -1625,7 +1627,78 @@ p, li { white-space: pre-wrap; }
    <attribute name="toolBarBreak">
     <bool>false</bool>
    </attribute>
+   <addaction name="actionVueEditeurToolBar"/>
+   <addaction name="actionVueBibliothequeToolBar"/>
+   <addaction name="separator"/>
+   <addaction name="actionEnregistrerToolBar"/>
+   <addaction name="actionImprimer"/>
+   <addaction name="separator"/>
+   <addaction name="actionNouvelle_recette"/>
+   <addaction name="actionRecharger"/>
   </widget>
+  <widget class="QMenuBar" name="menuBar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>1293</width>
+     <height>23</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menuFichier">
+    <property name="title">
+     <string>Fichier</string>
+    </property>
+    <addaction name="actionOuvrir_2"/>
+    <addaction name="actionNouvelle_recette"/>
+    <addaction name="actionRecharger"/>
+    <addaction name="actionImprimer"/>
+    <addaction name="actionEnregistrer"/>
+    <addaction name="actionEnregistrer_Sous"/>
+    <addaction name="actionExporterHtml"/>
+    <addaction name="actionQuitter_2"/>
+   </widget>
+   <widget class="QMenu" name="menuEdition">
+    <property name="title">
+     <string>Edition</string>
+    </property>
+    <addaction name="actionEditGrains"/>
+    <addaction name="actionEditHoublons"/>
+    <addaction name="actionEditDivers"/>
+    <addaction name="actionEditLevures"/>
+    <addaction name="actionRestaurerIngredients"/>
+    <addaction name="actionPreferences"/>
+   </widget>
+   <widget class="QMenu" name="menuOutils">
+    <property name="title">
+     <string>Outils</string>
+    </property>
+    <addaction name="actionCorrectionDens"/>
+    <addaction name="actionCalculAlc"/>
+    <addaction name="actionDilution"/>
+    <addaction name="actionEvaporation"/>
+    <addaction name="actionPaliers"/>
+   </widget>
+   <widget class="QMenu" name="menuVue">
+    <property name="title">
+     <string>Vue</string>
+    </property>
+    <addaction name="actionVueEditeur"/>
+    <addaction name="actionVueBibliotheque"/>
+   </widget>
+   <widget class="QMenu" name="menuAide">
+    <property name="title">
+     <string>Aide</string>
+    </property>
+    <addaction name="actionAbout"/>
+   </widget>
+   <addaction name="menuFichier"/>
+   <addaction name="menuVue"/>
+   <addaction name="menuEdition"/>
+   <addaction name="menuOutils"/>
+   <addaction name="menuAide"/>
+  </widget>
+  <widget class="QStatusBar" name="statusBar"/>
   <action name="actionOuvrir">
    <property name="icon">
     <iconset>
@@ -1815,21 +1888,6 @@ p, li { white-space: pre-wrap; }
   <action name="actionPreferences">
    <property name="text">
     <string>Préférences</string>
-   </property>
-  </action>
-  <action name="actionBrewdayMode">
-   <property name="checkable">
-    <bool>true</bool>
-   </property>
-   <property name="icon">
-    <iconset>
-     <normaloff>Images/brewday.png</normaloff>Images/brewday.png</iconset>
-   </property>
-   <property name="text">
-    <string>Brassage</string>
-   </property>
-   <property name="toolTip">
-    <string>Mode brassage</string>
    </property>
   </action>
  </widget>

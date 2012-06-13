@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Exec=/usr/bin/joliebulle %F
+Icon=/usr/share/joliebulle/Images/bulle.png
+StartupNotify=false
+Terminal=false
+Categories=Utility;
+Name=JolieBulle

@@ -352,98 +352,6 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
 
         QtGui.QMainWindow.__init__(self, parent)
         self.setupUi(self)
-
-#####################################################################################################
-#####################################################################################################
-
-        # self.buttonLibrary=QtGui.QPushButton("Bibliothèque")
-        # self.buttonLibrary.setCheckable(True)
-        # self.buttonEditor=QtGui.QPushButton("Editeur")
-        # self.buttonEditor.setCheckable(True)
-        # self.buttonBrewday=QtGui.QPushButton("Brassage")
-        # self.buttonBrewday.setCheckable(True)
-
-        self.buttonMenu=QtGui.QPushButton("")
-        self.buttonMenu.setIcon(QtGui.QIcon("Images/config.png"))
-        self.buttonMenu.setIconSize(QtCore.QSize(24,24))
-        self.buttonMenu.setFlat(True)
-
-        self.buttonSave=QtGui.QPushButton("")
-        self.buttonSave.setIcon(QtGui.QIcon("Images/save.png"))
-        self.buttonSave.setIconSize(QtCore.QSize(24,24))
-        self.buttonSave.setFlat(True)
-        
-
-        # left_spacer = QtGui.QWidget()
-        # left_spacer.setSizePolicy(QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Expanding)
-
-        right_spacer = QtGui.QWidget()
-        right_spacer.setSizePolicy(QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Expanding)
-
-        # monLayout=QtGui.QHBoxLayout()
-
-        self.toolBar.addAction(self.actionVueBibliothequeToolBar)
-        self.toolBar.addAction(self.actionVueEditeurToolBar)
-        self.toolBar.addAction(self.actionBrewdayMode)
-        # self.toolBar.addWidget(left_spacer)
-        
-        
-        # monLayout.addWidget(self.buttonLibrary)
-        # monLayout.addWidget(self.buttonEditor)
-        # monLayout.addWidget(self.buttonBrewday)
-
-        # self.widgetToolBar=QtGui.QWidget()
-
-        # self.widgetToolBar.setLayout(monLayout)
-
-        # self.toolBar.addWidget(self.widgetToolBar)
-        self.toolBar.addWidget(right_spacer)
-        self.toolBar.addWidget(self.buttonSave)
-
-        self.toolBar.addWidget(self.buttonMenu)
-
-       
-        generalMenu = QtGui.QMenu()
-        # le menu fichier
-        menuFile=generalMenu.addMenu('''Fichier''')
-        menuFile.addAction(self.actionOuvrir_2)
-        menuFile.addAction(self.actionNouvelle_recette)
-        menuFile.addAction(self.actionRecharger)
-        menuFile.addAction(self.actionImprimer)
-        menuFile.addAction(self.actionEnregistrer)
-        menuFile.addAction(self.actionEnregistrer_Sous)
-        menuFile.addAction(self.actionExporterHtml)
-        menuFile.addAction(self.actionQuitter_2)
-
-        # le menu ingredients
-        menuIngredients=generalMenu.addMenu('''Ingrédients''')
-        menuIngredients.addAction(self.actionEditGrains)
-        menuIngredients.addAction(self.actionEditHoublons)
-        menuIngredients.addAction(self.actionEditDivers)
-        menuIngredients.addAction(self.actionEditLevures)
-        menuIngredients.addAction(self.actionRestaurerIngredients)
-
-        # le menu outils
-        menuTools=generalMenu.addMenu('''Outils''')
-        menuTools.addAction(self.actionCorrectionDens)
-        menuTools.addAction(self.actionCalculAlc)
-        menuTools.addAction(self.actionDilution)
-        menuTools.addAction(self.actionEvaporation)
-        menuTools.addAction(self.actionPaliers)
-
-
-        generalMenu.addAction(self.actionPreferences)
-        self.buttonMenu.setMenu(generalMenu)
-
-######################################################################################
-######################################################################################
-
-
-
-
-
-
-
         self.settings = Settings()
         self.initRep()
         self.dlgEditG = Dialog(self)
@@ -508,13 +416,6 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         
         self.connect(self.actionVueEditeurToolBar, QtCore.SIGNAL("triggered()"), self.switchToEditor)
         self.connect(self.actionVueBibliothequeToolBar, QtCore.SIGNAL("triggered()"), self.switchToLibrary)
-
-        self.connect(self.actionBrewdayMode,QtCore.SIGNAL("triggered()"),self.switchToBrewday)
-
-        # self.connect(self.buttonEditor, QtCore.SIGNAL("clicked()"),self.switchToEditor)
-        # self.connect(self.buttonLibrary, QtCore.SIGNAL("clicked()"), self.switchToLibrary)
-        # self.connect(self.buttonBrewday, QtCore.SIGNAL("clicked()"), self.switchToBrewday)
-
         
         #############################################################################################
         #############################################################################################
@@ -572,7 +473,11 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         
         self.pushButtonSaveProfile.clicked.connect(self.saveProfile)
 
+        ##############################################################################
+        # Le bouton brewday mode
+        ################################################################################
 
+        self.pushButtonBrewdayMode.setEnabled(False)
         
         #On connecte ici les signaux émits à la fermeture des fenêtres d'édition de la base
         #########################################################################################
@@ -652,7 +557,9 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         #Brewday Mode
         ###############################
         ###############################
-              
+        
+        self.pushButtonBrewdayMode.clicked.connect(self.switchToBrewday)
+        
         self.pushButtonAdjustStep.clicked.connect(self.stepAdjustBrewday)
         self.tableWidgetStepsBrewday.itemSelectionChanged.connect(self.tableWidgetStepsBrewday_currentRowChanged)
         self.dlgStepBrewday.stepAdjustBrewdayClosed.connect(self.stepAdjustBrewday_closed)
@@ -694,8 +601,8 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
 
         # print("argv:",sys.argv)
 
-###################################################################################################
-######## gestion des arguments au lancement du programme  #########################################
+##############################################################################################################
+######## Des essais    ########################################################################################
 
 
         argumentsList=QtGui.QApplication.arguments()
@@ -714,7 +621,6 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
                 pass
         else:
             pass
-            
 ########################################################################################################################
 ####################################################################################################################
         
@@ -916,36 +822,26 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         self.stackedWidget.setCurrentIndex(0)
         self.actionVueEditeurToolBar.setChecked(True)
         self.actionVueBibliothequeToolBar.setChecked(False)
-        self.actionBrewdayMode.setChecked(False)
-
         
     def switchToLibrary(self) :
         self.stackedWidget.setCurrentIndex(1)        
         self.actionVueEditeurToolBar.setChecked(False)
         self.actionVueBibliothequeToolBar.setChecked(True)
-        self.actionBrewdayMode.setChecked(False)
-
         
     def switchToNotes(self) :
         self.stackedWidget.setCurrentIndex(2)        
         self.actionVueEditeurToolBar.setChecked(False)
         self.actionVueBibliothequeToolBar.setChecked(False)
-        self.actionBrewdayMode.setChecked(False)
-
         
     def switchToMash(self) :
         self.stackedWidget.setCurrentIndex(3)        
         self.actionVueEditeurToolBar.setChecked(False)
         self.actionVueBibliothequeToolBar.setChecked(False)
-        self.actionBrewdayMode.setChecked(False)
-
         
     def switchToBrewday(self) :
         self.stackedWidget.setCurrentIndex(4)        
         self.actionVueEditeurToolBar.setChecked(False)
         self.actionVueBibliothequeToolBar.setChecked(False)
-        self.actionBrewdayMode.setChecked(True)
-
         if self.brewdayLock == 1 :
             pass
         else :
@@ -1233,8 +1129,8 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         f = AppWindow.nbreFer
         i=self.comboBox.currentIndex()
         
-        # item = QtGui.QStandardItem(self.base.liste_ingr[i])
-        # item_fAmount = QtGui.QStandardItem(0)
+        item = QtGui.QStandardItem(self.base.liste_ingr[i])
+        item_fAmount = QtGui.QStandardItem(0)
         self.modele.insertRow(f)
 
         self.liste_ingr.append(self.base.liste_ingr[i])
@@ -1255,12 +1151,12 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         h = AppWindow.nbreHops
         i = self.comboBoxH.currentIndex()
         
-        # itemH = QtGui.QStandardItem(self.base.liste_houblons[i])
-        # item_hAmount = QtGui.QStandardItem(0)
-        # item_hForm = QtGui.QStandardItem(self.base.liste_hForm[i])
-        # item_hTime = QtGui.QStandardItem(0)
-        # item_hAlpha = QtGui.QStandardItem(self.base.liste_hAlpha[i])
-        # item_hUse = QtGui.QStandardItem(self.trUtf8('''Ébullition'''))
+        itemH = QtGui.QStandardItem(self.base.liste_houblons[i])
+        item_hAmount = QtGui.QStandardItem(0)
+        item_hForm = QtGui.QStandardItem(self.base.liste_hForm[i])
+        item_hTime = QtGui.QStandardItem(0)
+        item_hAlpha = QtGui.QStandardItem(self.base.liste_hAlpha[i])
+        item_hUse = QtGui.QStandardItem(self.trUtf8('''Ébullition'''))
         
         self.modele.insertRow(f+h)
         
@@ -1268,14 +1164,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         
         self.liste_houblons.append(self.base.liste_houblons[i])
         self.liste_hAmount.append(0)
-        if self.base.liste_hForm[i] == "Plug" :
-            self.liste_hForm.append(self.trUtf8('''Cône'''))
-        elif self.base.liste_hForm[i] == "Leaf" :
-            self.liste_hForm.append(self.trUtf8('''Feuille'''))
-        elif self.base.liste_hForm[i] == "Pellet" :
-            self.liste_hForm.append(self.trUtf8('''Pellet'''))
-        else :
-            self.liste_hForm.append(self.trUtf8('''Cône'''))
+        self.liste_hForm.append(self.trUtf8('Feuille'))
         self.liste_hTime.append(0)
         self.liste_hAlpha.append(self.base.liste_hAlpha[i])
         self.liste_hUse.append(self.trUtf8('''Ébullition'''))
@@ -1294,11 +1183,11 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         
         i = self.comboBoxM.currentIndex()
         
-        # itemD = QtGui.QStandardItem(self.base.liste_divers[i])
-        # item_dAmount = QtGui.QStandardItem(0)
-        # item_dType = QtGui.QStandardItem(self.base.liste_dType[i])
-        # item_dTime = QtGui.QStandardItem(0)
-        # item_dUse = QtGui.QStandardItem(self.trUtf8('''Ébullition'''))
+        itemD = QtGui.QStandardItem(self.base.liste_divers[i])
+        item_dAmount = QtGui.QStandardItem(0)
+        item_dType = QtGui.QStandardItem(self.base.liste_dType[i])
+        item_dTime = QtGui.QStandardItem(0)
+        item_dUse = QtGui.QStandardItem(self.trUtf8('''Ébullition'''))
         
         self.modele.insertRow(f+h+m)
         
@@ -1324,12 +1213,12 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         
         i = self.comboBoxY.currentIndex()
         
-        # itemY = QtGui.QStandardItem(self.base.liste_levures[i])
-        # item_lForm = QtGui.QStandardItem(self.base.liste_lForm[i])
-        # item_lLabo = QtGui.QStandardItem(self.base.liste_lLabo[i])
-        # item_lProdid = QtGui.QStandardItem(self.base.liste_lProdid[i])
-        # item_levureAtten = QtGui.QStandardItem(self.base.liste_levureAtten[i])
-        # item_levuresDetail =QtGui.QStandardItem(self.base.liste_levuresDetail[i])
+        itemY = QtGui.QStandardItem(self.base.liste_levures[i])
+        item_lForm = QtGui.QStandardItem(self.base.liste_lForm[i])
+        item_lLabo = QtGui.QStandardItem(self.base.liste_lLabo[i])
+        item_lProdid = QtGui.QStandardItem(self.base.liste_lProdid[i])
+        item_levureAtten = QtGui.QStandardItem(self.base.liste_levureAtten[i])
+        item_levuresDetail =QtGui.QStandardItem(self.base.liste_levuresDetail[i])
         
         self.modele.insertRow(f+h+m+l)
         
@@ -2444,10 +2333,8 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         i = self.listWidgetMashProfiles.currentRow()
         del self.listMash[i]
         self.seeMash()
-        self.listWidgetSteps.clear() 
         
     def mashRejected (self) :
-        self.mashProfilesBase.importBeerXML()
         self.switchToEditor()
         
     def mashAccepted (self) :
@@ -2652,10 +2539,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
             listVol[i] = self.brewCalc.infuseVol
             self.tableWidgetStepsBrewday.setItem(i,1,QtGui.QTableWidgetItem("%.1f" %(self.brewCalc.infuseVol)))
             self.tableWidgetStepsBrewday.setItem(i,3,QtGui.QTableWidgetItem("%.1f" %(self.brewCalc.newRatio)))
-            if stepType == 'Infusion' :
-                self.tableWidgetStepsBrewday.setItem(i,2,QtGui.QTableWidgetItem("%.1f" %(90)))
-            else :
-                self.tableWidgetStepsBrewday.setItem(i,2,QtGui.QTableWidgetItem("%.1f" %(0)))
+            self.tableWidgetStepsBrewday.setItem(i,2,QtGui.QTableWidgetItem("%.1f" %(90)))
             
             
 
@@ -2670,11 +2554,11 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
     def unlockBrewdayMode (self) :  
         self.brewdayLock = 0 
 
-    # def enableBrewdayMode(self) :
-    #     if self.comboBoxMashProfiles.currentIndex() == -1 :
-    #         self.pushButtonBrewdayMode.setEnabled(False)
-    #     else :
-    #         self.pushButtonBrewdayMode.setEnabled(True)
+    def enableBrewdayMode(self) :
+        if self.comboBoxMashProfiles.currentIndex() == -1 :
+            self.pushButtonBrewdayMode.setEnabled(False)
+        else :
+            self.pushButtonBrewdayMode.setEnabled(True)
         
         
     def printRecipe (self) :
