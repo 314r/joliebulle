@@ -813,7 +813,8 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         self.MVC()
         self.stackedWidget.setCurrentIndex(0)
         self.actionVueEditeurToolBar.setChecked(True)
-        self.actionVueBibliothequeToolBar.setChecked(False)    
+        self.actionVueBibliothequeToolBar.setChecked(False) 
+
 
     def viewRecipeBiblio(self) :
         selection = self.treeViewBiblio.selectionModel()
@@ -832,6 +833,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         exp.generateHtml()
         print("simple clic !")
         self.webViewBiblio.setHtml(exp.generatedHtml)
+        self.MVC()
 
     def editCurrentRecipe(self):
         self.switchToEditor()
