@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'reader.ui'
 #
-# Created: Thu Jun 14 21:43:21 2012
+# Created: Thu Jun 14 21:45:08 2012
 #      by: PyQt4 UI code generator 4.9.1
 #
 # WARNING! All changes made in this file will be lost!
@@ -33,6 +33,7 @@ class Ui_MainWindow(object):
         self.page = QtGui.QWidget()
         self.page.setObjectName(_fromUtf8("page"))
         self.gridLayout = QtGui.QGridLayout(self.page)
+        self.gridLayout.setContentsMargins(-1, 18, -1, -1)
         self.gridLayout.setObjectName(_fromUtf8("gridLayout"))
         self.widgetEditeur = QtGui.QWidget(self.page)
         self.widgetEditeur.setObjectName(_fromUtf8("widgetEditeur"))
@@ -355,7 +356,7 @@ class Ui_MainWindow(object):
         self.page_6 = QtGui.QWidget()
         self.page_6.setObjectName(_fromUtf8("page_6"))
         self.gridLayout_13 = QtGui.QGridLayout(self.page_6)
-        self.gridLayout_13.setMargin(0)
+        self.gridLayout_13.setContentsMargins(0, 9, 0, 0)
         self.gridLayout_13.setObjectName(_fromUtf8("gridLayout_13"))
         self.verticalLayout_13 = QtGui.QVBoxLayout()
         self.verticalLayout_13.setObjectName(_fromUtf8("verticalLayout_13"))
@@ -423,8 +424,8 @@ class Ui_MainWindow(object):
         self.page_3 = QtGui.QWidget()
         self.page_3.setObjectName(_fromUtf8("page_3"))
         self.gridLayout_5 = QtGui.QGridLayout(self.page_3)
-        self.gridLayout_5.setMargin(0)
         self.gridLayout_5.setSpacing(6)
+        self.gridLayout_5.setContentsMargins(0, 9, 0, 0)
         self.gridLayout_5.setObjectName(_fromUtf8("gridLayout_5"))
         self.textEditRecipeNotes = QtGui.QTextEdit(self.page_3)
         self.textEditRecipeNotes.setObjectName(_fromUtf8("textEditRecipeNotes"))
@@ -437,6 +438,7 @@ class Ui_MainWindow(object):
         self.page_4 = QtGui.QWidget()
         self.page_4.setObjectName(_fromUtf8("page_4"))
         self.gridLayout_8 = QtGui.QGridLayout(self.page_4)
+        self.gridLayout_8.setContentsMargins(-1, 18, -1, -1)
         self.gridLayout_8.setObjectName(_fromUtf8("gridLayout_8"))
         self.verticalLayout_11 = QtGui.QVBoxLayout()
         self.verticalLayout_11.setObjectName(_fromUtf8("verticalLayout_11"))
@@ -583,6 +585,7 @@ class Ui_MainWindow(object):
         self.page_5 = QtGui.QWidget()
         self.page_5.setObjectName(_fromUtf8("page_5"))
         self.gridLayout_12 = QtGui.QGridLayout(self.page_5)
+        self.gridLayout_12.setContentsMargins(-1, 18, -1, -1)
         self.gridLayout_12.setObjectName(_fromUtf8("gridLayout_12"))
         spacerItem10 = QtGui.QSpacerItem(20, 40, QtGui.QSizePolicy.Minimum, QtGui.QSizePolicy.Expanding)
         self.gridLayout_12.addItem(spacerItem10, 2, 0, 1, 1)
