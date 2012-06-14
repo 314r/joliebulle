@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'reader.ui'
 #
-# Created: Thu Jun 14 21:37:29 2012
+# Created: Thu Jun 14 21:43:21 2012
 #      by: PyQt4 UI code generator 4.9.1
 #
 # WARNING! All changes made in this file will be lost!
@@ -24,6 +24,7 @@ class Ui_MainWindow(object):
         self.centralwidget = QtGui.QWidget(MainWindow)
         self.centralwidget.setObjectName(_fromUtf8("centralwidget"))
         self.gridLayout_4 = QtGui.QGridLayout(self.centralwidget)
+        self.gridLayout_4.setContentsMargins(-1, 0, -1, -1)
         self.gridLayout_4.setObjectName(_fromUtf8("gridLayout_4"))
         self.stackedWidget = QtGui.QStackedWidget(self.centralwidget)
         self.stackedWidget.setFrameShape(QtGui.QFrame.NoFrame)
