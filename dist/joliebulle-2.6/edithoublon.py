@@ -47,6 +47,8 @@ class DialogH(QtGui.QDialog):
         self.ui.listWidgetHoublons.addItems(self.base.liste_houblons)
         self.ui.comboBoxForme.addItem(self.trUtf8('Feuille'))
         self.ui.comboBoxForme.addItem(self.trUtf8('Pellet'))
+        self.ui.comboBoxForme.addItem(self.trUtf8('Cône'))
+
         self.connect(self.ui.listWidgetHoublons, QtCore.SIGNAL("itemSelectionChanged ()"), self.voir)  
         self.connect(self.ui.pushButtonNouveau, QtCore.SIGNAL("clicked()"), self.nouveau)
         self.connect(self.ui.pushButtonEnlever, QtCore.SIGNAL("clicked()"), self.enlever)
@@ -73,6 +75,8 @@ class DialogH(QtGui.QDialog):
             self.ui.comboBoxForme.setCurrentIndex(0)
         elif self.base.liste_hForm[i] == "Pellet" :
             self.ui.comboBoxForme.setCurrentIndex(1)
+        elif self.base.liste_hForm[i] == "Plug" :
+            self.ui.comboBoxForme.setCurrentIndex(2)
         else :
             self.ui.comboBoxForme.setCurrentIndex(0)
 
@@ -88,7 +92,9 @@ class DialogH(QtGui.QDialog):
         if self.ui.comboBoxForme.currentIndex() is 0 :
             self.base.liste_hForm.insert(i, 'Leaf')
         elif self.ui.comboBoxForme.currentIndex() is 1 :
-            self.base.liste_hForm.insert(i, 'Pellet')   
+            self.base.liste_hForm.insert(i, 'Pellet')  
+        elif self.ui.comboBoxForme.currentIndex() is 2 :
+            self.base.liste_hForm.insert(i, 'Plug')   
         else :
             self.base.liste_hForm.insert(i, 'Leaf')
        
@@ -126,7 +132,7 @@ class DialogH(QtGui.QDialog):
         
         self.ui.lineEditNom.setText('')
         self.ui.spinBoxAlpha.setValue(0)
-        self.ui.comboBoxForme.setCurrentIndex(0)
+        self.ui.comboBoxForme.setCurrentIndex(2)
         
     def enlever(self) :
         self.base.importBeerXML()

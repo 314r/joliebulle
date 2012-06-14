@@ -31,13 +31,14 @@ class DialogStep(QtGui.QDialog):
         self.ui.lineEditStepName.setText(stepName)
         if stepType == self.trUtf8('''Infusion''') :
             self.ui.comboBoxStepType.setCurrentIndex(0)
-        elif stepType== self.trUtf8('''Température''') :
+        elif stepType== self.trUtf8('''Temperature''') :
             self.ui.comboBoxStepType.setCurrentIndex(1)
-        elif stepType == self.trUtf8('''Décoction''') :
+        elif stepType == self.trUtf8('''Decoction''') :
             self.ui.comboBoxStepType.setCurrentIndex(2)              
         self.ui.doubleSpinBoxStepTime.setValue(float(stepTime))
         self.ui.doubleSpinBoxStepTemp.setValue(float(stepTemp))
 #        self.ui.doubleSpinBoxStepVol.setValue(float(stepVol))
+        
         
         
     def valueChanged (self) :

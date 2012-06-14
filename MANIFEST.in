@@ -31,6 +31,7 @@ include outilPaliers_ui.py
 include preferences.py
 include preferences_ui.py
 include reader.py
+include ressources_rc.py
 include settings.py
 include stepAdjust_ui.py
 include stepAdjustWindow.py

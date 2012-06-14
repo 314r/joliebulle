@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'reader.ui'
 #
-# Created: Thu Jun 14 21:45:08 2012
+# Created: Thu Jun 14 21:52:29 2012
 #      by: PyQt4 UI code generator 4.9.1
 #
 # WARNING! All changes made in this file will be lost!
@@ -744,6 +744,14 @@ class Ui_MainWindow(object):
         self.gridLayout_3.addWidget(self.listViewBiblio, 0, 0, 1, 1)
         self.gridLayout_2.addWidget(self.widget2, 0, 0, 1, 1)
         self.stackedWidget.addWidget(self.page_2)
+        self.page_7 = QtGui.QWidget()
+        self.page_7.setObjectName(_fromUtf8("page_7"))
+        self.gridLayout_14 = QtGui.QGridLayout(self.page_7)
+        self.gridLayout_14.setObjectName(_fromUtf8("gridLayout_14"))
+        self.label_20 = QtGui.QLabel(self.page_7)
+        self.label_20.setObjectName(_fromUtf8("label_20"))
+        self.gridLayout_14.addWidget(self.label_20, 0, 0, 1, 1)
+        self.stackedWidget.addWidget(self.page_7)
         self.gridLayout_4.addWidget(self.stackedWidget, 0, 0, 1, 1)
         MainWindow.setCentralWidget(self.centralwidget)
         self.toolBar = QtGui.QToolBar(MainWindow)
@@ -848,7 +856,7 @@ class Ui_MainWindow(object):
         self.actionBrewdayMode.setObjectName(_fromUtf8("actionBrewdayMode"))
 
         self.retranslateUi(MainWindow)
-        self.stackedWidget.setCurrentIndex(0)
+        self.stackedWidget.setCurrentIndex(6)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
     def retranslateUi(self, MainWindow):
@@ -1040,6 +1048,7 @@ class Ui_MainWindow(object):
         self.groupBox_3.setTitle(QtGui.QApplication.translate("MainWindow", "Méthode de brassage", None, QtGui.QApplication.UnicodeUTF8))
         self.radioButtonClassicBrew.setText(QtGui.QApplication.translate("MainWindow", "Classique", None, QtGui.QApplication.UnicodeUTF8))
         self.radioButtonBIAB.setText(QtGui.QApplication.translate("MainWindow", "Volume complet (BIAB)", None, QtGui.QApplication.UnicodeUTF8))
+        self.label_20.setText(QtGui.QApplication.translate("MainWindow", "<html><head/><body><p><img src=\":/home/Images/evolution-tasks.png\"/></p></body></html>", None, QtGui.QApplication.UnicodeUTF8))
         self.toolBar.setWindowTitle(QtGui.QApplication.translate("MainWindow", "toolBar", None, QtGui.QApplication.UnicodeUTF8))
         self.actionOuvrir.setText(QtGui.QApplication.translate("MainWindow", "Ouvrir", None, QtGui.QApplication.UnicodeUTF8))
         self.actionQuitter.setText(QtGui.QApplication.translate("MainWindow", "Quitter", None, QtGui.QApplication.UnicodeUTF8))

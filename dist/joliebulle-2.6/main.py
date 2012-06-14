@@ -53,6 +53,7 @@ from globals import *
 
 
 
+
 import xml.etree.ElementTree as ET
 
 class IngDelegate(QtGui.QItemDelegate):
@@ -352,6 +353,98 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
 
         QtGui.QMainWindow.__init__(self, parent)
         self.setupUi(self)
+
+#####################################################################################################
+#####################################################################################################
+
+        # self.buttonLibrary=QtGui.QPushButton("Bibliothèque")
+        # self.buttonLibrary.setCheckable(True)
+        # self.buttonEditor=QtGui.QPushButton("Editeur")
+        # self.buttonEditor.setCheckable(True)
+        # self.buttonBrewday=QtGui.QPushButton("Brassage")
+        # self.buttonBrewday.setCheckable(True)
+
+        self.buttonMenu=QtGui.QPushButton("")
+        self.buttonMenu.setIcon(QtGui.QIcon("Images/config.png"))
+        self.buttonMenu.setIconSize(QtCore.QSize(24,24))
+        self.buttonMenu.setFlat(True)
+
+        self.buttonSave=QtGui.QPushButton("")
+        self.buttonSave.setIcon(QtGui.QIcon("Images/save.png"))
+        self.buttonSave.setIconSize(QtCore.QSize(24,24))
+        self.buttonSave.setFlat(True)
+        
+
+        # left_spacer = QtGui.QWidget()
+        # left_spacer.setSizePolicy(QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Expanding)
+
+        right_spacer = QtGui.QWidget()
+        right_spacer.setSizePolicy(QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Expanding)
+
+        # monLayout=QtGui.QHBoxLayout()
+
+        self.toolBar.addAction(self.actionVueBibliothequeToolBar)
+        self.toolBar.addAction(self.actionVueEditeurToolBar)
+        self.toolBar.addAction(self.actionBrewdayMode)
+        # self.toolBar.addWidget(left_spacer)
+        
+        
+        # monLayout.addWidget(self.buttonLibrary)
+        # monLayout.addWidget(self.buttonEditor)
+        # monLayout.addWidget(self.buttonBrewday)
+
+        # self.widgetToolBar=QtGui.QWidget()
+
+        # self.widgetToolBar.setLayout(monLayout)
+
+        # self.toolBar.addWidget(self.widgetToolBar)
+        self.toolBar.addWidget(right_spacer)
+        self.toolBar.addWidget(self.buttonSave)
+
+        self.toolBar.addWidget(self.buttonMenu)
+
+       
+        generalMenu = QtGui.QMenu()
+        # le menu fichier
+        menuFile=generalMenu.addMenu('''Fichier''')
+        menuFile.addAction(self.actionOuvrir_2)
+        menuFile.addAction(self.actionNouvelle_recette)
+        menuFile.addAction(self.actionRecharger)
+        menuFile.addAction(self.actionImprimer)
+        menuFile.addAction(self.actionEnregistrer)
+        menuFile.addAction(self.actionEnregistrer_Sous)
+        menuFile.addAction(self.actionExporterHtml)
+        menuFile.addAction(self.actionQuitter_2)
+
+        # le menu ingredients
+        menuIngredients=generalMenu.addMenu('''Ingrédients''')
+        menuIngredients.addAction(self.actionEditGrains)
+        menuIngredients.addAction(self.actionEditHoublons)
+        menuIngredients.addAction(self.actionEditDivers)
+        menuIngredients.addAction(self.actionEditLevures)
+        menuIngredients.addAction(self.actionRestaurerIngredients)
+
+        # le menu outils
+        menuTools=generalMenu.addMenu('''Outils''')
+        menuTools.addAction(self.actionCorrectionDens)
+        menuTools.addAction(self.actionCalculAlc)
+        menuTools.addAction(self.actionDilution)
+        menuTools.addAction(self.actionEvaporation)
+        menuTools.addAction(self.actionPaliers)
+
+
+        generalMenu.addAction(self.actionPreferences)
+        self.buttonMenu.setMenu(generalMenu)
+
+######################################################################################
+######################################################################################
+
+
+
+
+
+
+
         self.settings = Settings()
         self.initRep()
         self.dlgEditG = Dialog(self)
@@ -416,6 +509,13 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         
         self.connect(self.actionVueEditeurToolBar, QtCore.SIGNAL("triggered()"), self.switchToEditor)
         self.connect(self.actionVueBibliothequeToolBar, QtCore.SIGNAL("triggered()"), self.switchToLibrary)
+
+        self.connect(self.actionBrewdayMode,QtCore.SIGNAL("triggered()"),self.switchToBrewday)
+
+        # self.connect(self.buttonEditor, QtCore.SIGNAL("clicked()"),self.switchToEditor)
+        # self.connect(self.buttonLibrary, QtCore.SIGNAL("clicked()"), self.switchToLibrary)
+        # self.connect(self.buttonBrewday, QtCore.SIGNAL("clicked()"), self.switchToBrewday)
+
         
         #############################################################################################
         #############################################################################################
@@ -473,11 +573,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         
         self.pushButtonSaveProfile.clicked.connect(self.saveProfile)
 
-        ##############################################################################
-        # Le bouton brewday mode
-        ################################################################################
 
-        self.pushButtonBrewdayMode.setEnabled(False)
         
         #On connecte ici les signaux émits à la fermeture des fenêtres d'édition de la base
         #########################################################################################
@@ -544,22 +640,42 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         self.modeleBiblio.setReadOnly(False)
         self.modeleBiblio.setRootPath(recettes_dir)
         
-        self.listViewBiblio.setModel(self.modeleBiblio)
-        self.listViewBiblio.setRootIndex(self.modeleBiblio.index(recettes_dir))
-        self.connect(self.listViewBiblio, QtCore.SIGNAL("doubleClicked(const QModelIndex &)"), self.selectionRecette)
+        # self.listViewBiblio.setModel(self.modeleBiblio)
+        # self.listViewBiblio.setRootIndex(self.modeleBiblio.index(recettes_dir))
+        # self.connect(self.listViewBiblio, QtCore.SIGNAL("doubleClicked(const QModelIndex &)"), self.selectionRecette)
         
-        self.listViewBiblio.setContextMenuPolicy(QtCore.Qt.CustomContextMenu) 
-        self.connect(self.listViewBiblio, QtCore.SIGNAL("customContextMenuRequested(const QPoint &)"), self.menuBiblio)
+        self.treeViewBiblio.setContextMenuPolicy(QtCore.Qt.CustomContextMenu) 
+        self.connect(self.treeViewBiblio, QtCore.SIGNAL("customContextMenuRequested(const QPoint &)"), self.menuBiblio)
         #self.listViewBiblio.setEditTriggers(QtGui.QAbstractItemView.SelectedClicked | QtGui.QAbstractItemView.AnyKeyPressed) 
+
+
+        self.treeViewBiblio.setModel(self.modeleBiblio)
+        self.treeViewBiblio.setRootIndex(self.modeleBiblio.index(recettes_dir))
+        self.treeViewBiblio.setColumnHidden(1,True)
+        self.treeViewBiblio.setColumnHidden(2,True)
+        self.treeViewBiblio.setColumnHidden(3,True)
+
+        # self.webViewBiblio.setHtml('''<html><p>hello world</p></html>''')
+        self.connect(self.treeViewBiblio, QtCore.SIGNAL("doubleClicked(const QModelIndex &)"), self.selectionRecette2)
+        self.connect(self.treeViewBiblio, QtCore.SIGNAL("clicked(const QModelIndex &)"), self.viewRecipeBiblio)
+
+        self.pushButtonEditCurrentRecipe.clicked.connect(self.editCurrentRecipe)
+
+        self.pushButtonRemoveRecipeBiblio.clicked.connect(self.supprimerBiblio)
+        self.pushButtonNewFolderBiblio.clicked.connect(self.createFolder)
+        self.pushButtonEditRecipeBiblio.clicked.connect(self.renommerBiblio)
+
+
+
+
+
         ############################################################################################################################
         ############################################################################################################################
         
         #Brewday Mode
         ###############################
         ###############################
-        
-        self.pushButtonBrewdayMode.clicked.connect(self.switchToBrewday)
-        
+              
         self.pushButtonAdjustStep.clicked.connect(self.stepAdjustBrewday)
         self.tableWidgetStepsBrewday.itemSelectionChanged.connect(self.tableWidgetStepsBrewday_currentRowChanged)
         self.dlgStepBrewday.stepAdjustBrewdayClosed.connect(self.stepAdjustBrewday_closed)
@@ -601,8 +717,8 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
 
         # print("argv:",sys.argv)
 
-##############################################################################################################
-######## Des essais    ########################################################################################
+###################################################################################################
+######## gestion des arguments au lancement du programme  #########################################
 
 
         argumentsList=QtGui.QApplication.arguments()
@@ -621,6 +737,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
                 pass
         else:
             pass
+            
 ########################################################################################################################
 ####################################################################################################################
         
@@ -672,14 +789,13 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
     def selectionRecette(self):
         selection = self.listViewBiblio.selectionModel()
         self.indexRecette = selection.currentIndex()
+
         if self.modeleBiblio.isDir(self.indexRecette) == True :
             self.navFolder()
-            
         
         else :
 
             self.chemin =self.modeleBiblio.filePath (self.indexRecette)
-            print(self.chemin)
             self.purge()
             
             self.s = self.chemin
@@ -691,23 +807,73 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
             self.actionVueEditeurToolBar.setChecked(True)
             self.actionVueBibliothequeToolBar.setChecked(False)
 
+    def selectionRecette2(self):
+        selection = self.treeViewBiblio.selectionModel()
+        self.indexRecette = selection.currentIndex()
+
+        self.chemin =self.modeleBiblio.filePath (self.indexRecette)
+        
+        self.purge()
+        
+        self.s = self.chemin
+        
+        self.importBeerXML()
+        self.calculs_recette()
+        self.MVC()
+        self.stackedWidget.setCurrentIndex(0)
+        self.actionVueEditeurToolBar.setChecked(True)
+        self.actionVueBibliothequeToolBar.setChecked(False) 
+
+
+    def viewRecipeBiblio(self) :
+        selection = self.treeViewBiblio.selectionModel()
+        self.indexRecette = selection.currentIndex()
+
+        self.chemin =self.modeleBiblio.filePath (self.indexRecette)
+        
+        self.purge()
+        
+        self.s = self.chemin
+        
+        self.importBeerXML()
+        self.calculs_recette()
+        exp = ExportHTML()
+        exp.exportHtml(self.nomRecette,self.styleRecette, self.volume, self.boil, AppWindow.nbreFer, self.liste_ingr, self.liste_fAmount, AppWindow.nbreHops, self.liste_houblons, self.liste_hAlpha, self.liste_hForm, self.liste_hAmount, self.liste_hTime, AppWindow.nbreDivers, self.liste_divers, self.liste_dType, self.liste_dAmount, self.liste_dTime, self.nbreLevures, self.liste_levuresDetail,self.rendement, self.OG, self.FG, self.EBC, self.ibuTot ,self.ABV, self.recipeNotes)
+        exp.generateHtml()
+        print("simple clic !")
+        self.webViewBiblio.setHtml(exp.generatedHtml)
+        self.MVC()
+
+    def editCurrentRecipe(self):
+        self.switchToEditor()
+        self.s = self.chemin
+        
+        self.importBeerXML()
+        self.calculs_recette()
+        self.MVC()
+        self.stackedWidget.setCurrentIndex(0)
+        self.actionVueEditeurToolBar.setChecked(True)
+        self.actionVueBibliothequeToolBar.setChecked(False) 
+
+
+
         
     def menuBiblio(self,position) :
         menu = QtGui.QMenu()
         #EditeurAction = menu.addAction("Editeur de recette")
         RenommerAction  = menu.addAction(self.trUtf8("Renommer"))
         SupprimerAction = menu.addAction(self.trUtf8("Supprimer"))        
-        CopyAction = menu.addAction(self.trUtf8("Copier"))
-        PasteAction = menu.addAction(self.trUtf8("Coller"))
+        # CopyAction = menu.addAction(self.trUtf8("Copier"))
+        # PasteAction = menu.addAction(self.trUtf8("Coller"))
         FolderAction = menu.addAction(self.trUtf8("Créer un dossier"))
-        UpAction = menu.addAction(self.trUtf8("Remonter"))
+        # UpAction = menu.addAction(self.trUtf8("Remonter"))
 
         
-        PasteAction.setEnabled(False)
-        clipboard = app.clipboard()
-        data = clipboard.mimeData
-        if clipboard.mimeData().hasUrls() :
-            PasteAction.setEnabled(True)
+        # PasteAction.setEnabled(False)
+        # clipboard = app.clipboard()
+        # data = clipboard.mimeData
+        # if clipboard.mimeData().hasUrls() :
+        #     PasteAction.setEnabled(True)
                
         action = menu.exec_(self.listViewBiblio.mapToGlobal(position))
         #if action == EditeurAction:
@@ -718,16 +884,16 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
             self.renommerBiblio() 
         if action == FolderAction:
             self.createFolder()   
-        if action == UpAction :
-            self.upFolder()
-        if action == CopyAction :
-            self.copy()
-        if action == PasteAction :
-            self.paste()
+        # if action == UpAction :
+        #     self.upFolder()
+        # if action == CopyAction :
+        #     self.copy()
+        # if action == PasteAction :
+        #     self.paste()
             
                         
     def supprimerBiblio (self) :
-        selection = self.listViewBiblio.selectionModel()
+        selection = self.treeViewBiblio.selectionModel()
         self.indexRecette = selection.currentIndex()
         confirmation = QtGui.QMessageBox.question(self,
                             self.trUtf8("Supprimer"),
@@ -739,49 +905,49 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
             pass
     
     def renommerBiblio (self) :
-        selection = self.listViewBiblio.selectionModel()
+        selection = self.treeViewBiblio.selectionModel()
         self.indexRecette = selection.currentIndex()
-        self.listViewBiblio.edit(self.indexRecette)
+        self.treeViewBiblio.edit(self.indexRecette)
         
     def createFolder(self) :
-        selection = self.listViewBiblio.selectionModel()
+        selection = self.treeViewBiblio.selectionModel()
         self.indexRecette = selection.currentIndex()
         text = self.trUtf8("nouveau dossier")
        # recettes = QtCore.QFile(recettes_dir)
-        path = self.modeleBiblio.filePath(self.listViewBiblio.rootIndex()) + "/" + text
+        path = self.modeleBiblio.filePath(self.treeViewBiblio.rootIndex()) + "/" + text
         os.mkdir(path)
         
         
-    def navFolder(self) :
-        selection = self.listViewBiblio.selectionModel()
-        self.indexRecette = selection.currentIndex()        
-        self.listViewBiblio.setRootIndex(self.indexRecette)
+    # def navFolder(self) :
+    #     selection = self.treeViewBiblio.selectionModel()
+    #     self.indexRecette = selection.currentIndex()        
+    #     self.listViewBiblio.setRootIndex(self.indexRecette)
         #self.modeleBiblio.setRootPath("/home/pierre/.config/joliebulle/recettes/nouveau dossier")
         
-    def upFolder(self) :
-        self.listViewBiblio.setRootIndex(self.listViewBiblio.rootIndex().parent())
+    # def upFolder(self) :
+    #     self.listViewBiblio.setRootIndex(self.treeViewBiblio.rootIndex().parent())
         
-    def copy (self) :
-        data = QtCore.QMimeData()
-        selection = self.listViewBiblio.selectionModel()
-        self.indexRecette = selection.currentIndex()  
-        path = self.modeleBiblio.filePath(self.indexRecette)
-        url = QtCore.QUrl.fromLocalFile(path)
-        self.lurl = [url]
-        data.setUrls(self.lurl)
-        clipboard = app.clipboard()
-        clipboard.setMimeData(data)
+    # def copy (self) :
+    #     data = QtCore.QMimeData()
+    #     selection = self.treeViewBiblio.selectionModel()
+    #     self.indexRecette = selection.currentIndex()  
+    #     path = self.modeleBiblio.filePath(self.indexRecette)
+    #     url = QtCore.QUrl.fromLocalFile(path)
+    #     self.lurl = [url]
+    #     data.setUrls(self.lurl)
+    #     clipboard = app.clipboard()
+    #     clipboard.setMimeData(data)
               
-    def paste (self) :
-        clipboard = app.clipboard()
-        data = clipboard.mimeData()
-        file = QtCore.QFile()
-        file.setFileName(self.lurl[0].toLocalFile())
-        info = QtCore.QFileInfo(file.fileName())
-        name= info.fileName()
-        path = self.modeleBiblio.filePath(self.listViewBiblio.rootIndex()) + "/" + name
-        file.copy(path)
-        clipboard.clear()
+    # def paste (self) :
+    #     clipboard = app.clipboard()
+    #     data = clipboard.mimeData()
+    #     file = QtCore.QFile()
+    #     file.setFileName(self.lurl[0].toLocalFile())
+    #     info = QtCore.QFileInfo(file.fileName())
+    #     name= info.fileName()
+    #     path = self.modeleBiblio.filePath(self.treeViewBiblio.rootIndex()) + "/" + name
+    #     file.copy(path)
+    #     clipboard.clear()
         
               
     def initRep(self) :   
@@ -822,26 +988,36 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         self.stackedWidget.setCurrentIndex(0)
         self.actionVueEditeurToolBar.setChecked(True)
         self.actionVueBibliothequeToolBar.setChecked(False)
+        self.actionBrewdayMode.setChecked(False)
+
         
     def switchToLibrary(self) :
         self.stackedWidget.setCurrentIndex(1)        
         self.actionVueEditeurToolBar.setChecked(False)
         self.actionVueBibliothequeToolBar.setChecked(True)
+        self.actionBrewdayMode.setChecked(False)
+
         
     def switchToNotes(self) :
         self.stackedWidget.setCurrentIndex(2)        
         self.actionVueEditeurToolBar.setChecked(False)
         self.actionVueBibliothequeToolBar.setChecked(False)
+        self.actionBrewdayMode.setChecked(False)
+
         
     def switchToMash(self) :
         self.stackedWidget.setCurrentIndex(3)        
         self.actionVueEditeurToolBar.setChecked(False)
         self.actionVueBibliothequeToolBar.setChecked(False)
+        self.actionBrewdayMode.setChecked(False)
+
         
     def switchToBrewday(self) :
         self.stackedWidget.setCurrentIndex(4)        
         self.actionVueEditeurToolBar.setChecked(False)
         self.actionVueBibliothequeToolBar.setChecked(False)
+        self.actionBrewdayMode.setChecked(True)
+
         if self.brewdayLock == 1 :
             pass
         else :
@@ -1129,8 +1305,8 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         f = AppWindow.nbreFer
         i=self.comboBox.currentIndex()
         
-        item = QtGui.QStandardItem(self.base.liste_ingr[i])
-        item_fAmount = QtGui.QStandardItem(0)
+        # item = QtGui.QStandardItem(self.base.liste_ingr[i])
+        # item_fAmount = QtGui.QStandardItem(0)
         self.modele.insertRow(f)
 
         self.liste_ingr.append(self.base.liste_ingr[i])
@@ -1151,12 +1327,12 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         h = AppWindow.nbreHops
         i = self.comboBoxH.currentIndex()
         
-        itemH = QtGui.QStandardItem(self.base.liste_houblons[i])
-        item_hAmount = QtGui.QStandardItem(0)
-        item_hForm = QtGui.QStandardItem(self.base.liste_hForm[i])
-        item_hTime = QtGui.QStandardItem(0)
-        item_hAlpha = QtGui.QStandardItem(self.base.liste_hAlpha[i])
-        item_hUse = QtGui.QStandardItem(self.trUtf8('''Ébullition'''))
+        # itemH = QtGui.QStandardItem(self.base.liste_houblons[i])
+        # item_hAmount = QtGui.QStandardItem(0)
+        # item_hForm = QtGui.QStandardItem(self.base.liste_hForm[i])
+        # item_hTime = QtGui.QStandardItem(0)
+        # item_hAlpha = QtGui.QStandardItem(self.base.liste_hAlpha[i])
+        # item_hUse = QtGui.QStandardItem(self.trUtf8('''Ébullition'''))
         
         self.modele.insertRow(f+h)
         
@@ -1164,7 +1340,14 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         
         self.liste_houblons.append(self.base.liste_houblons[i])
         self.liste_hAmount.append(0)
-        self.liste_hForm.append(self.trUtf8('Feuille'))
+        if self.base.liste_hForm[i] == "Plug" :
+            self.liste_hForm.append(self.trUtf8('''Cône'''))
+        elif self.base.liste_hForm[i] == "Leaf" :
+            self.liste_hForm.append(self.trUtf8('''Feuille'''))
+        elif self.base.liste_hForm[i] == "Pellet" :
+            self.liste_hForm.append(self.trUtf8('''Pellet'''))
+        else :
+            self.liste_hForm.append(self.trUtf8('''Cône'''))
         self.liste_hTime.append(0)
         self.liste_hAlpha.append(self.base.liste_hAlpha[i])
         self.liste_hUse.append(self.trUtf8('''Ébullition'''))
@@ -1183,11 +1366,11 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         
         i = self.comboBoxM.currentIndex()
         
-        itemD = QtGui.QStandardItem(self.base.liste_divers[i])
-        item_dAmount = QtGui.QStandardItem(0)
-        item_dType = QtGui.QStandardItem(self.base.liste_dType[i])
-        item_dTime = QtGui.QStandardItem(0)
-        item_dUse = QtGui.QStandardItem(self.trUtf8('''Ébullition'''))
+        # itemD = QtGui.QStandardItem(self.base.liste_divers[i])
+        # item_dAmount = QtGui.QStandardItem(0)
+        # item_dType = QtGui.QStandardItem(self.base.liste_dType[i])
+        # item_dTime = QtGui.QStandardItem(0)
+        # item_dUse = QtGui.QStandardItem(self.trUtf8('''Ébullition'''))
         
         self.modele.insertRow(f+h+m)
         
@@ -1213,12 +1396,12 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         
         i = self.comboBoxY.currentIndex()
         
-        itemY = QtGui.QStandardItem(self.base.liste_levures[i])
-        item_lForm = QtGui.QStandardItem(self.base.liste_lForm[i])
-        item_lLabo = QtGui.QStandardItem(self.base.liste_lLabo[i])
-        item_lProdid = QtGui.QStandardItem(self.base.liste_lProdid[i])
-        item_levureAtten = QtGui.QStandardItem(self.base.liste_levureAtten[i])
-        item_levuresDetail =QtGui.QStandardItem(self.base.liste_levuresDetail[i])
+        # itemY = QtGui.QStandardItem(self.base.liste_levures[i])
+        # item_lForm = QtGui.QStandardItem(self.base.liste_lForm[i])
+        # item_lLabo = QtGui.QStandardItem(self.base.liste_lLabo[i])
+        # item_lProdid = QtGui.QStandardItem(self.base.liste_lProdid[i])
+        # item_levureAtten = QtGui.QStandardItem(self.base.liste_levureAtten[i])
+        # item_levuresDetail =QtGui.QStandardItem(self.base.liste_levuresDetail[i])
         
         self.modele.insertRow(f+h+m+l)
         
@@ -2333,8 +2516,10 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         i = self.listWidgetMashProfiles.currentRow()
         del self.listMash[i]
         self.seeMash()
+        self.listWidgetSteps.clear() 
         
     def mashRejected (self) :
+        self.mashProfilesBase.importBeerXML()
         self.switchToEditor()
         
     def mashAccepted (self) :
@@ -2539,7 +2724,10 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
             listVol[i] = self.brewCalc.infuseVol
             self.tableWidgetStepsBrewday.setItem(i,1,QtGui.QTableWidgetItem("%.1f" %(self.brewCalc.infuseVol)))
             self.tableWidgetStepsBrewday.setItem(i,3,QtGui.QTableWidgetItem("%.1f" %(self.brewCalc.newRatio)))
-            self.tableWidgetStepsBrewday.setItem(i,2,QtGui.QTableWidgetItem("%.1f" %(90)))
+            if stepType == 'Infusion' :
+                self.tableWidgetStepsBrewday.setItem(i,2,QtGui.QTableWidgetItem("%.1f" %(90)))
+            else :
+                self.tableWidgetStepsBrewday.setItem(i,2,QtGui.QTableWidgetItem("%.1f" %(0)))
             
             
 
@@ -2556,9 +2744,11 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
 
     def enableBrewdayMode(self) :
         if self.comboBoxMashProfiles.currentIndex() == -1 :
-            self.pushButtonBrewdayMode.setEnabled(False)
+            # self.pushButtonBrewdayMode.setEnabled(False)
+            pass
         else :
-            self.pushButtonBrewdayMode.setEnabled(True)
+            # self.pushButtonBrewdayMode.setEnabled(True)
+            pass
         
         
     def printRecipe (self) :

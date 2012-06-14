@@ -38,6 +38,7 @@ outilPaliers_ui.py
 preferences.py
 preferences_ui.py
 reader.py
+ressources_rc.py
 settings.py
 setup.cfg
 setup.py
@@ -47,7 +48,9 @@ stepEditWindow.py
 stepEditor_ui.py
 Images/add.png
 Images/application-exit.png
+Images/brewday.png
 Images/bulle.png
+Images/config.png
 Images/document-open.png
 Images/document-open.svg
 Images/document-properties.png
@@ -57,4 +60,5 @@ Images/library.png
 Images/more.png
 Images/print.png
 Images/reload.png
+Images/remove.png
 Images/save.png
