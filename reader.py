@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'reader.ui'
 #
-# Created: Sat Jun 16 12:50:46 2012
+# Created: Sun Jun 17 13:33:25 2012
 #      by: PyQt4 UI code generator 4.8.6
 #
 # WARNING! All changes made in this file will be lost!
@@ -463,7 +463,8 @@ class Ui_MainWindow(object):
         self.page_6 = QtGui.QWidget()
         self.page_6.setObjectName(_fromUtf8("page_6"))
         self.gridLayout_13 = QtGui.QGridLayout(self.page_6)
-        self.gridLayout_13.setContentsMargins(0, 9, 0, 0)
+        self.gridLayout_13.setMargin(0)
+        self.gridLayout_13.setVerticalSpacing(6)
         self.gridLayout_13.setObjectName(_fromUtf8("gridLayout_13"))
         self.verticalLayout_13 = QtGui.QVBoxLayout()
         self.verticalLayout_13.setObjectName(_fromUtf8("verticalLayout_13"))
