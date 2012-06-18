@@ -2018,33 +2018,59 @@ p, li { white-space: pre-wrap; }
      <x>0</x>
      <y>0</y>
      <width>1238</width>
-     <height>25</height>
+     <height>23</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuFichier">
     <property name="title">
      <string>Fichier</string>
     </property>
+    <addaction name="actionOuvrir"/>
+    <addaction name="actionEnregistrer"/>
+    <addaction name="actionEnregistrer_Sous"/>
+    <addaction name="actionExporterHtml"/>
+    <addaction name="actionNouvelle_recette"/>
+    <addaction name="actionRecharger"/>
+    <addaction name="actionImprimer"/>
+    <addaction name="actionQuitter"/>
    </widget>
    <widget class="QMenu" name="menuIngr_dients">
     <property name="title">
      <string>Ingrédients</string>
     </property>
+    <addaction name="actionEditGrains"/>
+    <addaction name="actionEditHoublons"/>
+    <addaction name="actionEditDivers"/>
+    <addaction name="actionEditLevures"/>
+    <addaction name="actionRestaurerIngredients"/>
    </widget>
    <widget class="QMenu" name="menuOutils">
     <property name="title">
      <string>Outils</string>
     </property>
+    <addaction name="actionCorrectionDens"/>
+    <addaction name="actionCalculAlc"/>
+    <addaction name="actionDilution"/>
+    <addaction name="actionEvaporation"/>
+    <addaction name="actionPaliers"/>
    </widget>
    <widget class="QMenu" name="menuEdition">
     <property name="title">
      <string>Edition</string>
     </property>
+    <addaction name="actionPreferences"/>
+   </widget>
+   <widget class="QMenu" name="menuAide">
+    <property name="title">
+     <string>Aide</string>
+    </property>
+    <addaction name="actionAbout"/>
    </widget>
    <addaction name="menuFichier"/>
    <addaction name="menuEdition"/>
    <addaction name="menuIngr_dients"/>
    <addaction name="menuOutils"/>
+   <addaction name="menuAide"/>
   </widget>
   <action name="actionOuvrir">
    <property name="icon">

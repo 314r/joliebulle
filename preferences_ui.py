@@ -2,8 +2,8 @@
 
 # Form implementation generated from reading ui file 'preferences.ui'
 #
-# Created: Thu Feb  2 14:31:06 2012
-#      by: PyQt4 UI code generator 4.9
+# Created: Mon Jun 18 22:00:12 2012
+#      by: PyQt4 UI code generator 4.9.1
 #
 # WARNING! All changes made in this file will be lost!
 
@@ -81,6 +81,26 @@ class Ui_Preferences(object):
         self.formLayout.setWidget(4, QtGui.QFormLayout.FieldRole, self.doubleSpinBoxGrainRetention)
         self.gridLayout.addLayout(self.formLayout, 0, 0, 1, 1)
         self.tabWidget.addTab(self.tab, _fromUtf8(""))
+        self.Apparence = QtGui.QWidget()
+        self.Apparence.setObjectName(_fromUtf8("Apparence"))
+        self.gridLayout_2 = QtGui.QGridLayout(self.Apparence)
+        self.gridLayout_2.setObjectName(_fromUtf8("gridLayout_2"))
+        self.groupBox = QtGui.QGroupBox(self.Apparence)
+        self.groupBox.setObjectName(_fromUtf8("groupBox"))
+        self.horizontalLayout_2 = QtGui.QHBoxLayout(self.groupBox)
+        self.horizontalLayout_2.setObjectName(_fromUtf8("horizontalLayout_2"))
+        self.radioButtonMenuBar = QtGui.QRadioButton(self.groupBox)
+        self.radioButtonMenuBar.setChecked(True)
+        self.radioButtonMenuBar.setObjectName(_fromUtf8("radioButtonMenuBar"))
+        self.horizontalLayout_2.addWidget(self.radioButtonMenuBar)
+        self.radioButtonMenuButton = QtGui.QRadioButton(self.groupBox)
+        self.radioButtonMenuButton.setChecked(False)
+        self.radioButtonMenuButton.setObjectName(_fromUtf8("radioButtonMenuButton"))
+        self.horizontalLayout_2.addWidget(self.radioButtonMenuButton)
+        self.gridLayout_2.addWidget(self.groupBox, 0, 0, 1, 1)
+        spacerItem1 = QtGui.QSpacerItem(20, 40, QtGui.QSizePolicy.Minimum, QtGui.QSizePolicy.Expanding)
+        self.gridLayout_2.addItem(spacerItem1, 1, 0, 1, 1)
+        self.tabWidget.addTab(self.Apparence, _fromUtf8(""))
         self.verticalLayout.addWidget(self.tabWidget)
         self.buttonBox = QtGui.QDialogButtonBox(Preferences)
         self.buttonBox.setOrientation(QtCore.Qt.Horizontal)
@@ -89,7 +109,7 @@ class Ui_Preferences(object):
         self.verticalLayout.addWidget(self.buttonBox)
 
         self.retranslateUi(Preferences)
-        self.tabWidget.setCurrentIndex(1)
+        self.tabWidget.setCurrentIndex(2)
         QtCore.QObject.connect(self.buttonBox, QtCore.SIGNAL(_fromUtf8("accepted()")), Preferences.accept)
         QtCore.QObject.connect(self.buttonBox, QtCore.SIGNAL(_fromUtf8("rejected()")), Preferences.reject)
         QtCore.QMetaObject.connectSlotsByName(Preferences)
@@ -109,4 +129,8 @@ class Ui_Preferences(object):
         self.label_5.setText(QtGui.QApplication.translate("Preferences", "Facteur de correction des températures :", None, QtGui.QApplication.UnicodeUTF8))
         self.label_6.setText(QtGui.QApplication.translate("Preferences", "Rétention d\'eau par le grain (l/kg) :", None, QtGui.QApplication.UnicodeUTF8))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab), QtGui.QApplication.translate("Preferences", "Brassage", None, QtGui.QApplication.UnicodeUTF8))
+        self.groupBox.setTitle(QtGui.QApplication.translate("Preferences", "Menus", None, QtGui.QApplication.UnicodeUTF8))
+        self.radioButtonMenuBar.setText(QtGui.QApplication.translate("Preferences", "Barre de menus", None, QtGui.QApplication.UnicodeUTF8))
+        self.radioButtonMenuButton.setText(QtGui.QApplication.translate("Preferences", "Bouton unique", None, QtGui.QApplication.UnicodeUTF8))
+        self.tabWidget.setTabText(self.tabWidget.indexOf(self.Apparence), QtGui.QApplication.translate("Preferences", "Apparence", None, QtGui.QApplication.UnicodeUTF8))
 

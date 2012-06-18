@@ -38,6 +38,7 @@ from xml.dom import minidom
 
 
 class DialogPref(QtGui.QDialog):
+    prefAccepted = QtCore.pyqtSignal()
     def __init__(self, parent = None):
         QtGui.QDialog.__init__(self,parent)
         settings = Settings()
@@ -56,6 +57,13 @@ class DialogPref(QtGui.QDialog):
             pass
         try :
             self.ui.doubleSpinBoxGrainRetention.setValue(int(settings.conf.value("GrainRetention")))
+        except :
+            pass
+        try:
+            if settings.conf.value("Menus") == "button" :
+                self.ui.radioButtonMenuButton.setChecked(True)
+            elif settings.conf.value("Menus") == "menubar" :
+                self.ui.radioButtonMenuBar.setChecked(True)
         except :
             pass
             
@@ -87,6 +95,13 @@ class DialogPref(QtGui.QDialog):
         settings.conf.setValue("GrainTemp", self.ui.spinBoxGrainTemp.value())
         settings.conf.setValue("FudgeFactor", self.ui.doubleSpinBoxFudgeFactor.value())
         settings.conf.setValue("GrainRetention", self.ui.doubleSpinBoxGrainRetention.value())
+
+        if self.ui.radioButtonMenuButton.isChecked():
+            settings.conf.setValue("Menus", "button")
+        else :
+            settings.conf.setValue("Menus", "menubar")
+
+        self.prefAccepted.emit()
         
             
     def rejected (self) :

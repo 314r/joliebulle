@@ -373,6 +373,15 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         self.buttonSave.setIcon(QtGui.QIcon("Images/save.png"))
         self.buttonSave.setIconSize(QtCore.QSize(24,24))
         self.buttonSave.setFlat(True)
+        self.buttonSave.setToolTip(self.trUtf8("Sauvegarder"))
+
+        self.buttonNewRecipe=QtGui.QPushButton("")
+        self.buttonNewRecipe.setIcon(QtGui.QIcon("Images/more.png"))
+        self.buttonNewRecipe.setIconSize(QtCore.QSize(24,24))
+        self.buttonNewRecipe.setFlat(True)
+        self.buttonNewRecipe.setToolTip(self.trUtf8("Nouvelle recette"))
+
+        
         
 
         # left_spacer = QtGui.QWidget()
@@ -381,7 +390,8 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         right_spacer = QtGui.QWidget()
         right_spacer.setSizePolicy(QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Expanding)
 
-        # monLayout=QtGui.QHBoxLayout()
+        layoutToolBar=QtGui.QHBoxLayout()
+        layoutToolBar.setContentsMargins(9,0,9,0)
 
         self.toolBar.addAction(self.actionVueBibliothequeToolBar)
         self.toolBar.addAction(self.actionVueEditeurToolBar)
@@ -389,24 +399,26 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         # self.toolBar.addWidget(left_spacer)
         
         
-        # monLayout.addWidget(self.buttonLibrary)
+        layoutToolBar.addWidget(self.buttonSave)
+        layoutToolBar.addWidget(self.buttonNewRecipe)
+        layoutToolBar.addWidget(self.buttonMenu)
         # monLayout.addWidget(self.buttonEditor)
         # monLayout.addWidget(self.buttonBrewday)
 
-        # self.widgetToolBar=QtGui.QWidget()
+        self.widgetToolBar=QtGui.QWidget()
 
-        # self.widgetToolBar.setLayout(monLayout)
+        self.widgetToolBar.setLayout(layoutToolBar)
 
         # self.toolBar.addWidget(self.widgetToolBar)
         self.toolBar.addWidget(right_spacer)
-        self.toolBar.addWidget(self.buttonSave)
+        self.toolBar.addWidget(self.widgetToolBar)
 
-        self.toolBar.addWidget(self.buttonMenu)
+        # self.toolBar.addWidget(self.buttonMenu)
 
        
         generalMenu = QtGui.QMenu()
         # le menu fichier
-        menuFile=generalMenu.addMenu('''Fichier''')
+        menuFile=generalMenu.addMenu(self.trUtf8('''Fichier'''))
         menuFile.addAction(self.actionOuvrir_2)
         menuFile.addAction(self.actionNouvelle_recette)
         menuFile.addAction(self.actionRecharger)
@@ -417,7 +429,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         menuFile.addAction(self.actionQuitter_2)
 
         # le menu ingredients
-        menuIngredients=generalMenu.addMenu('''Ingrédients''')
+        menuIngredients=generalMenu.addMenu(self.trUtf8('''Ingrédients'''))
         menuIngredients.addAction(self.actionEditGrains)
         menuIngredients.addAction(self.actionEditHoublons)
         menuIngredients.addAction(self.actionEditDivers)
@@ -425,7 +437,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         menuIngredients.addAction(self.actionRestaurerIngredients)
 
         # le menu outils
-        menuTools=generalMenu.addMenu('''Outils''')
+        menuTools=generalMenu.addMenu(self.trUtf8('''Outils'''))
         menuTools.addAction(self.actionCorrectionDens)
         menuTools.addAction(self.actionCalculAlc)
         menuTools.addAction(self.actionDilution)
@@ -435,6 +447,12 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
 
         generalMenu.addAction(self.actionPreferences)
         self.buttonMenu.setMenu(generalMenu)
+
+        self.buttonSave.clicked.connect(self.enregistrer)
+        self.buttonSave.hide()
+        self.buttonNewRecipe.hide()
+        self.buttonNewRecipe.clicked.connect(self.purge)
+
 
 ######################################################################################
 ######################################################################################
@@ -714,6 +732,8 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
  
         self.widgetIngredients.hide()
 
+        self.actionVueEditeurToolBar.setChecked(False)
+
 
         # print("argv:",sys.argv)
 
@@ -740,6 +760,16 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
             
 ########################################################################################################################
 ####################################################################################################################
+# le signal émit à la fermeture de la fenêtre de préférences
+            self.dlgPref.prefAccepted.connect(self.prefReload)
+
+
+
+
+
+
+
+
         
     #Une fonction qui gère l'aperçu des couleurs. 
     #Contient un tupple avec plusieurs références de couleurs, classées par rang selon la valeur SRM.
@@ -982,6 +1012,20 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
             settings.conf.setValue("FudgeFactor", 1.7)
         if not settings.conf.contains("GrainRetention") :
             settings.conf.setValue("GrainRetention", 1)
+        if not settings.conf.contains("Menus") :
+            settings.conf.setValue("Menus", "button")
+
+        # on configure la barre de Menus
+        if settings.conf.value("Menus") == "button":
+            self.menuBar.hide()
+            self.buttonMenu.show()
+        if settings.conf.value("Menus") == "menubar":
+            self.menuBar.show()
+            self.buttonMenu.hide()
+
+    def prefReload(self) :
+        self.initRep()
+
     
         
     def switchToEditor(self) :
@@ -989,6 +1033,8 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         self.actionVueEditeurToolBar.setChecked(True)
         self.actionVueBibliothequeToolBar.setChecked(False)
         self.actionBrewdayMode.setChecked(False)
+        self.buttonSave.show()
+        self.buttonNewRecipe.show()
 
         
     def switchToLibrary(self) :
@@ -996,6 +1042,8 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         self.actionVueEditeurToolBar.setChecked(False)
         self.actionVueBibliothequeToolBar.setChecked(True)
         self.actionBrewdayMode.setChecked(False)
+        self.buttonSave.hide()
+        self.buttonNewRecipe.hide()
 
         
     def switchToNotes(self) :
@@ -1003,6 +1051,8 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         self.actionVueEditeurToolBar.setChecked(False)
         self.actionVueBibliothequeToolBar.setChecked(False)
         self.actionBrewdayMode.setChecked(False)
+        self.buttonSave.show()
+        self.buttonNewRecipe.show()
 
         
     def switchToMash(self) :
@@ -1010,6 +1060,8 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         self.actionVueEditeurToolBar.setChecked(False)
         self.actionVueBibliothequeToolBar.setChecked(False)
         self.actionBrewdayMode.setChecked(False)
+        self.buttonSave.hide()
+        self.buttonNewRecipe.hide()
 
         
     def switchToBrewday(self) :
@@ -1017,6 +1069,8 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         self.actionVueEditeurToolBar.setChecked(False)
         self.actionVueBibliothequeToolBar.setChecked(False)
         self.actionBrewdayMode.setChecked(True)
+        self.buttonSave.hide()
+        self.buttonNewRecipe.hide()
 
         if self.brewdayLock == 1 :
             pass
