@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'preferences.ui'
 #
-# Created: Mon Jun 18 22:00:12 2012
+# Created: Tue Jun 19 18:48:16 2012
 #      by: PyQt4 UI code generator 4.9.1
 #
 # WARNING! All changes made in this file will be lost!
@@ -22,6 +22,7 @@ class Ui_Preferences(object):
         self.verticalLayout.setObjectName(_fromUtf8("verticalLayout"))
         self.tabWidget = QtGui.QTabWidget(Preferences)
         self.tabWidget.setEnabled(True)
+        self.tabWidget.setDocumentMode(False)
         self.tabWidget.setObjectName(_fromUtf8("tabWidget"))
         self.Bibliotheque = QtGui.QWidget()
         self.Bibliotheque.setObjectName(_fromUtf8("Bibliotheque"))
@@ -109,7 +110,7 @@ class Ui_Preferences(object):
         self.verticalLayout.addWidget(self.buttonBox)
 
         self.retranslateUi(Preferences)
-        self.tabWidget.setCurrentIndex(2)
+        self.tabWidget.setCurrentIndex(0)
         QtCore.QObject.connect(self.buttonBox, QtCore.SIGNAL(_fromUtf8("accepted()")), Preferences.accept)
         QtCore.QObject.connect(self.buttonBox, QtCore.SIGNAL(_fromUtf8("rejected()")), Preferences.reject)
         QtCore.QMetaObject.connectSlotsByName(Preferences)

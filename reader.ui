@@ -35,7 +35,7 @@
       </property>
       <widget class="QWidget" name="page">
        <layout class="QGridLayout" name="gridLayout">
-        <property name="topMargin">
+        <property name="margin">
          <number>18</number>
         </property>
         <item row="1" column="0">
@@ -464,7 +464,7 @@ p, li { white-space: pre-wrap; }
           </property>
           <layout class="QVBoxLayout" name="verticalLayout_6">
            <property name="leftMargin">
-            <number>30</number>
+            <number>18</number>
            </property>
            <item>
             <spacer name="verticalSpacer">
@@ -816,8 +816,17 @@ p, li { white-space: pre-wrap; }
       </widget>
       <widget class="QWidget" name="page_6">
        <layout class="QGridLayout" name="gridLayout_13">
-        <property name="margin">
+        <property name="leftMargin">
          <number>0</number>
+        </property>
+        <property name="topMargin">
+         <number>0</number>
+        </property>
+        <property name="rightMargin">
+         <number>0</number>
+        </property>
+        <property name="bottomMargin">
+         <number>9</number>
         </property>
         <property name="verticalSpacing">
          <number>6</number>
@@ -841,6 +850,9 @@ p, li { white-space: pre-wrap; }
           </item>
           <item>
            <layout class="QHBoxLayout" name="horizontalLayout_19">
+            <property name="rightMargin">
+             <number>9</number>
+            </property>
             <item>
              <spacer name="horizontalSpacer_9">
               <property name="orientation">
@@ -916,6 +928,12 @@ p, li { white-space: pre-wrap; }
           </item>
           <item>
            <layout class="QHBoxLayout" name="horizontalLayout_20">
+            <property name="leftMargin">
+             <number>9</number>
+            </property>
+            <property name="rightMargin">
+             <number>0</number>
+            </property>
             <item>
              <widget class="QPushButton" name="pushButtonNewFolderBiblio">
               <property name="toolTip">
@@ -969,30 +987,38 @@ p, li { white-space: pre-wrap; }
       </widget>
       <widget class="QWidget" name="page_3">
        <layout class="QGridLayout" name="gridLayout_5">
-        <property name="leftMargin">
+        <property name="margin">
          <number>0</number>
-        </property>
-        <property name="topMargin">
-         <number>9</number>
-        </property>
-        <property name="rightMargin">
-         <number>0</number>
-        </property>
-        <property name="bottomMargin">
-         <number>0</number>
-        </property>
-        <property name="spacing">
-         <number>6</number>
         </property>
         <item row="0" column="0">
-         <widget class="QTextEdit" name="textEditRecipeNotes"/>
-        </item>
-        <item row="1" column="0">
-         <widget class="QDialogButtonBox" name="buttonBoxRecipeNotes">
-          <property name="standardButtons">
-           <set>QDialogButtonBox::Cancel|QDialogButtonBox::Ok</set>
+         <layout class="QVBoxLayout" name="verticalLayout_17">
+          <property name="spacing">
+           <number>6</number>
           </property>
-         </widget>
+          <item>
+           <widget class="QTextEdit" name="textEditRecipeNotes"/>
+          </item>
+          <item>
+           <layout class="QVBoxLayout" name="verticalLayout_16">
+            <property name="topMargin">
+             <number>3</number>
+            </property>
+            <property name="rightMargin">
+             <number>9</number>
+            </property>
+            <property name="bottomMargin">
+             <number>9</number>
+            </property>
+            <item>
+             <widget class="QDialogButtonBox" name="buttonBoxRecipeNotes">
+              <property name="standardButtons">
+               <set>QDialogButtonBox::Cancel|QDialogButtonBox::Ok</set>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+         </layout>
         </item>
        </layout>
       </widget>
@@ -1003,6 +1029,15 @@ p, li { white-space: pre-wrap; }
         </property>
         <item row="0" column="0">
          <layout class="QVBoxLayout" name="verticalLayout_11">
+          <property name="leftMargin">
+           <number>9</number>
+          </property>
+          <property name="rightMargin">
+           <number>9</number>
+          </property>
+          <property name="bottomMargin">
+           <number>6</number>
+          </property>
           <item>
            <layout class="QVBoxLayout" name="verticalLayout_10">
             <property name="rightMargin">
@@ -1362,8 +1397,14 @@ p, li { white-space: pre-wrap; }
       </widget>
       <widget class="QWidget" name="page_5">
        <layout class="QGridLayout" name="gridLayout_12">
+        <property name="leftMargin">
+         <number>18</number>
+        </property>
         <property name="topMargin">
          <number>18</number>
+        </property>
+        <property name="rightMargin">
+         <number>9</number>
         </property>
         <item row="2" column="0">
          <spacer name="verticalSpacer_4">
