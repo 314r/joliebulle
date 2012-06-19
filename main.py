@@ -2362,15 +2362,19 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         
         
     def recharger(self) :
-        i = (AppWindow.nbreFer + AppWindow.nbreDivers + AppWindow.nbreHops + self.nbreLevures)
-        self.modele.removeRows(0,i)
-        AppWindow.nbreFer = 0
-        AppWindow.nbreHops = 0
-        AppWindow.nbreDivers = 0
-        self.nouvelle()
-        self.importBeerXML()
-        self.calculs_recette()
-        self.MVC()
+        if not self.s :
+            pass
+        else :
+            i = (AppWindow.nbreFer + AppWindow.nbreDivers + AppWindow.nbreHops + self.nbreLevures)
+            self.modele.removeRows(0,i)
+            AppWindow.nbreFer = 0
+            AppWindow.nbreHops = 0
+            AppWindow.nbreDivers = 0
+            self.nouvelle()
+            self.importBeerXML()
+            self.calculs_recette()
+            self.MVC()
+
                         
     def addStyle(self) :
         self.lineEditGenre.setText(self.comboBoxStyle.currentText())
