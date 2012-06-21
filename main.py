@@ -2700,6 +2700,13 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
     
             self.labelSpargeVol.setText("%.1f" %(self.brewCalc.spargeVol))
             self.labelSpargeTemp.setText("%.1f" %(spargeTemp))
+
+            #on calcule les volumes
+            self.brewCalc.calcMashVolume(self.grainWeight)
+            self.mashVolumeLastStep = self.brewCalc.grainVolume + sum(self.stepsListVol)
+            self.labelGrainVolume.setText("%.1f" %(self.brewCalc.grainVolume))       
+            self.labelTotalVolumeStrike.setText("%.1f" %(self.brewCalc.mashVolumeStrike)) 
+            self.labelTotalVolumeLast.setText("%.1f" %(self.mashVolumeLastStep))
     
         else :
             self.brewCalc.calcGrainRetention(self.grainWeight)
@@ -2712,6 +2719,13 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
             self.tableWidgetStepsBrewday.setItem(0,2,QtGui.QTableWidgetItem("%.1f" %(self.brewCalc.strikeTemp)))
             self.tableWidgetStepsBrewday.setItem(0,3,QtGui.QTableWidgetItem("%.1f" %(ratio)))
             self.pushButtonAdjustStep.setEnabled(False)
+
+            #on calcule les volumes
+            self.brewCalc.calcMashVolume(self.grainWeight)
+            self.mashVolumeLastStep = self.brewCalc.grainVolume + sum(self.stepsListVol)
+            self.labelGrainVolume.setText("%.1f" %(self.brewCalc.grainVolume))       
+            self.labelTotalVolumeStrike.setText("%.1f" %(self.strikeVol + self.brewCalc.grainVolume)) 
+            self.labelTotalVolumeLast.setText("idem")
             
             #on vérifie que le profil est bien compatible avec un BIAB :
             i = 0
@@ -2725,8 +2739,8 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
                     pass
                     
         
-                      
-                
+
+
             
         
     def tableWidgetStepsBrewday_currentRowChanged (self) :
@@ -2788,7 +2802,12 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
                 self.tableWidgetStepsBrewday.setItem(i,2,QtGui.QTableWidgetItem("%.1f" %(0)))
             
             
-
+        #on calcule les volumes
+        # self.brewCalc.calcMashVolume(self.grainWeight)
+        self.mashVolumeLastStep = self.brewCalc.grainVolume + sum(self.stepsListVol)
+        self.labelGrainVolume.setText("%.1f" %(self.brewCalc.grainVolume))       
+        self.labelTotalVolumeStrike.setText("%.1f" %(self.brewCalc.grainVolume+listVol[0])) 
+        self.labelTotalVolumeLast.setText("%.1f" %(self.mashVolumeLastStep))
             
 #            print('température du moût', mashTemp)
             
