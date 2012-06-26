@@ -646,8 +646,8 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         
         self.tableViewF.resizeColumnsToContents()
         self.tableViewF.setColumnWidth(0,250)
-        self.tableViewF.setColumnWidth(1,150)
-        self.tableViewF.setColumnWidth(3,150)
+        self.tableViewF.setColumnWidth(1,125)
+        self.tableViewF.setColumnWidth(3,125)
         self.tableViewF.setColumnWidth(4,150)
         self.tableViewF.setColumnWidth(6,150)
         
