@@ -871,7 +871,8 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         exp.exportHtml(self.nomRecette,self.styleRecette, self.volume, self.boil, AppWindow.nbreFer, self.liste_ingr, self.liste_fAmount, AppWindow.nbreHops, self.liste_houblons, self.liste_hAlpha, self.liste_hForm, self.liste_hAmount, self.liste_hTime,self.liste_hUse, AppWindow.nbreDivers, self.liste_divers, self.liste_dType, self.liste_dAmount, self.liste_dTime, self.liste_dUse, self.nbreLevures, self.liste_levuresDetail,self.rendement, self.OG, self.FG, self.EBC, self.ibuTot ,self.ABV, self.recipeNotes)
         exp.generateHtml()
         print("simple clic !")
-        self.webViewBiblio.setHtml(exp.generatedHtml)
+        baseUrl = QtCore.QUrl("/home/pierre/joliebulle/")
+        self.webViewBiblio.setHtml(exp.generatedHtml, )
         self.MVC()
 
     def editCurrentRecipe(self):
@@ -1623,7 +1624,10 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         
         for notes in presentation :
             if notes.tag == 'NOTES' :
-                self.recipeNotes = notes.text
+                if notes.text == None :
+                    self.recipeNotes = ''
+                else :
+                    self.recipeNotes = notes.text
        
             
         

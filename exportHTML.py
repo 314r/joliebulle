@@ -45,14 +45,15 @@ html { font-size:100.01%; }
 body {width:800px;margin:auto;line-height: 1.5;color: #222; font-size:80%}
 h1,h2,h3,h4,h5,h6 { font-weight: normal; color: #111; }
 h1 { font-size: 2em; margin-bottom: 0; text-align:center;}
-h2 { font-size: 1.5em; line-height: 1; margin-bottom: 2em; margin-top:2em; padding-bottom:0.75em; padding-top:0.75em;border-bottom:solid 1px #ddd;}
-h3 { font-size: 1.2em; line-height: 1.25; margin-bottom: 1.25em; text-align:left; }
+h2 { font-size: 1.5em; line-height: 1; margin-bottom: 2em; margin-top:2em; padding-bottom:0.75em; padding-top:0.75em;border-bottom:solid 1px #ddd;clear:both;}
+h3 { font-size: 1.2em; line-height: 1.25; margin-bottom: 1.25em; text-align:left; background-color:#eeeeee; border-bottom:1px solid #cccccc; border-top:1px solid #cccccc; padding:0.5em 0 0.5em 0.5em;}
 ul{list-style-type: none;text-align:left;}
 .genre {font-style:italic; text-align:center;color:#ddd;margin-top:0;padding-top:0;border:0;border-bottom:solid 1px #ddd;}
-.profil{text-align:left;margin-bottom:1em;}
+.profil{text-align:left;margin-bottom:1em; width:400px;background:url(/Images/glade.png);}
 .profil td {min-width: 200px;}
 .ingredients{text-align:left; margin-bottom:2em;}
 .ingredients td {min-width: 200px;}
+
 .footer { width:700px;
 margin:auto; 
 margin-top:4em;
@@ -108,13 +109,13 @@ text-align : center;}
         self.recipeNotes = self.trUtf8(''' <h2>Notes</h2>''') + '''<p>''' + str(recipeNotes) + ''' </p> '''
 
         self.recetteHtmlFooter =self.trUtf8( '''
-<footer class="footer">Une recette générée par JolieBulle, logiciel de brassage libre.</footer>
+# <footer class="footer">Une recette générée par JolieBulle, logiciel de brassage libre.</footer>
 </body>
 </html>''')
                                         
                                         
     def generateHtml(self) :
-        self.generatedHtml = self.recetteHtmlHeader + self.recetteHtmlProfil + self.recetteHtmlIng + self.recipeNotes + self.recetteHtmlFooter                                      
+        self.generatedHtml = self.recetteHtmlHeader + self.recetteHtmlProfil + self.recetteHtmlIng + self.recipeNotes                                      
                                         
                                         
     def enregistrerHtml(self,fileHtml) :
