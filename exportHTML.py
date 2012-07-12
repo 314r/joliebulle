@@ -76,21 +76,21 @@ text-align : center;}
         i = 0
         while i < nbreFer :
             i=i+1
-            grains_texte = grains_texte + '''<tr>''' + '''<td>'''+str(liste_fAmount[i-1]) + '''g''' + '''</td>''' + '''<td>'''+ liste_ingr[i-1]  +  '''</td>''' +'''</tr>'''
+            grains_texte = grains_texte + '''<tr>''' + '''<td>'''+str("%.0f" %(liste_fAmount[i-1])) + '''g''' + '''</td>''' + '''<td>'''+ liste_ingr[i-1]  +  '''</td>''' +'''</tr>'''
         grains_texte=grains_texte + '''</table>'''
           
         houblons_texte=self.trUtf8('''<h3>Houblons</h3> ''') + '''<table class="ingredients">'''
         h = 0
         while h < nbreHops : 
             h = h+1    
-            houblons_texte = houblons_texte + '''<tr>''' + '''<td>''' + str(liste_hAmount[h-1]) + '''g''' + '''</td>''' + '''<td>''' + liste_houblons[h-1]  + ''' (''' +  str(liste_hAlpha[h-1]) +'''%''' + ''', ''' + liste_hForm[h-1] +''')''' + '''</td>''' + '''<td>''' + str(liste_hTime[h-1]) + '''min (''' +str(liste_hUse[h-1])  +  ''')'''+  '''</td>'''+ '''</tr>'''
+            houblons_texte = houblons_texte + '''<tr>''' + '''<td>''' + str("%.0f" %(liste_hAmount[h-1])) + '''g''' + '''</td>''' + '''<td>''' + liste_houblons[h-1]  + ''' (α''' +  str(liste_hAlpha[h-1]) +'''%''' + ''', ''' + liste_hForm[h-1] +''')''' + '''</td>''' + '''<td>''' + str("%.0f" %(liste_hTime[h-1])) + '''min (''' +str(liste_hUse[h-1])  +  ''')'''+  '''</td>'''+ '''</tr>'''
         houblons_texte = houblons_texte + '''</table>'''
         
         divers_texte = self.trUtf8('''<h3>Ingrédients divers</h3> ''')  + '''<table class="ingredients">'''
         m = 0
         while  m < nbreDivers :
             m = m + 1 
-            divers_texte = divers_texte +  '''<tr>''' + '''<td>''' +  str(liste_dAmount[m-1]) + '''g''' + '''</td>'''+ '''<td>''' + liste_divers[m-1] +''' (''' + liste_dType[m-1] +''')''' + '''</td>''' + '''<td>''' + str(liste_dTime[m-1])+ '''min ('''+ str(liste_dUse[m-1]) + ''')</td>'''+ '''</tr>'''
+            divers_texte = divers_texte +  '''<tr>''' + '''<td>''' +  str("%.0f" %(liste_dAmount[m-1])) + '''g''' + '''</td>'''+ '''<td>''' + liste_divers[m-1] +''' (''' + liste_dType[m-1] +''')''' + '''</td>''' + '''<td>''' + str("%.0f" %(liste_dTime[m-1]))+ '''min ('''+ str(liste_dUse[m-1]) + ''')</td>'''+ '''</tr>'''
             # divers_texte = divers_texte +'''<b>''' + liste_divers[m-1] +'''</b>'''+''' (''' +liste_dType[m-1] +''')''' + ''' : ''' +'''<b>''' +str(liste_dAmount[m-1]) + '''g''' +'''</b>'''+''' pendant ''' + '''<b>''' + str(liste_dTime[m-1]) + '''</b>''' + self.trUtf8(''' minutes''') +'''<br/>'''
         divers_texte = divers_texte + '''</table>'''
         
@@ -104,7 +104,7 @@ text-align : center;}
         self.recetteHtmlIng = self.trUtf8(''' <h2>Ingrédients pour un brassin de ''') + str(volume) + self.trUtf8(''' litres''')+ grains_texte + houblons_texte + divers_texte + levures_texte
         
         
-        self.recetteHtmlProfil = ''' <table class="profil">'''+ self.trUtf8('''<tr><td>Rendement</td> ''') + '''<td> ''' + str(rendement) + '''% </td></tr>''' + self.trUtf8('''<tr><td>Densité initiale</td>''') + '''<td> '''  + str("%.3f" %(OG)) + '''</td></tr>''' + self.trUtf8('''<tr><td>Densité finale</td>''') + '''<td>''' + str("%.3f" %(FG)) + '''</td></tr>''' + self.trUtf8('''<tr><td>Teinte</td>''') + '''<td> '''+ str("%.0f" %(EBC)) + ''' EBC </td></tr>'''+ self.trUtf8('''<tr><td>Amertume</td>''') + '''<td> ''' + str("%.0f" %(IBU)) + ''' IBU </td></tr>''' + self.trUtf8('''<tr><td>Alcool (vol)</td>''') + '''<td>'''+ str("%.0f" %(ABV)) + ''' % </td></tr>''' + '''</table>'''             
+        self.recetteHtmlProfil = ''' <table class="profil">'''+ self.trUtf8('''<tr><td>Rendement</td> ''') + '''<td> ''' + str(rendement) + '''% </td></tr>''' + self.trUtf8('''<tr><td>Densité initiale</td>''') + '''<td> '''  + str("%.3f" %(OG)) + '''</td></tr>''' + self.trUtf8('''<tr><td>Densité finale</td>''') + '''<td>''' + str("%.3f" %(FG)) + '''</td></tr>''' + self.trUtf8('''<tr><td>Teinte</td>''') + '''<td> '''+ str("%.0f" %(EBC)) + ''' EBC </td></tr>'''+ self.trUtf8('''<tr><td>Amertume</td>''') + '''<td> ''' + str("%.0f" %(IBU)) + ''' IBU </td></tr>''' + self.trUtf8('''<tr><td>Alcool (vol)</td>''') + '''<td>'''+ str("%.1f" %(ABV)) + ''' % </td></tr>''' + '''</table>'''             
 
         self.recipeNotes = self.trUtf8(''' <h2>Notes</h2>''') + '''<p>''' + str(recipeNotes) + ''' </p> '''
 

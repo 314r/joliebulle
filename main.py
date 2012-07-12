@@ -23,6 +23,8 @@
 
 
 import os
+import os.path
+import glob
 from sys import platform
 import PyQt4
 import sys
@@ -684,7 +686,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         self.pushButtonEditRecipeBiblio.clicked.connect(self.renommerBiblio)
 
 
-
+        
 
 
         ############################################################################################################################
@@ -870,10 +872,19 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         exp = ExportHTML()
         exp.exportHtml(self.nomRecette,self.styleRecette, self.volume, self.boil, AppWindow.nbreFer, self.liste_ingr, self.liste_fAmount, AppWindow.nbreHops, self.liste_houblons, self.liste_hAlpha, self.liste_hForm, self.liste_hAmount, self.liste_hTime,self.liste_hUse, AppWindow.nbreDivers, self.liste_divers, self.liste_dType, self.liste_dAmount, self.liste_dTime, self.liste_dUse, self.nbreLevures, self.liste_levuresDetail,self.rendement, self.OG, self.FG, self.EBC, self.ibuTot ,self.ABV, self.recipeNotes)
         exp.generateHtml()
-        print("simple clic !")
-        baseUrl = QtCore.QUrl("/home/pierre/joliebulle/")
         self.webViewBiblio.setHtml(exp.generatedHtml, )
         self.MVC()
+
+    def listdirectory(self, path): 
+        listfile=[] 
+        tree = os.walk(path)
+        for dirtuple in tree :
+            listfile.append(dirtuple)
+        for threetuple in listfile :
+            print('une liste des dossiers', threetuple[1])
+
+
+        # print("la liste des fichiers",listfile)
 
     def editCurrentRecipe(self):
         self.switchToEditor()
@@ -1045,6 +1056,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         self.actionBrewdayMode.setChecked(False)
         self.buttonSave.hide()
         self.buttonNewRecipe.hide()
+        self.listdirectory(recettes_dir)
 
         
     def switchToNotes(self) :
@@ -1819,8 +1831,12 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
                     self.liste_dType.append(self.dType)
                   
                 if nom.tag == 'TIME' :
-                    self.dTime = float(nom.text)
-                    self.liste_dTime.append(self.dTime)
+                    try :
+                        self.dTime = float(nom.text)
+                        self.liste_dTime.append(self.dTime)
+                    except : 
+                        self.dTime = 0
+                        self.liste_dTime.append(self.dTime)
                   
                 if nom.tag == 'USE' :
                     self.dUse = (nom.text)
@@ -1838,7 +1854,10 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
                         self.liste_dUse.append(self.dUse)
                     if self.dUse == 'Bottling' :
                         self.dUse = self.trUtf8('Embouteillage')
-                        self.liste_dUse.append(self.dUse)      
+                        self.liste_dUse.append(self.dUse)
+                    else :
+                        self.dUse = self.trUtf8('Ébullition')
+                        self.liste_dUse.append(self.dUse)
         
         #Brassin
         
