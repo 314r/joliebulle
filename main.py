@@ -685,7 +685,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         self.pushButtonNewFolderBiblio.clicked.connect(self.createFolder)
         self.pushButtonEditRecipeBiblio.clicked.connect(self.renommerBiblio)
 
-
+        self.listdir(recettes_dir)
         
 
 
@@ -875,16 +875,20 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         self.webViewBiblio.setHtml(exp.generatedHtml, )
         self.MVC()
 
-    def listdirectory(self, path): 
-        listfile=[] 
-        tree = os.walk(path)
-        for dirtuple in tree :
-            listfile.append(dirtuple)
-        for threetuple in listfile :
-            print('une liste des dossiers', threetuple[1])
+    def matchFileNameBiblio(self) :
+        rootIndex = self.treeViewBiblio.rootIndex()
+        taille = self.modeleBiblio.rowCount(rootIndex)
+        print('taille', taille)
+        # self.treeViewBiblio.selectAll()
+        # print(self.treeViewBiblio.selectedIndexes())
 
+    def listdir(self, rootdir) :
+        fileList=[]
+        for root, subFolders, files in os.walk(rootdir):
+            for file2 in files:
+                fileList.append(os.path.join(root,file2))
+        print ('liste',fileList)
 
-        # print("la liste des fichiers",listfile)
 
     def editCurrentRecipe(self):
         self.switchToEditor()
@@ -1056,7 +1060,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         self.actionBrewdayMode.setChecked(False)
         self.buttonSave.hide()
         self.buttonNewRecipe.hide()
-        self.listdirectory(recettes_dir)
+        self.matchFileNameBiblio()
 
         
     def switchToNotes(self) :
