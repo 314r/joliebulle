@@ -884,10 +884,25 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
 
     def listdir(self, rootdir) :
         fileList=[]
+        rootList=[]
+        filenameList=[]
         for root, subFolders, files in os.walk(rootdir):
             for file2 in files:
                 fileList.append(os.path.join(root,file2))
+                rootList.append(root)
+                filenameList.append(file2)
         print ('liste',fileList)
+        print('liste dossiers',rootList)
+        print('liste nom',filenameList)
+        #on reconstitue
+        newFileList=[]
+        i=0
+        while i < len(filenameList) :
+            i=i+1
+            folder = rootList[i-1]
+            recipe = fileList[i-1]
+            newFileList.append(os.path.join(folder,recipe)) 
+        print("new", newFileList)
 
 
     def editCurrentRecipe(self):
