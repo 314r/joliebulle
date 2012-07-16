@@ -894,15 +894,48 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         print ('liste',fileList)
         print('liste dossiers',rootList)
         print('liste nom',filenameList)
+
+        #on parse
+        newFileNameList = []
+        j=0
+        while j < len(filenameList) :
+            j=j+1
+            recipe = fileList[j-1]
+            arbre = ET.parse(recipe)
+            presentation=arbre.find('.//RECIPE')
+            for nom in presentation :
+                try :
+                    if nom.tag == "NAME" : 
+                       nomRecette = nom.text
+                       newFileNameList.append(nomRecette + '.xml')
+                except :
+                    pass
+        print('newFileNameList', newFileNameList)
+
         #on reconstitue
         newFileList=[]
         i=0
         while i < len(filenameList) :
             i=i+1
             folder = rootList[i-1]
-            recipe = fileList[i-1]
+            recipe = newFileNameList[i-1]
             newFileList.append(os.path.join(folder,recipe)) 
         print("new", newFileList)
+
+        #on renomme
+        k=0
+        while k < len(newFileNameList) :
+            k=k+1
+            old=fileList[k-1]
+            new=newFileList[k-1]
+            try :
+                os.rename(old,new)
+            except :
+                print("raté")
+
+
+
+
 
 
     def editCurrentRecipe(self):
