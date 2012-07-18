@@ -891,9 +891,9 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
                 fileList.append(os.path.join(root,file2))
                 rootList.append(root)
                 filenameList.append(file2)
-        print ('liste',fileList)
-        print('liste dossiers',rootList)
-        print('liste nom',filenameList)
+        # print ('liste',fileList)
+        # print('liste dossiers',rootList)
+        # print('liste nom',filenameList)
 
         #on parse
         newFileNameList = []
@@ -907,10 +907,10 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
                 try :
                     if nom.tag == "NAME" : 
                        nomRecette = nom.text
-                       newFileNameList.append(nomRecette + '.xml')
+                       newFileNameList.append(nomRecette)
                 except :
                     pass
-        print('newFileNameList', newFileNameList)
+        # print('newFileNameList', newFileNameList)
 
         #on reconstitue
         newFileList=[]
@@ -919,19 +919,54 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
             i=i+1
             folder = rootList[i-1]
             recipe = newFileNameList[i-1]
-            newFileList.append(os.path.join(folder,recipe)) 
+            newName = os.path.join(folder,recipe)
+            
+         
+            if newName in newFileList :
+                print ('doublon !')
+                sameCount= 0 
+                while sameCount < len(newFileNameList) :
+                    sameCount = sameCount+1
+                    newNameModif = newName + '(' + str(sameCount) + ')'
+                    if newNameModif in newFileList :
+                        continue
+                    else :
+                        newFileList.append(newNameModif)
+                        break
+            else :
+                newFileList.append(newName) 
         print("new", newFileList)
 
         #on renomme
+        # k=0
+        # while k < len(newFileNameList) :
+        #     k=k+1
+        #     old=fileList[k-1]
+        #     new=newFileList[k-1] 
+        #     if old == new :
+        #         pass
+        #     else: 
+        #         try :
+        #             os.rename(old,new)
+        #         except :
+        #             print("raté")
+
+        #on renomme
+        dir = QtCore.QDir(recettes_dir)
         k=0
-        while k < len(newFileNameList) :
+        while k < len(newFileNameList)-1 :
             k=k+1
             old=fileList[k-1]
-            new=newFileList[k-1]
-            try :
-                os.rename(old,new)
-            except :
-                print("raté")
+            new=newFileList[k-1]  + '.xml'
+            # if old == new :
+            #     pass
+            # else :
+            #     try :
+            #         dir.rename(old,new)
+            #     except:
+            #         pass
+
+            dir.rename(old,new)
 
 
 
