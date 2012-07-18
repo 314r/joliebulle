@@ -954,19 +954,19 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         #on renomme
         dir = QtCore.QDir(recettes_dir)
         k=0
-        while k < len(newFileNameList)-1 :
+        while k < len(newFileNameList) :
             k=k+1
             old=fileList[k-1]
             new=newFileList[k-1]  + '.xml'
-            # if old == new :
-            #     pass
-            # else :
-            #     try :
-            #         dir.rename(old,new)
-            #     except:
-            #         pass
+            if old == new :
+                pass
+            else :
+                try :
+                    dir.rename(old,new)
+                except:
+                    pass
 
-            dir.rename(old,new)
+           
 
 
 
