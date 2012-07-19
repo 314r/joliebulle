@@ -58,6 +58,29 @@ from globals import *
 
 import xml.etree.ElementTree as ET
 
+
+class RecipesDelegate(QtGui.QStyledItemDelegate) : 
+    def __init__(self, parent):
+        QtGui.QStyledItemDelegate.__init__(self, parent)
+        self.palette = parent.palette()
+    def paint(self, painter, option, index):
+        item_var = index.data(QtCore.Qt.DisplayRole)
+        # item_str = item_var.toPyObject()
+        item_info = QtCore.QFileInfo(item_var)
+        item_name = item_info.baseName()
+       
+        painter.save()
+        if option.state & QtGui.QStyle.State_Selected: 
+            #painter.fillRect(option.rect, painter.brush())
+            painter.fillRect(option.rect, self.palette.highlight())
+            painter.setPen(self.palette.highlightedText().color() )
+        painter.drawText(option.rect, QtCore.Qt.AlignLeft | QtCore.Qt.AlignVCenter, item_name)
+        target = QtCore.QRectF(0, 0, 24, 24)
+        image = QtGui.QImage("/home/pierre/joliebulle/Images/document-properties.png")
+        painter.drawImage(target,image)
+        painter.restore()
+
+
 class IngDelegate(QtGui.QItemDelegate):
     def __init__(self, parent=None):
         QtGui.QItemDelegate.__init__(self, parent)
@@ -686,7 +709,8 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         self.pushButtonEditRecipeBiblio.clicked.connect(self.renommerBiblio)
 
         self.listdir(recettes_dir)
-        
+        self.delegRecipes=RecipesDelegate(self)
+        self.treeViewBiblio.setItemDelegate(self.delegRecipes)        
 
 
         ############################################################################################################################
