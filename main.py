@@ -75,9 +75,9 @@ class RecipesDelegate(QtGui.QStyledItemDelegate) :
             painter.fillRect(option.rect, self.palette.highlight())
             painter.setPen(self.palette.highlightedText().color() )
         painter.drawText(option.rect, QtCore.Qt.AlignLeft | QtCore.Qt.AlignVCenter, item_name)
-        target = QtCore.QRectF(0, 0, 24, 24)
+        target = QtCore.QRectF(0, 0, 12, 12)
         source = QtCore.QRectF(0, 0, 24, 24)
-        image = QtGui.QPixmap("/home/pierre/joliebulle/Images/document-properties.png")
+        image = QtGui.QPixmap("folder.png")
         painter.drawPixmap(option.rect.topLeft(), image)
         painter.restore()
 
