@@ -58,6 +58,19 @@ from globals import *
 
 import xml.etree.ElementTree as ET
 
+class BiblioFileSystem (QtGui.QFileSystemModel) :
+    def __init__(self, parent=None):
+        QtGui.QFileSystemModel.__init__(self, parent)
+    def data(self, parent,index, role=QtCore.Qt.DisplayRole):
+        if role == QtCore.Qt.DisplayRole:
+            name = str(fileName(index))
+            
+            
+            
+            return name
+          
+
+
 
 class RecipesDelegate(QtGui.QStyledItemDelegate) : 
     def __init__(self, parent):
@@ -710,8 +723,8 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         self.pushButtonEditRecipeBiblio.clicked.connect(self.renommerBiblio)
 
         self.listdir(recettes_dir)
-        self.delegRecipes=RecipesDelegate(self)
-        self.treeViewBiblio.setItemDelegate(self.delegRecipes)        
+        # self.delegRecipes=RecipesDelegate(self)
+        # self.treeViewBiblio.setItemDelegate(self.delegRecipes)        
 
 
         ############################################################################################################################
