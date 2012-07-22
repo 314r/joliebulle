@@ -61,9 +61,10 @@ import xml.etree.ElementTree as ET
 class BiblioFileSystem (QtGui.QFileSystemModel) :
     def __init__(self, parent=None):
         QtGui.QFileSystemModel.__init__(self, parent)
-    def data(self, parent,index, role=QtCore.Qt.DisplayRole):
+    def data(self,index, role=QtCore.Qt.DisplayRole):
         if role == QtCore.Qt.DisplayRole:
-            name = str(fileName(index))
+            direc=QtCore.QDir()
+            name = direc.filePath(index)
             
             
             
@@ -693,7 +694,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         #La bibliotheque
         ###################################################################################################################
         ###################################################################################################################
-        self.modeleBiblio = QtGui.QFileSystemModel()
+        self.modeleBiblio = BiblioFileSystem()
         self.modeleBiblio.setReadOnly(False)
         self.modeleBiblio.setRootPath(recettes_dir)
         
