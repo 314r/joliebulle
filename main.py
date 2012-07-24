@@ -58,42 +58,38 @@ from globals import *
 
 import xml.etree.ElementTree as ET
 
-class BiblioFileSystem (QtGui.QFileSystemModel) :
-    def __init__(self, parent=None):
-        QtGui.QFileSystemModel.__init__(self, parent)
-    def data(self,index, role=QtCore.Qt.DisplayRole):
-        if role == QtCore.Qt.DisplayRole:
-            direc=QtCore.QDir()
-            name = direc.filePath(index)
-            
-            
-            
-            return name
+# class BiblioFileSystem (QtGui.QFileSystemModel) :
+#     def __init__(self, parent=None):
+#         QtGui.QFileSystemModel.__init__(self, parent)
+#     def data(self,index, role=QtCore.Qt.DisplayRole):
+#         if role == QtCore.Qt.DisplayRole:
+#             name = self.fileName(index)    
+#             return name
           
 
 
 
-class RecipesDelegate(QtGui.QStyledItemDelegate) : 
-    def __init__(self, parent):
-        QtGui.QStyledItemDelegate.__init__(self, parent)
-        self.palette = parent.palette()
-    def paint(self, painter, option, index):
-        item_var = index.data(QtCore.Qt.DisplayRole)
-        # item_str = item_var.toPyObject()
-        item_info = QtCore.QFileInfo(item_var)
-        item_name = item_info.baseName()
+# class RecipesDelegate(QtGui.QStyledItemDelegate) : 
+#     def __init__(self, parent):
+#         QtGui.QStyledItemDelegate.__init__(self, parent)
+#         self.palette = parent.palette()
+#     def paint(self, painter, option, index):
+#         item_var = index.data(QtCore.Qt.DisplayRole)
+#         # item_str = item_var.toPyObject()
+#         item_info = QtCore.QFileInfo(item_var)
+#         item_name = item_info.baseName()
        
-        painter.save()
-        if option.state & QtGui.QStyle.State_Selected: 
-            #painter.fillRect(option.rect, painter.brush())
-            painter.fillRect(option.rect, self.palette.highlight())
-            painter.setPen(self.palette.highlightedText().color() )
-        painter.drawText(option.rect, QtCore.Qt.AlignLeft | QtCore.Qt.AlignVCenter, item_name)
-        target = QtCore.QRectF(0, 0, 12, 12)
-        source = QtCore.QRectF(0, 0, 24, 24)
-        image = QtGui.QPixmap("folder.png")
-        painter.drawPixmap(option.rect.topLeft(), image)
-        painter.restore()
+#         painter.save()
+#         if option.state & QtGui.QStyle.State_Selected: 
+#             #painter.fillRect(option.rect, painter.brush())
+#             painter.fillRect(option.rect, self.palette.highlight())
+#             painter.setPen(self.palette.highlightedText().color() )
+#         painter.drawText(option.rect, QtCore.Qt.AlignLeft | QtCore.Qt.AlignVCenter, item_name)
+#         target = QtCore.QRectF(0, 0, 12, 12)
+#         source = QtCore.QRectF(0, 0, 24, 24)
+#         image = QtGui.QPixmap("folder.png")
+#         painter.drawPixmap(option.rect.topLeft(), image)
+#         painter.restore()
 
 
 class IngDelegate(QtGui.QItemDelegate):
@@ -694,7 +690,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         #La bibliotheque
         ###################################################################################################################
         ###################################################################################################################
-        self.modeleBiblio = BiblioFileSystem()
+        self.modeleBiblio = QtGui.QFileSystemModel()
         self.modeleBiblio.setReadOnly(False)
         self.modeleBiblio.setRootPath(recettes_dir)
         
@@ -720,12 +716,24 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         self.pushButtonEditCurrentRecipe.clicked.connect(self.editCurrentRecipe)
 
         self.pushButtonRemoveRecipeBiblio.clicked.connect(self.supprimerBiblio)
-        self.pushButtonNewFolderBiblio.clicked.connect(self.createFolder)
-        self.pushButtonEditRecipeBiblio.clicked.connect(self.renommerBiblio)
+        # self.pushButtonNewFolderBiblio.clicked.connect(self.createFolder)
+        # self.pushButtonEditRecipeBiblio.clicked.connect(self.renommerBiblio)
+        self.pushButtonBrewRecipeBiblio.clicked.connect(self.switchToBrewday)
 
         self.listdir(recettes_dir)
         # self.delegRecipes=RecipesDelegate(self)
-        # self.treeViewBiblio.setItemDelegate(self.delegRecipes)        
+        # self.treeViewBiblio.setItemDelegate(self.delegRecipes)    
+
+
+        # le menu "nouveau"
+        newLibMenu = QtGui.QMenu()
+        newLibMenu.addAction(self.actionNouveau_Dossier)
+        newLibMenu.addAction(self.actionNouvelle_recette_2)
+        self.pushButtonNewFolderBiblio.setMenu(newLibMenu)
+
+        self.actionNouveau_Dossier.triggered.connect(self.createFolder)
+        self.actionNouvelle_recette_2.triggered.connect(self.newRecipeFromLibrary)
+
 
 
         ############################################################################################################################
@@ -1029,13 +1037,13 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
     def menuBiblio(self,position) :
         menu = QtGui.QMenu()
         #EditeurAction = menu.addAction("Editeur de recette")
-        RenommerAction  = menu.addAction(self.trUtf8("Renommer"))
+        # RenommerAction  = menu.addAction(self.trUtf8("Renommer"))
         SupprimerAction = menu.addAction(self.trUtf8("Supprimer"))        
         # CopyAction = menu.addAction(self.trUtf8("Copier"))
         # PasteAction = menu.addAction(self.trUtf8("Coller"))
-        FolderAction = menu.addAction(self.trUtf8("Créer un dossier"))
+        FolderAction = menu.addAction(self.trUtf8("Nouveau dossier"))
         # UpAction = menu.addAction(self.trUtf8("Remonter"))
-
+        menu.addAction(self.actionNouvelle_recette_2)
         
         # PasteAction.setEnabled(False)
         # clipboard = app.clipboard()
@@ -1048,8 +1056,8 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
           #  self.switchToEditor()
         if action == SupprimerAction:
             self.supprimerBiblio()  
-        if action == RenommerAction:
-            self.renommerBiblio() 
+        # if action == RenommerAction:
+        #     self.renommerBiblio() 
         if action == FolderAction:
             self.createFolder()   
         # if action == UpAction :
@@ -1486,8 +1494,11 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         AppWindow.nbreDivers = 0
         self.s = 0
         self.nouvelle()
-        
-        
+        self.switchToEditor()
+
+    def newRecipeFromLibrary (self) :
+        self.switchToEditor()
+        self.purge()
         
 
     
