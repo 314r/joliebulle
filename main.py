@@ -1494,7 +1494,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         AppWindow.nbreDivers = 0
         self.s = 0
         self.nouvelle()
-        self.switchToEditor()
+        
 
     def newRecipeFromLibrary (self) :
         self.switchToEditor()
@@ -3053,6 +3053,10 @@ if __name__ == "__main__":
     #~ translator.load(("qt_") +locale, QtCore.QLibraryInfo.location(QtCore.QLibraryInfo.TranslationsPath))
     translator.load('joliebulle_' + locale)
     app.installTranslator(translator)
+
+    translatorQt = QtCore.QTranslator ()
+    translatorQt.load('qt_' + locale)
+    app.installTranslator(translatorQt)
 
     main_window = AppWindow()
     main_window.show()
