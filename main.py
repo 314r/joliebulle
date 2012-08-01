@@ -2406,7 +2406,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
             recettes = QtCore.QFile(recettes_dir)
             self.s =  recettes_dir +"/" + self.nomRecette + ".xml"
             if os.path.exists(self.s) :
-                confirmation = QtGui.QMessageBox.warning(self,
+                warning = QtGui.QMessageBox.warning(self,
                             self.trUtf8("Recette déjà existante"),
                             self.trUtf8("Ce nom de recette existe déjà. L'enregistrement a été annulé. Vous pouvez choisir un nouveau nom.")
                             )
