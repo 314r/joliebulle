@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'reader.ui'
 #
-# Created: Wed Jul 25 22:37:11 2012
+# Created: Mon Jul 30 21:49:38 2012
 #      by: PyQt4 UI code generator 4.9.4
 #
 # WARNING! All changes made in this file will be lost!
@@ -353,11 +353,6 @@ class Ui_MainWindow(object):
         spacerItem5 = QtGui.QSpacerItem(20, 40, QtGui.QSizePolicy.Minimum, QtGui.QSizePolicy.Expanding)
         self.verticalLayout_6.addItem(spacerItem5)
         self.gridLayout.addWidget(self.widgetProfile, 1, 1, 1, 1)
-        self.buttonBox = QtGui.QDialogButtonBox(self.page)
-        self.buttonBox.setMaximumSize(QtCore.QSize(200, 16777215))
-        self.buttonBox.setStandardButtons(QtGui.QDialogButtonBox.Cancel|QtGui.QDialogButtonBox.Save)
-        self.buttonBox.setObjectName(_fromUtf8("buttonBox"))
-        self.gridLayout.addWidget(self.buttonBox, 2, 1, 1, 1)
         self.stackedWidget.addWidget(self.page)
         self.page_6 = QtGui.QWidget()
         self.page_6.setObjectName(_fromUtf8("page_6"))
@@ -1100,7 +1095,7 @@ class Ui_MainWindow(object):
 "p, li { white-space: pre-wrap; }\n"
 "</style></head><body style=\" font-family:\'Droid Sans\'; font-size:10pt; font-weight:400; font-style:normal;\">\n"
 "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:\'Ubuntu\'; font-size:9pt; font-weight:600;\">TEINTE</span></p></body></html>", None, QtGui.QApplication.UnicodeUTF8))
-        self.pushButtonNewFolderBiblio.setToolTip(QtGui.QApplication.translate("MainWindow", "Nouveau dossier", None, QtGui.QApplication.UnicodeUTF8))
+        self.pushButtonNewFolderBiblio.setToolTip(QtGui.QApplication.translate("MainWindow", "Nouveau dossier ou nouvelle recette", None, QtGui.QApplication.UnicodeUTF8))
         self.pushButtonRemoveRecipeBiblio.setToolTip(QtGui.QApplication.translate("MainWindow", "Supprimer", None, QtGui.QApplication.UnicodeUTF8))
         self.pushButtonEditCurrentRecipe.setToolTip(QtGui.QApplication.translate("MainWindow", "Editer", None, QtGui.QApplication.UnicodeUTF8))
         self.pushButtonEditCurrentRecipe.setText(QtGui.QApplication.translate("MainWindow", "Editer", None, QtGui.QApplication.UnicodeUTF8))

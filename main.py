@@ -390,6 +390,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         QtGui.QMainWindow.__init__(self, parent)
         self.setupUi(self)
 
+
 #####################################################################################################
 #####################################################################################################
 
@@ -410,13 +411,14 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         self.buttonSave.setIconSize(QtCore.QSize(24,24))
         self.buttonSave.setFlat(True)
         self.buttonSave.setToolTip(self.trUtf8("Sauvegarder"))
+        self.buttonSave.setText(self.trUtf8("Sauvegarder"))
 
         self.buttonNewRecipe=QtGui.QPushButton("")
         self.buttonNewRecipe.setIcon(QtGui.QIcon("Images/more.png"))
         self.buttonNewRecipe.setIconSize(QtCore.QSize(24,24))
         self.buttonNewRecipe.setFlat(True)
         self.buttonNewRecipe.setToolTip(self.trUtf8("Nouvelle recette"))
-
+        self.buttonNewRecipe.setText(self.trUtf8("Nouvelle recette"))
         
         
 
@@ -487,7 +489,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         self.buttonSave.clicked.connect(self.enregistrer)
         self.buttonSave.hide()
         self.buttonNewRecipe.hide()
-        self.buttonNewRecipe.clicked.connect(self.purge)
+        self.buttonNewRecipe.clicked.connect(self.newRecipeFromLibrary)
 
 
 ######################################################################################
@@ -496,7 +498,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
 
 
 
-
+        
 
 
         self.settings = Settings()
@@ -527,6 +529,13 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         self.baseStyleListe = [self.trUtf8('Générique'), '1A. Lite American Lager', '1B. Standard American Lager', '1C. Premium American Lager', '1D. Munich Helles', '1E. Dortmunder Export', '2A. German Pilsner (Pils)', '2B. Bohemian Pilsener', '2C. Classic American Pilsner', '3A. Vienna Lager', '3B. Oktoberfest/Märzen', '4A. Dark American Lager', '4B. Munich Dunkel', '4C. Schwarzbier (Black Beer)', '5A. Maibock/Helles Bock', '5B. Traditional Bock', '5C. Doppelbock', '5D. Eisbock', '6A. Cream Ale', '6B. Blonde Ale', '6C. Kölsch', '6D. American Wheat or Rye Beer', '7A. Northern German Altbier', '7B. California Common Beer', '7C. Düsseldorf Altbier', '8A. Standard/Ordinary Bitter', '8B. Special/Best/Premium Bitter', '8C. Extra Special/Strong Bitter (English Pale Ale)', '9A. Scottish Light 60/-', '9B. Scottish Heavy 70/-', '9C. Scottish Export 80/- ', '9D. Irish Red Ale', '9E. Strong Scotch Ale', '10A. American Pale Ale', '10B. American Amber Ale', '10C. American Brown Ale', '11A. Mild','11B. Southern English Brown', '11C. Northern English Brown Ale', '12A. Brown Porter', '12B. Robust Porter', '12C. Baltic Porter', '13A. Dry Stout', '13B. Sweet Stout', '13C. Oatmeal Stout', '13D. Foreign Extra Stout', '13E. American Stout', '13F. Russian Imperial Stout', '14A. English IPA', '14B. American IPA', '14C. Imperial IPA','15A. Weizen/Weissbier', '15B. Dunkelweizen', '15C. Weizenbock', '15D. Roggenbier (German Rye Beer)','16A. Witbier', '16B. Belgian Pale Ale', '16C. Saison', '16D. Bière de Garde', '16E. Belgian Specialty Ale', '17A. Berliner Weisse', '17B. Flanders Red Ale', '17C. Flanders Brown Ale/Oud Bruin', '17D. Straight (Unblended) Lambic', '17E. Gueuze', '17F. Fruit Lambic', '18A. Belgian Blond Ale', '18B. Belgian Dubbel', '18C. Belgian Tripel', '18D. Belgian Golden Strong Ale', '18E. Belgian Dark Strong Ale', '19A. Old Ale', '19B. English Barleywine', '19C. American Barleywine', '20. Fruit Beer', '21A. Spice, Herb, or Vegetable Beer', '21B. Christmas/Winter Specialty Spiced Beer', '22A. Classic Rauchbier', '22B. Other Smoked Beer', '22C. Wood-Aged Beer', '23. Specialty Beer', '24A. Dry Mead', '24B. Semi-sweet Mead', '24C. Sweet Mead', '25A. Cyser', '25B. Pyment', '25C. Other Fruit Melomel', '26A. Metheglin', '26B. Braggot', '26C. Open Category Mead', '27A. Common Cider', '27B. English Cider', '27C. French Cider', '27D. Common Perry', '27E. Traditional Perry', '28A. New England Cider', '28B. Fruit Cider', '28C. Applewine', '28D. Other Specialty Cider/Perry']
        
         self.typesList = ["Tout grain", "Extrait", "Partial mash"]
+
+
+
+        
+
+
+
         #Les connections
         self.connect(self.actionOuvrir, QtCore.SIGNAL("triggered()"), self.ouvrir_clicked)
         self.connect(self.actionOuvrir_2, QtCore.SIGNAL("triggered()"), self.ouvrir_clicked)
@@ -810,13 +819,19 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
 ########################################################################################################################
 ####################################################################################################################
 # le signal émit à la fermeture de la fenêtre de préférences
-            self.dlgPref.prefAccepted.connect(self.prefReload)
+        self.dlgPref.prefAccepted.connect(self.prefReload)
 
+#####################################################################
+        ###on configure la vue par défaut à l'ouverture
+#####################################################################
+        self.stackedWidget.setCurrentIndex(1)
+        self.actionVueEditeurToolBar.setChecked(False)
+        self.actionVueBibliothequeToolBar.setChecked(True)
+        self.actionBrewdayMode.setChecked(False)
+        self.buttonSave.hide()
+        self.buttonNewRecipe.show()
 
-
-
-
-
+        
 
 
         
@@ -865,26 +880,26 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         self.comboBoxM.addItems(self.base.liste_divers)
         self.comboBoxM.setCurrentIndex(0)
         
-    def selectionRecette(self):
-        selection = self.listViewBiblio.selectionModel()
-        self.indexRecette = selection.currentIndex()
+    # def selectionRecette(self):
+    #     selection = self.listViewBiblio.selectionModel()
+    #     self.indexRecette = selection.currentIndex()
 
-        if self.modeleBiblio.isDir(self.indexRecette) == True :
-            self.navFolder()
+    #     if self.modeleBiblio.isDir(self.indexRecette) == True :
+    #         self.navFolder()
         
-        else :
+    #     else :
 
-            self.chemin =self.modeleBiblio.filePath (self.indexRecette)
-            self.purge()
+    #         self.chemin =self.modeleBiblio.filePath (self.indexRecette)
+    #         self.purge()
             
-            self.s = self.chemin
+    #         self.s = self.chemin
             
-            self.importBeerXML()
-            self.calculs_recette()
-            self.MVC()
-            self.stackedWidget.setCurrentIndex(0)
-            self.actionVueEditeurToolBar.setChecked(True)
-            self.actionVueBibliothequeToolBar.setChecked(False)
+    #         self.importBeerXML()
+    #         self.calculs_recette()
+    #         self.MVC()
+    #         self.stackedWidget.setCurrentIndex(0)
+    #         self.actionVueEditeurToolBar.setChecked(True)
+    #         self.actionVueBibliothequeToolBar.setChecked(False)
 
     def selectionRecette2(self):
         selection = self.treeViewBiblio.selectionModel()
@@ -922,10 +937,11 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         self.webViewBiblio.setHtml(exp.generatedHtml, )
         self.MVC()
 
-    def matchFileNameBiblio(self) :
-        rootIndex = self.treeViewBiblio.rootIndex()
-        taille = self.modeleBiblio.rowCount(rootIndex)
-        print('taille', taille)
+
+    # def matchFileNameBiblio(self) :
+    #     rootIndex = self.treeViewBiblio.rootIndex()
+    #     taille = self.modeleBiblio.rowCount(rootIndex)
+    #     print('taille', taille)
         # self.treeViewBiblio.selectAll()
         # print(self.treeViewBiblio.selectedIndexes())
 
@@ -1189,8 +1205,8 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         self.actionVueBibliothequeToolBar.setChecked(True)
         self.actionBrewdayMode.setChecked(False)
         self.buttonSave.hide()
-        self.buttonNewRecipe.hide()
-        self.matchFileNameBiblio()
+        self.buttonNewRecipe.show()
+        self.viewRecipeBiblio()
 
         
     def switchToNotes(self) :
@@ -2389,11 +2405,15 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
             #self.enregistrerSous()
             recettes = QtCore.QFile(recettes_dir)
             self.s =  recettes_dir +"/" + self.nomRecette + ".xml"
-            
-
-
-            exp.exportXML(self.nomRecette, self.styleRecette, self.typeRecette, self.brewer, self.volume, self.boil, self.rendement,self.OG, self.FG, AppWindow.nbreHops, self.liste_houblons, self.liste_hAmount, self.liste_hForm, self.liste_hTime, self.liste_hAlpha,self.liste_hUse, AppWindow.nbreFer, self.fNom, self.fAmount ,self.fType, self.fYield, self.fMashed, self.color, self.liste_ingr, self.liste_fAmount, self.liste_fType, self.liste_fYield, self.liste_fMashed, self.liste_color, self.dNom, self.dAmount, self.dType, AppWindow.nbreDivers, self.liste_divers, self.liste_dAmount, self.liste_dType, self.liste_dTime,self.liste_dUse, self.nbreLevures, self.lNom, self.lForm, self.lLabo, self.lProd, self.lAtten, self.liste_levures, self.liste_lForm, self.liste_lLabo, self.liste_lProdid, self.liste_levureAtten, self.recipeNotes,self.currentMash)
-            exp.enregistrer(self.s)
+            if os.path.exists(self.s) :
+                confirmation = QtGui.QMessageBox.warning(self,
+                            self.trUtf8("Recette déjà existante"),
+                            self.trUtf8("Ce nom de recette existe déjà. L'enregistrement a été annulé. Vous pouvez choisir un nouveau nom.")
+                            )
+                self.s=''
+            else :
+                exp.exportXML(self.nomRecette, self.styleRecette, self.typeRecette, self.brewer, self.volume, self.boil, self.rendement,self.OG, self.FG, AppWindow.nbreHops, self.liste_houblons, self.liste_hAmount, self.liste_hForm, self.liste_hTime, self.liste_hAlpha,self.liste_hUse, AppWindow.nbreFer, self.fNom, self.fAmount ,self.fType, self.fYield, self.fMashed, self.color, self.liste_ingr, self.liste_fAmount, self.liste_fType, self.liste_fYield, self.liste_fMashed, self.liste_color, self.dNom, self.dAmount, self.dType, AppWindow.nbreDivers, self.liste_divers, self.liste_dAmount, self.liste_dType, self.liste_dTime,self.liste_dUse, self.nbreLevures, self.lNom, self.lForm, self.lLabo, self.lProd, self.lAtten, self.liste_levures, self.liste_lForm, self.liste_lLabo, self.liste_lProdid, self.liste_levureAtten, self.recipeNotes,self.currentMash)
+                exp.enregistrer(self.s)
         else :
 
             

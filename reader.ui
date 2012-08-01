@@ -818,19 +818,6 @@ p, li { white-space: pre-wrap; }
           </layout>
          </widget>
         </item>
-        <item row="2" column="1">
-         <widget class="QDialogButtonBox" name="buttonBox">
-          <property name="maximumSize">
-           <size>
-            <width>200</width>
-            <height>16777215</height>
-           </size>
-          </property>
-          <property name="standardButtons">
-           <set>QDialogButtonBox::Cancel|QDialogButtonBox::Save</set>
-          </property>
-         </widget>
-        </item>
        </layout>
       </widget>
       <widget class="QWidget" name="page_6">
@@ -925,7 +912,7 @@ p, li { white-space: pre-wrap; }
                </size>
               </property>
               <property name="toolTip">
-               <string>Nouveau dossier</string>
+               <string>Nouveau dossier ou nouvelle recette</string>
               </property>
               <property name="text">
                <string/>
