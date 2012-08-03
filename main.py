@@ -410,8 +410,8 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         self.buttonSave.setIcon(QtGui.QIcon("Images/save.png"))
         self.buttonSave.setIconSize(QtCore.QSize(24,24))
         self.buttonSave.setFlat(True)
-        self.buttonSave.setToolTip(self.trUtf8("Sauvegarder"))
-        self.buttonSave.setText(self.trUtf8("Sauvegarder"))
+        self.buttonSave.setToolTip(self.trUtf8("Enregistrer"))
+        self.buttonSave.setText(self.trUtf8("Enregistrer"))
 
         self.buttonNewRecipe=QtGui.QPushButton("")
         self.buttonNewRecipe.setIcon(QtGui.QIcon("Images/more.png"))
@@ -563,6 +563,10 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         self.connect(self.actionPreferences, QtCore.SIGNAL("triggered()"), self.dialogPreferences)
         
         self.spinBoxBoil.valueChanged.connect(self.unlockBrewdayMode)
+        
+
+
+
         
         #Les vues
         #####################################################################################
@@ -1208,6 +1212,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         self.buttonNewRecipe.show()
         self.viewRecipeBiblio()
 
+
         
     def switchToNotes(self) :
         self.stackedWidget.setCurrentIndex(2)        
@@ -1258,6 +1263,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         else :
             
             pass
+
                 
         
     def modeleProportion (self) :
