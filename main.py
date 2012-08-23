@@ -1054,9 +1054,11 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
 
         
     def menuBiblio(self,position) :
+        selection = self.treeViewBiblio.selectionModel()
+        self.indexRecette = selection.currentIndex()
         menu = QtGui.QMenu()
         #EditeurAction = menu.addAction("Editeur de recette")
-        # RenommerAction  = menu.addAction(self.trUtf8("Renommer"))
+        RenommerAction  = menu.addAction(self.trUtf8("Renommer"))
         SupprimerAction = menu.addAction(self.trUtf8("Supprimer"))        
         # CopyAction = menu.addAction(self.trUtf8("Copier"))
         # PasteAction = menu.addAction(self.trUtf8("Coller"))
@@ -1069,14 +1071,18 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         # data = clipboard.mimeData
         # if clipboard.mimeData().hasUrls() :
         #     PasteAction.setEnabled(True)
+
+        RenommerAction.setEnabled(False)
+        if self.modeleBiblio.isDir(self.indexRecette) :
+            RenommerAction.setEnabled(True)
                
         action = menu.exec_(self.listViewBiblio.mapToGlobal(position))
         #if action == EditeurAction:
           #  self.switchToEditor()
         if action == SupprimerAction:
             self.supprimerBiblio()  
-        # if action == RenommerAction:
-        #     self.renommerBiblio() 
+        if action == RenommerAction:
+            self.renommerBiblio() 
         if action == FolderAction:
             self.createFolder()   
         # if action == UpAction :
@@ -1085,8 +1091,12 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         #     self.copy()
         # if action == PasteAction :
         #     self.paste()
+
+        
+        
             
-                        
+
+                    
     def supprimerBiblio (self) :
         selection = self.treeViewBiblio.selectionModel()
         self.indexRecette = selection.currentIndex()
@@ -1102,7 +1112,10 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
     def renommerBiblio (self) :
         selection = self.treeViewBiblio.selectionModel()
         self.indexRecette = selection.currentIndex()
-        self.treeViewBiblio.edit(self.indexRecette)
+        if self.modeleBiblio.isDir(self.indexRecette) :
+            self.treeViewBiblio.edit(self.indexRecette)
+        else :
+            pass
         
     def createFolder(self) :
         selection = self.treeViewBiblio.selectionModel()
