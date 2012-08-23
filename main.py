@@ -563,6 +563,11 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         self.connect(self.actionPreferences, QtCore.SIGNAL("triggered()"), self.dialogPreferences)
         
         self.spinBoxBoil.valueChanged.connect(self.unlockBrewdayMode)
+
+        self.pushButtonSave.clicked.connect(self.enregistrer)
+        self.pushButtonCancel.clicked.connect(self.cancelRecipe)
+        self.pushButtonOk.clicked.connect(self.okRecipe)
+        self.pushButtonBrewdayModeClose.clicked.connect(self.closeBrewday)
         
 
 
@@ -927,7 +932,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         selection = self.treeViewBiblio.selectionModel()
         self.indexRecette = selection.currentIndex()
 
-        self.chemin =self.modeleBiblio.filePath (self.indexRecette)
+        self.chemin =self.modeleBiblio.filePath(self.indexRecette)
         
         self.purge()
         
@@ -1144,7 +1149,21 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
     #     path = self.modeleBiblio.filePath(self.treeViewBiblio.rootIndex()) + "/" + name
     #     file.copy(path)
     #     clipboard.clear()
-        
+       
+    def cancelRecipe(self):
+        self.switchToLibrary() 
+
+    def okRecipe(self):
+        self.enregistrer()
+        self.switchToLibrary()
+
+    def closeBrewday(self) :
+        self.stackedWidget.setCurrentIndex(1)        
+        self.actionVueEditeurToolBar.setChecked(False)
+        self.actionVueBibliothequeToolBar.setChecked(True)
+        self.actionBrewdayMode.setChecked(False)
+        self.buttonSave.hide()
+        self.buttonNewRecipe.show()
               
     def initRep(self) :   
         home = QtCore.QDir(home_dir)
@@ -1233,6 +1252,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
 
         
     def switchToBrewday(self) :
+        print ("lock",self.brewdayLock)
         self.stackedWidget.setCurrentIndex(4)        
         self.actionVueEditeurToolBar.setChecked(False)
         self.actionVueBibliothequeToolBar.setChecked(False)
@@ -1245,7 +1265,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         else :
             self.brewdayModeCalc()
         self.tableWidgetStepsBrewday.setCurrentCell(0,0)
-        print ("lock",self.brewdayLock)
+        
         
         
     def restoreDataBase(self) :

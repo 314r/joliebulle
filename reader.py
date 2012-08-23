@@ -2,8 +2,8 @@
 
 # Form implementation generated from reading ui file 'reader.ui'
 #
-# Created: Fri Aug  3 23:21:08 2012
-#      by: PyQt4 UI code generator 4.9.4
+# Created: Thu Aug 23 16:25:36 2012
+#      by: PyQt4 UI code generator 4.8.6
 #
 # WARNING! All changes made in this file will be lost!
 
@@ -17,7 +17,8 @@ except AttributeError:
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName(_fromUtf8("MainWindow"))
-        MainWindow.resize(1238, 664)
+        MainWindow.resize(1238, 681)
+        MainWindow.setWindowTitle(QtGui.QApplication.translate("MainWindow", "JolieBulle", None, QtGui.QApplication.UnicodeUTF8))
         icon = QtGui.QIcon()
         icon.addPixmap(QtGui.QPixmap(_fromUtf8("Images/bulle.png")), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         MainWindow.setWindowIcon(icon)
@@ -39,6 +40,101 @@ class Ui_MainWindow(object):
         self.gridLayout_7 = QtGui.QGridLayout(self.widgetEditeur)
         self.gridLayout_7.setMargin(0)
         self.gridLayout_7.setObjectName(_fromUtf8("gridLayout_7"))
+        self.horizontalLayout_5 = QtGui.QHBoxLayout()
+        self.horizontalLayout_5.setObjectName(_fromUtf8("horizontalLayout_5"))
+        self.checkBoxIng = QtGui.QCheckBox(self.widgetEditeur)
+        self.checkBoxIng.setText(QtGui.QApplication.translate("MainWindow", "Ajuster les ingrédients (verrouiller le profil)", None, QtGui.QApplication.UnicodeUTF8))
+        self.checkBoxIng.setObjectName(_fromUtf8("checkBoxIng"))
+        self.horizontalLayout_5.addWidget(self.checkBoxIng)
+        spacerItem = QtGui.QSpacerItem(40, 20, QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Minimum)
+        self.horizontalLayout_5.addItem(spacerItem)
+        self.pushButtonChangeIngredients = QtGui.QPushButton(self.widgetEditeur)
+        self.pushButtonChangeIngredients.setText(QtGui.QApplication.translate("MainWindow", "Ajouter/Enlever", None, QtGui.QApplication.UnicodeUTF8))
+        self.pushButtonChangeIngredients.setCheckable(True)
+        self.pushButtonChangeIngredients.setObjectName(_fromUtf8("pushButtonChangeIngredients"))
+        self.horizontalLayout_5.addWidget(self.pushButtonChangeIngredients)
+        self.gridLayout_7.addLayout(self.horizontalLayout_5, 3, 0, 1, 1)
+        self.gridLayout_6 = QtGui.QGridLayout()
+        self.gridLayout_6.setContentsMargins(0, -1, -1, -1)
+        self.gridLayout_6.setObjectName(_fromUtf8("gridLayout_6"))
+        self.gridLayout_7.addLayout(self.gridLayout_6, 4, 0, 1, 1)
+        self.horizontalLayout_3 = QtGui.QHBoxLayout()
+        self.horizontalLayout_3.setObjectName(_fromUtf8("horizontalLayout_3"))
+        self.comboBoxMashProfiles = QtGui.QComboBox(self.widgetEditeur)
+        self.comboBoxMashProfiles.setMinimumSize(QtCore.QSize(400, 0))
+        self.comboBoxMashProfiles.setObjectName(_fromUtf8("comboBoxMashProfiles"))
+        self.horizontalLayout_3.addWidget(self.comboBoxMashProfiles)
+        self.pushButtonMashDetails = QtGui.QPushButton(self.widgetEditeur)
+        self.pushButtonMashDetails.setText(QtGui.QApplication.translate("MainWindow", "Détails", None, QtGui.QApplication.UnicodeUTF8))
+        self.pushButtonMashDetails.setObjectName(_fromUtf8("pushButtonMashDetails"))
+        self.horizontalLayout_3.addWidget(self.pushButtonMashDetails)
+        spacerItem1 = QtGui.QSpacerItem(40, 20, QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Minimum)
+        self.horizontalLayout_3.addItem(spacerItem1)
+        self.gridLayout_7.addLayout(self.horizontalLayout_3, 7, 0, 1, 1)
+        self.widgetIngredients = QtGui.QWidget(self.widgetEditeur)
+        self.widgetIngredients.setObjectName(_fromUtf8("widgetIngredients"))
+        self.horizontalLayout_7 = QtGui.QHBoxLayout(self.widgetIngredients)
+        self.horizontalLayout_7.setMargin(0)
+        self.horizontalLayout_7.setObjectName(_fromUtf8("horizontalLayout_7"))
+        self.verticalLayout_3 = QtGui.QVBoxLayout()
+        self.verticalLayout_3.setContentsMargins(-1, 0, -1, -1)
+        self.verticalLayout_3.setObjectName(_fromUtf8("verticalLayout_3"))
+        self.horizontalLayout_10 = QtGui.QHBoxLayout()
+        self.horizontalLayout_10.setObjectName(_fromUtf8("horizontalLayout_10"))
+        self.comboBox = QtGui.QComboBox(self.widgetIngredients)
+        self.comboBox.setMinimumSize(QtCore.QSize(170, 0))
+        self.comboBox.setMaximumSize(QtCore.QSize(170, 16777215))
+        self.comboBox.setObjectName(_fromUtf8("comboBox"))
+        self.horizontalLayout_10.addWidget(self.comboBox)
+        self.pushButtonAjouter_2 = QtGui.QPushButton(self.widgetIngredients)
+        self.pushButtonAjouter_2.setText(QtGui.QApplication.translate("MainWindow", "Ajouter Grain", None, QtGui.QApplication.UnicodeUTF8))
+        self.pushButtonAjouter_2.setObjectName(_fromUtf8("pushButtonAjouter_2"))
+        self.horizontalLayout_10.addWidget(self.pushButtonAjouter_2)
+        self.verticalLayout_3.addLayout(self.horizontalLayout_10)
+        self.horizontalLayout_11 = QtGui.QHBoxLayout()
+        self.horizontalLayout_11.setObjectName(_fromUtf8("horizontalLayout_11"))
+        self.comboBoxH = QtGui.QComboBox(self.widgetIngredients)
+        self.comboBoxH.setMinimumSize(QtCore.QSize(170, 0))
+        self.comboBoxH.setMaximumSize(QtCore.QSize(170, 16777215))
+        self.comboBoxH.setObjectName(_fromUtf8("comboBoxH"))
+        self.horizontalLayout_11.addWidget(self.comboBoxH)
+        self.pushButtonAjouterH = QtGui.QPushButton(self.widgetIngredients)
+        self.pushButtonAjouterH.setText(QtGui.QApplication.translate("MainWindow", "Ajouter Houblon", None, QtGui.QApplication.UnicodeUTF8))
+        self.pushButtonAjouterH.setObjectName(_fromUtf8("pushButtonAjouterH"))
+        self.horizontalLayout_11.addWidget(self.pushButtonAjouterH)
+        self.verticalLayout_3.addLayout(self.horizontalLayout_11)
+        self.horizontalLayout_12 = QtGui.QHBoxLayout()
+        self.horizontalLayout_12.setObjectName(_fromUtf8("horizontalLayout_12"))
+        self.comboBoxM = QtGui.QComboBox(self.widgetIngredients)
+        self.comboBoxM.setMinimumSize(QtCore.QSize(170, 0))
+        self.comboBoxM.setMaximumSize(QtCore.QSize(170, 16777215))
+        self.comboBoxM.setObjectName(_fromUtf8("comboBoxM"))
+        self.horizontalLayout_12.addWidget(self.comboBoxM)
+        self.pushButtonAjouterM = QtGui.QPushButton(self.widgetIngredients)
+        self.pushButtonAjouterM.setText(QtGui.QApplication.translate("MainWindow", "Ajouter Divers", None, QtGui.QApplication.UnicodeUTF8))
+        self.pushButtonAjouterM.setObjectName(_fromUtf8("pushButtonAjouterM"))
+        self.horizontalLayout_12.addWidget(self.pushButtonAjouterM)
+        self.verticalLayout_3.addLayout(self.horizontalLayout_12)
+        self.horizontalLayout_13 = QtGui.QHBoxLayout()
+        self.horizontalLayout_13.setObjectName(_fromUtf8("horizontalLayout_13"))
+        self.comboBoxY = QtGui.QComboBox(self.widgetIngredients)
+        self.comboBoxY.setMinimumSize(QtCore.QSize(170, 0))
+        self.comboBoxY.setMaximumSize(QtCore.QSize(170, 16777215))
+        self.comboBoxY.setObjectName(_fromUtf8("comboBoxY"))
+        self.horizontalLayout_13.addWidget(self.comboBoxY)
+        self.pushButtonAjouterY = QtGui.QPushButton(self.widgetIngredients)
+        self.pushButtonAjouterY.setText(QtGui.QApplication.translate("MainWindow", "Ajouter Levure", None, QtGui.QApplication.UnicodeUTF8))
+        self.pushButtonAjouterY.setObjectName(_fromUtf8("pushButtonAjouterY"))
+        self.horizontalLayout_13.addWidget(self.pushButtonAjouterY)
+        self.verticalLayout_3.addLayout(self.horizontalLayout_13)
+        self.horizontalLayout_7.addLayout(self.verticalLayout_3)
+        spacerItem2 = QtGui.QSpacerItem(40, 20, QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Minimum)
+        self.horizontalLayout_7.addItem(spacerItem2)
+        self.pushButtonEnlever = QtGui.QPushButton(self.widgetIngredients)
+        self.pushButtonEnlever.setText(QtGui.QApplication.translate("MainWindow", "Enlever", None, QtGui.QApplication.UnicodeUTF8))
+        self.pushButtonEnlever.setObjectName(_fromUtf8("pushButtonEnlever"))
+        self.horizontalLayout_7.addWidget(self.pushButtonEnlever)
+        self.gridLayout_7.addWidget(self.widgetIngredients, 5, 0, 1, 1)
         self.horizontalLayout_4 = QtGui.QHBoxLayout()
         self.horizontalLayout_4.setObjectName(_fromUtf8("horizontalLayout_4"))
         self.tableViewF = QtGui.QTableView(self.widgetEditeur)
@@ -63,6 +159,11 @@ class Ui_MainWindow(object):
         self.horizontalLayout_4.addWidget(self.tableViewF)
         self.gridLayout_7.addLayout(self.horizontalLayout_4, 2, 0, 1, 1)
         self.labelFermentables = QtGui.QLabel(self.widgetEditeur)
+        self.labelFermentables.setText(QtGui.QApplication.translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
+"p, li { white-space: pre-wrap; }\n"
+"</style></head><body style=\" font-family:\'Droid Sans\'; font-size:9pt; font-weight:400; font-style:normal;\">\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-weight:600;\">Ingredients : </span></p></body></html>", None, QtGui.QApplication.UnicodeUTF8))
         self.labelFermentables.setObjectName(_fromUtf8("labelFermentables"))
         self.gridLayout_7.addWidget(self.labelFermentables, 1, 0, 1, 1)
         self.horizontalLayout_2 = QtGui.QHBoxLayout()
@@ -72,12 +173,22 @@ class Ui_MainWindow(object):
         self.formLayout_2.setLabelAlignment(QtCore.Qt.AlignRight|QtCore.Qt.AlignTrailing|QtCore.Qt.AlignVCenter)
         self.formLayout_2.setObjectName(_fromUtf8("formLayout_2"))
         self.labelRecette = QtGui.QLabel(self.widgetEditeur)
+        self.labelRecette.setText(QtGui.QApplication.translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
+"p, li { white-space: pre-wrap; }\n"
+"</style></head><body style=\" font-family:\'Droid Sans\'; font-size:9pt; font-weight:400; font-style:normal;\">\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-weight:600;\">Nom de la recette :</span></p></body></html>", None, QtGui.QApplication.UnicodeUTF8))
         self.labelRecette.setObjectName(_fromUtf8("labelRecette"))
         self.formLayout_2.setWidget(0, QtGui.QFormLayout.LabelRole, self.labelRecette)
         self.lineEditRecette = QtGui.QLineEdit(self.widgetEditeur)
         self.lineEditRecette.setObjectName(_fromUtf8("lineEditRecette"))
         self.formLayout_2.setWidget(0, QtGui.QFormLayout.FieldRole, self.lineEditRecette)
         self.labelGenre = QtGui.QLabel(self.widgetEditeur)
+        self.labelGenre.setText(QtGui.QApplication.translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
+"p, li { white-space: pre-wrap; }\n"
+"</style></head><body style=\" font-family:\'Droid Sans\'; font-size:9pt; font-weight:400; font-style:normal;\">\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-weight:600;\">Genre :</span></p></body></html>", None, QtGui.QApplication.UnicodeUTF8))
         self.labelGenre.setObjectName(_fromUtf8("labelGenre"))
         self.formLayout_2.setWidget(1, QtGui.QFormLayout.LabelRole, self.labelGenre)
         self.horizontalLayout = QtGui.QHBoxLayout()
@@ -86,6 +197,7 @@ class Ui_MainWindow(object):
         self.lineEditGenre.setObjectName(_fromUtf8("lineEditGenre"))
         self.horizontalLayout.addWidget(self.lineEditGenre)
         self.pushButtonChangerStyle = QtGui.QPushButton(self.widgetEditeur)
+        self.pushButtonChangerStyle.setToolTip(QtGui.QApplication.translate("MainWindow", "Liste de styles BJCP", None, QtGui.QApplication.UnicodeUTF8))
         self.pushButtonChangerStyle.setText(_fromUtf8(""))
         icon1 = QtGui.QIcon()
         icon1.addPixmap(QtGui.QPixmap(_fromUtf8("Images/document-properties.png")), QtGui.QIcon.Normal, QtGui.QIcon.Off)
@@ -104,109 +216,37 @@ class Ui_MainWindow(object):
         self.formLayout_3.setContentsMargins(20, -1, -1, -1)
         self.formLayout_3.setObjectName(_fromUtf8("formLayout_3"))
         self.label_3 = QtGui.QLabel(self.widgetEditeur)
+        self.label_3.setText(QtGui.QApplication.translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
+"p, li { white-space: pre-wrap; }\n"
+"</style></head><body style=\" font-family:\'Droid Sans\'; font-size:10pt; font-weight:400; font-style:normal;\">\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-weight:600;\">Brasseur :</span></p></body></html>", None, QtGui.QApplication.UnicodeUTF8))
         self.label_3.setObjectName(_fromUtf8("label_3"))
         self.formLayout_3.setWidget(0, QtGui.QFormLayout.LabelRole, self.label_3)
         self.lineEditBrewer = QtGui.QLineEdit(self.widgetEditeur)
         self.lineEditBrewer.setObjectName(_fromUtf8("lineEditBrewer"))
         self.formLayout_3.setWidget(0, QtGui.QFormLayout.FieldRole, self.lineEditBrewer)
         self.label_4 = QtGui.QLabel(self.widgetEditeur)
+        self.label_4.setText(QtGui.QApplication.translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
+"p, li { white-space: pre-wrap; }\n"
+"</style></head><body style=\" font-family:\'Droid Sans\'; font-size:10pt; font-weight:400; font-style:normal;\">\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-weight:600;\">Type :</span></p></body></html>", None, QtGui.QApplication.UnicodeUTF8))
         self.label_4.setObjectName(_fromUtf8("label_4"))
         self.formLayout_3.setWidget(1, QtGui.QFormLayout.LabelRole, self.label_4)
         self.comboBoxType = QtGui.QComboBox(self.widgetEditeur)
         self.comboBoxType.setObjectName(_fromUtf8("comboBoxType"))
         self.formLayout_3.setWidget(1, QtGui.QFormLayout.FieldRole, self.comboBoxType)
         self.horizontalLayout_2.addLayout(self.formLayout_3)
-        spacerItem = QtGui.QSpacerItem(40, 20, QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Minimum)
-        self.horizontalLayout_2.addItem(spacerItem)
-        self.gridLayout_7.addLayout(self.horizontalLayout_2, 0, 0, 1, 1)
-        self.horizontalLayout_5 = QtGui.QHBoxLayout()
-        self.horizontalLayout_5.setObjectName(_fromUtf8("horizontalLayout_5"))
-        self.checkBoxIng = QtGui.QCheckBox(self.widgetEditeur)
-        self.checkBoxIng.setObjectName(_fromUtf8("checkBoxIng"))
-        self.horizontalLayout_5.addWidget(self.checkBoxIng)
-        spacerItem1 = QtGui.QSpacerItem(40, 20, QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Minimum)
-        self.horizontalLayout_5.addItem(spacerItem1)
-        self.pushButtonChangeIngredients = QtGui.QPushButton(self.widgetEditeur)
-        self.pushButtonChangeIngredients.setCheckable(True)
-        self.pushButtonChangeIngredients.setObjectName(_fromUtf8("pushButtonChangeIngredients"))
-        self.horizontalLayout_5.addWidget(self.pushButtonChangeIngredients)
-        self.gridLayout_7.addLayout(self.horizontalLayout_5, 3, 0, 1, 1)
-        self.widgetIngredients = QtGui.QWidget(self.widgetEditeur)
-        self.widgetIngredients.setObjectName(_fromUtf8("widgetIngredients"))
-        self.horizontalLayout_7 = QtGui.QHBoxLayout(self.widgetIngredients)
-        self.horizontalLayout_7.setMargin(0)
-        self.horizontalLayout_7.setObjectName(_fromUtf8("horizontalLayout_7"))
-        self.verticalLayout_3 = QtGui.QVBoxLayout()
-        self.verticalLayout_3.setContentsMargins(-1, 0, -1, -1)
-        self.verticalLayout_3.setObjectName(_fromUtf8("verticalLayout_3"))
-        self.horizontalLayout_10 = QtGui.QHBoxLayout()
-        self.horizontalLayout_10.setObjectName(_fromUtf8("horizontalLayout_10"))
-        self.comboBox = QtGui.QComboBox(self.widgetIngredients)
-        self.comboBox.setMinimumSize(QtCore.QSize(170, 0))
-        self.comboBox.setMaximumSize(QtCore.QSize(170, 16777215))
-        self.comboBox.setObjectName(_fromUtf8("comboBox"))
-        self.horizontalLayout_10.addWidget(self.comboBox)
-        self.pushButtonAjouter_2 = QtGui.QPushButton(self.widgetIngredients)
-        self.pushButtonAjouter_2.setObjectName(_fromUtf8("pushButtonAjouter_2"))
-        self.horizontalLayout_10.addWidget(self.pushButtonAjouter_2)
-        self.verticalLayout_3.addLayout(self.horizontalLayout_10)
-        self.horizontalLayout_11 = QtGui.QHBoxLayout()
-        self.horizontalLayout_11.setObjectName(_fromUtf8("horizontalLayout_11"))
-        self.comboBoxH = QtGui.QComboBox(self.widgetIngredients)
-        self.comboBoxH.setMinimumSize(QtCore.QSize(170, 0))
-        self.comboBoxH.setMaximumSize(QtCore.QSize(170, 16777215))
-        self.comboBoxH.setObjectName(_fromUtf8("comboBoxH"))
-        self.horizontalLayout_11.addWidget(self.comboBoxH)
-        self.pushButtonAjouterH = QtGui.QPushButton(self.widgetIngredients)
-        self.pushButtonAjouterH.setObjectName(_fromUtf8("pushButtonAjouterH"))
-        self.horizontalLayout_11.addWidget(self.pushButtonAjouterH)
-        self.verticalLayout_3.addLayout(self.horizontalLayout_11)
-        self.horizontalLayout_12 = QtGui.QHBoxLayout()
-        self.horizontalLayout_12.setObjectName(_fromUtf8("horizontalLayout_12"))
-        self.comboBoxM = QtGui.QComboBox(self.widgetIngredients)
-        self.comboBoxM.setMinimumSize(QtCore.QSize(170, 0))
-        self.comboBoxM.setMaximumSize(QtCore.QSize(170, 16777215))
-        self.comboBoxM.setObjectName(_fromUtf8("comboBoxM"))
-        self.horizontalLayout_12.addWidget(self.comboBoxM)
-        self.pushButtonAjouterM = QtGui.QPushButton(self.widgetIngredients)
-        self.pushButtonAjouterM.setObjectName(_fromUtf8("pushButtonAjouterM"))
-        self.horizontalLayout_12.addWidget(self.pushButtonAjouterM)
-        self.verticalLayout_3.addLayout(self.horizontalLayout_12)
-        self.horizontalLayout_13 = QtGui.QHBoxLayout()
-        self.horizontalLayout_13.setObjectName(_fromUtf8("horizontalLayout_13"))
-        self.comboBoxY = QtGui.QComboBox(self.widgetIngredients)
-        self.comboBoxY.setMinimumSize(QtCore.QSize(170, 0))
-        self.comboBoxY.setMaximumSize(QtCore.QSize(170, 16777215))
-        self.comboBoxY.setObjectName(_fromUtf8("comboBoxY"))
-        self.horizontalLayout_13.addWidget(self.comboBoxY)
-        self.pushButtonAjouterY = QtGui.QPushButton(self.widgetIngredients)
-        self.pushButtonAjouterY.setObjectName(_fromUtf8("pushButtonAjouterY"))
-        self.horizontalLayout_13.addWidget(self.pushButtonAjouterY)
-        self.verticalLayout_3.addLayout(self.horizontalLayout_13)
-        self.horizontalLayout_7.addLayout(self.verticalLayout_3)
-        spacerItem2 = QtGui.QSpacerItem(40, 20, QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Minimum)
-        self.horizontalLayout_7.addItem(spacerItem2)
-        self.pushButtonEnlever = QtGui.QPushButton(self.widgetIngredients)
-        self.pushButtonEnlever.setObjectName(_fromUtf8("pushButtonEnlever"))
-        self.horizontalLayout_7.addWidget(self.pushButtonEnlever)
-        self.gridLayout_7.addWidget(self.widgetIngredients, 5, 0, 1, 1)
-        self.gridLayout_6 = QtGui.QGridLayout()
-        self.gridLayout_6.setContentsMargins(0, -1, -1, -1)
-        self.gridLayout_6.setObjectName(_fromUtf8("gridLayout_6"))
-        self.gridLayout_7.addLayout(self.gridLayout_6, 4, 0, 1, 1)
-        self.horizontalLayout_3 = QtGui.QHBoxLayout()
-        self.horizontalLayout_3.setObjectName(_fromUtf8("horizontalLayout_3"))
-        self.comboBoxMashProfiles = QtGui.QComboBox(self.widgetEditeur)
-        self.comboBoxMashProfiles.setMinimumSize(QtCore.QSize(400, 0))
-        self.comboBoxMashProfiles.setObjectName(_fromUtf8("comboBoxMashProfiles"))
-        self.horizontalLayout_3.addWidget(self.comboBoxMashProfiles)
-        self.pushButtonMashDetails = QtGui.QPushButton(self.widgetEditeur)
-        self.pushButtonMashDetails.setObjectName(_fromUtf8("pushButtonMashDetails"))
-        self.horizontalLayout_3.addWidget(self.pushButtonMashDetails)
         spacerItem3 = QtGui.QSpacerItem(40, 20, QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Minimum)
-        self.horizontalLayout_3.addItem(spacerItem3)
-        self.gridLayout_7.addLayout(self.horizontalLayout_3, 7, 0, 1, 1)
+        self.horizontalLayout_2.addItem(spacerItem3)
+        self.gridLayout_7.addLayout(self.horizontalLayout_2, 0, 0, 1, 1)
         self.label_8 = QtGui.QLabel(self.widgetEditeur)
+        self.label_8.setText(QtGui.QApplication.translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
+"p, li { white-space: pre-wrap; }\n"
+"</style></head><body style=\" font-family:\'Droid Sans\'; font-size:10pt; font-weight:400; font-style:normal;\">\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-weight:600;\">Brassage :</span></p></body></html>", None, QtGui.QApplication.UnicodeUTF8))
         self.label_8.setObjectName(_fromUtf8("label_8"))
         self.gridLayout_7.addWidget(self.label_8, 6, 0, 1, 1)
         self.gridLayout.addWidget(self.widgetEditeur, 0, 0, 1, 1)
@@ -223,6 +263,11 @@ class Ui_MainWindow(object):
         self.verticalLayout_4.setContentsMargins(-1, -1, -1, 10)
         self.verticalLayout_4.setObjectName(_fromUtf8("verticalLayout_4"))
         self.label_7 = QtGui.QLabel(self.widgetProfile)
+        self.label_7.setText(QtGui.QApplication.translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
+"p, li { white-space: pre-wrap; }\n"
+"</style></head><body style=\" font-family:\'Ubuntu\'; font-size:11pt; font-weight:400; font-style:normal;\">\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:9pt; font-weight:600;\">CONTEXTE</span></p></body></html>", None, QtGui.QApplication.UnicodeUTF8))
         self.label_7.setObjectName(_fromUtf8("label_7"))
         self.verticalLayout_4.addWidget(self.label_7)
         self.verticalLayout_6.addLayout(self.verticalLayout_4)
@@ -230,12 +275,22 @@ class Ui_MainWindow(object):
         self.formLayout_4.setFieldGrowthPolicy(QtGui.QFormLayout.AllNonFixedFieldsGrow)
         self.formLayout_4.setObjectName(_fromUtf8("formLayout_4"))
         self.labelRendement = QtGui.QLabel(self.widgetProfile)
+        self.labelRendement.setText(QtGui.QApplication.translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
+"p, li { white-space: pre-wrap; }\n"
+"</style></head><body style=\" font-family:\'Ubuntu\'; font-size:11pt; font-weight:400; font-style:normal;\">\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:\'Droid Sans\'; font-size:9pt;\">Rendement (%)</span></p></body></html>", None, QtGui.QApplication.UnicodeUTF8))
         self.labelRendement.setObjectName(_fromUtf8("labelRendement"))
         self.formLayout_4.setWidget(0, QtGui.QFormLayout.LabelRole, self.labelRendement)
         self.doubleSpinBoxRendemt = QtGui.QDoubleSpinBox(self.widgetProfile)
         self.doubleSpinBoxRendemt.setObjectName(_fromUtf8("doubleSpinBoxRendemt"))
         self.formLayout_4.setWidget(0, QtGui.QFormLayout.FieldRole, self.doubleSpinBoxRendemt)
         self.labelBoil = QtGui.QLabel(self.widgetProfile)
+        self.labelBoil.setText(QtGui.QApplication.translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
+"p, li { white-space: pre-wrap; }\n"
+"</style></head><body style=\" font-family:\'Ubuntu\'; font-size:11pt; font-weight:400; font-style:normal;\">\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:\'Droid Sans\'; font-size:9pt;\">Ebullition (min)</span></p></body></html>", None, QtGui.QApplication.UnicodeUTF8))
         self.labelBoil.setObjectName(_fromUtf8("labelBoil"))
         self.formLayout_4.setWidget(1, QtGui.QFormLayout.LabelRole, self.labelBoil)
         self.spinBoxBoil = QtGui.QSpinBox(self.widgetProfile)
@@ -244,6 +299,11 @@ class Ui_MainWindow(object):
         self.spinBoxBoil.setObjectName(_fromUtf8("spinBoxBoil"))
         self.formLayout_4.setWidget(1, QtGui.QFormLayout.FieldRole, self.spinBoxBoil)
         self.label_2Volume = QtGui.QLabel(self.widgetProfile)
+        self.label_2Volume.setText(QtGui.QApplication.translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
+"p, li { white-space: pre-wrap; }\n"
+"</style></head><body style=\" font-family:\'Ubuntu\'; font-size:11pt; font-weight:400; font-style:normal;\">\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:\'Droid Sans\'; font-size:9pt;\">Volume (L)</span></p></body></html>", None, QtGui.QApplication.UnicodeUTF8))
         self.label_2Volume.setObjectName(_fromUtf8("label_2Volume"))
         self.formLayout_4.setWidget(3, QtGui.QFormLayout.LabelRole, self.label_2Volume)
         self.doubleSpinBox_2Volume = QtGui.QDoubleSpinBox(self.widgetProfile)
@@ -264,6 +324,11 @@ class Ui_MainWindow(object):
         self.formLayout_5.setMargin(0)
         self.formLayout_5.setObjectName(_fromUtf8("formLayout_5"))
         self.label = QtGui.QLabel(self.widgetVol)
+        self.label.setText(QtGui.QApplication.translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
+"p, li { white-space: pre-wrap; }\n"
+"</style></head><body style=\" font-family:\'Ubuntu\'; font-size:11pt; font-weight:400; font-style:normal;\">\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:9pt;\">Volume pré-ébullition</span></p></body></html>", None, QtGui.QApplication.UnicodeUTF8))
         self.label.setObjectName(_fromUtf8("label"))
         self.formLayout_5.setWidget(0, QtGui.QFormLayout.LabelRole, self.label)
         self.doubleSpinBoxVolPre = QtGui.QDoubleSpinBox(self.widgetVol)
@@ -272,19 +337,31 @@ class Ui_MainWindow(object):
         self.doubleSpinBoxVolPre.setObjectName(_fromUtf8("doubleSpinBoxVolPre"))
         self.formLayout_5.setWidget(0, QtGui.QFormLayout.FieldRole, self.doubleSpinBoxVolPre)
         self.labelSG = QtGui.QLabel(self.widgetVol)
+        self.labelSG.setText(QtGui.QApplication.translate("MainWindow", "0", None, QtGui.QApplication.UnicodeUTF8))
         self.labelSG.setObjectName(_fromUtf8("labelSG"))
         self.formLayout_5.setWidget(1, QtGui.QFormLayout.FieldRole, self.labelSG)
         self.label_2 = QtGui.QLabel(self.widgetVol)
+        self.label_2.setText(QtGui.QApplication.translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
+"p, li { white-space: pre-wrap; }\n"
+"</style></head><body style=\" font-family:\'Ubuntu\'; font-size:11pt; font-weight:400; font-style:normal;\">\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:9pt;\">Densité  pré-ébullition :</span></p></body></html>", None, QtGui.QApplication.UnicodeUTF8))
         self.label_2.setObjectName(_fromUtf8("label_2"))
         self.formLayout_5.setWidget(1, QtGui.QFormLayout.LabelRole, self.label_2)
         self.verticalLayout_6.addWidget(self.widgetVol)
         self.pushButtonRecipeNotes = QtGui.QPushButton(self.widgetProfile)
+        self.pushButtonRecipeNotes.setText(QtGui.QApplication.translate("MainWindow", "Notes", None, QtGui.QApplication.UnicodeUTF8))
         self.pushButtonRecipeNotes.setObjectName(_fromUtf8("pushButtonRecipeNotes"))
         self.verticalLayout_6.addWidget(self.pushButtonRecipeNotes)
         self.verticalLayout_5 = QtGui.QVBoxLayout()
         self.verticalLayout_5.setContentsMargins(-1, 35, -1, 10)
         self.verticalLayout_5.setObjectName(_fromUtf8("verticalLayout_5"))
         self.label_6 = QtGui.QLabel(self.widgetProfile)
+        self.label_6.setText(QtGui.QApplication.translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
+"p, li { white-space: pre-wrap; }\n"
+"</style></head><body style=\" font-family:\'Ubuntu\'; font-size:11pt; font-weight:400; font-style:normal;\">\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:9pt; font-weight:600;\">PROFIL</span></p></body></html>", None, QtGui.QApplication.UnicodeUTF8))
         self.label_6.setObjectName(_fromUtf8("label_6"))
         self.verticalLayout_5.addWidget(self.label_6)
         self.verticalLayout_6.addLayout(self.verticalLayout_5)
@@ -294,6 +371,11 @@ class Ui_MainWindow(object):
         self.formLayout.setHorizontalSpacing(6)
         self.formLayout.setObjectName(_fromUtf8("formLayout"))
         self.labelOG = QtGui.QLabel(self.widgetProfile)
+        self.labelOG.setText(QtGui.QApplication.translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
+"p, li { white-space: pre-wrap; }\n"
+"</style></head><body style=\" font-family:\'Ubuntu\'; font-size:11pt; font-weight:400; font-style:normal;\">\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:\'Droid Sans\'; font-size:9pt;\">Densité Initiale :</span></p></body></html>", None, QtGui.QApplication.UnicodeUTF8))
         self.labelOG.setAlignment(QtCore.Qt.AlignRight|QtCore.Qt.AlignTrailing|QtCore.Qt.AlignVCenter)
         self.labelOG.setObjectName(_fromUtf8("labelOG"))
         self.formLayout.setWidget(2, QtGui.QFormLayout.LabelRole, self.labelOG)
@@ -302,6 +384,11 @@ class Ui_MainWindow(object):
         self.labelOGV.setObjectName(_fromUtf8("labelOGV"))
         self.formLayout.setWidget(2, QtGui.QFormLayout.FieldRole, self.labelOGV)
         self.labelFG = QtGui.QLabel(self.widgetProfile)
+        self.labelFG.setText(QtGui.QApplication.translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
+"p, li { white-space: pre-wrap; }\n"
+"</style></head><body style=\" font-family:\'Ubuntu\'; font-size:11pt; font-weight:400; font-style:normal;\">\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:\'Droid Sans\'; font-size:9pt;\">Densité Finale :</span></p></body></html>", None, QtGui.QApplication.UnicodeUTF8))
         self.labelFG.setAlignment(QtCore.Qt.AlignRight|QtCore.Qt.AlignTrailing|QtCore.Qt.AlignVCenter)
         self.labelFG.setObjectName(_fromUtf8("labelFG"))
         self.formLayout.setWidget(3, QtGui.QFormLayout.LabelRole, self.labelFG)
@@ -310,6 +397,11 @@ class Ui_MainWindow(object):
         self.labelFGV.setObjectName(_fromUtf8("labelFGV"))
         self.formLayout.setWidget(3, QtGui.QFormLayout.FieldRole, self.labelFGV)
         self.labelEBC = QtGui.QLabel(self.widgetProfile)
+        self.labelEBC.setText(QtGui.QApplication.translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
+"p, li { white-space: pre-wrap; }\n"
+"</style></head><body style=\" font-family:\'Ubuntu\'; font-size:11pt; font-weight:400; font-style:normal;\">\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:\'Droid Sans\'; font-size:9pt;\">EBC :</span></p></body></html>", None, QtGui.QApplication.UnicodeUTF8))
         self.labelEBC.setAlignment(QtCore.Qt.AlignRight|QtCore.Qt.AlignTrailing|QtCore.Qt.AlignVCenter)
         self.labelEBC.setObjectName(_fromUtf8("labelEBC"))
         self.formLayout.setWidget(4, QtGui.QFormLayout.LabelRole, self.labelEBC)
@@ -318,6 +410,11 @@ class Ui_MainWindow(object):
         self.labelEBCV.setObjectName(_fromUtf8("labelEBCV"))
         self.formLayout.setWidget(4, QtGui.QFormLayout.FieldRole, self.labelEBCV)
         self.labelIBU = QtGui.QLabel(self.widgetProfile)
+        self.labelIBU.setText(QtGui.QApplication.translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
+"p, li { white-space: pre-wrap; }\n"
+"</style></head><body style=\" font-family:\'Ubuntu\'; font-size:11pt; font-weight:400; font-style:normal;\">\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:\'Droid Sans\'; font-size:9pt;\">IBU :</span></p></body></html>", None, QtGui.QApplication.UnicodeUTF8))
         self.labelIBU.setAlignment(QtCore.Qt.AlignRight|QtCore.Qt.AlignTrailing|QtCore.Qt.AlignVCenter)
         self.labelIBU.setObjectName(_fromUtf8("labelIBU"))
         self.formLayout.setWidget(5, QtGui.QFormLayout.LabelRole, self.labelIBU)
@@ -326,6 +423,11 @@ class Ui_MainWindow(object):
         self.labelIBUV.setObjectName(_fromUtf8("labelIBUV"))
         self.formLayout.setWidget(5, QtGui.QFormLayout.FieldRole, self.labelIBUV)
         self.labelAlc = QtGui.QLabel(self.widgetProfile)
+        self.labelAlc.setText(QtGui.QApplication.translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
+"p, li { white-space: pre-wrap; }\n"
+"</style></head><body style=\" font-family:\'Ubuntu\'; font-size:11pt; font-weight:400; font-style:normal;\">\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:\'Droid Sans\'; font-size:9pt;\">Alc :</span></p></body></html>", None, QtGui.QApplication.UnicodeUTF8))
         self.labelAlc.setAlignment(QtCore.Qt.AlignRight|QtCore.Qt.AlignTrailing|QtCore.Qt.AlignVCenter)
         self.labelAlc.setObjectName(_fromUtf8("labelAlc"))
         self.formLayout.setWidget(6, QtGui.QFormLayout.LabelRole, self.labelAlc)
@@ -338,6 +440,11 @@ class Ui_MainWindow(object):
         self.verticalLayout_7.setContentsMargins(-1, -1, -1, 10)
         self.verticalLayout_7.setObjectName(_fromUtf8("verticalLayout_7"))
         self.label_5 = QtGui.QLabel(self.widgetProfile)
+        self.label_5.setText(QtGui.QApplication.translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
+"p, li { white-space: pre-wrap; }\n"
+"</style></head><body style=\" font-family:\'Droid Sans\'; font-size:10pt; font-weight:400; font-style:normal;\">\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:\'Ubuntu\'; font-size:9pt; font-weight:600;\">TEINTE</span></p></body></html>", None, QtGui.QApplication.UnicodeUTF8))
         self.label_5.setObjectName(_fromUtf8("label_5"))
         self.verticalLayout_7.addWidget(self.label_5)
         self.verticalLayout_6.addLayout(self.verticalLayout_7)
@@ -357,15 +464,18 @@ class Ui_MainWindow(object):
         self.horizontalLayout_21.setObjectName(_fromUtf8("horizontalLayout_21"))
         spacerItem6 = QtGui.QSpacerItem(40, 20, QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Minimum)
         self.horizontalLayout_21.addItem(spacerItem6)
-        self.pushButton = QtGui.QPushButton(self.page)
-        self.pushButton.setObjectName(_fromUtf8("pushButton"))
-        self.horizontalLayout_21.addWidget(self.pushButton)
-        self.pushButton_3 = QtGui.QPushButton(self.page)
-        self.pushButton_3.setObjectName(_fromUtf8("pushButton_3"))
-        self.horizontalLayout_21.addWidget(self.pushButton_3)
-        self.pushButton_2 = QtGui.QPushButton(self.page)
-        self.pushButton_2.setObjectName(_fromUtf8("pushButton_2"))
-        self.horizontalLayout_21.addWidget(self.pushButton_2)
+        self.pushButtonCancel = QtGui.QPushButton(self.page)
+        self.pushButtonCancel.setText(QtGui.QApplication.translate("MainWindow", "Annuler", None, QtGui.QApplication.UnicodeUTF8))
+        self.pushButtonCancel.setObjectName(_fromUtf8("pushButtonCancel"))
+        self.horizontalLayout_21.addWidget(self.pushButtonCancel)
+        self.pushButtonSave = QtGui.QPushButton(self.page)
+        self.pushButtonSave.setText(QtGui.QApplication.translate("MainWindow", "Enregistrer", None, QtGui.QApplication.UnicodeUTF8))
+        self.pushButtonSave.setObjectName(_fromUtf8("pushButtonSave"))
+        self.horizontalLayout_21.addWidget(self.pushButtonSave)
+        self.pushButtonOk = QtGui.QPushButton(self.page)
+        self.pushButtonOk.setText(QtGui.QApplication.translate("MainWindow", "Enregistrer && Fermer", None, QtGui.QApplication.UnicodeUTF8))
+        self.pushButtonOk.setObjectName(_fromUtf8("pushButtonOk"))
+        self.horizontalLayout_21.addWidget(self.pushButtonOk)
         self.gridLayout.addLayout(self.horizontalLayout_21, 1, 0, 1, 2)
         self.stackedWidget.addWidget(self.page)
         self.page_6 = QtGui.QWidget()
@@ -406,6 +516,7 @@ class Ui_MainWindow(object):
         self.pushButtonNewFolderBiblio = QtGui.QPushButton(self.page_6)
         self.pushButtonNewFolderBiblio.setMinimumSize(QtCore.QSize(75, 0))
         self.pushButtonNewFolderBiblio.setMaximumSize(QtCore.QSize(16777215, 16777215))
+        self.pushButtonNewFolderBiblio.setToolTip(QtGui.QApplication.translate("MainWindow", "Nouveau dossier ou nouvelle recette", None, QtGui.QApplication.UnicodeUTF8))
         self.pushButtonNewFolderBiblio.setText(_fromUtf8(""))
         icon3 = QtGui.QIcon()
         icon3.addPixmap(QtGui.QPixmap(_fromUtf8("Images/more.png")), QtGui.QIcon.Normal, QtGui.QIcon.On)
@@ -416,6 +527,7 @@ class Ui_MainWindow(object):
         self.pushButtonRemoveRecipeBiblio = QtGui.QPushButton(self.page_6)
         self.pushButtonRemoveRecipeBiblio.setMinimumSize(QtCore.QSize(75, 0))
         self.pushButtonRemoveRecipeBiblio.setMaximumSize(QtCore.QSize(16777215, 16777215))
+        self.pushButtonRemoveRecipeBiblio.setToolTip(QtGui.QApplication.translate("MainWindow", "Supprimer", None, QtGui.QApplication.UnicodeUTF8))
         self.pushButtonRemoveRecipeBiblio.setText(_fromUtf8(""))
         icon4 = QtGui.QIcon()
         icon4.addPixmap(QtGui.QPixmap(_fromUtf8("Images/remove.png")), QtGui.QIcon.Normal, QtGui.QIcon.On)
@@ -426,9 +538,13 @@ class Ui_MainWindow(object):
         spacerItem7 = QtGui.QSpacerItem(40, 20, QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Minimum)
         self.horizontalLayout_19.addItem(spacerItem7)
         self.pushButtonEditCurrentRecipe = QtGui.QPushButton(self.page_6)
+        self.pushButtonEditCurrentRecipe.setToolTip(QtGui.QApplication.translate("MainWindow", "Editer", None, QtGui.QApplication.UnicodeUTF8))
+        self.pushButtonEditCurrentRecipe.setText(QtGui.QApplication.translate("MainWindow", "Editer", None, QtGui.QApplication.UnicodeUTF8))
         self.pushButtonEditCurrentRecipe.setObjectName(_fromUtf8("pushButtonEditCurrentRecipe"))
         self.horizontalLayout_19.addWidget(self.pushButtonEditCurrentRecipe)
         self.pushButtonBrewRecipeBiblio = QtGui.QPushButton(self.page_6)
+        self.pushButtonBrewRecipeBiblio.setToolTip(QtGui.QApplication.translate("MainWindow", "Brasser", None, QtGui.QApplication.UnicodeUTF8))
+        self.pushButtonBrewRecipeBiblio.setText(QtGui.QApplication.translate("MainWindow", "Brasser", None, QtGui.QApplication.UnicodeUTF8))
         self.pushButtonBrewRecipeBiblio.setObjectName(_fromUtf8("pushButtonBrewRecipeBiblio"))
         self.horizontalLayout_19.addWidget(self.pushButtonBrewRecipeBiblio)
         self.verticalLayout_13.addLayout(self.horizontalLayout_19)
@@ -467,6 +583,11 @@ class Ui_MainWindow(object):
         self.verticalLayout_10.setContentsMargins(-1, -1, 0, -1)
         self.verticalLayout_10.setObjectName(_fromUtf8("verticalLayout_10"))
         self.label_15 = QtGui.QLabel(self.page_4)
+        self.label_15.setText(QtGui.QApplication.translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
+"p, li { white-space: pre-wrap; }\n"
+"</style></head><body style=\" font-family:\'Droid Sans\'; font-size:10pt; font-weight:400; font-style:normal;\">\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-weight:600;\">Profils de brassage :</span></p></body></html>", None, QtGui.QApplication.UnicodeUTF8))
         self.label_15.setObjectName(_fromUtf8("label_15"))
         self.verticalLayout_10.addWidget(self.label_15)
         self.horizontalLayout_14 = QtGui.QHBoxLayout()
@@ -483,9 +604,11 @@ class Ui_MainWindow(object):
         self.horizontalLayout_9.setObjectName(_fromUtf8("horizontalLayout_9"))
         self.pushButtonRemoveProfile = QtGui.QPushButton(self.page_4)
         self.pushButtonRemoveProfile.setEnabled(False)
+        self.pushButtonRemoveProfile.setText(QtGui.QApplication.translate("MainWindow", "Enlever", None, QtGui.QApplication.UnicodeUTF8))
         self.pushButtonRemoveProfile.setObjectName(_fromUtf8("pushButtonRemoveProfile"))
         self.horizontalLayout_9.addWidget(self.pushButtonRemoveProfile)
         self.pushButtonNewProfile = QtGui.QPushButton(self.page_4)
+        self.pushButtonNewProfile.setText(QtGui.QApplication.translate("MainWindow", "Nouveau profil", None, QtGui.QApplication.UnicodeUTF8))
         self.pushButtonNewProfile.setObjectName(_fromUtf8("pushButtonNewProfile"))
         self.horizontalLayout_9.addWidget(self.pushButtonNewProfile)
         spacerItem8 = QtGui.QSpacerItem(40, 20, QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Minimum)
@@ -500,25 +623,32 @@ class Ui_MainWindow(object):
         self.formLayout_7.setContentsMargins(50, -1, 50, -1)
         self.formLayout_7.setObjectName(_fromUtf8("formLayout_7"))
         self.label_16 = QtGui.QLabel(self.widget)
+        self.label_16.setText(QtGui.QApplication.translate("MainWindow", "<html><head/><body><p><span style=\" font-weight:600;\">Nom :</span></p></body></html>", None, QtGui.QApplication.UnicodeUTF8))
         self.label_16.setObjectName(_fromUtf8("label_16"))
         self.formLayout_7.setWidget(0, QtGui.QFormLayout.LabelRole, self.label_16)
         self.labelMashName = QtGui.QLabel(self.widget)
+        self.labelMashName.setText(QtGui.QApplication.translate("MainWindow", "Aucun", None, QtGui.QApplication.UnicodeUTF8))
         self.labelMashName.setObjectName(_fromUtf8("labelMashName"))
         self.formLayout_7.setWidget(0, QtGui.QFormLayout.FieldRole, self.labelMashName)
         self.label_17 = QtGui.QLabel(self.widget)
+        self.label_17.setText(QtGui.QApplication.translate("MainWindow", "<html><head/><body><p><span style=\" font-weight:600;\">pH :</span></p></body></html>", None, QtGui.QApplication.UnicodeUTF8))
         self.label_17.setObjectName(_fromUtf8("label_17"))
         self.formLayout_7.setWidget(1, QtGui.QFormLayout.LabelRole, self.label_17)
         self.labelMashPh = QtGui.QLabel(self.widget)
+        self.labelMashPh.setText(QtGui.QApplication.translate("MainWindow", "0", None, QtGui.QApplication.UnicodeUTF8))
         self.labelMashPh.setObjectName(_fromUtf8("labelMashPh"))
         self.formLayout_7.setWidget(1, QtGui.QFormLayout.FieldRole, self.labelMashPh)
         self.label_24 = QtGui.QLabel(self.widget)
+        self.label_24.setText(QtGui.QApplication.translate("MainWindow", "<html><head/><body><p><span style=\" font-weight:600;\">Rinçage :</span></p></body></html>", None, QtGui.QApplication.UnicodeUTF8))
         self.label_24.setObjectName(_fromUtf8("label_24"))
         self.formLayout_7.setWidget(2, QtGui.QFormLayout.LabelRole, self.label_24)
         self.labelMashSpargeTemp = QtGui.QLabel(self.widget)
+        self.labelMashSpargeTemp.setText(QtGui.QApplication.translate("MainWindow", "0 °C", None, QtGui.QApplication.UnicodeUTF8))
         self.labelMashSpargeTemp.setObjectName(_fromUtf8("labelMashSpargeTemp"))
         self.formLayout_7.setWidget(2, QtGui.QFormLayout.FieldRole, self.labelMashSpargeTemp)
         self.pushButtonMashEdit = QtGui.QPushButton(self.widget)
         self.pushButtonMashEdit.setEnabled(False)
+        self.pushButtonMashEdit.setText(QtGui.QApplication.translate("MainWindow", "Modifier", None, QtGui.QApplication.UnicodeUTF8))
         self.pushButtonMashEdit.setObjectName(_fromUtf8("pushButtonMashEdit"))
         self.formLayout_7.setWidget(3, QtGui.QFormLayout.LabelRole, self.pushButtonMashEdit)
         self.horizontalLayout_14.addWidget(self.widget)
@@ -529,6 +659,11 @@ class Ui_MainWindow(object):
         self.verticalLayout_9 = QtGui.QVBoxLayout()
         self.verticalLayout_9.setObjectName(_fromUtf8("verticalLayout_9"))
         self.label_14 = QtGui.QLabel(self.page_4)
+        self.label_14.setText(QtGui.QApplication.translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
+"p, li { white-space: pre-wrap; }\n"
+"</style></head><body style=\" font-family:\'Droid Sans\'; font-size:10pt; font-weight:400; font-style:normal;\">\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-weight:600;\">Paliers :</span></p></body></html>", None, QtGui.QApplication.UnicodeUTF8))
         self.label_14.setObjectName(_fromUtf8("label_14"))
         self.verticalLayout_9.addWidget(self.label_14)
         self.horizontalLayout_8 = QtGui.QHBoxLayout()
@@ -543,9 +678,11 @@ class Ui_MainWindow(object):
         self.horizontalLayout_6.setObjectName(_fromUtf8("horizontalLayout_6"))
         self.pushButtonStepRemove = QtGui.QPushButton(self.page_4)
         self.pushButtonStepRemove.setEnabled(False)
+        self.pushButtonStepRemove.setText(QtGui.QApplication.translate("MainWindow", "Enlever", None, QtGui.QApplication.UnicodeUTF8))
         self.pushButtonStepRemove.setObjectName(_fromUtf8("pushButtonStepRemove"))
         self.horizontalLayout_6.addWidget(self.pushButtonStepRemove)
         self.pushButtonNewStep = QtGui.QPushButton(self.page_4)
+        self.pushButtonNewStep.setText(QtGui.QApplication.translate("MainWindow", "Nouveau palier", None, QtGui.QApplication.UnicodeUTF8))
         self.pushButtonNewStep.setObjectName(_fromUtf8("pushButtonNewStep"))
         self.horizontalLayout_6.addWidget(self.pushButtonNewStep)
         spacerItem10 = QtGui.QSpacerItem(40, 20, QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Minimum)
@@ -560,31 +697,56 @@ class Ui_MainWindow(object):
         self.formLayout_6.setContentsMargins(50, -1, 50, -1)
         self.formLayout_6.setObjectName(_fromUtf8("formLayout_6"))
         self.label_9 = QtGui.QLabel(self.widget1)
+        self.label_9.setText(QtGui.QApplication.translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
+"p, li { white-space: pre-wrap; }\n"
+"</style></head><body style=\" font-family:\'Droid Sans\'; font-size:10pt; font-weight:400; font-style:normal;\">\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-weight:600;\">Nom :</span></p></body></html>", None, QtGui.QApplication.UnicodeUTF8))
         self.label_9.setObjectName(_fromUtf8("label_9"))
         self.formLayout_6.setWidget(0, QtGui.QFormLayout.LabelRole, self.label_9)
         self.labelStepName = QtGui.QLabel(self.widget1)
+        self.labelStepName.setText(QtGui.QApplication.translate("MainWindow", "Aucun", None, QtGui.QApplication.UnicodeUTF8))
         self.labelStepName.setObjectName(_fromUtf8("labelStepName"))
         self.formLayout_6.setWidget(0, QtGui.QFormLayout.FieldRole, self.labelStepName)
         self.label_10 = QtGui.QLabel(self.widget1)
+        self.label_10.setText(QtGui.QApplication.translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
+"p, li { white-space: pre-wrap; }\n"
+"</style></head><body style=\" font-family:\'Droid Sans\'; font-size:10pt; font-weight:400; font-style:normal;\">\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-weight:600;\">Type :</span></p></body></html>", None, QtGui.QApplication.UnicodeUTF8))
         self.label_10.setObjectName(_fromUtf8("label_10"))
         self.formLayout_6.setWidget(1, QtGui.QFormLayout.LabelRole, self.label_10)
         self.labelStepType = QtGui.QLabel(self.widget1)
+        self.labelStepType.setText(QtGui.QApplication.translate("MainWindow", "Aucun", None, QtGui.QApplication.UnicodeUTF8))
         self.labelStepType.setObjectName(_fromUtf8("labelStepType"))
         self.formLayout_6.setWidget(1, QtGui.QFormLayout.FieldRole, self.labelStepType)
         self.label_11 = QtGui.QLabel(self.widget1)
+        self.label_11.setText(QtGui.QApplication.translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
+"p, li { white-space: pre-wrap; }\n"
+"</style></head><body style=\" font-family:\'Droid Sans\'; font-size:10pt; font-weight:400; font-style:normal;\">\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-weight:600;\">Durée :</span></p></body></html>", None, QtGui.QApplication.UnicodeUTF8))
         self.label_11.setObjectName(_fromUtf8("label_11"))
         self.formLayout_6.setWidget(2, QtGui.QFormLayout.LabelRole, self.label_11)
         self.labelStepTime = QtGui.QLabel(self.widget1)
+        self.labelStepTime.setText(QtGui.QApplication.translate("MainWindow", "0 min", None, QtGui.QApplication.UnicodeUTF8))
         self.labelStepTime.setObjectName(_fromUtf8("labelStepTime"))
         self.formLayout_6.setWidget(2, QtGui.QFormLayout.FieldRole, self.labelStepTime)
         self.label_12 = QtGui.QLabel(self.widget1)
+        self.label_12.setText(QtGui.QApplication.translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
+"p, li { white-space: pre-wrap; }\n"
+"</style></head><body style=\" font-family:\'Droid Sans\'; font-size:10pt; font-weight:400; font-style:normal;\">\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-weight:600;\">Température :</span></p></body></html>", None, QtGui.QApplication.UnicodeUTF8))
         self.label_12.setObjectName(_fromUtf8("label_12"))
         self.formLayout_6.setWidget(3, QtGui.QFormLayout.LabelRole, self.label_12)
         self.labelStepTemp = QtGui.QLabel(self.widget1)
+        self.labelStepTemp.setText(QtGui.QApplication.translate("MainWindow", "0 °C", None, QtGui.QApplication.UnicodeUTF8))
         self.labelStepTemp.setObjectName(_fromUtf8("labelStepTemp"))
         self.formLayout_6.setWidget(3, QtGui.QFormLayout.FieldRole, self.labelStepTemp)
         self.pushButtonStepEdit = QtGui.QPushButton(self.widget1)
         self.pushButtonStepEdit.setEnabled(False)
+        self.pushButtonStepEdit.setText(QtGui.QApplication.translate("MainWindow", "Modifier", None, QtGui.QApplication.UnicodeUTF8))
         self.pushButtonStepEdit.setObjectName(_fromUtf8("pushButtonStepEdit"))
         self.formLayout_6.setWidget(4, QtGui.QFormLayout.LabelRole, self.pushButtonStepEdit)
         self.horizontalLayout_8.addWidget(self.widget1)
@@ -598,6 +760,7 @@ class Ui_MainWindow(object):
         self.buttonBoxMashDetails.setObjectName(_fromUtf8("buttonBoxMashDetails"))
         self.horizontalLayout_15.addWidget(self.buttonBoxMashDetails)
         self.pushButtonSaveProfile = QtGui.QPushButton(self.page_4)
+        self.pushButtonSaveProfile.setText(QtGui.QApplication.translate("MainWindow", "Enregistrer les profils", None, QtGui.QApplication.UnicodeUTF8))
         self.pushButtonSaveProfile.setObjectName(_fromUtf8("pushButtonSaveProfile"))
         self.horizontalLayout_15.addWidget(self.pushButtonSaveProfile)
         self.verticalLayout_11.addLayout(self.horizontalLayout_15)
@@ -610,6 +773,7 @@ class Ui_MainWindow(object):
         self.horizontalLayout_22 = QtGui.QHBoxLayout()
         self.horizontalLayout_22.setObjectName(_fromUtf8("horizontalLayout_22"))
         self.groupBox_3 = QtGui.QGroupBox(self.page_5)
+        self.groupBox_3.setTitle(QtGui.QApplication.translate("MainWindow", "Méthode de brassage", None, QtGui.QApplication.UnicodeUTF8))
         self.groupBox_3.setObjectName(_fromUtf8("groupBox_3"))
         self.gridLayout_11 = QtGui.QGridLayout(self.groupBox_3)
         self.gridLayout_11.setObjectName(_fromUtf8("gridLayout_11"))
@@ -617,10 +781,12 @@ class Ui_MainWindow(object):
         self.horizontalLayout_17.setSpacing(6)
         self.horizontalLayout_17.setObjectName(_fromUtf8("horizontalLayout_17"))
         self.radioButtonClassicBrew = QtGui.QRadioButton(self.groupBox_3)
+        self.radioButtonClassicBrew.setText(QtGui.QApplication.translate("MainWindow", "Classique", None, QtGui.QApplication.UnicodeUTF8))
         self.radioButtonClassicBrew.setChecked(True)
         self.radioButtonClassicBrew.setObjectName(_fromUtf8("radioButtonClassicBrew"))
         self.horizontalLayout_17.addWidget(self.radioButtonClassicBrew)
         self.radioButtonBIAB = QtGui.QRadioButton(self.groupBox_3)
+        self.radioButtonBIAB.setText(QtGui.QApplication.translate("MainWindow", "Volume complet (BIAB)", None, QtGui.QApplication.UnicodeUTF8))
         self.radioButtonBIAB.setObjectName(_fromUtf8("radioButtonBIAB"))
         self.horizontalLayout_17.addWidget(self.radioButtonBIAB)
         self.gridLayout_11.addLayout(self.horizontalLayout_17, 0, 0, 1, 1)
@@ -631,6 +797,7 @@ class Ui_MainWindow(object):
         self.verticalLayout_12 = QtGui.QVBoxLayout()
         self.verticalLayout_12.setObjectName(_fromUtf8("verticalLayout_12"))
         self.label_13 = QtGui.QLabel(self.page_5)
+        self.label_13.setText(QtGui.QApplication.translate("MainWindow", "<html><head/><body><p><span style=\" font-weight:600;\">Volumes d\'eau</span></p></body></html>", None, QtGui.QApplication.UnicodeUTF8))
         self.label_13.setObjectName(_fromUtf8("label_13"))
         self.verticalLayout_12.addWidget(self.label_13)
         self.tableWidgetStepsBrewday = QtGui.QTableWidget(self.page_5)
@@ -643,14 +810,19 @@ class Ui_MainWindow(object):
         self.tableWidgetStepsBrewday.setColumnCount(5)
         self.tableWidgetStepsBrewday.setObjectName(_fromUtf8("tableWidgetStepsBrewday"))
         item = QtGui.QTableWidgetItem()
+        item.setText(QtGui.QApplication.translate("MainWindow", "Palier", None, QtGui.QApplication.UnicodeUTF8))
         self.tableWidgetStepsBrewday.setHorizontalHeaderItem(0, item)
         item = QtGui.QTableWidgetItem()
+        item.setText(QtGui.QApplication.translate("MainWindow", "Volume d\'eau", None, QtGui.QApplication.UnicodeUTF8))
         self.tableWidgetStepsBrewday.setHorizontalHeaderItem(1, item)
         item = QtGui.QTableWidgetItem()
+        item.setText(QtGui.QApplication.translate("MainWindow", "Température de l\'eau", None, QtGui.QApplication.UnicodeUTF8))
         self.tableWidgetStepsBrewday.setHorizontalHeaderItem(2, item)
         item = QtGui.QTableWidgetItem()
+        item.setText(QtGui.QApplication.translate("MainWindow", "Ratio", None, QtGui.QApplication.UnicodeUTF8))
         self.tableWidgetStepsBrewday.setHorizontalHeaderItem(3, item)
         item = QtGui.QTableWidgetItem()
+        item.setText(QtGui.QApplication.translate("MainWindow", "Infos", None, QtGui.QApplication.UnicodeUTF8))
         self.tableWidgetStepsBrewday.setHorizontalHeaderItem(4, item)
         self.tableWidgetStepsBrewday.horizontalHeader().setCascadingSectionResizes(False)
         self.tableWidgetStepsBrewday.horizontalHeader().setDefaultSectionSize(175)
@@ -662,11 +834,13 @@ class Ui_MainWindow(object):
         self.labelWarningBiab = QtGui.QLabel(self.page_5)
         self.labelWarningBiab.setMinimumSize(QtCore.QSize(0, 20))
         self.labelWarningBiab.setStyleSheet(_fromUtf8("background-color: rgb(255, 255, 196);"))
+        self.labelWarningBiab.setText(QtGui.QApplication.translate("MainWindow", "<html><head/><body><p align=\"center\"><span style=\" font-weight:600;\">Le profil de brassage que vous utilisez n\'est pas adapté au BIAB. Vous ne devriez utiliser qu\'un seul palier d\'infusion.</span></p></body></html>", None, QtGui.QApplication.UnicodeUTF8))
         self.labelWarningBiab.setObjectName(_fromUtf8("labelWarningBiab"))
         self.verticalLayout_12.addWidget(self.labelWarningBiab)
         self.labelNoDecoction = QtGui.QLabel(self.page_5)
         self.labelNoDecoction.setMinimumSize(QtCore.QSize(0, 20))
         self.labelNoDecoction.setStyleSheet(_fromUtf8("background-color: rgb(255, 255, 196);"))
+        self.labelNoDecoction.setText(QtGui.QApplication.translate("MainWindow", "<html><head/><body><p align=\"center\"><span style=\" font-weight:600;\">JolieBulle ne prend pas encore en charge les décoctions. Pas encore !</span></p></body></html>", None, QtGui.QApplication.UnicodeUTF8))
         self.labelNoDecoction.setObjectName(_fromUtf8("labelNoDecoction"))
         self.verticalLayout_12.addWidget(self.labelNoDecoction)
         self.horizontalLayout_16 = QtGui.QHBoxLayout()
@@ -674,6 +848,7 @@ class Ui_MainWindow(object):
         spacerItem12 = QtGui.QSpacerItem(40, 20, QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Minimum)
         self.horizontalLayout_16.addItem(spacerItem12)
         self.pushButtonAdjustStep = QtGui.QPushButton(self.page_5)
+        self.pushButtonAdjustStep.setText(QtGui.QApplication.translate("MainWindow", "Ajuster", None, QtGui.QApplication.UnicodeUTF8))
         self.pushButtonAdjustStep.setObjectName(_fromUtf8("pushButtonAdjustStep"))
         self.horizontalLayout_16.addWidget(self.pushButtonAdjustStep)
         self.verticalLayout_12.addLayout(self.horizontalLayout_16)
@@ -689,66 +864,83 @@ class Ui_MainWindow(object):
         self.groupBox_2 = QtGui.QGroupBox(self.page_5)
         self.groupBox_2.setMinimumSize(QtCore.QSize(0, 0))
         self.groupBox_2.setMaximumSize(QtCore.QSize(16777215, 16777215))
+        self.groupBox_2.setTitle(QtGui.QApplication.translate("MainWindow", "Rinçage", None, QtGui.QApplication.UnicodeUTF8))
         self.groupBox_2.setObjectName(_fromUtf8("groupBox_2"))
         self.gridLayout_10 = QtGui.QGridLayout(self.groupBox_2)
         self.gridLayout_10.setObjectName(_fromUtf8("gridLayout_10"))
         self.formLayoutSparge = QtGui.QFormLayout()
         self.formLayoutSparge.setObjectName(_fromUtf8("formLayoutSparge"))
         self.labelSparge1 = QtGui.QLabel(self.groupBox_2)
+        self.labelSparge1.setText(QtGui.QApplication.translate("MainWindow", "Volume de rinçage :", None, QtGui.QApplication.UnicodeUTF8))
         self.labelSparge1.setObjectName(_fromUtf8("labelSparge1"))
         self.formLayoutSparge.setWidget(0, QtGui.QFormLayout.LabelRole, self.labelSparge1)
         self.labelSparge2 = QtGui.QLabel(self.groupBox_2)
+        self.labelSparge2.setText(QtGui.QApplication.translate("MainWindow", "Température de rinçage :", None, QtGui.QApplication.UnicodeUTF8))
         self.labelSparge2.setObjectName(_fromUtf8("labelSparge2"))
         self.formLayoutSparge.setWidget(1, QtGui.QFormLayout.LabelRole, self.labelSparge2)
         self.labelSpargeVol = QtGui.QLabel(self.groupBox_2)
+        self.labelSpargeVol.setText(QtGui.QApplication.translate("MainWindow", "0", None, QtGui.QApplication.UnicodeUTF8))
         self.labelSpargeVol.setObjectName(_fromUtf8("labelSpargeVol"))
         self.formLayoutSparge.setWidget(0, QtGui.QFormLayout.FieldRole, self.labelSpargeVol)
         self.labelSpargeTemp = QtGui.QLabel(self.groupBox_2)
+        self.labelSpargeTemp.setText(QtGui.QApplication.translate("MainWindow", "0", None, QtGui.QApplication.UnicodeUTF8))
         self.labelSpargeTemp.setObjectName(_fromUtf8("labelSpargeTemp"))
         self.formLayoutSparge.setWidget(1, QtGui.QFormLayout.FieldRole, self.labelSpargeTemp)
         self.labelNoSparge = QtGui.QLabel(self.groupBox_2)
         self.labelNoSparge.setMinimumSize(QtCore.QSize(100, 0))
         self.labelNoSparge.setStyleSheet(_fromUtf8("background-color: rgb(255, 255, 196);"))
+        self.labelNoSparge.setText(QtGui.QApplication.translate("MainWindow", "<html><head/><body><p align=\"center\">   Pas de rinçage en BIAB</p></body></html>", None, QtGui.QApplication.UnicodeUTF8))
         self.labelNoSparge.setObjectName(_fromUtf8("labelNoSparge"))
         self.formLayoutSparge.setWidget(2, QtGui.QFormLayout.LabelRole, self.labelNoSparge)
         self.gridLayout_10.addLayout(self.formLayoutSparge, 0, 0, 1, 1)
         self.horizontalLayout_18.addWidget(self.groupBox_2)
         self.groupBox_4 = QtGui.QGroupBox(self.page_5)
+        self.groupBox_4.setTitle(QtGui.QApplication.translate("MainWindow", "Volumes", None, QtGui.QApplication.UnicodeUTF8))
         self.groupBox_4.setObjectName(_fromUtf8("groupBox_4"))
         self.formLayout_12 = QtGui.QFormLayout(self.groupBox_4)
         self.formLayout_12.setObjectName(_fromUtf8("formLayout_12"))
         self.label_29 = QtGui.QLabel(self.groupBox_4)
+        self.label_29.setText(QtGui.QApplication.translate("MainWindow", "Volume de grains :", None, QtGui.QApplication.UnicodeUTF8))
         self.label_29.setObjectName(_fromUtf8("label_29"))
         self.formLayout_12.setWidget(0, QtGui.QFormLayout.LabelRole, self.label_29)
         self.labelGrainVolume = QtGui.QLabel(self.groupBox_4)
+        self.labelGrainVolume.setText(QtGui.QApplication.translate("MainWindow", "0", None, QtGui.QApplication.UnicodeUTF8))
         self.labelGrainVolume.setObjectName(_fromUtf8("labelGrainVolume"))
         self.formLayout_12.setWidget(0, QtGui.QFormLayout.FieldRole, self.labelGrainVolume)
         self.label_31 = QtGui.QLabel(self.groupBox_4)
+        self.label_31.setText(QtGui.QApplication.translate("MainWindow", "Volume total (empâtage) :", None, QtGui.QApplication.UnicodeUTF8))
         self.label_31.setObjectName(_fromUtf8("label_31"))
         self.formLayout_12.setWidget(1, QtGui.QFormLayout.LabelRole, self.label_31)
         self.labelTotalVolumeStrike = QtGui.QLabel(self.groupBox_4)
+        self.labelTotalVolumeStrike.setText(QtGui.QApplication.translate("MainWindow", "0", None, QtGui.QApplication.UnicodeUTF8))
         self.labelTotalVolumeStrike.setObjectName(_fromUtf8("labelTotalVolumeStrike"))
         self.formLayout_12.setWidget(1, QtGui.QFormLayout.FieldRole, self.labelTotalVolumeStrike)
         self.label_33 = QtGui.QLabel(self.groupBox_4)
+        self.label_33.setText(QtGui.QApplication.translate("MainWindow", "Volume total (dernier palier) :", None, QtGui.QApplication.UnicodeUTF8))
         self.label_33.setObjectName(_fromUtf8("label_33"))
         self.formLayout_12.setWidget(2, QtGui.QFormLayout.LabelRole, self.label_33)
         self.labelTotalVolumeLast = QtGui.QLabel(self.groupBox_4)
+        self.labelTotalVolumeLast.setText(QtGui.QApplication.translate("MainWindow", "0", None, QtGui.QApplication.UnicodeUTF8))
         self.labelTotalVolumeLast.setObjectName(_fromUtf8("labelTotalVolumeLast"))
         self.formLayout_12.setWidget(2, QtGui.QFormLayout.FieldRole, self.labelTotalVolumeLast)
         self.horizontalLayout_18.addWidget(self.groupBox_4)
         self.groupBox = QtGui.QGroupBox(self.page_5)
+        self.groupBox.setTitle(QtGui.QApplication.translate("MainWindow", "Pré-ébullition", None, QtGui.QApplication.UnicodeUTF8))
         self.groupBox.setObjectName(_fromUtf8("groupBox"))
         self.gridLayout_9 = QtGui.QGridLayout(self.groupBox)
         self.gridLayout_9.setObjectName(_fromUtf8("gridLayout_9"))
         self.formLayout_8 = QtGui.QFormLayout()
         self.formLayout_8.setObjectName(_fromUtf8("formLayout_8"))
         self.label_18 = QtGui.QLabel(self.groupBox)
+        self.label_18.setText(QtGui.QApplication.translate("MainWindow", "Volume théorique pré-ébullition :", None, QtGui.QApplication.UnicodeUTF8))
         self.label_18.setObjectName(_fromUtf8("label_18"))
         self.formLayout_8.setWidget(1, QtGui.QFormLayout.LabelRole, self.label_18)
         self.label_19 = QtGui.QLabel(self.groupBox)
+        self.label_19.setText(QtGui.QApplication.translate("MainWindow", "Densité pré-ébullition :", None, QtGui.QApplication.UnicodeUTF8))
         self.label_19.setObjectName(_fromUtf8("label_19"))
         self.formLayout_8.setWidget(2, QtGui.QFormLayout.LabelRole, self.label_19)
         self.labelPreBoilGravity = QtGui.QLabel(self.groupBox)
+        self.labelPreBoilGravity.setText(QtGui.QApplication.translate("MainWindow", "1.000", None, QtGui.QApplication.UnicodeUTF8))
         self.labelPreBoilGravity.setObjectName(_fromUtf8("labelPreBoilGravity"))
         self.formLayout_8.setWidget(2, QtGui.QFormLayout.FieldRole, self.labelPreBoilGravity)
         self.labelPreBoilVol = QtGui.QLabel(self.groupBox)
@@ -760,6 +952,16 @@ class Ui_MainWindow(object):
         self.gridLayout_12.addLayout(self.horizontalLayout_18, 3, 0, 1, 1)
         spacerItem14 = QtGui.QSpacerItem(20, 40, QtGui.QSizePolicy.Minimum, QtGui.QSizePolicy.Expanding)
         self.gridLayout_12.addItem(spacerItem14, 4, 0, 1, 1)
+        self.horizontalLayout_23 = QtGui.QHBoxLayout()
+        self.horizontalLayout_23.setContentsMargins(-1, -1, -1, 9)
+        self.horizontalLayout_23.setObjectName(_fromUtf8("horizontalLayout_23"))
+        spacerItem15 = QtGui.QSpacerItem(40, 20, QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Minimum)
+        self.horizontalLayout_23.addItem(spacerItem15)
+        self.pushButtonBrewdayModeClose = QtGui.QPushButton(self.page_5)
+        self.pushButtonBrewdayModeClose.setText(QtGui.QApplication.translate("MainWindow", "Fermer", None, QtGui.QApplication.UnicodeUTF8))
+        self.pushButtonBrewdayModeClose.setObjectName(_fromUtf8("pushButtonBrewdayModeClose"))
+        self.horizontalLayout_23.addWidget(self.pushButtonBrewdayModeClose)
+        self.gridLayout_12.addLayout(self.horizontalLayout_23, 6, 0, 1, 1)
         self.stackedWidget.addWidget(self.page_5)
         self.page_2 = QtGui.QWidget()
         self.page_2.setObjectName(_fromUtf8("page_2"))
@@ -798,11 +1000,17 @@ class Ui_MainWindow(object):
         self.gridLayout_15 = QtGui.QGridLayout(self.widget_2)
         self.gridLayout_15.setMargin(0)
         self.gridLayout_15.setObjectName(_fromUtf8("gridLayout_15"))
-        spacerItem15 = QtGui.QSpacerItem(20, 40, QtGui.QSizePolicy.Minimum, QtGui.QSizePolicy.Expanding)
-        self.gridLayout_15.addItem(spacerItem15, 0, 1, 1, 1)
+        spacerItem16 = QtGui.QSpacerItem(20, 40, QtGui.QSizePolicy.Minimum, QtGui.QSizePolicy.Expanding)
+        self.gridLayout_15.addItem(spacerItem16, 0, 1, 1, 1)
         self.verticalLayout_15 = QtGui.QVBoxLayout()
         self.verticalLayout_15.setObjectName(_fromUtf8("verticalLayout_15"))
         self.label_28 = QtGui.QLabel(self.widget_2)
+        self.label_28.setText(QtGui.QApplication.translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
+"p, li { white-space: pre-wrap; }\n"
+"</style></head><body style=\" font-family:\'Ubuntu\'; font-size:11pt; font-weight:400; font-style:normal;\">\n"
+"<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:14pt;\">Brasser librement avec JolieBulle.</span></p>\n"
+"<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:14pt; color:#8d8d8d;\">glou, glou</span></p></body></html>", None, QtGui.QApplication.UnicodeUTF8))
         self.label_28.setObjectName(_fromUtf8("label_28"))
         self.verticalLayout_15.addWidget(self.label_28)
         self.formLayout_9 = QtGui.QFormLayout()
@@ -810,45 +1018,81 @@ class Ui_MainWindow(object):
         self.formLayout_9.setHorizontalSpacing(30)
         self.formLayout_9.setObjectName(_fromUtf8("formLayout_9"))
         self.label_21 = QtGui.QLabel(self.widget_2)
+        self.label_21.setText(QtGui.QApplication.translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
+"p, li { white-space: pre-wrap; }\n"
+"</style></head><body style=\" font-family:\'Ubuntu\'; font-size:11pt; font-weight:400; font-style:normal;\">\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><img src=\":/home/Images/stock_bookmark.png\" /></p></body></html>", None, QtGui.QApplication.UnicodeUTF8))
         self.label_21.setObjectName(_fromUtf8("label_21"))
         self.formLayout_9.setWidget(0, QtGui.QFormLayout.LabelRole, self.label_21)
         self.label_20 = QtGui.QLabel(self.widget_2)
+        self.label_20.setText(QtGui.QApplication.translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
+"p, li { white-space: pre-wrap; }\n"
+"</style></head><body style=\" font-family:\'Ubuntu\'; font-size:11pt; font-weight:400; font-style:normal;\">\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:12pt;\">Bibliothèque</span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:7pt;\"> </span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:12pt; color:#8d8d8d;\">Gérer et consulter des recettes</span></p></body></html>", None, QtGui.QApplication.UnicodeUTF8))
         self.label_20.setObjectName(_fromUtf8("label_20"))
         self.formLayout_9.setWidget(0, QtGui.QFormLayout.FieldRole, self.label_20)
         self.verticalLayout_15.addLayout(self.formLayout_9)
-        spacerItem16 = QtGui.QSpacerItem(20, 40, QtGui.QSizePolicy.Minimum, QtGui.QSizePolicy.Expanding)
-        self.verticalLayout_15.addItem(spacerItem16)
+        spacerItem17 = QtGui.QSpacerItem(20, 40, QtGui.QSizePolicy.Minimum, QtGui.QSizePolicy.Expanding)
+        self.verticalLayout_15.addItem(spacerItem17)
         self.formLayout_10 = QtGui.QFormLayout()
         self.formLayout_10.setFieldGrowthPolicy(QtGui.QFormLayout.AllNonFixedFieldsGrow)
         self.formLayout_10.setHorizontalSpacing(30)
         self.formLayout_10.setObjectName(_fromUtf8("formLayout_10"))
         self.label_25 = QtGui.QLabel(self.widget_2)
+        self.label_25.setText(QtGui.QApplication.translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
+"p, li { white-space: pre-wrap; }\n"
+"</style></head><body style=\" font-family:\'Ubuntu\'; font-size:11pt; font-weight:400; font-style:normal;\">\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><img src=\":/home/Images/glade.png\" /></p></body></html>", None, QtGui.QApplication.UnicodeUTF8))
         self.label_25.setObjectName(_fromUtf8("label_25"))
         self.formLayout_10.setWidget(0, QtGui.QFormLayout.LabelRole, self.label_25)
         self.label_22 = QtGui.QLabel(self.widget_2)
+        self.label_22.setText(QtGui.QApplication.translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
+"p, li { white-space: pre-wrap; }\n"
+"</style></head><body style=\" font-family:\'Ubuntu\'; font-size:11pt; font-weight:400; font-style:normal;\">\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:12pt;\">Editeur</span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:7pt;\"> </span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:12pt; color:#8d8d8d;\">Modifier et créer des recettes</span></p></body></html>", None, QtGui.QApplication.UnicodeUTF8))
         self.label_22.setObjectName(_fromUtf8("label_22"))
         self.formLayout_10.setWidget(0, QtGui.QFormLayout.FieldRole, self.label_22)
         self.verticalLayout_15.addLayout(self.formLayout_10)
-        spacerItem17 = QtGui.QSpacerItem(20, 40, QtGui.QSizePolicy.Minimum, QtGui.QSizePolicy.Expanding)
-        self.verticalLayout_15.addItem(spacerItem17)
+        spacerItem18 = QtGui.QSpacerItem(20, 40, QtGui.QSizePolicy.Minimum, QtGui.QSizePolicy.Expanding)
+        self.verticalLayout_15.addItem(spacerItem18)
         self.formLayout_11 = QtGui.QFormLayout()
         self.formLayout_11.setFieldGrowthPolicy(QtGui.QFormLayout.AllNonFixedFieldsGrow)
         self.formLayout_11.setHorizontalSpacing(30)
         self.formLayout_11.setObjectName(_fromUtf8("formLayout_11"))
         self.label_27 = QtGui.QLabel(self.widget_2)
+        self.label_27.setText(QtGui.QApplication.translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
+"p, li { white-space: pre-wrap; }\n"
+"</style></head><body style=\" font-family:\'Ubuntu\'; font-size:11pt; font-weight:400; font-style:normal;\">\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><img src=\":/home/Images/evolution-tasks.png\" /></p></body></html>", None, QtGui.QApplication.UnicodeUTF8))
         self.label_27.setObjectName(_fromUtf8("label_27"))
         self.formLayout_11.setWidget(0, QtGui.QFormLayout.LabelRole, self.label_27)
         self.label_26 = QtGui.QLabel(self.widget_2)
+        self.label_26.setText(QtGui.QApplication.translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
+"p, li { white-space: pre-wrap; }\n"
+"</style></head><body style=\" font-family:\'Ubuntu\'; font-size:11pt; font-weight:400; font-style:normal;\">\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:12pt;\">Mode brassage</span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:7pt;\"> </span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:12pt; color:#8d8d8d;\">Planifier et brasser</span></p></body></html>", None, QtGui.QApplication.UnicodeUTF8))
         self.label_26.setObjectName(_fromUtf8("label_26"))
         self.formLayout_11.setWidget(0, QtGui.QFormLayout.FieldRole, self.label_26)
         self.verticalLayout_15.addLayout(self.formLayout_11)
         self.gridLayout_15.addLayout(self.verticalLayout_15, 1, 1, 1, 1)
-        spacerItem18 = QtGui.QSpacerItem(20, 40, QtGui.QSizePolicy.Minimum, QtGui.QSizePolicy.Expanding)
-        self.gridLayout_15.addItem(spacerItem18, 2, 1, 1, 1)
-        spacerItem19 = QtGui.QSpacerItem(40, 20, QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Minimum)
-        self.gridLayout_15.addItem(spacerItem19, 1, 0, 1, 1)
+        spacerItem19 = QtGui.QSpacerItem(20, 40, QtGui.QSizePolicy.Minimum, QtGui.QSizePolicy.Expanding)
+        self.gridLayout_15.addItem(spacerItem19, 2, 1, 1, 1)
         spacerItem20 = QtGui.QSpacerItem(40, 20, QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Minimum)
-        self.gridLayout_15.addItem(spacerItem20, 1, 2, 1, 1)
+        self.gridLayout_15.addItem(spacerItem20, 1, 0, 1, 1)
+        spacerItem21 = QtGui.QSpacerItem(40, 20, QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Minimum)
+        self.gridLayout_15.addItem(spacerItem21, 1, 2, 1, 1)
         self.gridLayout_14.addWidget(self.widget_2, 0, 0, 1, 1)
         self.stackedWidget.addWidget(self.page_7)
         self.gridLayout_4.addWidget(self.stackedWidget, 0, 0, 1, 1)
@@ -858,88 +1102,119 @@ class Ui_MainWindow(object):
         font = QtGui.QFont()
         font.setPointSize(10)
         self.toolBar.setFont(font)
+        self.toolBar.setWindowTitle(QtGui.QApplication.translate("MainWindow", "toolBar", None, QtGui.QApplication.UnicodeUTF8))
         self.toolBar.setMovable(False)
         self.toolBar.setToolButtonStyle(QtCore.Qt.ToolButtonFollowStyle)
         self.toolBar.setFloatable(False)
         self.toolBar.setObjectName(_fromUtf8("toolBar"))
         MainWindow.addToolBar(QtCore.Qt.TopToolBarArea, self.toolBar)
         self.menuBar = QtGui.QMenuBar(MainWindow)
-        self.menuBar.setGeometry(QtCore.QRect(0, 0, 1238, 23))
+        self.menuBar.setGeometry(QtCore.QRect(0, 0, 1238, 25))
         self.menuBar.setObjectName(_fromUtf8("menuBar"))
         self.menuFichier = QtGui.QMenu(self.menuBar)
+        self.menuFichier.setTitle(QtGui.QApplication.translate("MainWindow", "Fichier", None, QtGui.QApplication.UnicodeUTF8))
         self.menuFichier.setObjectName(_fromUtf8("menuFichier"))
         self.menuIngr_dients = QtGui.QMenu(self.menuBar)
+        self.menuIngr_dients.setTitle(QtGui.QApplication.translate("MainWindow", "Ingrédients", None, QtGui.QApplication.UnicodeUTF8))
         self.menuIngr_dients.setObjectName(_fromUtf8("menuIngr_dients"))
         self.menuOutils = QtGui.QMenu(self.menuBar)
+        self.menuOutils.setTitle(QtGui.QApplication.translate("MainWindow", "Outils", None, QtGui.QApplication.UnicodeUTF8))
         self.menuOutils.setObjectName(_fromUtf8("menuOutils"))
         self.menuEdition = QtGui.QMenu(self.menuBar)
+        self.menuEdition.setTitle(QtGui.QApplication.translate("MainWindow", "Edition", None, QtGui.QApplication.UnicodeUTF8))
         self.menuEdition.setObjectName(_fromUtf8("menuEdition"))
         self.menuAide = QtGui.QMenu(self.menuBar)
+        self.menuAide.setTitle(QtGui.QApplication.translate("MainWindow", "Aide", None, QtGui.QApplication.UnicodeUTF8))
         self.menuAide.setObjectName(_fromUtf8("menuAide"))
         MainWindow.setMenuBar(self.menuBar)
         self.actionOuvrir = QtGui.QAction(MainWindow)
         icon5 = QtGui.QIcon()
         icon5.addPixmap(QtGui.QPixmap(_fromUtf8("Images/document-open.png")), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.actionOuvrir.setIcon(icon5)
+        self.actionOuvrir.setText(QtGui.QApplication.translate("MainWindow", "Ouvrir", None, QtGui.QApplication.UnicodeUTF8))
         self.actionOuvrir.setObjectName(_fromUtf8("actionOuvrir"))
         self.actionQuitter = QtGui.QAction(MainWindow)
         icon6 = QtGui.QIcon()
         icon6.addPixmap(QtGui.QPixmap(_fromUtf8("Images/application-exit.png")), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.actionQuitter.setIcon(icon6)
+        self.actionQuitter.setText(QtGui.QApplication.translate("MainWindow", "Quitter", None, QtGui.QApplication.UnicodeUTF8))
         self.actionQuitter.setObjectName(_fromUtf8("actionQuitter"))
         self.actionAbout = QtGui.QAction(MainWindow)
         icon7 = QtGui.QIcon()
         icon7.addPixmap(QtGui.QPixmap(_fromUtf8("Images/help-about.png")), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.actionAbout.setIcon(icon7)
+        self.actionAbout.setText(QtGui.QApplication.translate("MainWindow", "A propos", None, QtGui.QApplication.UnicodeUTF8))
         self.actionAbout.setObjectName(_fromUtf8("actionAbout"))
         self.actionEnregistrer = QtGui.QAction(MainWindow)
+        self.actionEnregistrer.setText(QtGui.QApplication.translate("MainWindow", "&Enregistrer", None, QtGui.QApplication.UnicodeUTF8))
         self.actionEnregistrer.setObjectName(_fromUtf8("actionEnregistrer"))
         self.actionEnregistrer_Sous = QtGui.QAction(MainWindow)
+        self.actionEnregistrer_Sous.setText(QtGui.QApplication.translate("MainWindow", "Enregistrer &sous", None, QtGui.QApplication.UnicodeUTF8))
         self.actionEnregistrer_Sous.setObjectName(_fromUtf8("actionEnregistrer_Sous"))
         self.actionQuitter_2 = QtGui.QAction(MainWindow)
+        self.actionQuitter_2.setText(QtGui.QApplication.translate("MainWindow", "Quitter", None, QtGui.QApplication.UnicodeUTF8))
         self.actionQuitter_2.setObjectName(_fromUtf8("actionQuitter_2"))
         self.actionOuvrir_2 = QtGui.QAction(MainWindow)
+        self.actionOuvrir_2.setText(QtGui.QApplication.translate("MainWindow", "&Ouvrir", None, QtGui.QApplication.UnicodeUTF8))
         self.actionOuvrir_2.setObjectName(_fromUtf8("actionOuvrir_2"))
         self.actionEditGrains = QtGui.QAction(MainWindow)
+        self.actionEditGrains.setText(QtGui.QApplication.translate("MainWindow", "Editer la base de Grains", None, QtGui.QApplication.UnicodeUTF8))
         self.actionEditGrains.setObjectName(_fromUtf8("actionEditGrains"))
         self.actionEditHoublons = QtGui.QAction(MainWindow)
+        self.actionEditHoublons.setText(QtGui.QApplication.translate("MainWindow", "Editer la base de Houblons", None, QtGui.QApplication.UnicodeUTF8))
         self.actionEditHoublons.setObjectName(_fromUtf8("actionEditHoublons"))
         self.actionEditDivers = QtGui.QAction(MainWindow)
+        self.actionEditDivers.setText(QtGui.QApplication.translate("MainWindow", "Editer la base de Divers", None, QtGui.QApplication.UnicodeUTF8))
         self.actionEditDivers.setObjectName(_fromUtf8("actionEditDivers"))
         self.actionEditLevures = QtGui.QAction(MainWindow)
+        self.actionEditLevures.setText(QtGui.QApplication.translate("MainWindow", "Editer la base de Levures", None, QtGui.QApplication.UnicodeUTF8))
         self.actionEditLevures.setObjectName(_fromUtf8("actionEditLevures"))
         self.actionNouvelle_recette = QtGui.QAction(MainWindow)
         self.actionNouvelle_recette.setIcon(icon2)
+        self.actionNouvelle_recette.setText(QtGui.QApplication.translate("MainWindow", "Nouvelle recette", None, QtGui.QApplication.UnicodeUTF8))
         self.actionNouvelle_recette.setObjectName(_fromUtf8("actionNouvelle_recette"))
         self.actionCorrectionDens = QtGui.QAction(MainWindow)
+        self.actionCorrectionDens.setText(QtGui.QApplication.translate("MainWindow", "Correction densimètre", None, QtGui.QApplication.UnicodeUTF8))
         self.actionCorrectionDens.setObjectName(_fromUtf8("actionCorrectionDens"))
         self.actionCalculAlc = QtGui.QAction(MainWindow)
+        self.actionCalculAlc.setText(QtGui.QApplication.translate("MainWindow", "Calcul taux d\'alcool", None, QtGui.QApplication.UnicodeUTF8))
         self.actionCalculAlc.setObjectName(_fromUtf8("actionCalculAlc"))
         self.actionImprimer = QtGui.QAction(MainWindow)
         icon8 = QtGui.QIcon()
         icon8.addPixmap(QtGui.QPixmap(_fromUtf8("Images/print.png")), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.actionImprimer.setIcon(icon8)
+        self.actionImprimer.setText(QtGui.QApplication.translate("MainWindow", "Imprimer", None, QtGui.QApplication.UnicodeUTF8))
         self.actionImprimer.setObjectName(_fromUtf8("actionImprimer"))
         self.actionDilution = QtGui.QAction(MainWindow)
+        self.actionDilution.setText(QtGui.QApplication.translate("MainWindow", "Dilution", None, QtGui.QApplication.UnicodeUTF8))
         self.actionDilution.setObjectName(_fromUtf8("actionDilution"))
         self.actionEvaporation = QtGui.QAction(MainWindow)
+        self.actionEvaporation.setText(QtGui.QApplication.translate("MainWindow", "Evaporation", None, QtGui.QApplication.UnicodeUTF8))
         self.actionEvaporation.setObjectName(_fromUtf8("actionEvaporation"))
         self.actionExporterHtml = QtGui.QAction(MainWindow)
+        self.actionExporterHtml.setText(QtGui.QApplication.translate("MainWindow", "Exporter vers html", None, QtGui.QApplication.UnicodeUTF8))
         self.actionExporterHtml.setObjectName(_fromUtf8("actionExporterHtml"))
         self.actionPaliers = QtGui.QAction(MainWindow)
+        self.actionPaliers.setText(QtGui.QApplication.translate("MainWindow", "Assistant paliers", None, QtGui.QApplication.UnicodeUTF8))
         self.actionPaliers.setObjectName(_fromUtf8("actionPaliers"))
         self.actionRestaurerIngredients = QtGui.QAction(MainWindow)
+        self.actionRestaurerIngredients.setText(QtGui.QApplication.translate("MainWindow", "Restaurer la base des ingrédients", None, QtGui.QApplication.UnicodeUTF8))
         self.actionRestaurerIngredients.setObjectName(_fromUtf8("actionRestaurerIngredients"))
         self.actionRecharger = QtGui.QAction(MainWindow)
         icon9 = QtGui.QIcon()
         icon9.addPixmap(QtGui.QPixmap(_fromUtf8("Images/reload.png")), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.actionRecharger.setIcon(icon9)
+        self.actionRecharger.setText(QtGui.QApplication.translate("MainWindow", "Recharger", None, QtGui.QApplication.UnicodeUTF8))
         self.actionRecharger.setObjectName(_fromUtf8("actionRecharger"))
         self.actionSwitch = QtGui.QAction(MainWindow)
+        self.actionSwitch.setText(QtGui.QApplication.translate("MainWindow", "switch", None, QtGui.QApplication.UnicodeUTF8))
         self.actionSwitch.setObjectName(_fromUtf8("actionSwitch"))
         self.actionVueEditeur = QtGui.QAction(MainWindow)
+        self.actionVueEditeur.setText(QtGui.QApplication.translate("MainWindow", "Editeur de recettes", None, QtGui.QApplication.UnicodeUTF8))
         self.actionVueEditeur.setObjectName(_fromUtf8("actionVueEditeur"))
         self.actionVueBibliotheque = QtGui.QAction(MainWindow)
+        self.actionVueBibliotheque.setText(QtGui.QApplication.translate("MainWindow", "Bibliothèque de recettes", None, QtGui.QApplication.UnicodeUTF8))
+        self.actionVueBibliotheque.setToolTip(QtGui.QApplication.translate("MainWindow", "Bibiliothèque de recettes", None, QtGui.QApplication.UnicodeUTF8))
         self.actionVueBibliotheque.setObjectName(_fromUtf8("actionVueBibliotheque"))
         self.actionVueEditeurToolBar = QtGui.QAction(MainWindow)
         self.actionVueEditeurToolBar.setCheckable(True)
@@ -947,29 +1222,40 @@ class Ui_MainWindow(object):
         icon10 = QtGui.QIcon()
         icon10.addPixmap(QtGui.QPixmap(_fromUtf8("Images/edit.png")), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.actionVueEditeurToolBar.setIcon(icon10)
+        self.actionVueEditeurToolBar.setText(QtGui.QApplication.translate("MainWindow", "Editeur", None, QtGui.QApplication.UnicodeUTF8))
         self.actionVueEditeurToolBar.setObjectName(_fromUtf8("actionVueEditeurToolBar"))
         self.actionVueBibliothequeToolBar = QtGui.QAction(MainWindow)
         self.actionVueBibliothequeToolBar.setCheckable(True)
         icon11 = QtGui.QIcon()
         icon11.addPixmap(QtGui.QPixmap(_fromUtf8("Images/library.png")), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.actionVueBibliothequeToolBar.setIcon(icon11)
+        self.actionVueBibliothequeToolBar.setText(QtGui.QApplication.translate("MainWindow", "Bibiliothèque", None, QtGui.QApplication.UnicodeUTF8))
+        self.actionVueBibliothequeToolBar.setToolTip(QtGui.QApplication.translate("MainWindow", "Bibiliothèque de recettes", None, QtGui.QApplication.UnicodeUTF8))
         self.actionVueBibliothequeToolBar.setObjectName(_fromUtf8("actionVueBibliothequeToolBar"))
         self.actionEnregistrerToolBar = QtGui.QAction(MainWindow)
         icon12 = QtGui.QIcon()
         icon12.addPixmap(QtGui.QPixmap(_fromUtf8("Images/save.png")), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.actionEnregistrerToolBar.setIcon(icon12)
+        self.actionEnregistrerToolBar.setText(QtGui.QApplication.translate("MainWindow", "&Enregistrer", None, QtGui.QApplication.UnicodeUTF8))
         self.actionEnregistrerToolBar.setObjectName(_fromUtf8("actionEnregistrerToolBar"))
         self.actionPreferences = QtGui.QAction(MainWindow)
+        self.actionPreferences.setText(QtGui.QApplication.translate("MainWindow", "Préférences", None, QtGui.QApplication.UnicodeUTF8))
         self.actionPreferences.setObjectName(_fromUtf8("actionPreferences"))
         self.actionBrewdayMode = QtGui.QAction(MainWindow)
         self.actionBrewdayMode.setCheckable(True)
         icon13 = QtGui.QIcon()
         icon13.addPixmap(QtGui.QPixmap(_fromUtf8("Images/brewday.png")), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.actionBrewdayMode.setIcon(icon13)
+        self.actionBrewdayMode.setText(QtGui.QApplication.translate("MainWindow", "Brassage", None, QtGui.QApplication.UnicodeUTF8))
+        self.actionBrewdayMode.setToolTip(QtGui.QApplication.translate("MainWindow", "Mode brassage", None, QtGui.QApplication.UnicodeUTF8))
         self.actionBrewdayMode.setObjectName(_fromUtf8("actionBrewdayMode"))
         self.actionNouveau_Dossier = QtGui.QAction(MainWindow)
+        self.actionNouveau_Dossier.setText(QtGui.QApplication.translate("MainWindow", "Nouveau dossier", None, QtGui.QApplication.UnicodeUTF8))
+        self.actionNouveau_Dossier.setToolTip(QtGui.QApplication.translate("MainWindow", "Créer un nouveau dossier dans la bibliothèque", None, QtGui.QApplication.UnicodeUTF8))
         self.actionNouveau_Dossier.setObjectName(_fromUtf8("actionNouveau_Dossier"))
         self.actionNouvelle_recette_2 = QtGui.QAction(MainWindow)
+        self.actionNouvelle_recette_2.setText(QtGui.QApplication.translate("MainWindow", "Nouvelle recette", None, QtGui.QApplication.UnicodeUTF8))
+        self.actionNouvelle_recette_2.setToolTip(QtGui.QApplication.translate("MainWindow", "Créer une nouvelle recette", None, QtGui.QApplication.UnicodeUTF8))
         self.actionNouvelle_recette_2.setObjectName(_fromUtf8("actionNouvelle_recette_2"))
         self.menuFichier.addAction(self.actionOuvrir)
         self.menuFichier.addAction(self.actionEnregistrer)
@@ -998,291 +1284,15 @@ class Ui_MainWindow(object):
         self.menuBar.addAction(self.menuAide.menuAction())
 
         self.retranslateUi(MainWindow)
-        self.stackedWidget.setCurrentIndex(1)
+        self.stackedWidget.setCurrentIndex(4)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
     def retranslateUi(self, MainWindow):
-        MainWindow.setWindowTitle(QtGui.QApplication.translate("MainWindow", "JolieBulle", None, QtGui.QApplication.UnicodeUTF8))
-        self.labelFermentables.setText(QtGui.QApplication.translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
-"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
-"p, li { white-space: pre-wrap; }\n"
-"</style></head><body style=\" font-family:\'Droid Sans\'; font-size:9pt; font-weight:400; font-style:normal;\">\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-weight:600;\">Ingredients : </span></p></body></html>", None, QtGui.QApplication.UnicodeUTF8))
-        self.labelRecette.setText(QtGui.QApplication.translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
-"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
-"p, li { white-space: pre-wrap; }\n"
-"</style></head><body style=\" font-family:\'Droid Sans\'; font-size:9pt; font-weight:400; font-style:normal;\">\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-weight:600;\">Nom de la recette :</span></p></body></html>", None, QtGui.QApplication.UnicodeUTF8))
-        self.labelGenre.setText(QtGui.QApplication.translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
-"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
-"p, li { white-space: pre-wrap; }\n"
-"</style></head><body style=\" font-family:\'Droid Sans\'; font-size:9pt; font-weight:400; font-style:normal;\">\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-weight:600;\">Genre :</span></p></body></html>", None, QtGui.QApplication.UnicodeUTF8))
-        self.pushButtonChangerStyle.setToolTip(QtGui.QApplication.translate("MainWindow", "Liste de styles BJCP", None, QtGui.QApplication.UnicodeUTF8))
-        self.label_3.setText(QtGui.QApplication.translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
-"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
-"p, li { white-space: pre-wrap; }\n"
-"</style></head><body style=\" font-family:\'Droid Sans\'; font-size:10pt; font-weight:400; font-style:normal;\">\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-weight:600;\">Brasseur :</span></p></body></html>", None, QtGui.QApplication.UnicodeUTF8))
-        self.label_4.setText(QtGui.QApplication.translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
-"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
-"p, li { white-space: pre-wrap; }\n"
-"</style></head><body style=\" font-family:\'Droid Sans\'; font-size:10pt; font-weight:400; font-style:normal;\">\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-weight:600;\">Type :</span></p></body></html>", None, QtGui.QApplication.UnicodeUTF8))
-        self.checkBoxIng.setText(QtGui.QApplication.translate("MainWindow", "Ajuster les ingrédients (verrouiller le profil)", None, QtGui.QApplication.UnicodeUTF8))
-        self.pushButtonChangeIngredients.setText(QtGui.QApplication.translate("MainWindow", "Ajouter/Enlever", None, QtGui.QApplication.UnicodeUTF8))
-        self.pushButtonAjouter_2.setText(QtGui.QApplication.translate("MainWindow", "Ajouter Grain", None, QtGui.QApplication.UnicodeUTF8))
-        self.pushButtonAjouterH.setText(QtGui.QApplication.translate("MainWindow", "Ajouter Houblon", None, QtGui.QApplication.UnicodeUTF8))
-        self.pushButtonAjouterM.setText(QtGui.QApplication.translate("MainWindow", "Ajouter Divers", None, QtGui.QApplication.UnicodeUTF8))
-        self.pushButtonAjouterY.setText(QtGui.QApplication.translate("MainWindow", "Ajouter Levure", None, QtGui.QApplication.UnicodeUTF8))
-        self.pushButtonEnlever.setText(QtGui.QApplication.translate("MainWindow", "Enlever", None, QtGui.QApplication.UnicodeUTF8))
-        self.pushButtonMashDetails.setText(QtGui.QApplication.translate("MainWindow", "Détails", None, QtGui.QApplication.UnicodeUTF8))
-        self.label_8.setText(QtGui.QApplication.translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
-"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
-"p, li { white-space: pre-wrap; }\n"
-"</style></head><body style=\" font-family:\'Droid Sans\'; font-size:10pt; font-weight:400; font-style:normal;\">\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-weight:600;\">Brassage :</span></p></body></html>", None, QtGui.QApplication.UnicodeUTF8))
-        self.label_7.setText(QtGui.QApplication.translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
-"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
-"p, li { white-space: pre-wrap; }\n"
-"</style></head><body style=\" font-family:\'Ubuntu\'; font-size:11pt; font-weight:400; font-style:normal;\">\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:9pt; font-weight:600;\">CONTEXTE</span></p></body></html>", None, QtGui.QApplication.UnicodeUTF8))
-        self.labelRendement.setText(QtGui.QApplication.translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
-"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
-"p, li { white-space: pre-wrap; }\n"
-"</style></head><body style=\" font-family:\'Ubuntu\'; font-size:11pt; font-weight:400; font-style:normal;\">\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:\'Droid Sans\'; font-size:9pt;\">Rendement (%)</span></p></body></html>", None, QtGui.QApplication.UnicodeUTF8))
-        self.labelBoil.setText(QtGui.QApplication.translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
-"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
-"p, li { white-space: pre-wrap; }\n"
-"</style></head><body style=\" font-family:\'Ubuntu\'; font-size:11pt; font-weight:400; font-style:normal;\">\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:\'Droid Sans\'; font-size:9pt;\">Ebullition (min)</span></p></body></html>", None, QtGui.QApplication.UnicodeUTF8))
-        self.label_2Volume.setText(QtGui.QApplication.translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
-"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
-"p, li { white-space: pre-wrap; }\n"
-"</style></head><body style=\" font-family:\'Ubuntu\'; font-size:11pt; font-weight:400; font-style:normal;\">\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:\'Droid Sans\'; font-size:9pt;\">Volume (L)</span></p></body></html>", None, QtGui.QApplication.UnicodeUTF8))
-        self.label.setText(QtGui.QApplication.translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
-"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
-"p, li { white-space: pre-wrap; }\n"
-"</style></head><body style=\" font-family:\'Ubuntu\'; font-size:11pt; font-weight:400; font-style:normal;\">\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:9pt;\">Volume pré-ébullition</span></p></body></html>", None, QtGui.QApplication.UnicodeUTF8))
-        self.labelSG.setText(QtGui.QApplication.translate("MainWindow", "0", None, QtGui.QApplication.UnicodeUTF8))
-        self.label_2.setText(QtGui.QApplication.translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
-"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
-"p, li { white-space: pre-wrap; }\n"
-"</style></head><body style=\" font-family:\'Ubuntu\'; font-size:11pt; font-weight:400; font-style:normal;\">\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:9pt;\">Densité  pré-ébullition :</span></p></body></html>", None, QtGui.QApplication.UnicodeUTF8))
-        self.pushButtonRecipeNotes.setText(QtGui.QApplication.translate("MainWindow", "Notes", None, QtGui.QApplication.UnicodeUTF8))
-        self.label_6.setText(QtGui.QApplication.translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
-"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
-"p, li { white-space: pre-wrap; }\n"
-"</style></head><body style=\" font-family:\'Ubuntu\'; font-size:11pt; font-weight:400; font-style:normal;\">\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:9pt; font-weight:600;\">PROFIL</span></p></body></html>", None, QtGui.QApplication.UnicodeUTF8))
-        self.labelOG.setText(QtGui.QApplication.translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
-"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
-"p, li { white-space: pre-wrap; }\n"
-"</style></head><body style=\" font-family:\'Ubuntu\'; font-size:11pt; font-weight:400; font-style:normal;\">\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:\'Droid Sans\'; font-size:9pt;\">Densité Initiale :</span></p></body></html>", None, QtGui.QApplication.UnicodeUTF8))
-        self.labelFG.setText(QtGui.QApplication.translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
-"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
-"p, li { white-space: pre-wrap; }\n"
-"</style></head><body style=\" font-family:\'Ubuntu\'; font-size:11pt; font-weight:400; font-style:normal;\">\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:\'Droid Sans\'; font-size:9pt;\">Densité Finale :</span></p></body></html>", None, QtGui.QApplication.UnicodeUTF8))
-        self.labelEBC.setText(QtGui.QApplication.translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
-"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
-"p, li { white-space: pre-wrap; }\n"
-"</style></head><body style=\" font-family:\'Ubuntu\'; font-size:11pt; font-weight:400; font-style:normal;\">\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:\'Droid Sans\'; font-size:9pt;\">EBC :</span></p></body></html>", None, QtGui.QApplication.UnicodeUTF8))
-        self.labelIBU.setText(QtGui.QApplication.translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
-"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
-"p, li { white-space: pre-wrap; }\n"
-"</style></head><body style=\" font-family:\'Ubuntu\'; font-size:11pt; font-weight:400; font-style:normal;\">\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:\'Droid Sans\'; font-size:9pt;\">IBU :</span></p></body></html>", None, QtGui.QApplication.UnicodeUTF8))
-        self.labelAlc.setText(QtGui.QApplication.translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
-"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
-"p, li { white-space: pre-wrap; }\n"
-"</style></head><body style=\" font-family:\'Ubuntu\'; font-size:11pt; font-weight:400; font-style:normal;\">\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:\'Droid Sans\'; font-size:9pt;\">Alc :</span></p></body></html>", None, QtGui.QApplication.UnicodeUTF8))
-        self.label_5.setText(QtGui.QApplication.translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
-"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
-"p, li { white-space: pre-wrap; }\n"
-"</style></head><body style=\" font-family:\'Droid Sans\'; font-size:10pt; font-weight:400; font-style:normal;\">\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:\'Ubuntu\'; font-size:9pt; font-weight:600;\">TEINTE</span></p></body></html>", None, QtGui.QApplication.UnicodeUTF8))
-        self.pushButton.setText(QtGui.QApplication.translate("MainWindow", "Annuler", None, QtGui.QApplication.UnicodeUTF8))
-        self.pushButton_3.setText(QtGui.QApplication.translate("MainWindow", "Enregistrer", None, QtGui.QApplication.UnicodeUTF8))
-        self.pushButton_2.setText(QtGui.QApplication.translate("MainWindow", "Ok", None, QtGui.QApplication.UnicodeUTF8))
-        self.pushButtonNewFolderBiblio.setToolTip(QtGui.QApplication.translate("MainWindow", "Nouveau dossier ou nouvelle recette", None, QtGui.QApplication.UnicodeUTF8))
-        self.pushButtonRemoveRecipeBiblio.setToolTip(QtGui.QApplication.translate("MainWindow", "Supprimer", None, QtGui.QApplication.UnicodeUTF8))
-        self.pushButtonEditCurrentRecipe.setToolTip(QtGui.QApplication.translate("MainWindow", "Editer", None, QtGui.QApplication.UnicodeUTF8))
-        self.pushButtonEditCurrentRecipe.setText(QtGui.QApplication.translate("MainWindow", "Editer", None, QtGui.QApplication.UnicodeUTF8))
-        self.pushButtonBrewRecipeBiblio.setToolTip(QtGui.QApplication.translate("MainWindow", "Brasser", None, QtGui.QApplication.UnicodeUTF8))
-        self.pushButtonBrewRecipeBiblio.setText(QtGui.QApplication.translate("MainWindow", "Brasser", None, QtGui.QApplication.UnicodeUTF8))
-        self.label_15.setText(QtGui.QApplication.translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
-"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
-"p, li { white-space: pre-wrap; }\n"
-"</style></head><body style=\" font-family:\'Droid Sans\'; font-size:10pt; font-weight:400; font-style:normal;\">\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-weight:600;\">Profils de brassage :</span></p></body></html>", None, QtGui.QApplication.UnicodeUTF8))
-        self.pushButtonRemoveProfile.setText(QtGui.QApplication.translate("MainWindow", "Enlever", None, QtGui.QApplication.UnicodeUTF8))
-        self.pushButtonNewProfile.setText(QtGui.QApplication.translate("MainWindow", "Nouveau profil", None, QtGui.QApplication.UnicodeUTF8))
-        self.label_16.setText(QtGui.QApplication.translate("MainWindow", "<html><head/><body><p><span style=\" font-weight:600;\">Nom :</span></p></body></html>", None, QtGui.QApplication.UnicodeUTF8))
-        self.labelMashName.setText(QtGui.QApplication.translate("MainWindow", "Aucun", None, QtGui.QApplication.UnicodeUTF8))
-        self.label_17.setText(QtGui.QApplication.translate("MainWindow", "<html><head/><body><p><span style=\" font-weight:600;\">pH :</span></p></body></html>", None, QtGui.QApplication.UnicodeUTF8))
-        self.labelMashPh.setText(QtGui.QApplication.translate("MainWindow", "0", None, QtGui.QApplication.UnicodeUTF8))
-        self.label_24.setText(QtGui.QApplication.translate("MainWindow", "<html><head/><body><p><span style=\" font-weight:600;\">Rinçage :</span></p></body></html>", None, QtGui.QApplication.UnicodeUTF8))
-        self.labelMashSpargeTemp.setText(QtGui.QApplication.translate("MainWindow", "0 °C", None, QtGui.QApplication.UnicodeUTF8))
-        self.pushButtonMashEdit.setText(QtGui.QApplication.translate("MainWindow", "Modifier", None, QtGui.QApplication.UnicodeUTF8))
-        self.label_14.setText(QtGui.QApplication.translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
-"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
-"p, li { white-space: pre-wrap; }\n"
-"</style></head><body style=\" font-family:\'Droid Sans\'; font-size:10pt; font-weight:400; font-style:normal;\">\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-weight:600;\">Paliers :</span></p></body></html>", None, QtGui.QApplication.UnicodeUTF8))
-        self.pushButtonStepRemove.setText(QtGui.QApplication.translate("MainWindow", "Enlever", None, QtGui.QApplication.UnicodeUTF8))
-        self.pushButtonNewStep.setText(QtGui.QApplication.translate("MainWindow", "Nouveau palier", None, QtGui.QApplication.UnicodeUTF8))
-        self.label_9.setText(QtGui.QApplication.translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
-"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
-"p, li { white-space: pre-wrap; }\n"
-"</style></head><body style=\" font-family:\'Droid Sans\'; font-size:10pt; font-weight:400; font-style:normal;\">\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-weight:600;\">Nom :</span></p></body></html>", None, QtGui.QApplication.UnicodeUTF8))
-        self.labelStepName.setText(QtGui.QApplication.translate("MainWindow", "Aucun", None, QtGui.QApplication.UnicodeUTF8))
-        self.label_10.setText(QtGui.QApplication.translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
-"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
-"p, li { white-space: pre-wrap; }\n"
-"</style></head><body style=\" font-family:\'Droid Sans\'; font-size:10pt; font-weight:400; font-style:normal;\">\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-weight:600;\">Type :</span></p></body></html>", None, QtGui.QApplication.UnicodeUTF8))
-        self.labelStepType.setText(QtGui.QApplication.translate("MainWindow", "Aucun", None, QtGui.QApplication.UnicodeUTF8))
-        self.label_11.setText(QtGui.QApplication.translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
-"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
-"p, li { white-space: pre-wrap; }\n"
-"</style></head><body style=\" font-family:\'Droid Sans\'; font-size:10pt; font-weight:400; font-style:normal;\">\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-weight:600;\">Durée :</span></p></body></html>", None, QtGui.QApplication.UnicodeUTF8))
-        self.labelStepTime.setText(QtGui.QApplication.translate("MainWindow", "0 min", None, QtGui.QApplication.UnicodeUTF8))
-        self.label_12.setText(QtGui.QApplication.translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
-"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
-"p, li { white-space: pre-wrap; }\n"
-"</style></head><body style=\" font-family:\'Droid Sans\'; font-size:10pt; font-weight:400; font-style:normal;\">\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-weight:600;\">Température :</span></p></body></html>", None, QtGui.QApplication.UnicodeUTF8))
-        self.labelStepTemp.setText(QtGui.QApplication.translate("MainWindow", "0 °C", None, QtGui.QApplication.UnicodeUTF8))
-        self.pushButtonStepEdit.setText(QtGui.QApplication.translate("MainWindow", "Modifier", None, QtGui.QApplication.UnicodeUTF8))
-        self.pushButtonSaveProfile.setText(QtGui.QApplication.translate("MainWindow", "Enregistrer les profils", None, QtGui.QApplication.UnicodeUTF8))
-        self.groupBox_3.setTitle(QtGui.QApplication.translate("MainWindow", "Méthode de brassage", None, QtGui.QApplication.UnicodeUTF8))
-        self.radioButtonClassicBrew.setText(QtGui.QApplication.translate("MainWindow", "Classique", None, QtGui.QApplication.UnicodeUTF8))
-        self.radioButtonBIAB.setText(QtGui.QApplication.translate("MainWindow", "Volume complet (BIAB)", None, QtGui.QApplication.UnicodeUTF8))
-        self.label_13.setText(QtGui.QApplication.translate("MainWindow", "<html><head/><body><p><span style=\" font-weight:600;\">Volumes d\'eau</span></p></body></html>", None, QtGui.QApplication.UnicodeUTF8))
         item = self.tableWidgetStepsBrewday.horizontalHeaderItem(0)
-        item.setText(QtGui.QApplication.translate("MainWindow", "Palier", None, QtGui.QApplication.UnicodeUTF8))
         item = self.tableWidgetStepsBrewday.horizontalHeaderItem(1)
-        item.setText(QtGui.QApplication.translate("MainWindow", "Volume d\'eau", None, QtGui.QApplication.UnicodeUTF8))
         item = self.tableWidgetStepsBrewday.horizontalHeaderItem(2)
-        item.setText(QtGui.QApplication.translate("MainWindow", "Température de l\'eau", None, QtGui.QApplication.UnicodeUTF8))
         item = self.tableWidgetStepsBrewday.horizontalHeaderItem(3)
-        item.setText(QtGui.QApplication.translate("MainWindow", "Ratio", None, QtGui.QApplication.UnicodeUTF8))
         item = self.tableWidgetStepsBrewday.horizontalHeaderItem(4)
-        item.setText(QtGui.QApplication.translate("MainWindow", "Infos", None, QtGui.QApplication.UnicodeUTF8))
-        self.labelWarningBiab.setText(QtGui.QApplication.translate("MainWindow", "<html><head/><body><p align=\"center\"><span style=\" font-weight:600;\">Le profil de brassage que vous utilisez n\'est pas adapté au BIAB. Vous ne devriez utiliser qu\'un seul palier d\'infusion.</span></p></body></html>", None, QtGui.QApplication.UnicodeUTF8))
-        self.labelNoDecoction.setText(QtGui.QApplication.translate("MainWindow", "<html><head/><body><p align=\"center\"><span style=\" font-weight:600;\">JolieBulle ne prend pas encore en charge les décoctions. Pas encore !</span></p></body></html>", None, QtGui.QApplication.UnicodeUTF8))
-        self.pushButtonAdjustStep.setText(QtGui.QApplication.translate("MainWindow", "Ajuster", None, QtGui.QApplication.UnicodeUTF8))
-        self.groupBox_2.setTitle(QtGui.QApplication.translate("MainWindow", "Rinçage", None, QtGui.QApplication.UnicodeUTF8))
-        self.labelSparge1.setText(QtGui.QApplication.translate("MainWindow", "Volume de rinçage :", None, QtGui.QApplication.UnicodeUTF8))
-        self.labelSparge2.setText(QtGui.QApplication.translate("MainWindow", "Température de rinçage :", None, QtGui.QApplication.UnicodeUTF8))
-        self.labelSpargeVol.setText(QtGui.QApplication.translate("MainWindow", "0", None, QtGui.QApplication.UnicodeUTF8))
-        self.labelSpargeTemp.setText(QtGui.QApplication.translate("MainWindow", "0", None, QtGui.QApplication.UnicodeUTF8))
-        self.labelNoSparge.setText(QtGui.QApplication.translate("MainWindow", "<html><head/><body><p align=\"center\">   Pas de rinçage en BIAB</p></body></html>", None, QtGui.QApplication.UnicodeUTF8))
-        self.groupBox_4.setTitle(QtGui.QApplication.translate("MainWindow", "Volumes", None, QtGui.QApplication.UnicodeUTF8))
-        self.label_29.setText(QtGui.QApplication.translate("MainWindow", "Volume de grains :", None, QtGui.QApplication.UnicodeUTF8))
-        self.labelGrainVolume.setText(QtGui.QApplication.translate("MainWindow", "0", None, QtGui.QApplication.UnicodeUTF8))
-        self.label_31.setText(QtGui.QApplication.translate("MainWindow", "Volume total (empâtage) :", None, QtGui.QApplication.UnicodeUTF8))
-        self.labelTotalVolumeStrike.setText(QtGui.QApplication.translate("MainWindow", "0", None, QtGui.QApplication.UnicodeUTF8))
-        self.label_33.setText(QtGui.QApplication.translate("MainWindow", "Volume total (dernier palier) :", None, QtGui.QApplication.UnicodeUTF8))
-        self.labelTotalVolumeLast.setText(QtGui.QApplication.translate("MainWindow", "0", None, QtGui.QApplication.UnicodeUTF8))
-        self.groupBox.setTitle(QtGui.QApplication.translate("MainWindow", "Pré-ébullition", None, QtGui.QApplication.UnicodeUTF8))
-        self.label_18.setText(QtGui.QApplication.translate("MainWindow", "Volume théorique pré-ébullition :", None, QtGui.QApplication.UnicodeUTF8))
-        self.label_19.setText(QtGui.QApplication.translate("MainWindow", "Densité pré-ébullition :", None, QtGui.QApplication.UnicodeUTF8))
-        self.labelPreBoilGravity.setText(QtGui.QApplication.translate("MainWindow", "1.000", None, QtGui.QApplication.UnicodeUTF8))
-        self.label_28.setText(QtGui.QApplication.translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
-"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
-"p, li { white-space: pre-wrap; }\n"
-"</style></head><body style=\" font-family:\'Ubuntu\'; font-size:11pt; font-weight:400; font-style:normal;\">\n"
-"<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:14pt;\">Brasser librement avec JolieBulle.</span></p>\n"
-"<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:14pt; color:#8d8d8d;\">glou, glou</span></p></body></html>", None, QtGui.QApplication.UnicodeUTF8))
-        self.label_21.setText(QtGui.QApplication.translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
-"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
-"p, li { white-space: pre-wrap; }\n"
-"</style></head><body style=\" font-family:\'Ubuntu\'; font-size:11pt; font-weight:400; font-style:normal;\">\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><img src=\":/home/Images/stock_bookmark.png\" /></p></body></html>", None, QtGui.QApplication.UnicodeUTF8))
-        self.label_20.setText(QtGui.QApplication.translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
-"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
-"p, li { white-space: pre-wrap; }\n"
-"</style></head><body style=\" font-family:\'Ubuntu\'; font-size:11pt; font-weight:400; font-style:normal;\">\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:12pt;\">Bibliothèque</span></p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:7pt;\"> </span></p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:12pt; color:#8d8d8d;\">Gérer et consulter des recettes</span></p></body></html>", None, QtGui.QApplication.UnicodeUTF8))
-        self.label_25.setText(QtGui.QApplication.translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
-"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
-"p, li { white-space: pre-wrap; }\n"
-"</style></head><body style=\" font-family:\'Ubuntu\'; font-size:11pt; font-weight:400; font-style:normal;\">\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><img src=\":/home/Images/glade.png\" /></p></body></html>", None, QtGui.QApplication.UnicodeUTF8))
-        self.label_22.setText(QtGui.QApplication.translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
-"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
-"p, li { white-space: pre-wrap; }\n"
-"</style></head><body style=\" font-family:\'Ubuntu\'; font-size:11pt; font-weight:400; font-style:normal;\">\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:12pt;\">Editeur</span></p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:7pt;\"> </span></p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:12pt; color:#8d8d8d;\">Modifier et créer des recettes</span></p></body></html>", None, QtGui.QApplication.UnicodeUTF8))
-        self.label_27.setText(QtGui.QApplication.translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
-"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
-"p, li { white-space: pre-wrap; }\n"
-"</style></head><body style=\" font-family:\'Ubuntu\'; font-size:11pt; font-weight:400; font-style:normal;\">\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><img src=\":/home/Images/evolution-tasks.png\" /></p></body></html>", None, QtGui.QApplication.UnicodeUTF8))
-        self.label_26.setText(QtGui.QApplication.translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
-"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
-"p, li { white-space: pre-wrap; }\n"
-"</style></head><body style=\" font-family:\'Ubuntu\'; font-size:11pt; font-weight:400; font-style:normal;\">\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:12pt;\">Mode brassage</span></p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:7pt;\"> </span></p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:12pt; color:#8d8d8d;\">Planifier et brasser</span></p></body></html>", None, QtGui.QApplication.UnicodeUTF8))
-        self.toolBar.setWindowTitle(QtGui.QApplication.translate("MainWindow", "toolBar", None, QtGui.QApplication.UnicodeUTF8))
-        self.menuFichier.setTitle(QtGui.QApplication.translate("MainWindow", "Fichier", None, QtGui.QApplication.UnicodeUTF8))
-        self.menuIngr_dients.setTitle(QtGui.QApplication.translate("MainWindow", "Ingrédients", None, QtGui.QApplication.UnicodeUTF8))
-        self.menuOutils.setTitle(QtGui.QApplication.translate("MainWindow", "Outils", None, QtGui.QApplication.UnicodeUTF8))
-        self.menuEdition.setTitle(QtGui.QApplication.translate("MainWindow", "Edition", None, QtGui.QApplication.UnicodeUTF8))
-        self.menuAide.setTitle(QtGui.QApplication.translate("MainWindow", "Aide", None, QtGui.QApplication.UnicodeUTF8))
-        self.actionOuvrir.setText(QtGui.QApplication.translate("MainWindow", "Ouvrir", None, QtGui.QApplication.UnicodeUTF8))
-        self.actionQuitter.setText(QtGui.QApplication.translate("MainWindow", "Quitter", None, QtGui.QApplication.UnicodeUTF8))
-        self.actionAbout.setText(QtGui.QApplication.translate("MainWindow", "A propos", None, QtGui.QApplication.UnicodeUTF8))
-        self.actionEnregistrer.setText(QtGui.QApplication.translate("MainWindow", "&Enregistrer", None, QtGui.QApplication.UnicodeUTF8))
-        self.actionEnregistrer_Sous.setText(QtGui.QApplication.translate("MainWindow", "Enregistrer &sous", None, QtGui.QApplication.UnicodeUTF8))
-        self.actionQuitter_2.setText(QtGui.QApplication.translate("MainWindow", "Quitter", None, QtGui.QApplication.UnicodeUTF8))
-        self.actionOuvrir_2.setText(QtGui.QApplication.translate("MainWindow", "&Ouvrir", None, QtGui.QApplication.UnicodeUTF8))
-        self.actionEditGrains.setText(QtGui.QApplication.translate("MainWindow", "Editer la base de Grains", None, QtGui.QApplication.UnicodeUTF8))
-        self.actionEditHoublons.setText(QtGui.QApplication.translate("MainWindow", "Editer la base de Houblons", None, QtGui.QApplication.UnicodeUTF8))
-        self.actionEditDivers.setText(QtGui.QApplication.translate("MainWindow", "Editer la base de Divers", None, QtGui.QApplication.UnicodeUTF8))
-        self.actionEditLevures.setText(QtGui.QApplication.translate("MainWindow", "Editer la base de Levures", None, QtGui.QApplication.UnicodeUTF8))
-        self.actionNouvelle_recette.setText(QtGui.QApplication.translate("MainWindow", "Nouvelle recette", None, QtGui.QApplication.UnicodeUTF8))
-        self.actionCorrectionDens.setText(QtGui.QApplication.translate("MainWindow", "Correction densimètre", None, QtGui.QApplication.UnicodeUTF8))
-        self.actionCalculAlc.setText(QtGui.QApplication.translate("MainWindow", "Calcul taux d\'alcool", None, QtGui.QApplication.UnicodeUTF8))
-        self.actionImprimer.setText(QtGui.QApplication.translate("MainWindow", "Imprimer", None, QtGui.QApplication.UnicodeUTF8))
-        self.actionDilution.setText(QtGui.QApplication.translate("MainWindow", "Dilution", None, QtGui.QApplication.UnicodeUTF8))
-        self.actionEvaporation.setText(QtGui.QApplication.translate("MainWindow", "Evaporation", None, QtGui.QApplication.UnicodeUTF8))
-        self.actionExporterHtml.setText(QtGui.QApplication.translate("MainWindow", "Exporter vers html", None, QtGui.QApplication.UnicodeUTF8))
-        self.actionPaliers.setText(QtGui.QApplication.translate("MainWindow", "Assistant paliers", None, QtGui.QApplication.UnicodeUTF8))
-        self.actionRestaurerIngredients.setText(QtGui.QApplication.translate("MainWindow", "Restaurer la base des ingrédients", None, QtGui.QApplication.UnicodeUTF8))
-        self.actionRecharger.setText(QtGui.QApplication.translate("MainWindow", "Recharger", None, QtGui.QApplication.UnicodeUTF8))
-        self.actionSwitch.setText(QtGui.QApplication.translate("MainWindow", "switch", None, QtGui.QApplication.UnicodeUTF8))
-        self.actionVueEditeur.setText(QtGui.QApplication.translate("MainWindow", "Editeur de recettes", None, QtGui.QApplication.UnicodeUTF8))
-        self.actionVueBibliotheque.setText(QtGui.QApplication.translate("MainWindow", "Bibliothèque de recettes", None, QtGui.QApplication.UnicodeUTF8))
-        self.actionVueBibliotheque.setToolTip(QtGui.QApplication.translate("MainWindow", "Bibiliothèque de recettes", None, QtGui.QApplication.UnicodeUTF8))
-        self.actionVueEditeurToolBar.setText(QtGui.QApplication.translate("MainWindow", "Editeur", None, QtGui.QApplication.UnicodeUTF8))
-        self.actionVueBibliothequeToolBar.setText(QtGui.QApplication.translate("MainWindow", "Bibiliothèque", None, QtGui.QApplication.UnicodeUTF8))
-        self.actionVueBibliothequeToolBar.setToolTip(QtGui.QApplication.translate("MainWindow", "Bibiliothèque de recettes", None, QtGui.QApplication.UnicodeUTF8))
-        self.actionEnregistrerToolBar.setText(QtGui.QApplication.translate("MainWindow", "&Enregistrer", None, QtGui.QApplication.UnicodeUTF8))
-        self.actionPreferences.setText(QtGui.QApplication.translate("MainWindow", "Préférences", None, QtGui.QApplication.UnicodeUTF8))
-        self.actionBrewdayMode.setText(QtGui.QApplication.translate("MainWindow", "Brassage", None, QtGui.QApplication.UnicodeUTF8))
-        self.actionBrewdayMode.setToolTip(QtGui.QApplication.translate("MainWindow", "Mode brassage", None, QtGui.QApplication.UnicodeUTF8))
-        self.actionNouveau_Dossier.setText(QtGui.QApplication.translate("MainWindow", "Nouveau dossier", None, QtGui.QApplication.UnicodeUTF8))
-        self.actionNouveau_Dossier.setToolTip(QtGui.QApplication.translate("MainWindow", "Créer un nouveau dossier dans la bibliothèque", None, QtGui.QApplication.UnicodeUTF8))
-        self.actionNouvelle_recette_2.setText(QtGui.QApplication.translate("MainWindow", "Nouvelle recette", None, QtGui.QApplication.UnicodeUTF8))
-        self.actionNouvelle_recette_2.setToolTip(QtGui.QApplication.translate("MainWindow", "Créer une nouvelle recette", None, QtGui.QApplication.UnicodeUTF8))
 
 from PyQt4 import QtWebKit
 import ressources_rc
