@@ -431,14 +431,12 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         layoutToolBar=QtGui.QHBoxLayout()
         layoutToolBar.setContentsMargins(9,0,9,0)
 
-        self.toolBar.addAction(self.actionVueBibliothequeToolBar)
-        self.toolBar.addAction(self.actionVueEditeurToolBar)
-        self.toolBar.addAction(self.actionBrewdayMode)
+        # self.toolBar.addAction(self.actionVueBibliothequeToolBar)
+        # self.toolBar.addAction(self.actionVueEditeurToolBar)
+        # self.toolBar.addAction(self.actionBrewdayMode)
         # self.toolBar.addWidget(left_spacer)
         
         
-        layoutToolBar.addWidget(self.buttonSave)
-        layoutToolBar.addWidget(self.buttonNewRecipe)
         layoutToolBar.addWidget(self.buttonMenu)
         # monLayout.addWidget(self.buttonEditor)
         # monLayout.addWidget(self.buttonBrewday)
@@ -448,6 +446,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         self.widgetToolBar.setLayout(layoutToolBar)
 
         # self.toolBar.addWidget(self.widgetToolBar)
+        self.toolBar.addWidget(self.buttonNewRecipe)
         self.toolBar.addWidget(right_spacer)
         self.toolBar.addWidget(self.widgetToolBar)
 
@@ -1040,11 +1039,6 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
 
            
 
-
-
-
-
-
     def editCurrentRecipe(self):
         self.switchToEditor()
         self.s = self.chemin
@@ -1215,50 +1209,26 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         
     def switchToEditor(self) :
         self.stackedWidget.setCurrentIndex(0)
-        self.actionVueEditeurToolBar.setChecked(True)
-        self.actionVueBibliothequeToolBar.setChecked(False)
-        self.actionBrewdayMode.setChecked(False)
-        self.buttonSave.show()
         self.buttonNewRecipe.show()
 
         
     def switchToLibrary(self) :
         self.stackedWidget.setCurrentIndex(1)        
-        self.actionVueEditeurToolBar.setChecked(False)
-        self.actionVueBibliothequeToolBar.setChecked(True)
-        self.actionBrewdayMode.setChecked(False)
-        self.buttonSave.hide()
-        self.buttonNewRecipe.show()
         self.viewRecipeBiblio()
 
 
         
     def switchToNotes(self) :
         self.stackedWidget.setCurrentIndex(2)        
-        self.actionVueEditeurToolBar.setChecked(False)
-        self.actionVueBibliothequeToolBar.setChecked(False)
-        self.actionBrewdayMode.setChecked(False)
-        self.buttonSave.show()
-        self.buttonNewRecipe.show()
 
         
     def switchToMash(self) :
         self.stackedWidget.setCurrentIndex(3)        
-        self.actionVueEditeurToolBar.setChecked(False)
-        self.actionVueBibliothequeToolBar.setChecked(False)
-        self.actionBrewdayMode.setChecked(False)
-        self.buttonSave.hide()
-        self.buttonNewRecipe.hide()
 
         
     def switchToBrewday(self) :
         print ("lock",self.brewdayLock)
         self.stackedWidget.setCurrentIndex(4)        
-        self.actionVueEditeurToolBar.setChecked(False)
-        self.actionVueBibliothequeToolBar.setChecked(False)
-        self.actionBrewdayMode.setChecked(True)
-        self.buttonSave.hide()
-        self.buttonNewRecipe.hide()
 
         if self.brewdayLock == 1 :
             pass
