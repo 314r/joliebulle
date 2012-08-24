@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'reader.ui'
 #
-# Created: Fri Aug 24 12:57:21 2012
+# Created: Fri Aug 24 19:08:11 2012
 #      by: PyQt4 UI code generator 4.8.6
 #
 # WARNING! All changes made in this file will be lost!
@@ -1235,6 +1235,10 @@ class Ui_MainWindow(object):
         self.actionNouvelle_recette_2.setText(QtGui.QApplication.translate("MainWindow", "Nouvelle recette", None, QtGui.QApplication.UnicodeUTF8))
         self.actionNouvelle_recette_2.setToolTip(QtGui.QApplication.translate("MainWindow", "Créer une nouvelle recette", None, QtGui.QApplication.UnicodeUTF8))
         self.actionNouvelle_recette_2.setObjectName(_fromUtf8("actionNouvelle_recette_2"))
+        self.actionImporter = QtGui.QAction(MainWindow)
+        self.actionImporter.setText(QtGui.QApplication.translate("MainWindow", "Importer dans la bibliothèque", None, QtGui.QApplication.UnicodeUTF8))
+        self.actionImporter.setObjectName(_fromUtf8("actionImporter"))
+        self.menuFichier.addAction(self.actionImporter)
         self.menuFichier.addAction(self.actionOuvrir)
         self.menuFichier.addAction(self.actionEnregistrer)
         self.menuFichier.addAction(self.actionEnregistrer_Sous)

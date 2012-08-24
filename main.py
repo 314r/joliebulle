@@ -21,7 +21,7 @@
 #Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 
-
+import shutil
 import os
 import os.path
 import glob
@@ -545,7 +545,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         self.connect(self.actionExporterHtml, QtCore.SIGNAL("triggered()"), self.exporterHtml)
         self.connect(self.actionRecharger, QtCore.SIGNAL("triggered()"), self.recharger)
         #self.connect(self.actionSwitch, QtCore.SIGNAL("triggered()"), self.switch)
-        
+        self.actionImporter.triggered.connect(self.importInLib)
         
         self.connect(self.actionEditGrains, QtCore.SIGNAL("triggered()"), self.editGrains)
         self.connect(self.actionEditHoublons, QtCore.SIGNAL("triggered()"), self.editHoublons)
@@ -1116,6 +1116,15 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
             self.treeViewBiblio.edit(self.indexRecette)
         else :
             pass
+
+    def importInLib (self) :
+        self.s = QtGui.QFileDialog.getOpenFileName(self,
+            self.trUtf8("Ouvrir un fichier"),
+            home_dir,
+            )
+
+        shutil.copy(self.s, recettes_dir)
+
         
     def createFolder(self) :
         selection = self.treeViewBiblio.selectionModel()
@@ -2404,8 +2413,6 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
 
     def enregistrer (self) :
         exp=Export()
-        print ('''la liste des usages :''' , self.liste_hUse)
-        print("liste des formes :", self.liste_hForm)
         self.nomRecette = self.lineEditRecette.text()
         self.styleRecette = self.lineEditGenre.text()   
         self.brewer = self.lineEditBrewer.text()        

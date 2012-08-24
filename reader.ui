@@ -2106,6 +2106,7 @@ p, li { white-space: pre-wrap; }
     <property name="title">
      <string>Fichier</string>
     </property>
+    <addaction name="actionImporter"/>
     <addaction name="actionOuvrir"/>
     <addaction name="actionEnregistrer"/>
     <addaction name="actionEnregistrer_Sous"/>
@@ -2373,6 +2374,11 @@ p, li { white-space: pre-wrap; }
    </property>
    <property name="toolTip">
     <string>Créer une nouvelle recette</string>
+   </property>
+  </action>
+  <action name="actionImporter">
+   <property name="text">
+    <string>Importer dans la bibliothèque</string>
    </property>
   </action>
  </widget>
