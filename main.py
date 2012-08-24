@@ -732,7 +732,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
 
         self.pushButtonEditCurrentRecipe.clicked.connect(self.editCurrentRecipe)
 
-        self.pushButtonRemoveRecipeBiblio.clicked.connect(self.supprimerBiblio)
+        # self.pushButtonRemoveRecipeBiblio.clicked.connect(self.supprimerBiblio)
         # self.pushButtonNewFolderBiblio.clicked.connect(self.createFolder)
         # self.pushButtonEditRecipeBiblio.clicked.connect(self.renommerBiblio)
         self.pushButtonBrewRecipeBiblio.clicked.connect(self.switchToBrewday)
@@ -746,7 +746,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         newLibMenu = QtGui.QMenu()
         newLibMenu.addAction(self.actionNouveau_Dossier)
         newLibMenu.addAction(self.actionNouvelle_recette_2)
-        self.pushButtonNewFolderBiblio.setMenu(newLibMenu)
+        # self.pushButtonNewFolderBiblio.setMenu(newLibMenu)
 
         self.actionNouveau_Dossier.triggered.connect(self.createFolder)
         self.actionNouvelle_recette_2.triggered.connect(self.newRecipeFromLibrary)
