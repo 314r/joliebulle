@@ -456,6 +456,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         generalMenu = QtGui.QMenu()
         # le menu fichier
         menuFile=generalMenu.addMenu(self.trUtf8('''Fichier'''))
+        menuFile.addAction(self.actionImporter)
         menuFile.addAction(self.actionOuvrir_2)
         menuFile.addAction(self.actionNouvelle_recette)
         menuFile.addAction(self.actionRecharger)
@@ -483,6 +484,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
 
 
         generalMenu.addAction(self.actionPreferences)
+        generalMenu.addAction(self.actionAbout)
         self.buttonMenu.setMenu(generalMenu)
 
         self.buttonSave.clicked.connect(self.enregistrer)
@@ -944,6 +946,8 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         exp.generateHtml()
         self.webViewBiblio.setHtml(exp.generatedHtml, )
         self.MVC()
+
+        self.HtmlRecipe = exp.generatedHtml
 
 
     # def matchFileNameBiblio(self) :
@@ -2460,7 +2464,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
                                                     "HTML (*.html)")    
         
         self.fileHtml = QtCore.QFile(self.h)
-        exp.exportHtml(self.nomRecette,self.styleRecette, self.volume, self.boil, AppWindow.nbreFer, self.liste_ingr, self.liste_fAmount, AppWindow.nbreHops, self.liste_houblons, self.liste_hAlpha, self.liste_hForm, self.liste_hAmount, self.liste_hTime, self.liste_hUse, AppWindow.nbreDivers, self.liste_divers, self.liste_dType, self.liste_dAmount, self.liste_dTime, self.nbreLevures, self.liste_levuresDetail,self.rendement, self.OG, self.FG, self.EBC, self.ibuTot ,self.ABV, self.recipeNotes)
+        exp.exportHtml(self.nomRecette,self.styleRecette, self.volume, self.boil, AppWindow.nbreFer, self.liste_ingr, self.liste_fAmount, AppWindow.nbreHops, self.liste_houblons, self.liste_hAlpha, self.liste_hForm, self.liste_hAmount, self.liste_hTime,self.liste_hUse, AppWindow.nbreDivers, self.liste_divers, self.liste_dType, self.liste_dAmount, self.liste_dTime, self.liste_dUse, self.nbreLevures, self.liste_levuresDetail,self.rendement, self.OG, self.FG, self.EBC, self.ibuTot ,self.ABV, self.recipeNotes)
         
         exp.enregistrerHtml(self.fileHtml)
     
@@ -3026,58 +3030,13 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         
     def printRecipe (self) :
         printer=QtGui.QPrinter()
-        info_texte = "<h1 style=\"font-family : Arial ;\">%s</h1> <br/>\
-                    <b>Style :</b> %s <br/> \
-                    <b>Volume :</b> %sL<b> ; Rendement :</b> %s%% <br/>\
-                    <h2>Liste des ingrédients</h2> "  \
-                    %(self.nomRecette, self.styleRecette, self.volume, self.rendement)
-        
-        grains_texte = "<h3 style =\" text-decoration : underline; \">Grains ou extraits</h3>"           
-        i = 0
-        while i < AppWindow.nbreFer :
-            i=i+1
-            grains_texte = grains_texte + "<b>"+ self.liste_ingr[i-1] + " : " + "</b>"+ str(self.liste_fAmount[i-1]) + "g" + "<br/>"
-        
-        houblons_texte = "<h3 style =\" text-decoration : underline; \">Houblons</h3>"
-        h = 0
-        while h < AppWindow.nbreHops : 
-            h = h+1        
-            houblons_texte = houblons_texte + "<b>" + self.liste_houblons[h-1] + "</b>" +  " (" +  str(self.liste_hAlpha[h-1]) +"%" + ", " + self.liste_hForm[h-1] +")" + " : " +"<b>"+ str(self.liste_hAmount[h-1]) + "g"+"</b>" +" pendant " +"<b>" +str(self.liste_hTime[h-1]) +"</b>"+ " minutes" + "<br/>"
-        
-        divers_texte = "<h3 style =\" text-decoration : underline; \">Divers</h3>"
-        m = 0
-        while  m < AppWindow.nbreDivers :
-            m = m + 1    
-            divers_texte = divers_texte +"<b>" +self.liste_divers[m-1] +"</b>"+" (" +self.liste_dType[m-1] +")" + " : " +"<b>" +str(self.liste_dAmount[m-1]) + "g" +"</b>"+"<br/>"
-        
-        levures_texte = "<h3 style =\" text-decoration : underline; \">Levures</h3>" 
-        l = 0
-        while l < self.nbreLevures : 
-            l = l+1
-            levures_texte = levures_texte + self.liste_levuresDetail[l-1] + "<br/>"
-        
-        notes_texte = "<h2>Notes</h2>"
-        try :
-            notes_texte = notes_texte + self.recipeNotes + "<br/>"
-        except :
-            notes_texte = notes_texte + "pas de notes" + "<br/>"
-                
-        texte = info_texte + grains_texte + houblons_texte + divers_texte + levures_texte + notes_texte
-        doc=QtGui.QTextDocument()
-
-        doc.setHtml(texte)
-
-            
-        
         dialog = QtGui.QPrintDialog(printer)
         dialog.setModal(True)
         dialog.setWindowTitle("Print Document" )
         # dialog.addEnabledOption(QAbstractPrintDialog.PrintSelection)
         if dialog.exec_() == True:
-            doc.print_(printer)
-    
-    
-        
+            self.webViewBiblio.print(printer)
+                
 
 if __name__ == "__main__":
 

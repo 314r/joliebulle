@@ -120,7 +120,7 @@ text-align : center;}
                                         
     def enregistrerHtml(self,fileHtml) :
         #self.exportHtml(nomRecette)
-        contenuTexte = self.recetteHtmlHeader + self.recetteHtmlInfo + self.recetteHtmlIng + self.recetteHtmlProfil + self.recipeNotes + self.recetteHtmlFooter
+        contenuTexte = self.recetteHtmlHeader + self.recetteHtmlProfil + self.recetteHtmlIng + self.recipeNotes 
         if  fileHtml.open(QtCore.QIODevice.WriteOnly) :
             self.stream = QtCore.QTextStream(fileHtml)
             self.stream << contenuTexte
