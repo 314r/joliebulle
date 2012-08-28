@@ -16,6 +16,9 @@ if platform == 'win32':
     database_root = 'database.xml'
     mash_root = 'mash.xml'
     mash_file = os.path.join(os.path.expanduser("~"), "AppData", "Local", "joliebulle", "mash.xml")
+    samples_dir = 'Samples'
+    samples_target = os.path.join(os.path.expanduser("~"), "AppData", "Local", "joliebulle", "recettes","Samples")
+    
     
 else:
     home_dir = os.path.expanduser("~")
@@ -27,5 +30,5 @@ else:
     #essai = settings.conf.value("pathUnix")
     mash_file = os.path.join(os.path.expanduser("~"), ".config", "joliebulle", "mash.xml")
     mash_root = '/usr/share/joliebulle/mash.xml'
-
-
+    samples_dir='Samples'
+    samples_target = os.path.join(os.path.expanduser("~"), ".config", "joliebulle", "recettes", "Samples")

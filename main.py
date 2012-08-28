@@ -1200,12 +1200,16 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
             pass
         recettes = QtCore.QFile(recettes_dir)
         if not recettes.exists() :
-            home.mkpath(recettes_dir)
+            try :
+                shutil.copytree(samples_dir, samples_target)
+            except :
+                home.mkpath(recettes_dir)
         mash  = QtCore.QFile(mash_file)
         if not mash.exists() :
             mash.copy(mash_root, mash_file)
         else :
             pass
+        
         # on configure des valeurs par défaut
         if not settings.conf.contains("BoilOffRate") :
             settings.conf.setValue("BoilOffRate", 10)
