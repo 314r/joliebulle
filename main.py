@@ -51,6 +51,7 @@ from exportMash import *
 from preferences import *
 from brewCalc import *
 from stepAdjustWindow import *
+from home import *
 from globals import *
 
 
@@ -712,6 +713,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         self.modeleBiblio = QtGui.QFileSystemModel()
         self.modeleBiblio.setReadOnly(False)
         self.modeleBiblio.setRootPath(recettes_dir)
+        self.setHomePage()
         
         # self.listViewBiblio.setModel(self.modeleBiblio)
         # self.listViewBiblio.setRootIndex(self.modeleBiblio.index(recettes_dir))
@@ -948,6 +950,11 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         self.MVC()
 
         self.HtmlRecipe = exp.generatedHtml
+
+    def setHomePage(self) :
+        home = HomePage()
+        home.generateHomePage()
+        self.webViewBiblio.setHtml(home.homePage, )
 
 
     # def matchFileNameBiblio(self) :
