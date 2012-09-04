@@ -493,13 +493,6 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
 
 ######################################################################################
 ######################################################################################
-
-
-
-
-        
-
-
         self.settings = Settings()
         self.initRep()
         self.dlgEditG = Dialog(self)
@@ -1044,8 +1037,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
                     dir.rename(old,new)
                 except:
                     pass
-
-           
+      
 
     def editCurrentRecipe(self):
         self.switchToEditor()
@@ -1057,8 +1049,6 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         self.stackedWidget.setCurrentIndex(0)
         self.actionVueEditeurToolBar.setChecked(True)
         self.actionVueBibliothequeToolBar.setChecked(False) 
-
-
 
         
     def menuBiblio(self,position) :
@@ -1266,12 +1256,9 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
             pass
         else :
             self.brewdayModeCalc()
-        self.tableWidgetStepsBrewday.setCurrentCell(0,0)
-        
-        
+        self.tableWidgetStepsBrewday.setCurrentCell(0,0) 
         
     def restoreDataBase(self) :
-        
         home = QtCore.QDir(home_dir)
         config = QtCore.QDir(config_dir)
         database = QtCore.QFile(database_file)
