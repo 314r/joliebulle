@@ -54,9 +54,6 @@ from stepAdjustWindow import *
 from home import *
 from globals import *
 
-
-
-
 import xml.etree.ElementTree as ET
 
 # class BiblioFileSystem (QtGui.QFileSystemModel) :
@@ -1241,8 +1238,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
 
     def prefReload(self) :
         self.initRep()
-
-    
+  
         
     def switchToEditor(self) :
         self.stackedWidget.setCurrentIndex(0)
@@ -1252,7 +1248,6 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
     def switchToLibrary(self) :
         self.stackedWidget.setCurrentIndex(1)        
         self.viewRecipeBiblio()
-
 
         
     def switchToNotes(self) :
@@ -1291,12 +1286,9 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
             
             pass
 
-                
-        
     def modeleProportion (self) :
         #Cette fonction est appelée chaque fois que la quantité, les AA ou les temps sont modifiés, via un signal émit par les classes Delegate.
         #Cette fonction inclut les données calculées dans le modèle.
-        
         i=0
         while i < AppWindow.nbreFer :
             i=i+1
@@ -1313,35 +1305,20 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
                 
         self.displayProfile()
                 
-        
     # cette fonction est appelee chaque fois que les donnees du modele changent
-    def reverseMVC(self) : 
-    
-        
-        
+    def reverseMVC(self) :           
         i = 0
         while i < AppWindow.nbreFer :
             i = i+1
-            
             index = self.modele.index(i-1,1)
             value = self.modele.data(index, QtCore.Qt.DisplayRole)
             self.liste_fAmount[i-1] = float(value)
-            
-            
             index_fIngr = self.modele.index(i-1,0)
             value_fIngr = self.modele.data(index_fIngr, QtCore.Qt.DisplayRole)
             self.liste_ingr[i-1] = value_fIngr
-            
-            
-            
-            
-
-            
         h = 0
         while h < AppWindow.nbreHops :
             h = h+1
-            
-
             for index in self.liste_hAmount :
                 index = self.modele.index(i+h-1,1)
                 value = self.modele.data(index, QtCore.Qt.DisplayRole)
@@ -1357,7 +1334,6 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
             for index in self.liste_hForm :
                 index = self.modele.index(i+h-1,4)
                 value = str(self.modele.data(index, QtCore.Qt.DisplayRole))
-                
                 if value == 'None' or value == '' :
                     pass
                 else :
@@ -1369,10 +1345,6 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
                     pass
                 else :
                     self.liste_hUse[h-1] = str(value)
-
-
-        
-        
         m = 0 
         while m < AppWindow.nbreDivers : 
             m = m+1
@@ -1393,18 +1365,9 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
                     pass
                 else :
                     self.liste_dUse[m-1] = str(value)            
-    
-        
-        
-    
         self.calculs_recette()  
-       
-        
-
-    
+           
     def MVC(self) :      
-
-        
         i=0
         while i < AppWindow.nbreFer :
             i=i+1
@@ -1420,11 +1383,6 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
             for prop in self.liste_fProportion :
                 prop = QtGui.QStandardItem("%.0f" %(self.liste_fProportion[i-1]) + "%")
                 self.modele.setItem(i-1,5,prop)
-
-
-        
-        
-
         h=0
         while h < AppWindow.nbreHops :
             h = h+1
@@ -1448,34 +1406,22 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
                 self.modele.setItem(i+h-1,6,use)
             for prop in self.liste_ibuPart :
                 prop = QtGui.QStandardItem("%.1f" %(self.liste_ibuPart[h-1]) + " IBU")
-                self.modele.setItem(i+h-1,5,prop)
-
-                 
-
-
-
-                
+                self.modele.setItem(i+h-1,5,prop)    
         m = 0
         while m < AppWindow.nbreDivers :
             m = m+1
             for item in self.liste_divers :
                 item = QtGui.QStandardItem(self.liste_divers[m-1] + ' [' +self.liste_dType[m-1] + ']')
                 self.modele.setItem(i+h+m-1, 0, item)
-                
             for amount in self.liste_dAmount : 
                 amount = QtGui.QStandardItem("%.0f" %(self.liste_dAmount[m-1]) )
                 self.modele.setItem(i+h+m-1, 1, amount)
-                
             for time in self.liste_dTime :
                 time = QtGui.QStandardItem("%.0f" %(self.liste_dTime[m-1]) )
                 self.modele.setItem(i+h+m-1, 2, time)
             for use in self.liste_dUse :
                 use = QtGui.QStandardItem(str(self.liste_dUse[m-1]) )
                 self.modele.setItem(i+h+m-1, 6, use)               
-             
-
-
-
         l=0
         while l < self.nbreLevures : 
             l=l+1
@@ -1483,8 +1429,6 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
                 item = QtGui.QStandardItem(self.liste_levuresDetail[l-1])
                 self.modele.setItem( i+h+m+l-1,0,item)
                 
-                
-
     def editGrains(self) :
         self.dlgEditG.setModal(True)
         self.dlgEditG.show()
@@ -1521,7 +1465,6 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         self.dlgOutilPaliers.setModal(True)
         self.dlgOutilPaliers.show()
         
-        
     def dialogPreferences (self) :
         self.dlgPref.setModal(True)
         self.dlgPref.show()
@@ -1533,8 +1476,6 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         self.dlgStepBrewday.setFields(self.brewdayCurrentStepTargetTemp, self.brewdayCurrentStepRatio, self.brewdayCurrentStepInfuseAmount, self.brewdayCurrentStepWaterTemp, self.grainWeight, self.stepsListVol, self.brewdayCurrentRow, self.brewdayListTemp, self.strikeTargetTemp)
         print("envoyé !",self.brewdayCurrentStepTargetTemp,self.strikeTargetTemp )
         
-    
-        
     def purge (self) :
         i = (AppWindow.nbreFer + AppWindow.nbreDivers + AppWindow.nbreHops + self.nbreLevures)
         self.modele.removeRows(0,i)
@@ -1544,17 +1485,11 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         self.s = 0
         self.nouvelle()
         
-
     def newRecipeFromLibrary (self) :
         self.switchToEditor()
         self.purge()
-        
-
-    
+            
     def ajouterF(self) :
-
-        
-        
         f = AppWindow.nbreFer
         i=self.comboBox.currentIndex()
         
@@ -1635,12 +1570,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         
         AppWindow.nbreDivers = m +1
         self.MVC()
-        
-    
 
-    
-    
-    
     def ajouterY(self) :
         l = self.nbreLevures
         f = AppWindow.nbreFer
@@ -1658,8 +1588,6 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         
         self.modele.insertRow(f+h+m+l)
         
-    
-        
         self.liste_levures.append(self.base.liste_levures[i])
         self.liste_lForm.append(self.base.liste_lForm[i])
         self.liste_lLabo.append(self.base.liste_lLabo[i])
@@ -1670,11 +1598,6 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         self.nbreLevures = l + 1
         self.MVC()
         
-        
-        
-        
-        
-    
     def enlever(self) :
         selection = self.tableViewF.selectionModel()
         indexLigne = selection.currentIndex().row()
@@ -1760,10 +1683,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         levures = arbre.findall('.//YEAST')
         misc = arbre.findall('.//MISC')
         mash = arbre.find('.//MASH')
-        
-        
-        
-        
+
         
         #Presentation de la recette
         self.styleRecette =''
@@ -1777,7 +1697,6 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
                 self.brewer = brewer.text
                
         
-            
         for nom in style :
             if nom.tag == "NAME" : 
                 self.styleRecette = nom.text
@@ -1827,9 +1746,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
                 else :
                     self.recipeNotes = notes.text
        
-            
-        
-    
+
     
         #Ingredient fermentescibles
         AppWindow.nbreFer = len(fermentables)
@@ -1977,15 +1894,11 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
                 if nom.tag == 'ATTENUATION' :
                     self.lAtten = float(nom.text)
                     self.liste_levureAtten.append(self.lAtten)
-                    
-                    
+                           
                     
             self.liste_levuresDetail.append (self.lNom+ ' ' + self.lLabo +' ' + self.lProd)
                     
-                    
-                    
-        
-        
+
         
         #Ingredients divers
         AppWindow.nbreDivers = len(misc)
@@ -2846,15 +2759,10 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
 #       si on n'est pas dans le cas d'un BIAB
         if self.radioButtonClassicBrew.isChecked() :
             self.brewCalc.calcStrikeTemp(strikeTargetTemp, 3)
-            print("la tempet envoyée ", strikeTargetTemp)
-            print(self.brewCalc.strikeTemp)
             self.brewCalc.calcStrikeVol(self.grainWeight, 3)
-            print(self.brewCalc.strikeVol)
             self.brewCalc.calcMashVolume(self.grainWeight)
-            print(self.brewCalc.grainVolume, self.brewCalc.mashVolumeStrike)
             self.brewCalc.calcGrainRetention(self.grainWeight)
-        
-        
+            self.pushButtonAdjustStep.setEnabled(True)
         
             listVol = []
             listVol.append(self.brewCalc.strikeVol)
@@ -2878,9 +2786,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
                 elif i != 1 :
                     mashTemp = self.brewdayListTemp[i-2]
                 
-
                 self.brewCalc.calcInfusionStep(i, self.grainWeight, listVol, stepTemp, mashTemp, 90, stepType )
-
 
                 listVol.append(self.brewCalc.infuseVol)
                 
