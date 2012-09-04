@@ -1,3 +1,5 @@
+#JolieBulle 2.7
+#Copyright (C) 2010-2012 Pierre Tavares
 #This program is distributed in the hope that it will be useful,
 #but WITHOUT ANY WARRANTY; without even the implied warranty of
 #MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the

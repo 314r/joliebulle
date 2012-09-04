@@ -2,7 +2,7 @@
 #­*­coding: utf­8 -­*­
 
 
-#JolieBulle 2.6
+#JolieBulle 2.7
 #Copyright (C) 2010-2012 Pierre Tavares
 
 #This program is free software; you can redistribute it and/or

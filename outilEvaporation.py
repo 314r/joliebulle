@@ -3,7 +3,7 @@
 
 
 
-#JolieBulle 2.6
+#JolieBulle 2.7
 #Copyright (C) 2010-2012 Pierre Tavares
 
 #This program is free software; you can redistribute it and/or
@@ -86,12 +86,8 @@ class DialogEvaporation(QtGui.QDialog):
         
         
         self.volPre = ((self.sgFinale * self.volFinal) + (self.volEvap * self.volRefroi)) / self.sgPre
-        
 
-        
-        
-        
-        
+
         print (self.volPre)
         
         
