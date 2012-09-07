@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'reader.ui'
 #
-# Created: Mon Sep  3 23:02:39 2012
+# Created: Fri Sep  7 18:34:46 2012
 #      by: PyQt4 UI code generator 4.9.4
 #
 # WARNING! All changes made in this file will be lost!
@@ -776,70 +776,6 @@ class Ui_MainWindow(object):
         self.gridLayout_3.addWidget(self.listViewBiblio, 0, 0, 1, 1)
         self.gridLayout_2.addWidget(self.widget2, 0, 0, 1, 1)
         self.stackedWidget.addWidget(self.page_2)
-        self.page_7 = QtGui.QWidget()
-        self.page_7.setObjectName(_fromUtf8("page_7"))
-        self.gridLayout_14 = QtGui.QGridLayout(self.page_7)
-        self.gridLayout_14.setMargin(0)
-        self.gridLayout_14.setObjectName(_fromUtf8("gridLayout_14"))
-        self.widget_2 = QtGui.QWidget(self.page_7)
-        self.widget_2.setStyleSheet(_fromUtf8("background-color: rgb(255, 255, 255);"))
-        self.widget_2.setObjectName(_fromUtf8("widget_2"))
-        self.gridLayout_15 = QtGui.QGridLayout(self.widget_2)
-        self.gridLayout_15.setMargin(0)
-        self.gridLayout_15.setObjectName(_fromUtf8("gridLayout_15"))
-        spacerItem16 = QtGui.QSpacerItem(20, 40, QtGui.QSizePolicy.Minimum, QtGui.QSizePolicy.Expanding)
-        self.gridLayout_15.addItem(spacerItem16, 0, 1, 1, 1)
-        self.verticalLayout_15 = QtGui.QVBoxLayout()
-        self.verticalLayout_15.setObjectName(_fromUtf8("verticalLayout_15"))
-        self.label_28 = QtGui.QLabel(self.widget_2)
-        self.label_28.setObjectName(_fromUtf8("label_28"))
-        self.verticalLayout_15.addWidget(self.label_28)
-        self.formLayout_9 = QtGui.QFormLayout()
-        self.formLayout_9.setContentsMargins(-1, 75, -1, -1)
-        self.formLayout_9.setHorizontalSpacing(30)
-        self.formLayout_9.setObjectName(_fromUtf8("formLayout_9"))
-        self.label_21 = QtGui.QLabel(self.widget_2)
-        self.label_21.setObjectName(_fromUtf8("label_21"))
-        self.formLayout_9.setWidget(0, QtGui.QFormLayout.LabelRole, self.label_21)
-        self.label_20 = QtGui.QLabel(self.widget_2)
-        self.label_20.setObjectName(_fromUtf8("label_20"))
-        self.formLayout_9.setWidget(0, QtGui.QFormLayout.FieldRole, self.label_20)
-        self.verticalLayout_15.addLayout(self.formLayout_9)
-        spacerItem17 = QtGui.QSpacerItem(20, 40, QtGui.QSizePolicy.Minimum, QtGui.QSizePolicy.Expanding)
-        self.verticalLayout_15.addItem(spacerItem17)
-        self.formLayout_10 = QtGui.QFormLayout()
-        self.formLayout_10.setFieldGrowthPolicy(QtGui.QFormLayout.AllNonFixedFieldsGrow)
-        self.formLayout_10.setHorizontalSpacing(30)
-        self.formLayout_10.setObjectName(_fromUtf8("formLayout_10"))
-        self.label_25 = QtGui.QLabel(self.widget_2)
-        self.label_25.setObjectName(_fromUtf8("label_25"))
-        self.formLayout_10.setWidget(0, QtGui.QFormLayout.LabelRole, self.label_25)
-        self.label_22 = QtGui.QLabel(self.widget_2)
-        self.label_22.setObjectName(_fromUtf8("label_22"))
-        self.formLayout_10.setWidget(0, QtGui.QFormLayout.FieldRole, self.label_22)
-        self.verticalLayout_15.addLayout(self.formLayout_10)
-        spacerItem18 = QtGui.QSpacerItem(20, 40, QtGui.QSizePolicy.Minimum, QtGui.QSizePolicy.Expanding)
-        self.verticalLayout_15.addItem(spacerItem18)
-        self.formLayout_11 = QtGui.QFormLayout()
-        self.formLayout_11.setFieldGrowthPolicy(QtGui.QFormLayout.AllNonFixedFieldsGrow)
-        self.formLayout_11.setHorizontalSpacing(30)
-        self.formLayout_11.setObjectName(_fromUtf8("formLayout_11"))
-        self.label_27 = QtGui.QLabel(self.widget_2)
-        self.label_27.setObjectName(_fromUtf8("label_27"))
-        self.formLayout_11.setWidget(0, QtGui.QFormLayout.LabelRole, self.label_27)
-        self.label_26 = QtGui.QLabel(self.widget_2)
-        self.label_26.setObjectName(_fromUtf8("label_26"))
-        self.formLayout_11.setWidget(0, QtGui.QFormLayout.FieldRole, self.label_26)
-        self.verticalLayout_15.addLayout(self.formLayout_11)
-        self.gridLayout_15.addLayout(self.verticalLayout_15, 1, 1, 1, 1)
-        spacerItem19 = QtGui.QSpacerItem(20, 40, QtGui.QSizePolicy.Minimum, QtGui.QSizePolicy.Expanding)
-        self.gridLayout_15.addItem(spacerItem19, 2, 1, 1, 1)
-        spacerItem20 = QtGui.QSpacerItem(40, 20, QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Minimum)
-        self.gridLayout_15.addItem(spacerItem20, 1, 0, 1, 1)
-        spacerItem21 = QtGui.QSpacerItem(40, 20, QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Minimum)
-        self.gridLayout_15.addItem(spacerItem21, 1, 2, 1, 1)
-        self.gridLayout_14.addWidget(self.widget_2, 0, 0, 1, 1)
-        self.stackedWidget.addWidget(self.page_7)
         self.gridLayout_4.addWidget(self.stackedWidget, 0, 0, 1, 1)
         MainWindow.setCentralWidget(self.centralwidget)
         self.toolBar = QtGui.QToolBar(MainWindow)
@@ -1190,48 +1126,6 @@ class Ui_MainWindow(object):
         self.label_19.setText(QtGui.QApplication.translate("MainWindow", "Densité pré-ébullition :", None, QtGui.QApplication.UnicodeUTF8))
         self.labelPreBoilGravity.setText(QtGui.QApplication.translate("MainWindow", "1.000", None, QtGui.QApplication.UnicodeUTF8))
         self.pushButtonBrewdayModeClose.setText(QtGui.QApplication.translate("MainWindow", "Fermer", None, QtGui.QApplication.UnicodeUTF8))
-        self.label_28.setText(QtGui.QApplication.translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
-"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
-"p, li { white-space: pre-wrap; }\n"
-"</style></head><body style=\" font-family:\'Ubuntu\'; font-size:11pt; font-weight:400; font-style:normal;\">\n"
-"<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:14pt;\">Brasser librement avec JolieBulle.</span></p>\n"
-"<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:14pt; color:#8d8d8d;\">glou, glou</span></p></body></html>", None, QtGui.QApplication.UnicodeUTF8))
-        self.label_21.setText(QtGui.QApplication.translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
-"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
-"p, li { white-space: pre-wrap; }\n"
-"</style></head><body style=\" font-family:\'Ubuntu\'; font-size:11pt; font-weight:400; font-style:normal;\">\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><img src=\":/home/Images/stock_bookmark.png\" /></p></body></html>", None, QtGui.QApplication.UnicodeUTF8))
-        self.label_20.setText(QtGui.QApplication.translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
-"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
-"p, li { white-space: pre-wrap; }\n"
-"</style></head><body style=\" font-family:\'Ubuntu\'; font-size:11pt; font-weight:400; font-style:normal;\">\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:12pt;\">Bibliothèque</span></p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:7pt;\"> </span></p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:12pt; color:#8d8d8d;\">Gérer et consulter des recettes</span></p></body></html>", None, QtGui.QApplication.UnicodeUTF8))
-        self.label_25.setText(QtGui.QApplication.translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
-"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
-"p, li { white-space: pre-wrap; }\n"
-"</style></head><body style=\" font-family:\'Ubuntu\'; font-size:11pt; font-weight:400; font-style:normal;\">\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><img src=\":/home/Images/glade.png\" /></p></body></html>", None, QtGui.QApplication.UnicodeUTF8))
-        self.label_22.setText(QtGui.QApplication.translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
-"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
-"p, li { white-space: pre-wrap; }\n"
-"</style></head><body style=\" font-family:\'Ubuntu\'; font-size:11pt; font-weight:400; font-style:normal;\">\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:12pt;\">Editeur</span></p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:7pt;\"> </span></p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:12pt; color:#8d8d8d;\">Modifier et créer des recettes</span></p></body></html>", None, QtGui.QApplication.UnicodeUTF8))
-        self.label_27.setText(QtGui.QApplication.translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
-"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
-"p, li { white-space: pre-wrap; }\n"
-"</style></head><body style=\" font-family:\'Ubuntu\'; font-size:11pt; font-weight:400; font-style:normal;\">\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><img src=\":/home/Images/evolution-tasks.png\" /></p></body></html>", None, QtGui.QApplication.UnicodeUTF8))
-        self.label_26.setText(QtGui.QApplication.translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
-"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
-"p, li { white-space: pre-wrap; }\n"
-"</style></head><body style=\" font-family:\'Ubuntu\'; font-size:11pt; font-weight:400; font-style:normal;\">\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:12pt;\">Mode brassage</span></p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:7pt;\"> </span></p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:12pt; color:#8d8d8d;\">Planifier et brasser</span></p></body></html>", None, QtGui.QApplication.UnicodeUTF8))
         self.toolBar.setWindowTitle(QtGui.QApplication.translate("MainWindow", "toolBar", None, QtGui.QApplication.UnicodeUTF8))
         self.menuFichier.setTitle(QtGui.QApplication.translate("MainWindow", "Fichier", None, QtGui.QApplication.UnicodeUTF8))
         self.menuIngr_dients.setTitle(QtGui.QApplication.translate("MainWindow", "Ingrédients", None, QtGui.QApplication.UnicodeUTF8))
