@@ -2854,6 +2854,9 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         self.strikeTargetTemp = strikeTargetTemp
         self.brewdayCurrentRow = self.tableWidgetStepsBrewday.currentRow()
         i = self.tableWidgetStepsBrewday.currentRow()
+        if i == -1 :
+            return  #No selection in tableWidgetStepsBrewday
+
         step = listSteps[i]
         stepType= step['type']
         
