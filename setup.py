@@ -57,6 +57,8 @@ setup(name = "joliebulle",
                                      "COPYING"
                                      ]),
                       ("applications", ["joliebulle.desktop"]),
+                      ("joliebulle/Samples", ["Samples/Blanche.xml",
+                                              "Samples/SMASH Amarillo.xml"]),
                       ("joliebulle/Images", ["Images/application-exit.png",
                                             "Images/add.png",
                                             "Images/bulle.png",
@@ -73,8 +75,6 @@ setup(name = "joliebulle",
                                             "Images/reload.png",
                                             "Images/remove.png",
                                             "Images/save.png",])
-                      ("joliebulle/Samples", ["Samples/Blanche.xml",
-                                              "Samples/SMASH Amarillo.xml",]),
                                                     ],
 
       scripts = ["joliebulle"],
