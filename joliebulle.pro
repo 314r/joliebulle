@@ -24,6 +24,7 @@ SOURCES          += editlevures.py
 SOURCES          += export.py
 SOURCES          += exportHTML.py
 SOURCES          += exportMash.py
+SOURCES          += home.py
 SOURCES          += importMashXml.py
 SOURCES          += mashEditWindow.py
 SOURCES          += outilAlc.py

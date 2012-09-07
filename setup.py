@@ -5,7 +5,7 @@
 from distutils.core import setup
 
 setup(name = "joliebulle",
-      version = "2.6",
+      version = "2.7",
       description = "JolieBulle, logiciel de brassage libre",
       author = "Pierre Tavares",
       author_email = "contact.314r@gmail.com",
@@ -26,6 +26,7 @@ setup(name = "joliebulle",
                                      "export.py",
                                      "exportMash.py",
                                      "globals.py",
+                                     "home.py",
                                      "importMashXml.py",
                                      "joliebulle_en.qm",
                                      "main.py",
@@ -56,6 +57,8 @@ setup(name = "joliebulle",
                                      "COPYING"
                                      ]),
                       ("applications", ["joliebulle.desktop"]),
+                      ("joliebulle/Samples", ["Samples/Blanche.xml",
+                                              "Samples/SMASH Amarillo.xml"]),
                       ("joliebulle/Images", ["Images/application-exit.png",
                                             "Images/add.png",
                                             "Images/bulle.png",
@@ -73,6 +76,7 @@ setup(name = "joliebulle",
                                             "Images/remove.png",
                                             "Images/save.png",])
                                                     ],
+
       scripts = ["joliebulle"],
       long_description = ""          
       )    

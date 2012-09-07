@@ -17,6 +17,7 @@ export.py
 exportHTML.py
 exportMash.py
 globals.py
+home.py
 importMashXml.py
 joliebulle
 joliebulle.desktop
@@ -62,3 +63,5 @@ Images/print.png
 Images/reload.png
 Images/remove.png
 Images/save.png
+Samples/Blanche.xml
+Samples/SMASH Amarillo.xml
