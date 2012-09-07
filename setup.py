@@ -73,9 +73,10 @@ setup(name = "joliebulle",
                                             "Images/reload.png",
                                             "Images/remove.png",
                                             "Images/save.png",])
-                                                    ],
                       ("joliebulle/Samples", ["Samples/Blanche.xml",
                                               "Samples/SMASH Amarillo.xml",]),
+                                                    ],
+
       scripts = ["joliebulle"],
       long_description = ""          
       )    
