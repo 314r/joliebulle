@@ -66,7 +66,6 @@ import xml.etree.ElementTree as ET
           
 
 
-
 # class RecipesDelegate(QtGui.QStyledItemDelegate) : 
 #     def __init__(self, parent):
 #         QtGui.QStyledItemDelegate.__init__(self, parent)
