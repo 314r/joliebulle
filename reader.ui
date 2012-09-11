@@ -741,7 +741,7 @@ p, li { white-space: pre-wrap; }
                </property>
               </widget>
              </item>
-             <item row="6" column="0">
+             <item row="7" column="0">
               <widget class="QLabel" name="labelAlc">
                <property name="text">
                 <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
@@ -755,8 +755,22 @@ p, li { white-space: pre-wrap; }
                </property>
               </widget>
              </item>
-             <item row="6" column="1">
+             <item row="7" column="1">
               <widget class="QLabel" name="labelAlcv">
+               <property name="text">
+                <string/>
+               </property>
+              </widget>
+             </item>
+             <item row="6" column="0">
+              <widget class="QLabel" name="label_20">
+               <property name="text">
+                <string>Ratio BU/GU :</string>
+               </property>
+              </widget>
+             </item>
+             <item row="6" column="1">
+              <widget class="QLabel" name="labelRatioBuGu">
                <property name="text">
                 <string/>
                </property>
@@ -1646,7 +1660,7 @@ p, li { white-space: pre-wrap; }
                  <property name="minimumSize">
                   <size>
                    <width>100</width>
-                   <height>0</height>
+                   <height>10</height>
                   </size>
                  </property>
                  <property name="styleSheet">
@@ -1887,7 +1901,7 @@ color: rgb(255, 255, 255);</string>
      <x>0</x>
      <y>0</y>
      <width>1238</width>
-     <height>23</height>
+     <height>21</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuFichier">

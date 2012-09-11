@@ -2116,8 +2116,6 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         self.GU= (383.89*sum(self.liste_equivSucreMashed)/float(self.volume))*((self.rendement)/100) + (383.89*sum(self.liste_equivSucreNonMashed)/float(self.volume))
         self.OG = 1+ (self.GU/1000)     
             
-
-
         
         #calcul de la FG. Si il y a plusieurs levures, on recupere l'attenuation la plus elevee.
         self.levureAttenDec = sorted (self.liste_levureAtten, reverse = True)
@@ -2138,10 +2136,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
             i=i+1
             propGrain = (self.liste_fAmount[i-1] / poidsTot)*100
             self.liste_fProportion.append(propGrain)
-
-
-
-        
+     
         
         #calcul de l'amertume : methode de Tinseth
         #IBUs = decimal alpha acid utilization * mg/l of added alpha acids
@@ -2182,6 +2177,9 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         self.ibuTot = sum(self.liste_ibuPart)
 
         
+        #calcul du rapport BU/GU
+        self.ratioBuGu = self.ibuTot / self.GU
+
         
         #calcul de la couleur
         #calcul du MCU pour chaque grain :
@@ -2214,6 +2212,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         self.labelEBCV.setText(str("%.0f" %(self.EBC)))
         self.labelIBUV.setText(str("%.0f" %(self.ibuTot)))
         self.labelAlcv.setText(str("%.1f" %(self.ABV)) + '%')
+        self.labelRatioBuGu.setText(str("%.1f" %(self.ratioBuGu)))
         
         
                         
