@@ -461,7 +461,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         menuFile.addAction(self.actionEnregistrer)
         menuFile.addAction(self.actionEnregistrer_Sous)
         menuFile.addAction(self.actionExporterHtml)
-        menuFile.addAction(self.actionQuitter_2)
+        menuFile.addAction(self.actionQuitter)
 
         # le menu ingredients
         menuIngredients=generalMenu.addMenu(self.trUtf8('''Ingrédients'''))
@@ -538,6 +538,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         self.connect(self.actionRecharger, QtCore.SIGNAL("triggered()"), self.recharger)
         #self.connect(self.actionSwitch, QtCore.SIGNAL("triggered()"), self.switch)
         self.actionImporter.triggered.connect(self.importInLib)
+        self.connect(self.actionQuitter, QtCore.SIGNAL("triggered()"), app, QtCore.SLOT("quit()"))
         
         self.connect(self.actionEditGrains, QtCore.SIGNAL("triggered()"), self.editGrains)
         self.connect(self.actionEditHoublons, QtCore.SIGNAL("triggered()"), self.editHoublons)
