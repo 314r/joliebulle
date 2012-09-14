@@ -29,24 +29,24 @@ class ExportBBCode(QtCore.QObject):
         recetteHeader = "[b]" + nomRecette + "\n"
         recetteHeader += "[i]" + styleRecette + "[/i][/b]\n\n"
         
-        specification_texte = "Densité initiale : " + str("%.3f" %(OG)) + "\n"
-        specification_texte += "Densité finale : " + str("%.3f" %(FG)) + "\n"
-        specification_texte += "Teinte : " + str("%.0f" %(EBC)) + " EBC\n"
-        specification_texte += "Amertume : " + str("%.0f" %(IBU)) + " IBU\n"
-        specification_texte += "Alcool (vol) : " + str("%.1f" %(ABV)) + " %\n\n"
+        specification_texte = self.trUtf8("Densité initiale : ") + str("%.3f" %(OG)) + "\n"
+        specification_texte += self.trUtf8("Densité finale : ") + str("%.3f" %(FG)) + "\n"
+        specification_texte += self.trUtf8("Teinte : ") + str("%.0f" %(EBC)) + " EBC\n"
+        specification_texte += self.trUtf8("Amertume : ") + str("%.0f" %(IBU)) + " IBU\n"
+        specification_texte += self.trUtf8("Alcool (vol) : ") + str("%.1f" %(ABV)) + " %\n\n"
         
-        specification_texte += "Rendement : " + str(rendement) + " %\n"
-        specification_texte += "Ingrédients prévus pour un brassin de " + str(volume) + "L \n\n"
+        specification_texte += self.trUtf8("Rendement : ") + str(rendement) + " %\n"
+        specification_texte += self.trUtf8("Ingrédients prévus pour un brassin de ") + str(volume) + "L \n\n"
         
-        grains_texte = "[b]Grains et sucres\n"
+        grains_texte = "[b]" + self.trUtf8("Grains et sucres") + "\n"
         grains_texte += "----------------------[/b]\n"
         i = 0
         while i < nbreFer :
             i=i+1
             grains_texte += str("%.0f" %(liste_fAmount[i-1])) + "g " + liste_ingr[i-1] + "\n"
         grains_texte += "\n"
-          
-        houblons_texte = "[b]Houblons\n"
+        
+        houblons_texte = "[b]" + self.trUtf8("Houblons") + "\n"
         houblons_texte += "----------------------[/b]\n"
         h = 0
         while h < nbreHops : 
@@ -56,7 +56,7 @@ class ExportBBCode(QtCore.QObject):
         
         divers_texte = ""
         if nbreDivers > 0:
-            divers_texte = "[b]Ingrédients divers\n"
+            divers_texte = "[b]" + self.trUtf8("Ingrédients divers") + "\n"
             divers_texte += "----------------------[/b]\n"
             m = 0
             while  m < nbreDivers :
@@ -64,7 +64,7 @@ class ExportBBCode(QtCore.QObject):
                 divers_texte += str("%.0f" %(liste_dAmount[m-1])) + "g " + liste_divers[m-1] +" (" + liste_dType[m-1] +") @ " + str("%.0f" %(liste_dTime[m-1]))+ "min ("+ str(liste_dUse[m-1]) + ")\n"
             divers_texte += "\n"
         
-        levures_texte = "[b]Levures\n"
+        levures_texte = "[b]" + self.trUtf8("Levures") + "\n"
         levures_texte += "----------------------[/b]\n"
         l = 0
         while l < nbreLevures : 
@@ -73,7 +73,7 @@ class ExportBBCode(QtCore.QObject):
         levures_texte += "\n"
             
         if recipeNotes != "":
-            recipeNotes = "[b]Notes\n" + "----------------------[/b]\n" + recipeNotes
+            recipeNotes = "[b]" + self.trUtf8("Notes") + "\n----------------------[/b]\n" + recipeNotes
             
         self.generatedBbcode = recetteHeader + specification_texte + grains_texte + houblons_texte + divers_texte + levures_texte + recipeNotes
         
