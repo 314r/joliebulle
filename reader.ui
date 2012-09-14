@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>1238</width>
-    <height>681</height>
+    <height>732</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -1887,7 +1887,7 @@ color: rgb(255, 255, 255);</string>
      <x>0</x>
      <y>0</y>
      <width>1238</width>
-     <height>23</height>
+     <height>29</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuFichier">
@@ -1899,6 +1899,7 @@ color: rgb(255, 255, 255);</string>
     <addaction name="actionEnregistrer"/>
     <addaction name="actionEnregistrer_Sous"/>
     <addaction name="actionExporterHtml"/>
+    <addaction name="actionCopierBbcode"/>
     <addaction name="actionNouvelle_recette"/>
     <addaction name="actionRecharger"/>
     <addaction name="actionImprimer"/>
@@ -2167,6 +2168,11 @@ color: rgb(255, 255, 255);</string>
   <action name="actionImporter">
    <property name="text">
     <string>Importer dans la bibliothèque</string>
+   </property>
+  </action>
+  <action name="actionCopierBbcode">
+   <property name="text">
+    <string>Copier le BBCode dans le presse papier</string>
    </property>
   </action>
  </widget>

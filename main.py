@@ -34,6 +34,7 @@ from reader import *
 from settings import *
 from export import *
 from exportHTML import *
+from exportBBCode import *
 from base import *
 from importMashXml import *
 from editgrain import *
@@ -461,6 +462,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         menuFile.addAction(self.actionEnregistrer)
         menuFile.addAction(self.actionEnregistrer_Sous)
         menuFile.addAction(self.actionExporterHtml)
+        menuFile.addAction(self.actionCopierBbcode)
         menuFile.addAction(self.actionQuitter_2)
 
         # le menu ingredients
@@ -535,6 +537,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         self.connect(self.actionEnregistrerToolBar, QtCore.SIGNAL("triggered()"), self.enregistrer)
         self.connect(self.actionEnregistrer_Sous, QtCore.SIGNAL("triggered()"), self.enregistrerSous)
         self.connect(self.actionExporterHtml, QtCore.SIGNAL("triggered()"), self.exporterHtml)
+        self.connect(self.actionCopierBbcode, QtCore.SIGNAL("triggered()"), self.copierBbcode)
         self.connect(self.actionRecharger, QtCore.SIGNAL("triggered()"), self.recharger)
         #self.connect(self.actionSwitch, QtCore.SIGNAL("triggered()"), self.switch)
         self.actionImporter.triggered.connect(self.importInLib)
@@ -2378,6 +2381,15 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         
         exp.enregistrerHtml(self.fileHtml)
     
+    def copierBbcode (self):
+        self.nomRecette = self.lineEditRecette.text()
+        self.styleRecette = self.lineEditGenre.text()
+        
+        exp = ExportBBCode()
+        exp.exportBbcode(self.nomRecette,self.styleRecette, self.volume, self.boil, AppWindow.nbreFer, self.liste_ingr, self.liste_fAmount, AppWindow.nbreHops, self.liste_houblons, self.liste_hAlpha, self.liste_hForm, self.liste_hAmount, self.liste_hTime,self.liste_hUse, AppWindow.nbreDivers, self.liste_divers, self.liste_dType, self.liste_dAmount, self.liste_dTime, self.liste_dUse, self.nbreLevures, self.liste_levuresDetail,self.rendement, self.OG, self.FG, self.EBC, self.ibuTot ,self.ABV, self.recipeNotes)
+        
+        app.clipboard().setText(str(exp))
+
     def modifierStyle (self) :
         if self.pushButtonChangerStyle.isChecked () :
             self.comboBoxStyle.show()

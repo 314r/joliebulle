@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'reader.ui'
 #
-# Created: Fri Sep  7 18:34:46 2012
+# Created: Wed Sep 12 19:05:22 2012
 #      by: PyQt4 UI code generator 4.9.4
 #
 # WARNING! All changes made in this file will be lost!
@@ -17,7 +17,7 @@ except AttributeError:
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName(_fromUtf8("MainWindow"))
-        MainWindow.resize(1238, 681)
+        MainWindow.resize(1238, 732)
         icon = QtGui.QIcon()
         icon.addPixmap(QtGui.QPixmap(_fromUtf8("Images/bulle.png")), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         MainWindow.setWindowIcon(icon)
@@ -789,7 +789,7 @@ class Ui_MainWindow(object):
         self.toolBar.setObjectName(_fromUtf8("toolBar"))
         MainWindow.addToolBar(QtCore.Qt.TopToolBarArea, self.toolBar)
         self.menuBar = QtGui.QMenuBar(MainWindow)
-        self.menuBar.setGeometry(QtCore.QRect(0, 0, 1238, 23))
+        self.menuBar.setGeometry(QtCore.QRect(0, 0, 1238, 29))
         self.menuBar.setObjectName(_fromUtf8("menuBar"))
         self.menuFichier = QtGui.QMenu(self.menuBar)
         self.menuFichier.setObjectName(_fromUtf8("menuFichier"))
@@ -898,11 +898,14 @@ class Ui_MainWindow(object):
         self.actionNouvelle_recette_2.setObjectName(_fromUtf8("actionNouvelle_recette_2"))
         self.actionImporter = QtGui.QAction(MainWindow)
         self.actionImporter.setObjectName(_fromUtf8("actionImporter"))
+        self.actionCopierBbcode = QtGui.QAction(MainWindow)
+        self.actionCopierBbcode.setObjectName(_fromUtf8("actionCopierBbcode"))
         self.menuFichier.addAction(self.actionImporter)
         self.menuFichier.addAction(self.actionOuvrir)
         self.menuFichier.addAction(self.actionEnregistrer)
         self.menuFichier.addAction(self.actionEnregistrer_Sous)
         self.menuFichier.addAction(self.actionExporterHtml)
+        self.menuFichier.addAction(self.actionCopierBbcode)
         self.menuFichier.addAction(self.actionNouvelle_recette)
         self.menuFichier.addAction(self.actionRecharger)
         self.menuFichier.addAction(self.actionImprimer)
@@ -1169,6 +1172,7 @@ class Ui_MainWindow(object):
         self.actionNouvelle_recette_2.setText(QtGui.QApplication.translate("MainWindow", "Nouvelle recette", None, QtGui.QApplication.UnicodeUTF8))
         self.actionNouvelle_recette_2.setToolTip(QtGui.QApplication.translate("MainWindow", "Créer une nouvelle recette", None, QtGui.QApplication.UnicodeUTF8))
         self.actionImporter.setText(QtGui.QApplication.translate("MainWindow", "Importer dans la bibliothèque", None, QtGui.QApplication.UnicodeUTF8))
+        self.actionCopierBbcode.setText(QtGui.QApplication.translate("MainWindow", "Copier le BBCode dans le presse papier", None, QtGui.QApplication.UnicodeUTF8))
 
 from PyQt4 import QtWebKit
 import ressources_rc
