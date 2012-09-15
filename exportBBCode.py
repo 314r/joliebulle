@@ -76,7 +76,3 @@ class ExportBBCode(QtCore.QObject):
             recipeNotes = "[b]" + self.trUtf8("Notes") + "\n----------------------[/b]\n" + recipeNotes
             
         self.generatedBbcode = recetteHeader + specification_texte + grains_texte + houblons_texte + divers_texte + levures_texte + recipeNotes
-        
-        
-    def __str__(self):
-        return self.generatedBbcode
