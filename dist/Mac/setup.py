@@ -14,7 +14,7 @@ setup(
 			plist=dict(
 				CFBundleName               = NAME,
 				CFBundleShortVersionString = VERSION,     # must be in X.X.X format
-				CFBundleGetInfoString      = NAME + VERSION,
+				CFBundleGetInfoString      = NAME + " " + VERSION,
 				CFBundleExecutable         = NAME,
 				CFBundleIdentifier         = "com.joliebulle",
 				LSEnvironment			   = {'LC_ALL':'en_US.UTF-8'}
