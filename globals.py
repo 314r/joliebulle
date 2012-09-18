@@ -19,6 +19,12 @@ from settings import *
 
 settings = Settings()
 
+#Version Joliebulle à utiliser partout où nécessaire de l'afficher
+# à modifier à chaque release pour :
+#   - retirer le '-DEV' au moment de la livraison
+#   - incrémenter le numéro de version et remettre le '-DEV' au commencement de la nouvelle itération
+VERSION_JOLIBULLE = '2.8.0-DEV' 
+
 if platform == 'win32':
     home_dir = os.path.expanduser("~")
     config_dir = os.path.join(os.path.expanduser("~"), "AppData", "Local", "joliebulle")
