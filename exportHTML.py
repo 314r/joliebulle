@@ -32,7 +32,7 @@ from globals import *
 
 class ExportHTML(QtGui.QDialog) : 
 
-    def exportHtml (self, nomRecette, styleRecette, volume, boil, nbreFer, liste_ingr, liste_fAmount, nbreHops,liste_houblons, liste_hAlpha,liste_hForm,liste_hAmount,liste_hTime,liste_hUse,nbreDivers,liste_divers, liste_dType, liste_dAmount, liste_dTime, liste_dUse, nbreLevures, liste_levuresDetail, rendement, OG, FG, EBC, IBU, ABV, recipeNotes) :
+    def exportHtml (self, nomRecette, styleRecette, volume, boil, nbreFer, liste_ingr, liste_fAmount, nbreHops,liste_houblons, liste_hAlpha,liste_hForm,liste_hAmount,liste_hTime,liste_hUse,nbreDivers,liste_divers, liste_dType, liste_dAmount, liste_dTime, liste_dUse, nbreLevures, liste_levuresDetail, rendement, OG, FG, ratioBUGU, EBC, IBU, ABV, recipeNotes) :
         
         self.recetteHtmlHeader = '''
 <!DOCTYPE html>
@@ -104,7 +104,7 @@ text-align : center;}
         self.recetteHtmlIng = self.trUtf8(''' <h2>Ingrédients pour un brassin de ''') + str(volume) + self.trUtf8(''' litres''')+ grains_texte + houblons_texte + divers_texte + levures_texte
         
         
-        self.recetteHtmlProfil = ''' <table class="profil">'''+ self.trUtf8('''<tr><td>Rendement</td> ''') + '''<td> ''' + str(rendement) + '''% </td></tr>''' + self.trUtf8('''<tr><td>Densité initiale</td>''') + '''<td> '''  + str("%.3f" %(OG)) + '''</td></tr>''' + self.trUtf8('''<tr><td>Densité finale</td>''') + '''<td>''' + str("%.3f" %(FG)) + '''</td></tr>''' + self.trUtf8('''<tr><td>Teinte</td>''') + '''<td> '''+ str("%.0f" %(EBC)) + ''' EBC </td></tr>'''+ self.trUtf8('''<tr><td>Amertume</td>''') + '''<td> ''' + str("%.0f" %(IBU)) + ''' IBU </td></tr>''' + self.trUtf8('''<tr><td>Alcool (vol)</td>''') + '''<td>'''+ str("%.1f" %(ABV)) + ''' % </td></tr>''' + '''</table>'''             
+        self.recetteHtmlProfil = ''' <table class="profil">'''+ self.trUtf8('''<tr><td>Rendement</td> ''') + '''<td> ''' + str(rendement) + '''% </td></tr>''' + self.trUtf8('''<tr><td>Densité initiale</td>''') + '''<td> '''  + str("%.3f" %(OG)) + '''</td></tr>''' + self.trUtf8('''<tr><td>Densité finale</td>''') + '''<td>''' + str("%.3f" %(FG)) + '''</td></tr>''' + self.trUtf8('''<tr><td>Teinte</td>''') + '''<td> '''+ str("%.0f" %(EBC)) + ''' EBC </td></tr>'''+ self.trUtf8('''<tr><td>Amertume</td>''') + '''<td> ''' + str("%.0f" %(IBU)) + ''' IBU </td></tr>''' + self.trUtf8('''<tr><td>Ratio BU/GU</td>''') + '''<td>''' + str("%.1f" %(ratioBUGU)) + '''</td></tr>''' + self.trUtf8('''<tr><td>Alcool (vol)</td>''') + '''<td>'''+ str("%.1f" %(ABV)) + ''' % </td></tr>''' + '''</table>'''             
 
         self.recipeNotes = self.trUtf8(''' <h2>Notes</h2>''') + '''<p>''' + str(recipeNotes) + ''' </p> '''
 
