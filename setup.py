@@ -23,6 +23,7 @@ setup(name = "joliebulle",
                                      "editorM_ui.py",
                                      "editorY_ui.py",
                                      "exportHTML.py",
+                                     "exportBBCode.py"
                                      "export.py",
                                      "exportMash.py",
                                      "globals.py",
