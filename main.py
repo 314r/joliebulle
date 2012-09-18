@@ -119,7 +119,7 @@ def initLogging():
                 'level':'DEBUG',
                 'formatter':'detailed',
                 'mode':'a',
-                'filename':'joliebulle.log'
+                'filename':os.path.join(config_dir,'joliebulle.log')
             }  
         }
     }
