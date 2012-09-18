@@ -25,6 +25,8 @@ import shutil
 import os
 import os.path
 import glob
+import logging
+import logging.config
 from sys import platform
 import PyQt4
 import sys
@@ -87,6 +89,40 @@ import xml.etree.ElementTree as ET
 #         image = QtGui.QPixmap("folder.png")
 #         painter.drawPixmap(option.rect.topLeft(), image)
 #         painter.restore()
+
+def initLogging():
+    config = {
+        'version': 1,              
+        'root': {
+            'handlers': ['console','file'],
+            'level': 'DEBUG'
+        },
+        'disable_existing_loggers': False,
+        'formatters': {
+            'standard': {
+                'format': '%(asctime)s [%(levelname)s] %(name)s: %(message)s'
+            },
+            'detailed': {
+                'format': '%(asctime)s %(module)-17s line:%(lineno)-4d %(levelname)-8s %(message)s'
+            }
+        },
+        'handlers': {
+            'console': {
+                'level':'DEBUG',
+                'class':'logging.StreamHandler',
+                'stream':'ext://sys.stdout',
+                'formatter':'standard'
+            },
+            'file': {
+                'class':'logging.FileHandler',
+                'level':'DEBUG',
+                'formatter':'detailed',
+                'mode':'a',
+                'filename':'joliebulle.log'
+            }  
+        }
+    }
+    logging.config.dictConfig(config)
 
 
 class IngDelegate(QtGui.QItemDelegate):
@@ -2945,8 +2981,16 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
             self.webViewBiblio.print(printer)
                 
 
+
 if __name__ == "__main__":
 
+    initLogging()
+
+    logger = logging.getLogger(__name__)
+
+    logger.info("Jolibulle %s", VERSION_JOLIBULLE);
+
+    logger.debug("Initializing UI");
     QtCore.QTextCodec.setCodecForCStrings(QtCore.QTextCodec.codecForName("utf-8"))
     app = QtGui.QApplication(sys.argv)
     
@@ -2963,4 +3007,9 @@ if __name__ == "__main__":
     main_window = AppWindow()
     main_window.show()
 
+    logger.debug("UI initialized");
+
     app.exec_()
+    logger.info("Joliebulle terminated");
+    logger.info("---------------------");
+
