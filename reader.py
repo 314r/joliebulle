@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'reader.ui'
 #
-# Created: Wed Sep 12 19:05:22 2012
+# Created: Tue Sep 18 21:50:03 2012
 #      by: PyQt4 UI code generator 4.9.4
 #
 # WARNING! All changes made in this file will be lost!
@@ -328,11 +328,18 @@ class Ui_MainWindow(object):
         self.labelAlc = QtGui.QLabel(self.widgetProfile)
         self.labelAlc.setAlignment(QtCore.Qt.AlignRight|QtCore.Qt.AlignTrailing|QtCore.Qt.AlignVCenter)
         self.labelAlc.setObjectName(_fromUtf8("labelAlc"))
-        self.formLayout.setWidget(6, QtGui.QFormLayout.LabelRole, self.labelAlc)
+        self.formLayout.setWidget(7, QtGui.QFormLayout.LabelRole, self.labelAlc)
         self.labelAlcv = QtGui.QLabel(self.widgetProfile)
         self.labelAlcv.setText(_fromUtf8(""))
         self.labelAlcv.setObjectName(_fromUtf8("labelAlcv"))
-        self.formLayout.setWidget(6, QtGui.QFormLayout.FieldRole, self.labelAlcv)
+        self.formLayout.setWidget(7, QtGui.QFormLayout.FieldRole, self.labelAlcv)
+        self.label_20 = QtGui.QLabel(self.widgetProfile)
+        self.label_20.setObjectName(_fromUtf8("label_20"))
+        self.formLayout.setWidget(6, QtGui.QFormLayout.LabelRole, self.label_20)
+        self.labelRatioBuGu = QtGui.QLabel(self.widgetProfile)
+        self.labelRatioBuGu.setText(_fromUtf8(""))
+        self.labelRatioBuGu.setObjectName(_fromUtf8("labelRatioBuGu"))
+        self.formLayout.setWidget(6, QtGui.QFormLayout.FieldRole, self.labelRatioBuGu)
         self.verticalLayout_6.addLayout(self.formLayout)
         self.verticalLayout_7 = QtGui.QVBoxLayout()
         self.verticalLayout_7.setContentsMargins(-1, -1, -1, 10)
@@ -687,7 +694,7 @@ class Ui_MainWindow(object):
         self.labelSpargeTemp.setObjectName(_fromUtf8("labelSpargeTemp"))
         self.formLayoutSparge.setWidget(1, QtGui.QFormLayout.FieldRole, self.labelSpargeTemp)
         self.labelNoSparge = QtGui.QLabel(self.groupBox_2)
-        self.labelNoSparge.setMinimumSize(QtCore.QSize(100, 0))
+        self.labelNoSparge.setMinimumSize(QtCore.QSize(100, 10))
         self.labelNoSparge.setStyleSheet(_fromUtf8("background-color: rgb(255, 255, 196);"))
         self.labelNoSparge.setObjectName(_fromUtf8("labelNoSparge"))
         self.formLayoutSparge.setWidget(2, QtGui.QFormLayout.LabelRole, self.labelNoSparge)
@@ -789,7 +796,7 @@ class Ui_MainWindow(object):
         self.toolBar.setObjectName(_fromUtf8("toolBar"))
         MainWindow.addToolBar(QtCore.Qt.TopToolBarArea, self.toolBar)
         self.menuBar = QtGui.QMenuBar(MainWindow)
-        self.menuBar.setGeometry(QtCore.QRect(0, 0, 1238, 29))
+        self.menuBar.setGeometry(QtCore.QRect(0, 0, 1238, 21))
         self.menuBar.setObjectName(_fromUtf8("menuBar"))
         self.menuFichier = QtGui.QMenu(self.menuBar)
         self.menuFichier.setObjectName(_fromUtf8("menuFichier"))
@@ -1035,6 +1042,7 @@ class Ui_MainWindow(object):
 "p, li { white-space: pre-wrap; }\n"
 "</style></head><body style=\" font-family:\'Ubuntu\'; font-size:11pt; font-weight:400; font-style:normal;\">\n"
 "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:\'Droid Sans\'; font-size:9pt;\">Alc :</span></p></body></html>", None, QtGui.QApplication.UnicodeUTF8))
+        self.label_20.setText(QtGui.QApplication.translate("MainWindow", "Ratio BU/GU :", None, QtGui.QApplication.UnicodeUTF8))
         self.label_5.setText(QtGui.QApplication.translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
