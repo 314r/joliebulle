@@ -42,9 +42,13 @@ elif platform == 'darwin':
     config_dir = os.path.join(os.path.expanduser("~"), ".config", "joliebulle")
     recettes_dir = settings.conf.value("pathUnix", os.path.join(os.path.expanduser("~"), ".config", "joliebulle", "recettes"))
     database_file = os.path.join(os.path.expanduser("~"), ".config", "joliebulle", "database.xml")
-    database_root = os.path.join(os.environ['RESOURCEPATH'], "database.xml")
+    if 'RESOURCEPATH' in os.environ:
+        resourcePath = os.environ['RESOURCEPATH']
+    else:
+        resourcePath = os.getcwd()
+    database_root = os.path.join(resourcePath, "database.xml")
     mash_file = os.path.join(os.path.expanduser("~"), ".config", "joliebulle", "mash.xml")
-    mash_root = os.path.join(os.environ['RESOURCEPATH'], "mash.xml")
+    mash_root = os.path.join(resourcePath, "mash.xml")
     samples_dir='Samples'
     samples_target = os.path.join(os.path.expanduser("~"), ".config", "joliebulle", "recettes", "Samples")
 
