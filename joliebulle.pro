@@ -23,6 +23,7 @@ SOURCES          += edithoublon.py
 SOURCES          += editlevures.py
 SOURCES          += export.py
 SOURCES          += exportHTML.py
+SOURCES          += exportBBCode.py
 SOURCES          += exportMash.py
 SOURCES          += home.py
 SOURCES          += importMashXml.py
