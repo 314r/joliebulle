@@ -2546,7 +2546,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
     def recipeNotesAccepted (self) :
         self.switchToEditor()
         self.recipeNotes = self.textEditRecipeNotes.toPlainText()
-        print (self.recipeNotes)
+        logger.debug(self.recipeNotes)
         
     def recipeNotesRejected (self) :
         self.switchToEditor()
@@ -2566,8 +2566,8 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         self.tableWidgetStepsBrewday_currentRowChanged()
         
         
-        print(self.currentMash)
-        print("lock", self.brewdayLock)
+        logger.debug(self.currentMash)
+        logger.debug("lock %s", self.brewdayLock)
         
         
         
@@ -2746,7 +2746,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         self.popMashCombo()
         self.switchToEditor()
         self.comboBoxMashProfiles.setCurrentIndex(i)
-        print(self.currentMash)
+        logger.debug(self.currentMash)
         
     def saveProfile(self) : 
         self.mashProfileExport.export(self.listMash)
@@ -2925,7 +2925,8 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
             
             
     def stepAdjustBrewday_closed (self, targetRatio, infuseAmount, waterTemp,listVol, currentRow, listTemp) :
-        print('liste :', targetRatio, infuseAmount, waterTemp,listVol, currentRow, listTemp)
+        logger.debug('liste : targetRatio=%s infuseAmount=%s waterTemp=%s listVol=%s currentRow=%s listTemp=%s', 
+            targetRatio, infuseAmount, waterTemp,listVol, currentRow, listTemp)
         #on insère les nouvelles données dans la table
         self.tableWidgetStepsBrewday.setItem(currentRow,1,QtGui.QTableWidgetItem(str(infuseAmount)))
         self.tableWidgetStepsBrewday.setItem(currentRow,2,QtGui.QTableWidgetItem("%.1f" %(waterTemp)))
