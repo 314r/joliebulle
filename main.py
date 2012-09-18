@@ -108,7 +108,7 @@ def initLogging():
         },
         'handlers': {
             'console': {
-                'level':'DEBUG',
+                'level':'INFO',
                 'class':'logging.StreamHandler',
                 'stream':'ext://sys.stdout',
                 'formatter':'standard'
@@ -839,8 +839,8 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
 
         argumentsList=QtGui.QApplication.arguments()
         if len(argumentsList) > 1 :
-            print("la liste d'arguments:",argumentsList)
-            print("le chemin:",argumentsList[1])
+            logger.debug("la liste d'arguments: %s",argumentsList)
+            logger.debug("le chemin: %s",argumentsList[1])
             # for part in argumentsList :
             #     recipePath=recipePath + " " + part
             try:
@@ -1031,7 +1031,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
             
          
             if newName in newFileList :
-                print ('doublon !')
+                logger.debug('doublon !')
                 sameCount= 0 
                 while sameCount < len(newFileNameList) :
                     sameCount = sameCount+1
@@ -1043,7 +1043,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
                         break
             else :
                 newFileList.append(newName) 
-        print("new", newFileList)
+        logger.debug(newFileList)
 
         #on renomme
         # k=0
@@ -1218,7 +1218,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
     def initRep(self) :   
         home = QtCore.QDir(home_dir)
         config = QtCore.QDir(config_dir)
-        print (config)
+        logger.debug (config)
         if not config.exists() :
             home.mkpath (config_dir)
         else :
@@ -1285,7 +1285,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
 
         
     def switchToBrewday(self) :
-        print ("lock",self.brewdayLock)
+        logger.debug ("lock %s",self.brewdayLock)
         self.stackedWidget.setCurrentIndex(4)        
 
         if self.brewdayLock == 1 :
@@ -1497,7 +1497,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         self.dlgStepBrewday.setModal(True)
         self.dlgStepBrewday.show()
         self.dlgStepBrewday.setFields(self.brewdayCurrentStepTargetTemp, self.brewdayCurrentStepRatio, self.brewdayCurrentStepInfuseAmount, self.brewdayCurrentStepWaterTemp, self.grainWeight, self.stepsListVol, self.brewdayCurrentRow, self.brewdayListTemp, self.strikeTargetTemp)
-        print("envoyé !",self.brewdayCurrentStepTargetTemp,self.strikeTargetTemp )
+        logger.debug("envoyé %s !",self.brewdayCurrentStepTargetTemp,self.strikeTargetTemp )
         
     def purge (self) :
         i = (AppWindow.nbreFer + AppWindow.nbreDivers + AppWindow.nbreHops + self.nbreLevures)
@@ -1530,7 +1530,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         self.calculs_recette()
         self.MVC()
         
-        print (self.liste_fProportion)
+        logger.debug(self.liste_fProportion)
         
     def ajouterH(self) : 
         
@@ -1686,8 +1686,8 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
                 pass
             self.calculs_recette()
             self.MVC()
-            print (self.liste_fProportion)
-            print ("index : " , indexLigne)
+            logger.debug(self.liste_fProportion)
+            logger.debug ("index : %s" , indexLigne)
 
         
 
@@ -1998,7 +1998,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
                     
             if self.mashName is not None :       
                 self.currentMash={}
-                print('ouhouh !!!!!')
+                logger.debug('ouhouh !!!!!')
                 self.currentMash['name'] = self.mashName
                 self.currentMash['ph'] = self.mashPh   
                 self.currentMash['grainTemp'] = self.mashGrainTemp
@@ -2050,7 +2050,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
                         dicStep = listSteps[j-1]
                         dicStep['stepVol']= stepVol
                                             
-            print(self.currentMash)
+            logger.debug(self.currentMash)
             if self.mashName is not None :
                 self.mashProfilesBase.listMash.append(self.currentMash)
             else :
@@ -2988,6 +2988,7 @@ if __name__ == "__main__":
 
     logger = logging.getLogger(__name__)
 
+    logger.info("---------------------");
     logger.info("Jolibulle %s", VERSION_JOLIBULLE);
 
     logger.debug("Initializing UI");
