@@ -23,10 +23,12 @@
 
 import PyQt4
 import sys
+import logging
 from PyQt4 import QtGui
 from PyQt4 import QtCore
 from outilEvaporation_ui import *
 
+logger = logging.getLogger(__name__)
 
 
 class DialogEvaporation(QtGui.QDialog):
@@ -88,7 +90,7 @@ class DialogEvaporation(QtGui.QDialog):
         self.volPre = ((self.sgFinale * self.volFinal) + (self.volEvap * self.volRefroi)) / self.sgPre
 
 
-        print (self.volPre)
+        logger.debug (self.volPre)
         
         
         

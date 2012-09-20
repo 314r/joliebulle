@@ -25,6 +25,7 @@
 import codecs
 import PyQt4
 import sys
+import logging
 from PyQt4 import QtGui
 from PyQt4 import QtCore
 from base import *
@@ -35,6 +36,7 @@ from globals import *
 import xml.etree.ElementTree as ET
 from xml.dom import minidom
 
+logger = logging.getLogger(__name__)
 
 
 class DialogPref(QtGui.QDialog):
@@ -88,7 +90,7 @@ class DialogPref(QtGui.QDialog):
             settings.conf.setValue("pathWin32", self.ui.lineEditPathLib.text())
         else :
             settings.conf.setValue("pathUnix", self.ui.lineEditPathLib.text())
-            print (settings.conf.value("pathUnix"))
+            logger.debug(settings.conf.value("pathUnix"))
             
         settings.conf.setValue("BoilOffRate", self.ui.spinBoxBoilOff.value())
         settings.conf.setValue("CoolingLoss", self.ui.spinBoxCooling.value())

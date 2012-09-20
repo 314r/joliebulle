@@ -25,6 +25,7 @@
 import codecs
 import PyQt4
 import sys
+import logging
 from PyQt4 import QtGui
 from PyQt4 import QtCore
 from base import *
@@ -32,6 +33,8 @@ from globals import *
 from preferences_ui import *
 from settings import * 
 from globals import *
+
+logger = logging.getLogger(__name__)
 
 
 class CalcBrewday :
@@ -85,7 +88,7 @@ class CalcBrewday :
             self.infuseVol = 0
             self.newRatio = ratio
         else :
-            print('type non pris en charge')
+            logger.warn('type non pris en charge')
 #        print('actualvol :', actualVol)
 #        print('ratio :', ratio)
 #        print('vm',Vm)
