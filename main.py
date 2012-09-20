@@ -2219,7 +2219,10 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
 
         
         #calcul du rapport BU/GU
-        self.ratioBuGu = self.ibuTot / self.GU
+        try :
+            self.ratioBuGu = self.ibuTot / self.GU
+        except :
+            self.ratioBuGu = 0
 
         
         #calcul de la couleur
