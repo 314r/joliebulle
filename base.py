@@ -25,17 +25,21 @@
 
 import PyQt4
 import sys
+import logging
 from PyQt4 import QtGui
 from PyQt4 import QtCore
 import xml.etree.ElementTree as ET
 from globals import *
+from model.objects import Fermentable
 
+logger = logging.getLogger(__name__)
 
 
 class ImportBase : 
 
 
     def importBeerXML(self) :
+        logger.debug("Import %s", database_file)
         fichierBeerXML = database_file
         arbre = ET.parse(fichierBeerXML)
 
@@ -45,9 +49,9 @@ class ImportBase :
         levures = arbre.findall('.//YEAST')
         misc = arbre.findall('.//MISC')
  
-               
         
         #Ingredient fermentescibles
+        logger.debug("%s fermentables in database", len(fermentables))
         self.nbreFer = len(fermentables)
         self.liste_ingr = list()
         self.liste_fAmount = list()
@@ -89,8 +93,10 @@ class ImportBase :
                     self.color = float(nom.text)*1.97
                     self.liste_color.append(self.color)
                     
-
-        
+        self.listeFermentables = list()
+        for element in fermentables:
+            self.listeFermentables.append( Fermentable.parse(element) )
+        logger.debug( "Nombre de fermentables=%s, taille=%s octets", len(self.listeFermentables), sys.getsizeof(self.listeFermentables) )
         
         #Houblons
         
@@ -204,3 +210,5 @@ class ImportBase :
                 if nom.tag == 'TYPE' :
                         self.dType = nom.text
                         self.liste_dType.append(self.dType)
+
+        logger.debug("Import %s terminé", database_file)
