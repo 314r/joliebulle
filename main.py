@@ -56,6 +56,7 @@ from brewCalc import *
 from stepAdjustWindow import *
 from home import *
 from globals import *
+from ui.MainWindow import *
 
 import xml.etree.ElementTree as ET
 
@@ -101,7 +102,7 @@ def initLogging():
         'disable_existing_loggers': False,
         'formatters': {
             'standard': {
-                'format': '%(asctime)s [%(levelname)s] %(name)s: %(message)s'
+                'format': '%(asctime)s [%(levelname)s]: %(message)s'
             },
             'detailed': {
                 'format': '%(asctime)s %(module)-17s line:%(lineno)-4d %(levelname)-8s %(message)s'
@@ -109,7 +110,7 @@ def initLogging():
         },
         'handlers': {
             'console': {
-                'level':'INFO',
+                'level':'DEBUG',
                 'class':'logging.StreamHandler',
                 'stream':'ext://sys.stdout',
                 'formatter':'standard'
@@ -2978,7 +2979,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
             # self.pushButtonBrewdayMode.setEnabled(True)
             pass
         
-        
+
     def printRecipe (self) :
         printer=QtGui.QPrinter()
         dialog = QtGui.QPrintDialog(printer)
@@ -2989,6 +2990,8 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
             self.webViewBiblio.print(printer)
                 
 
+from plugins import PluginManager
+from plugins.ExtensionPoints import AppLifecycleExtensionPoint
 
 if __name__ == "__main__":
 
@@ -2996,8 +2999,8 @@ if __name__ == "__main__":
 
     logger = logging.getLogger(__name__)
 
-    logger.info("---------------------");
-    logger.info("Jolibulle %s", VERSION_JOLIBULLE);
+    for p in AppLifecycleExtensionPoint.plugins:
+        p().startup()
 
     logger.debug("Initializing UI");
     QtCore.QTextCodec.setCodecForCStrings(QtCore.QTextCodec.codecForName("utf-8"))
@@ -3013,12 +3016,14 @@ if __name__ == "__main__":
     translatorQt.load('qt_' + locale)
     app.installTranslator(translatorQt)
 
-    main_window = AppWindow()
+    #main_window = AppWindow()
+    main_window = MainWindow()
     main_window.show()
 
     logger.debug("UI initialized");
 
     app.exec_()
-    logger.info("Joliebulle terminated");
-    logger.info("---------------------");
+
+    for p in AppLifecycleExtensionPoint.plugins:
+        p().shutdown()
 
