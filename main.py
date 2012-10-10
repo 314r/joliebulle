@@ -1333,12 +1333,28 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         i = 0
         while i < AppWindow.nbreFer :
             i = i+1
+
             index = self.modele.index(i-1,1)
             value = self.modele.data(index, QtCore.Qt.DisplayRole)
             self.liste_fAmount[i-1] = float(value)
+
             index_fIngr = self.modele.index(i-1,0)
             value_fIngr = self.modele.data(index_fIngr, QtCore.Qt.DisplayRole)
             self.liste_ingr[i-1] = value_fIngr
+
+            # index_fUse = self.modele.index(i-1,6)
+            # value_fUse = self.modele.data(index_fUse, QtCore.Qt.DisplayRole)
+            # # self.liste_fUse[i-1] = value_fUse
+            # print(value_fUse)
+
+            for use in self.liste_fUse :
+                index = self.modele.index(i-1,6)
+                value = self.modele.data(index, QtCore.Qt.DisplayRole)
+                if value == 'None' or value == '' :
+                    pass
+                else : 
+                    self.liste_fUse[i-1] = str(value)
+
         h = 0
         while h < AppWindow.nbreHops :
             h = h+1
@@ -1817,7 +1833,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
                     self.color = float(nom.text)*1.97
                     self.liste_color.append(self.color)
 
-                
+           
                 if nom.tag == 'ADD_AFTER_BOIL' :
                     self.fUse = nom.text
                     if self.fUse == 'FALSE' :
@@ -2170,7 +2186,6 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
 
             #on refait la même chose pour déterminer la densité pré-ébullition en cas d'addition tardive de sucre, ce qui influence le calcul des IBUs.
             self.equivSucrePreBoil = (self.liste_fAmount[o-1]/1000)*(self.liste_fYield[o-1]/100)
-            print (self.liste_fUse)
             if self.liste_fUse[o-1] == self.trUtf8('''Après ébullition''') :
                 self.equivSucrePreBoil = 0
             self.liste_equivSucrePreBoil.append(self.equivSucrePreBoil)
