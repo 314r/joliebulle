@@ -40,7 +40,6 @@ class NavTreeViewModel(QtCore.QAbstractItemModel):
 
     def initModel(self):
         self._root = TreeNode(None, 'Root', None, 0)
-        i=0
         self.getItemsFromExtensions(self._root)
 
     def getItemsFromExtensions(self, parent):
