@@ -8,5 +8,10 @@ class AppLifecycleExtensionPoint(object,metaclass=PluginMetaclass):
         pass
 
 
+class NavTreeViewExtensionPoint(object,metaclass=PluginMetaclass):
+    def getItems(self, parent=None):
+        pass
+
+
 #Import extensions after extensions point definitions
 from plugins.extensions import *

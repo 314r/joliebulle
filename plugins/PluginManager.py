@@ -17,8 +17,5 @@ class PluginMetaclass(Singleton):
             cls.plugins = []
         else:
             cls.plugins.append(cls)
-        logger.debug("Initializing class", name)
-        logger.debug('cls=%s bases=%s dct=%s', cls, bases, dct)
-
         super(PluginMetaclass, cls).__init__(name, bases, dct)
 
