@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'MainWindow.ui'
 #
-# Created: Mon Sep 24 21:32:51 2012
+# Created: Fri Oct 12 23:17:23 2012
 #      by: PyQt4 UI code generator 4.9.4
 #
 # WARNING! All changes made in this file will be lost!
@@ -27,6 +27,11 @@ class Ui_MainWindow(object):
         self.splitter.setObjectName(_fromUtf8("splitter"))
         self.navTreeView = QtGui.QTreeView(self.splitter)
         self.navTreeView.setMaximumSize(QtCore.QSize(200, 16777215))
+        self.navTreeView.setFrameShape(QtGui.QFrame.StyledPanel)
+        self.navTreeView.setFrameShadow(QtGui.QFrame.Sunken)
+        self.navTreeView.setLineWidth(1)
+        self.navTreeView.setAlternatingRowColors(False)
+        self.navTreeView.setHeaderHidden(True)
         self.navTreeView.setObjectName(_fromUtf8("navTreeView"))
         self.mainWidget = QtGui.QWidget(self.splitter)
         self.mainWidget.setObjectName(_fromUtf8("mainWidget"))
