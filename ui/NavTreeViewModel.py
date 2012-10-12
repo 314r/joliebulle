@@ -11,6 +11,7 @@ class TreeNode:
         self.parent = parent
         self.row = row
         self.children = []
+        self.provider = None
 
     def __str__(self):
         return "TreeNode:id=" + self.id
@@ -48,6 +49,7 @@ class NavTreeViewModel(QtCore.QAbstractItemModel):
                 if not self.nodeExists(parent.children, item['id']):      #If item doesn't already exists
                     newItem = TreeNode(item['id'], item['label'], parent)  #Add it
                     newItem.row = len(parent.children)
+                    newItem.provider=p()
                     self.getItemsFromExtensions(newItem)    #recursive call
                     parent.children.append(newItem)
 
