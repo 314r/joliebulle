@@ -22,7 +22,10 @@ class NavTreeViewDefaultsExtension(NavTreeViewExtensionPoint):
     def getItems(self, parentId=None):
         if parentId is None :
             #return list of parent items from model
-            return [{item['id'], item['label']} for item in self.model] 
+            rootItems = []
+            for item in self.model:
+                rootItems.append({'id':item['id'], 'label':item['label']})
+            return rootItems
         if not parentId is None:
             #return list of subitems
             return [parent['items'] for parent in self.model if parent['id']==parentId]

@@ -5,14 +5,22 @@ from uuid import getnode
 
 class TreeNode:
     def __init__(self, id, label, parent=None, row=None):
+        self.logger = logging.getLogger(__name__)
         self.id = id
         self.label = label
         self.parent = parent
         self.row = row
         self.children = []
+        self.contributors = []
+
+    def addContributor(self, contributor):
+        if self.contributors.count(contributor) == 0:
+            self.contributors.append(contributor)
+        else:
+            self.logger.debug("item %s: Contributor %s already registered", self.id, contributor)
 
     def __str__(self):
-        return "TreeNode:category=" + self.id
+        return "TreeNode:id=" + self.id
 
 class NavTreeViewModel(QtCore.QAbstractItemModel):
 
@@ -22,33 +30,39 @@ class NavTreeViewModel(QtCore.QAbstractItemModel):
 
         from ui import NavTreeViewDefaultsExtension
         self.initModel()
-        self.logger.debug("%s root nodes registered: %s", len(self._nodes), self._nodes)
+        self.logger.debug("%s root nodes registered: %s", len(self._root.children), self._root.children)
 
-    def getNodeById(self, nodeId):
-        for node in self._nodes:
+    def getNodeById(self, nodeList, nodeId):
+        for node in nodeList:
             if node.id == nodeId:
                 return node
         return None
 
-    def nodeExists(self, nodeId):
-        if getnode(nodeId) is not None:
+    def nodeExists(self, nodeList, nodeId):
+        if self.getNodeById(nodeList, nodeId) is not None:
             return True
         return False
 
 
     def initModel(self):
-        self._nodes = []
+        self._root = TreeNode('_root_', 'Root')
         for p in NavTreeViewExtensionPoint.plugins: #For each plugin
             for item in p().getItems(None):             #For each root item declared by plugin
-                if not self.nodeExists(item['id']):      #If item doesn't already exists
+                if not self.nodeExists(self._root.children, item['id']):      #If item doesn't already exists
                     newCat = TreeNode(item['id'], item['label'])  #Add it
-                    self._nodes.append(newCat)
+                    self._root.children.append(newCat)
 
 
     def getItemsFromExtensions(self, parent):
         nbContributor = 0
         items = []
         for p in NavTreeViewExtensionPoint.plugins:
+            for item in p().getItems(parent.id):             #For each root item declared by plugin
+                if not self.nodeExists(parent.children, item['id']):      #If item doesn't already exists
+                    newItem = TreeNode(item['id'], item['label'], parent)  #Add it
+                    parent.append(newItem)
+                parent.addContributor(p)
+                
             nbContributor +=1 
             itemsList = p().getItems(parent.id)
             items.extend([TreeItem(x['id'], x['label'], parent) for x in itemsList])
@@ -70,7 +84,7 @@ class NavTreeViewModel(QtCore.QAbstractItemModel):
     def rowCount(self, parent):
         self.logger.debug("rowCount(parent=%s)", parent)
         if not parent.isValid():
-            return len(self._categories)
+            return len(self._nodes)
         else:
             parentItem = parent.internalPointer()
             return len(self.getItemsFromExtensions(parentItem))
