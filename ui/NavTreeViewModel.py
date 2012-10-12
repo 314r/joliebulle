@@ -11,13 +11,6 @@ class TreeNode:
         self.parent = parent
         self.row = row
         self.children = []
-        self.contributors = []
-
-    def addContributor(self, contributor):
-        if self.contributors.count(contributor) == 0:
-            self.contributors.append(contributor)
-        else:
-            self.logger.debug("item %s: Contributor %s already registered", self.id, contributor)
 
     def __str__(self):
         return "TreeNode:id=" + self.id
@@ -45,29 +38,18 @@ class NavTreeViewModel(QtCore.QAbstractItemModel):
 
 
     def initModel(self):
-        self._root = TreeNode('_root_', 'Root')
-        for p in NavTreeViewExtensionPoint.plugins: #For each plugin
-            for item in p().getItems(None):             #For each root item declared by plugin
-                if not self.nodeExists(self._root.children, item['id']):      #If item doesn't already exists
-                    newCat = TreeNode(item['id'], item['label'])  #Add it
-                    self._root.children.append(newCat)
-
+        self._root = TreeNode(None, 'Root', None, 0)
+        i=0
+        self.getItemsFromExtensions(self._root)
 
     def getItemsFromExtensions(self, parent):
-        nbContributor = 0
-        items = []
         for p in NavTreeViewExtensionPoint.plugins:
             for item in p().getItems(parent.id):             #For each root item declared by plugin
                 if not self.nodeExists(parent.children, item['id']):      #If item doesn't already exists
                     newItem = TreeNode(item['id'], item['label'], parent)  #Add it
-                    parent.append(newItem)
-                parent.addContributor(p)
-                
-            nbContributor +=1 
-            itemsList = p().getItems(parent.id)
-            items.extend([TreeItem(x['id'], x['label'], parent) for x in itemsList])
-            self.logger.debug("%s retreived from %s contributor(s)", len(items), nbContributor)
-        return items
+                    newItem.row = len(parent.children)
+                    self.getItemsFromExtensions(newItem)    #recursive call
+                    parent.children.append(newItem)
 
     def columnCount(self, parent=None):
         return 1
@@ -75,19 +57,19 @@ class NavTreeViewModel(QtCore.QAbstractItemModel):
     def index(self, row, column, parent):
         self.logger.debug("index(row=%s,column=%s,parent=%s", row, column, parent)
         if not parent.isValid():
-            node = self._nodes[row]
-            index = self.createIndex(row, column, node)
-            return index
-        parentItem = parent.internalPointer()
-        return self.createIndex(row, column, self.getItemsFromExtensions(parentItem)[row])
+            node = self._root.children[row]
+            return self.createIndex(row, column, node)
+        else:
+            parentItem = parent.internalPointer()
+            return self.createIndex(row, column, parentItem.children[row])
 
     def rowCount(self, parent):
         self.logger.debug("rowCount(parent=%s)", parent)
         if not parent.isValid():
-            return len(self._nodes)
+            return len(self._root.children)
         else:
             parentItem = parent.internalPointer()
-            return len(self.getItemsFromExtensions(parentItem))
+            return len(parentItem.children)
 
     def data(self, index, role):
         self.logger.debug("data(index=%s,role=%s)", index, role)
@@ -96,3 +78,13 @@ class NavTreeViewModel(QtCore.QAbstractItemModel):
         if role == QtCore.Qt.DisplayRole and index.column() == 0:
             item = index.internalPointer()
             return item.label
+    
+    def parent(self, index):
+        self.logger.debug("parent(index=%s)", index)
+        if not index.isValid():
+            return QtCore.QModelIndex()
+        node = index.internalPointer()
+        if node.parent is None:
+            return QtCore.QModelIndex()
+        else:
+            return self.createIndex(node.parent.row, 0, node.parent)

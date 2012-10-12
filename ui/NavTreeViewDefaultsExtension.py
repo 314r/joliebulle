@@ -8,16 +8,22 @@ class NavTreeViewDefaultsExtension(NavTreeViewExtensionPoint):
         self.model = [
             {'id':'recipes',
              'label':QtCore.QCoreApplication.translate(__name__, '''Recettes'''),
-             'items' : {
-               'id':'recipes.all',
-               'label':QtCore.QCoreApplication.translate(__name__, '''Toutes''')
-             }
+             'items' : [
+                {
+                 'id':'recipes.all',
+                 'label':QtCore.QCoreApplication.translate(__name__, '''Toutes''')
+               }
+               ]
             },
             {'id':'catalog',
-             'label':QtCore.QCoreApplication.translate(__name__, '''Catalogue''')},
+             'label':QtCore.QCoreApplication.translate(__name__, '''Catalogue'''),
+             'items' : []
+            },
             {'id':'tools',
-             'label':QtCore.QCoreApplication.translate(__name__, '''Outils''')},
-            ]
+             'label':QtCore.QCoreApplication.translate(__name__, '''Outils'''),
+             'items' : []
+            }
+        ]
 
     def getItems(self, parentId=None):
         if parentId is None :
@@ -26,7 +32,10 @@ class NavTreeViewDefaultsExtension(NavTreeViewExtensionPoint):
             for item in self.model:
                 rootItems.append({'id':item['id'], 'label':item['label']})
             return rootItems
-        if not parentId is None:
+        else:
             #return list of subitems
-            return [parent['items'] for parent in self.model if parent['id']==parentId]
-        return None
+            children = []
+            for item in self.model:
+                if item['id']==parentId:
+                    children.extend(item['items'])
+            return children
