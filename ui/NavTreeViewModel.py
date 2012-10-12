@@ -1,6 +1,7 @@
 import logging
 from PyQt4 import QtCore
 from plugins.ExtensionPoints import NavTreeViewExtensionPoint
+from uuid import getnode
 
 class TreeNode:
     def __init__(self, id, label, parent=None, row=None):
@@ -8,6 +9,7 @@ class TreeNode:
         self.label = label
         self.parent = parent
         self.row = row
+        self.children = []
 
     def __str__(self):
         return "TreeNode:category=" + self.id
@@ -18,26 +20,30 @@ class NavTreeViewModel(QtCore.QAbstractItemModel):
         super().__init__(parent)
         self.logger = logging.getLogger(__name__)
 
-        self._categories = []
         from ui import NavTreeViewDefaultsExtension
-        for p in NavTreeViewExtensionPoint.plugins: #For each plugin
-            for cat in p().getItems():             #For each category declared by plugin
-                if not self.categoryExists(cat['id']):      #If category doesn't already exists
-                    newCat = TreeNode(cat['id'], cat['label'])  #Add it
-                    self._categories.append(newCat)
-        self.logger.debug("%s categories registered: %s", len(self._categories), self._categories)
+        self.initModel()
+        self.logger.debug("%s root nodes registered: %s", len(self._nodes), self._nodes)
 
-    def categoryExists(self, catId):
-        for cat in self._categories:
-            if cat.id == catId:
-                return True
+    def getNodeById(self, nodeId):
+        for node in self._nodes:
+            if node.id == nodeId:
+                return node
+        return None
+
+    def nodeExists(self, nodeId):
+        if getnode(nodeId) is not None:
+            return True
         return False
 
-    def getTreeCatoryById(self, id):
-        for cat in self._categories:
-            if cat.id == id:
-                return cat
-        return None
+
+    def initModel(self):
+        self._nodes = []
+        for p in NavTreeViewExtensionPoint.plugins: #For each plugin
+            for item in p().getItems(None):             #For each root item declared by plugin
+                if not self.nodeExists(item['id']):      #If item doesn't already exists
+                    newCat = TreeNode(item['id'], item['label'])  #Add it
+                    self._nodes.append(newCat)
+
 
     def getItemsFromExtensions(self, parent):
         nbContributor = 0
@@ -55,7 +61,9 @@ class NavTreeViewModel(QtCore.QAbstractItemModel):
     def index(self, row, column, parent):
         self.logger.debug("index(row=%s,column=%s,parent=%s", row, column, parent)
         if not parent.isValid():
-            return self.createIndex(row, column, list(self._categories)[row])
+            node = self._nodes[row]
+            index = self.createIndex(row, column, node)
+            return index
         parentItem = parent.internalPointer()
         return self.createIndex(row, column, self.getItemsFromExtensions(parentItem)[row])
 
