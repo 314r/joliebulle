@@ -1,5 +1,6 @@
 from plugins.ExtensionPoints import NavTreeViewExtensionPoint
 from PyQt4 import QtCore
+from ui.RecipeView import RecipeView
 
 __author__ = 'nico'
 
@@ -39,3 +40,7 @@ class NavTreeViewDefaultsExtension(NavTreeViewExtensionPoint):
                 if item['id']==parentId:
                     children.extend(item['items'])
             return children
+
+    def itemSelected(self, window, item):
+        view = RecipeView(window.mainWidget)
+        view.show()

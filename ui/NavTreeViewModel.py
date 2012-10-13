@@ -27,7 +27,7 @@ class NavTreeViewModel(QtCore.QAbstractItemModel):
         return 1
 
     def index(self, row, column, parent):
-        self.logger.debug("index(row=%s,column=%s,parent=%s", row, column, parent)
+        #self.logger.debug("index(row=%s,column=%s,parent=%s", row, column, parent)
         if not parent.isValid():
             node = self._root.children[row]
             return self.createIndex(row, column, node)
@@ -36,7 +36,7 @@ class NavTreeViewModel(QtCore.QAbstractItemModel):
             return self.createIndex(row, column, parentItem.children[row])
 
     def rowCount(self, parent):
-        self.logger.debug("rowCount(parent=%s)", parent)
+        #self.logger.debug("rowCount(parent=%s)", parent)
         if not parent.isValid():
             return len(self._root.children)
         else:
@@ -44,7 +44,7 @@ class NavTreeViewModel(QtCore.QAbstractItemModel):
             return len(parentItem.children)
 
     def data(self, index, role):
-        self.logger.debug("data(index=%s,role=%s)", index, role)
+        #self.logger.debug("data(index=%s,role=%s)", index, role)
         if not index.isValid():
             return None
         if role == QtCore.Qt.DisplayRole and index.column() == 0:
@@ -52,7 +52,7 @@ class NavTreeViewModel(QtCore.QAbstractItemModel):
             return item.label
     
     def parent(self, index):
-        self.logger.debug("parent(index=%s)", index)
+        #self.logger.debug("parent(index=%s)", index)
         if not index.isValid():
             return QtCore.QModelIndex()
         node = index.internalPointer()
