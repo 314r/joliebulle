@@ -1,7 +1,5 @@
 import logging
 from PyQt4 import QtCore
-from plugins.ExtensionPoints import NavTreeViewExtensionPoint
-from uuid import getnode
 
 class TreeNode:
     def __init__(self, id, label, parent=None, row=None):
@@ -18,39 +16,12 @@ class TreeNode:
 
 class NavTreeViewModel(QtCore.QAbstractItemModel):
 
-    def __init__(self, parent=None):
+    def __init__(self, parent=None, root=None):
         super().__init__(parent)
         self.logger = logging.getLogger(__name__)
 
-        from ui import NavTreeViewDefaultsExtension
-        self.initModel()
+        self._root = root
         self.logger.debug("%s root nodes registered: %s", len(self._root.children), self._root.children)
-
-    def getNodeById(self, nodeList, nodeId):
-        for node in nodeList:
-            if node.id == nodeId:
-                return node
-        return None
-
-    def nodeExists(self, nodeList, nodeId):
-        if self.getNodeById(nodeList, nodeId) is not None:
-            return True
-        return False
-
-
-    def initModel(self):
-        self._root = TreeNode(None, 'Root', None, 0)
-        self.getItemsFromExtensions(self._root)
-
-    def getItemsFromExtensions(self, parent):
-        for p in NavTreeViewExtensionPoint.plugins:
-            for item in p().getItems(parent.id):             #For each root item declared by plugin
-                if not self.nodeExists(parent.children, item['id']):      #If item doesn't already exists
-                    newItem = TreeNode(item['id'], item['label'], parent)  #Add it
-                    newItem.row = len(parent.children)
-                    newItem.provider=p()
-                    self.getItemsFromExtensions(newItem)    #recursive call
-                    parent.children.append(newItem)
 
     def columnCount(self, parent=None):
         return 1
