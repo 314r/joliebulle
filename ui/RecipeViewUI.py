@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'RecipeView.ui'
 #
-# Created: Sat Oct 13 22:38:50 2012
+# Created: Sun Oct 14 22:19:05 2012
 #      by: PyQt4 UI code generator 4.9.4
 #
 # WARNING! All changes made in this file will be lost!
@@ -19,15 +19,18 @@ class Ui_RecipeView(object):
         RecipeView.setObjectName(_fromUtf8("RecipeView"))
         RecipeView.resize(741, 496)
         self.horizontalLayout = QtGui.QHBoxLayout(RecipeView)
+        self.horizontalLayout.setSizeConstraint(QtGui.QLayout.SetDefaultConstraint)
+        self.horizontalLayout.setMargin(0)
         self.horizontalLayout.setObjectName(_fromUtf8("horizontalLayout"))
         self.splitter = QtGui.QSplitter(RecipeView)
+        self.splitter.setLineWidth(1)
         self.splitter.setOrientation(QtCore.Qt.Vertical)
         self.splitter.setObjectName(_fromUtf8("splitter"))
+        self.listView = QtGui.QListView(self.splitter)
+        self.listView.setObjectName(_fromUtf8("listView"))
         self.webView = QtWebKit.QWebView(self.splitter)
         self.webView.setUrl(QtCore.QUrl(_fromUtf8("about:blank")))
         self.webView.setObjectName(_fromUtf8("webView"))
-        self.listView = QtGui.QListView(self.splitter)
-        self.listView.setObjectName(_fromUtf8("listView"))
         self.horizontalLayout.addWidget(self.splitter)
 
         self.retranslateUi(RecipeView)
