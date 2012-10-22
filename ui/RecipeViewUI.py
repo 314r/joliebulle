@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'RecipeView.ui'
 #
-# Created: Sun Oct 14 22:19:05 2012
+# Created: Mon Oct 22 22:26:59 2012
 #      by: PyQt4 UI code generator 4.9.4
 #
 # WARNING! All changes made in this file will be lost!
@@ -17,21 +17,36 @@ except AttributeError:
 class Ui_RecipeView(object):
     def setupUi(self, RecipeView):
         RecipeView.setObjectName(_fromUtf8("RecipeView"))
-        RecipeView.resize(741, 496)
-        self.horizontalLayout = QtGui.QHBoxLayout(RecipeView)
-        self.horizontalLayout.setSizeConstraint(QtGui.QLayout.SetDefaultConstraint)
-        self.horizontalLayout.setMargin(0)
-        self.horizontalLayout.setObjectName(_fromUtf8("horizontalLayout"))
+        RecipeView.resize(807, 704)
+        sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Expanding)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(RecipeView.sizePolicy().hasHeightForWidth())
+        RecipeView.setSizePolicy(sizePolicy)
+        self.verticalLayout = QtGui.QVBoxLayout(RecipeView)
+        self.verticalLayout.setMargin(0)
+        self.verticalLayout.setObjectName(_fromUtf8("verticalLayout"))
         self.splitter = QtGui.QSplitter(RecipeView)
+        sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Expanding)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.splitter.sizePolicy().hasHeightForWidth())
+        self.splitter.setSizePolicy(sizePolicy)
         self.splitter.setLineWidth(1)
         self.splitter.setOrientation(QtCore.Qt.Vertical)
         self.splitter.setObjectName(_fromUtf8("splitter"))
         self.listView = QtGui.QListView(self.splitter)
+        self.listView.setResizeMode(QtGui.QListView.Fixed)
         self.listView.setObjectName(_fromUtf8("listView"))
         self.webView = QtWebKit.QWebView(self.splitter)
+        sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Expanding)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.webView.sizePolicy().hasHeightForWidth())
+        self.webView.setSizePolicy(sizePolicy)
         self.webView.setUrl(QtCore.QUrl(_fromUtf8("about:blank")))
         self.webView.setObjectName(_fromUtf8("webView"))
-        self.horizontalLayout.addWidget(self.splitter)
+        self.verticalLayout.addWidget(self.splitter)
 
         self.retranslateUi(RecipeView)
         QtCore.QMetaObject.connectSlotsByName(RecipeView)

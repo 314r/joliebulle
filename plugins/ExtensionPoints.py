@@ -7,7 +7,6 @@ class AppLifecycleExtensionPoint(object,metaclass=PluginMetaclass):
     def shutdown(self):
         pass
 
-
 class NavTreeViewExtensionPoint(object,metaclass=PluginMetaclass):
     def getItems(self, parent=None):
         pass

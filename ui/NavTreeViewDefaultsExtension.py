@@ -42,6 +42,7 @@ class NavTreeViewDefaultsExtension(NavTreeViewExtensionPoint):
             return children
 
     def itemSelected(self, window, item):
-        view = RecipeView(window.mainWidget)
-        view.resize(window.mainWidget.size())
-        view.show()
+        view = RecipeView()
+        window.mainWidget.layout().addWidget(view)
+        #view.resize(window.mainWidget.size())
+        #view.show()
