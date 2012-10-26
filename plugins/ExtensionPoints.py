@@ -8,7 +8,7 @@ class AppLifecycleExtensionPoint(object,metaclass=PluginMetaclass):
         pass
 
 class NavTreeViewExtensionPoint(object,metaclass=PluginMetaclass):
-    def getItems(self, parent=None):
+    def get_items(self, parent=None):
         pass
     
     def itemSelected(self, window, item):

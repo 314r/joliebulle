@@ -26,7 +26,7 @@ class NavTreeViewDefaultsExtension(NavTreeViewExtensionPoint):
             }
         ]
 
-    def getItems(self, parentId=None):
+    def get_items(self, parentId=None):
         if parentId is None :
             #return list of parent items from model
             rootItems = []

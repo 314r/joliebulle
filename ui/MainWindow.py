@@ -26,27 +26,27 @@ class MainWindow(QtGui.QMainWindow, Ui_MainWindow):
         
     def initExtensions(self):
         self._root = TreeNode(None, 'Root', None, 0)
-        self.getItemsFromExtensions(self._root)
+        self.get_items_from_extensions(self._root)
 
-    def getItemsFromExtensions(self, parent):
+    def get_items_from_extensions(self, parent):
         from ui import NavTreeViewDefaultsExtension
         for p in NavTreeViewExtensionPoint.plugins:
-            for item in p().getItems(parent.id):             #For each root item declared by plugin
+            for item in p().get_items(parent.id):             #For each root item declared by plugin
                 if not self.nodeExists(parent.children, item['id']):      #If item doesn't already exists
                     newItem = TreeNode(item['id'], item['label'], parent)  #Add it
                     newItem.row = len(parent.children)
                     newItem.provider=p()
-                    self.getItemsFromExtensions(newItem)    #recursive call
+                    self.get_items_from_extensions(newItem)    #recursive call
                     parent.children.append(newItem)
 
-    def getNodeById(self, nodeList, nodeId):
+    def get_node_by_id(self, nodeList, nodeId):
         for node in nodeList:
             if node.id == nodeId:
                 return node
         return None
 
     def nodeExists(self, nodeList, nodeId):
-        if self.getNodeById(nodeList, nodeId) is not None:
+        if self.get_node_by_id(nodeList, nodeId) is not None:
             return True
         return False
 
