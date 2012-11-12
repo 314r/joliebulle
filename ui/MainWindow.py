@@ -2,7 +2,7 @@ __author__ = 'nico'
 
 import logging
 from ui.NavTreeViewModel import *
-from PyQt4 import QtGui, QtCore
+from PyQt4 import QtGui
 from ui.MainWindowUI import Ui_MainWindow
 from plugins.ExtensionPoints import NavTreeViewExtensionPoint
 
