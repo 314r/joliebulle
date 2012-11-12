@@ -25,6 +25,7 @@ class NavTreeViewDefaultsExtension(NavTreeViewExtensionPoint):
              'items' : []
             }
         ]
+        self.recipe_view = RecipeView()
 
     def get_items(self, parentId=None):
         if parentId is None :
@@ -41,8 +42,7 @@ class NavTreeViewDefaultsExtension(NavTreeViewExtensionPoint):
                     children.extend(item['items'])
             return children
 
-    def itemSelected(self, window, item):
-        view = RecipeView()
-        window.mainWidget.layout().addWidget(view)
-        #view.resize(window.mainWidget.size())
-        #view.show()
+    def get_view(self, window, item):
+        if item == 'reciped':
+            return self.recipe_view
+        return None

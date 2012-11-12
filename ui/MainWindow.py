@@ -15,14 +15,22 @@ class MainWindow(QtGui.QMainWindow, Ui_MainWindow):
         self._root = None
         self.initExtensions()
         self.navTreeView.setModel(NavTreeViewModel(None, self._root))
-        self.navTreeView.clicked.connect(self.itemClicked)
+        self.navTreeView.clicked.connect(self.item_clicked)
+        
+        self.current_view = None
         
         #self.initModel()
-    def itemClicked(self, index):
+    def item_clicked(self, index):
         if index.isValid:
             item = index.internalPointer()
             self.logger.debug("Item id=%s clicked", item.id)
-            item.provider.itemSelected(self, item)
+
+            view = item.provider.get_view(self, item)
+            if view is not None:
+                if self.current_view is not None:
+                    self.mainWidget.layout().removeWidget(self.current_view)
+                self.mainWidget.layout().addWidget(view)
+                self.current_view = view
         
     def initExtensions(self):
         self._root = TreeNode(None, 'Root', None, 0)
