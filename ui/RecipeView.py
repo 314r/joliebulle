@@ -10,3 +10,5 @@ class RecipeView(QtGui.QWidget, Ui_RecipeView):
     def __init__(self, parent=None, flags=0):
         super(RecipeView, self).__init__(parent)
         self.setupUi(self)
+        
+        self.recipeListView.

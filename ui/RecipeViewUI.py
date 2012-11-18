@@ -2,8 +2,8 @@
 
 # Form implementation generated from reading ui file 'RecipeView.ui'
 #
-# Created: Mon Oct 22 22:26:59 2012
-#      by: PyQt4 UI code generator 4.9.4
+# Created: Mon Nov 12 22:18:12 2012
+#      by: PyQt4 UI code generator 4.9.5
 #
 # WARNING! All changes made in this file will be lost!
 
@@ -35,9 +35,10 @@ class Ui_RecipeView(object):
         self.splitter.setLineWidth(1)
         self.splitter.setOrientation(QtCore.Qt.Vertical)
         self.splitter.setObjectName(_fromUtf8("splitter"))
-        self.listView = QtGui.QListView(self.splitter)
-        self.listView.setResizeMode(QtGui.QListView.Fixed)
-        self.listView.setObjectName(_fromUtf8("listView"))
+        self.recipeListView = QtGui.QListView(self.splitter)
+        self.recipeListView.setResizeMode(QtGui.QListView.Fixed)
+        self.recipeListView.setModelColumn(0)
+        self.recipeListView.setObjectName(_fromUtf8("recipeListView"))
         self.webView = QtWebKit.QWebView(self.splitter)
         sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Expanding)
         sizePolicy.setHorizontalStretch(0)

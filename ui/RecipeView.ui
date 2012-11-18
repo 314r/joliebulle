@@ -37,9 +37,12 @@
      <property name="orientation">
       <enum>Qt::Vertical</enum>
      </property>
-     <widget class="QListView" name="listView">
+     <widget class="QListView" name="recipeListView">
       <property name="resizeMode">
        <enum>QListView::Fixed</enum>
+      </property>
+      <property name="modelColumn">
+       <number>0</number>
       </property>
      </widget>
      <widget class="QWebView" name="webView">
