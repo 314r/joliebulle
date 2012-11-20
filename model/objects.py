@@ -31,6 +31,7 @@ class Fermentable:
 		self.fRecommendMash = ''
 		self.fColor = 0.0
 
+	@staticmethod
 	def parse(element):
 		f = Fermentable()
 		for balise in element:
@@ -58,3 +59,27 @@ class Hop:
 		self.hForm = aForm
 		self.hTime = aTime
 		self.hAlpha = aAlpha
+
+class Recipe:
+	"""A class for storing recipes attributes"""
+	def __init__(self):
+		self.recipeName = ''
+		self.brewer = ''
+		self.type = ''
+		self.volume = ''
+	
+	@staticmethod
+	def parse(tree):
+		recipe = Recipe()
+		presentation=tree.find('.//RECIPE')
+		for element in presentation :
+			if 'NAME' == element.tag : 
+				recipe.recipeName = element.text
+			if 'BREWER' == element.tag :
+				recipe.brewer = element.text
+			if 'TYPE' == element.tag:
+				recipe.type = element.text
+			if "BATCH_SIZE" == element.tag :
+				recipe.volume = element.text
+			
+		return recipe
