@@ -43,6 +43,6 @@ class NavTreeViewDefaultsExtension(NavTreeViewExtensionPoint):
             return children
 
     def get_view(self, window, item):
-        if item == 'recipes':
+        if 'recipes' == item.id:
             return self.recipe_view
         return None
