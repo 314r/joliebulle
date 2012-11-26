@@ -56,9 +56,11 @@ from brewCalc import *
 from stepAdjustWindow import *
 from home import *
 from globals import *
-from ui.MainWindow import *
+#from ui.MainWindow import *
+from reader import *
 
 import xml.etree.ElementTree as ET
+from model.objects import Recipe
 
 # class BiblioFileSystem (QtGui.QFileSystemModel) :
 #     def __init__(self, parent=None):
@@ -1704,6 +1706,8 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
 
         arbre = ET.parse(fichierBeerXML)
 
+        recipe = Recipe.parse(arbre)
+
         presentation=arbre.find('.//RECIPE')
         style=arbre.find('.//STYLE')
         fermentables=arbre.findall('.//FERMENTABLE')
@@ -3016,8 +3020,8 @@ if __name__ == "__main__":
     translatorQt.load('qt_' + locale)
     app.installTranslator(translatorQt)
 
-    #main_window = AppWindow()
-    main_window = MainWindow()
+    main_window = AppWindow()
+    #main_window = MainWindow()
     main_window.show()
 
     logger.debug("UI initialized");
