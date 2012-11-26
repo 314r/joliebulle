@@ -21,65 +21,80 @@
 #Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 class Fermentable:
-	""""A class for storing Fermentable attributes"""
-	
-	def __init__(self):
-		self.fName = ''
-		self.fAmount = 0.0
-		self.fType = ''
-		self.fYield = 0.0
-		self.fRecommendMash = ''
-		self.fColor = 0.0
+    """"A class for storing Fermentable attributes"""
 
-	@staticmethod
-	def parse(element):
-		f = Fermentable()
-		for balise in element:
-			if balise.tag == 'NAME':
-				f.fName = balise.text
-			elif balise.tag == 'AMOUNT':
-				f.fAmount = 1000*(float(balise.text))
-			elif balise.tag == 'TYPE':
-				f.fType = balise.text
-			elif balise.tag == 'YIELD':
-				f.fYield = float(balise.text)
-			elif balise.tag == 'RECOMMEND_MASH':
-				f.fRecommendMash = balise.text
-			elif balise.tag == 'COLOR':
-				#ATTENTION ! le format BeerXML utilise des unités SRM ! 
-				#srm*1.97 =ebc
-				f.fColor = float(balise.text)*1.97
-		return f
+    def __init__(self):
+        self.fName = ''
+        self.fAmount = 0.0
+        self.fType = ''
+        self.fYield = 0.0
+        self.fRecommendMash = ''
+        self.fColor = 0.0
+
+    @staticmethod
+    def parse(element):
+        f = Fermentable()
+        for balise in element:
+            if balise.tag == 'NAME':
+                f.fName = balise.text
+            elif balise.tag == 'AMOUNT':
+                f.fAmount = 1000*(float(balise.text))
+            elif balise.tag == 'TYPE':
+                f.fType = balise.text
+            elif balise.tag == 'YIELD':
+                f.fYield = float(balise.text)
+            elif balise.tag == 'RECOMMEND_MASH':
+                f.fRecommendMash = balise.text
+            elif balise.tag == 'COLOR':
+                #ATTENTION ! le format BeerXML utilise des unités SRM ! 
+                #srm*1.97 =ebc
+                f.fColor = float(balise.text)*1.97
+        return f
 
 
 class Hop:
-	""""A class for storing Hops attributes"""
-	def __init__(self, aAmount, aForm, aTime, aAlpha):
-		self.hAmount = aAmount
-		self.hForm = aForm
-		self.hTime = aTime
-		self.hAlpha = aAlpha
+    """"A class for storing Hops attributes"""
+    def __init__(self, aAmount, aForm, aTime, aAlpha):
+        self.hAmount = aAmount
+        self.hForm = aForm
+        self.hTime = aTime
+        self.hAlpha = aAlpha
 
 class Recipe:
-	"""A class for storing recipes attributes"""
-	def __init__(self):
-		self.recipeName = ''
-		self.brewer = ''
-		self.type = ''
-		self.volume = ''
-	
-	@staticmethod
-	def parse(tree):
-		recipe = Recipe()
-		presentation=tree.find('.//RECIPE')
-		for element in presentation :
-			if 'NAME' == element.tag : 
-				recipe.recipeName = element.text
-			if 'BREWER' == element.tag :
-				recipe.brewer = element.text
-			if 'TYPE' == element.tag:
-				recipe.type = element.text
-			if "BATCH_SIZE" == element.tag :
-				recipe.volume = element.text
-			
-		return recipe
+    """A class for storing recipes attributes"""
+    def __init__(self):
+        self.recipeName = ""
+        self.brewer = ""
+        self.type = ""
+        self.volume = ""
+        self.rendement = 0.0
+        self.boil = ""
+        self.recipeNotes = ""
+        self.styleRecette = ""
+
+    @staticmethod
+    def parse(tree):
+        recipe = Recipe()
+        presentation=tree.find('.//RECIPE')
+        for element in presentation :
+            if 'NAME' == element.tag : 
+                recipe.recipeName = element.text
+            if 'BREWER' == element.tag :
+                recipe.brewer = element.text
+            if 'TYPE' == element.tag:
+                recipe.type = element.text
+            if "BATCH_SIZE" == element.tag :
+                recipe.volume = element.text
+            if "EFFICIENCY" == element.tag :
+                recipe.rendement= float(element.text)
+            if "BOIL_TIME" == element.tag :
+                recipe.boil = element.text
+            if "NOTES" == element.tag :
+                recipe.recipeNotes = element.text
+        
+        style=tree.find('.//STYLE')
+        for element in style :
+            if "NAME" == element.tag :
+                recipe.styleRecette = element.text
+
+        return recipe
