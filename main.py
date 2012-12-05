@@ -975,8 +975,9 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         exp.exportHtml(self.nomRecette,self.styleRecette, self.volume, self.boil, AppWindow.nbreFer, self.liste_ingr, self.liste_fAmount, self.liste_fUse, AppWindow.nbreHops, self.liste_houblons, self.liste_hAlpha, self.liste_hForm, self.liste_hAmount, self.liste_hTime,self.liste_hUse, AppWindow.nbreDivers, self.liste_divers, self.liste_dType, self.liste_dAmount, self.liste_dTime, self.liste_dUse, self.nbreLevures, self.liste_levuresDetail,self.rendement, self.OG, self.FG, self.ratioBuGu, self.EBC, self.ibuTot ,self.ABV, self.recipeNotes)
         exp.generateHtml()
         self.webViewBiblio.setHtml(exp.generatedHtml, )
+        # self.modele.blockSignals(True)
         self.MVC()
-
+        # self.modele.blockSignals(False)
         self.HtmlRecipe = exp.generatedHtml
 
     def setHomePage(self) :
@@ -1083,7 +1084,9 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         
         self.importBeerXML()
         self.calculs_recette()
+        # self.modele.blockSignals(True)
         self.MVC()
+        # self.modele.blockSignals(False)
         self.stackedWidget.setCurrentIndex(0)
         self.actionVueEditeurToolBar.setChecked(True)
         self.actionVueBibliothequeToolBar.setChecked(False) 
@@ -1333,77 +1336,86 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         i = 0
         while i < AppWindow.nbreFer :
             i = i+1
-
-            index = self.modele.index(i-1,1)
-            value = self.modele.data(index, QtCore.Qt.DisplayRole)
-            self.liste_fAmount[i-1] = float(value)
-
-            index_fIngr = self.modele.index(i-1,0)
-            value_fIngr = self.modele.data(index_fIngr, QtCore.Qt.DisplayRole)
-            self.liste_ingr[i-1] = value_fIngr
-
-            # index_fUse = self.modele.index(i-1,6)
-            # value_fUse = self.modele.data(index_fUse, QtCore.Qt.DisplayRole)
-            # # self.liste_fUse[i-1] = value_fUse
-            # print(value_fUse)
-
-            for use in self.liste_fUse :
-                index = self.modele.index(i-1,6)
+            try :
+                index = self.modele.index(i-1,1)
                 value = self.modele.data(index, QtCore.Qt.DisplayRole)
-                if value == 'None' or value == '' :
-                    pass
-                else : 
-                    self.liste_fUse[i-1] = str(value)
+                self.liste_fAmount[i-1] = float(value)
+
+                index_fIngr = self.modele.index(i-1,0)
+                value_fIngr = self.modele.data(index_fIngr, QtCore.Qt.DisplayRole)
+                self.liste_ingr[i-1] = value_fIngr
+
+                # index_fUse = self.modele.index(i-1,6)
+                # value_fUse = self.modele.data(index_fUse, QtCore.Qt.DisplayRole)
+                # # self.liste_fUse[i-1] = value_fUse
+                # print(value_fUse)
+
+                for use in self.liste_fUse :
+                    index = self.modele.index(i-1,6)
+                    value = self.modele.data(index, QtCore.Qt.DisplayRole)
+                    if value == 'None' or value == '' :
+                        pass
+                    else : 
+                        self.liste_fUse[i-1] = str(value)
+            except :
+                pass
 
         h = 0
         while h < AppWindow.nbreHops :
             h = h+1
-            for index in self.liste_hAmount :
-                index = self.modele.index(i+h-1,1)
-                value = self.modele.data(index, QtCore.Qt.DisplayRole)
-                self.liste_hAmount[h-1] = float(value)
-            for index in self.liste_hTime :
-                index = self.modele.index(i+h-1,2)
-                value = self.modele.data(index, QtCore.Qt.DisplayRole)  
-                self.liste_hTime[h-1] = float(value)
-            for index in self.liste_hAlpha :
-                index = self.modele.index(i+h-1,3)
-                value = self.modele.data(index, QtCore.Qt.DisplayRole)  
-                self.liste_hAlpha[h-1] = float(value)  
-            for index in self.liste_hForm :
-                index = self.modele.index(i+h-1,4)
-                value = str(self.modele.data(index, QtCore.Qt.DisplayRole))
-                if value == 'None' or value == '' :
-                    pass
-                else :
-                    self.liste_hForm[h-1] = str(value)
-            for index in self.liste_hUse :
-                index = self.modele.index(i+h-1,6)
-                value = str(self.modele.data(index, QtCore.Qt.DisplayRole))
-                if value == 'None' or value == '' :
-                    pass
-                else :
-                    self.liste_hUse[h-1] = str(value)
+            try :
+                for index in self.liste_hAmount :
+                    index = self.modele.index(i+h-1,1)
+                    value = self.modele.data(index, QtCore.Qt.DisplayRole)
+                    self.liste_hAmount[h-1] = float(value)
+                for index in self.liste_hTime :
+                    index = self.modele.index(i+h-1,2)
+                    value = self.modele.data(index, QtCore.Qt.DisplayRole)  
+                    self.liste_hTime[h-1] = float(value)
+                for index in self.liste_hAlpha :
+                    index = self.modele.index(i+h-1,3)
+                    value = self.modele.data(index, QtCore.Qt.DisplayRole)  
+                    self.liste_hAlpha[h-1] = float(value)  
+                for index in self.liste_hForm :
+                    index = self.modele.index(i+h-1,4)
+                    value = str(self.modele.data(index, QtCore.Qt.DisplayRole))
+                    if value == 'None' or value == '' :
+                        pass
+                    else :
+                        self.liste_hForm[h-1] = str(value)
+                for index in self.liste_hUse :
+                    index = self.modele.index(i+h-1,6)
+                    value = str(self.modele.data(index, QtCore.Qt.DisplayRole))
+                    if value == 'None' or value == '' :
+                        pass
+                    else :
+                        self.liste_hUse[h-1] = str(value)
+            except :
+                pass
         m = 0 
         while m < AppWindow.nbreDivers : 
             m = m+1
-            for index in self.liste_dAmount :
-                index = self.modele.index(i+h+m-1,1)
-                value = self.modele.data(index, QtCore.Qt.DisplayRole)
-                self.liste_dAmount[m-1] = float(value)
-                
-            for index in self.liste_dTime :
-                index = self.modele.index(i+h+m-1,2)
-                value = self.modele.data(index, QtCore.Qt.DisplayRole)  
-                self.liste_dTime[m-1] = float(value)
-                
-            for index in self.liste_dUse :
-                index = self.modele.index(i+h+m-1,6)
-                value = str(self.modele.data(index, QtCore.Qt.DisplayRole))
-                if value == 'None' or value == '' :
-                    pass
-                else :
-                    self.liste_dUse[m-1] = str(value)            
+            try:
+                for index in self.liste_dAmount :
+                    index = self.modele.index(i+h+m-1,1)
+                    value = self.modele.data(index, QtCore.Qt.DisplayRole)
+                    self.liste_dAmount[m-1] = float(value)
+                    
+                for index in self.liste_dTime :
+                    index = self.modele.index(i+h+m-1,2)
+                    value = self.modele.data(index, QtCore.Qt.DisplayRole)  
+                    self.liste_dTime[m-1] = float(value)
+                    
+                for index in self.liste_dUse :
+                    index = self.modele.index(i+h+m-1,6)
+                    value = str(self.modele.data(index, QtCore.Qt.DisplayRole))
+                    if value == 'None' or value == '' :
+                        pass
+                    else :
+                        self.liste_dUse[m-1] = str(value)  
+            except :
+                pass
+
         self.calculs_recette()  
            
     def MVC(self) :      
@@ -2365,11 +2377,17 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
                     amount = QtGui.QStandardItem("%.0f" %(self.liste_fAmount[i-1]))
                     self.modele.setItem(i-1,1,amount)
             self.rendement = self.doubleSpinBoxRendemt.value()
-            self.calculs_recette()      
+            try :
+                self.calculs_recette() 
+            except :
+                pass     
                     
         else :
             self.rendement = self.doubleSpinBoxRendemt.value()
-            self.calculs_recette()
+            try :
+                self.calculs_recette()
+            except :
+                pass
             
     def volume_changed(self) :
     
@@ -2400,12 +2418,17 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
                 self.volume = self.doubleSpinBox_2Volume.value()
                 amount = QtGui.QStandardItem("%.0f" %(self.liste_dAmount[m-1]) )
                 self.modele.setItem(i+h+m-1, 1, amount)
-            
-            self.calculs_recette()
+            try :
+                self.calculs_recette()
+            except:
+                pass
 
         else :
             self.volume = self.doubleSpinBox_2Volume.value()
-            self.calculs_recette()
+            try :
+                self.calculs_recette()
+            except :
+                pass
             
     def typeChanged (self) :
         if self.comboBoxType.currentIndex() == 0 :
