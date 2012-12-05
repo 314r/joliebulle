@@ -972,7 +972,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         self.importBeerXML()
         self.calculs_recette()
         exp = ExportHTML()
-        exp.exportHtml(self.nomRecette,self.styleRecette, self.volume, self.boil, AppWindow.nbreFer, self.liste_ingr, self.liste_fAmount, AppWindow.nbreHops, self.liste_houblons, self.liste_hAlpha, self.liste_hForm, self.liste_hAmount, self.liste_hTime,self.liste_hUse, AppWindow.nbreDivers, self.liste_divers, self.liste_dType, self.liste_dAmount, self.liste_dTime, self.liste_dUse, self.nbreLevures, self.liste_levuresDetail,self.rendement, self.OG, self.FG, self.ratioBuGu, self.EBC, self.ibuTot ,self.ABV, self.recipeNotes)
+        exp.exportHtml(self.nomRecette,self.styleRecette, self.volume, self.boil, AppWindow.nbreFer, self.liste_ingr, self.liste_fAmount, self.liste_fUse, AppWindow.nbreHops, self.liste_houblons, self.liste_hAlpha, self.liste_hForm, self.liste_hAmount, self.liste_hTime,self.liste_hUse, AppWindow.nbreDivers, self.liste_divers, self.liste_dType, self.liste_dAmount, self.liste_dTime, self.liste_dUse, self.nbreLevures, self.liste_levuresDetail,self.rendement, self.OG, self.FG, self.ratioBuGu, self.EBC, self.ibuTot ,self.ABV, self.recipeNotes)
         exp.generateHtml()
         self.webViewBiblio.setHtml(exp.generatedHtml, )
         self.MVC()
@@ -1544,10 +1544,13 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         self.liste_fYield.append(self.base.liste_fYield[i])
         self.liste_fType.append(self.base.liste_fType[i])
         self.liste_color.append(self.base.liste_color[i])
-        self.liste_fMashed.append(self.base.liste_fMashed[i])       
+        self.liste_fMashed.append(self.base.liste_fMashed[i])
+        self.liste_fUse.append('''Brassage''')      
         AppWindow.nbreFer = f + 1
         self.calculs_recette()
+        self.modele.blockSignals(True)
         self.MVC()
+        self.modele.blockSignals(False)
         
         logger.debug(self.liste_fProportion)
         
@@ -1643,6 +1646,8 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
     def enlever(self) :
         selection = self.tableViewF.selectionModel()
         indexLigne = selection.currentIndex().row()
+        index = self.modele.index(indexLigne,0)
+        self.tableViewF.setCurrentIndex(index)
         f = AppWindow.nbreFer
         h = AppWindow.nbreHops
         l = self.nbreLevures
@@ -1659,6 +1664,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
                 del self.liste_fYield[indexLigne]
                 del self.liste_fMashed[indexLigne]
                 del self.liste_color[indexLigne]
+                del self.liste_fUse[indexLigne]
                 self.modele.removeRow(indexLigne)
                 AppWindow.nbreFer = f - 1
                 self.reverseMVC()
@@ -1705,14 +1711,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
                 pass
             self.calculs_recette()
             self.MVC()
-            logger.debug(self.liste_fProportion)
-            logger.debug ("index : %s" , indexLigne)
 
-        
-
-
-    
-    
     def importBeerXML(self) :
         fichierBeerXML = self.s
 
@@ -2433,12 +2432,12 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
                             )
                 self.s=''
             else :
-                exp.exportXML(self.nomRecette, self.styleRecette, self.typeRecette, self.brewer, self.volume, self.boil, self.rendement,self.OG, self.FG, AppWindow.nbreHops, self.liste_houblons, self.liste_hAmount, self.liste_hForm, self.liste_hTime, self.liste_hAlpha,self.liste_hUse, AppWindow.nbreFer, self.fNom, self.fAmount ,self.fType, self.fYield, self.fMashed, self.color, self.liste_ingr, self.liste_fAmount, self.liste_fType, self.liste_fYield, self.liste_fMashed, self.liste_color, self.dNom, self.dAmount, self.dType, AppWindow.nbreDivers, self.liste_divers, self.liste_dAmount, self.liste_dType, self.liste_dTime,self.liste_dUse, self.nbreLevures, self.lNom, self.lForm, self.lLabo, self.lProd, self.lAtten, self.liste_levures, self.liste_lForm, self.liste_lLabo, self.liste_lProdid, self.liste_levureAtten, self.recipeNotes,self.currentMash)
+                exp.exportXML(self.nomRecette, self.styleRecette, self.typeRecette, self.brewer, self.volume, self.boil, self.rendement,self.OG, self.FG, AppWindow.nbreHops, self.liste_houblons, self.liste_hAmount, self.liste_hForm, self.liste_hTime, self.liste_hAlpha,self.liste_hUse, AppWindow.nbreFer, self.fNom, self.fAmount ,self.fType, self.fYield, self.fMashed, self.color, self.liste_ingr, self.liste_fAmount, self.liste_fType, self.liste_fYield, self.liste_fMashed, self.liste_fUse, self.liste_color, self.dNom, self.dAmount, self.dType, AppWindow.nbreDivers, self.liste_divers, self.liste_dAmount, self.liste_dType, self.liste_dTime,self.liste_dUse, self.nbreLevures, self.lNom, self.lForm, self.lLabo, self.lProd, self.lAtten, self.liste_levures, self.liste_lForm, self.liste_lLabo, self.liste_lProdid, self.liste_levureAtten, self.recipeNotes,self.currentMash)
                 exp.enregistrer(self.s)
         else :
 
             
-            exp.exportXML(self.nomRecette, self.styleRecette, self.typeRecette, self.brewer, self.volume, self.boil, self.rendement, self.OG, self.FG,AppWindow.nbreHops, self.liste_houblons, self.liste_hAmount, self.liste_hForm, self.liste_hTime, self.liste_hAlpha,self.liste_hUse, AppWindow.nbreFer, self.fNom, self.fAmount ,self.fType, self.fYield, self.fMashed, self.color, self.liste_ingr, self.liste_fAmount, self.liste_fType, self.liste_fYield, self.liste_fMashed, self.liste_color, self.dNom, self.dAmount, self.dType, AppWindow.nbreDivers, self.liste_divers, self.liste_dAmount, self.liste_dType, self.liste_dTime,self.liste_dUse, self.nbreLevures, self.lNom, self.lForm, self.lLabo, self.lProd, self.lAtten, self.liste_levures, self.liste_lForm, self.liste_lLabo, self.liste_lProdid, self.liste_levureAtten, self.recipeNotes,self.currentMash)
+            exp.exportXML(self.nomRecette, self.styleRecette, self.typeRecette, self.brewer, self.volume, self.boil, self.rendement, self.OG, self.FG,AppWindow.nbreHops, self.liste_houblons, self.liste_hAmount, self.liste_hForm, self.liste_hTime, self.liste_hAlpha,self.liste_hUse, AppWindow.nbreFer, self.fNom, self.fAmount ,self.fType, self.fYield, self.fMashed, self.color, self.liste_ingr, self.liste_fAmount, self.liste_fType, self.liste_fYield, self.liste_fMashed, self.liste_fUse, self.liste_color, self.dNom, self.dAmount, self.dType, AppWindow.nbreDivers, self.liste_divers, self.liste_dAmount, self.liste_dType, self.liste_dTime,self.liste_dUse, self.nbreLevures, self.lNom, self.lForm, self.lLabo, self.lProd, self.lAtten, self.liste_levures, self.liste_lForm, self.liste_lLabo, self.liste_lProdid, self.liste_levureAtten, self.recipeNotes,self.currentMash)
             exp.enregistrer(self.s)
     
         
@@ -2452,7 +2451,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
                                                     self.trUtf8("Enregistrer dans un fichier"),
                                                     recettes_dir + "/" + self.nomRecette,
                                                     "BeerXML (*.xml)")
-        exp.exportXML(self.nomRecette, self.styleRecette, self.typeRecette, self.brewer, self.volume, self.boil, self.rendement,self.OG, self.FG, AppWindow.nbreHops, self.liste_houblons, self.liste_hAmount, self.liste_hForm, self.liste_hTime, self.liste_hAlpha, self.liste_hUse, AppWindow.nbreFer, self.fNom, self.fAmount ,self.fType, self.fYield, self.fMashed, self.color, self.liste_ingr, self.liste_fAmount, self.liste_fType, self.liste_fYield, self.liste_fMashed, self.liste_color, self.dNom, self.dAmount, self.dType, AppWindow.nbreDivers, self.liste_divers, self.liste_dAmount, self.liste_dType, self.liste_dTime, self.liste_dUse, self.nbreLevures, self.lNom, self.lForm, self.lLabo, self.lProd, self.lAtten, self.liste_levures, self.liste_lForm, self.liste_lLabo, self.liste_lProdid, self.liste_levureAtten, self.recipeNotes,self.currentMash)
+        exp.exportXML(self.nomRecette, self.styleRecette, self.typeRecette, self.brewer, self.volume, self.boil, self.rendement,self.OG, self.FG, AppWindow.nbreHops, self.liste_houblons, self.liste_hAmount, self.liste_hForm, self.liste_hTime, self.liste_hAlpha, self.liste_hUse, AppWindow.nbreFer, self.fNom, self.fAmount ,self.fType, self.fYield, self.fMashed, self.color, self.liste_ingr, self.liste_fAmount, self.liste_fType, self.liste_fYield, self.liste_fMashed, self.liste_fUse, self.liste_color, self.dNom, self.dAmount, self.dType, AppWindow.nbreDivers, self.liste_divers, self.liste_dAmount, self.liste_dType, self.liste_dTime, self.liste_dUse, self.nbreLevures, self.lNom, self.lForm, self.lLabo, self.lProd, self.lAtten, self.liste_levures, self.liste_lForm, self.liste_lLabo, self.liste_lProdid, self.liste_levureAtten, self.recipeNotes,self.currentMash)
         exp.enregistrer(self.s)  
     def exporterHtml (self) :
         self.nomRecette = self.lineEditRecette.text()
@@ -2465,7 +2464,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
                                                     "HTML (*.html)")    
         
         self.fileHtml = QtCore.QFile(self.h)
-        exp.exportHtml(self.nomRecette,self.styleRecette, self.volume, self.boil, AppWindow.nbreFer, self.liste_ingr, self.liste_fAmount, AppWindow.nbreHops, self.liste_houblons, self.liste_hAlpha, self.liste_hForm, self.liste_hAmount, self.liste_hTime,self.liste_hUse, AppWindow.nbreDivers, self.liste_divers, self.liste_dType, self.liste_dAmount, self.liste_dTime, self.liste_dUse, self.nbreLevures, self.liste_levuresDetail,self.rendement, self.OG, self.FG, self.ratioBuGu, self.EBC, self.ibuTot ,self.ABV, self.recipeNotes)
+        exp.exportHtml(self.nomRecette,self.styleRecette, self.volume, self.boil, AppWindow.nbreFer, self.liste_ingr, self.liste_fAmount, self.liste_fUse, AppWindow.nbreHops, self.liste_houblons, self.liste_hAlpha, self.liste_hForm, self.liste_hAmount, self.liste_hTime,self.liste_hUse, AppWindow.nbreDivers, self.liste_divers, self.liste_dType, self.liste_dAmount, self.liste_dTime, self.liste_dUse, self.nbreLevures, self.liste_levuresDetail,self.rendement, self.OG, self.FG, self.ratioBuGu, self.EBC, self.ibuTot ,self.ABV, self.recipeNotes)
         
         exp.enregistrerHtml(self.fileHtml)
     
@@ -2511,6 +2510,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         self.liste_fYield = list()
         self.liste_fMashed = list()
         self.liste_color = list()
+        self.liste_fUse = list()
         self.fMashed = ''
         self.fNom = ''
         self.fAmount = 0
