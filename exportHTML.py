@@ -32,7 +32,7 @@ from globals import *
 
 class ExportHTML(QtGui.QDialog) : 
 
-    def exportHtml (self, nomRecette, styleRecette, volume, boil, nbreFer, liste_ingr, liste_fAmount, nbreHops,liste_houblons, liste_hAlpha,liste_hForm,liste_hAmount,liste_hTime,liste_hUse,nbreDivers,liste_divers, liste_dType, liste_dAmount, liste_dTime, liste_dUse, nbreLevures, liste_levuresDetail, rendement, OG, FG, ratioBUGU, EBC, IBU, ABV, recipeNotes) :
+    def exportHtml (self, nomRecette, styleRecette, volume, boil, nbreFer, liste_ingr, liste_fAmount, liste_fUse, nbreHops,liste_houblons, liste_hAlpha,liste_hForm,liste_hAmount,liste_hTime,liste_hUse,nbreDivers,liste_divers, liste_dType, liste_dAmount, liste_dTime, liste_dUse, nbreLevures, liste_levuresDetail, rendement, OG, FG, ratioBUGU, EBC, IBU, ABV, recipeNotes) :
         
         self.recetteHtmlHeader = '''
 <!DOCTYPE html>
@@ -76,7 +76,11 @@ text-align : center;}
         i = 0
         while i < nbreFer :
             i=i+1
-            grains_texte = grains_texte + '''<tr>''' + '''<td>'''+str("%.0f" %(liste_fAmount[i-1])) + '''g''' + '''</td>''' + '''<td>'''+ liste_ingr[i-1]  +  '''</td>''' +'''</tr>'''
+            if liste_fUse[i-1] == self.trUtf8('''Après ébullition''') :
+                use = self.trUtf8('''Ajout après ébullition''')
+            else :
+                use = ''
+            grains_texte = grains_texte + '''<tr>''' + '''<td>'''+str("%.0f" %(liste_fAmount[i-1])) + '''g''' + '''</td>''' + '''<td>'''+ liste_ingr[i-1]  +  '''</td>''' + '''<td>''' + use +'''</td>''' + '''</tr>'''
         grains_texte=grains_texte + '''</table>'''
           
         houblons_texte=self.trUtf8('''<h3>Houblons</h3> ''') + '''<table class="ingredients">'''

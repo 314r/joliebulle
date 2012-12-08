@@ -50,7 +50,7 @@ class Export (QtCore.QObject):
     def exportXML(self,nomRecette, styleRecette, typeRecette, brewer, volume, boil, rendement, OG, FG, nbreHops, liste_houblons,
 liste_hAmount, liste_hForm, liste_hTime, liste_hAlpha, liste_hUse, nbreFer, fNom, fAmount,
 fType, fYield, fMashed, color, liste_ingr, liste_fAmount, liste_fType,
-liste_fYield, liste_fMashed, liste_color, dNom, dAmount, dType, nbreDivers, liste_divers, liste_dAmount, liste_dType, liste_dTime, liste_dUse, nbreLevures, lNom, lForm, lLabo, lProd, lAtten, liste_levures, liste_lForm, liste_lLabo, liste_lProdid, liste_levureAtten, recipeNotes, mashProfile) :
+liste_fYield, liste_fMashed, liste_fUse, liste_color, dNom, dAmount, dType, nbreDivers, liste_divers, liste_dAmount, liste_dType, liste_dTime, liste_dUse, nbreLevures, lNom, lForm, lLabo, lProd, lAtten, liste_levures, liste_lForm, liste_lLabo, liste_lProdid, liste_levureAtten, recipeNotes, mashProfile) :
 
         self.recipes = ET.Element('RECIPES')
         recipe = ET.SubElement(self.recipes, 'RECIPE')
@@ -166,6 +166,13 @@ liste_fYield, liste_fMashed, liste_color, dNom, dAmount, dType, nbreDivers, list
                     fMashed.text = liste_fMashed[i-1]
             except :
                 pass
+            fUse = ET.SubElement(fermentable,'ADD_AFTER_BOIL')
+            if liste_fUse[i-1] == self.trUtf8('Brassage') :
+                fUse.text = 'FALSE'
+            elif liste_fUse[i-1] == self.trUtf8('''Après ébullition''') :
+                fUse.text = 'TRUE'
+            else :
+                fUse.text = 'FALSE'
 
             color = ET.SubElement(fermentable, 'COLOR')
             color.text = str(liste_color[i-1]/1.97)
