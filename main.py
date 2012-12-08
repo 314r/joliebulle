@@ -1706,7 +1706,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
 
         arbre = ET.parse(fichierBeerXML)
 
-        recipe = Recipe.parse(arbre)
+        self.recipe = Recipe.parse(arbre)
 
         presentation=arbre.find('.//RECIPE')
         style=arbre.find('.//STYLE')

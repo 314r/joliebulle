@@ -66,7 +66,7 @@ class Hop:
 class Recipe:
     """A class for storing recipes attributes"""
     def __init__(self):
-        self.recipeName = ""
+        self.name = ""
         self.brewer = ""
         self.type = ""
         self.volume = ""
@@ -87,8 +87,8 @@ class Recipe:
 
         for element in presentation :
             if 'NAME' == element.tag : 
-                recipe.recipeName = element.text
-                logger.debug(" Recipe name: %s", recipe.recipeName)
+                recipe.name = element.text
+                logger.debug(" Recipe name: %s", recipe.name)
             if 'BREWER' == element.tag :
                 recipe.brewer = element.text
                 logger.debug(" Recipe brewer: %s", recipe.brewer)
