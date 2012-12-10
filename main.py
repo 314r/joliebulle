@@ -61,6 +61,7 @@ from reader import *
 
 import xml.etree.ElementTree as ET
 from model.objects import Recipe
+import model.constants
 
 # class BiblioFileSystem (QtGui.QFileSystemModel) :
 #     def __init__(self, parent=None):
@@ -1734,78 +1735,23 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
 
         self.recipe = Recipe.parse(arbre)
 
-        presentation=arbre.find('.//RECIPE')
-        style=arbre.find('.//STYLE')
-        fermentables=arbre.findall('.//FERMENTABLE')
-        hops = arbre.findall('.//HOP')
-        levures = arbre.findall('.//YEAST')
-        misc = arbre.findall('.//MISC')
-        mash = arbre.find('.//MASH')
-
+        self.lineEditRecette.setText(self.recipe.name)
+        self.lineEditGenre.setText(self.recipe.style)
+        self.doubleSpinBox_2Volume.setValue(self.recipe.volume)
+        self.doubleSpinBoxRendemt.setValue(self.recipe.efficiency)
+        self.spinBoxBoil.setValue(self.recipe.boil)
+        self.doubleSpinBoxVolPre.setValue(self.recipe.volume)
         
-        #Presentation de la recette
-        self.styleRecette =''
-        for nom in presentation :
-            if nom.tag == "NAME" : 
-                    self.nomRecette = nom.text
-            
-        self.brewer =''
-        for brewer in presentation :
-            if brewer.tag == "BREWER" :
-                self.brewer = brewer.text
-               
-        
-        for nom in style :
-            if nom.tag == "NAME" : 
-                self.styleRecette = nom.text
-        
-        self.typeRecette=''
-        for typeRecette in presentation :
-            if typeRecette.tag == "TYPE" : 
-                self.typeRecette = typeRecette.text
-                
-        for batch_size in presentation :
-            if batch_size.tag == "BATCH_SIZE" : 
-                self.volume = batch_size.text
-                
-        for efficiency in presentation :
-            if efficiency.tag == "EFFICIENCY" : 
-                self.rendement= float(efficiency.text)  
-        
-        for boil in presentation :
-            if boil.tag == 'BOIL_TIME' :
-                self.boil = boil.text
-
-
-    
-        self.lineEditRecette.setText(self.nomRecette)
-        self.lineEditGenre.setText(self.styleRecette)
-        self.doubleSpinBox_2Volume.setValue(float(self.volume))
-        self.doubleSpinBoxRendemt.setValue(self.rendement)
-        try : 
-            self.spinBoxBoil.setValue(float(self.boil))
-        except :
-            self.spinBoxBoil.setValue (0)
-        self.doubleSpinBoxVolPre.setValue(float(self.volume))
-        if self.typeRecette == "All Grain" :
+        if self.recipe.type == model.constants.RECIPE_TYPE_ALL_GRAIN :
             self.comboBoxType.setCurrentIndex(0)
-        elif self.typeRecette == "Partial Mash" :
+        elif self.recipe.type == model.constants.RECIPE_TYPE_PARTIAL_MASH :
             self.comboBoxType.setCurrentIndex(2)
-        elif self.typeRecette == "Extract" :
+        elif self.recipe.type == model.constants.RECIPE_TYPE_EXTRACT :
             self.comboBoxType.setCurrentIndex(1)
         else :
             self.comboBoxType.setCurrentIndex(0)
-        self.lineEditBrewer.setText(self.brewer)
+        self.lineEditBrewer.setText(self.recipe.brewer)
         
-        for notes in presentation :
-            if notes.tag == 'NOTES' :
-                if notes.text == None :
-                    self.recipeNotes = ''
-                else :
-                    self.recipeNotes = notes.text
-       
-
-    
         #Ingredient fermentescibles
         AppWindow.nbreFer = len(fermentables)
         self.liste_ingr = list()
