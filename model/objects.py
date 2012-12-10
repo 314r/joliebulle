@@ -40,21 +40,21 @@ class Fermentable:
     def parse(element):
         f = Fermentable()
         for balise in element:
-            if balise.tag == 'NAME':
+            if 'NAME' == balise.tag:
                 f.fName = balise.text
-            elif balise.tag == 'AMOUNT':
+            elif 'AMOUNT' == balise.tag:
                 f.fAmount = 1000*(float(balise.text))
-            elif balise.tag == 'TYPE':
+            elif 'TYPE' == balise.tag:
                 f.fType = balise.text
-            elif balise.tag == 'YIELD':
+            elif 'YIELD' == balise.tag:
                 f.fYield = float(balise.text)
-            elif balise.tag == 'RECOMMEND_MASH':
+            elif 'RECOMMEND_MASH' == balise.tag:
                 f.fRecommendMash = balise.text
-            elif balise.tag == 'COLOR':
+            elif 'COLOR' == balise.tag:
                 #ATTENTION ! le format BeerXML utilise des unités SRM ! 
                 #srm*1.97 =ebc
                 f.fColor = float(balise.text)*1.97
-            elif balise.tag == 'ADD_AFTER_BOIL' :
+            elif 'ADD_AFTER_BOIL' == balise.tag:
                 if balise.text == 'FALSE' :
                     f.fUse = False
                 elif balise.text == 'TRUE':
