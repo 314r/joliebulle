@@ -31,6 +31,7 @@ from PyQt4 import QtCore
 import xml.etree.ElementTree as ET
 from globals import *
 from model.objects import Fermentable
+from model.objects import Hop
 
 logger = logging.getLogger(__name__)
 
@@ -94,9 +95,13 @@ class ImportBase :
                     self.liste_color.append(self.color)
                     
         self.listeFermentables = list()
+        self.listeHops = list()
         for element in fermentables:
             self.listeFermentables.append( Fermentable.parse(element) )
-        logger.debug( "Nombre de fermentables=%s, taille=%s octets", len(self.listeFermentables), sys.getsizeof(self.listeFermentables) )
+        logger.debug( "%s fermentables in database, using %s bytes in memory", len(self.listeFermentables), sys.getsizeof(self.listeFermentables) )
+        for element in hops:
+            self.listeHops.append( Hop.parse(element) )
+        logger.debug( "%s hops in database, using %s bytes in memory", len(self.listeHops), sys.getsizeof(self.listeHops) )
         
         #Houblons
         
