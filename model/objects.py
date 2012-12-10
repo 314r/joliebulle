@@ -20,6 +20,7 @@
 #along with this program; if not, write to the Free Software
 #Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 import logging
+import model.constants
 
 logger = logging.getLogger(__name__)
 
@@ -33,6 +34,7 @@ class Fermentable:
         self.fYield = 0.0
         self.fRecommendMash = ''
         self.fColor = 0.0
+        self.fUse = False
 
     @staticmethod
     def parse(element):
@@ -52,28 +54,50 @@ class Fermentable:
                 #ATTENTION ! le format BeerXML utilise des unités SRM ! 
                 #srm*1.97 =ebc
                 f.fColor = float(balise.text)*1.97
+            elif balise.tag == 'ADD_AFTER_BOIL' :
+                if balise.text == 'FALSE' :
+                    f.fUse = False
+                elif balise.text == 'TRUE':
+                    f.fUse = True
         return f
 
 
 class Hop:
     """"A class for storing Hops attributes"""
-    def __init__(self, aAmount, aForm, aTime, aAlpha):
-        self.hAmount = aAmount
-        self.hForm = aForm
-        self.hTime = aTime
-        self.hAlpha = aAlpha
+    def __init__(self):
+        self.name = ''
+        self.amount = ''
+        self.form = ''
+        self.time = 0.0
+        self.alpha = 0.0
+    
+    @staticmethod
+    def parse(element):
+        h = Hop()
+        for balise in element:
+            if 'NAME' == balise.tag :
+                h.name = balise.text
+            elif 'AMOUNT' == balise.tag :
+                h.amount = 1000*(float(balise.text)) 
+            elif 'FORM' == balise.tag :
+                h.form = balise.text 
+            elif 'TIME' == balise.tag :
+                h.time = float(balise.text)
+            elif 'ALPHA' == balise.tag :
+                h.alpha = float(balise.text)
+
 
 class Recipe:
     """A class for storing recipes attributes"""
     def __init__(self):
         self.name = ""
         self.brewer = ""
-        self.type = ""
-        self.volume = ""
-        self.rendement = 0.0
-        self.boil = ""
+        self.type = model.constants.RECIPE_TYPE_ALL_GRAIN
+        self.volume = 0.0
+        self.efficiency = 0.0
+        self.boil = 0.0
         self.recipeNotes = ""
-        self.styleRecette = ""
+        self.style = ""
         self.listeFermentables = []
 
     @staticmethod
@@ -93,16 +117,21 @@ class Recipe:
                 recipe.brewer = element.text
                 logger.debug(" Recipe brewer: %s", recipe.brewer)
             if 'TYPE' == element.tag:
-                recipe.type = element.text
+                if "All Grain" == element.text :
+                    recipe.type = model.constants.RECIPE_TYPE_ALL_GRAIN
+                if "Partial Mash" == element.text :
+                    recipe.type = model.constants.RECIPE_TYPE_PARTIAL_MASH
+                if "Extract" == element.text :
+                    recipe.type = model.constants.RECIPE_TYPE_EXTRACT
                 logger.debug(" Recipe type: %s", recipe.type)
             if "BATCH_SIZE" == element.tag :
-                recipe.volume = element.text
+                recipe.volume = float(element.text)
                 logger.debug(" Recipe volume: %s", recipe.volume)
             if "EFFICIENCY" == element.tag :
                 recipe.rendement= float(element.text)
-                logger.debug(" Recipe efficiency: %s", recipe.rendement)
+                logger.debug(" Recipe efficiency: %s", recipe.efficiency)
             if "BOIL_TIME" == element.tag :
-                recipe.boil = element.text
+                recipe.boil = float(element.text)
                 logger.debug(" Recipe boil time: %s", recipe.boil)
             if "NOTES" == element.tag :
                 recipe.recipeNotes = element.text
@@ -110,7 +139,7 @@ class Recipe:
         
         for element in style :
             if "NAME" == element.tag :
-                recipe.styleRecette = element.text
+                recipe.style = element.text
 
         for element in fermentables:
             recipe.listeFermentables.append( Fermentable.parse(element) )
