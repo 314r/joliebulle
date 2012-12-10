@@ -66,7 +66,7 @@ class Hop:
     """"A class for storing Hops attributes"""
     def __init__(self):
         self.name = ''
-        self.amount = ''
+        self.amount = 0.0
         self.form = ''
         self.time = 0.0
         self.alpha = 0.0
