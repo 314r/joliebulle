@@ -85,6 +85,8 @@ class Hop:
                 h.time = float(balise.text)
             elif 'ALPHA' == balise.tag :
                 h.alpha = float(balise.text)
+        logger.debug('hop[name="%s", amount=%s, form="%s", time=%s, alpha=%s]', h.name, h.amount, h.form, h.time, h.alpha)
+        return h
 
 
 class Recipe:
@@ -99,6 +101,7 @@ class Recipe:
         self.recipeNotes = ""
         self.style = ""
         self.listeFermentables = []
+        self.listeHops = []
 
     @staticmethod
     def parse(tree):
@@ -107,6 +110,7 @@ class Recipe:
         
         presentation=tree.find('.//RECIPE')
         fermentables=tree.findall('.//FERMENTABLE')
+        hops = tree.findall('.//HOP')
         style=tree.find('.//STYLE')
 
         for element in presentation :
@@ -143,6 +147,8 @@ class Recipe:
 
         for element in fermentables:
             recipe.listeFermentables.append( Fermentable.parse(element) )
+        for element in hops:
+            recipe.listeHops.append( Hop.parse(element))
 
         logger.debug("End parsing recipe")
         return recipe
