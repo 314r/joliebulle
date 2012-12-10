@@ -67,7 +67,7 @@ class Hop:
     def __init__(self):
         self.name = ''
         self.amount = 0.0
-        self.form = ''
+        self.form = model.constants.HOP_FORM_LEAF
         self.time = 0.0
         self.alpha = 0.0
     
@@ -80,12 +80,17 @@ class Hop:
             elif 'AMOUNT' == balise.tag :
                 h.amount = 1000*(float(balise.text)) 
             elif 'FORM' == balise.tag :
-                h.form = balise.text 
+                if 'Pellet' == balise.text:
+                    h.form = model.constants.HOP_FORM_PELLET
+                if 'Leaf' == balise.text:
+                    h.form = model.constants.HOP_FORM_LEAF
+                if 'Plug' == balise.text:
+                    h.form = model.constants.HOP_FORM_PLUG
             elif 'TIME' == balise.tag :
                 h.time = float(balise.text)
             elif 'ALPHA' == balise.tag :
                 h.alpha = float(balise.text)
-        logger.debug('hop[name="%s", amount=%s, form="%s", time=%s, alpha=%s]', h.name, h.amount, h.form, h.time, h.alpha)
+        logger.debug('hop[name="%s", amount=%s, form=%s, time=%s, alpha=%s]', h.name, h.amount, h.form, h.time, h.alpha)
         return h
 
 
