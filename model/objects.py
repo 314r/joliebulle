@@ -36,6 +36,10 @@ class Fermentable:
         self.fColor = 0.0
         self.fUse = False
 
+    def __repr__(self):
+        return ('fermentable[fName="%s", fAmount=%s, fType=%s, fYield=%s, fRecommendMash=%s, fColor=%s, fUse=%s]' % 
+            (self.fName, self.fAmount, self.fType, self.fYield, self.fRecommendMash, self.fColor, self.fUse) )
+
     @staticmethod
     def parse(element):
         f = Fermentable()
@@ -59,11 +63,12 @@ class Fermentable:
                     f.fUse = False
                 elif balise.text == 'TRUE':
                     f.fUse = True
+        logger.debug(repr(f))
         return f
 
 
 class Hop:
-    """"A class for storing Hops attributes"""
+    """A class for storing Hops attributes"""
     def __init__(self):
         self.name = ''
         self.amount = 0.0
@@ -71,6 +76,9 @@ class Hop:
         self.time = 0.0
         self.alpha = 0.0
     
+    def __repr__(self):
+        return 'hop[name="%s", amount=%s, form=%s, time=%s, alpha=%s]' % (self.name, self.amount, self.form, self.time, self.alpha)
+
     @staticmethod
     def parse(element):
         h = Hop()
@@ -90,8 +98,39 @@ class Hop:
                 h.time = float(balise.text)
             elif 'ALPHA' == balise.tag :
                 h.alpha = float(balise.text)
-        logger.debug('hop[name="%s", amount=%s, form=%s, time=%s, alpha=%s]', h.name, h.amount, h.form, h.time, h.alpha)
+        logger.debug(repr(h))
         return h
+    
+
+class Yeast:
+    """A class for storing Yeast attributes"""
+    def __init__(self):
+        self.name = ''
+        self.form = ''
+        self.labo = ''
+        self.productId = ''
+        self.attenuation = ''
+    
+    def __repr__(self):
+        return ('yeast[name="%s", form=%s, labo=%s, productId=%s, attenuation=%s]' % 
+                (self.name, self.form, self.labo, self.productId, self.attenuation))
+
+    @staticmethod
+    def parse(element):
+        y = Yeast()
+        for balise in element:
+            if 'NAME' == balise.tag :
+                y.name = balise.text
+            elif 'FORM' == balise.tag :
+                y.form = balise.text
+            elif 'LABORATORY' == balise.tag :
+                y.labo = balise.text
+            elif 'PRODUCT_ID' == balise.tag :
+                y.productId = balise.text
+            elif 'ATTENUATION' == balise.tag:
+                y.attenuation = balise.text
+        logger.debug(repr(y))
+        return y
 
 
 class Recipe:
@@ -108,6 +147,10 @@ class Recipe:
         self.listeFermentables = []
         self.listeHops = []
 
+    def __repr__(self):
+        return ('recipe[name="%s", brewer="%s", type=%s, volume=%s, efficiency=%s, boil=%s, recipeNotes="%s", style="%s"]' %
+                (self.name, self.brewer, self.type, self.volume, self.efficiency, self.boil, self.recipeNotes, self.style) )
+    
     @staticmethod
     def parse(tree):
         logger.debug("Start parsing recipe")
@@ -155,5 +198,6 @@ class Recipe:
         for element in hops:
             recipe.listeHops.append( Hop.parse(element))
 
+        logger.debug(repr(recipe))
         logger.debug("End parsing recipe")
         return recipe
