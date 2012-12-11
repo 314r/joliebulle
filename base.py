@@ -32,6 +32,8 @@ import xml.etree.ElementTree as ET
 from globals import *
 from model.objects import Fermentable
 from model.objects import Hop
+from model.objects import Yeast
+from model.objects import Misc
 
 logger = logging.getLogger(__name__)
 
@@ -96,12 +98,20 @@ class ImportBase :
                     
         self.listeFermentables = list()
         self.listeHops = list()
+        self.listeYeasts = list()
+        self.listeMiscs = list()
         for element in fermentables:
             self.listeFermentables.append( Fermentable.parse(element) )
         logger.debug( "%s fermentables in database, using %s bytes in memory", len(self.listeFermentables), sys.getsizeof(self.listeFermentables) )
         for element in hops:
             self.listeHops.append( Hop.parse(element) )
         logger.debug( "%s hops in database, using %s bytes in memory", len(self.listeHops), sys.getsizeof(self.listeHops) )
+        for element in levures:
+            self.listeYeasts.append( Yeast.parse(element) )
+        logger.debug( "%s yeasts in database, using %s bytes in memory", len(self.listeYeasts), sys.getsizeof(self.listeYeasts) )
+        for element in misc:
+            self.listeMiscs.append( Misc.parse(element) )
+        logger.debug( "%s miscs in database, using %s bytes in memory", len(self.listeMiscs), sys.getsizeof(self.listeMiscs) )
         
         #Houblons
         

@@ -132,6 +132,49 @@ class Yeast:
         logger.debug(repr(y))
         return y
 
+class Misc:
+    """A class for storing Misc attributes"""
+    def __init__(self):
+        self.name = ''
+        self.amount = 0.0
+        self.type = ''
+        self.time = 0.0
+        self.use = model.constants.MISC_USE_BOIL
+    
+    def __repr__(self):
+        return 'misc[name="%s", amount=%s, type="%s", time=%s, use="%s"]' % (self.name, self.amount, self.type, self.time, self.use)
+        
+    @staticmethod
+    def parse(element):
+        m = Misc()
+        for balise in element:
+            if 'NAME' == balise.tag :
+                m.name = balise.text
+            elif 'AMOUNT' == balise.tag :
+                m.amount = float(balise.text)*1000
+            elif 'TYPE' == balise.tag :
+                m.type = balise.text
+            elif 'TIME' == balise.tag:
+                try :
+                    m.time = float(balise.text)
+                except : 
+                    m.time = 0.0
+                    logger.debug("misc time attribute is not numeric:%s", balise.text)
+            elif 'USE' == balise.tag:
+                if 'Boil' == balise.text:
+                    m.use = model.constants.MISC_USE_BOIL
+                if 'Mash' == balise.text:
+                    m.use = model.constants.MISC_USE_MASH
+                if 'Primary' == balise.text:
+                    m.use = model.constants.MISC_USE_PRIMARY
+                if 'Secondary' == balise.text:
+                    m.use = model.constants.MISC_USE_SECONDARY
+                if 'Bottling' == balise.text:
+                    m.use = model.constants.MISC_USE_BOTTLING
+
+        logger.debug(repr(m))
+        return m
+
 
 class Recipe:
     """A class for storing recipes attributes"""
