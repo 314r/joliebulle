@@ -514,6 +514,10 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         menuIngredients.addAction(self.actionEditLevures)
         menuIngredients.addAction(self.actionRestaurerIngredients)
 
+        # le menu profils
+        menuProfiles = generalMenu.addMenu(self.trUtf8('''Profils de brassage'''))
+        menuProfiles.addAction(self.actionManageProfiles)
+
         # le menu outils
         menuTools=generalMenu.addMenu(self.trUtf8('''Outils'''))
         menuTools.addAction(self.actionCorrectionDens)
@@ -585,6 +589,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         self.connect(self.actionEditDivers, QtCore.SIGNAL("triggered()"), self.editDivers)
         self.connect(self.actionEditLevures, QtCore.SIGNAL("triggered()"), self.editLevures)
         self.connect(self.actionRestaurerIngredients, QtCore.SIGNAL("triggered()"), self.restoreDataBase)
+        self.actionManageProfiles.triggered.connect(self.seeMash)
         
         self.connect(self.actionAbout, QtCore.SIGNAL("triggered()"), self.about)
         self.connect(self.actionCorrectionDens, QtCore.SIGNAL("triggered()"), self.outilDens)

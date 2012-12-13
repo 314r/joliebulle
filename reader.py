@@ -2,8 +2,8 @@
 
 # Form implementation generated from reading ui file 'reader.ui'
 #
-# Created: Tue Sep 18 21:50:03 2012
-#      by: PyQt4 UI code generator 4.9.4
+# Created: Thu Dec 13 20:39:41 2012
+#      by: PyQt4 UI code generator 4.9.3
 #
 # WARNING! All changes made in this file will be lost!
 
@@ -796,7 +796,7 @@ class Ui_MainWindow(object):
         self.toolBar.setObjectName(_fromUtf8("toolBar"))
         MainWindow.addToolBar(QtCore.Qt.TopToolBarArea, self.toolBar)
         self.menuBar = QtGui.QMenuBar(MainWindow)
-        self.menuBar.setGeometry(QtCore.QRect(0, 0, 1238, 21))
+        self.menuBar.setGeometry(QtCore.QRect(0, 0, 1238, 25))
         self.menuBar.setObjectName(_fromUtf8("menuBar"))
         self.menuFichier = QtGui.QMenu(self.menuBar)
         self.menuFichier.setObjectName(_fromUtf8("menuFichier"))
@@ -808,6 +808,8 @@ class Ui_MainWindow(object):
         self.menuEdition.setObjectName(_fromUtf8("menuEdition"))
         self.menuAide = QtGui.QMenu(self.menuBar)
         self.menuAide.setObjectName(_fromUtf8("menuAide"))
+        self.menuProfils_de_brassage = QtGui.QMenu(self.menuBar)
+        self.menuProfils_de_brassage.setObjectName(_fromUtf8("menuProfils_de_brassage"))
         MainWindow.setMenuBar(self.menuBar)
         self.actionOuvrir = QtGui.QAction(MainWindow)
         icon3 = QtGui.QIcon()
@@ -907,6 +909,8 @@ class Ui_MainWindow(object):
         self.actionImporter.setObjectName(_fromUtf8("actionImporter"))
         self.actionCopierBbcode = QtGui.QAction(MainWindow)
         self.actionCopierBbcode.setObjectName(_fromUtf8("actionCopierBbcode"))
+        self.actionManageProfiles = QtGui.QAction(MainWindow)
+        self.actionManageProfiles.setObjectName(_fromUtf8("actionManageProfiles"))
         self.menuFichier.addAction(self.actionImporter)
         self.menuFichier.addAction(self.actionOuvrir)
         self.menuFichier.addAction(self.actionEnregistrer)
@@ -929,9 +933,11 @@ class Ui_MainWindow(object):
         self.menuOutils.addAction(self.actionPaliers)
         self.menuEdition.addAction(self.actionPreferences)
         self.menuAide.addAction(self.actionAbout)
+        self.menuProfils_de_brassage.addAction(self.actionManageProfiles)
         self.menuBar.addAction(self.menuFichier.menuAction())
         self.menuBar.addAction(self.menuEdition.menuAction())
         self.menuBar.addAction(self.menuIngr_dients.menuAction())
+        self.menuBar.addAction(self.menuProfils_de_brassage.menuAction())
         self.menuBar.addAction(self.menuOutils.menuAction())
         self.menuBar.addAction(self.menuAide.menuAction())
 
@@ -1143,6 +1149,7 @@ class Ui_MainWindow(object):
         self.menuOutils.setTitle(QtGui.QApplication.translate("MainWindow", "Outils", None, QtGui.QApplication.UnicodeUTF8))
         self.menuEdition.setTitle(QtGui.QApplication.translate("MainWindow", "Edition", None, QtGui.QApplication.UnicodeUTF8))
         self.menuAide.setTitle(QtGui.QApplication.translate("MainWindow", "Aide", None, QtGui.QApplication.UnicodeUTF8))
+        self.menuProfils_de_brassage.setTitle(QtGui.QApplication.translate("MainWindow", "Profils de brassage", None, QtGui.QApplication.UnicodeUTF8))
         self.actionOuvrir.setText(QtGui.QApplication.translate("MainWindow", "Ouvrir", None, QtGui.QApplication.UnicodeUTF8))
         self.actionQuitter.setText(QtGui.QApplication.translate("MainWindow", "Quitter", None, QtGui.QApplication.UnicodeUTF8))
         self.actionAbout.setText(QtGui.QApplication.translate("MainWindow", "A propos", None, QtGui.QApplication.UnicodeUTF8))
@@ -1181,6 +1188,7 @@ class Ui_MainWindow(object):
         self.actionNouvelle_recette_2.setToolTip(QtGui.QApplication.translate("MainWindow", "Créer une nouvelle recette", None, QtGui.QApplication.UnicodeUTF8))
         self.actionImporter.setText(QtGui.QApplication.translate("MainWindow", "Importer dans la bibliothèque", None, QtGui.QApplication.UnicodeUTF8))
         self.actionCopierBbcode.setText(QtGui.QApplication.translate("MainWindow", "Copier le BBCode dans le presse papier", None, QtGui.QApplication.UnicodeUTF8))
+        self.actionManageProfiles.setText(QtGui.QApplication.translate("MainWindow", "Gérer les profils", None, QtGui.QApplication.UnicodeUTF8))
 
 from PyQt4 import QtWebKit
 import ressources_rc

@@ -1901,7 +1901,7 @@ color: rgb(255, 255, 255);</string>
      <x>0</x>
      <y>0</y>
      <width>1238</width>
-     <height>21</height>
+     <height>25</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuFichier">
@@ -1951,9 +1951,16 @@ color: rgb(255, 255, 255);</string>
     </property>
     <addaction name="actionAbout"/>
    </widget>
+   <widget class="QMenu" name="menuProfils_de_brassage">
+    <property name="title">
+     <string>Profils de brassage</string>
+    </property>
+    <addaction name="actionManageProfiles"/>
+   </widget>
    <addaction name="menuFichier"/>
    <addaction name="menuEdition"/>
    <addaction name="menuIngr_dients"/>
+   <addaction name="menuProfils_de_brassage"/>
    <addaction name="menuOutils"/>
    <addaction name="menuAide"/>
   </widget>
@@ -2187,6 +2194,11 @@ color: rgb(255, 255, 255);</string>
   <action name="actionCopierBbcode">
    <property name="text">
     <string>Copier le BBCode dans le presse papier</string>
+   </property>
+  </action>
+  <action name="actionManageProfiles">
+   <property name="text">
+    <string>Gérer les profils</string>
    </property>
   </action>
  </widget>
