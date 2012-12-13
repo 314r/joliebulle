@@ -50,6 +50,7 @@ from outilEvaporation import *
 from outilPaliers import * 
 from stepEditWindow import *
 from mashEditWindow import *
+from mashDetail import * 
 from exportMash import *
 from preferences import *
 from brewCalc import *
@@ -549,6 +550,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         self.dlgStep = DialogStep(self)
         self.dlgMash = DialogMash(self)
         self.dlgStepBrewday = DialogStepAdjust(self)
+
         self.base = ImportBase()
         self.mashProfilesBase = ImportMash()
         self.mashProfilesBase.importBeerXML()
@@ -1528,7 +1530,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         self.dlgStepBrewday.setModal(True)
         self.dlgStepBrewday.show()
         self.dlgStepBrewday.setFields(self.brewdayCurrentStepTargetTemp, self.brewdayCurrentStepRatio, self.brewdayCurrentStepInfuseAmount, self.brewdayCurrentStepWaterTemp, self.grainWeight, self.stepsListVol, self.brewdayCurrentRow, self.brewdayListTemp, self.strikeTargetTemp)
-        logger.debug("envoyé %s !",self.brewdayCurrentStepTargetTemp,self.strikeTargetTemp )
+        
         
     def purge (self) :
         i = (AppWindow.nbreFer + AppWindow.nbreDivers + AppWindow.nbreHops + self.nbreLevures)
@@ -2092,17 +2094,19 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
                         dicStep['stepVol']= stepVol
                                             
             logger.debug(self.currentMash)
-            if self.mashName is not None :
-                self.mashProfilesBase.listMash.append(self.currentMash)
-            else :
-                pass
+            # if self.mashName is not None :
+            #     self.mashProfilesBase.listMash.append(self.currentMash)
+            #     print("pop!", self.mashProfilesBase.listMash)
+            # else :
+            #     pass
         except :
             pass
         try :  
             self.popMashCombo()
             if self.mashName is not None :
-                self.comboBoxMashProfiles.setCurrentIndex(len(self.listMash)-1)
-                
+                # self.comboBoxMashProfiles.setCurrentIndex(len(self.listMash)-1)
+                self.comboBoxMashProfiles.addItem(self.mashName + "*")
+                self.comboBoxMashProfiles.setCurrentIndex(len(self.listMash))
             else :
                 self.comboBoxMashProfiles.setCurrentIndex(-1)
         except :
@@ -2688,15 +2692,16 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
             
                 
     def mashDetails(self) :
-#        self.switchToMash()
-#        self.listWidgetMashProfiles.clear()
-#        self.listWidgetMashProfiles.addItem(self.bNom)
-#        self.listWidgetSteps.clear()
-#        self.listWidgetSteps.addItems(self.liste_paliers)
-        self.seeMash()
-        i = self.comboBoxMashProfiles.currentIndex()
-        self.listWidgetMashProfiles.setCurrentRow(i)
-        
+
+        # self.seeMash()
+        # i = self.comboBoxMashProfiles.currentIndex()
+        # self.listWidgetMashProfiles.setCurrentRow(i)
+        self.dlgMashDetail = DialogMashDetail(self)
+        self.dlgMashDetail.setModal(True)
+        self.dlgMashDetail.show()
+        self.dlgMashDetail.setFields(self.currentMash)
+        self.dlgMashDetail.setAttribute( QtCore.Qt.WA_DeleteOnClose, True ) 
+
         
     def stepDetails(self) :
         i = self.listWidgetSteps.currentRow()
@@ -3068,7 +3073,7 @@ if __name__ == "__main__":
     logger = logging.getLogger(__name__)
 
     logger.info("---------------------");
-    logger.info("Jolibulle %s", VERSION_JOLIBULLE);
+    logger.info("Joliebulle %s", VERSION_JOLIBULLE);
 
     logger.debug("Initializing UI");
     QtCore.QTextCodec.setCodecForCStrings(QtCore.QTextCodec.codecForName("utf-8"))
