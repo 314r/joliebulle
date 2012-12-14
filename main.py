@@ -2099,6 +2099,8 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
                         dicStep['stepVol']= stepVol
                                             
             logger.debug(self.currentMash)
+            print(self.currentMash)
+            self.currentRecipeMash = self.currentMash
             # if self.mashName is not None :
             #     self.mashProfilesBase.listMash.append(self.currentMash)
             #     print("pop!", self.mashProfilesBase.listMash)
@@ -2116,6 +2118,10 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
                 self.comboBoxMashProfiles.setCurrentIndex(-1)
         except :
             self.comboBoxMashProfiles.setCurrentIndex(-1)
+
+
+
+
             
 
 
@@ -2642,8 +2648,11 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         #on remet le verrou à 0, il va falloir recalculer en repassant en brewday mode
         self.brewdayLock = 0
         self.enableBrewdayMode()
-        i =self.comboBoxMashProfiles.currentIndex()
-        self.currentMash = self.mashProfilesBase.listMash[i]
+        try :
+            i =self.comboBoxMashProfiles.currentIndex()
+            self.currentMash = self.mashProfilesBase.listMash[i]
+        except :
+            self.currentMash = self.currentRecipeMash
         self.tableWidgetStepsBrewday_currentRowChanged()
 
         
@@ -2705,6 +2714,8 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         self.dlgMashDetail.setModal(True)
         self.dlgMashDetail.show()
         self.dlgMashDetail.setFields(self.currentMash)
+        print(self.currentMash)
+        print(self.comboBoxMashProfiles.currentIndex())
         self.dlgMashDetail.setAttribute( QtCore.Qt.WA_DeleteOnClose, True ) 
 
         
