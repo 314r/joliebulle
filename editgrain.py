@@ -43,11 +43,12 @@ class Dialog(QtGui.QDialog):
         self.ui.setupUi(self)
         self.uiMain = Ui_MainWindow ()
         self.base = ImportBase()
-        self.base.importBeerXML()
+        #self.base.importBeerXML()
         databaseXML = open(database_file,encoding='utf-8')
         database = ET.parse(databaseXML)
         
-        self.ui.listWidgetGrains.addItems(self.base.liste_ingr)
+        #self.ui.listWidgetGrains.addItems(self.base.liste_ingr)
+        self.ui.listViewGrains.setModel(self.base.getFermentablesQtModel() )
         self.ui.comboBoxType.addItem(self.trUtf8('Grain'))
         self.ui.comboBoxType.addItem(self.trUtf8('Extrait'))
         self.ui.comboBoxType.addItem(self.trUtf8('Extrait sec'))
@@ -59,7 +60,7 @@ class Dialog(QtGui.QDialog):
         self.ui.spinBoxCouleur.setMaximum(10000)
         self.ui.spinBoxRendmt.setMaximum(1000)
         
-        self.connect(self.ui.listWidgetGrains, QtCore.SIGNAL("itemSelectionChanged ()"), self.voir)
+        self.connect(self.ui.listViewGrains, QtCore.SIGNAL("itemSelectionChanged ()"), self.voir)
         self.connect(self.ui.pushButtonNouveau, QtCore.SIGNAL("clicked()"), self.nouveau)
         self.connect(self.ui.pushButtonEnlever, QtCore.SIGNAL("clicked()"), self.enlever)
         self.connect(self.ui.pushButtonAjouter, QtCore.SIGNAL("clicked()"), self.ajouter)
@@ -78,7 +79,7 @@ class Dialog(QtGui.QDialog):
         self.ui.radioButtonEBC.setEnabled(False)
         
     def voir (self) :
-        i = self.ui.listWidgetGrains.currentRow()
+        i = self.ui.listViewGrains.currentRow()
         
         self.ui.lineEditNom.setEnabled(True)
         self.ui.comboBoxType.setEnabled(True)
@@ -154,8 +155,8 @@ class Dialog(QtGui.QDialog):
             self.base.liste_fMashed.insert(i, 'FALSE')
         
         
-        self.ui.listWidgetGrains.clear()   
-        self.ui.listWidgetGrains.addItems(self.base.liste_ingr)
+        self.ui.listViewGrains.clear()   
+        self.ui.listViewGrains.addItems(self.base.liste_ingr)
         
         
         databaseXML = codecs.open(database_file,encoding="utf-8" )
@@ -208,14 +209,14 @@ class Dialog(QtGui.QDialog):
         
     def enlever (self) :
         self.base.importBeerXML()
-        i = self.ui.listWidgetGrains.currentRow()
+        i = self.ui.listViewGrains.currentRow()
         del self.base.liste_ingr[i]
         del self.base.liste_fYield[i]
         del self.base.liste_color[i]
         del self.base.liste_fType[i]
         del self.base.liste_fMashed[i]
-        self.ui.listWidgetGrains.clear()   
-        self.ui.listWidgetGrains.addItems(self.base.liste_ingr)
+        self.ui.listViewGrains.clear()   
+        self.ui.listViewGrains.addItems(self.base.liste_ingr)
         
         databaseXML = codecs.open(database_file, encoding='utf-8')
         database = ET.parse(databaseXML)

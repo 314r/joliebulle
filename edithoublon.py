@@ -42,14 +42,15 @@ class DialogH(QtGui.QDialog):
         self.ui = Ui_Dialog()
         self.ui.setupUi(self)
         self.base = ImportBase()
-        self.base.importBeerXML()
+        #self.base.importBeerXML()
         
-        self.ui.listWidgetHoublons.addItems(self.base.liste_houblons)
+        #self.ui.listWidgetHoublons.addItems(self.base.liste_houblons)
+        self.ui.listViewHoublons.setModel( self.base.getHopsQtModel() )
         self.ui.comboBoxForme.addItem(self.trUtf8('Feuille'))
         self.ui.comboBoxForme.addItem(self.trUtf8('Pellet'))
         self.ui.comboBoxForme.addItem(self.trUtf8('Cône'))
 
-        self.connect(self.ui.listWidgetHoublons, QtCore.SIGNAL("itemSelectionChanged ()"), self.voir)  
+        self.connect(self.ui.listViewHoublons, QtCore.SIGNAL("itemSelectionChanged ()"), self.voir)  
         self.connect(self.ui.pushButtonNouveau, QtCore.SIGNAL("clicked()"), self.nouveau)
         self.connect(self.ui.pushButtonEnlever, QtCore.SIGNAL("clicked()"), self.enlever)
         self.connect(self.ui.pushButtonAjouter, QtCore.SIGNAL("clicked()"), self.ajouter)
@@ -62,7 +63,7 @@ class DialogH(QtGui.QDialog):
         
         
     def voir(self) :
-        i = self.ui.listWidgetHoublons.currentRow()
+        i = self.ui.listViewHoublons.currentRow()
         self.ui.lineEditNom.setEnabled(True)
         self.ui.spinBoxAlpha.setEnabled(True)
         self.ui.comboBoxForme.setEnabled(True)   
@@ -98,8 +99,8 @@ class DialogH(QtGui.QDialog):
         else :
             self.base.liste_hForm.insert(i, 'Leaf')
        
-        self.ui.listWidgetHoublons.clear()   
-        self.ui.listWidgetHoublons.addItems(self.base.liste_houblons)    
+        self.ui.listViewHoublons.clear()   
+        self.ui.listViewHoublons.addItems(self.base.liste_houblons)    
         
         databaseXML = codecs.open(database_file, encoding="utf-8")
         database = ET.parse(databaseXML)
@@ -136,14 +137,14 @@ class DialogH(QtGui.QDialog):
         
     def enlever(self) :
         self.base.importBeerXML()
-        i = self.ui.listWidgetHoublons.currentRow()
+        i = self.ui.listViewHoublons.currentRow()
         f = len(self.base.liste_ingr)
         
         del self.base.liste_houblons[i]
         del self.base.liste_hForm[i]
         del self.base.liste_hAlpha[i]
-        self.ui.listWidgetHoublons.clear()
-        self.ui.listWidgetHoublons.addItems(self.base.liste_houblons)
+        self.ui.listViewHoublons.clear()
+        self.ui.listViewHoublons.addItems(self.base.liste_houblons)
          
         databaseXML = codecs.open(database_file, encoding="utf-8")
         database = ET.parse(databaseXML)

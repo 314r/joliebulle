@@ -187,8 +187,16 @@ class Recipe:
         self.boil = 0.0
         self.recipeNotes = ""
         self.style = ""
-        self.listeFermentables = []
-        self.listeHops = []
+        self.mashName = ""
+        self.mashGrainTemp = ""
+        self.mashTunTemp = ""
+        self.spargeTemp = ""
+        self.mashPh = ""
+        self.listeFermentables = list()
+        self.listeHops = list()
+        self.listeYeasts = list()
+        self.listeMiscs = list()
+        self.listeMashSteps = list()
 
     def __repr__(self):
         return ('recipe[name="%s", brewer="%s", type=%s, volume=%s, efficiency=%s, boil=%s, recipeNotes="%s", style="%s"]' %
@@ -202,7 +210,11 @@ class Recipe:
         presentation=tree.find('.//RECIPE')
         fermentables=tree.findall('.//FERMENTABLE')
         hops = tree.findall('.//HOP')
+        levures = tree.findall('.//YEAST')
+        misc = tree.findall('.//MISC')
         style=tree.find('.//STYLE')
+        mash = tree.find('.//MASH')
+        mashStep = mash.findall('.//MASH_STEP')
 
         for element in presentation :
             if 'NAME' == element.tag : 
@@ -236,11 +248,60 @@ class Recipe:
             if "NAME" == element.tag :
                 recipe.style = element.text
 
+        for element in mash:
+            if 'NAME' == element.tag :
+                recipe.mashName = element.text
+            if 'GRAIN_TEMP' == element.tag :
+                recipe.mashGrainTemp = element.text
+            if 'TUN_TEMP' == element.tag  :
+                recipe.mashTunTemp = element.text
+            if 'SPARGE_TEMP' == element.tag  :
+                recipe.spargeTemp = element.text
+            if 'PH' == element.tag :
+                recipe.mashPh = element.text
+
         for element in fermentables:
             recipe.listeFermentables.append( Fermentable.parse(element) )
         for element in hops:
-            recipe.listeHops.append( Hop.parse(element))
+            recipe.listeHops.append(Hop.parse(element))
+        for element in levures:
+            recipe.listeYeasts.append(Yeast.parse(element))
+        for element in misc:
+            recipe.listeMiscs.append(Misc.parse(element))
+        for element in mashStep:
+            recipe.listeMashSteps.append(MashStep.parse(element))
 
         logger.debug(repr(recipe))
         logger.debug("End parsing recipe")
         return recipe
+
+class MashStep:
+    def __init__(self):
+        self.name = ""
+        self.type = ""
+        self.time = ""
+        self.temp = ""
+        self.infuseAmount = 0.0
+        self.version = 1
+
+    @staticmethod
+    def parse(element):
+        m = MashStep()
+        for balise in element:
+            if 'NAME' == balise.tag:
+                m.name = balise.text
+            if 'VERSION' == balise.tag:
+                m.version = int(balise.text)
+            if 'TYPE' == balise.tag:
+                if 'Infusion' == balise.text:
+                    m.type = model.constants.MASH_STEP_INFUSION
+                elif 'Temperature' == balise.text:
+                    m.type = model.constants.MASH_STEP_TEMPERATURE
+                elif 'Decoction' == balise.text:
+                    m.type = model.constants.MASH_STEP_DECOCTION
+            if 'STEP_TIME' == balise.tag:
+                m.time = balise.text
+            if 'STEP_TEMP' == balise.tag:
+                m.temp = balise.text
+            if 'INFUSE_AMOUNT' == balise.tag:
+                m.infuseAmount = balise.text

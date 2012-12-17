@@ -38,10 +38,17 @@ from model.objects import Misc
 logger = logging.getLogger(__name__)
 
 
-class ImportBase : 
+#Singleton class, should be in some common module
+class Singleton(type):
+    _instances = {}
+    def __call__(cls, *args, **kwargs):
+        if cls not in cls._instances:
+            cls._instances[cls] = super(Singleton, cls).__call__(*args, **kwargs)
+        return cls._instances[cls]
 
+class ImportBase(object,metaclass=Singleton) :
 
-    def importBeerXML(self) :
+    def __init__(self):
         logger.debug("Import %s", database_file)
         fichierBeerXML = database_file
         arbre = ET.parse(fichierBeerXML)
@@ -53,177 +60,41 @@ class ImportBase :
         misc = arbre.findall('.//MISC')
  
         
-        #Ingredient fermentescibles
-        logger.debug("%s fermentables in database", len(fermentables))
-        self.nbreFer = len(fermentables)
-        self.liste_ingr = list()
-        self.liste_fAmount = list()
-        self.liste_fType = list()
-        self.liste_fYield = list()
-        self.liste_fMashed = list()
-        self.liste_color = list()
-        self.fMashed = ''
-        
-        
-        i = 0
-        while i < self.nbreFer :
-
-            i=i+1
-            for nom in fermentables[i-1] :
-                if nom.tag == 'NAME' :
-                    self.fNom = nom.text
-                    self.liste_ingr.append(self.fNom)
-                    
-                if nom.tag =='AMOUNT' :
-                    self.fAmount = 1000*(float(nom.text)) 
-                    self.liste_fAmount.append(self.fAmount)
-                    
-                if nom.tag =='TYPE' :
-                    self.fType = nom.text 
-                    self.liste_fType.append(self.fType)
-                    
-                if nom.tag == 'YIELD' :
-                    self.fYield = float(nom.text)
-                    self.liste_fYield.append(self.fYield)
-                    
-                if nom.tag == 'RECOMMEND_MASH' :
-                    self.fMashed = nom.text
-                    self.liste_fMashed.append(self.fMashed)
-                    
-                #ATTENTION ! le format BeerXML utilise des unités SRM ! 
-                #srm*1.97 =ebc
-                if nom.tag == 'COLOR' :
-                    self.color = float(nom.text)*1.97
-                    self.liste_color.append(self.color)
-                    
         self.listeFermentables = list()
         self.listeHops = list()
         self.listeYeasts = list()
         self.listeMiscs = list()
+
+        #Ingredient fermentescibles
         for element in fermentables:
             self.listeFermentables.append( Fermentable.parse(element) )
         logger.debug( "%s fermentables in database, using %s bytes in memory", len(self.listeFermentables), sys.getsizeof(self.listeFermentables) )
+
+        #Houblons
         for element in hops:
             self.listeHops.append( Hop.parse(element) )
         logger.debug( "%s hops in database, using %s bytes in memory", len(self.listeHops), sys.getsizeof(self.listeHops) )
+
+        #Levures
         for element in levures:
             self.listeYeasts.append( Yeast.parse(element) )
         logger.debug( "%s yeasts in database, using %s bytes in memory", len(self.listeYeasts), sys.getsizeof(self.listeYeasts) )
+
+        #Ingredients divers
         for element in misc:
             self.listeMiscs.append( Misc.parse(element) )
         logger.debug( "%s miscs in database, using %s bytes in memory", len(self.listeMiscs), sys.getsizeof(self.listeMiscs) )
-        
-        #Houblons
-        
-        self.nbreHops = len(hops)
-        self.liste_houblons = list()
-        self.liste_hAmount = list()
-        self.liste_hForm = list()
-        self.liste_hTime = list()
-        self.liste_hAlpha = list()
-        
-        
-        
-        h = 0
-        while h < self.nbreHops : 
-            h = h+1
-            for nom in hops [h-1] :
-                if nom.tag == 'NAME' :
-                    self.hNom = nom.text
-                    self.liste_houblons.append(self.hNom)
-                    
-                if nom.tag =='AMOUNT' :
-                    self.hAmount = 1000*(float(nom.text)) 
-                    self.liste_hAmount.append(self.hAmount)
-                    
-                if nom.tag =='FORM' :
-                    self.hForm = nom.text 
-                    self.liste_hForm.append(self.hForm)
-                    
-                if nom.tag =='TIME' :
-                    self.hTime = float(nom.text)
-                    self.liste_hTime.append(self.hTime)
-                    
-                
-                if nom.tag =='ALPHA' :
-                    self.hAlpha = float(nom.text)
-                    self.liste_hAlpha.append(self.hAlpha)                   
-                    
-                                                            
-
-        
-        
-        #Levure 
-        self.nbreLevures = len(levures)
-        self.liste_levures = list()
-        self.liste_lForm = list()
-        self.liste_lLabo = list()
-        self.liste_lProdid = list()
-        self.liste_levuresDetail = list()
-        self.liste_levureAtten = list ()
-        self.lNom = ""
-        self.lLabo =""
-        self.lProd =""
-        self.lForm = ""
-        self.lAtten=""
-        
-        l = 0
-        while l < self.nbreLevures : 
-            l = l+1
-            for nom in levures [l-1] :
-                if nom.tag == 'NAME' :
-                    self.lNom = str(nom.text)
-                    self.liste_levures.append(self.lNom)    
-                    
-                if nom.tag == 'FORM' :
-                    self.lForm = str(nom.text)
-                    self.liste_lForm.append(self.lForm)
-                    
-                if nom.tag == 'LABORATORY' :
-                    self.lLabo = str(nom.text)
-                    self.liste_lLabo.append(self.lLabo)
-                    
-                if nom.tag == 'PRODUCT_ID' :
-                    self.lProd = str(nom.text)
-                    self.liste_lProdid.append(self.lProd)
-                
-                if nom.tag == 'ATTENUATION' :
-                    self.lAtten = float(nom.text)
-                    self.liste_levureAtten.append(self.lAtten)
-                    
-                    
-                    
-            self.liste_levuresDetail.append (self.lNom+ ' ' + self.lLabo +' ' + self.lProd)
-                    
-                    
-                    
-        
-        
-        
-        #Ingredients divers
-        self.nbreDivers = len(misc)
-        self.liste_divers = list ()
-        self.liste_dAmount = list ()
-        self.liste_dType = list ()
-        self.dNom = ''
-        self.dAmount = 0
-        self.dType = ''
-        
-        
-        m = 0
-        while  m < self.nbreDivers :
-            m = m+1
-            for nom in misc [m-1] : 
-                if nom.tag == 'NAME' :
-                    self.dNom = nom.text
-                    self.liste_divers.append(self.dNom)
-                    
-                if nom.tag == 'AMOUNT' :
-                    self.dAmount = float(nom.text)*1000
-                    self.liste_dAmount.append(self.dAmount)
-                    
-                if nom.tag == 'TYPE' :
-                        self.dType = nom.text
-                        self.liste_dType.append(self.dType)
 
         logger.debug("Import %s terminé", database_file)
+
+    def getFermentablesQtModel(self):
+        return QtGui.QStringListModel( [f.fName for f in self.listeFermentables] )
+
+    def getHopsQtModel(self):
+        return QtGui.QStringListModel( [h.name for h in self.listeHops] )
+
+    def getMiscsQtModel(self):
+        return QtGui.QStringListModel( [m.name for m in self.listeMiscs] )
+
+    def getYeastsQtModel(self):
+        return QtGui.QStringListModel( [y.name for y in self.listeYeasts] )

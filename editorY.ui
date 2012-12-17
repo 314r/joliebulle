@@ -18,7 +18,7 @@
     <widget class="QWidget" name="widget" native="true">
      <layout class="QVBoxLayout" name="verticalLayout">
       <item>
-       <widget class="QListWidget" name="listWidgetLevures"/>
+       <widget class="QListView" name="listViewLevures"/>
       </item>
       <item>
        <layout class="QHBoxLayout" name="horizontalLayout">

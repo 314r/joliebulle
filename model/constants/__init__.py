@@ -11,3 +11,7 @@ MISC_USE_MASH = 'Mash'
 MISC_USE_PRIMARY = 'Primary'
 MISC_USE_SECONDARY = 'Secondary'
 MISC_USE_BOTTLING = 'Bottling'
+
+MASH_STEP_INFUSION = 'Infusion'
+MASH_STEP_TEMPERATURE = 'Temperature'
+MASH_STEP_DECOCTION = 'Decoction'

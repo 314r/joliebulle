@@ -42,15 +42,16 @@ class DialogL(QtGui.QDialog):
         self.ui = Ui_Dialog()
         self.ui.setupUi(self)
         self.base = ImportBase()
-        self.base.importBeerXML() 
+        #self.base.importBeerXML() 
         
-        self.ui.listWidgetLevures.addItems(self.base.liste_levuresDetail)
+#        self.ui.listWidgetLevures.addItems(self.base.liste_levuresDetail)
+        self.ui.listViewLevures.setModel( self.base.getYeastsQtModel() )
         self.ui.comboBoxForme.addItem(self.trUtf8('Liquide'))
         self.ui.comboBoxForme.addItem(self.trUtf8('Poudre'))
         self.ui.comboBoxForme.addItem(self.trUtf8('Gélose'))
         self.ui.comboBoxForme.addItem(self.trUtf8('Culture'))
         
-        self.connect(self.ui.listWidgetLevures, QtCore.SIGNAL("itemSelectionChanged ()"), self.voir)  
+        self.connect(self.ui.listViewLevures, QtCore.SIGNAL("itemSelectionChanged ()"), self.voir)  
         self.connect(self.ui.pushButtonNouveau, QtCore.SIGNAL("clicked()"), self.nouveau)
         self.connect(self.ui.pushButtonEnlever, QtCore.SIGNAL("clicked()"), self.enlever)
         self.connect(self.ui.pushButtonAjouter, QtCore.SIGNAL("clicked()"), self.ajouter)
@@ -65,7 +66,7 @@ class DialogL(QtGui.QDialog):
         
         
     def voir(self) :
-        i = self.ui.listWidgetLevures.currentRow()
+        i = self.ui.listViewLevures.currentRow()
         
         self.ui.lineEditNom.setEnabled(True)
         self.ui.comboBoxForme.setEnabled(True)
@@ -117,8 +118,8 @@ class DialogL(QtGui.QDialog):
         
         self.base.liste_levuresDetail.insert(i, nom + ' ' + self.base.liste_lLabo[i] + ' ' + self.base.liste_lProdid[i]) 
             
-        self.ui.listWidgetLevures.clear()
-        self.ui.listWidgetLevures.addItems(self.base.liste_levuresDetail)
+        self.ui.listViewLevures.clear()
+        self.ui.listViewLevures.addItems(self.base.liste_levuresDetail)
         
         databaseXML = codecs.open(database_file, encoding="utf-8")
         database = ET.parse(databaseXML)
@@ -162,15 +163,15 @@ class DialogL(QtGui.QDialog):
         
     def enlever(self) :
         self.base.importBeerXML()
-        i = self.ui.listWidgetLevures.currentRow()
+        i = self.ui.listViewLevures.currentRow()
         del self.base.liste_levures[i]
         del self.base.liste_lLabo[i]
         del self.base.liste_lProdid[i]
         del self.base.liste_levureAtten[i]
         del self.base.liste_lForm[i]
         del self.base.liste_levuresDetail[i]
-        self.ui.listWidgetLevures.clear()
-        self.ui.listWidgetLevures.addItems(self.base.liste_levuresDetail)
+        self.ui.listViewLevures.clear()
+        self.ui.listViewLevures.addItems(self.base.liste_levuresDetail)
         
         databaseXML = codecs.open(database_file, encoding="utf-8")
         database = ET.parse(databaseXML)

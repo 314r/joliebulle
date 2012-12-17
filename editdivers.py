@@ -41,9 +41,10 @@ class DialogD(QtGui.QDialog):
         self.ui = Ui_Dialog()
         self.ui.setupUi(self)
         self.base = ImportBase()
-        self.base.importBeerXML()
+        #self.base.importBeerXML()
         
-        self.ui.listWidgetDivers.addItems(self.base.liste_divers)
+#        self.ui.listWidgetDivers.addItems(self.base.liste_divers)
+        self.ui.listViewDivers.setModel( self.base.getMiscsQtModel() )
         self.ui.comboBoxType.addItem(self.trUtf8("Epice"))
         self.ui.comboBoxType.addItem(self.trUtf8("Clarifiant"))
         self.ui.comboBoxType.addItem(self.trUtf8("Traitement Eau"))
@@ -51,7 +52,7 @@ class DialogD(QtGui.QDialog):
         self.ui.comboBoxType.addItem(self.trUtf8("Arôme"))
         self.ui.comboBoxType.addItem(self.trUtf8("Autre"))
         
-        self.connect(self.ui.listWidgetDivers, QtCore.SIGNAL("itemSelectionChanged ()"), self.voir)
+        self.connect(self.ui.listViewDivers, QtCore.SIGNAL("itemSelectionChanged ()"), self.voir)
         self.connect(self.ui.pushButtonNouveau, QtCore.SIGNAL("clicked()"), self.nouveau)
         self.connect(self.ui.pushButtonEnlever, QtCore.SIGNAL("clicked()"), self.enlever)
         self.connect(self.ui.pushButtonAjouter, QtCore.SIGNAL("clicked()"), self.ajouter)
@@ -64,7 +65,7 @@ class DialogD(QtGui.QDialog):
         
         
     def voir(self) :
-        i = self.ui.listWidgetDivers.currentRow()
+        i = self.ui.listViewDivers.currentRow()
         self.ui.lineEditNom.setEnabled(True)
         self.ui.comboBoxType.setEnabled(True)
         self.ui.pushButtonAjouter.setEnabled(True)
@@ -109,8 +110,8 @@ class DialogD(QtGui.QDialog):
         else :
               self.base.liste_dType.insert(i, 'Spice')
               
-        self.ui.listWidgetDivers.clear()
-        self.ui.listWidgetDivers.addItems(self.base.liste_divers)
+        self.ui.listViewDivers.clear()
+        self.ui.listViewDivers.addItems(self.base.liste_divers)
         
         databaseXML = codecs.open(database_file, encoding="utf-8")
         database = ET.parse(databaseXML)
@@ -142,13 +143,13 @@ class DialogD(QtGui.QDialog):
         
     def enlever(self) :
         self.base.importBeerXML()
-        i = self.ui.listWidgetDivers.currentRow()
+        i = self.ui.listViewDivers.currentRow()
         
         del self.base.liste_divers[i]
         del self.base.liste_dType[i]
         
-        self.ui.listWidgetDivers.clear()
-        self.ui.listWidgetDivers.addItems(self.base.liste_divers)
+        self.ui.listViewDivers.clear()
+        self.ui.listViewDivers.addItems(self.base.liste_divers)
         
         databaseXML = codecs.open(database_file, encoding="utf-8")
         database = ET.parse(databaseXML)
