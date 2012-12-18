@@ -115,6 +115,14 @@ text-align : center;}
         for step in dicSteps:
             stepName = step['name']
             stepType = step['type']
+            if stepType == 'Infusion' :
+                stepType = self.trUtf8('''Infusion''')
+            elif stepType == 'Temperature' :
+                stepType = self.trUtf8('''Température''')
+            elif stepType == 'Decoction' :
+                stepType = self.trUtf8('''Décoction''')
+            else :
+                stepType = stepType
             stepTime = step['stepTime']
             stepTemp = step['stepTemp']
             self.recetteHtmlMashProfile = self.recetteHtmlMashProfile + step['name'] + ' : ' + self.trUtf8(''' palier de type ''')+ stepType + self.trUtf8(''' à ''') + stepTemp +'''°C'''+ self.trUtf8(''' pendant ''')+ stepTime + self.trUtf8(''' minutes ''')+ '''<br/> '''
