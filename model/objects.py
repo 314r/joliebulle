@@ -235,7 +235,7 @@ class Recipe:
                 recipe.volume = float(element.text)
                 logger.debug(" Recipe volume: %s", recipe.volume)
             if "EFFICIENCY" == element.tag :
-                recipe.rendement= float(element.text)
+                recipe.efficiency= float(element.text)
                 logger.debug(" Recipe efficiency: %s", recipe.efficiency)
             if "BOIL_TIME" == element.tag :
                 recipe.boil = float(element.text)
