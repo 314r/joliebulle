@@ -810,20 +810,12 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         #self.treeViewIng.setModel(self.modeleIngBase)
         ##on va remplir tout ça... avec une autre fonction
         #self.listeIng()
-        #self.comboBox.addItems(self.base.liste_ingr)
-        #self.comboBox.setCurrentIndex(10)
         self.comboBox.setModel(self.base.getFermentablesQtModel() )
         
-        #self.comboBoxH.addItems(self.base.liste_houblons)
-        #self.comboBoxH.setCurrentIndex(10)
         self.comboBoxH.setModel(self.base.getHopsQtModel() )
         
-        #self.comboBoxY.addItems(self.base.liste_levuresDetail)
-        #self.comboBoxY.setCurrentIndex(10)
         self.comboBoxY.setModel(self.base.getYeastsQtModel() )
         
-#        self.comboBoxM.addItems(self.base.liste_divers)
-#        self.comboBoxM.setCurrentIndex(0)
         self.comboBoxM.setModel(self.base.getMiscsQtModel() )
        
         self.comboBoxStyle.hide()
@@ -913,20 +905,16 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         self.base.importBeerXML()
         
         self.comboBox.clear()
-        self.comboBox.addItems(self.base.liste_ingr)
-        self.comboBox.setCurrentIndex(10)
+        self.comboBox.setModel(self.base.getFermentablesQtModel() )
         
         self.comboBoxH.clear()
-        self.comboBoxH.addItems(self.base.liste_houblons)
-        self.comboBoxH.setCurrentIndex(10)
+        self.comboBoxH.setModel(self.base.getHopsQtModel() )
         
         self.comboBoxY.clear()
-        self.comboBoxY.addItems(self.base.liste_levuresDetail)
-        self.comboBoxY.setCurrentIndex(10)
+        self.comboBoxY.setModel(self.base.getYeastsQtModel() )
         
         self.comboBoxM.clear()
-        self.comboBoxM.addItems(self.base.liste_divers)
-        self.comboBoxM.setCurrentIndex(0)
+        self.comboBoxM.setModel(self.base.getMiscsQtModel() )
         
     # def selectionRecette(self):
     #     selection = self.listViewBiblio.selectionModel()
