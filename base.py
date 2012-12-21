@@ -88,7 +88,7 @@ class ImportBase(object,metaclass=Singleton) :
         logger.debug("Import %s terminé", database_file)
 
     def getFermentablesQtModel(self):
-        return QtGui.QStringListModel( [f.fName for f in self.listeFermentables] )
+        return QtGui.QStringListModel( [f.name for f in self.listeFermentables] )
 
     def getHopsQtModel(self):
         return QtGui.QStringListModel( [h.name for h in self.listeHops] )

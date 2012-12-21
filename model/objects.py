@@ -59,7 +59,7 @@ class Fermentable:
                     f.type = model.constants.FERMENTABLE_TYPE_DRY_EXTRACT
                 elif 'Adjunct' == balise.text:
                     f.type = model.constants.FERMENTABLE_TYPE_ADJUNCT
-                else
+                else:
                     logger.warn ("Unkown fermentable type '%', assuming 'Sugar' by default", balise.text)
                     f.type = model.constants.FERMENTABLE_TYPE_SUGAR
             elif 'YIELD' == balise.tag:
@@ -80,7 +80,7 @@ class Fermentable:
 
     def equivSucre(self):
         #division par 1000 et 100 pour passer des g aux kg et parce que le rendement est un pourcentage
-        return (f.amount/1000)*(f.fYield/100)
+        return (self.amount/1000)*(self.fYield/100)
 
 
 class Hop:
@@ -126,7 +126,7 @@ class Hop:
                     h.use = model.constants.HOP_USE_FIRST_WORT
                 if 'Aroma' == balise.text:
                     h.use = model.constants.HOP_USE_AROMA
-                else
+                else :
                     logger.warn ("Unkown hop use '%', assuming 'Boil' by default", balise.text)
                     h.use = model.constants.HOP_USE_BOIL
         logger.debug(repr(h))
@@ -327,7 +327,7 @@ class Recipe:
             #division par 1000 et 100 pour passer des g aux kg et parce que le rendement est un pourcentage
             liste_equivSucre.append(f.equivSucre() )
             #for type in self.liste_fType [o-1] :
-            if f.type == model.constants.FERMENTABLE_TYPE_EXTRACT or f.type == model.constants.FERMENTABLE_TYPE_DRY_EXTRACT or f.type == model.constants.SUGAR :
+            if f.type == model.constants.FERMENTABLE_TYPE_EXTRACT or f.type == model.constants.FERMENTABLE_TYPE_DRY_EXTRACT or f.type == model.constants.FERMENTABLE_TYPE_SUGAR :
                 liste_equivSucreNonMashed.append(f.equivSucre())
             else :
                 liste_equivSucreMashed.append(f.equivSucre())
@@ -335,7 +335,7 @@ class Recipe:
             #on refait la même chose pour déterminer la densité pré-ébullition en cas d'addition tardive de sucre, ce qui influence le calcul des IBUs.
             if f.useAfterBoil == False:
                 liste_equivSucrePreBoil.append(f.equivSucre())
-                if f.type == model.constants.FERMENTABLE_TYPE_EXTRACT or f.type == model.constants.FERMENTABLE_TYPE_DRY_EXTRACT or f.type == model.constants.SUGAR :
+                if f.type == model.constants.FERMENTABLE_TYPE_EXTRACT or f.type == model.constants.FERMENTABLE_TYPE_DRY_EXTRACT or f.type == model.constants.FERMENTABLE_TYPE_SUGAR :
                     liste_equivSucreNonMashedPreBoil.append(f.equivSucre())
                 else :
                     liste_equivSucreMashedPreBoil.append(f.equivSucre())
@@ -387,7 +387,7 @@ class Recipe:
             aaUtil = btFactor*self.bignessFactor
             mgAA = (h.alpha/100)*h.amount*1000 / float(self.volume)
             try :
-                if h.use != HOP_USE_DRY_HOP and h.use != HOP_USE_AROMA :
+                if h.use != model.constants.HOP_USE_DRY_HOP and h.use != model.constants.HOP_USE_AROMA :
                     ibuTot += (mgAA * aaUtil) + 0.1*(mgAA * aaUtil)
                 else :
                     ibuTot += mgAA * aaUtil 
@@ -412,7 +412,7 @@ class Recipe:
         #puis calcul EBC total :
         #EBC=2.939*MCU^0.6859
         mcuTot = 0
-        for f in listeFermentables:
+        for f in self.listeFermentables:
             mcuTot += 4.23*f.color*(f.amount/1000)/float(self.volume)
         EBC = 2.939*(mcuTot**0.6859)
         
