@@ -380,9 +380,6 @@ class Recipe:
         #Decimal Alpha Acid Utilization = Bigness Factor * Boil Time Factor
         #Bigness factor = 1.65 * 0.000125^(wort gravity - 1)
         #Boil Time factor = 1 - e^(-0.04 * time in mins) / 4.15
-        liste_btFactor = list()
-        liste_ibuPart = list()
-        
         bignessFactor = 1.65 * (0.000125**(self.compute_OG_PreBoil() - 1))
         ibuTot = 0
         for h in self.listeHops:
@@ -392,10 +389,10 @@ class Recipe:
             mgAA = (h.alpha/100)*h.amount*1000 / float(self.volume)
             try :
                 if h.use != model.constants.HOP_USE_DRY_HOP and h.use != model.constants.HOP_USE_AROMA :
-                    ibuTot += (mgAA * aaUtil) + 0.1*(mgAA * aaUtil)
-                else :
-                    ibuTot += mgAA * aaUtil 
-                liste_ibuPart.append(self.ibuPart)
+                    if h.form == model.constants.HOP_FORM_PELLET :
+                        ibuTot += (mgAA * aaUtil) + 0.1*(mgAA * aaUtil)
+                    else :
+                        ibuTot += mgAA * aaUtil 
             except:
                 if h.form == model.constants.HOP_FORM_PELLET :
                     ibuTot += (mgAA * aaUtil) + 0.1*(mgAA * aaUtil)
