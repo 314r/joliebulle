@@ -32,7 +32,7 @@ from ui.objects import YeastUI
 
 class ExportHTML(QtGui.QDialog) : 
 
-    def exportHtml (self, nomRecette, styleRecette, volume, boil, nbreFer, liste_ingr, liste_fAmount, liste_fUse, nbreHops,liste_houblons, liste_hAlpha,liste_hForm,liste_hAmount,liste_hTime,liste_hUse,nbreDivers,liste_divers, liste_dType, liste_dAmount, liste_dTime, liste_dUse, nbreLevures, liste_levuresDetail, rendement, OG, FG, ratioBUGU, EBC, IBU, ABV, recipeNotes) :
+    def exportHtml (self, nomRecette, styleRecette, volume, boil, nbreFer, liste_ingr, liste_fAmount, liste_fUse, nbreHops,liste_houblons, liste_hAlpha,liste_hForm,liste_hAmount,liste_hTime,liste_hUse,nbreDivers,liste_divers, liste_dType, liste_dAmount, liste_dTime, liste_dUse, nbreLevures, liste_levuresDetail, rendement, OG, FG, ratioBUGU, EBC, IBU, ABV, recipeNotes, currentMash) :
         
         self.recetteHtmlHeader = '''
 <!DOCTYPE html>
@@ -109,6 +109,25 @@ text-align : center;}
         
         
         self.recetteHtmlProfil = ''' <table class="profil">'''+ self.trUtf8('''<tr><td>Rendement</td> ''') + '''<td> ''' + str(rendement) + '''% </td></tr>''' + self.trUtf8('''<tr><td>Densité initiale</td>''') + '''<td> '''  + str("%.3f" %(OG)) + '''</td></tr>''' + self.trUtf8('''<tr><td>Densité finale</td>''') + '''<td>''' + str("%.3f" %(FG)) + '''</td></tr>''' + self.trUtf8('''<tr><td>Teinte</td>''') + '''<td> '''+ str("%.0f" %(EBC)) + ''' EBC </td></tr>'''+ self.trUtf8('''<tr><td>Amertume</td>''') + '''<td> ''' + str("%.0f" %(IBU)) + ''' IBU </td></tr>''' + self.trUtf8('''<tr><td>Ratio BU/GU</td>''') + '''<td>''' + str("%.1f" %(ratioBUGU)) + '''</td></tr>''' + self.trUtf8('''<tr><td>Alcool (vol)</td>''') + '''<td>'''+ str("%.1f" %(ABV)) + ''' % </td></tr>''' + '''</table>'''             
+
+        self.recetteHtmlMashProfile = self.trUtf8(''' <h2>Brassage</h2>''') + '''<p>''' + str(currentMash['name']) + '<br/>' + ''' pH : '''+currentMash['ph']+''' </p> ''' + '''<p>''' + '<b>' + self.trUtf8(''' Etapes : ''') + '</b>' + ''' </p> '''
+        dicSteps = currentMash['mashSteps']
+        for step in dicSteps:
+            stepName = step['name']
+            stepType = step['type']
+            if stepType == 'Infusion' :
+                stepType = self.trUtf8('''Infusion''')
+            elif stepType == 'Temperature' :
+                stepType = self.trUtf8('''Température''')
+            elif stepType == 'Decoction' :
+                stepType = self.trUtf8('''Décoction''')
+            else :
+                stepType = stepType
+            stepTime = step['stepTime']
+            stepTemp = step['stepTemp']
+            self.recetteHtmlMashProfile = self.recetteHtmlMashProfile + step['name'] + ' : ' + self.trUtf8(''' palier de type ''')+ stepType + self.trUtf8(''' à ''') + stepTemp +'''°C'''+ self.trUtf8(''' pendant ''')+ stepTime + self.trUtf8(''' minutes ''')+ '''<br/> '''
+        self.recetteHtmlMashProfile = self.recetteHtmlMashProfile + '''<p>''' + '<b>' + self.trUtf8(''' Rinçage : ''') + '</b>' + ''' </p> ''' + currentMash['spargeTemp'] + " °C"
+
 
         self.recipeNotes = self.trUtf8(''' <h2>Notes</h2>''') + '''<p>''' + str(recipeNotes) + ''' </p> '''
 
@@ -200,7 +219,7 @@ text-align : center;}
 </html>''')
                                         
     def generateHtml(self) :
-        self.generatedHtml = self.recetteHtmlHeader + self.recetteHtmlProfil + self.recetteHtmlIng + self.recipeNotes                                      
+        self.generatedHtml = self.recetteHtmlHeader + self.recetteHtmlProfil + self.recetteHtmlIng + self.recetteHtmlMashProfile + self.recipeNotes                                      
                                         
                                         
     def enregistrerHtml(self,fileHtml) :

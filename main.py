@@ -50,6 +50,7 @@ from outilEvaporation import *
 from outilPaliers import * 
 from stepEditWindow import *
 from mashEditWindow import *
+from mashDetail import * 
 from exportMash import *
 from preferences import *
 from brewCalc import *
@@ -517,6 +518,10 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         menuIngredients.addAction(self.actionEditLevures)
         menuIngredients.addAction(self.actionRestaurerIngredients)
 
+        # le menu profils
+        menuProfiles = generalMenu.addMenu(self.trUtf8('''Profils de brassage'''))
+        menuProfiles.addAction(self.actionManageProfiles)
+
         # le menu outils
         menuTools=generalMenu.addMenu(self.trUtf8('''Outils'''))
         menuTools.addAction(self.actionCorrectionDens)
@@ -553,6 +558,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         self.dlgStep = DialogStep(self)
         self.dlgMash = DialogMash(self)
         self.dlgStepBrewday = DialogStepAdjust(self)
+
         self.base = ImportBase()
         self.mashProfilesBase = ImportMash()
         self.mashProfilesBase.importBeerXML()
@@ -587,6 +593,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         self.connect(self.actionEditDivers, QtCore.SIGNAL("triggered()"), self.editDivers)
         self.connect(self.actionEditLevures, QtCore.SIGNAL("triggered()"), self.editLevures)
         self.connect(self.actionRestaurerIngredients, QtCore.SIGNAL("triggered()"), self.restoreDataBase)
+        self.actionManageProfiles.triggered.connect(self.seeMash)
         
         self.connect(self.actionAbout, QtCore.SIGNAL("triggered()"), self.about)
         self.connect(self.actionCorrectionDens, QtCore.SIGNAL("triggered()"), self.outilDens)
@@ -1525,7 +1532,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         self.dlgStepBrewday.setModal(True)
         self.dlgStepBrewday.show()
         self.dlgStepBrewday.setFields(self.brewdayCurrentStepTargetTemp, self.brewdayCurrentStepRatio, self.brewdayCurrentStepInfuseAmount, self.brewdayCurrentStepWaterTemp, self.grainWeight, self.stepsListVol, self.brewdayCurrentRow, self.brewdayListTemp, self.strikeTargetTemp)
-        logger.debug("envoyé %s !",self.brewdayCurrentStepTargetTemp,self.strikeTargetTemp )
+        
         
     def purge (self) :
         i = (AppWindow.nbreFer + AppWindow.nbreDivers + AppWindow.nbreHops + self.nbreLevures)
@@ -1745,15 +1752,329 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
             self.comboBoxType.setCurrentIndex(0)
         self.lineEditBrewer.setText(self.recipe.brewer)
         
+        for notes in presentation :
+            if notes.tag == 'NOTES' :
+                if notes.text == None :
+                    self.recipeNotes = ''
+                else :
+                    self.recipeNotes = notes.text
+       
+
+    
+        #Ingredient fermentescibles
+        AppWindow.nbreFer = len(fermentables)
+        self.liste_ingr = list()
+        self.liste_fAmount = list()
+        self.liste_fType = list()
+        self.liste_fYield = list()
+        self.liste_fMashed = list()
+        self.liste_color = list()
+        self.liste_fUse = list()
+        self.fMashed = ''
+        
+        
+        i = 0
+        while i < AppWindow.nbreFer :
+            i=i+1
+            self.liste_fUse.append(self.trUtf8('''Brassage'''))
+            for nom in fermentables[i-1] :
+                if nom.tag == 'NAME' :
+                    self.fNom = nom.text
+                    self.liste_ingr.append(self.fNom)
+                    
+                if nom.tag =='AMOUNT' :
+                    self.fAmount = 1000*(float(nom.text)) 
+                    self.liste_fAmount.append(self.fAmount)
+                    
+                if nom.tag =='TYPE' :
+                    self.fType = nom.text 
+                    self.liste_fType.append(self.fType)
+                    
+                if nom.tag == 'YIELD' :
+                    self.fYield = float(nom.text)
+                    self.liste_fYield.append(self.fYield)
+                    
+                if nom.tag == 'RECOMMEND_MASH' :
+                    self.fMashed = nom.text
+                    self.liste_fMashed.append(self.fMashed)
+                    
+                #ATTENTION ! le format BeerXML utilise des unités SRM ! 
+                #srm*1.97 =ebc
+                if nom.tag == 'COLOR' :
+                    self.color = float(nom.text)*1.97
+                    self.liste_color.append(self.color)
+
+           
+                if nom.tag == 'ADD_AFTER_BOIL' :
+                    self.fUse = nom.text
+                    if self.fUse == 'FALSE' :
+                        self.fUse = self.trUtf8('Brassage')
+                    elif self.fUse == 'TRUE' :
+                        self.fUse = self.trUtf8('''Après ébullition''')
+                    self.liste_fUse[i-1] = self.fUse
+
+
+
+        
+        
+        #Houblons
+        
+        AppWindow.nbreHops = len(hops)
+        self.liste_houblons = list()
+        self.liste_hAmount = list()
+        self.liste_hForm = list()
+        self.liste_hTime = list()
+        self.liste_hAlpha = list()
+        self.liste_hUse = list()
+        
+        
+        
+        h = 0
+        while h < AppWindow.nbreHops : 
+            h = h+1
+            for nom in hops [h-1] :
+                if nom.tag == 'NAME' :
+                    self.hNom = nom.text
+                    self.liste_houblons.append(self.hNom)
+                    
+                if nom.tag =='AMOUNT' :
+                    self.hAmount = 1000*(float(nom.text)) 
+                    self.liste_hAmount.append(self.hAmount)
+                    
+                if nom.tag =='FORM' :
+                    self.hForm = nom.text
+                    if self.hForm == 'Pellet' :
+                        self.hForm = self.trUtf8('Pellet')
+                    elif self.hForm == 'Leaf' :
+                        self.hForm = self.trUtf8('Feuille')  
+                    elif self.hForm == 'Plug' :
+                        self.hForm = self.trUtf8('Cône')   
+                    else :
+                        self.hForm = self.trUtf8('Feuille')
+                                         
+                    self.liste_hForm.append(self.hForm)
+                    
+                if nom.tag =='TIME' :
+                    self.hTime = float(nom.text)
+                    self.liste_hTime.append(self.hTime)
+                    
+                
+                if nom.tag =='ALPHA' :
+                    self.hAlpha = float(nom.text)
+                    self.liste_hAlpha.append(self.hAlpha)  
+                
+                if nom.tag == 'USE' :
+                    self.hUse = nom.text     
+                    if self.hUse == 'Boil' :
+                        self.hUse = self.trUtf8('''Ébullition''')          
+                    elif self.hUse == 'Dry Hop' or self.hUse == 'Dry Hopping':
+                        self.hUse = self.trUtf8('Dry Hop')           
+                    elif self.hUse == 'Mash' :
+                        self.hUse = self.trUtf8('Empâtage')             
+                    elif self.hUse == 'First Wort' :
+                        self.hUse = self.trUtf8('Premier Moût')             
+                    elif self.hUse == 'Aroma' :
+                        self.hUse = self.trUtf8('Arôme') 
+                    else :
+                        self.hUse = 'Boil'             
+                    self.liste_hUse.append(self.hUse) 
+                                        
+                                                            
+        
+        #Levure 
+        self.nbreLevures = len(levures)
+        self.liste_levures = list()
+        self.liste_lForm = list()
+        self.liste_lLabo = list()
+        self.liste_lProdid = list()
+        self.liste_levuresDetail = list()
+        self.liste_levureAtten = list ()
+        self.lNom = ""
+        self.lLabo =""
+        self.lProd =""
+        self.lForm = ""
+        self.lAtten=""
+        
+        l = 0
+        while l < self.nbreLevures : 
+            l = l+1
+            for nom in levures [l-1] :
+                if nom.tag == 'NAME' :
+                    self.lNom = str(nom.text)
+                    self.liste_levures.append(self.lNom)    
+                    
+                if nom.tag == 'FORM' :
+                    self.lForm = str(nom.text)
+                    self.liste_lForm.append(self.lForm)
+                    
+                if nom.tag == 'LABORATORY' :
+                    self.lLabo = str(nom.text)
+                    self.liste_lLabo.append(self.lLabo)
+                    
+                if nom.tag == 'PRODUCT_ID' :
+                    self.lProd = str(nom.text)
+                    self.liste_lProdid.append(self.lProd)
+                
+                if nom.tag == 'ATTENUATION' :
+                    self.lAtten = float(nom.text)
+                    self.liste_levureAtten.append(self.lAtten)
+                           
+                    
+            self.liste_levuresDetail.append (self.lNom+ ' ' + self.lLabo +' ' + self.lProd)
+                    
+
+        
+        #Ingredients divers
+        AppWindow.nbreDivers = len(misc)
+        self.liste_divers = list ()
+        self.liste_dAmount = list ()
+        self.liste_dType = list ()
+        self.liste_dTime = list()
+        self.liste_dUse = list()
+        self.dNom = ''
+        self.dAmount = 0
+        self.dType = ''
+        self.dTime = 0
+        
+        
+        m = 0
+        while  m < AppWindow.nbreDivers :
+            m = m+1
+            for nom in misc [m-1] : 
+                if nom.tag == 'NAME' :
+                    self.dNom = nom.text
+                    self.liste_divers.append(self.dNom)
+                    
+                if nom.tag == 'AMOUNT' :
+                    self.dAmount = float(nom.text)*1000
+                    self.liste_dAmount.append(self.dAmount)
+                    
+                if nom.tag == 'TYPE' :
+                    self.dType = nom.text
+                    self.liste_dType.append(self.dType)
+                  
+                if nom.tag == 'TIME' :
+                    try :
+                        self.dTime = float(nom.text)
+                        self.liste_dTime.append(self.dTime)
+                    except : 
+                        self.dTime = 0
+                        self.liste_dTime.append(self.dTime)
+                  
+                if nom.tag == 'USE' :
+                    self.dUse = (nom.text)
+                    if self.dUse == 'Boil' :
+                        self.dUse = self.trUtf8('Ébullition')
+                        self.liste_dUse.append(self.dUse)
+                    if self.dUse == 'Mash' :
+                        self.dUse = self.trUtf8('Empâtage')
+                        self.liste_dUse.append(self.dUse)
+                    if self.dUse == 'Primary' :
+                        self.dUse = self.trUtf8('Primaire')
+                        self.liste_dUse.append(self.dUse)
+                    if self.dUse == 'Secondary' :
+                        self.dUse = self.trUtf8('Secondaire')
+                        self.liste_dUse.append(self.dUse)
+                    if self.dUse == 'Bottling' :
+                        self.dUse = self.trUtf8('Embouteillage')
+                        self.liste_dUse.append(self.dUse)
+                    else :
+                        self.dUse = self.trUtf8('Ébullition')
+                        self.liste_dUse.append(self.dUse)
+        
+        #Brassin
+        
+        try :
+            for nom in mash :
+                if nom.tag == 'NAME' :
+                    self.mashName = nom.text
+                if nom.tag == 'GRAIN_TEMP' :
+                    self.mashGrainTemp = nom.text
+                if nom.tag == 'TUN_TEMP' :
+                    self.mashTunTemp = nom.text
+                if nom.tag == 'SPARGE_TEMP' :
+                    self.spargeTemp = nom.text
+                if nom.tag == 'PH' :
+                    self.mashPh = nom.text
+                    
+            if self.mashName is not None :       
+                self.currentMash={}
+                logger.debug('ouhouh !!!!!')
+                self.currentMash['name'] = self.mashName
+                self.currentMash['ph'] = self.mashPh   
+                self.currentMash['grainTemp'] = self.mashGrainTemp
+                self.currentMash['tunTemp'] = self.mashTunTemp
+                self.currentMash['spargeTemp'] = self.spargeTemp
+            else :
+                pass
+        except :
+            pass
+           
+        #Paliers
+        try :
+            mashStep = mash.findall('.//MASH_STEP')
+            numSteps = len(mashStep)
+            listSteps =[]
+            if self.mashName is not None :
+                self.currentMash['mashSteps'] = listSteps
+            else :
+                pass
+        except :
+            pass
+
+        try :
+            j=0
+            while j < numSteps :
+                j=j+1
+                for item in mashStep[j-1]:
+                    if item.tag == 'NAME' :
+                        stepName = item.text
+                        listSteps.append({'name' : stepName})
+                for item in mashStep[j-1]: 
+                    if item.tag == 'TYPE' :
+                        stepType = item.text
+                        dicStep = listSteps[j-1]
+                        dicStep['type']= stepType  
+                for item in mashStep[j-1]: 
+                    if item.tag == 'STEP_TIME' :
+                        stepTime = item.text
+                        dicStep = listSteps[j-1]
+                        dicStep['stepTime']= stepTime        
+                for item in mashStep[j-1]: 
+                    if item.tag == 'STEP_TEMP' :
+                        stepTemp = item.text
+                        dicStep = listSteps[j-1]
+                        dicStep['stepTemp']= stepTemp
+                for item in mashStep[j-1]: 
+                    if item.tag == 'INFUSE_AMOUNT' :
+                        stepVol = item.text
+                        dicStep = listSteps[j-1]
+                        dicStep['stepVol']= stepVol
+                                            
+            logger.debug(self.currentMash)
+            print(self.currentMash)
+            self.currentRecipeMash = self.currentMash
+            # if self.mashName is not None :
+            #     self.mashProfilesBase.listMash.append(self.currentMash)
+            #     print("pop!", self.mashProfilesBase.listMash)
+            # else :
+            #     pass
+        except :
+            pass
         try :  
             self.popMashCombo()
             if self.mashName is not None :
-                self.comboBoxMashProfiles.setCurrentIndex(len(self.listMash)-1)
-                
+                # self.comboBoxMashProfiles.setCurrentIndex(len(self.listMash)-1)
+                self.comboBoxMashProfiles.addItem(self.mashName + "*")
+                self.comboBoxMashProfiles.setCurrentIndex(len(self.listMash))
             else :
                 self.comboBoxMashProfiles.setCurrentIndex(-1)
         except :
             self.comboBoxMashProfiles.setCurrentIndex(-1)
+
+
+
+
             
 
 
@@ -2281,8 +2602,11 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         #on remet le verrou à 0, il va falloir recalculer en repassant en brewday mode
         self.brewdayLock = 0
         self.enableBrewdayMode()
-        i =self.comboBoxMashProfiles.currentIndex()
-        self.currentMash = self.mashProfilesBase.listMash[i]
+        try :
+            i =self.comboBoxMashProfiles.currentIndex()
+            self.currentMash = self.mashProfilesBase.listMash[i]
+        except :
+            self.currentMash = self.currentRecipeMash
         self.tableWidgetStepsBrewday_currentRowChanged()
 
         
@@ -2336,15 +2660,18 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
             
                 
     def mashDetails(self) :
-#        self.switchToMash()
-#        self.listWidgetMashProfiles.clear()
-#        self.listWidgetMashProfiles.addItem(self.bNom)
-#        self.listWidgetSteps.clear()
-#        self.listWidgetSteps.addItems(self.liste_paliers)
-        self.seeMash()
-        i = self.comboBoxMashProfiles.currentIndex()
-        self.listWidgetMashProfiles.setCurrentRow(i)
-        
+
+        # self.seeMash()
+        # i = self.comboBoxMashProfiles.currentIndex()
+        # self.listWidgetMashProfiles.setCurrentRow(i)
+        self.dlgMashDetail = DialogMashDetail(self)
+        self.dlgMashDetail.setModal(True)
+        self.dlgMashDetail.show()
+        self.dlgMashDetail.setFields(self.currentMash)
+        print(self.currentMash)
+        print(self.comboBoxMashProfiles.currentIndex())
+        self.dlgMashDetail.setAttribute( QtCore.Qt.WA_DeleteOnClose, True ) 
+
         
     def stepDetails(self) :
         i = self.listWidgetSteps.currentRow()
