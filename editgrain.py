@@ -29,6 +29,7 @@ from PyQt4 import QtCore
 from base import *
 from reader import *
 from globals import *
+import ui.base
 
 from editorG_ui import *
 import xml.etree.ElementTree as ET
@@ -48,7 +49,7 @@ class Dialog(QtGui.QDialog):
         database = ET.parse(databaseXML)
         
         #self.ui.listWidgetGrains.addItems(self.base.liste_ingr)
-        self.ui.listViewGrains.setModel(self.base.getFermentablesQtModel() )
+        self.ui.listViewGrains.setModel(ui.base.getFermentablesQtModel() )
         self.ui.comboBoxType.addItem(self.trUtf8('Grain'))
         self.ui.comboBoxType.addItem(self.trUtf8('Extrait'))
         self.ui.comboBoxType.addItem(self.trUtf8('Extrait sec'))
