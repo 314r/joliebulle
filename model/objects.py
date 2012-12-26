@@ -75,7 +75,7 @@ class Fermentable:
                     f.useAfterBoil = False
                 elif balise.text == 'TRUE':
                     f.useAfterBoil = True
-        logger.debug(repr(f))
+        #logger.debug(repr(f))
         return f
 
     def equivSucre(self):
@@ -127,9 +127,9 @@ class Hop:
                 if 'Aroma' == balise.text:
                     h.use = model.constants.HOP_USE_AROMA
                 else :
-                    logger.warn ("Unkown hop use '%', assuming 'Boil' by default", balise.text)
+                    logger.warn ("Unkown hop use '%s', assuming 'Boil' by default", balise.text)
                     h.use = model.constants.HOP_USE_BOIL
-        logger.debug(repr(h))
+        #logger.debug(repr(h))
         return h
     
 
@@ -140,7 +140,7 @@ class Yeast:
         self.form = ''
         self.labo = ''
         self.productId = ''
-        self.attenuation = ''
+        self.attenuation = 0.0
     
     def __repr__(self):
         return ('yeast[name="%s", form=%s, labo=%s, productId=%s, attenuation=%s]' % 
@@ -159,8 +159,8 @@ class Yeast:
             elif 'PRODUCT_ID' == balise.tag :
                 y.productId = balise.text
             elif 'ATTENUATION' == balise.tag:
-                y.attenuation = balise.text
-        logger.debug(repr(y))
+                y.attenuation = float(balise.text)
+        #logger.debug(repr(y))
         return y
 
 class Misc:
@@ -203,7 +203,7 @@ class Misc:
                 if 'Bottling' == balise.text:
                     m.use = model.constants.MISC_USE_BOTTLING
 
-        logger.debug(repr(m))
+        #logger.debug(repr(m))
         return m
 
 
@@ -302,9 +302,119 @@ class Recipe:
         for element in mashStep:
             recipe.listeMashSteps.append(MashStep.parse(element))
 
-        logger.debug(repr(recipe))
+        #logger.debug(repr(recipe))
         logger.debug("End parsing recipe")
         return recipe
+
+    def compute_fermentablesWeight(self):
+        grainWeight = 0
+        for f in self.listeFermentables:
+            grainWeight += f.amount
+        return grainWeight
+
+    def compute_equivSugar(self):
+        self.equivSugar = 0.0
+        self.equivSugarMashed = 0.0
+        self.equivSugarNonMashed = 0.0
+        self.equivSugarPreBoil = 0.0
+        self.equivSugarMashedPreBoil = 0.0
+        self.equivSugarNonMashedPreBoil = 0.0
+
+        for f in self.listeFermentables:
+            self.equivSugar += f.equivSucre()
+            if f.type == model.constants.FERMENTABLE_TYPE_EXTRACT or f.type == model.constants.FERMENTABLE_TYPE_DRY_EXTRACT or f.type == model.constants.FERMENTABLE_TYPE_SUGAR :
+                self.equivSugarNonMashed += f.equivSucre()
+            else :
+                self.equivSugarMashed += f.equivSucre()
+
+            #on refait la même chose pour déterminer la densité pré-ébullition en cas d'addition tardive de sucre, ce qui influence le calcul des IBUs.
+            if f.useAfterBoil == False:
+                self.equivSugarPreBoil += f.equivSucre()
+                if f.type == model.constants.FERMENTABLE_TYPE_EXTRACT or f.type == model.constants.FERMENTABLE_TYPE_DRY_EXTRACT or f.type == model.constants.FERMENTABLE_TYPE_SUGAR :
+                    self.equivSugarNonMashedPreBoil += f.equivSucre()
+                else :
+                    self.equivSugarMashedPreBoil += f.equivSucre()
+
+    def compute_OG(self):
+        return 1+ (self.compute_GU()/1000)
+    
+    def compute_OG_PreBoil(self):
+        return 1+ (self.compute_GU_PreBoil()/1000)
+
+    def compute_GU(self):    
+        self.compute_equivSugar()
+        return (383.89*self.equivSugarMashed/float(self.volume))*(self.efficiency/100) + (383.89*self.equivSugarNonMashed/float(self.volume))
+
+    def compute_GU_PreBoil(self):
+        self.compute_equivSugar()
+        return (383.89*self.equivSugarMashedPreBoil/float(self.volume))*(self.efficiency/100) + (383.89*self.equivSugarNonMashedPreBoil/float(self.volume))
+
+    def compute_FG(self):
+        #calcul de la FG. Si il y a plusieurs levures, on recupere l'attenuation la plus elevee.
+        levureAttenDec = sorted (self.listeYeasts, reverse = True, key=lambda levure: levure.attenuation)
+        if not levureAttenDec : 
+            atten = 0.75
+        else :
+            atten = levureAttenDec[0].attenuation/100
+        
+        GUF = self.compute_GU()*(1-atten)
+        return 1 + GUF/1000
+
+    def compute_EBC(self):
+        #calcul de la couleur
+        #calcul du MCU pour chaque grain :
+        #MCU=4.23*EBC(grain)*Poids grain(Kg)/Volume(L)
+        #puis addition de tous les MCU
+        #puis calcul EBC total :
+        #EBC=2.939*MCU^0.6859
+        mcuTot = 0
+        for f in self.listeFermentables:
+            mcuTot += 4.23*f.color*(f.amount/1000)/float(self.volume)
+        return 2.939*(mcuTot**0.6859)
+
+    def compute_IBU(self):
+        #calcul de l'amertume : methode de Tinseth
+        #IBUs = decimal alpha acid utilization * mg/l of added alpha acids
+        
+        #mg/l of added alpha acids = decimal AA rating * grams hops * 1000 / liters of wort
+        #Decimal Alpha Acid Utilization = Bigness Factor * Boil Time Factor
+        #Bigness factor = 1.65 * 0.000125^(wort gravity - 1)
+        #Boil Time factor = 1 - e^(-0.04 * time in mins) / 4.15
+        liste_btFactor = list()
+        liste_ibuPart = list()
+        
+        bignessFactor = 1.65 * (0.000125**(self.compute_OG_PreBoil() - 1))
+        ibuTot = 0
+        for h in self.listeHops:
+            btFactor = (1 - 2.71828182845904523536**(-0.04 * h.time)) / 4.15
+
+            aaUtil = btFactor*bignessFactor
+            mgAA = (h.alpha/100)*h.amount*1000 / float(self.volume)
+            try :
+                if h.use != model.constants.HOP_USE_DRY_HOP and h.use != model.constants.HOP_USE_AROMA :
+                    ibuTot += (mgAA * aaUtil) + 0.1*(mgAA * aaUtil)
+                else :
+                    ibuTot += mgAA * aaUtil 
+                liste_ibuPart.append(self.ibuPart)
+            except:
+                if h.form == model.constants.HOP_FORM_PELLET :
+                    ibuTot += (mgAA * aaUtil) + 0.1*(mgAA * aaUtil)
+                else :
+                    ibuTot += mgAA * aaUtil 
+        return ibuTot
+
+    def compute_ratioBUGU(self):
+        #calcul du rapport BU/GU
+        try :
+            ratioBuGu = self.compute_IBU() / self.compute_GU()
+        except :
+            ratioBuGu = 0
+        return ratioBuGu
+
+    def compute_ABV(self):
+        #calcul ABV
+        #ABV = 0.130((OG-1)-(FG-1))*1000
+        return 0.130*((self.compute_OG()-1) -(self.compute_FG()-1))*1000
 
     def calculs_recette (self) :
         
@@ -346,8 +456,6 @@ class Recipe:
         GUPreBoil = (383.89*sum(liste_equivSucreMashedPreBoil)/float(self.volume))*((self.efficiency)/100) + (383.89*sum(liste_equivSucreNonMashedPreBoil)/float(self.volume))
         OGPreBoil = 1+ (self.GUPreBoil/1000)  
 
-        #TODO : continuer la modification de la méthode de calcul
-              
         #calcul de la FG. Si il y a plusieurs levures, on recupere l'attenuation la plus elevee.
         levureAttenDec = sorted (self.listeYeasts, reverse = True, key=lambda levure: levure.attenuation)
         if not levureAttenDec : 

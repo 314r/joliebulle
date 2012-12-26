@@ -26,7 +26,6 @@
 import PyQt4
 import sys
 import logging
-from PyQt4 import QtGui
 from PyQt4 import QtCore
 import xml.etree.ElementTree as ET
 from globals import *
@@ -86,15 +85,3 @@ class ImportBase(object,metaclass=Singleton) :
         logger.debug( "%s miscs in database, using %s bytes in memory", len(self.listeMiscs), sys.getsizeof(self.listeMiscs) )
 
         logger.debug("Import %s terminé", database_file)
-
-    def getFermentablesQtModel(self):
-        return QtGui.QStringListModel( [f.name for f in self.listeFermentables] )
-
-    def getHopsQtModel(self):
-        return QtGui.QStringListModel( [h.name for h in self.listeHops] )
-
-    def getMiscsQtModel(self):
-        return QtGui.QStringListModel( [m.name for m in self.listeMiscs] )
-
-    def getYeastsQtModel(self):
-        return QtGui.QStringListModel( [y.name for y in self.listeYeasts] )

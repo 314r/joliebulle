@@ -29,6 +29,8 @@ from PyQt4 import QtGui
 from PyQt4 import QtCore
 from base import *
 from globals import *
+import ui.base
+
 
 from editorY_ui import *
 import xml.etree.ElementTree as ET
@@ -45,7 +47,7 @@ class DialogL(QtGui.QDialog):
         #self.base.importBeerXML() 
         
 #        self.ui.listWidgetLevures.addItems(self.base.liste_levuresDetail)
-        self.ui.listViewLevures.setModel( self.base.getYeastsQtModel() )
+        self.ui.listViewLevures.setModel( ui.base.getYeastsQtModel() )
         self.ui.comboBoxForme.addItem(self.trUtf8('Liquide'))
         self.ui.comboBoxForme.addItem(self.trUtf8('Poudre'))
         self.ui.comboBoxForme.addItem(self.trUtf8('Gélose'))

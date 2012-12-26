@@ -29,6 +29,7 @@ from PyQt4 import QtGui
 from PyQt4 import QtCore
 from base import *
 from globals import *
+import ui.base
 
 from editorH_ui import *
 import xml.etree.ElementTree as ET
@@ -45,7 +46,7 @@ class DialogH(QtGui.QDialog):
         #self.base.importBeerXML()
         
         #self.ui.listWidgetHoublons.addItems(self.base.liste_houblons)
-        self.ui.listViewHoublons.setModel( self.base.getHopsQtModel() )
+        self.ui.listViewHoublons.setModel( ui.base.getHopsQtModel() )
         self.ui.comboBoxForme.addItem(self.trUtf8('Feuille'))
         self.ui.comboBoxForme.addItem(self.trUtf8('Pellet'))
         self.ui.comboBoxForme.addItem(self.trUtf8('Cône'))
