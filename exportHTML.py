@@ -25,10 +25,10 @@ from PyQt4 import QtGui
 from PyQt4 import QtCore
 from base import *
 from globals import *
-from ui.objects import HopUI
-from ui.objects import MiscUI
-from ui.objects import YeastUI
-from ui.objects import MashUI
+from view.objects import HopView
+from view.objects import MiscView
+from view.objects import YeastView
+from view.objects import MashView
   
 
 class ExportHTML(QtGui.QDialog) : 
@@ -189,19 +189,19 @@ text-align : center;}
           
         houblons_texte=self.trUtf8('<h3>Houblons</h3>') + '<table class="ingredients">'
         for h in recipe.listeHops:
-            hUI = HopUI(h)
+            hUI = HopView(h)
             houblons_texte = houblons_texte + '<tr><td>%sg</td><td>%s (α%s%%, %s)</td><td>%smin (%s)</td></tr>' % (str("%.0f" %(h.amount)), h.name, str(h.alpha), hUI.hopFormDisplay(), str("%.0f" %(h.time)), hUI.hopUseDisplay() )
         houblons_texte = houblons_texte + '</table>'
         
         divers_texte = self.trUtf8('<h3>Ingrédients divers</h3>')  + '<table class="ingredients">'
         for m in recipe.listeMiscs:
-            mUI = MiscUI(m)
+            mUI = MiscView(m)
             divers_texte = divers_texte +  '<tr><td>%sg</td><td>%s (%s)</td><td>%smin (%s)</td></tr>' % (str("%.0f" %(m.amount)), m.name, m.type, str("%.0f" %(m.time)), mUI.miscUseDisplay() )
         divers_texte = divers_texte + '</table>'
         
         levures_texte = self.trUtf8('<h3>Levures</h3>')
         for y in recipe.listeYeasts:
-            yUI = YeastUI(y)
+            yUI = YeastView(y)
             levures_texte = levures_texte + yUI.yeastDetailDisplay() + '<br/>'
         
         self.recetteHtmlIng = self.trUtf8('<h2>Ingrédients pour un brassin de ') + str(recipe.volume) + self.trUtf8(' litres') + grains_texte + houblons_texte + divers_texte + levures_texte
@@ -214,7 +214,7 @@ text-align : center;}
 
         self.recetteHtmlMashProfile = self.trUtf8(' <h2>Brassage</h2>') + '<p>' + recipe.mashName + '<br/> pH : ' + recipe.mashPh + '</p><p><b>' + self.trUtf8(''' Etapes : ''') + '</b> </p> '
         for step in recipe.listeMashSteps:
-            mashUI = MashUI(step)
+            mashUI = MashView(step)
             self.recetteHtmlMashProfile = self.recetteHtmlMashProfile + step.name + ' : ' + self.trUtf8(''' palier de type ''')+ mashUI.mashTypeDisplay() + self.trUtf8(''' à ''') + step.temp +'''°C'''+ self.trUtf8(''' pendant ''')+ step.time + self.trUtf8(''' minutes ''')+ '''<br/> '''
         self.recetteHtmlMashProfile = self.recetteHtmlMashProfile + '<p><b>' + self.trUtf8(''' Rinçage : ''') + '</b></p>' + recipe.spargeTemp + ' °C'
 

@@ -817,13 +817,13 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         #self.treeViewIng.setModel(self.modeleIngBase)
         ##on va remplir tout ça... avec une autre fonction
         #self.listeIng()
-        self.comboBox.setModel(ui.base.getFermentablesQtModel() )
+        self.comboBox.setModel(view.base.getFermentablesQtModel() )
         
-        self.comboBoxH.setModel(ui.base.getHopsQtModel() )
+        self.comboBoxH.setModel(view.base.getHopsQtModel() )
         
-        self.comboBoxY.setModel(ui.base.getYeastsQtModel() )
+        self.comboBoxY.setModel(view.base.getYeastsQtModel() )
         
-        self.comboBoxM.setModel(ui.base.getMiscsQtModel() )
+        self.comboBoxM.setModel(view.base.getMiscsQtModel() )
        
         self.comboBoxStyle.hide()
         self.comboBoxStyle.addItems(self.baseStyleListe)

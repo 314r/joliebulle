@@ -565,6 +565,6 @@ class MashStep:
                 m.temp = balise.text
             if 'INFUSE_AMOUNT' == balise.tag:
                 m.infuseAmount = float(balise.text)
-        logger.debug(repr(m))
+        #logger.debug(repr(m))
         return m
 

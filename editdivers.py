@@ -28,7 +28,7 @@ from PyQt4 import QtGui
 from PyQt4 import QtCore
 from base import *
 from globals import *
-import ui.base
+import view.base
 
 from editorM_ui import *
 import xml.etree.ElementTree as ET
@@ -46,7 +46,7 @@ class DialogD(QtGui.QDialog):
         #self.base.importBeerXML()
         
 #        self.ui.listWidgetDivers.addItems(self.base.liste_divers)
-        self.ui.listViewDivers.setModel( ui.base.getMiscsQtModel() )
+        self.ui.listViewDivers.setModel( view.base.getMiscsQtModel() )
         self.ui.comboBoxType.addItem(self.trUtf8("Epice"))
         self.ui.comboBoxType.addItem(self.trUtf8("Clarifiant"))
         self.ui.comboBoxType.addItem(self.trUtf8("Traitement Eau"))
