@@ -16,6 +16,7 @@ class HopView(QtCore.QObject):
 			return self.trUtf8('''Feuille''')
 		if self.model.form == model.constants.HOP_FORM_PLUG :
 			return self.trUtf8('''Cône''')
+		return '?hopFormDisplay?'
 
 	def hopUseDisplay(self):
 		"""Return a translated string which can bu used in UI for displaying hop use"""
@@ -29,6 +30,7 @@ class HopView(QtCore.QObject):
 			return self.trUtf8('Premier Moût')
 		if self.model.use == model.constants.HOP_USE_AROMA :
 			return self.trUtf8('Arôme')
+		return '?hopUseDisplay?'
 
 class MiscView(QtCore.QObject):
 	def __init__(self, misc):
@@ -47,6 +49,7 @@ class MiscView(QtCore.QObject):
 			return self.trUtf8('Secondaire')
 		if self.model.use == model.constants.MISC_USE_BOTTLING :
 			return self.trUtf8('Embouteillage')
+		return '?miscUseDisplay?'
 
 class YeastView(QtCore.QObject):
 	def __init__(self, yeast):
@@ -68,6 +71,7 @@ class MashView(QtCore.QObject):
 			return self.trUtf8('''Température''')
 		if self.model.type == model.constants.MASH_STEP_DECOCTION:
 			return self.trUtf8('''Décoction''')
+		return '?mashTypeDisplay?'
 
 class FermentableView(QtCore.QObject):
 	def __init__(self, fermentable):
@@ -85,3 +89,4 @@ class FermentableView(QtCore.QObject):
 			return self.trUtf8('Extrait sec')
 		if self.model.type == model.constants.FERMENTABLE_TYPE_ADJUNCT:
 			return self.trUtf8('Complément')
+		return '?fermentableTypeDisplay?'
