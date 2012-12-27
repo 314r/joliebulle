@@ -55,3 +55,16 @@ class YeastUI(QtCore.QObject):
 
 	def yeastDetailDisplay(self):
 		return "%s %s %s" % (self.model.name, self.model.labo, self.model.productId)
+
+class MashUI(QtCore.QObject):
+	def __init__(self, yeast):
+		QtCore.QObject.__init__(self)
+		self.model = yeast
+
+	def mashTypeDisplay(self):
+		if self.model.type == model.constants.MASH_STEP_INFUSION:
+			return self.trUtf8('''Infusion''')
+		if self.model.type == model.constants.MASH_STEP_TEMPERATURE:
+			return self.trUtf8('''Température''')
+		if self.model.type == model.constants.MASH_STEP_DECOCTION:
+			return self.trUtf8('''Décoction''')

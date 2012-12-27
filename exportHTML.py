@@ -28,6 +28,7 @@ from globals import *
 from ui.objects import HopUI
 from ui.objects import MiscUI
 from ui.objects import YeastUI
+from ui.objects import MashUI
   
 
 class ExportHTML(QtGui.QDialog) : 
@@ -211,7 +212,16 @@ text-align : center;}
             self.trUtf8('<tr><td>Amertume</td>'), recipe.compute_IBU(), self.trUtf8('<tr><td>Ratio BU/GU</td>'), recipe.compute_ratioBUGU(),
             self.trUtf8('<tr><td>Alcool (vol)</td>'), recipe.compute_ABV())
 
-        self.recipeNotes = self.trUtf8(' <h2>Notes</h2>') + '<p>' + str(recipe.recipeNotes) + '</p>'
+        self.recetteHtmlMashProfile = self.trUtf8(' <h2>Brassage</h2>') + '<p>' + recipe.mashName + '<br/> pH : ' + recipe.mashPh + '</p><p><b>' + self.trUtf8(''' Etapes : ''') + '</b> </p> '
+        for step in recipe.listeMashSteps:
+            mashUI = MashUI(step)
+            self.recetteHtmlMashProfile = self.recetteHtmlMashProfile + step.name + ' : ' + self.trUtf8(''' palier de type ''')+ mashUI.mashTypeDisplay() + self.trUtf8(''' à ''') + step.temp +'''°C'''+ self.trUtf8(''' pendant ''')+ step.time + self.trUtf8(''' minutes ''')+ '''<br/> '''
+        self.recetteHtmlMashProfile = self.recetteHtmlMashProfile + '<p><b>' + self.trUtf8(''' Rinçage : ''') + '</b></p>' + recipe.spargeTemp + ' °C'
+
+        if recipe.recipeNotes != None :
+            self.recipeNotes = self.trUtf8(' <h2>Notes</h2>') + '<p>' + str(recipe.recipeNotes) + '</p>'
+        else:
+            self.recipeNotes = self.trUtf8(' <h2>Notes</h2>') + '<p></p>'
 
         self.recetteHtmlFooter =self.trUtf8('''
 # <footer class="footer">Une recette générée par JolieBulle, logiciel de brassage libre.</footer>

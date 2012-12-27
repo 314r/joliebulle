@@ -540,6 +540,10 @@ class MashStep:
         self.infuseAmount = 0.0
         self.version = 1
 
+    def __repr__(self):
+        return ('mashStep[name="%s", type="%s", time=%s, temp=%s, infuseAmount=%f, version=%d]' %
+                (self.name, self.type, self.time, self.temp, self.infuseAmount, self.version) )
+
     @staticmethod
     def parse(element):
         m = MashStep()
@@ -560,4 +564,7 @@ class MashStep:
             if 'STEP_TEMP' == balise.tag:
                 m.temp = balise.text
             if 'INFUSE_AMOUNT' == balise.tag:
-                m.infuseAmount = balise.text
+                m.infuseAmount = float(balise.text)
+        logger.debug(repr(m))
+        return m
+
