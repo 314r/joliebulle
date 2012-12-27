@@ -5,14 +5,8 @@ APP = ["main.py"]
 NAME = "Joliebulle"
 VERSION = "2.7.0"
 
-from sys import platform
-
-if platform == 'darwin':
-    from setuptools import setup
-elif platform == 'linux':
-    from distutils.core import setup
-
-setup(name = NAME,
+setup_info = dict(
+      name = NAME,
       version = VERSION,
       app = APP,
       options=dict(
@@ -40,4 +34,14 @@ setup(name = NAME,
       setup_requires=['py2app'],
       scripts = ["joliebulle"],
       iconfile='Images/bulle.png'       
-)    
+)  
+
+from sys import platform
+
+if platform == 'darwin':
+    from setuptools import setup
+    del setup_info['packages']
+elif platform == 'linux':
+    from distutils.core import setup
+
+setup(**setup_info)
