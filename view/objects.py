@@ -68,3 +68,20 @@ class MashView(QtCore.QObject):
 			return self.trUtf8('''Température''')
 		if self.model.type == model.constants.MASH_STEP_DECOCTION:
 			return self.trUtf8('''Décoction''')
+
+class FermentableView(QtCore.QObject):
+	def __init__(self, fermentable):
+		QtCore.QObject.__init__(self)
+		self.model = fermentable
+
+	def fermentableTypeDisplay(self):
+		if self.model.type == model.constants.FERMENTABLE_TYPE_GRAIN:
+			return self.trUtf8('Grain')
+		if self.model.type == model.constants.FERMENTABLE_TYPE_SUGAR:
+			return self.trUtf8('Sucre')
+		if self.model.type == model.constants.FERMENTABLE_TYPE_EXTRACT:
+			return self.trUtf8('Extrait')
+		if self.model.type == model.constants.FERMENTABLE_TYPE_DRY_EXTRACT:
+			return self.trUtf8('Extrait sec')
+		if self.model.type == model.constants.FERMENTABLE_TYPE_ADJUNCT:
+			return self.trUtf8('Complément')
