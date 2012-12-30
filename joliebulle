@@ -2,4 +2,4 @@
 
 cd /usr/share/joliebulle
 
-./main.py $@
+python main.py $@
