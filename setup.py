@@ -41,7 +41,7 @@ from sys import platform
 if platform == 'darwin':
     from setuptools import setup
     del setup_info['packages']
-elif platform == 'linux':
+elif platform.startswith('linux'):
     from distutils.core import setup
 
 setup(**setup_info)
