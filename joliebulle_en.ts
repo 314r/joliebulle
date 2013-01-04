@@ -4,7 +4,7 @@
 <context>
     <name>AppWindow</name>
     <message>
-        <location filename="main.py" line="2262"/>
+        <location filename="main.py" line="2376"/>
         <source>A propos</source>
         <translation>About</translation>
     </message>
@@ -14,52 +14,52 @@
         <translation type="obsolete">&lt;h1&gt;JolieBulle&lt;/h1&gt; &lt;b&gt;version 2.0&lt;/b&gt;&lt;br/&gt;copyright (c) 2010-2011 Pierre Tavares&lt;p&gt;JolieBulle is a beer brewing software.&lt;/p&gt;&lt;p&gt;&lt;a href =http://www.gnu.org/licenses/gpl-3.0.html&gt;Licence : Version 3 de la Licence Générale Publique GNU&lt;/a&gt;&lt;/p&gt;&lt;p&gt;Some icons are from the Faenza pack by Tiheum (Matthieu James), released under GPL.&lt;/p&gt;</translation>
     </message>
     <message>
-        <location filename="main.py" line="2408"/>
+        <location filename="main.py" line="2533"/>
         <source>Nouvelle Recette</source>
         <translation>New Recipe</translation>
     </message>
     <message utf8="true">
-        <location filename="main.py" line="2412"/>
+        <location filename="main.py" line="2537"/>
         <source>Générique</source>
         <translation>Generic</translation>
     </message>
     <message utf8="true">
-        <location filename="main.py" line="661"/>
+        <location filename="main.py" line="704"/>
         <source>Ingrédients</source>
         <translation>Ingredients</translation>
     </message>
     <message utf8="true">
-        <location filename="main.py" line="661"/>
+        <location filename="main.py" line="704"/>
         <source>Quantité (g)</source>
         <translation>Amount (g)</translation>
     </message>
     <message>
-        <location filename="main.py" line="661"/>
+        <location filename="main.py" line="704"/>
         <source>Temps (min)</source>
         <translation>Time (min)</translation>
     </message>
     <message>
-        <location filename="main.py" line="661"/>
+        <location filename="main.py" line="704"/>
         <source>Acide Alpha (%)</source>
         <translation>Alpha Acid (%)</translation>
     </message>
     <message>
-        <location filename="main.py" line="661"/>
+        <location filename="main.py" line="704"/>
         <source>Type</source>
         <translation>Type</translation>
     </message>
     <message>
-        <location filename="main.py" line="2231"/>
+        <location filename="main.py" line="2345"/>
         <source>Ouvrir un fichier</source>
         <translation>Open file</translation>
     </message>
     <message>
-        <location filename="main.py" line="2374"/>
+        <location filename="main.py" line="2499"/>
         <source>Enregistrer dans un fichier</source>
         <translation>Save in a file</translation>
     </message>
     <message>
-        <location filename="main.py" line="661"/>
+        <location filename="main.py" line="704"/>
         <source>Proportion</source>
         <translation>Ratio</translation>
     </message>
@@ -74,22 +74,22 @@
         <translation type="obsolete">&lt;h1&gt;JolieBulle&lt;/h1&gt; &lt;b&gt;version 2.2&lt;/b&gt;&lt;br/&gt;copyright (c) 2010-2011 Pierre Tavares&lt;p&gt; JolieBulle is a beer brewing software.&lt;/p&gt;&lt;p&gt;&lt;a href =http://www.gnu.org/licenses/gpl-3.0.html&gt;Licence :GPL v3&lt;/a&gt;&lt;/p&gt;&lt;p&gt;Some icons come from the Faenza pack by Tiheum (Matthieu James), also provided under GPL&lt;/p&gt;</translation>
     </message>
     <message>
-        <location filename="main.py" line="1103"/>
+        <location filename="main.py" line="1147"/>
         <source>Supprimer</source>
         <translation>Remove</translation>
     </message>
     <message utf8="true">
-        <location filename="main.py" line="1103"/>
+        <location filename="main.py" line="1147"/>
         <source>La recette sera définitivement supprimée &lt;br/&gt; Continuer ?</source>
         <translation>The recipe will be removed.&lt;br/&gt; Continue ?</translation>
     </message>
     <message>
-        <location filename="main.py" line="1267"/>
+        <location filename="main.py" line="1311"/>
         <source>Remplacer la base ?</source>
         <translation>Restore database</translation>
     </message>
     <message utf8="true">
-        <location filename="main.py" line="1267"/>
+        <location filename="main.py" line="1311"/>
         <source>La base des ingrédients actuelle va être effacée et remplacée par la base originale. Toutes vos modifications vont être effacées. Un redémarrage de l&apos;application sera nécessaire.&lt;br&gt; Continuer ?</source>
         <translation>The ingredients database is going to be removed and replaced by the original one. All changes you made will be removed. You will have to reboot JolieBulle. &lt;br/&gt; Continue ?</translation>
     </message>
@@ -104,12 +104,12 @@
         <translation type="obsolete">&lt;h1&gt;JolieBulle&lt;/h1&gt; &lt;b&gt;version 2.4&lt;/b&gt;&lt;br/&gt;copyright (c) 2010-2011 Pierre Tavares&lt;p&gt;JolieBulle is a beer brewing software.&lt;/p&gt;&lt;p&gt;&lt;a href =http://www.gnu.org/licenses/gpl-3.0.html&gt;Licence : Version 3 de la Licence Générale Publique GNU&lt;/a&gt;&lt;/p&gt;&lt;p&gt;Some icons are from the Faenza pack by Tiheum (Matthieu James), released under GPL.&lt;/p&gt;</translation>
     </message>
     <message utf8="true">
-        <location filename="main.py" line="661"/>
+        <location filename="main.py" line="704"/>
         <source>Étape</source>
         <translation>Step</translation>
     </message>
     <message>
-        <location filename="main.py" line="1061"/>
+        <location filename="main.py" line="1107"/>
         <source>Renommer</source>
         <translation>Rename</translation>
     </message>
@@ -134,62 +134,62 @@
         <translation type="obsolete">Up</translation>
     </message>
     <message>
-        <location filename="main.py" line="1132"/>
+        <location filename="main.py" line="1176"/>
         <source>nouveau dossier</source>
         <translation>new folder</translation>
     </message>
     <message utf8="true">
-        <location filename="main.py" line="1947"/>
+        <location filename="main.py" line="2029"/>
         <source>Ébullition</source>
         <translation>Boil</translation>
     </message>
     <message>
-        <location filename="main.py" line="1818"/>
+        <location filename="main.py" line="1900"/>
         <source>Feuille</source>
         <translation>Leaf</translation>
     </message>
     <message>
-        <location filename="main.py" line="1812"/>
+        <location filename="main.py" line="1894"/>
         <source>Pellet</source>
         <translation>Pellet</translation>
     </message>
     <message utf8="true">
-        <location filename="main.py" line="1816"/>
+        <location filename="main.py" line="1898"/>
         <source>Cône</source>
         <translation>Plug</translation>
     </message>
     <message>
-        <location filename="main.py" line="1836"/>
+        <location filename="main.py" line="1918"/>
         <source>Dry Hop</source>
         <translation>Dry Hop</translation>
     </message>
     <message utf8="true">
-        <location filename="main.py" line="1935"/>
+        <location filename="main.py" line="2017"/>
         <source>Empâtage</source>
         <translation>Mash</translation>
     </message>
     <message utf8="true">
-        <location filename="main.py" line="1840"/>
+        <location filename="main.py" line="1922"/>
         <source>Premier Moût</source>
         <translation>First Wort</translation>
     </message>
     <message utf8="true">
-        <location filename="main.py" line="1842"/>
+        <location filename="main.py" line="1924"/>
         <source>Arôme</source>
         <translation>Aroma</translation>
     </message>
     <message>
-        <location filename="main.py" line="1938"/>
+        <location filename="main.py" line="2020"/>
         <source>Primaire</source>
         <translation>Primary</translation>
     </message>
     <message>
-        <location filename="main.py" line="1941"/>
+        <location filename="main.py" line="2023"/>
         <source>Secondaire</source>
         <translation>Secondary</translation>
     </message>
     <message>
-        <location filename="main.py" line="1944"/>
+        <location filename="main.py" line="2026"/>
         <source>Embouteillage</source>
         <translation>Bottling</translation>
     </message>
@@ -204,75 +204,90 @@
         <translation type="obsolete">&lt;h1&gt;JolieBulle&lt;/h1&gt; &lt;b&gt;version 2.6&lt;/b&gt;&lt;br/&gt;copyright (c) 2010-2012 Pierre Tavares&lt;p&gt;JolieBulle is a beer brewing software.&lt;/p&gt;&lt;p&gt;&lt;a href =http://www.gnu.org/licenses/gpl-3.0.html&gt;Licence : Version 3 de la Licence Générale Publique GNU&lt;/a&gt;&lt;/p&gt;&lt;p&gt;Some icons are from the Faenza pack by Tiheum (Matthieu James), released under GPL.&lt;/p&gt;</translation>
     </message>
     <message>
-        <location filename="main.py" line="412"/>
+        <location filename="main.py" line="452"/>
         <source>Enregistrer</source>
         <translation>Save</translation>
     </message>
     <message>
-        <location filename="main.py" line="419"/>
+        <location filename="main.py" line="459"/>
         <source>Nouvelle recette</source>
         <translation>New recipe</translation>
     </message>
     <message>
-        <location filename="main.py" line="456"/>
+        <location filename="main.py" line="496"/>
         <source>Fichier</source>
         <translation>File</translation>
     </message>
     <message>
-        <location filename="main.py" line="477"/>
+        <location filename="main.py" line="522"/>
         <source>Outils</source>
         <translation>Tools</translation>
     </message>
     <message>
-        <location filename="main.py" line="1065"/>
+        <location filename="main.py" line="1111"/>
         <source>Nouveau dossier</source>
         <translation>New folder</translation>
     </message>
     <message utf8="true">
-        <location filename="main.py" line="2342"/>
+        <location filename="main.py" line="2467"/>
         <source>Recette déjà existante</source>
         <translation>Recipe name exists </translation>
     </message>
     <message utf8="true">
-        <location filename="main.py" line="2342"/>
+        <location filename="main.py" line="2467"/>
         <source>Ce nom de recette existe déjà. L&apos;enregistrement a été annulé. Vous pouvez choisir un nouveau nom.</source>
         <translation>Recipe name already exists. You should choose another name.</translation>
     </message>
     <message>
-        <location filename="main.py" line="524"/>
+        <location filename="main.py" line="570"/>
         <source>Tout grain</source>
         <translation>All grain</translation>
     </message>
     <message>
-        <location filename="main.py" line="524"/>
+        <location filename="main.py" line="570"/>
         <source>Extrait</source>
         <translation type="unfinished">Extract</translation>
     </message>
     <message>
-        <location filename="main.py" line="524"/>
+        <location filename="main.py" line="570"/>
         <source>Partial mash</source>
         <translation type="unfinished"></translation>
     </message>
     <message utf8="true">
-        <location filename="main.py" line="2262"/>
+        <location filename="main.py" line="2376"/>
         <source>&lt;h1&gt;JolieBulle&lt;/h1&gt; &lt;b&gt;version 2.7&lt;/b&gt;&lt;br/&gt;copyright (c) 2010-2012 Pierre Tavares&lt;p&gt; JolieBulle est un logiciel de lecture et de formulation de recettes de brassage.&lt;/p&gt;&lt;p&gt;&lt;a href =http://www.gnu.org/licenses/gpl-3.0.html&gt;Licence : Version 3 de la Licence Générale Publique GNU&lt;/a&gt;&lt;/p&gt;&lt;p&gt;Certaines icônes proviennent du pack Faenza par Tiheum (Matthieu James), également distribué sous licence GPL.&lt;/p&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="main.py" line="518"/>
+        <source>Profils de brassage</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="main.py" line="1858"/>
+        <source>Brassage</source>
+        <translation type="unfinished">Mash</translation>
+    </message>
+    <message utf8="true">
+        <location filename="main.py" line="2223"/>
+        <source>Après ébullition</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
     <name>ComboBoxDelegate</name>
     <message>
-        <location filename="main.py" line="263"/>
+        <location filename="main.py" line="299"/>
         <source>Pellet</source>
         <translation>Pellet</translation>
     </message>
     <message>
-        <location filename="main.py" line="257"/>
+        <location filename="main.py" line="293"/>
         <source>Feuille</source>
         <translation>Leaf</translation>
     </message>
     <message utf8="true">
-        <location filename="main.py" line="265"/>
+        <location filename="main.py" line="301"/>
         <source>Cône</source>
         <translation>Plug</translation>
     </message>
@@ -601,11 +616,6 @@ p, li { white-space: pre-wrap; }
 </context>
 <context>
     <name>DialogAlc</name>
-    <message>
-        <location filename="outilAlc.ui" line="14"/>
-        <source>Dialog</source>
-        <translation></translation>
-    </message>
     <message utf8="true">
         <location filename="outilAlc.ui" line="22"/>
         <source>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
@@ -649,6 +659,24 @@ p, li { white-space: pre-wrap; }
         <location filename="outilAlc.ui" line="55"/>
         <source>0</source>
         <translation></translation>
+    </message>
+    <message>
+        <location filename="outilAlc.ui" line="14"/>
+        <source>Calcul taux alcool</source>
+        <translation>Alcohol by volume calculator</translation>
+    </message>
+    <message utf8="true">
+        <location filename="outilAlc.ui" line="120"/>
+        <source>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;Ubuntu&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Sucre ajouté (g/L)&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;Ubuntu&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Sugar addition (g/L)&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
 </context>
 <context>
@@ -1225,7 +1253,7 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>DialogPref</name>
     <message>
-        <location filename="preferences.py" line="76"/>
+        <location filename="preferences.py" line="78"/>
         <source>Choisir un dossier</source>
         <translation>Choose a folder</translation>
     </message>
@@ -1309,7 +1337,7 @@ p, li { white-space: pre-wrap; }
         <translation>Plug</translation>
     </message>
     <message utf8="true">
-        <location filename="export.py" line="193"/>
+        <location filename="export.py" line="200"/>
         <source>Ébullition</source>
         <translation>Boil</translation>
     </message>
@@ -1319,7 +1347,7 @@ p, li { white-space: pre-wrap; }
         <translation>Dry Hop</translation>
     </message>
     <message utf8="true">
-        <location filename="export.py" line="195"/>
+        <location filename="export.py" line="202"/>
         <source>Empâtage</source>
         <translation>Mash</translation>
     </message>
@@ -1334,19 +1362,29 @@ p, li { white-space: pre-wrap; }
         <translation>Aroma</translation>
     </message>
     <message>
-        <location filename="export.py" line="197"/>
+        <location filename="export.py" line="204"/>
         <source>Primaire</source>
         <translation>Primary</translation>
     </message>
     <message>
-        <location filename="export.py" line="199"/>
+        <location filename="export.py" line="206"/>
         <source>Secondaire</source>
         <translation>Secondary</translation>
     </message>
     <message>
-        <location filename="export.py" line="201"/>
+        <location filename="export.py" line="208"/>
         <source>Embouteillage</source>
         <translation>Bottling</translation>
+    </message>
+    <message>
+        <location filename="export.py" line="170"/>
+        <source>Brassage</source>
+        <translation type="unfinished">Mash</translation>
+    </message>
+    <message utf8="true">
+        <location filename="export.py" line="172"/>
+        <source>Après ébullition</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -1436,14 +1474,14 @@ Recette prévue pour un brassin de </source>
         <translation type="obsolete">&lt;h3&gt;Grains&lt;/h3&gt; </translation>
     </message>
     <message>
-        <location filename="exportHTML.py" line="81"/>
+        <location filename="exportHTML.py" line="85"/>
         <source>&lt;h3&gt;Houblons&lt;/h3&gt; </source>
         <translation>&lt;h3&gt;Hops&lt;/h3&gt; </translation>
     </message>
     <message>
-        <location filename="exportHTML.py" line="78"/>
+        <location filename="exportHTML.py" line="127"/>
         <source> pendant </source>
-        <translation type="obsolete"> for </translation>
+        <translation type="unfinished"> for </translation>
     </message>
     <message utf8="true">
         <location filename="exportHTML.py" line="78"/>
@@ -1451,12 +1489,12 @@ Recette prévue pour un brassin de </source>
         <translation type="obsolete">minutes</translation>
     </message>
     <message utf8="true">
-        <location filename="exportHTML.py" line="88"/>
+        <location filename="exportHTML.py" line="92"/>
         <source>&lt;h3&gt;Ingrédients divers&lt;/h3&gt; </source>
         <translation>&lt;h3&gt;Miscellaneous&lt;/h3&gt; </translation>
     </message>
     <message>
-        <location filename="exportHTML.py" line="96"/>
+        <location filename="exportHTML.py" line="100"/>
         <source>&lt;h3&gt;Levures&lt;/h3&gt; </source>
         <translation>&lt;h3&gt;Yeasts&lt;/h3&gt; </translation>
     </message>
@@ -1512,7 +1550,7 @@ Recette prévue pour un brassin de </source>
 &lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="exportHTML.py" line="108"/>
+        <location filename="exportHTML.py" line="131"/>
         <source> &lt;h2&gt;Notes&lt;/h2&gt;</source>
         <translation> &lt;h2&gt;Notes&lt;/h2&gt;</translation>
     </message>
@@ -1527,47 +1565,47 @@ Recette prévue pour un brassin de </source>
         <translation>&lt;h3&gt;Grains and sugars&lt;/h3&gt;</translation>
     </message>
     <message utf8="true">
-        <location filename="exportHTML.py" line="103"/>
+        <location filename="exportHTML.py" line="107"/>
         <source> &lt;h2&gt;Ingrédients pour un brassin de </source>
         <translation> &lt;h2&gt; Ingredients. Mash size : </translation>
     </message>
     <message>
-        <location filename="exportHTML.py" line="103"/>
+        <location filename="exportHTML.py" line="107"/>
         <source> litres</source>
         <translation> liters</translation>
     </message>
     <message>
-        <location filename="exportHTML.py" line="106"/>
+        <location filename="exportHTML.py" line="110"/>
         <source>&lt;tr&gt;&lt;td&gt;Rendement&lt;/td&gt; </source>
         <translation>&lt;tr&gt;&lt;td&gt;Yield&lt;/td&gt;</translation>
     </message>
     <message utf8="true">
-        <location filename="exportHTML.py" line="106"/>
+        <location filename="exportHTML.py" line="110"/>
         <source>&lt;tr&gt;&lt;td&gt;Densité initiale&lt;/td&gt;</source>
         <translation>&lt;tr&gt;&lt;td&gt;Original gravity&lt;/td&gt;</translation>
     </message>
     <message utf8="true">
-        <location filename="exportHTML.py" line="106"/>
+        <location filename="exportHTML.py" line="110"/>
         <source>&lt;tr&gt;&lt;td&gt;Densité finale&lt;/td&gt;</source>
         <translation>&lt;tr&gt;&lt;td&gt;Final gravity&lt;/td&gt;</translation>
     </message>
     <message>
-        <location filename="exportHTML.py" line="106"/>
+        <location filename="exportHTML.py" line="110"/>
         <source>&lt;tr&gt;&lt;td&gt;Teinte&lt;/td&gt;</source>
         <translation>&lt;tr&gt;&lt;td&gt;Color&lt;/td&gt;</translation>
     </message>
     <message>
-        <location filename="exportHTML.py" line="106"/>
+        <location filename="exportHTML.py" line="110"/>
         <source>&lt;tr&gt;&lt;td&gt;Amertume&lt;/td&gt;</source>
         <translation>&lt;tr&gt;&lt;td&gt;Bitterness&lt;/td&gt;</translation>
     </message>
     <message>
-        <location filename="exportHTML.py" line="106"/>
+        <location filename="exportHTML.py" line="110"/>
         <source>&lt;tr&gt;&lt;td&gt;Alcool (vol)&lt;/td&gt;</source>
         <translation>&lt;tr&gt;&lt;td&gt;Alcohol (by vol)&lt;/td&gt;</translation>
     </message>
     <message utf8="true">
-        <location filename="exportHTML.py" line="110"/>
+        <location filename="exportHTML.py" line="133"/>
         <source>
 # &lt;footer class=&quot;footer&quot;&gt;Une recette générée par JolieBulle, logiciel de brassage libre.&lt;/footer&gt;
 &lt;/body&gt;
@@ -1575,6 +1613,66 @@ Recette prévue pour un brassin de </source>
         <translation># &lt;footer class=&quot;footer&quot;&gt;A recipe generated by JolieBulle.&lt;/footer&gt;
 &lt;/body&gt;
 &lt;/html&gt;</translation>
+    </message>
+    <message utf8="true">
+        <location filename="exportHTML.py" line="78"/>
+        <source>Après ébullition</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message utf8="true">
+        <location filename="exportHTML.py" line="79"/>
+        <source>Ajout après ébullition</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="exportHTML.py" line="110"/>
+        <source>&lt;tr&gt;&lt;td&gt;Ratio BU/GU&lt;/td&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="exportHTML.py" line="112"/>
+        <source> &lt;h2&gt;Brassage&lt;/h2&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="exportHTML.py" line="112"/>
+        <source> Etapes : </source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="exportHTML.py" line="118"/>
+        <source>Infusion</source>
+        <translation type="unfinished">Infusion</translation>
+    </message>
+    <message utf8="true">
+        <location filename="exportHTML.py" line="120"/>
+        <source>Température</source>
+        <translation type="unfinished">Temperature</translation>
+    </message>
+    <message utf8="true">
+        <location filename="exportHTML.py" line="122"/>
+        <source>Décoction</source>
+        <translation type="unfinished">Decoction</translation>
+    </message>
+    <message>
+        <location filename="exportHTML.py" line="127"/>
+        <source> palier de type </source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message utf8="true">
+        <location filename="exportHTML.py" line="127"/>
+        <source> à </source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="exportHTML.py" line="127"/>
+        <source> minutes </source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message utf8="true">
+        <location filename="exportHTML.py" line="128"/>
+        <source> Rinçage : </source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -1677,7 +1775,7 @@ p, li { white-space: pre-wrap; }
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Pre-boil specific gravity :&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="reader.ui" line="1709"/>
+        <location filename="reader.ui" line="1723"/>
         <source>0</source>
         <translation></translation>
     </message>
@@ -1700,7 +1798,7 @@ p, li { white-space: pre-wrap; }
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Ingredients : &lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="reader.ui" line="1224"/>
+        <location filename="reader.ui" line="1238"/>
         <source>Enlever</source>
         <translation>Remove</translation>
     </message>
@@ -1790,112 +1888,112 @@ p, li { white-space: pre-wrap; }
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Alc :&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="reader.ui" line="1866"/>
+        <location filename="reader.ui" line="1880"/>
         <source>toolBar</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="reader.ui" line="1895"/>
+        <location filename="reader.ui" line="1909"/>
         <source>Fichier</source>
         <translation>File</translation>
     </message>
     <message>
-        <location filename="reader.ui" line="1930"/>
+        <location filename="reader.ui" line="1944"/>
         <source>Edition</source>
         <translation>Edit</translation>
     </message>
     <message>
-        <location filename="reader.ui" line="1920"/>
+        <location filename="reader.ui" line="1934"/>
         <source>Outils</source>
         <translation>Tools</translation>
     </message>
     <message>
-        <location filename="reader.ui" line="1952"/>
+        <location filename="reader.ui" line="1973"/>
         <source>Ouvrir</source>
         <translation>Open</translation>
     </message>
     <message>
-        <location filename="reader.ui" line="1985"/>
+        <location filename="reader.ui" line="2006"/>
         <source>Quitter</source>
         <translation>Quit</translation>
     </message>
     <message>
-        <location filename="reader.ui" line="1970"/>
+        <location filename="reader.ui" line="1991"/>
         <source>A propos</source>
         <translation>About</translation>
     </message>
     <message>
-        <location filename="reader.ui" line="2129"/>
+        <location filename="reader.ui" line="2150"/>
         <source>&amp;Enregistrer</source>
         <translation>Save</translation>
     </message>
     <message>
-        <location filename="reader.ui" line="1980"/>
+        <location filename="reader.ui" line="2001"/>
         <source>Enregistrer &amp;sous</source>
         <translation>Save as</translation>
     </message>
     <message>
-        <location filename="reader.ui" line="1990"/>
+        <location filename="reader.ui" line="2011"/>
         <source>&amp;Ouvrir</source>
         <translation>Open</translation>
     </message>
     <message>
-        <location filename="reader.ui" line="1995"/>
+        <location filename="reader.ui" line="2016"/>
         <source>Editer la base de Grains</source>
         <translation>Edit Grains database</translation>
     </message>
     <message>
-        <location filename="reader.ui" line="2000"/>
+        <location filename="reader.ui" line="2021"/>
         <source>Editer la base de Houblons</source>
         <translation>Edit Hops database</translation>
     </message>
     <message>
-        <location filename="reader.ui" line="2005"/>
+        <location filename="reader.ui" line="2026"/>
         <source>Editer la base de Divers</source>
         <translation>Edit Miscs database</translation>
     </message>
     <message>
-        <location filename="reader.ui" line="2010"/>
+        <location filename="reader.ui" line="2031"/>
         <source>Editer la base de Levures</source>
         <translation>Edit Yeasts database</translation>
     </message>
     <message>
-        <location filename="reader.ui" line="2162"/>
+        <location filename="reader.ui" line="2183"/>
         <source>Nouvelle recette</source>
         <translation>New recipe</translation>
     </message>
     <message utf8="true">
-        <location filename="reader.ui" line="2024"/>
+        <location filename="reader.ui" line="2045"/>
         <source>Correction densimètre</source>
         <translation>Hydrometer correction</translation>
     </message>
     <message>
-        <location filename="reader.ui" line="2029"/>
+        <location filename="reader.ui" line="2050"/>
         <source>Calcul taux d&apos;alcool</source>
         <translation>Alcohol percentage</translation>
     </message>
     <message>
-        <location filename="reader.ui" line="2038"/>
+        <location filename="reader.ui" line="2059"/>
         <source>Imprimer</source>
         <translation>Print</translation>
     </message>
     <message>
-        <location filename="reader.ui" line="2043"/>
+        <location filename="reader.ui" line="2064"/>
         <source>Dilution</source>
         <translation>Dilution</translation>
     </message>
     <message>
-        <location filename="reader.ui" line="2048"/>
+        <location filename="reader.ui" line="2069"/>
         <source>Evaporation</source>
         <translation>Boil off</translation>
     </message>
     <message>
-        <location filename="reader.ui" line="2053"/>
+        <location filename="reader.ui" line="2074"/>
         <source>Exporter vers html</source>
         <translation>Export to html</translation>
     </message>
     <message>
-        <location filename="reader.ui" line="2058"/>
+        <location filename="reader.ui" line="2079"/>
         <source>Assistant paliers</source>
         <translation>Step assistant</translation>
     </message>
@@ -1905,22 +2003,22 @@ p, li { white-space: pre-wrap; }
         <translation type="obsolete">View</translation>
     </message>
     <message>
-        <location filename="reader.ui" line="1936"/>
+        <location filename="reader.ui" line="1950"/>
         <source>Aide</source>
         <translation>Help</translation>
     </message>
     <message utf8="true">
-        <location filename="reader.ui" line="2063"/>
+        <location filename="reader.ui" line="2084"/>
         <source>Restaurer la base des ingrédients</source>
         <translation>Restore ingredients database</translation>
     </message>
     <message>
-        <location filename="reader.ui" line="2072"/>
+        <location filename="reader.ui" line="2093"/>
         <source>Recharger</source>
         <translation>Reload</translation>
     </message>
     <message>
-        <location filename="reader.ui" line="2077"/>
+        <location filename="reader.ui" line="2098"/>
         <source>switch</source>
         <translation>switch</translation>
     </message>
@@ -1935,17 +2033,17 @@ p, li { white-space: pre-wrap; }
         <translation type="obsolete">Library</translation>
     </message>
     <message utf8="true">
-        <location filename="reader.ui" line="2120"/>
+        <location filename="reader.ui" line="2141"/>
         <source>Bibiliothèque de recettes</source>
         <translation>Library</translation>
     </message>
     <message>
-        <location filename="reader.ui" line="2105"/>
+        <location filename="reader.ui" line="2126"/>
         <source>Editeur</source>
         <translation>Editor</translation>
     </message>
     <message utf8="true">
-        <location filename="reader.ui" line="2117"/>
+        <location filename="reader.ui" line="2138"/>
         <source>Bibiliothèque</source>
         <translation>Library</translation>
     </message>
@@ -1963,7 +2061,7 @@ p, li { white-space: pre-wrap; }
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Brewer :&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="reader.ui" line="1291"/>
+        <location filename="reader.ui" line="1305"/>
         <source>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
@@ -2147,7 +2245,7 @@ p, li { white-space: pre-wrap; }
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:&apos;Droid Sans&apos;; font-size:9pt;&quot;&gt;Alc :&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="reader.ui" line="775"/>
+        <location filename="reader.ui" line="789"/>
         <source>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
@@ -2160,7 +2258,7 @@ p, li { white-space: pre-wrap; }
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:&apos;Ubuntu&apos;; font-size:9pt; font-weight:600;&quot;&gt;TINT&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message utf8="true">
-        <location filename="reader.ui" line="2134"/>
+        <location filename="reader.ui" line="2155"/>
         <source>Préférences</source>
         <translation>Preferences</translation>
     </message>
@@ -2188,7 +2286,7 @@ p, li { white-space: pre-wrap; }
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Mash :&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="reader.ui" line="1035"/>
+        <location filename="reader.ui" line="1049"/>
         <source>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
@@ -2201,42 +2299,42 @@ p, li { white-space: pre-wrap; }
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Mash profiles :&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="reader.ui" line="1078"/>
+        <location filename="reader.ui" line="1092"/>
         <source>Nouveau profil</source>
         <translation>New profile</translation>
     </message>
     <message>
-        <location filename="reader.ui" line="1120"/>
+        <location filename="reader.ui" line="1134"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Nom :&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Name :&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="reader.ui" line="1302"/>
+        <location filename="reader.ui" line="1316"/>
         <source>Aucun</source>
         <translation>None</translation>
     </message>
     <message>
-        <location filename="reader.ui" line="1134"/>
+        <location filename="reader.ui" line="1148"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;pH :&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;pH :&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message utf8="true">
-        <location filename="reader.ui" line="1148"/>
+        <location filename="reader.ui" line="1162"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Rinçage :&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Sparge :&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message utf8="true">
-        <location filename="reader.ui" line="1338"/>
+        <location filename="reader.ui" line="1352"/>
         <source>0 °C</source>
         <translation>0 °C</translation>
     </message>
     <message>
-        <location filename="reader.ui" line="1348"/>
+        <location filename="reader.ui" line="1362"/>
         <source>Modifier</source>
         <translation>Edit</translation>
     </message>
     <message>
-        <location filename="reader.ui" line="1194"/>
+        <location filename="reader.ui" line="1208"/>
         <source>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
@@ -2249,12 +2347,12 @@ p, li { white-space: pre-wrap; }
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Steps :&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="reader.ui" line="1231"/>
+        <location filename="reader.ui" line="1245"/>
         <source>Nouveau palier</source>
         <translation>New step</translation>
     </message>
     <message>
-        <location filename="reader.ui" line="1273"/>
+        <location filename="reader.ui" line="1287"/>
         <source>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
@@ -2267,7 +2365,7 @@ p, li { white-space: pre-wrap; }
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Name :&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message utf8="true">
-        <location filename="reader.ui" line="1309"/>
+        <location filename="reader.ui" line="1323"/>
         <source>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
@@ -2280,12 +2378,12 @@ p, li { white-space: pre-wrap; }
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Time :&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="reader.ui" line="1320"/>
+        <location filename="reader.ui" line="1334"/>
         <source>0 min</source>
         <translation>0 min</translation>
     </message>
     <message utf8="true">
-        <location filename="reader.ui" line="1327"/>
+        <location filename="reader.ui" line="1341"/>
         <source>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
@@ -2298,117 +2396,117 @@ p, li { white-space: pre-wrap; }
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Temperature :&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="reader.ui" line="1374"/>
+        <location filename="reader.ui" line="1388"/>
         <source>Enregistrer les profils</source>
         <translation>Save profiles</translation>
     </message>
     <message utf8="true">
-        <location filename="reader.ui" line="1611"/>
+        <location filename="reader.ui" line="1625"/>
         <source>Rinçage</source>
         <translation>Sparge</translation>
     </message>
     <message utf8="true">
-        <location filename="reader.ui" line="1619"/>
+        <location filename="reader.ui" line="1633"/>
         <source>Volume de rinçage :</source>
         <translation>Sparge volume</translation>
     </message>
     <message utf8="true">
-        <location filename="reader.ui" line="1626"/>
+        <location filename="reader.ui" line="1640"/>
         <source>Température de rinçage :</source>
         <translation>Sparge temperature</translation>
     </message>
     <message utf8="true">
-        <location filename="reader.ui" line="1656"/>
+        <location filename="reader.ui" line="1670"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;   Pas de rinçage en BIAB&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;   No sparge when BIAB&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message utf8="true">
-        <location filename="reader.ui" line="1719"/>
+        <location filename="reader.ui" line="1733"/>
         <source>Pré-ébullition</source>
         <translation>Preboil</translation>
     </message>
     <message utf8="true">
-        <location filename="reader.ui" line="1727"/>
+        <location filename="reader.ui" line="1741"/>
         <source>Volume théorique pré-ébullition :</source>
         <translation>Preboil target volume</translation>
     </message>
     <message utf8="true">
-        <location filename="reader.ui" line="1734"/>
+        <location filename="reader.ui" line="1748"/>
         <source>Densité pré-ébullition :</source>
         <translation>Preboil gravity</translation>
     </message>
     <message>
-        <location filename="reader.ui" line="1741"/>
+        <location filename="reader.ui" line="1755"/>
         <source>1.000</source>
         <translation>1.000</translation>
     </message>
     <message>
-        <location filename="reader.ui" line="1441"/>
+        <location filename="reader.ui" line="1455"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Volumes d&apos;eau&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Water volumes&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="reader.ui" line="1491"/>
+        <location filename="reader.ui" line="1505"/>
         <source>Palier</source>
         <translation>Step</translation>
     </message>
     <message>
-        <location filename="reader.ui" line="1496"/>
+        <location filename="reader.ui" line="1510"/>
         <source>Volume d&apos;eau</source>
         <translation>Water volume</translation>
     </message>
     <message utf8="true">
-        <location filename="reader.ui" line="1501"/>
+        <location filename="reader.ui" line="1515"/>
         <source>Température de l&apos;eau</source>
         <translation>Water temperature</translation>
     </message>
     <message>
-        <location filename="reader.ui" line="1506"/>
+        <location filename="reader.ui" line="1520"/>
         <source>Ratio</source>
         <translation>Ratio</translation>
     </message>
     <message>
-        <location filename="reader.ui" line="1511"/>
+        <location filename="reader.ui" line="1525"/>
         <source>Infos</source>
         <translation>Infos</translation>
     </message>
     <message utf8="true">
-        <location filename="reader.ui" line="1528"/>
+        <location filename="reader.ui" line="1542"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Le profil de brassage que vous utilisez n&apos;est pas adapté au BIAB. Vous ne devriez utiliser qu&apos;un seul palier d&apos;infusion.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Bad mash profile for BIAB. You should use only one infusion step.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message utf8="true">
-        <location filename="reader.ui" line="1544"/>
+        <location filename="reader.ui" line="1558"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;JolieBulle ne prend pas encore en charge les décoctions. Pas encore !&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;JolieBulle can&apos;t manage decoctions. Not yet !&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="reader.ui" line="1566"/>
+        <location filename="reader.ui" line="1580"/>
         <source>Ajuster</source>
         <translation>Adjust</translation>
     </message>
     <message utf8="true">
-        <location filename="reader.ui" line="1391"/>
+        <location filename="reader.ui" line="1405"/>
         <source>Méthode de brassage</source>
         <translation>Brewing process</translation>
     </message>
     <message>
-        <location filename="reader.ui" line="1402"/>
+        <location filename="reader.ui" line="1416"/>
         <source>Classique</source>
         <translation>Classical</translation>
     </message>
     <message>
-        <location filename="reader.ui" line="1412"/>
+        <location filename="reader.ui" line="1426"/>
         <source>Volume complet (BIAB)</source>
         <translation>Full volume (BIAB)</translation>
     </message>
     <message>
-        <location filename="reader.ui" line="2082"/>
+        <location filename="reader.ui" line="2103"/>
         <source>Editeur de recettes</source>
         <translation>Recipe editor</translation>
     </message>
     <message utf8="true">
-        <location filename="reader.ui" line="2087"/>
+        <location filename="reader.ui" line="2108"/>
         <source>Bibliothèque de recettes</source>
         <translation>Recipe library</translation>
     </message>
@@ -2418,57 +2516,57 @@ p, li { white-space: pre-wrap; }
         <translation type="obsolete">Brewday Mode</translation>
     </message>
     <message>
-        <location filename="reader.ui" line="839"/>
+        <location filename="reader.ui" line="853"/>
         <source>Annuler</source>
         <translation>Cancel</translation>
     </message>
     <message>
-        <location filename="reader.ui" line="846"/>
+        <location filename="reader.ui" line="860"/>
         <source>Enregistrer</source>
         <translation>Save</translation>
     </message>
     <message>
-        <location filename="reader.ui" line="853"/>
+        <location filename="reader.ui" line="867"/>
         <source>Enregistrer &amp;&amp; Fermer</source>
         <translation>Save &amp;&amp; Close</translation>
     </message>
     <message>
-        <location filename="reader.ui" line="917"/>
+        <location filename="reader.ui" line="931"/>
         <source>about:blank</source>
         <translation>about:blank</translation>
     </message>
     <message>
-        <location filename="reader.ui" line="952"/>
+        <location filename="reader.ui" line="966"/>
         <source>Editer</source>
         <translation>Edit</translation>
     </message>
     <message>
-        <location filename="reader.ui" line="962"/>
+        <location filename="reader.ui" line="976"/>
         <source>Brasser</source>
         <translation>Brewday</translation>
     </message>
     <message>
-        <location filename="reader.ui" line="1668"/>
+        <location filename="reader.ui" line="1682"/>
         <source>Volumes</source>
         <translation>Volumes</translation>
     </message>
     <message>
-        <location filename="reader.ui" line="1674"/>
+        <location filename="reader.ui" line="1688"/>
         <source>Volume de grains :</source>
         <translation>Grain volume :</translation>
     </message>
     <message utf8="true">
-        <location filename="reader.ui" line="1688"/>
+        <location filename="reader.ui" line="1702"/>
         <source>Volume total (empâtage) :</source>
         <translation>Total volume (initial strike) :</translation>
     </message>
     <message>
-        <location filename="reader.ui" line="1702"/>
+        <location filename="reader.ui" line="1716"/>
         <source>Volume total (dernier palier) :</source>
         <translation>Total volume (last step) :</translation>
     </message>
     <message>
-        <location filename="reader.ui" line="1793"/>
+        <location filename="reader.ui" line="1807"/>
         <source>Fermer</source>
         <translation>Close</translation>
     </message>
@@ -2578,44 +2676,59 @@ p, li { white-space: pre-wrap; }
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt; color:#8d8d8d;&quot;&gt;Adjust and brew&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message utf8="true">
-        <location filename="reader.ui" line="1910"/>
+        <location filename="reader.ui" line="1924"/>
         <source>Ingrédients</source>
         <translation>Ingredients</translation>
     </message>
     <message>
-        <location filename="reader.ui" line="2146"/>
+        <location filename="reader.ui" line="2167"/>
         <source>Brassage</source>
         <translation>Mash</translation>
     </message>
     <message>
-        <location filename="reader.ui" line="2149"/>
+        <location filename="reader.ui" line="2170"/>
         <source>Mode brassage</source>
         <translation>Brewday mode</translation>
     </message>
     <message>
-        <location filename="reader.ui" line="2154"/>
+        <location filename="reader.ui" line="2175"/>
         <source>Nouveau dossier</source>
         <translation>New folder</translation>
     </message>
     <message utf8="true">
-        <location filename="reader.ui" line="2157"/>
+        <location filename="reader.ui" line="2178"/>
         <source>Créer un nouveau dossier dans la bibliothèque</source>
         <translation>Create a new folder in library</translation>
     </message>
     <message utf8="true">
-        <location filename="reader.ui" line="2165"/>
+        <location filename="reader.ui" line="2186"/>
         <source>Créer une nouvelle recette</source>
         <translation>Create a new recipe</translation>
     </message>
     <message utf8="true">
-        <location filename="reader.ui" line="2170"/>
+        <location filename="reader.ui" line="2191"/>
         <source>Importer dans la bibliothèque</source>
         <translation>Import in library</translation>
     </message>
     <message>
-        <location filename="reader.ui" line="2175"/>
+        <location filename="reader.ui" line="2196"/>
         <source>Copier le BBCode dans le presse papier</source>
         <translation>Copy BBCode into clipboard</translation>
+    </message>
+    <message>
+        <location filename="reader.ui" line="768"/>
+        <source>Ratio BU/GU :</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="reader.ui" line="1956"/>
+        <source>Profils de brassage</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message utf8="true">
+        <location filename="reader.ui" line="2201"/>
+        <source>Gérer les profils</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -2702,44 +2815,54 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>UseDelegate</name>
     <message utf8="true">
-        <location filename="main.py" line="341"/>
+        <location filename="main.py" line="389"/>
         <source>Ébullition</source>
         <translation>Boil</translation>
     </message>
     <message>
-        <location filename="main.py" line="329"/>
+        <location filename="main.py" line="377"/>
         <source>Dry Hop</source>
         <translation>Dry Hop</translation>
     </message>
     <message utf8="true">
-        <location filename="main.py" line="343"/>
+        <location filename="main.py" line="391"/>
         <source>Empâtage</source>
         <translation>Mash</translation>
     </message>
     <message utf8="true">
-        <location filename="main.py" line="333"/>
+        <location filename="main.py" line="381"/>
         <source>Premier Moût</source>
         <translation>First Wort</translation>
     </message>
     <message utf8="true">
-        <location filename="main.py" line="335"/>
+        <location filename="main.py" line="383"/>
         <source>Arôme</source>
         <translation>Aroma</translation>
     </message>
     <message>
-        <location filename="main.py" line="345"/>
+        <location filename="main.py" line="393"/>
         <source>Primaire</source>
         <translation>Primary</translation>
     </message>
     <message>
-        <location filename="main.py" line="347"/>
+        <location filename="main.py" line="395"/>
         <source>Secondaire</source>
         <translation>Secondary</translation>
     </message>
     <message>
-        <location filename="main.py" line="349"/>
+        <location filename="main.py" line="397"/>
         <source>Embouteillage</source>
         <translation>Bottling</translation>
+    </message>
+    <message>
+        <location filename="main.py" line="367"/>
+        <source>Brassage</source>
+        <translation type="unfinished">Mash</translation>
+    </message>
+    <message utf8="true">
+        <location filename="main.py" line="369"/>
+        <source>Après ébullition</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 </TS>
