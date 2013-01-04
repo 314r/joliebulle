@@ -63,6 +63,8 @@ from reader import *
 import xml.etree.ElementTree as ET
 from model.objects import Recipe
 import model.constants
+from view.objects import FermentableView
+from view.objects import RecipeView
 
 # class BiblioFileSystem (QtGui.QFileSystemModel) :
 #     def __init__(self, parent=None):
@@ -949,17 +951,19 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         self.indexRecette = selection.currentIndex()
 
         self.chemin =self.modeleBiblio.filePath (self.indexRecette)
+        if os.path.isdir(self.chemin) == False :
+            self.purge()
+            self.s = self.chemin
         
-        self.purge()
-        
-        self.s = self.chemin
-        
-        self.importBeerXML()
-        self.calculs_recette()
-        self.MVC()
-        self.stackedWidget.setCurrentIndex(0)
-        self.actionVueEditeurToolBar.setChecked(True)
-        self.actionVueBibliothequeToolBar.setChecked(False) 
+            self.importBeerXML()
+            self.calculs_recette()
+            logger.debug("selectionRecette2 -> initModele")
+            self.initModele()
+            self.stackedWidget.setCurrentIndex(0)
+            self.actionVueEditeurToolBar.setChecked(True)
+            self.actionVueBibliothequeToolBar.setChecked(False)
+        else :
+            logger.debug("Répertoire sélectionné")
 
 
     def viewRecipeBiblio(self) :
@@ -967,22 +971,26 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         self.indexRecette = selection.currentIndex()
 
         self.chemin =self.modeleBiblio.filePath(self.indexRecette)
-        
-        self.purge()
-        
-        self.s = self.chemin
-        
-        self.importBeerXML()
-        self.calculs_recette()
-        exp = ExportHTML()
-        #exp.exportHtml(self.nomRecette,self.styleRecette, self.volume, self.boil, AppWindow.nbreFer, self.liste_ingr, self.liste_fAmount, self.liste_fUse, AppWindow.nbreHops, self.liste_houblons, self.liste_hAlpha, self.liste_hForm, self.liste_hAmount, self.liste_hTime,self.liste_hUse, AppWindow.nbreDivers, self.liste_divers, self.liste_dType, self.liste_dAmount, self.liste_dTime, self.liste_dUse, self.nbreLevures, self.liste_levuresDetail,self.rendement, self.OG, self.FG, self.ratioBuGu, self.EBC, self.ibuTot ,self.ABV, self.recipeNotes)
-        exp.exportRecipeHtml(self.recipe)
-        exp.generateHtml()
-        self.webViewBiblio.setHtml(exp.generatedHtml, )
-        # self.modele.blockSignals(True)
-        self.MVC()
-        # self.modele.blockSignals(False)
-        self.HtmlRecipe = exp.generatedHtml
+        if os.path.isdir(self.chemin) == False :
+            
+            self.purge()
+            
+            self.s = self.chemin
+            
+            self.importBeerXML()
+            self.calculs_recette()
+            exp = ExportHTML()
+            #exp.exportHtml(self.nomRecette,self.styleRecette, self.volume, self.boil, AppWindow.nbreFer, self.liste_ingr, self.liste_fAmount, self.liste_fUse, AppWindow.nbreHops, self.liste_houblons, self.liste_hAlpha, self.liste_hForm, self.liste_hAmount, self.liste_hTime,self.liste_hUse, AppWindow.nbreDivers, self.liste_divers, self.liste_dType, self.liste_dAmount, self.liste_dTime, self.liste_dUse, self.nbreLevures, self.liste_levuresDetail,self.rendement, self.OG, self.FG, self.ratioBuGu, self.EBC, self.ibuTot ,self.ABV, self.recipeNotes)
+            exp.exportRecipeHtml(self.recipe)
+            exp.generateHtml()
+            self.webViewBiblio.setHtml(exp.generatedHtml, )
+            # self.modele.blockSignals(True)
+            #logger.debug("viewRecipeBiblio -> MVC")
+            #self.MVC()
+            # self.modele.blockSignals(False)
+            self.HtmlRecipe = exp.generatedHtml
+        else :
+            logger.debug("Répertoire sélectionné")
 
     def setHomePage(self) :
         home = HomePage()
@@ -1089,7 +1097,8 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         self.importBeerXML()
         self.calculs_recette()
         # self.modele.blockSignals(True)
-        self.MVC()
+        logger.debug("editCurrentRecipe -> initModele")
+        self.initModele()
         # self.modele.blockSignals(False)
         self.stackedWidget.setCurrentIndex(0)
         self.actionVueEditeurToolBar.setChecked(True)
@@ -1422,25 +1431,39 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
 
         self.calculs_recette()  
            
-    def MVC(self) :      
-        i=0
-        while i < AppWindow.nbreFer :
-            i=i+1
-            for item in self.liste_ingr : 
-                item = QtGui.QStandardItem(self.liste_ingr[i-1])
-                self.modele.setItem(i-1,0,item)
-            for amount in self.liste_fAmount : 
-                amount = QtGui.QStandardItem("%.0f" %(self.liste_fAmount[i-1]))
-                self.modele.setItem(i-1,1,amount)
-            for ftype in self.liste_fType :
-                ftype = QtGui.QStandardItem(self.liste_fType[i-1])
-                self.modele.setItem(i-1,4,ftype)
-            for prop in self.liste_fProportion :
-                prop = QtGui.QStandardItem("%.0f" %(self.liste_fProportion[i-1]) + "%")
-                self.modele.setItem(i-1,5,prop)
-            for fUse in self.liste_fUse :
-                fUse = QtGui.QStandardItem(self.liste_fUse[i-1])
-                self.modele.setItem(i-1,6,fUse)
+    def initModele(self) :
+
+        logger.debug("initModele")
+        if self.recipe is not None:
+            recipeView = RecipeView(self.recipe)
+            #self.modele.clear()
+            liste_headers = [self.trUtf8("Ingrédients"),self.trUtf8("Quantité (g)"),self.trUtf8("Temps (min)"),self.trUtf8("Acide Alpha (%)"),self.trUtf8("Type"),self.trUtf8("Proportion"), self.trUtf8("Étape")]
+            self.modele.setHorizontalHeaderLabels(liste_headers)
+            
+            for f in self.recipe.listeFermentables:
+                fView = FermentableView(f)
+                items = list()
+                items.append( fView.QStandardItem_for_name() )
+                items.append( fView.QStandardItem_for_amount() )
+                items.append( QtGui.QStandardItem('') )
+                items.append( QtGui.QStandardItem('') )
+                items.append( fView.QStandardItem_for_type() )
+                items.append( recipeView.QStandardItem_for_fermentable_propertion(f) )
+                items.append( fView.QStandardItem_for_use() )
+                self.modele.appendRow(items)
+
+            for h in self.recipe.listeHops:
+                hView = HopView(h)
+                items = list()
+                items.append( hView.QStandardItem_for_name() )
+                items.append( hView.QStandardItem_for_amount() )
+                items.append( hView.QStandardItem_for_time() )
+                items.append( hView.QStandardItem_for_alpha() )
+                items.append( hView.QStandardItem_for_form() )
+                items.append (recipeView.QStandardItem_for_hop_ibu(h) )
+                items.append( hView.QStandardItem_for_use() )
+                self.modele.appendRow(items)
+
         h=0
         while h < AppWindow.nbreHops :
             h = h+1
@@ -1565,6 +1588,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         AppWindow.nbreFer = f + 1
         self.calculs_recette()
         self.modele.blockSignals(True)
+        logger.debug("ajouterF -> MVC")
         self.MVC()
         self.modele.blockSignals(False)
         
@@ -1603,6 +1627,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         
         AppWindow.nbreHops = h + 1
         self.calculs_recette()
+        logger.debug("ajouterH -> MVC")
         self.MVC()
         
     
@@ -1630,6 +1655,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         self.liste_dUse.append(self.trUtf8('''Ébullition'''))
         
         AppWindow.nbreDivers = m +1
+        logger.debug("ajouterM -> MVC")
         self.MVC()
 
     def ajouterY(self) :
@@ -1657,6 +1683,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         self.liste_levuresDetail.append(self.base.liste_levuresDetail[i])
         
         self.nbreLevures = l + 1
+        logger.debug("ajouterY -> MVC")
         self.MVC()
         
     def enlever(self) :
@@ -1726,6 +1753,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
             else :
                 pass
             self.calculs_recette()
+            logger.debug("enlever -> MVC")
             self.MVC()
 
     def importBeerXML(self) :
@@ -1984,6 +2012,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
             self.nouvelle()
             self.importBeerXML()
             self.calculs_recette()
+            logger.debug("ouvrir_clicked -> MVC")
             self.MVC()
             self.switchToEditor()
        
@@ -1995,6 +2024,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         self.nouvelle()
         self.importBeerXML()
         self.calculs_recette()
+        logger.debug("ouvrirRecipeFile -> MVC")
         self.MVC()
         self.switchToEditor()
 
@@ -2249,6 +2279,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
             self.nouvelle()
             self.importBeerXML()
             self.calculs_recette()
+            logger.debug("recharger -> MVC")
             self.MVC()
 
                         
