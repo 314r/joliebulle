@@ -38,7 +38,7 @@ class Fermentable:
 
     def __repr__(self):
         return ('fermentable[name="%s", amount=%s, type=%s, yield=%s, recommendMash=%s, color=%s, useAfterBoil=%s]' % 
-            (self.name, self.amount, self.type, self.fYield, self.recommendMash, self.color, self.useAfterBoil) )
+            (self.name, self.amount, self.type, self.fyield, self.recommendMash, self.color, self.useAfterBoil) )
 
     @staticmethod
     def parse(element):
@@ -107,10 +107,13 @@ class Hop:
             elif 'FORM' == balise.tag :
                 if 'Pellet' == balise.text:
                     h.form = model.constants.HOP_FORM_PELLET
-                if 'Leaf' == balise.text:
+                elif 'Leaf' == balise.text:
                     h.form = model.constants.HOP_FORM_LEAF
-                if 'Plug' == balise.text:
+                elif 'Plug' == balise.text:
                     h.form = model.constants.HOP_FORM_PLUG
+                else :
+                    logger.warn ("Unkown hop form '%s', assuming 'Pellet' by default", balise.text)
+                    h.form = model.constants.HOP_FORM_PELLET
             elif 'TIME' == balise.tag :
                 h.time = float(balise.text)
             elif 'ALPHA' == balise.tag :
@@ -118,13 +121,13 @@ class Hop:
             elif 'USE' == balise.tag:
                 if 'Boil' == balise.text :
                     h.use = model.constants.HOP_USE_BOIL
-                if 'Dry Hop' == balise.text or 'Dry Hopping' == balise.text:
+                elif 'Dry Hop' == balise.text or 'Dry Hopping' == balise.text:
                     h.use = model.constants.HOP_USE_DRY_HOP
-                if 'Mash' == balise.text:
+                elif 'Mash' == balise.text:
                     h.use == model.constants.HOP_USE_MASH
-                if 'First Wort' == balise.text:
+                elif 'First Wort' == balise.text:
                     h.use = model.constants.HOP_USE_FIRST_WORT
-                if 'Aroma' == balise.text:
+                elif 'Aroma' == balise.text:
                     h.use = model.constants.HOP_USE_AROMA
                 else :
                     logger.warn ("Unkown hop use '%s', assuming 'Boil' by default", balise.text)
@@ -194,14 +197,17 @@ class Misc:
             elif 'USE' == balise.tag:
                 if 'Boil' == balise.text:
                     m.use = model.constants.MISC_USE_BOIL
-                if 'Mash' == balise.text:
+                elif 'Mash' == balise.text:
                     m.use = model.constants.MISC_USE_MASH
-                if 'Primary' == balise.text:
+                elif 'Primary' == balise.text:
                     m.use = model.constants.MISC_USE_PRIMARY
-                if 'Secondary' == balise.text:
+                elif 'Secondary' == balise.text:
                     m.use = model.constants.MISC_USE_SECONDARY
-                if 'Bottling' == balise.text:
+                elif 'Bottling' == balise.text:
                     m.use = model.constants.MISC_USE_BOTTLING
+                else :
+                    logger.warn ("Unkown misc use '%s', assuming 'Boil' by default", balise.text)
+                    m.use = model.constants.MISC_USE_BOIL
 
         #logger.debug(repr(m))
         return m
@@ -257,9 +263,9 @@ class Recipe:
             if 'TYPE' == element.tag:
                 if "All Grain" == element.text :
                     recipe.type = model.constants.RECIPE_TYPE_ALL_GRAIN
-                if "Partial Mash" == element.text :
+                elif "Partial Mash" == element.text :
                     recipe.type = model.constants.RECIPE_TYPE_PARTIAL_MASH
-                if "Extract" == element.text :
+                elif "Extract" == element.text :
                     recipe.type = model.constants.RECIPE_TYPE_EXTRACT
                 logger.debug(" Recipe type: %s", recipe.type)
             if "BATCH_SIZE" == element.tag :
@@ -372,7 +378,7 @@ class Recipe:
             mcuTot += 4.23*f.color*(f.amount/1000)/float(self.volume)
         return 2.939*(mcuTot**0.6859)
 
-    def compute_IBU(self):
+    def compute_IBUPart(self):
         #calcul de l'amertume : methode de Tinseth
         #IBUs = decimal alpha acid utilization * mg/l of added alpha acids
         
@@ -381,7 +387,7 @@ class Recipe:
         #Bigness factor = 1.65 * 0.000125^(wort gravity - 1)
         #Boil Time factor = 1 - e^(-0.04 * time in mins) / 4.15
         bignessFactor = 1.65 * (0.000125**(self.compute_OG_PreBoil() - 1))
-        ibuTot = 0
+        hash_ibu = dict()
         for h in self.listeHops:
             btFactor = (1 - 2.71828182845904523536**(-0.04 * h.time)) / 4.15
 
@@ -390,15 +396,20 @@ class Recipe:
             try :
                 if h.use != model.constants.HOP_USE_DRY_HOP and h.use != model.constants.HOP_USE_AROMA :
                     if h.form == model.constants.HOP_FORM_PELLET :
-                        ibuTot += (mgAA * aaUtil) + 0.1*(mgAA * aaUtil)
+                        ibu = (mgAA * aaUtil) + 0.1*(mgAA * aaUtil)
                     else :
-                        ibuTot += mgAA * aaUtil 
+                        ibu = mgAA * aaUtil 
             except:
                 if h.form == model.constants.HOP_FORM_PELLET :
-                    ibuTot += (mgAA * aaUtil) + 0.1*(mgAA * aaUtil)
+                    ibu = (mgAA * aaUtil) + 0.1*(mgAA * aaUtil)
                 else :
-                    ibuTot += mgAA * aaUtil 
-        return ibuTot
+                    ibu = mgAA * aaUtil
+            hash_ibu[h] = ibu
+        return hash_ibu
+
+    def compute_IBU(self):
+        ibuParts = self.compute_IBUPart()
+        return sum(ibuParts.values())
 
     def compute_ratioBUGU(self):
         #calcul du rapport BU/GU
@@ -412,6 +423,17 @@ class Recipe:
         #calcul ABV
         #ABV = 0.130((OG-1)-(FG-1))*1000
         return 0.130*((self.compute_OG()-1) -(self.compute_FG()-1))*1000
+
+    def compute_proportions(self):
+        #calcul des proportions pour les grains
+        hash_proportion = dict()
+        poidsTot = sum([f.amount for f in self.listeFermentables])
+        i = 0
+        for f in self.listeFermentables:
+            i=i+1
+            propGrain = (f.amount / poidsTot)*100
+            hash_proportion[f] = propGrain
+        return hash_proportion
 
     def calculs_recette (self) :
         
