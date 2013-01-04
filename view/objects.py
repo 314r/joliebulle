@@ -32,6 +32,18 @@ class HopView(QtCore.QObject):
 		if self.model.use == model.constants.HOP_USE_AROMA :
 			return self.trUtf8('Arôme')
 		return '?hopUseDisplay?'
+	def QStandardItem_for_name(self):
+		return QtGui.QStandardItem(self.model.name)
+	def QStandardItem_for_amount(self):
+		return QtGui.QStandardItem( "%.0f" %(self.model.amount) )
+	def QStandardItem_for_time(self):
+		return QtGui.QStandardItem( "%.0f" %(self.model.time) )
+	def QStandardItem_for_alpha(self):
+		return QtGui.QStandardItem( "%.1f" %(self.model.alpha) )
+	def QStandardItem_for_form(self):
+		return QtGui.QStandardItem(self.hopFormDisplay())
+	def QStandardItem_for_use(self):
+		return QtGui.QStandardItem(self.hopUseDisplay())
 
 class MiscView(QtCore.QObject):
 	def __init__(self, misc):
@@ -99,6 +111,10 @@ class FermentableView(QtCore.QObject):
 		return QtGui.QStandardItem(self.model.name)
 	def QStandardItem_for_amount(self):
 		return QtGui.QStandardItem("%.0f" %(self.model.amount))
+	def QStandardItem_for_type(self):
+		return QtGui.QStandardItem(self.fermentableTypeDisplay())
+	def QStandardItem_for_use(self):
+		return QtGui.QStandardItem(self.fermentableUseDisplay())
 
 class RecipeView(QtCore.QObject):
 	def __init__(self, recipe):
@@ -108,3 +124,7 @@ class RecipeView(QtCore.QObject):
 	def QStandardItem_for_fermentable_propertion(self, fermentable):
 		proportion = self.model.compute_proportions()[fermentable]
 		return QtGui.QStandardItem("%.0f %%" %(proportion))
+
+	def QStandardItem_for_hop_ibu(self, hop):
+		ibu = self.model.compute_IBUPart()[hop]
+		return QtGui.QStandardItem("%.1f IBU" %(ibu))
