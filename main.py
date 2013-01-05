@@ -63,6 +63,7 @@ from reader import *
 import xml.etree.ElementTree as ET
 from model.objects import Recipe
 from model.fermentable import *
+from model.fermentable import *
 import model.constants
 from view.objects import FermentableView
 from view.objects import RecipeView
