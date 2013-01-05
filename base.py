@@ -31,8 +31,7 @@ import xml.etree.ElementTree as ET
 from globals import *
 from model.fermentable import *
 from model.hop import *
-from model.objects import Hop
-from model.objects import Yeast
+from model.yeast import *
 from model.objects import Misc
 
 logger = logging.getLogger(__name__)
