@@ -29,7 +29,7 @@ import logging
 from PyQt4 import QtCore
 import xml.etree.ElementTree as ET
 from globals import *
-from model.objects import Fermentable
+from model.fermentable import *
 from model.objects import Hop
 from model.objects import Yeast
 from model.objects import Misc

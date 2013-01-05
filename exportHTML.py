@@ -29,7 +29,7 @@ from view.objects import HopView
 from view.objects import MiscView
 from view.objects import YeastView
 from view.objects import MashView
-  
+import model.fermentable
 
 class ExportHTML(QtGui.QDialog) : 
 

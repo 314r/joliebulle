@@ -62,6 +62,7 @@ from reader import *
 
 import xml.etree.ElementTree as ET
 from model.objects import Recipe
+from model.fermentable import *
 import model.constants
 from view.objects import FermentableView
 from view.objects import RecipeView
@@ -956,7 +957,6 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
             self.s = self.chemin
         
             self.importBeerXML()
-            self.calculs_recette()
             logger.debug("selectionRecette2 -> initModele")
             self.initModele()
             self.stackedWidget.setCurrentIndex(0)
@@ -978,7 +978,6 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
             self.s = self.chemin
             
             self.importBeerXML()
-            self.calculs_recette()
             exp = ExportHTML()
             #exp.exportHtml(self.nomRecette,self.styleRecette, self.volume, self.boil, AppWindow.nbreFer, self.liste_ingr, self.liste_fAmount, self.liste_fUse, AppWindow.nbreHops, self.liste_houblons, self.liste_hAlpha, self.liste_hForm, self.liste_hAmount, self.liste_hTime,self.liste_hUse, AppWindow.nbreDivers, self.liste_divers, self.liste_dType, self.liste_dAmount, self.liste_dTime, self.liste_dUse, self.nbreLevures, self.liste_levuresDetail,self.rendement, self.OG, self.FG, self.ratioBuGu, self.EBC, self.ibuTot ,self.ABV, self.recipeNotes)
             exp.exportRecipeHtml(self.recipe)
@@ -1815,153 +1814,6 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         
         return AppWindow.nbreFer
                     
-    def calculs_recette (self) :
-        
-        #on remet le verrou à 0, il va falloir recalculer en repassant en brewday mode
-        self.brewdayLock = 0
-    
-        #Calculs sur les ingredients fermentescibles
-        #GU = 383.89*equivSucre/volFinal *rendement
-        #si extrait ou sucre ne pas tenir compte du rendement du brassage
-        #OG = 1 + (GU/1000)
-        
-        self.liste_equivSucre = list()
-        self.liste_equivSucreMashed = list()
-        self.liste_equivSucreNonMashed = list()
-
-        self.liste_equivSucrePreBoil = list()
-        self.liste_equivSucreMashedPreBoil = list()
-        self.liste_equivSucreNonMashedPreBoil = list()
-        
-        self.grainWeight = sum(self.liste_fAmount)
-        
-        
-        o = 0
-        while o < AppWindow.nbreFer :
-            o = o+1
-            self.equivSucre = (self.liste_fAmount[o-1]/1000)*(self.liste_fYield[o-1]/100)
-            #division par 1000 et 100 pour passer des g aux kg et parce que le rendement est un pourcentage
-            self.liste_equivSucre.append(self.equivSucre)
-            #for type in self.liste_fType [o-1] :
-            if self.liste_fType [o-1] == 'Extract' or self.liste_fType [o-1] == 'Dry Extract' or self.liste_fType [o-1] == 'Sugar':
-                self.liste_equivSucreNonMashed.append(self.equivSucre)
-            else :
-                self.liste_equivSucreMashed.append(self.equivSucre)
-
-            #on refait la même chose pour déterminer la densité pré-ébullition en cas d'addition tardive de sucre, ce qui influence le calcul des IBUs.
-            self.equivSucrePreBoil = (self.liste_fAmount[o-1]/1000)*(self.liste_fYield[o-1]/100)
-            if self.liste_fUse[o-1] == self.trUtf8('''Après ébullition''') :
-                self.equivSucrePreBoil = 0
-            self.liste_equivSucrePreBoil.append(self.equivSucrePreBoil)
-            if self.liste_fType [o-1] == 'Extract' or self.liste_fType [o-1] == 'Dry Extract' or self.liste_fType [o-1] == 'Sugar':
-                if self.liste_fUse[o-1] == self.trUtf8('''Après ébullition''') :
-                    self.equivSucrePreBoil = 0
-                self.liste_equivSucreNonMashedPreBoil.append(self.equivSucrePreBoil)
-            else :
-                if self.liste_fUse[o-1] == self.trUtf8('''Après ébullition''') :
-                    self.equivSucrePreBoil = 0
-                self.liste_equivSucreMashedPreBoil.append(self.equivSucrePreBoil)
-
-
-        self.GU= (383.89*sum(self.liste_equivSucreMashed)/float(self.volume))*((self.rendement)/100) + (383.89*sum(self.liste_equivSucreNonMashed)/float(self.volume))
-        self.OG = 1+ (self.GU/1000) 
-
-        self.GUPreBoil = (383.89*sum(self.liste_equivSucreMashedPreBoil)/float(self.volume))*((self.rendement)/100) + (383.89*sum(self.liste_equivSucreNonMashedPreBoil)/float(self.volume))     
-        self.OGPreBoil = 1+ (self.GUPreBoil/1000)  
-
-        
-        #calcul de la FG. Si il y a plusieurs levures, on recupere l'attenuation la plus elevee.
-        self.levureAttenDec = sorted (self.liste_levureAtten, reverse = True)
-        if not self.levureAttenDec : 
-            self.atten = 0.75
-        if self.levureAttenDec :
-            self.atten = self.levureAttenDec[0]/100
-        
-        self.GUF = self.GU*(1-self.atten)
-        self.FG = 1 + self.GUF/1000
-        
-        
-        #calcul des proportions pour les grains
-        self.liste_fProportion = list()
-        poidsTot = sum(self.liste_fAmount)  
-        i = 0
-        while i < AppWindow.nbreFer :
-            i=i+1
-            propGrain = (self.liste_fAmount[i-1] / poidsTot)*100
-            self.liste_fProportion.append(propGrain)
-     
-        
-        #calcul de l'amertume : methode de Tinseth
-        #IBUs = decimal alpha acid utilization * mg/l of added alpha acids
-        
-        #mg/l of added alpha acids = decimal AA rating * grams hops * 1000 / liters of wort
-        #Decimal Alpha Acid Utilization = Bigness Factor * Boil Time Factor
-        #Bigness factor = 1.65 * 0.000125^(wort gravity - 1)
-        #Boil Time factor = 1 - e^(-0.04 * time in mins) / 4.15
-        self.liste_btFactor = list()
-        self.liste_ibuPart = list()
-        
-        for time in self.liste_hTime :
-            self.btFactor = (1 - 2.71828182845904523536**(-0.04 * time)) / 4.15
-            self.liste_btFactor.append(self.btFactor)
-            
-        self.bignessFactor = 1.65 * (0.000125**(self.OGPreBoil - 1))
-        i = 0
-        while i < len(self.liste_btFactor) :
-            i = i+1
-            self.aaUtil = self.liste_btFactor[i-1]*self.bignessFactor
-            self.mgAA = (self.liste_hAlpha[i-1]/100)*self.liste_hAmount[i-1]*1000 / float(self.volume)
-            try :
-                if self.liste_hUse[i-1] == 'Dry Hop' or self.liste_hUse[i-1] == 'Aroma' or self.liste_hUse[i-1] == 'Arôme' or self.liste_hUse[i-1] == 'Dry Hopping' :
-                    self.ibuPart = 0
-                elif self.liste_hForm[i-1] == 'Pellet' :
-                    self.ibuPart = (self.mgAA * self.aaUtil) + 0.1*(self.mgAA * self.aaUtil)
-                else :
-                    self.ibuPart = self.mgAA * self.aaUtil 
-                self.liste_ibuPart.append(self.ibuPart)
-            except:
-                if self.liste_hForm[i-1] == 'Pellet' :
-                    self.ibuPart = (self.mgAA * self.aaUtil) + 0.1*(self.mgAA * self.aaUtil)
-                else :
-                    self.ibuPart = self.mgAA * self.aaUtil 
-                self.liste_ibuPart.append(self.ibuPart)
-            
-
-        self.ibuTot = sum(self.liste_ibuPart)
-
-        
-        #calcul du rapport BU/GU
-        try :
-            self.ratioBuGu = self.ibuTot / self.GU
-        except :
-            self.ratioBuGu = 0
-
-        
-        #calcul de la couleur
-        #calcul du MCU pour chaque grain :
-        #MCU=4.23*EBC(grain)*Poids grain(Kg)/Volume(L)
-        #puis addition de tous les MCU
-        #puis calcul EBC total :
-        #EBC=2.939*MCU^0.6859
-        self.liste_mcuPart = list()
-        i = 0
-        while i < AppWindow.nbreFer :
-            i = i + 1
-            self.mcuPart  = 4.23*self.liste_color[i-1]*(self.liste_fAmount[i-1]/1000)/float(self.volume)
-            self.liste_mcuPart.append(self.mcuPart)
-        self.mcuTot = sum(self.liste_mcuPart) 
-        self.EBC = 2.939*(self.mcuTot**0.6859)
-        
-        self.colorPreview()
-
-        
-        #calcul ABV
-        #ABV = 0.130((OG-1)-(FG-1))*1000
-        
-        self.ABV = 0.130*((self.OG-1) -(self.FG-1))*1000
-
-        self.displayProfile()
-        
     def displayProfile(self) :     
         self.labelOGV.setText(str("%.3f" %(self.OG)))
         self.labelFGV.setText(str("%.3f" %(self.FG)))
@@ -1973,8 +1825,8 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         
                         
     def volPreCalc(self) :
-        indice = float(self.volume) / self.doubleSpinBoxVolPre.value()       
-        self.GUS = self.GU * indice
+        indice = float(self.recipe.volume) / self.doubleSpinBoxVolPre.value()       
+        self.GUS = self.recipe.compute_GU() * indice
         self.SG = 1+ (self.GUS/1000) 
         self.labelSG.setText("%.3f" %self.SG)
         
@@ -2006,9 +1858,8 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         AppWindow.nbreDivers = 0
         self.nouvelle()
         self.importBeerXML()
-        self.calculs_recette()
         logger.debug("ouvrirRecipeFile -> MVC")
-        self.MVC()
+        self.initModele()
         self.switchToEditor()
 
     
@@ -2045,7 +1896,6 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
                 pass
             
     def volume_changed(self) :
-    
         if self.checkBoxIng.isChecked() :
             ratio = self.doubleSpinBox_2Volume.value()/float(self.volume)
             
