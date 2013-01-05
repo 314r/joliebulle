@@ -1430,15 +1430,19 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
                 pass
 
         self.calculs_recette()  
+
+    def clearModele(self):
+        count = self.modele.rowCount()
+        logger.debug("%s items in modele", count)
+        ret = self.modele.removeRows(0, count)
+        logger.debug("removeRows returns %s", ret)
            
     def initModele(self) :
 
         logger.debug("initModele")
         if self.recipe is not None:
+            self.clearModele()
             recipeView = RecipeView(self.recipe)
-            #self.modele.clear()
-            liste_headers = [self.trUtf8("Ingrédients"),self.trUtf8("Quantité (g)"),self.trUtf8("Temps (min)"),self.trUtf8("Acide Alpha (%)"),self.trUtf8("Type"),self.trUtf8("Proportion"), self.trUtf8("Étape")]
-            self.modele.setHorizontalHeaderLabels(liste_headers)
             
             for f in self.recipe.listeFermentables:
                 fView = FermentableView(f)
@@ -1464,51 +1468,30 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
                 items.append( hView.QStandardItem_for_use() )
                 self.modele.appendRow(items)
 
-        h=0
-        while h < AppWindow.nbreHops :
-            h = h+1
-            for item in self.liste_houblons : 
-                item = QtGui.QStandardItem(self.liste_houblons[h-1])
-                self.modele.setItem(i+h-1,0,item)
-            for amount in self.liste_hAmount : 
-                amount = QtGui.QStandardItem("%.0f" %(self.liste_hAmount[h-1]) )
-                self.modele.setItem(i+h-1,1,amount)
-            for time in self.liste_hTime :
-                time = QtGui.QStandardItem("%.0f" %(self.liste_hTime[h-1]) )
-                self.modele.setItem(i+h-1,2,time)                   
-            for alpha in self.liste_hAlpha :
-                alpha = QtGui.QStandardItem("%.1f" %(self.liste_hAlpha[h-1]) )
-                self.modele.setItem(i+h-1,3,alpha)  
-            for form in self.liste_hForm :
-                form = QtGui.QStandardItem(str(self.liste_hForm[h-1]))
-                self.modele.setItem(i+h-1,4,form)
-            for use in self.liste_hUse :
-                use = QtGui.QStandardItem(str(self.liste_hUse[h-1]))
-                self.modele.setItem(i+h-1,6,use)
-            for prop in self.liste_ibuPart :
-                prop = QtGui.QStandardItem("%.1f" %(self.liste_ibuPart[h-1]) + " IBU")
-                self.modele.setItem(i+h-1,5,prop)    
-        m = 0
-        while m < AppWindow.nbreDivers :
-            m = m+1
-            for item in self.liste_divers :
-                item = QtGui.QStandardItem(self.liste_divers[m-1] + ' [' +self.liste_dType[m-1] + ']')
-                self.modele.setItem(i+h+m-1, 0, item)
-            for amount in self.liste_dAmount : 
-                amount = QtGui.QStandardItem("%.0f" %(self.liste_dAmount[m-1]) )
-                self.modele.setItem(i+h+m-1, 1, amount)
-            for time in self.liste_dTime :
-                time = QtGui.QStandardItem("%.0f" %(self.liste_dTime[m-1]) )
-                self.modele.setItem(i+h+m-1, 2, time)
-            for use in self.liste_dUse :
-                use = QtGui.QStandardItem(str(self.liste_dUse[m-1]) )
-                self.modele.setItem(i+h+m-1, 6, use)               
-        l=0
-        while l < self.nbreLevures : 
-            l=l+1
-            for item in self.liste_levuresDetail : 
-                item = QtGui.QStandardItem(self.liste_levuresDetail[l-1])
-                self.modele.setItem( i+h+m+l-1,0,item)
+            for m in self.recipe.listeMiscs:
+                mView = MiscView(m)
+                items = list()
+                items.append( mView.QStandardItem_for_name_type() )
+                items.append( mView.QStandardItem_for_amount() )
+                items.append( mView.QStandardItem_for_time() )
+                items.append( QtGui.QStandardItem('') )
+                items.append( QtGui.QStandardItem('') )
+                items.append( QtGui.QStandardItem('') )
+                items.append( mView.QStandardItem_for_use() )
+                items.append( QtGui.QStandardItem('') )
+                self.modele.appendRow(items)
+
+            for y in self.recipe.listeYeasts:
+                yView = YeastView(y)
+                items = list()
+                items.append( yView.QStandardItem_for_detail() )
+                items.append( QtGui.QStandardItem('') )
+                items.append( QtGui.QStandardItem('') )
+                items.append( QtGui.QStandardItem('') )
+                items.append( QtGui.QStandardItem('') )
+                items.append( QtGui.QStandardItem('') )
+                items.append( QtGui.QStandardItem('') )
+                self.modele.appendRow(items)
                 
     def editGrains(self) :
         self.dlgEditG.setModal(True)
