@@ -63,6 +63,14 @@ class MiscView(QtCore.QObject):
 		if self.model.use == model.constants.MISC_USE_BOTTLING :
 			return self.trUtf8('Embouteillage')
 		return '?miscUseDisplay?'
+	def QStandardItem_for_name_type(self):
+		return QtGui.QStandardItem(self.model.name + ' [' + self.model.type + ']')
+	def QStandardItem_for_amount(self):
+		return QtGui.QStandardItem( "%.0f" %(self.model.amount) )
+	def QStandardItem_for_time(self):
+		return QtGui.QStandardItem( "%.0f" %(self.model.time) )
+	def QStandardItem_for_use(self):
+		return QtGui.QStandardItem(self.miscUseDisplay())
 
 class YeastView(QtCore.QObject):
 	def __init__(self, yeast):
@@ -71,6 +79,8 @@ class YeastView(QtCore.QObject):
 
 	def yeastDetailDisplay(self):
 		return "%s %s %s" % (self.model.name, self.model.labo, self.model.productId)
+	def QStandardItem_for_detail(self):
+		return QtGui.QStandardItem(self.yeastDetailDisplay())
 
 class MashView(QtCore.QObject):
 	def __init__(self, yeast):
