@@ -926,27 +926,6 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         self.comboBoxM.clear()
         self.comboBoxM.setModel(self.base.getMiscsQtModel() )
         
-    # def selectionRecette(self):
-    #     selection = self.listViewBiblio.selectionModel()
-    #     self.indexRecette = selection.currentIndex()
-
-    #     if self.modeleBiblio.isDir(self.indexRecette) == True :
-    #         self.navFolder()
-        
-    #     else :
-
-    #         self.chemin =self.modeleBiblio.filePath (self.indexRecette)
-    #         self.purge()
-            
-    #         self.s = self.chemin
-            
-    #         self.importBeerXML()
-    #         self.calculs_recette()
-    #         self.MVC()
-    #         self.stackedWidget.setCurrentIndex(0)
-    #         self.actionVueEditeurToolBar.setChecked(True)
-    #         self.actionVueBibliothequeToolBar.setChecked(False)
-
     def selectionRecette2(self):
         selection = self.treeViewBiblio.selectionModel()
         self.indexRecette = selection.currentIndex()
@@ -979,7 +958,6 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
             
             self.importBeerXML()
             exp = ExportHTML()
-            #exp.exportHtml(self.nomRecette,self.styleRecette, self.volume, self.boil, AppWindow.nbreFer, self.liste_ingr, self.liste_fAmount, self.liste_fUse, AppWindow.nbreHops, self.liste_houblons, self.liste_hAlpha, self.liste_hForm, self.liste_hAmount, self.liste_hTime,self.liste_hUse, AppWindow.nbreDivers, self.liste_divers, self.liste_dType, self.liste_dAmount, self.liste_dTime, self.liste_dUse, self.nbreLevures, self.liste_levuresDetail,self.rendement, self.OG, self.FG, self.ratioBuGu, self.EBC, self.ibuTot ,self.ABV, self.recipeNotes)
             exp.exportRecipeHtml(self.recipe)
             exp.generateHtml()
             self.webViewBiblio.setHtml(exp.generatedHtml, )
@@ -996,13 +974,6 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         home.generateHomePage()
         self.webViewBiblio.setHtml(home.homePage, )
 
-
-    # def matchFileNameBiblio(self) :
-    #     rootIndex = self.treeViewBiblio.rootIndex()
-    #     taille = self.modeleBiblio.rowCount(rootIndex)
-    #     print('taille', taille)
-        # self.treeViewBiblio.selectAll()
-        # print(self.treeViewBiblio.selectedIndexes())
 
     def listdir(self, rootdir) :
         fileList=[]
