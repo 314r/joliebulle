@@ -23,85 +23,11 @@ import logging
 import model.constants
 from model.fermentable import *
 from model.hop import *
+from model.yeast import *
+from model.misc import *
+from model.mashstep import *
 
 logger = logging.getLogger(__name__)
-
-class Yeast:
-    """A class for storing Yeast attributes"""
-    def __init__(self):
-        self.name = ''
-        self.form = ''
-        self.labo = ''
-        self.productId = ''
-        self.attenuation = 0.0
-    
-    def __repr__(self):
-        return ('yeast[name="%s", form=%s, labo=%s, productId=%s, attenuation=%s]' % 
-                (self.name, self.form, self.labo, self.productId, self.attenuation))
-
-    @staticmethod
-    def parse(element):
-        y = Yeast()
-        for balise in element:
-            if 'NAME' == balise.tag :
-                y.name = balise.text
-            elif 'FORM' == balise.tag :
-                y.form = balise.text
-            elif 'LABORATORY' == balise.tag :
-                y.labo = balise.text
-            elif 'PRODUCT_ID' == balise.tag :
-                y.productId = balise.text
-            elif 'ATTENUATION' == balise.tag:
-                y.attenuation = float(balise.text)
-        #logger.debug(repr(y))
-        return y
-
-class Misc:
-    """A class for storing Misc attributes"""
-    def __init__(self):
-        self.name = ''
-        self.amount = 0.0
-        self.type = ''
-        self.time = 0.0
-        self.use = model.constants.MISC_USE_BOIL
-    
-    def __repr__(self):
-        return 'misc[name="%s", amount=%s, type="%s", time=%s, use="%s"]' % (self.name, self.amount, self.type, self.time, self.use)
-        
-    @staticmethod
-    def parse(element):
-        m = Misc()
-        for balise in element:
-            if 'NAME' == balise.tag :
-                m.name = balise.text
-            elif 'AMOUNT' == balise.tag :
-                m.amount = float(balise.text)*1000
-            elif 'TYPE' == balise.tag :
-                m.type = balise.text
-            elif 'TIME' == balise.tag:
-                try :
-                    m.time = float(balise.text)
-                except : 
-                    m.time = 0.0
-                    logger.debug("misc time attribute is not numeric:%s", balise.text)
-            elif 'USE' == balise.tag:
-                if 'Boil' == balise.text:
-                    m.use = model.constants.MISC_USE_BOIL
-                elif 'Mash' == balise.text:
-                    m.use = model.constants.MISC_USE_MASH
-                elif 'Primary' == balise.text:
-                    m.use = model.constants.MISC_USE_PRIMARY
-                elif 'Secondary' == balise.text:
-                    m.use = model.constants.MISC_USE_SECONDARY
-                elif 'Bottling' == balise.text:
-                    m.use = model.constants.MISC_USE_BOTTLING
-                else :
-                    logger.warn ("Unkown misc use '%s', assuming 'Boil' by default", balise.text)
-                    m.use = model.constants.MISC_USE_BOIL
-
-        #logger.debug(repr(m))
-        return m
-
 
 class Recipe:
     """A class for storing recipes attributes"""
@@ -441,42 +367,3 @@ class Recipe:
         ABV = 0.130*((OG-1) -(FG-1))*1000
 
         self.displayProfile()
-
-
-class MashStep:
-    def __init__(self):
-        self.name = ""
-        self.type = ""
-        self.time = ""
-        self.temp = ""
-        self.infuseAmount = 0.0
-        self.version = 1
-
-    def __repr__(self):
-        return ('mashStep[name="%s", type="%s", time=%s, temp=%s, infuseAmount=%f, version=%d]' %
-                (self.name, self.type, self.time, self.temp, self.infuseAmount, self.version) )
-
-    @staticmethod
-    def parse(element):
-        m = MashStep()
-        for balise in element:
-            if 'NAME' == balise.tag:
-                m.name = balise.text
-            if 'VERSION' == balise.tag:
-                m.version = int(balise.text)
-            if 'TYPE' == balise.tag:
-                if 'Infusion' == balise.text:
-                    m.type = model.constants.MASH_STEP_INFUSION
-                elif 'Temperature' == balise.text:
-                    m.type = model.constants.MASH_STEP_TEMPERATURE
-                elif 'Decoction' == balise.text:
-                    m.type = model.constants.MASH_STEP_DECOCTION
-            if 'STEP_TIME' == balise.tag:
-                m.time = balise.text
-            if 'STEP_TEMP' == balise.tag:
-                m.temp = balise.text
-            if 'INFUSE_AMOUNT' == balise.tag:
-                m.infuseAmount = float(balise.text)
-        #logger.debug(repr(m))
-        return m
-
