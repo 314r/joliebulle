@@ -32,7 +32,7 @@ from globals import *
 from model.fermentable import *
 from model.hop import *
 from model.yeast import *
-from model.objects import Misc
+from model.misc import *
 
 logger = logging.getLogger(__name__)
 
