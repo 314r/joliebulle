@@ -62,7 +62,9 @@ from reader import *
 
 import xml.etree.ElementTree as ET
 from model.recipe import *
+from model.hop import *
 import model.constants
+import view.constants
 from view.objects import FermentableView
 from view.objects import RecipeView
 
@@ -288,38 +290,40 @@ class ComboBoxDelegate(QtGui.QItemDelegate):
         
 
     def createEditor(self, parent, option, index):
-        self.listeF = AppWindow()
-
-        i=self.listeF.nbreFer
-        h=self.listeF.nbreHops
-        row=index.row()
-        if row > i-1 and row < i+h :
+        editor = None
+        modele = index.model()
+        data = modele.data(index, view.constants.MODEL_DATA_ROLE)
+        if isinstance(data, Hop):
             editor = QtGui.QComboBox( parent )
-            editor.insertItem(0,self.trUtf8('Pellet'))
-            editor.insertItem(1,self.trUtf8('Feuille'))
-            editor.insertItem(2,self.trUtf8('Cône'))
+            editor.insertItem(0,self.trUtf8('Pellet'), model.constants.HOP_FORM_PELLET)
+            editor.insertItem(1,self.trUtf8('Feuille'), model.constants.HOP_FORM_LEAF)
+            editor.insertItem(2,self.trUtf8('Cône'), model.constants.HOP_FORM_PLUG)
+        else:
+            logger.debug("Selection is not a Hop")
         return editor
 
     def setEditorData( self, comboBox, index ):
-        value = index.model().data(index, QtCore.Qt.DisplayRole)
-        if value == self.trUtf8('Pellet') : 
+        value = index.model().data(index, QtCore.Qt.UserRole)
+        if value == model.constants.HOP_FORM_PELLET :
             value = 0
-        elif value == self.trUtf8('Cône') :
+        elif value == model.constants.HOP_FORM_PLUG :
             value = 2
         else : 
             value = 1
-     
         comboBox.setCurrentIndex(value)
         
-    def setModelData(self, editor, model, index):
-        
-        value = editor.currentText()
-        
-        model.setData( index, value )
-        self.emit( QtCore.SIGNAL( "pySig"))
-    
+    def setModelData(self, editor, m, index):
+        modele = index.model()
+        hop = modele.data(index, view.constants.MODEL_DATA_ROLE)
+        currentIndex = editor.currentIndex()
 
-    
+        if currentIndex == 0:
+            hop.form = model.constants.HOP_FORM_PELLET
+        elif currentIndex == 1:
+            hop.form = model.constants.HOP_FORM_LEAF
+        elif currentIndex == 2:
+            hop.form = model.constants.HOP_FORM_PLUG
+        self.emit( QtCore.SIGNAL( "pySig"))    
 
     def updateEditorGeometry( self, editor, option, index ):
 

@@ -1,6 +1,7 @@
 from PyQt4 import QtCore
 from PyQt4 import QtGui
 import model.constants
+import view.constants
 
 
 class HopView(QtCore.QObject):
@@ -33,17 +34,47 @@ class HopView(QtCore.QObject):
 			return self.trUtf8('Arôme')
 		return '?hopUseDisplay?'
 	def QStandardItem_for_name(self):
-		return QtGui.QStandardItem(self.model.name)
+		'''Return a QStandardItem for displaying Hop name attribute.
+		A reference to the model object is stored in MODEL_DATA_ROLE user Role
+		'''
+		item = QtGui.QStandardItem(self.model.name)
+		item.setData(self.model, view.constants.MODEL_DATA_ROLE)
+		return item
 	def QStandardItem_for_amount(self):
-		return QtGui.QStandardItem( "%.0f" %(self.model.amount) )
+		'''Return a QStandardItem for displaying Hop amount attribute.
+		A reference to the model object is stored in MODEL_DATA_ROLE user Role
+		'''
+		item = QtGui.QStandardItem( "%.0f" %(self.model.amount) )
+		item.setData(self.model, view.constants.MODEL_DATA_ROLE)
+		return item
 	def QStandardItem_for_time(self):
-		return QtGui.QStandardItem( "%.0f" %(self.model.time) )
+		'''Return a QStandardItem for displaying Hop time attribute.
+		A reference to the model object is stored in MODEL_DATA_ROLE user Role
+		'''
+		item = QtGui.QStandardItem( "%.0f" %(self.model.time) )
+		item.setData(self.model, view.constants.MODEL_DATA_ROLE)
+		return item
 	def QStandardItem_for_alpha(self):
-		return QtGui.QStandardItem( "%.1f" %(self.model.alpha) )
+		'''Return a QStandardItem for displaying Hop alpha attribute.
+		A reference to the model object is stored in MODEL_DATA_ROLE user Role
+		'''
+		item = QtGui.QStandardItem( "%.1f" %(self.model.alpha) )
+		item.setData(self.model, view.constants.MODEL_DATA_ROLE)
+		return item
 	def QStandardItem_for_form(self):
-		return QtGui.QStandardItem(self.hopFormDisplay())
+		'''Return a QStandardItem for displaying Hop form attribute.
+		A reference to the model object is stored in MODEL_DATA_ROLE user Role
+		'''
+		item = QtGui.QStandardItem(self.hopFormDisplay())
+		item.setData(self.model, view.constants.MODEL_DATA_ROLE)
+		return item
 	def QStandardItem_for_use(self):
-		return QtGui.QStandardItem(self.hopUseDisplay())
+		'''Return a QStandardItem for displaying Hop use attribute.
+		A reference to the model object is stored in MODEL_DATA_ROLE user Role
+		'''
+		item = QtGui.QStandardItem(self.hopUseDisplay())
+		item.setData(self.model, view.constants.MODEL_DATA_ROLE)
+		return item
 
 class MiscView(QtCore.QObject):
 	def __init__(self, misc):
