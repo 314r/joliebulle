@@ -3,22 +3,27 @@ from PyQt4 import QtGui
 import model.constants
 import view.constants
 
+class HopViewLabels(QtCore.QObject):
+	def __init__(self):
+		QtCore.QObject.__init__(self)
+		self.formLabels = {
+			model.constants.HOP_FORM_PELLET	: self.trUtf8('''Pellet'''),
+			model.constants.HOP_FORM_LEAF	: self.trUtf8('''Feuille'''),
+			model.constants.HOP_FORM_PLUG	: self.trUtf8('''Cône''')
+		}
 
 class HopView(QtCore.QObject):
 	def __init__(self, hop):
 		QtCore.QObject.__init__(self)
 		self.model = hop
+		self.hopLabels = HopViewLabels()
 
 	def hopFormDisplay(self):
 		"""Return a translated string which can bu used in UI for displaying hop form"""
-
-		if self.model.form == model.constants.HOP_FORM_PELLET :
-			return self.trUtf8('''Pellet''')
-		if self.model.form == model.constants.HOP_FORM_LEAF :
-			return self.trUtf8('''Feuille''')
-		if self.model.form == model.constants.HOP_FORM_PLUG :
-			return self.trUtf8('''Cône''')
-		return '?hopFormDisplay?'
+		try:
+			return self.hopLabels.formLabels[self.model.form]
+		except KeyError :
+			return '?hopFormDisplay?'
 
 	def hopUseDisplay(self):
 		"""Return a translated string which can bu used in UI for displaying hop use"""

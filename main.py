@@ -153,7 +153,6 @@ class AmountDelegate(QtGui.QItemDelegate):
     def __init__(self, parent=None):
             QtGui.QItemDelegate.__init__(self, parent)
 
-
     def createEditor(self, parent, option, index) :
         editor = None
         modele = index.model()
@@ -280,48 +279,34 @@ class AlphaDelegate(QtGui.QItemDelegate):
     def updateEditorGeometry(self, editor, option, index):
         editor.setGeometry(option.rect)
 
-class ComboBoxDelegate(QtGui.QItemDelegate):
-
-
+class HopFormComboBoxDelegate(QtGui.QItemDelegate):
     def __init__(self, parent = None):
-
         QtGui.QItemDelegate.__init__(self, parent)
-        
+        self.hopLabels = HopViewLabels()
 
     def createEditor(self, parent, option, index):
         editor = None
-        modele = index.model()
-        data = modele.data(index, view.constants.MODEL_DATA_ROLE)
+        data = index.data(view.constants.MODEL_DATA_ROLE)
         if isinstance(data, Hop):
             editor = QtGui.QComboBox( parent )
-            editor.insertItem(0,self.trUtf8('Pellet'), model.constants.HOP_FORM_PELLET)
-            editor.insertItem(1,self.trUtf8('Feuille'), model.constants.HOP_FORM_LEAF)
-            editor.insertItem(2,self.trUtf8('Cône'), model.constants.HOP_FORM_PLUG)
+            for (k,v) in self.hopLabels.formLabels.items():
+                editor.addItem(v, k)
         else:
             logger.debug("Selection is not a Hop:%s", type(data))
         return editor
 
     def setEditorData( self, comboBox, index ):
-        value = index.model().data(index, QtCore.Qt.UserRole)
-        if value == model.constants.HOP_FORM_PELLET :
-            value = 0
-        elif value == model.constants.HOP_FORM_PLUG :
-            value = 2
-        else : 
-            value = 1
+        display = index.model().data(index, QtCore.Qt.DisplayRole)
+        value = 0
+        for (k,v) in self.hopLabels.formLabels.items():
+            if display == v:
+                break
+            value += 1
         comboBox.setCurrentIndex(value)
         
-    def setModelData(self, editor, m, index):
-        modele = index.model()
-        hop = modele.data(index, view.constants.MODEL_DATA_ROLE)
-        currentIndex = editor.currentIndex()
-
-        if currentIndex == 0:
-            hop.form = model.constants.HOP_FORM_PELLET
-        elif currentIndex == 1:
-            hop.form = model.constants.HOP_FORM_LEAF
-        elif currentIndex == 2:
-            hop.form = model.constants.HOP_FORM_PLUG
+    def setModelData(self, editor, model, index):
+        value = editor.currentText()
+        model.setData( index, value )
         self.emit( QtCore.SIGNAL( "pySig"))    
 
     def updateEditorGeometry( self, editor, option, index ):
@@ -708,7 +693,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         
         #Les modeles et vues du widget central
         self.modele = QtGui.QStandardItemModel(0, 7)
-        self.connect(self.modele, QtCore.SIGNAL("dataChanged(QModelIndex,QModelIndex)"), self.reverseMVC)
+        self.connect(self.modele, QtCore.SIGNAL("itemChanged(QStandardItem *)"), self.reverseMVC)
         
         liste_headers = [self.trUtf8("Ingrédients"),self.trUtf8("Quantité (g)"),self.trUtf8("Temps (min)"),self.trUtf8("Acide Alpha (%)"),self.trUtf8("Type"),self.trUtf8("Proportion"), self.trUtf8("Étape")]
         self.modele.setHorizontalHeaderLabels(liste_headers)
@@ -729,7 +714,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         self.tableViewF.setItemDelegateForColumn(3,self.delegA)
         self.connect(self.delegA, QtCore.SIGNAL( "pySig"), self.modeleProportion)
         
-        self.delegC = ComboBoxDelegate(self)
+        self.delegC = HopFormComboBoxDelegate(self)
         self.tableViewF.setItemDelegateForColumn(4,self.delegC)  
         self.connect(self.delegC, QtCore.SIGNAL( "pySig"), self.modeleProportion)
         
@@ -1317,9 +1302,25 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
                 
         self.displayProfile()
         logger.debug("< modeleProportion")
-                
+
     # cette fonction est appelee chaque fois que les donnees du modele changent
-    def reverseMVC(self) :           
+    def reverseMVC(self, item) :
+        #logger.debug("item:%s %s %s", item, item.data(view.constants.MODEL_DATA_ROLE), item.data(QtCore.Qt.EditRole))
+        row = item.row()
+        column = item.column()
+        modelInstance = item.data(view.constants.MODEL_DATA_ROLE)
+        newValue = item.text()
+
+        #Update Hop item
+        if isinstance(modelInstance, Hop):
+            logger.debug("Model update at [row=%d,column=%d]for Hop:%s; newValue=%s", row, column, modelInstance, newValue)
+            if column == 4:
+                #Update Hop form
+                hopLabels = HopViewLabels()
+                for (k,v) in hopLabels.formLabels.items():
+                    if newValue == v:
+                        modelInstance.form = k
+                        break
         i = 0
         while i < AppWindow.nbreFer :
             i = i+1
@@ -1402,8 +1403,9 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
                         self.liste_dUse[m-1] = str(value)  
             except :
                 pass
-
-        self.calculs_recette()  
+        #Dump for debugging
+        for h in self.recipe.listeHops:
+            logger.debug(h)
 
     def clearModele(self):
         count = self.modele.rowCount()
