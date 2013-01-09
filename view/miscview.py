@@ -1,0 +1,51 @@
+from PyQt4 import QtCore
+from PyQt4 import QtGui
+import model.constants
+import view.constants
+
+class MiscView(QtCore.QObject):
+	def __init__(self, misc):
+		QtCore.QObject.__init__(self)
+		self.model = misc
+
+	def miscUseDisplay(self):
+		"Return a translated string which can be used in UI for displaying misc ingredient use"
+		if self.model.use == model.constants.MISC_USE_BOIL :
+			return self.trUtf8('Ébullition')
+		if self.model.use == model.constants.MISC_USE_MASH :
+			return self.trUtf8('Empâtage')
+		if self.model.use == model.constants.MISC_USE_PRIMARY :
+			return self.trUtf8('Primaire')		
+		if self.model.use == model.constants.MISC_USE_SECONDARY :
+			return self.trUtf8('Secondaire')
+		if self.model.use == model.constants.MISC_USE_BOTTLING :
+			return self.trUtf8('Embouteillage')
+		return '?miscUseDisplay?'
+	def QStandardItem_for_name_type(self):
+		'''Return a QStandardItem for displaying Misc name attribute.
+		A reference to the model object is stored in MODEL_DATA_ROLE user Role
+		'''
+		item = QtGui.QStandardItem(self.model.name + ' [' + self.model.type + ']')
+		item.setData(self.model, view.constants.MODEL_DATA_ROLE)
+		return item
+	def QStandardItem_for_amount(self):
+		'''Return a QStandardItem for displaying Misc amount attribute.
+		A reference to the model object is stored in MODEL_DATA_ROLE user Role
+		'''
+		item = QtGui.QStandardItem( "%.0f" %(self.model.amount) )
+		item.setData(self.model, view.constants.MODEL_DATA_ROLE)
+		return item
+	def QStandardItem_for_time(self):
+		'''Return a QStandardItem for displaying Misc time attribute.
+		A reference to the model object is stored in MODEL_DATA_ROLE user Role
+		'''
+		item = QtGui.QStandardItem( "%.0f" %(self.model.time) )
+		item.setData(self.model, view.constants.MODEL_DATA_ROLE)
+		return item
+	def QStandardItem_for_use(self):
+		'''Return a QStandardItem for displaying Misc use attribute.
+		A reference to the model object is stored in MODEL_DATA_ROLE user Role
+		'''
+		item = QtGui.QStandardItem(self.miscUseDisplay())
+		item.setData(self.model, view.constants.MODEL_DATA_ROLE)
+		return item

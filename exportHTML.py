@@ -25,10 +25,10 @@ from PyQt4 import QtGui
 from PyQt4 import QtCore
 from base import *
 from globals import *
-from view.objects import HopView
-from view.objects import MiscView
-from view.objects import YeastView
-from view.objects import MashView
+from view.hopview import *
+from view.miscview import *
+from view.yeastview import *
+from view.mashview import *
 
 class ExportHTML(QtGui.QDialog) : 
 

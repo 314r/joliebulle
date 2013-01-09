@@ -65,8 +65,9 @@ from model.recipe import *
 from model.hop import *
 import model.constants
 import view.constants
-from view.objects import FermentableView
-from view.objects import RecipeView
+from view.fermentableview import *
+from view.recipeview import *
+from view.hopview import *
 
 # class BiblioFileSystem (QtGui.QFileSystemModel) :
 #     def __init__(self, parent=None):
@@ -154,19 +155,17 @@ class AmountDelegate(QtGui.QItemDelegate):
 
 
     def createEditor(self, parent, option, index) :
-        self.listeF = AppWindow()
-        i=self.listeF.nbreFer
-        h=self.listeF.nbreHops
-        m=self.listeF.nbreDivers
-
-        row=index.row()
-        if row < i+h+m:
+        editor = None
+        modele = index.model()
+        data = modele.data(index, view.constants.MODEL_DATA_ROLE)
+        if isinstance(data, Fermentable) or isinstance(data, Hop) or isinstance(data, Misc):
             editor = QtGui.QLineEdit(parent)
             #editor.setMinimum(0)
             #editor.setMaximum(20000)
             editor.installEventFilter(self)
-
-            return editor
+        else:
+            logger.debug("Selection is not a Fermentable or Hop or Misc:%s", type(data))
+        return editor
 
     def setEditorData(self, lineEdit, index):
         value= int(index.model().data(index, QtCore.Qt.DisplayRole))
@@ -299,7 +298,7 @@ class ComboBoxDelegate(QtGui.QItemDelegate):
             editor.insertItem(1,self.trUtf8('Feuille'), model.constants.HOP_FORM_LEAF)
             editor.insertItem(2,self.trUtf8('Cône'), model.constants.HOP_FORM_PLUG)
         else:
-            logger.debug("Selection is not a Hop")
+            logger.debug("Selection is not a Hop:%s", type(data))
         return editor
 
     def setEditorData( self, comboBox, index ):
@@ -1299,6 +1298,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
             pass
 
     def modeleProportion (self) :
+        logger.debug("> modeleProportion")
         #Cette fonction est appelée chaque fois que la quantité, les AA ou les temps sont modifiés, via un signal émit par les classes Delegate.
         #Cette fonction inclut les données calculées dans le modèle.
         i=0
@@ -1316,6 +1316,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
                 self.modele.setItem(i+h-1,5,prop)
                 
         self.displayProfile()
+        logger.debug("< modeleProportion")
                 
     # cette fonction est appelee chaque fois que les donnees du modele changent
     def reverseMVC(self) :           
@@ -1789,12 +1790,12 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         return AppWindow.nbreFer
                     
     def displayProfile(self) :     
-        self.labelOGV.setText(str("%.3f" %(self.OG)))
-        self.labelFGV.setText(str("%.3f" %(self.FG)))
-        self.labelEBCV.setText(str("%.0f" %(self.EBC)))
-        self.labelIBUV.setText(str("%.0f" %(self.ibuTot)))
-        self.labelAlcv.setText(str("%.1f" %(self.ABV)) + '%')
-        self.labelRatioBuGu.setText(str("%.1f" %(self.ratioBuGu)))
+        self.labelOGV.setText("%.3f" %(self.recipe.compute_OG()))
+        self.labelFGV.setText("%.3f" %(self.recipe.compute_FG() ))
+        self.labelEBCV.setText("%.0f" %(self.recipe.compute_EBC() ))
+        self.labelIBUV.setText("%.0f" %(self.recipe.compute_IBU() ))
+        self.labelAlcv.setText("%.1f%%" %(self.recipe.compute_ABV() ))
+        self.labelRatioBuGu.setText("%.1f" %(self.recipe.compute_ratioBUGU()))
         
         
                         
@@ -1994,7 +1995,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
 
             
     def nouvelle(self) :
-        
+        self.recipe = None
         self.nomRecette = self.trUtf8('Nouvelle Recette')
         self.rendement = 75
         self.volume = '10'
