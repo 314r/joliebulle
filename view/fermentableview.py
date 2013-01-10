@@ -22,13 +22,36 @@ class FermentableView(QtCore.QObject):
 		return '?fermentableTypeDisplay?'
 
 	def fermentableUseDisplay(self):
-		return self.trUtf8('Brassage')
+		if not self.model.useAfterBoil:
+			return self.trUtf8('Brassage')
+		else:
+			return self.trUtf8('Après ébullition')
 
 	def QStandardItem_for_name(self):
-		return QtGui.QStandardItem(self.model.name)
+		'''Return a QStandardItem for displaying Fermentable name attribute.
+		A reference to the model object is stored in MODEL_DATA_ROLE user Role
+		'''
+		item = QtGui.QStandardItem(self.model.name)
+		item.setData(self.model, view.constants.MODEL_DATA_ROLE)
+		return item
 	def QStandardItem_for_amount(self):
-		return QtGui.QStandardItem("%.0f" %(self.model.amount))
+		'''Return a QStandardItem for displaying Fermentable amount attribute.
+		A reference to the model object is stored in MODEL_DATA_ROLE user Role
+		'''
+		item = QtGui.QStandardItem("%.0f" %(self.model.amount))
+		item.setData(self.model, view.constants.MODEL_DATA_ROLE)
+		return item
 	def QStandardItem_for_type(self):
-		return QtGui.QStandardItem(self.fermentableTypeDisplay())
+		'''Return a QStandardItem for displaying Fermentable type attribute.
+		A reference to the model object is stored in MODEL_DATA_ROLE user Role
+		'''
+		item = QtGui.QStandardItem(self.fermentableTypeDisplay())
+		item.setData(self.model, view.constants.MODEL_DATA_ROLE)
+		return item
 	def QStandardItem_for_use(self):
-		return QtGui.QStandardItem(self.fermentableUseDisplay())
+		'''Return a QStandardItem for displaying Fermentable use attribute.
+		A reference to the model object is stored in MODEL_DATA_ROLE user Role
+		'''
+		item = QtGui.QStandardItem(self.fermentableUseDisplay())
+		item.setData(self.model, view.constants.MODEL_DATA_ROLE)
+		return item
