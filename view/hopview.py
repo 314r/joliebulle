@@ -7,9 +7,16 @@ class HopViewLabels(QtCore.QObject):
 	def __init__(self):
 		QtCore.QObject.__init__(self)
 		self.formLabels = {
-			model.constants.HOP_FORM_PELLET	: self.trUtf8('''Pellet'''),
-			model.constants.HOP_FORM_LEAF	: self.trUtf8('''Feuille'''),
-			model.constants.HOP_FORM_PLUG	: self.trUtf8('''Cône''')
+			model.constants.HOP_FORM_PELLET	: self.trUtf8('Pellet'),
+			model.constants.HOP_FORM_LEAF	: self.trUtf8('Feuille'),
+			model.constants.HOP_FORM_PLUG	: self.trUtf8('Cône')
+		}
+		self.useLabels = {
+			model.constants.HOP_USE_BOIL	: self.trUtf8('Ébullition'),
+			model.constants.HOP_USE_DRY_HOP	: self.trUtf8('Dry Hop'),
+			model.constants.HOP_USE_MASH	: self.trUtf8('Empâtage'),
+			model.constants.HOP_USE_FIRST_WORT	: self.trUtf8('Premier Moût'),
+			model.constants.HOP_USE_AROMA	: self.trUtf8('Arôme')
 		}
 
 class HopView(QtCore.QObject):
@@ -27,17 +34,11 @@ class HopView(QtCore.QObject):
 
 	def hopUseDisplay(self):
 		"""Return a translated string which can bu used in UI for displaying hop use"""
-		if self.model.use == model.constants.HOP_USE_BOIL :
-			return self.trUtf8('''Ébullition''')
-		if self.model.use == model.constants.HOP_USE_DRY_HOP :
-			return self.trUtf8('Dry Hop')
-		if self.model.use == model.constants.HOP_USE_MASH :
-			return self.trUtf8('Empâtage')
-		if self.model.use == model.constants.HOP_USE_FIRST_WORT :
-			return self.trUtf8('Premier Moût')
-		if self.model.use == model.constants.HOP_USE_AROMA :
-			return self.trUtf8('Arôme')
-		return '?hopUseDisplay?'
+		try:
+			return self.hopLabels.useLabels[self.model.use]
+		except KeyError :
+			return '?hopUseDisplay?'
+
 	def QStandardItem_for_name(self):
 		'''Return a QStandardItem for displaying Hop name attribute.
 		A reference to the model object is stored in MODEL_DATA_ROLE user Role

@@ -3,24 +3,30 @@ from PyQt4 import QtGui
 import model.constants
 import view.constants
 
+class MiscViewLabels(QtCore.QObject):
+	def __init__(self):
+		QtCore.QObject.__init__(self)
+		self.useLabels = {
+			model.constants.MISC_USE_BOIL	: self.trUtf8('Ébullition'),
+			model.constants.MISC_USE_MASH	: self.trUtf8('Empâtage'),
+			model.constants.MISC_USE_PRIMARY	: self.trUtf8('Primaire'),
+			model.constants.MISC_USE_SECONDARY	: self.trUtf8('Secondaire'),
+			model.constants.MISC_USE_BOTTLING	: self.trUtf8('Embouteillage')
+		}
+
 class MiscView(QtCore.QObject):
 	def __init__(self, misc):
 		QtCore.QObject.__init__(self)
 		self.model = misc
+		self.miscLabels = MiscViewLabels()
 
 	def miscUseDisplay(self):
 		"Return a translated string which can be used in UI for displaying misc ingredient use"
-		if self.model.use == model.constants.MISC_USE_BOIL :
-			return self.trUtf8('Ébullition')
-		if self.model.use == model.constants.MISC_USE_MASH :
-			return self.trUtf8('Empâtage')
-		if self.model.use == model.constants.MISC_USE_PRIMARY :
-			return self.trUtf8('Primaire')		
-		if self.model.use == model.constants.MISC_USE_SECONDARY :
-			return self.trUtf8('Secondaire')
-		if self.model.use == model.constants.MISC_USE_BOTTLING :
-			return self.trUtf8('Embouteillage')
-		return '?miscUseDisplay?'
+		try:
+			return self.miscLabels.useLabels[self.model.use]
+		except KeyError :
+			return '?miscUseDisplay?'
+
 	def QStandardItem_for_name_type(self):
 		'''Return a QStandardItem for displaying Misc name attribute.
 		A reference to the model object is stored in MODEL_DATA_ROLE user Role

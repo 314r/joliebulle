@@ -3,29 +3,38 @@ from PyQt4 import QtGui
 import model.constants
 import view.constants
 
+class FermentableViewLabels(QtCore.QObject):
+	def __init__(self):
+		QtCore.QObject.__init__(self)
+		self.useLabels = {
+			model.constants.FERMENTABLE_USE_BOIL	: self.trUtf8('Brassage'),
+			model.constants.FERMENTABLE_USE_AFTER_BOIL	: self.trUtf8('Après ébullition')
+		}
+		self.typeLabels = {
+			model.constants.FERMENTABLE_TYPE_GRAIN	: self.trUtf8('Grain'),
+			model.constants.FERMENTABLE_TYPE_SUGAR	: self.trUtf8('Sucre'),
+			model.constants.FERMENTABLE_TYPE_EXTRACT	: self.trUtf8('Extrait'),
+			model.constants.FERMENTABLE_TYPE_DRY_EXTRACT	: self.trUtf8('Extrait sec'),
+			model.constants.FERMENTABLE_TYPE_ADJUNCT	: self.trUtf8('Complément')
+		}
+
 class FermentableView(QtCore.QObject):
 	def __init__(self, fermentable):
 		QtCore.QObject.__init__(self)
 		self.model = fermentable
+		self.fermentableLabels = FermentableViewLabels()
 
 	def fermentableTypeDisplay(self):
-		if self.model.type == model.constants.FERMENTABLE_TYPE_GRAIN:
-			return self.trUtf8('Grain')
-		if self.model.type == model.constants.FERMENTABLE_TYPE_SUGAR:
-			return self.trUtf8('Sucre')
-		if self.model.type == model.constants.FERMENTABLE_TYPE_EXTRACT:
-			return self.trUtf8('Extrait')
-		if self.model.type == model.constants.FERMENTABLE_TYPE_DRY_EXTRACT:
-			return self.trUtf8('Extrait sec')
-		if self.model.type == model.constants.FERMENTABLE_TYPE_ADJUNCT:
-			return self.trUtf8('Complément')
-		return '?fermentableTypeDisplay?'
+		try:
+			return self.fermentableLabels.typeLabels[self.model.type]
+		except KeyError :
+			return '?fermentableTypeDisplay?'
 
 	def fermentableUseDisplay(self):
 		if not self.model.useAfterBoil:
-			return self.trUtf8('Brassage')
+			return self.fermentableLabels.useLabels[model.constants.FERMENTABLE_USE_BOIL]
 		else:
-			return self.trUtf8('Après ébullition')
+			return self.fermentableLabels.useLabels[model.constants.FERMENTABLE_USE_AFTER_BOIL]
 
 	def QStandardItem_for_name(self):
 		'''Return a QStandardItem for displaying Fermentable name attribute.
