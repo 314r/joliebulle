@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'reader.ui'
 #
-# Created: Thu Dec 13 20:39:41 2012
+# Created: Fri Jan 11 19:27:29 2013
 #      by: PyQt4 UI code generator 4.9.3
 #
 # WARNING! All changes made in this file will be lost!
@@ -796,7 +796,7 @@ class Ui_MainWindow(object):
         self.toolBar.setObjectName(_fromUtf8("toolBar"))
         MainWindow.addToolBar(QtCore.Qt.TopToolBarArea, self.toolBar)
         self.menuBar = QtGui.QMenuBar(MainWindow)
-        self.menuBar.setGeometry(QtCore.QRect(0, 0, 1238, 25))
+        self.menuBar.setGeometry(QtCore.QRect(0, 0, 1238, 29))
         self.menuBar.setObjectName(_fromUtf8("menuBar"))
         self.menuFichier = QtGui.QMenu(self.menuBar)
         self.menuFichier.setObjectName(_fromUtf8("menuFichier"))
@@ -1048,7 +1048,7 @@ class Ui_MainWindow(object):
 "p, li { white-space: pre-wrap; }\n"
 "</style></head><body style=\" font-family:\'Ubuntu\'; font-size:11pt; font-weight:400; font-style:normal;\">\n"
 "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:\'Droid Sans\'; font-size:9pt;\">Alc :</span></p></body></html>", None, QtGui.QApplication.UnicodeUTF8))
-        self.label_20.setText(QtGui.QApplication.translate("MainWindow", "Ratio BU/GU :", None, QtGui.QApplication.UnicodeUTF8))
+        self.label_20.setText(QtGui.QApplication.translate("MainWindow", "<html><head/><body><p><span style=\" font-size:9pt;\">Ratio BU/GU :</span></p></body></html>", None, QtGui.QApplication.UnicodeUTF8))
         self.label_5.setText(QtGui.QApplication.translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
