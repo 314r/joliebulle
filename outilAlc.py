@@ -42,10 +42,13 @@ class DialogAlc(QtGui.QDialog):
         
         self.ui.doubleSpinBoxDI.valueChanged.connect(self.calcAlc)
         self.ui.doubleSpinBoxDF.valueChanged.connect(self.calcAlc)
+        self.ui.doubleSpinBoxSucre.valueChanged.connect(self.calcAlc)
         
     def calcAlc(self) :
         self.OG = self.ui.doubleSpinBoxDI.value()
         self.FG = self.ui.doubleSpinBoxDF.value()
-        self.ABV = 0.130*((self.OG-1) -(self.FG-1))*1000
+        self.Sucre = self.ui.doubleSpinBoxSucre.value()
+
+        self.ABV = ((((self.OG - self.FG) * 1.05) / self.FG) * 100) / 0.795 + ((self.Sucre * 0.5) / 0.795) / 10
         
         self.ui.labelAlc.setText("%.1f" %self.ABV)
