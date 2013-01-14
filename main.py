@@ -296,7 +296,7 @@ class HopFormComboBoxDelegate(QtGui.QItemDelegate):
         return editor
 
     def setEditorData( self, comboBox, index ):
-        display = index.model().data(index, QtCore.Qt.DisplayRole)
+        display = index.data(QtCore.Qt.DisplayRole)
         value = 0
         for (k,v) in self.hopLabels.formLabels.items():
             if display == v:
@@ -314,101 +314,56 @@ class HopFormComboBoxDelegate(QtGui.QItemDelegate):
         editor.setGeometry(option.rect)
         
 class UseDelegate(QtGui.QItemDelegate):
-
-
     def __init__(self, parent = None):
-
         QtGui.QItemDelegate.__init__(self, parent)
-        
+        self.hopLabels = HopViewLabels()
+        self.fermentableLabels = FermentableViewLabels()
+        self.miscLabels = MiscViewLabels()
 
     def createEditor(self, parent, option, index):
-        self.listeF = AppWindow()
-        
-
-        i=self.listeF.nbreFer
-        h=self.listeF.nbreHops
-        m = self.listeF.nbreDivers
-        row=index.row()
-        if row < i :
+        editor = None
+        data = index.data(view.constants.MODEL_DATA_ROLE)
+        if isinstance(data, Fermentable):
             editor = QtGui.QComboBox( parent )
-            editor.insertItem(0,self.trUtf8('Brassage'))
-            editor.insertItem(1,self.trUtf8('Après ébullition'))    
-
-        if row > i-1 and row < i+h :
+            for (k,v) in self.fermentableLabels.useLabels.items():
+                editor.addItem(v, k)
+        elif isinstance(data, Hop):
             editor = QtGui.QComboBox( parent )
-            editor.insertItem(0,self.trUtf8('Ébullition'))
-            editor.insertItem(1,self.trUtf8('Dry Hop'))
-            editor.insertItem(2,self.trUtf8('Empâtage'))
-            editor.insertItem(3,self.trUtf8('Premier Moût'))
-            editor.insertItem(4,self.trUtf8('Arôme'))
-        if row >i+h-1 and row < i+h+m:
+            for (k,v) in self.hopLabels.useLabels.items():
+                editor.addItem(v, k)
+        elif isinstance(data, Misc):        
             editor = QtGui.QComboBox( parent )
-            editor.insertItem(0,self.trUtf8('Ébullition'))
-            editor.insertItem(1,self.trUtf8('Empâtage'))
-            editor.insertItem(2,self.trUtf8('Primaire'))
-            editor.insertItem(3,self.trUtf8('Secondaire'))
-            editor.insertItem(4,self.trUtf8('Embouteillage'))
-
+            for (k,v) in self.miscLabels.useLabels.items():
+                editor.addItem(v, k)
         return editor
 
     def setEditorData( self, comboBoxUse, index ):
-        value = index.model().data(index, QtCore.Qt.DisplayRole)
-        i=self.listeF.nbreFer
-        h=self.listeF.nbreHops
-        m = self.listeF.nbreDivers
-        row=index.row()
-        if row < i :
-            if value == self.trUtf8('Brassage') :
-                value = 0
-            elif value == self.trUtf8('Après ébullition') :
-                value = 1
-            else :
-                value = 0
-                
-        if row > i-1 and row < i+h :  
-            if value == self.trUtf8('Ébullition') : 
-                value = 0
-            elif value == self.trUtf8('Dry Hop') :
-                value = 1
-            elif value == self.trUtf8('Empâtage') :
-                value = 2        
-            elif value == self.trUtf8('Premier Moût') :
-                value = 3    
-            elif value == self.trUtf8('Arôme') :
-                value = 4
-            else :
-                value = 0 
-                 
-        elif row >i+h-1 and row < i+h+m : 
-            if value == self.trUtf8('Ébullition') : 
-                value = 0
-            elif value == self.trUtf8('Empâtage') :
-                value = 1
-            elif value == self.trUtf8('Primaire') :
-                value = 2        
-            elif value == self.trUtf8('Secondaire') :
-                value = 3    
-            elif value == self.trUtf8('Embouteillage') :
-                value = 4
-            else :
-                value = 0      
-         
-    
-        
+        display = index.data(QtCore.Qt.DisplayRole)
+        data = index.data(view.constants.MODEL_DATA_ROLE)
+        value = 0
+        if isinstance(data, Fermentable):
+            for (k,v) in self.fermentableLabels.useLabels.items():
+                if display == v:
+                    break
+                value += 1
+        elif isinstance(data, Hop):
+            for (k,v) in self.hopLabels.useLabels.items():
+                if display == v:
+                    break
+                value += 1
+        elif isinstance(data, Misc):
+            for (k,v) in self.miscLabels.useLabels.items():
+                if display == v:
+                    break
+                value += 1
         comboBoxUse.setCurrentIndex(value)
         
     def setModelData(self, editor, model, index):
-        
         value = editor.currentText()
-        
         model.setData( index, value )
         self.emit( QtCore.SIGNAL( "pySig"))
-    
-
-    
 
     def updateEditorGeometry( self, editor, option, index ):
-
         editor.setGeometry(option.rect)
         
 
@@ -1313,14 +1268,43 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
 
         #Update Hop item
         if isinstance(modelInstance, Hop):
-            logger.debug("Model update at [row=%d,column=%d]for Hop:%s; newValue=%s", row, column, modelInstance, newValue)
+            logger.debug("Model update at [row=%d,column=%d] for Hop:%s; newValue=%s", row, column, modelInstance, newValue)
+            hopLabels = HopViewLabels()
             if column == 4:
                 #Update Hop form
-                hopLabels = HopViewLabels()
                 for (k,v) in hopLabels.formLabels.items():
                     if newValue == v:
                         modelInstance.form = k
                         break
+            elif column == 6:
+                #Update form use
+                for (k,v) in hopLabels.useLabels.items():
+                    if newValue == v:
+                        modelInstance.use = k
+                        break
+
+        #Update Fermentable item
+        if isinstance(modelInstance, Fermentable):
+            logger.debug("Model update at [row=%d,column=%d]for Fermentable:%s; newValue=%s", row, column, modelInstance, newValue)
+            fermentableLabels = FermentableViewLabels()
+            if column == 6:
+                #Update form use
+                if newValue == fermentableLabels.useLabels[model.constants.FERMENTABLE_USE_BOIL]:
+                    modelInstance.useAfterBoil = False
+                elif newValue == fermentableLabels.useLabels[model.constants.FERMENTABLE_USE_AFTER_BOIL]:
+                    modelInstance.useAfterBoil = True
+
+        #Update Misc item
+        if isinstance(modelInstance, Misc):
+            logger.debug("Model update at [row=%d,column=%d] for Misc:%s; newValue=%s", row, column, modelInstance, newValue)
+            miscLabels = MiscViewLabels()
+            if column == 6:
+                #Update form use
+                for (k,v) in miscLabels.useLabels.items():
+                    if newValue == v:
+                        modelInstance.use = k
+                        break
+
         i = 0
         while i < AppWindow.nbreFer :
             i = i+1
@@ -1405,6 +1389,10 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
                 pass
         #Dump for debugging
         for h in self.recipe.listeHops:
+            logger.debug(h)
+        for h in self.recipe.listeFermentables:
+            logger.debug(h)
+        for h in self.recipe.listeMiscs:
             logger.debug(h)
 
     def clearModele(self):
