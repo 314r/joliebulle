@@ -35,7 +35,7 @@ class Hop:
         self.use = ''
     
     def __repr__(self):
-        return 'hop[name="%s", amount=%s, form=%s, time=%s, alpha=%s]' % (self.name, self.amount, self.form, self.time, self.alpha)
+        return 'hop[name="%s", amount=%s, form=%s, time=%s, alpha=%s, use=%s]' % (self.name, self.amount, self.form, self.time, self.alpha, self.use)
 
     @staticmethod
     def parse(element):
