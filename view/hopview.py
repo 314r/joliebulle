@@ -57,14 +57,14 @@ class HopView(QtCore.QObject):
 		'''Return a QStandardItem for displaying Hop time attribute.
 		A reference to the model object is stored in MODEL_DATA_ROLE user Role
 		'''
-		item = QtGui.QStandardItem( "%.0f" %(self.model.time) )
+		item = QtGui.QStandardItem( HopView.time_to_display(self.model.time) )
 		item.setData(self.model, view.constants.MODEL_DATA_ROLE)
 		return item
 	def QStandardItem_for_alpha(self):
 		'''Return a QStandardItem for displaying Hop alpha attribute.
 		A reference to the model object is stored in MODEL_DATA_ROLE user Role
 		'''
-		item = QtGui.QStandardItem(HopView.alpha_display(self.model.alpha) )
+		item = QtGui.QStandardItem(HopView.alpha_to_display(self.model.alpha) )
 		item.setData(self.model, view.constants.MODEL_DATA_ROLE)
 		return item
 	def QStandardItem_for_form(self):
@@ -83,11 +83,21 @@ class HopView(QtCore.QObject):
 		return item
 
 	@staticmethod
-	def alpha_display(value):
+	def alpha_to_display(value):
 		'''Returns a displayable value for a alpha value'''
 		return "%.2f %%" %(value)
 
 	@staticmethod
-	def value_from_display(display):
+	def display_to_alpha(display):
 		'''Return a translated display value suitable for using in Hop model instance'''
 		return float(display.replace(" %", ""))
+
+	@staticmethod
+	def time_to_display(value):
+		'''Returns a displayable value for a time value'''
+		return "%.0f min" %(value)
+
+	@staticmethod
+	def display_to_time(display):
+		'''Return a translated display value suitable for using in Hop model instance'''
+		return int(display.replace(" min", ""))

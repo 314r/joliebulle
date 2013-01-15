@@ -200,38 +200,35 @@ class AmountDelegate(QtGui.QItemDelegate):
         
 class TimeDelegate(QtGui.QItemDelegate):
     def __init__(self, parent=None):
-            QtGui.QItemDelegate.__init__(self, parent)
-            
+        QtGui.QItemDelegate.__init__(self, parent)
 
     def createEditor(self, parent, option, index) :
-
-        #le nombre d'ingredients fermentescibles pour lesquels on ne prend pas en compte le temps d'ebullition
-        self.listeF = AppWindow()
-        i=self.listeF.nbreFer
-        h=self.listeF.nbreHops
-        m=self.listeF.nbreDivers
-
-        row=index.row()
-        if row > i-1 and row < i+h+m:
+        editor = None
+        data = index.data(view.constants.MODEL_DATA_ROLE)
+        if isinstance(data, Hop) or isinstance(data, Misc):        
             editor = QtGui.QSpinBox(parent)
             editor.setMinimum(0)
             editor.setMaximum(20000)
             editor.installEventFilter(self)
-
-            return editor
+        return editor
 
     def setEditorData(self, spinBox, index):
-        value= int(index.model().data(index, QtCore.Qt.DisplayRole))
-        
-        spinBox.setValue(value)
+        data = index.data(view.constants.MODEL_DATA_ROLE)
+        value = index.data(QtCore.Qt.DisplayRole)
+        if isinstance(data, Hop):
+            spinBox.setValue(HopView.display_to_time(value))
+        elif isinstance(data, Misc):
+            spinBox.setValue(MiscView.display_to_time(value))
         spinBox.setSuffix(" min")
 
     def setModelData(self, spinBox, model, index):
+        data = index.data(view.constants.MODEL_DATA_ROLE)
         spinBox.interpretText()
         value = spinBox.value()
-        
-        #model.setData(index, QtCore.QVariant(value))
-        model.setData(index, value)
+        if isinstance(data, Hop):
+            model.setData(index, HopView.time_to_display(value))
+        elif isinstance(data, Misc):
+            model.setData(index, MiscView.time_to_display(value))
         self.emit( QtCore.SIGNAL( "pySig"))
                             
     def updateEditorGeometry(self, editor, option, index):
@@ -256,17 +253,18 @@ class AlphaDelegate(QtGui.QItemDelegate):
 
     def setEditorData(self, spinBox, index):
         value = index.data(QtCore.Qt.DisplayRole)
-        spinBox.setValue(HopView.value_from_display(value))
+        spinBox.setValue(HopView.display_to_alpha(value))
         spinBox.setSuffix(" %")
 
     def setModelData(self, spinBox, model, index):
         spinBox.interpretText()
         value = spinBox.value()
-        model.setData(index, HopView.alpha_display(value))
+        model.setData(index, HopView.alpha_to_display(value))
         self.emit( QtCore.SIGNAL( "pySig"))
                             
     def updateEditorGeometry(self, editor, option, index):
         editor.setGeometry(option.rect)
+
 
 class HopFormComboBoxDelegate(QtGui.QItemDelegate):
     def __init__(self, parent = None):
@@ -1257,13 +1255,20 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         if isinstance(modelInstance, Hop):
             logger.debug("Model update at [row=%d,column=%d] for Hop:%s; newValue=%s", row, column, modelInstance, newValue)
             hopLabels = HopViewLabels()
+            if column == 2:
+                #Update Hop time value
+                try:
+                    modelInstance.time = HopView.display_to_time(newValue)
+                except ValueError:
+                    logger.warn("Can't set Hop time value to:'%s'", newValue)
+                    item.setData(HopView.time_to_display(modelInstance.time), QtCore.Qt.DisplayRole)
             if column == 3:
                 #Update Hop alpha value
                 try:
-                    modelInstance.alpha = HopView.value_from_display(newValue)
+                    modelInstance.alpha = HopView.display_to_alpha(newValue)
                 except ValueError:
                     logger.warn("Can't set Hop alpha value to:'%s'", newValue)
-                    item.setData(HopView.alpha_display(modelInstance.alpha), QtCore.Qt.DisplayRole)
+                    item.setData(HopView.alpha_to_display(modelInstance.alpha), QtCore.Qt.DisplayRole)
             elif column == 4:
                 #Update Hop form
                 for (k,v) in hopLabels.formLabels.items():
@@ -1292,6 +1297,13 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         if isinstance(modelInstance, Misc):
             logger.debug("Model update at [row=%d,column=%d] for Misc:%s; newValue=%s", row, column, modelInstance, newValue)
             miscLabels = MiscViewLabels()
+            if column == 2:
+                #Update Misc time value
+                try:
+                    modelInstance.time = MiscView.display_to_time(newValue)
+                except ValueError:
+                    logger.warn("Can't set Misc time value to:'%s'", newValue)
+                    item.setData(MiscView.time_to_display(modelInstance.time), QtCore.Qt.DisplayRole)
             if column == 6:
                 #Update form use
                 for (k,v) in miscLabels.useLabels.items():

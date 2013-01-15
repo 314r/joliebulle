@@ -45,7 +45,7 @@ class MiscView(QtCore.QObject):
 		'''Return a QStandardItem for displaying Misc time attribute.
 		A reference to the model object is stored in MODEL_DATA_ROLE user Role
 		'''
-		item = QtGui.QStandardItem( "%.0f" %(self.model.time) )
+		item = QtGui.QStandardItem( MiscView.time_to_display(self.model.time) )
 		item.setData(self.model, view.constants.MODEL_DATA_ROLE)
 		return item
 	def QStandardItem_for_use(self):
@@ -55,3 +55,13 @@ class MiscView(QtCore.QObject):
 		item = QtGui.QStandardItem(self.miscUseDisplay())
 		item.setData(self.model, view.constants.MODEL_DATA_ROLE)
 		return item
+
+	@staticmethod
+	def time_to_display(value):
+		'''Returns a displayable value for a time value'''
+		return "%.0f min" %(value)
+
+	@staticmethod
+	def display_to_time(display):
+		'''Return a translated display value suitable for using in Misc model instance'''
+		return int(display.replace(" min", ""))
