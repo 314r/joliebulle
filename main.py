@@ -159,40 +159,21 @@ class AmountDelegate(QtGui.QItemDelegate):
         data = modele.data(index, view.constants.MODEL_DATA_ROLE)
         if isinstance(data, Fermentable) or isinstance(data, Hop) or isinstance(data, Misc):
             editor = QtGui.QLineEdit(parent)
-            #editor.setMinimum(0)
-            #editor.setMaximum(20000)
             editor.installEventFilter(self)
         else:
             logger.debug("Selection is not a Fermentable or Hop or Misc:%s", type(data))
         return editor
 
     def setEditorData(self, lineEdit, index):
-        value= int(index.model().data(index, QtCore.Qt.DisplayRole))
-
-        lineEdit.setText(str(value))
+        value= index.model().data(index, QtCore.Qt.DisplayRole)
+        lineEdit.setText(value)
         #spinBox.setSuffix(" g")
 
     def setModelData(self, lineEdit, model, index):
-        #spinBox.interpretText()
-        champs =lineEdit.text()
-        a = champs.rfind(" ")
-        if a > 0 :
-            if champs[a+1:] == "g" :
-                value = int(champs[:a])
-            if champs[a+1:] == "kg" :
-                value = (float(champs[:a])) * 1000
-            if champs[a+1:] == "oz" : 
-                value = int((float(champs[:a])) * 28.349)
-            if champs[a+1:] == "lb" : 
-                value = int((float(champs[:a])) * 453.59237)             
-        else :
-            value = int(lineEdit.text())        
-        #value = int(lineEdit.text())
+        data = index.data(view.constants.MODEL_DATA_ROLE)
+        value = lineEdit.text()
         model.setData(index, value)
-        
-
         self.emit( QtCore.SIGNAL( "pySig"))
-        
         
     def updateEditorGeometry(self, editor, option, index):
         editor.setGeometry(option.rect)
@@ -1255,6 +1236,13 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         if isinstance(modelInstance, Hop):
             logger.debug("Model update at [row=%d,column=%d] for Hop:%s; newValue=%s", row, column, modelInstance, newValue)
             hopLabels = HopViewLabels()
+            if column == 1:
+                #Update Hop amount value
+                try:
+                    modelInstance.amount = HopView.display_to_amount(newValue)
+                except ValueError as e:
+                    logger.warn("Can't set Hop amount value to:'%s' %s", newValue, e)
+                    item.setData(HopView.amount_to_display(modelInstance.amount), QtCore.Qt.DisplayRole)
             if column == 2:
                 #Update Hop time value
                 try:
@@ -1286,6 +1274,13 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         if isinstance(modelInstance, Fermentable):
             logger.debug("Model update at [row=%d,column=%d]for Fermentable:%s; newValue=%s", row, column, modelInstance, newValue)
             fermentableLabels = FermentableViewLabels()
+            if column == 1:
+                #Update amount value
+                try:
+                    modelInstance.amount = FermentableView.display_to_amount(newValue)
+                except ValueError as e:
+                    logger.warn("Can't set Fermentable amount value to:'%s' %s", newValue, e)
+                    item.setData(FermentableView.amount_to_display(modelInstance.amount), QtCore.Qt.DisplayRole)
             if column == 6:
                 #Update form use
                 if newValue == fermentableLabels.useLabels[model.constants.FERMENTABLE_USE_BOIL]:
@@ -1297,6 +1292,13 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         if isinstance(modelInstance, Misc):
             logger.debug("Model update at [row=%d,column=%d] for Misc:%s; newValue=%s", row, column, modelInstance, newValue)
             miscLabels = MiscViewLabels()
+            if column == 1:
+                #Update Misc amount value
+                try:
+                    modelInstance.amount = MiscView.display_to_amount(newValue)
+                except ValueError as e:
+                    logger.warn("Can't set Misc amount value to:'%s' %s", newValue, e)
+                    item.setData(MiscView.amount_to_display(modelInstance.amount), QtCore.Qt.DisplayRole)
             if column == 2:
                 #Update Misc time value
                 try:
@@ -1310,90 +1312,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
                     if newValue == v:
                         modelInstance.use = k
                         break
-
-        i = 0
-        while i < AppWindow.nbreFer :
-            i = i+1
-            try :
-                index = self.modele.index(i-1,1)
-                value = self.modele.data(index, QtCore.Qt.DisplayRole)
-                self.liste_fAmount[i-1] = float(value)
-
-                index_fIngr = self.modele.index(i-1,0)
-                value_fIngr = self.modele.data(index_fIngr, QtCore.Qt.DisplayRole)
-                self.liste_ingr[i-1] = value_fIngr
-
-                # index_fUse = self.modele.index(i-1,6)
-                # value_fUse = self.modele.data(index_fUse, QtCore.Qt.DisplayRole)
-                # # self.liste_fUse[i-1] = value_fUse
-                # print(value_fUse)
-
-                for use in self.liste_fUse :
-                    index = self.modele.index(i-1,6)
-                    value = self.modele.data(index, QtCore.Qt.DisplayRole)
-                    if value == 'None' or value == '' :
-                        pass
-                    else : 
-                        self.liste_fUse[i-1] = str(value)
-            except :
-                pass
-
-        h = 0
-        while h < AppWindow.nbreHops :
-            h = h+1
-            try :
-                for index in self.liste_hAmount :
-                    index = self.modele.index(i+h-1,1)
-                    value = self.modele.data(index, QtCore.Qt.DisplayRole)
-                    self.liste_hAmount[h-1] = float(value)
-                for index in self.liste_hTime :
-                    index = self.modele.index(i+h-1,2)
-                    value = self.modele.data(index, QtCore.Qt.DisplayRole)  
-                    self.liste_hTime[h-1] = float(value)
-                for index in self.liste_hAlpha :
-                    index = self.modele.index(i+h-1,3)
-                    value = self.modele.data(index, QtCore.Qt.DisplayRole)  
-                    self.liste_hAlpha[h-1] = float(value)  
-                for index in self.liste_hForm :
-                    index = self.modele.index(i+h-1,4)
-                    value = str(self.modele.data(index, QtCore.Qt.DisplayRole))
-                    if value == 'None' or value == '' :
-                        pass
-                    else :
-                        self.liste_hForm[h-1] = str(value)
-                for index in self.liste_hUse :
-                    index = self.modele.index(i+h-1,6)
-                    value = str(self.modele.data(index, QtCore.Qt.DisplayRole))
-                    if value == 'None' or value == '' :
-                        pass
-                    else :
-                        self.liste_hUse[h-1] = str(value)
-            except :
-                pass
-        m = 0 
-        while m < AppWindow.nbreDivers : 
-            m = m+1
-            try:
-                for index in self.liste_dAmount :
-                    index = self.modele.index(i+h+m-1,1)
-                    value = self.modele.data(index, QtCore.Qt.DisplayRole)
-                    self.liste_dAmount[m-1] = float(value)
-                    
-                for index in self.liste_dTime :
-                    index = self.modele.index(i+h+m-1,2)
-                    value = self.modele.data(index, QtCore.Qt.DisplayRole)  
-                    self.liste_dTime[m-1] = float(value)
-                    
-                for index in self.liste_dUse :
-                    index = self.modele.index(i+h+m-1,6)
-                    value = str(self.modele.data(index, QtCore.Qt.DisplayRole))
-                    if value == 'None' or value == '' :
-                        pass
-                    else :
-                        self.liste_dUse[m-1] = str(value)  
-            except :
-                pass
-        #Dump for debugging
+        #Dump updates for debugging
         for h in self.recipe.listeHops:
             logger.debug(h)
         for h in self.recipe.listeFermentables:

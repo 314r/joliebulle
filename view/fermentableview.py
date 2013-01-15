@@ -2,6 +2,7 @@ from PyQt4 import QtCore
 from PyQt4 import QtGui
 import model.constants
 import view.constants
+import re
 
 class FermentableViewLabels(QtCore.QObject):
 	def __init__(self):
@@ -64,3 +65,27 @@ class FermentableView(QtCore.QObject):
 		item = QtGui.QStandardItem(self.fermentableUseDisplay())
 		item.setData(self.model, view.constants.MODEL_DATA_ROLE)
 		return item
+
+	@staticmethod
+	def amount_to_display(value):
+		'''Returns a displayable value for a amount value'''
+		return "%.0f g" %(value)
+
+	@staticmethod
+	def display_to_amount(display):
+		'''Return a translated display value suitable for using in Fermentable amount instance'''
+		m = re.search('([\d\.]+)\ *([a-zA-Z]*)',display)
+		data = m.group(1)
+		unit = m.group(2)
+		value = None
+		if unit == "g" :
+			value =  int(data)
+		if unit == "kg" :
+			value =  int(float(data)*1000)
+		elif unit == "oz" : 
+			value = int(float(data) * 28.349)
+		elif unit == "lb" : 
+			value = int(float(data) * 453.59237)
+		else:
+			value = int(data)
+		return value

@@ -1,7 +1,11 @@
+import logging
 from PyQt4 import QtCore
 from PyQt4 import QtGui
 import model.constants
 import view.constants
+import re
+
+logger = logging.getLogger(__name__)
 
 class HopViewLabels(QtCore.QObject):
 	def __init__(self):
@@ -101,3 +105,28 @@ class HopView(QtCore.QObject):
 	def display_to_time(display):
 		'''Return a translated display value suitable for using in Hop model instance'''
 		return int(display.replace(" min", ""))
+
+	@staticmethod
+	def amount_to_display(value):
+		'''Returns a displayable value for a amount value'''
+		return "%.0f g" %(value)
+
+	@staticmethod
+	def display_to_amount(display):
+		'''Return a translated display value suitable for using in Hop amount instance'''
+		m = re.search('([\d\.]+)\ *([a-zA-Z]*)',display)
+		data = m.group(1)
+		unit = m.group(2)
+		logger.debug("%s => '%s' '%s'", display, data, unit)
+		value = None
+		if unit == "g" :
+			value =  int(data)
+		if unit == "kg" :
+			value =  int(float(data)*1000)
+		elif unit == "oz" : 
+			value = int(float(data) * 28.349)
+		elif unit == "lb" : 
+			value = int(float(data) * 453.59237)
+		else:
+			value = int(data)
+		return value
