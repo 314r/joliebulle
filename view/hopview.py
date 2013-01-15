@@ -64,7 +64,7 @@ class HopView(QtCore.QObject):
 		'''Return a QStandardItem for displaying Hop alpha attribute.
 		A reference to the model object is stored in MODEL_DATA_ROLE user Role
 		'''
-		item = QtGui.QStandardItem( "%.1f" %(self.model.alpha) )
+		item = QtGui.QStandardItem(HopView.alpha_display(self.model.alpha) )
 		item.setData(self.model, view.constants.MODEL_DATA_ROLE)
 		return item
 	def QStandardItem_for_form(self):
@@ -81,3 +81,13 @@ class HopView(QtCore.QObject):
 		item = QtGui.QStandardItem(self.hopUseDisplay())
 		item.setData(self.model, view.constants.MODEL_DATA_ROLE)
 		return item
+
+	@staticmethod
+	def alpha_display(value):
+		'''Returns a displayable value for a alpha value'''
+		return "%.2f %%" %(value)
+
+	@staticmethod
+	def value_from_display(display):
+		'''Return a translated display value suitable for using in Hop model instance'''
+		return float(display.replace(" %", ""))

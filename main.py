@@ -240,40 +240,29 @@ class TimeDelegate(QtGui.QItemDelegate):
 
 class AlphaDelegate(QtGui.QItemDelegate):
     def __init__(self, parent=None):
-            QtGui.QItemDelegate.__init__(self, parent)
-            
+        QtGui.QItemDelegate.__init__(self, parent)
+        self.hopLabels = HopViewLabels()
+        self.hopView = HopView(None)
 
     def createEditor(self, parent, option, index) :
-        
-        #le nombre d'ingredients fermentescibles pour lesquels on ne prend pas en compte les acides alpha
-        self.listeF = AppWindow()
-        i=self.listeF.nbreFer
-        h=self.listeF.nbreHops
-
-        row=index.row()
-        if row > i-1 and row < i+h:
-        
+        editor = None
+        data = index.data(view.constants.MODEL_DATA_ROLE)
+        if isinstance(data, Hop):
             editor = QtGui.QDoubleSpinBox(parent)
             editor.setMinimum(0)
             editor.setMaximum(20000)
             editor.installEventFilter(self)
-            return editor
-        else :
-            pass
-        
+        return editor
 
     def setEditorData(self, spinBox, index):
-        value= float(index.model().data(index, QtCore.Qt.DisplayRole))
-
-        spinBox.setValue(value)
+        value = index.data(QtCore.Qt.DisplayRole)
+        spinBox.setValue(HopView.value_from_display(value))
         spinBox.setSuffix(" %")
 
     def setModelData(self, spinBox, model, index):
         spinBox.interpretText()
         value = spinBox.value()
-        
-        
-        model.setData(index, value)
+        model.setData(index, HopView.alpha_display(value))
         self.emit( QtCore.SIGNAL( "pySig"))
                             
     def updateEditorGeometry(self, editor, option, index):
@@ -291,8 +280,6 @@ class HopFormComboBoxDelegate(QtGui.QItemDelegate):
             editor = QtGui.QComboBox( parent )
             for (k,v) in self.hopLabels.formLabels.items():
                 editor.addItem(v, k)
-        else:
-            logger.debug("Selection is not a Hop:%s", type(data))
         return editor
 
     def setEditorData( self, comboBox, index ):
@@ -1270,7 +1257,14 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         if isinstance(modelInstance, Hop):
             logger.debug("Model update at [row=%d,column=%d] for Hop:%s; newValue=%s", row, column, modelInstance, newValue)
             hopLabels = HopViewLabels()
-            if column == 4:
+            if column == 3:
+                #Update Hop alpha value
+                try:
+                    modelInstance.alpha = HopView.value_from_display(newValue)
+                except ValueError:
+                    logger.warn("Can't set Hop alpha value to:'%s'", newValue)
+                    item.setData(HopView.alpha_display(modelInstance.alpha), QtCore.Qt.DisplayRole)
+            elif column == 4:
                 #Update Hop form
                 for (k,v) in hopLabels.formLabels.items():
                     if newValue == v:
