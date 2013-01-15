@@ -1430,11 +1430,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         
         
     def purge (self) :
-        i = (AppWindow.nbreFer + AppWindow.nbreDivers + AppWindow.nbreHops + self.nbreLevures)
-        self.modele.removeRows(0,i)
-        AppWindow.nbreFer = 0
-        AppWindow.nbreHops = 0
-        AppWindow.nbreDivers = 0
+        self.clearModele()
         self.s = 0
         self.nouvelle()
         
@@ -1651,56 +1647,6 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         else :
             self.comboBoxType.setCurrentIndex(0)
         self.lineEditBrewer.setText(self.recipe.brewer)
-        
-
-#        self.nbrePaliers = len(paliers)
-#        self.liste_paliers = list()
-#        self.liste_pType = list()
-#        self.liste_pTime = list()
-#        self.liste_pTemp = list()
-#        self.liste_pVol = list()
-#        
-#        
-#        
-#        
-#        p = 0
-#        while p < self.nbrePaliers : 
-#            p = p+1
-#            for nom in paliers [p-1] :
-#                if nom.tag == 'NAME' :
-#                    self.pNom = nom.text
-#                    self.liste_paliers.append(self.pNom)
-#                    
-#                if nom.tag == 'TYPE' :
-#                    self.pType = nom.text
-#                    if self.pType == 'Infusion' :
-#                        self.pType = self.trUtf8('''Infusion''')
-#                        self.liste_pType.append(self.pType)
-#                    if self.pType == '''Temperature''' :
-#                        self.pType = self.trUtf8('''Température''')
-#                        self.liste_pType.append(self.pType)
-#                    if self.pType == '''Decoction''' :
-#                        self.pType = self.trUtf8('''Décoction''')
-#                        self.liste_pType.append(self.pType)  
-#                    
-#                    
-#                if nom.tag == 'STEP_TIME' :
-#                    self.pTime = float(nom.text)
-#                    self.liste_pTime.append(self.pTime)
-#                    
-#                if nom.tag == 'STEP_TEMP' :
-#                    self.pTemp = float(nom.text)
-#                    self.liste_pTemp.append(self.pTemp)
-#                     
-#                if nom.tag == 'INFUSE_AMOUNT' :
-#                    self.pQte = float(nom.text)
-#                    self.liste_pVol.append(self.pQte)
-#                    
-#        self.lineEditBrewingProfile.setText(self.bNom)
-#        
-#        
-#        print(self.liste_paliers)
-#        print(self.liste_pType)
         
         return AppWindow.nbreFer
                     

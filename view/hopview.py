@@ -117,7 +117,6 @@ class HopView(QtCore.QObject):
 		m = re.search('([\d\.]+)\ *([a-zA-Z]*)',display)
 		data = m.group(1)
 		unit = m.group(2)
-		logger.debug("%s => '%s' '%s'", display, data, unit)
 		value = None
 		if unit == "g" :
 			value =  int(data)
