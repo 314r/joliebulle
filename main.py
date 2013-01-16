@@ -335,11 +335,6 @@ class UseDelegate(QtGui.QItemDelegate):
 
 
 class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
-
-    nbreFer=0
-    nbreHops=0
-    nbreDivers=0      
-
     def __init__(self, parent = None):
         QtGui.QMainWindow.__init__(self, parent)
         self.setupUi(self)
@@ -472,7 +467,6 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
 
         self.base = ImportBase()
         self.mashProfilesBase = ImportMash()
-        self.mashProfilesBase.importBeerXML()
         self.mashProfileExport = ExportMash()
         self.brewCalc = CalcBrewday()
         
@@ -1648,7 +1642,20 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
             self.comboBoxType.setCurrentIndex(0)
         self.lineEditBrewer.setText(self.recipe.brewer)
         
-        return AppWindow.nbreFer
+        self.currentRecipeMash = self.recipe.mash
+        try :
+            self.popMashCombo()
+            logger.debug("mash name: %s", self.recipe.mash.name)
+            logger.debug("len(self.listMash): %s", len(self.listMash))
+            logger.debug("len(self.mashProfilesBase.listeMashes): %s", len(self.mashProfilesBase.listeMashes))
+            if self.recipe.mash.name is not None :
+                # self.comboBoxMashProfiles.setCurrentIndex(len(self.listMash)-1)
+                self.comboBoxMashProfiles.addItem(self.recipe.mash.name + "*")
+                self.comboBoxMashProfiles.setCurrentIndex(len(self.mashProfilesBase.listeMashes))
+            else :
+                self.comboBoxMashProfiles.setCurrentIndex(-1)
+        except :
+            self.comboBoxMashProfiles.setCurrentIndex(-1)
                     
     def displayProfile(self) :     
         self.labelOGV.setText("%.3f" %(self.recipe.compute_OG()))
@@ -1924,11 +1931,9 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
             self.spinBoxBoil.setValue (0)
             
         self.listMash = list()
-        self.currentMash = {}
+        self.currentMash = None
         self.listStepsAll = list()
         self.dicMashDetail = {}
-        self.mashProfilesBase.listMash = list()
-        self.mashProfilesBase.importBeerXML()
         self.mashName=None
         self.popMashCombo()
         self.comboBoxMashProfiles.setCurrentIndex(-1)
@@ -1967,10 +1972,10 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         self.switchToEditor()
         
     def popMashCombo (self):
-        self.listMash = self.mashProfilesBase.listMash
+        self.listMash = self.mashProfilesBase.listeMashes
         self.comboBoxMashProfiles.clear() 
-        for name in self.listMash :
-           self.comboBoxMashProfiles.addItem(name['name'])
+        for mash in self.mashProfilesBase.listeMashes :
+           self.comboBoxMashProfiles.addItem(mash.name)
            
     def mashComboChanged (self) :
         #on remet le verrou à 0, il va falloir recalculer en repassant en brewday mode
@@ -1978,7 +1983,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         self.enableBrewdayMode()
         try :
             i =self.comboBoxMashProfiles.currentIndex()
-            self.currentMash = self.mashProfilesBase.listMash[i]
+            self.currentMash = self.mashProfilesBase.listeMashes[i]
         except :
             self.currentMash = self.currentRecipeMash
         self.tableWidgetStepsBrewday_currentRowChanged()
@@ -2313,17 +2318,16 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
             
         
     def tableWidgetStepsBrewday_currentRowChanged (self) :
-        listSteps = self.currentMash['mashSteps']
+        listSteps = self.currentMash.listeSteps
         strikeStep = listSteps[0]
-        strikeTargetTemp = strikeStep['stepTemp']
-        self.strikeTargetTemp = strikeTargetTemp
+        self.strikeTargetTemp = strikeStep.temp
         self.brewdayCurrentRow = self.tableWidgetStepsBrewday.currentRow()
         i = self.tableWidgetStepsBrewday.currentRow()
         if i == -1 :
             return  #No selection in tableWidgetStepsBrewday
 
         step = listSteps[i]
-        stepType= step['type']
+        stepType= step.type
         
         self.brewdayCurrentStepName = self.tableWidgetStepsBrewday.item(i,0).text()
         self.brewdayCurrentStepInfuseAmount = self.tableWidgetStepsBrewday.item(i,1).text()
@@ -2346,7 +2350,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         self.tableWidgetStepsBrewday.setItem(currentRow,2,QtGui.QTableWidgetItem("%.1f" %(waterTemp)))
         self.tableWidgetStepsBrewday.setItem(currentRow,3,QtGui.QTableWidgetItem("%.1f" %(targetRatio)))
         #il faut tout recalculer après la ligne modifiée
-        listSteps = self.currentMash['mashSteps']
+        listSteps = self.currentMash.listeSteps
         
         i = currentRow
         

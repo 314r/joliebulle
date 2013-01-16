@@ -25,7 +25,7 @@ from model.fermentable import *
 from model.hop import *
 from model.yeast import *
 from model.misc import *
-from model.mashstep import *
+from model.mash import *
 
 logger = logging.getLogger(__name__)
 
@@ -40,11 +40,7 @@ class Recipe:
         self.boil = 0.0
         self.recipeNotes = ""
         self.style = ""
-        self.mashName = ""
-        self.mashGrainTemp = ""
-        self.mashTunTemp = ""
-        self.spargeTemp = ""
-        self.mashPh = ""
+        self.mash = None
         self.listeFermentables = list()
         self.listeHops = list()
         self.listeYeasts = list()
@@ -101,17 +97,7 @@ class Recipe:
             if "NAME" == element.tag :
                 recipe.style = element.text
 
-        for element in mash:
-            if 'NAME' == element.tag :
-                recipe.mashName = element.text
-            if 'GRAIN_TEMP' == element.tag :
-                recipe.mashGrainTemp = element.text
-            if 'TUN_TEMP' == element.tag  :
-                recipe.mashTunTemp = element.text
-            if 'SPARGE_TEMP' == element.tag  :
-                recipe.spargeTemp = element.text
-            if 'PH' == element.tag :
-                recipe.mashPh = element.text
+        recipe.mash = Mash.parse(mash)
 
         for element in fermentables:
             recipe.listeFermentables.append( Fermentable.parse(element) )
@@ -121,8 +107,6 @@ class Recipe:
             recipe.listeYeasts.append(Yeast.parse(element))
         for element in misc:
             recipe.listeMiscs.append(Misc.parse(element))
-        for element in mashStep:
-            recipe.listeMashSteps.append(MashStep.parse(element))
 
         #logger.debug(repr(recipe))
         logger.debug("End parsing recipe")

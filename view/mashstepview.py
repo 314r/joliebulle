@@ -3,10 +3,10 @@ from PyQt4 import QtGui
 import model.constants
 import view.constants
 
-class MashView(QtCore.QObject):
-	def __init__(self, yeast):
+class MashStepView(QtCore.QObject):
+	def __init__(self, step):
 		QtCore.QObject.__init__(self)
-		self.model = yeast
+		self.model = step
 
 	def mashTypeDisplay(self):
 		if self.model.type == model.constants.MASH_STEP_INFUSION:

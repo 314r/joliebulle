@@ -29,90 +29,28 @@ from PyQt4 import QtGui
 from PyQt4 import QtCore
 from preferences import *
 from globals import *
+from model.mash import *
 import xml.etree.ElementTree as ET
 
-class ImportMash : 
+#Singleton class, should be in some common module
+class Singleton(type):
+    _instances = {}
+    def __call__(cls, *args, **kwargs):
+        if cls not in cls._instances:
+            cls._instances[cls] = super(Singleton, cls).__call__(*args, **kwargs)
+        return cls._instances[cls]
 
+class ImportMash(object,metaclass=Singleton): 
 
-    def importBeerXML(self) :
-    
-        self.listMash =[] 
-        
+    def __init__(self):
+        logger.debug("Import %s", mash_file)
         arbre = ET.parse(mash_file)
 
         mash = arbre.findall('.//MASH')
-        
-        self.numMash = len(mash)
-        
-        i = 0
-        while i < self.numMash :
+        self.listeMashes = list()
 
-            i=i+1
-            for nom in mash[i-1] :
-                if nom.tag == 'NAME' :
-                    self.mashName = nom.text
-                    self.listMash.append({'name' : self.mashName})
-                    
-            for nom in mash[i-1] :
-                if nom.tag == 'PH' :
-                    self.mashPh = nom.text
-                    dic = self.listMash[i-1]
-                    dic['ph'] = self.mashPh
-            
-            for nom in mash[i-1] :
-                if nom.tag == 'GRAIN_TEMP' :
-                    self.mashGrainTemp = nom.text
-                    dic = self.listMash[i-1]
-                    dic['grainTemp'] = self.mashGrainTemp
-                    
-            for nom in mash[i-1] :
-                if nom.tag == 'TUN_TEMP' :
-                    self.mashTunTemp = nom.text
-                    dic = self.listMash[i-1]
-                    dic['tunTemp'] = self.mashTunTemp
+        for element in mash:
+            self.listeMashes.append( Mash.parse(element) )
+        logger.debug( "%s mash in database, using %s bytes in memory", len(self.listeMashes), sys.getsizeof(self.listeMashes) )
 
-            for nom in mash[i-1] :
-                if nom.tag == 'SPARGE_TEMP' :
-                    self.mashSpargeTemp = nom.text
-                    dic = self.listMash[i-1]
-                    dic['spargeTemp'] = self.mashSpargeTemp            
-            
-                    
-            steps = mash[i-1].findall('.//MASH_STEP')
-            self.numSteps = len(steps)
-            self.listSteps = []
-            dic ['mashSteps'] = self.listSteps
-            j=0
-            while j < self.numSteps :
-                j=j+1
-                for nom in steps[j-1] :
-                    if nom.tag == 'NAME' :
-                        self.stepName = nom.text
-                        self.listSteps.append({'name' : self.stepName})
-                    
-                for nom in steps[j-1] :
-                    if nom.tag == 'TYPE' :
-                        self.stepType = nom.text
-                        dicStep = self.listSteps[j-1]
-                        dicStep['type']= self.stepType       
-                for nom in steps[j-1] :
-                    if nom.tag == 'STEP_TIME' :   
-                         self.stepTime = nom.text
-                         dicStep = self.listSteps[j-1]
-                         dicStep['stepTime']= self.stepTime 
-                for nom in steps[j-1] :
-                    if nom.tag == 'STEP_TEMP' :
-                         self.stepTemp = nom.text
-                         dicStep = self.listSteps[j-1]
-                         dicStep['stepTemp']= self.stepTemp
-                for nom in steps[j-1] :
-                    if nom.tag == 'INFUSE_AMOUNT' :
-                         self.stepVol = nom.text
-                         dicStep = self.listSteps[j-1]
-                         dicStep['stepVol']= self.stepVol
-                    
-        
-            
-        
-        
-
+        logger.debug("Import %s terminé", mash_file)
