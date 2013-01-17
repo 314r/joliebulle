@@ -1424,7 +1424,6 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
             
     def ajouterF(self) :
         comboText = self.comboBox.currentText()
-        
         #Find selected Fermentable in database and copy it in recipe as new Fermentable
         fBase = [f for f in ImportBase().listeFermentables if f.name == comboText][0]
         newFermentable = fBase.copy()
@@ -1435,41 +1434,14 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         self.initModele()
         
     def ajouterH(self) : 
-        
-        f = AppWindow.nbreFer
-        h = AppWindow.nbreHops
-        i = self.comboBoxH.currentIndex()
-        
-        # itemH = QtGui.QStandardItem(self.base.liste_houblons[i])
-        # item_hAmount = QtGui.QStandardItem(0)
-        # item_hForm = QtGui.QStandardItem(self.base.liste_hForm[i])
-        # item_hTime = QtGui.QStandardItem(0)
-        # item_hAlpha = QtGui.QStandardItem(self.base.liste_hAlpha[i])
-        # item_hUse = QtGui.QStandardItem(self.trUtf8('''Ébullition'''))
-        
-        self.modele.insertRow(f+h)
-        
-
-        
-        self.liste_houblons.append(self.base.liste_houblons[i])
-        self.liste_hAmount.append(0)
-        if self.base.liste_hForm[i] == "Plug" :
-            self.liste_hForm.append(self.trUtf8('''Cône'''))
-        elif self.base.liste_hForm[i] == "Leaf" :
-            self.liste_hForm.append(self.trUtf8('''Feuille'''))
-        elif self.base.liste_hForm[i] == "Pellet" :
-            self.liste_hForm.append(self.trUtf8('''Pellet'''))
-        else :
-            self.liste_hForm.append(self.trUtf8('''Cône'''))
-        self.liste_hTime.append(0)
-        self.liste_hAlpha.append(self.base.liste_hAlpha[i])
-        self.liste_hUse.append(self.trUtf8('''Ébullition'''))
-        
-        AppWindow.nbreHops = h + 1
-        self.calculs_recette()
-        logger.debug("ajouterH -> MVC")
-        self.MVC()
-        
+        comboText = self.comboBoxH.currentText()        
+        #Find selected Hop in database and copy it in recipe as new Hop
+        hBase = [h for h in ImportBase().listeHops if h.name == comboText][0]
+        newHop = hBase.copy()
+        newHop.amount = 0
+        newHop.time = 0.0
+        self.recipe.listeHops.append(newHop)
+        self.initModele()
     
     def ajouterM(self) :
         
