@@ -1218,7 +1218,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
 
         #Update Hop item
         if isinstance(modelInstance, Hop):
-            logger.debug("Model update at [row=%d,column=%d] for Hop:%s; newValue=%s", row, column, modelInstance, newValue)
+            #logger.debug("Model update at [row=%d,column=%d] for Hop:%s; newValue=%s", row, column, modelInstance, newValue)
             hopLabels = HopViewLabels()
             if column == 1:
                 #Update Hop amount value
@@ -1423,28 +1423,16 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         self.purge()
             
     def ajouterF(self) :
-        f = AppWindow.nbreFer
-        i=self.comboBox.currentIndex()
+        comboText = self.comboBox.currentText()
         
-        # item = QtGui.QStandardItem(self.base.liste_ingr[i])
-        # item_fAmount = QtGui.QStandardItem(0)
-        self.modele.insertRow(f)
-
-        self.liste_ingr.append(self.base.liste_ingr[i])
-        self.liste_fAmount.append(1000)
-        self.liste_fYield.append(self.base.liste_fYield[i])
-        self.liste_fType.append(self.base.liste_fType[i])
-        self.liste_color.append(self.base.liste_color[i])
-        self.liste_fMashed.append(self.base.liste_fMashed[i])
-        self.liste_fUse.append('''Brassage''')      
-        AppWindow.nbreFer = f + 1
-        self.calculs_recette()
-        self.modele.blockSignals(True)
-        logger.debug("ajouterF -> MVC")
-        self.MVC()
-        self.modele.blockSignals(False)
-        
-        logger.debug(self.liste_fProportion)
+        #Find selected Fermentable in database and copy it in recipe as new Fermentable
+        fBase = [f for f in ImportBase().listeFermentables if f.name == comboText][0]
+        newFermentable = fBase.copy()
+        newFermentable.amount = 1000
+        newFermentable.useAfterBoil = False
+        self.recipe.listeFermentables.append(newFermentable)
+        #Refill listView model
+        self.initModele()
         
     def ajouterH(self) : 
         
@@ -1855,74 +1843,22 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
 
             
     def nouvelle(self) :
-        self.recipe = None
-        self.nomRecette = self.trUtf8('Nouvelle Recette')
-        self.rendement = 75
-        self.volume = '10'
-        self.boil = '60'
-        self.styleRecette = self.trUtf8('''Générique''')
+        self.recipe = Recipe()
+        self.recipe.name = self.trUtf8('Nouvelle Recette')
+        self.recipe.efficiency = 0.75
+        self.recipe.volume = 10
+        self.recipe.boil = 60
+        self.recipe.style = self.trUtf8('''Générique''')
+        self.recipe.recipeNotes =''
+
         self.lineEditBrewer.setText('')
         self.comboBoxType.setCurrentIndex(0)
-        self.recipeNotes =''
-        
-        
-        
-        #AppWindow.nbreFer = 0
-        self.liste_ingr = list()
-        self.liste_fAmount = list()
-        self.liste_fType = list()
-        self.liste_fYield = list()
-        self.liste_fMashed = list()
-        self.liste_color = list()
-        self.liste_fUse = list()
-        self.fMashed = ''
-        self.fNom = ''
-        self.fAmount = 0
-        self.fType = ''
-        self.fYield = 0
-        self.color = 0
-        
-        #AppWindow.nbreHops = 0
-        self.liste_houblons = list()
-        self.liste_hAmount = list()
-        self.liste_hForm = list()
-        self.liste_hTime = list()
-        self.liste_hAlpha = list()
-        self.liste_hUse = list()
-        
-        self.nbreLevures = 0
-        self.liste_levures = list()
-        self.liste_lForm = list()
-        self.liste_lLabo = list()
-        self.liste_lProdid = list()
-        self.liste_levuresDetail = list()
-        self.liste_levureAtten = list ()
-        self.lNom = ""
-        self.lLabo =""
-        self.lProd =""
-        self.lForm = ""
-        self.lAtten=""
-        
-        #AppWindow.nbreDivers = 0
-        self.liste_divers = list ()
-        self.liste_dAmount = list ()
-        self.liste_dType = list ()
-        self.dNom = ''
-        self.dAmount = 0
-        self.dType = ''
-        self.liste_dTime = list()
-        self.liste_dUse = list()
-        
-        self.lineEditRecette.setText(self.nomRecette)
-        self.lineEditGenre.setText(self.styleRecette)
-        self.doubleSpinBox_2Volume.setValue(float(self.volume))
-        self.doubleSpinBoxRendemt.setValue(self.rendement)
-        try : 
-            self.spinBoxBoil.setValue(float(self.boil))
-        except :
-            self.spinBoxBoil.setValue (0)
+        self.lineEditRecette.setText(self.recipe.name)
+        self.lineEditGenre.setText(self.recipe.style)
+        self.doubleSpinBox_2Volume.setValue(self.recipe.volume)
+        self.doubleSpinBoxRendemt.setValue(self.recipe.efficiency)
+        self.spinBoxBoil.setValue(self.recipe.boil)
             
-        self.listMash = list()
         self.currentMash = None
         self.listStepsAll = list()
         self.dicMashDetail = {}
@@ -1930,23 +1866,13 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         self.popMashCombo()
         self.comboBoxMashProfiles.setCurrentIndex(-1)
         self.brewdayLock = 0
-
-        
         
     def recharger(self) :
         if not self.s :
             pass
         else :
-            i = (AppWindow.nbreFer + AppWindow.nbreDivers + AppWindow.nbreHops + self.nbreLevures)
-            self.modele.removeRows(0,i)
-            AppWindow.nbreFer = 0
-            AppWindow.nbreHops = 0
-            AppWindow.nbreDivers = 0
-            self.nouvelle()
-            self.importBeerXML()
-            self.calculs_recette()
-            logger.debug("recharger -> MVC")
-            self.MVC()
+            self.clearModele()
+            self.initModele()
 
                         
     def addStyle(self) :
@@ -1954,11 +1880,11 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         
     def recipeNotesClicked (self) :
         self.switchToNotes()
-        self.textEditRecipeNotes.setText(self.recipeNotes)
+        self.textEditRecipeNotes.setText(self.recipe.recipeNotes)
     
     def recipeNotesAccepted (self) :
         self.switchToEditor()
-        self.recipeNotes = self.textEditRecipeNotes.toPlainText()
+        self.recipe.recipeNotes = self.textEditRecipeNotes.toPlainText()
         
     def recipeNotesRejected (self) :
         self.switchToEditor()

@@ -62,7 +62,7 @@ class Fermentable:
                     logger.warn ("Unkown fermentable type '%', assuming 'Sugar' by default", balise.text)
                     f.type = model.constants.FERMENTABLE_TYPE_SUGAR
             elif 'YIELD' == balise.tag:
-                f.fYield = float(balise.text)
+                f.fyield = float(balise.text)
             elif 'RECOMMEND_MASH' == balise.tag:
                 f.recommendMash = balise.text
             elif 'COLOR' == balise.tag:
@@ -79,4 +79,15 @@ class Fermentable:
 
     def equivSucre(self):
         #division par 1000 et 100 pour passer des g aux kg et parce que le rendement est un pourcentage
-        return (self.amount/1000)*(self.fYield/100)
+        return (self.amount/1000)*(self.fyield/100)
+
+    def copy(self):
+        copy = Fermentable()
+        copy.name = self.name
+        copy.amount = self.amount
+        copy.type = self.type
+        copy.fyield = self.fyield
+        copy.recommendMash = self.recommendMash
+        copy.color = self.color
+        copy.useAfterBoil = self.useAfterBoil
+        return copy
