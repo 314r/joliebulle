@@ -967,7 +967,6 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         self.s = self.chemin
         
         self.importBeerXML()
-        self.calculs_recette()
         # self.modele.blockSignals(True)
         logger.debug("editCurrentRecipe -> initModele")
         self.initModele()
@@ -1198,25 +1197,16 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
             pass
 
     def modeleProportion (self) :
-        logger.debug("> modeleProportion")
         #Cette fonction est appelée chaque fois que la quantité, les AA ou les temps sont modifiés, via un signal émit par les classes Delegate.
-        #Cette fonction inclut les données calculées dans le modèle.
-        i=0
-        while i < AppWindow.nbreFer :
-            i=i+1
-            for prop in self.liste_fProportion :
-                prop = QtGui.QStandardItem("%.0f" %(self.liste_fProportion[i-1]) + "%")
-                self.modele.setItem(i-1,5,prop)
-                
-        h=0
-        while h < AppWindow.nbreHops :
-            h = h+1
-            for prop in self.liste_ibuPart :
-                prop = QtGui.QStandardItem("%.1f" %(self.liste_ibuPart[h-1]) + " IBU")
-                self.modele.setItem(i+h-1,5,prop)
-                
+        #Cette fonction met à jour les données du modèle Qt
+        recipeView = RecipeView(self.recipe)
+        for i in range(self.modele.rowCount()):
+            data = self.modele.item(i, 5).data(view.constants.MODEL_DATA_ROLE)
+            if isinstance(data, Fermentable):
+                self.modele.setItem(i, 5, recipeView.QStandardItem_for_fermentable_proportion(data))
+            elif isinstance(data, Hop):
+                self.modele.setItem(i, 5, recipeView.QStandardItem_for_hop_ibu(data))
         self.displayProfile()
-        logger.debug("< modeleProportion")
 
     # cette fonction est appelee chaque fois que les donnees du modele changent
     def reverseMVC(self, item) :
@@ -1307,12 +1297,12 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
                         modelInstance.use = k
                         break
         #Dump updates for debugging
-        for h in self.recipe.listeHops:
-            logger.debug(h)
-        for h in self.recipe.listeFermentables:
-            logger.debug(h)
-        for h in self.recipe.listeMiscs:
-            logger.debug(h)
+        #for h in self.recipe.listeHops:
+        #    logger.debug(h)
+        #for h in self.recipe.listeFermentables:
+        #    logger.debug(h)
+        #for h in self.recipe.listeMiscs:
+        #    logger.debug(h)
 
     def clearModele(self):
         count = self.modele.rowCount()
@@ -1335,7 +1325,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
                 items.append( QtGui.QStandardItem('') )
                 items.append( QtGui.QStandardItem('') )
                 items.append( fView.QStandardItem_for_type() )
-                items.append( recipeView.QStandardItem_for_fermentable_propertion(f) )
+                items.append( recipeView.QStandardItem_for_fermentable_proportion(f) )
                 items.append( fView.QStandardItem_for_use() )
                 self.modele.appendRow(items)
 

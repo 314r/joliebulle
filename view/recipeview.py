@@ -8,10 +8,14 @@ class RecipeView(QtCore.QObject):
 		QtCore.QObject.__init__(self)
 		self.model = recipe
 
-	def QStandardItem_for_fermentable_propertion(self, fermentable):
+	def QStandardItem_for_fermentable_proportion(self, fermentable):
 		proportion = self.model.compute_proportions()[fermentable]
-		return QtGui.QStandardItem("%.0f %%" %(proportion))
+		item = QtGui.QStandardItem("%.0f %%" %(proportion))
+		item.setData(fermentable, view.constants.MODEL_DATA_ROLE)
+		return item
 
 	def QStandardItem_for_hop_ibu(self, hop):
 		ibu = self.model.compute_IBUPart()[hop]
-		return QtGui.QStandardItem("%.1f IBU" %(ibu))
+		item = QtGui.QStandardItem("%.1f IBU" %(ibu))
+		item.setData(hop, view.constants.MODEL_DATA_ROLE)
+		return item
