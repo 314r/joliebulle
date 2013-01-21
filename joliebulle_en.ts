@@ -246,12 +246,12 @@
     <message>
         <location filename="main.py" line="570"/>
         <source>Extrait</source>
-        <translation type="unfinished">Extract</translation>
+        <translation>Extract</translation>
     </message>
     <message>
         <location filename="main.py" line="570"/>
         <source>Partial mash</source>
-        <translation type="unfinished"></translation>
+        <translation>Partial mash</translation>
     </message>
     <message utf8="true">
         <location filename="main.py" line="2376"/>
@@ -261,17 +261,17 @@
     <message>
         <location filename="main.py" line="518"/>
         <source>Profils de brassage</source>
-        <translation type="unfinished"></translation>
+        <translation>Mash profiles</translation>
     </message>
     <message>
         <location filename="main.py" line="1858"/>
         <source>Brassage</source>
-        <translation type="unfinished">Mash</translation>
+        <translation>Mash</translation>
     </message>
     <message utf8="true">
         <location filename="main.py" line="2223"/>
         <source>Après ébullition</source>
-        <translation type="unfinished"></translation>
+        <translation>After Boil</translation>
     </message>
 </context>
 <context>
@@ -1093,6 +1093,39 @@ p, li { white-space: pre-wrap; }
     </message>
 </context>
 <context>
+    <name>DialogMashDetail</name>
+    <message>
+        <location filename="mashDetail.ui" line="14"/>
+        <source>Dialog</source>
+        <translation>Dialog</translation>
+    </message>
+    <message>
+        <location filename="mashDetail.ui" line="22"/>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;Profil&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;Profile&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+    </message>
+    <message>
+        <location filename="mashDetail.ui" line="51"/>
+        <source>0</source>
+        <translation>0</translation>
+    </message>
+    <message utf8="true">
+        <location filename="mashDetail.ui" line="44"/>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Rinçage :&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Sparge :&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+    </message>
+    <message>
+        <location filename="mashDetail.ui" line="58"/>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Ph : &lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Ph : &lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+    </message>
+    <message>
+        <location filename="mashDetail.ui" line="67"/>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Etapes&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Steps&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+    </message>
+</context>
+<context>
     <name>DialogPaliers</name>
     <message utf8="true">
         <location filename="outilPaliers.py" line="37"/>
@@ -1379,12 +1412,12 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="export.py" line="170"/>
         <source>Brassage</source>
-        <translation type="unfinished">Mash</translation>
+        <translation>Mash</translation>
     </message>
     <message utf8="true">
         <location filename="export.py" line="172"/>
         <source>Après ébullition</source>
-        <translation type="unfinished"></translation>
+        <translation>After boil</translation>
     </message>
 </context>
 <context>
@@ -1481,7 +1514,7 @@ Recette prévue pour un brassin de </source>
     <message>
         <location filename="exportHTML.py" line="127"/>
         <source> pendant </source>
-        <translation type="unfinished"> for </translation>
+        <translation> for </translation>
     </message>
     <message utf8="true">
         <location filename="exportHTML.py" line="78"/>
@@ -1617,62 +1650,62 @@ Recette prévue pour un brassin de </source>
     <message utf8="true">
         <location filename="exportHTML.py" line="78"/>
         <source>Après ébullition</source>
-        <translation type="unfinished"></translation>
+        <translation>After boil</translation>
     </message>
     <message utf8="true">
         <location filename="exportHTML.py" line="79"/>
         <source>Ajout après ébullition</source>
-        <translation type="unfinished"></translation>
+        <translation>Add after boil</translation>
     </message>
     <message>
         <location filename="exportHTML.py" line="110"/>
         <source>&lt;tr&gt;&lt;td&gt;Ratio BU/GU&lt;/td&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;tr&gt;&lt;td&gt;BU/GU ratio&lt;/td&gt;</translation>
     </message>
     <message>
         <location filename="exportHTML.py" line="112"/>
         <source> &lt;h2&gt;Brassage&lt;/h2&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation> &lt;h2&gt;Mash&lt;/h2&gt;</translation>
     </message>
     <message>
         <location filename="exportHTML.py" line="112"/>
         <source> Etapes : </source>
-        <translation type="unfinished"></translation>
+        <translation>Steps : </translation>
     </message>
     <message>
         <location filename="exportHTML.py" line="118"/>
         <source>Infusion</source>
-        <translation type="unfinished">Infusion</translation>
+        <translation>Infusion</translation>
     </message>
     <message utf8="true">
         <location filename="exportHTML.py" line="120"/>
         <source>Température</source>
-        <translation type="unfinished">Temperature</translation>
+        <translation>Temperature</translation>
     </message>
     <message utf8="true">
         <location filename="exportHTML.py" line="122"/>
         <source>Décoction</source>
-        <translation type="unfinished">Decoction</translation>
+        <translation>Decoction</translation>
     </message>
     <message>
         <location filename="exportHTML.py" line="127"/>
         <source> palier de type </source>
-        <translation type="unfinished"></translation>
+        <translation>step type</translation>
     </message>
     <message utf8="true">
         <location filename="exportHTML.py" line="127"/>
         <source> à </source>
-        <translation type="unfinished"></translation>
+        <translation> at </translation>
     </message>
     <message>
         <location filename="exportHTML.py" line="127"/>
         <source> minutes </source>
-        <translation type="unfinished"></translation>
+        <translation> minutes </translation>
     </message>
     <message utf8="true">
         <location filename="exportHTML.py" line="128"/>
         <source> Rinçage : </source>
-        <translation type="unfinished"></translation>
+        <translation> Sparge : </translation>
     </message>
 </context>
 <context>
@@ -2716,19 +2749,19 @@ p, li { white-space: pre-wrap; }
         <translation>Copy BBCode into clipboard</translation>
     </message>
     <message>
-        <location filename="reader.ui" line="768"/>
-        <source>Ratio BU/GU :</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="reader.ui" line="1956"/>
         <source>Profils de brassage</source>
-        <translation type="unfinished"></translation>
+        <translation>Mash profiles</translation>
     </message>
     <message utf8="true">
         <location filename="reader.ui" line="2201"/>
         <source>Gérer les profils</source>
-        <translation type="unfinished"></translation>
+        <translation>Manage profiles</translation>
+    </message>
+    <message>
+        <location filename="reader.ui" line="768"/>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:9pt;&quot;&gt;Ratio BU/GU :&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:9pt;&quot;&gt;BU/GU  ratio :&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
 </context>
 <context>
@@ -2857,12 +2890,12 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="main.py" line="367"/>
         <source>Brassage</source>
-        <translation type="unfinished">Mash</translation>
+        <translation>Mash</translation>
     </message>
     <message utf8="true">
         <location filename="main.py" line="369"/>
         <source>Après ébullition</source>
-        <translation type="unfinished"></translation>
+        <translation>After boil</translation>
     </message>
 </context>
 </TS>
