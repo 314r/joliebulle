@@ -69,6 +69,7 @@ from view.fermentableview import *
 from view.recipeview import *
 from view.hopview import *
 from view.yeastview import *
+import itertools
 
 # class BiblioFileSystem (QtGui.QFileSystemModel) :
 #     def __init__(self, parent=None):
@@ -1598,55 +1599,31 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
             
     def rendemt_changed(self) :
         if self.checkBoxIng.isChecked() :
-            ratio = self.recipe.efficiency/self.doubleSpinBoxRendemt.value()
+            try:
+                ratio = self.recipe.efficiency/self.doubleSpinBoxRendemt.value()
+                for f in self.recipe.listeFermentables:
+                    if f.type != model.constants.FERMENTABLE_TYPE_EXTRACT:
+                        f.amount *= ratio
+                self.recipe.efficiency = self.doubleSpinBoxRendemt.value()
+            except ZeroDivisionError:
+                pass
 
-            for f in self.recipe.listeFermentables:
-                if f.type != model.constants.FERMENTABLE_TYPE_EXTRACT:
-                    f.amount *= ratio
-            self.recipe.efficiency = self.doubleSpinBoxRendemt.value()
         else :
             self.recipe.efficiency = self.doubleSpinBoxRendemt.value()
         self.initModele()                    
             
     def volume_changed(self) :
         if self.checkBoxIng.isChecked() :
-            ratio = self.doubleSpinBox_2Volume.value()/float(self.volume)
-            
-            i = 0
-            while i < AppWindow.nbreFer :
-                i=i+1
-                self.liste_fAmount[i-1] = self.liste_fAmount[i-1] * ratio
-                self.volume = self.doubleSpinBox_2Volume.value()
-                amount = QtGui.QStandardItem("%.0f" %(self.liste_fAmount[i-1]))
-                self.modele.setItem(i-1,1,amount)
-            
-            h = 0
-            while h < AppWindow.nbreHops :
-                h = h + 1
-                self.liste_hAmount[h-1] = self.liste_hAmount[h-1] * ratio
-                self.volume = self.doubleSpinBox_2Volume.value()
-                amount = QtGui.QStandardItem("%.3f" %(self.liste_hAmount[h-1]) )
-                self.modele.setItem(i+h-1,1,amount)
-            
-            
-            m = 0
-            while m < AppWindow.nbreDivers :
-                m = m + 1
-                self.liste_dAmount[m-1] = self.liste_dAmount[m-1] * ratio
-                self.volume = self.doubleSpinBox_2Volume.value()
-                amount = QtGui.QStandardItem("%.0f" %(self.liste_dAmount[m-1]) )
-                self.modele.setItem(i+h+m-1, 1, amount)
-            try :
-                self.calculs_recette()
-            except:
+            try:
+                ratio = self.doubleSpinBox_2Volume.value()/float(self.recipe.volume)
+                for x in itertools.chain(self.recipe.listeFermentables, self.recipe.listeHops, self.recipe.listeMiscs):
+                    x.amount *= ratio
+                self.recipe.volume = self.doubleSpinBox_2Volume.value()
+            except ZeroDivisionError:
                 pass
-
         else :
-            self.volume = self.doubleSpinBox_2Volume.value()
-            try :
-                self.calculs_recette()
-            except :
-                pass
+            self.recipe.volume = self.doubleSpinBox_2Volume.value()
+        self.initModele()                    
             
     def typeChanged (self) :
         if self.comboBoxType.currentIndex() == 0 :
