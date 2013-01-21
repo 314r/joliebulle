@@ -1434,7 +1434,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         self.initModele()
         
     def ajouterH(self) : 
-        comboText = self.comboBoxH.currentText()        
+        comboText = self.comboBoxH.currentText()
         #Find selected Hop in database and copy it in recipe as new Hop
         hBase = [h for h in ImportBase().listeHops if h.name == comboText][0]
         newHop = hBase.copy()
@@ -1444,31 +1444,12 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         self.initModele()
     
     def ajouterM(self) :
-        
-        l = self.nbreLevures
-        f = AppWindow.nbreFer
-        h = AppWindow.nbreHops
-        m = AppWindow.nbreDivers
-        
-        i = self.comboBoxM.currentIndex()
-        
-        # itemD = QtGui.QStandardItem(self.base.liste_divers[i])
-        # item_dAmount = QtGui.QStandardItem(0)
-        # item_dType = QtGui.QStandardItem(self.base.liste_dType[i])
-        # item_dTime = QtGui.QStandardItem(0)
-        # item_dUse = QtGui.QStandardItem(self.trUtf8('''Ébullition'''))
-        
-        self.modele.insertRow(f+h+m)
-        
-        self.liste_divers.append(self.base.liste_divers[i])
-        self.liste_dAmount.append(0)
-        self.liste_dType.append(self.base.liste_dType[i])
-        self.liste_dTime.append(0)
-        self.liste_dUse.append(self.trUtf8('''Ébullition'''))
-        
-        AppWindow.nbreDivers = m +1
-        logger.debug("ajouterM -> MVC")
-        self.MVC()
+        comboText = self.comboBoxM.currentText()
+        #Find selected Misc in database and copy it in recipe as new Misc object
+        mBase = [m for m in ImportBase().listeMiscs if m.name == comboText][0]
+        newMisc = mBase.copy()
+        self.recipe.listeMiscs.append(newMisc)
+        self.initModele()
 
     def ajouterY(self) :
         l = self.nbreLevures

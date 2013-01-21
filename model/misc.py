@@ -71,3 +71,12 @@ class Misc:
 
         #logger.debug(repr(m))
         return m
+
+    def copy(self):
+        copy = Misc()
+        copy.name = self.name
+        copy.amount = self.amount
+        copy.type = self.type
+        copy.time = self.time
+        copy.use = self.use
+        return copy
