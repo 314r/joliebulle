@@ -1598,11 +1598,12 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
             
     def rendemt_changed(self) :
         if self.checkBoxIng.isChecked() :
-            ratio = self.rendement/self.doubleSpinBoxRendemt.value()
+            ratio = self.recipe.efficiency/self.doubleSpinBoxRendemt.value()
 
             for f in self.recipe.listeFermentables:
                 if f.type != model.constants.FERMENTABLE_TYPE_EXTRACT:
-                    f.amount *= ration
+                    f.amount *= ratio
+            self.recipe.efficiency = self.doubleSpinBoxRendemt.value()
         else :
             self.recipe.efficiency = self.doubleSpinBoxRendemt.value()
         self.initModele()                    
