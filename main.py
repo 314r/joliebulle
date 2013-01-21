@@ -1307,14 +1307,12 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
 
     def clearModele(self):
         count = self.modele.rowCount()
-        logger.debug("%s items in modele", count)
         ret = self.modele.removeRows(0, count)
-        logger.debug("removeRows returns %s", ret)
            
     def initModele(self) :
-
-        logger.debug("initModele")
         if self.recipe is not None:
+            self.displayProfile()
+            self.colorPreview()
             self.clearModele()
             recipeView = RecipeView(self.recipe)
             
@@ -1579,26 +1577,15 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         if not self.s :
             pass
         else :
-            i = (AppWindow.nbreFer + AppWindow.nbreDivers + AppWindow.nbreHops + self.nbreLevures)
-            self.modele.removeRows(0,i)
-            AppWindow.nbreFer = 0
-            AppWindow.nbreHops = 0
-            AppWindow.nbreDivers = 0
             self.nouvelle()
             self.importBeerXML()
-            self.calculs_recette()
-            logger.debug("ouvrir_clicked -> MVC")
-            self.MVC()
+            self.initModele()
             self.switchToEditor()
        
     def openRecipeFile(self,filePath):
         self.s = filePath
-        AppWindow.nbreFer = 0
-        AppWindow.nbreHops = 0
-        AppWindow.nbreDivers = 0
         self.nouvelle()
         self.importBeerXML()
-        logger.debug("ouvrirRecipeFile -> MVC")
         self.initModele()
         self.switchToEditor()
 
@@ -1612,28 +1599,13 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
     def rendemt_changed(self) :
         if self.checkBoxIng.isChecked() :
             ratio = self.rendement/self.doubleSpinBoxRendemt.value()
-            
-            i = 0
-            while i < AppWindow.nbreFer :
-                i = i +1 
-                if self.liste_fType[i-1] == 'Extract' :
-                    pass
-                else :
-                    self.liste_fAmount[i-1] = self.liste_fAmount[i-1] * ratio
-                    amount = QtGui.QStandardItem("%.0f" %(self.liste_fAmount[i-1]))
-                    self.modele.setItem(i-1,1,amount)
-            self.rendement = self.doubleSpinBoxRendemt.value()
-            try :
-                self.calculs_recette() 
-            except :
-                pass     
-                    
+
+            for f in self.recipe.listeFermentables:
+                if f.type != model.constants.FERMENTABLE_TYPE_EXTRACT:
+                    f.amount *= ration
         else :
-            self.rendement = self.doubleSpinBoxRendemt.value()
-            try :
-                self.calculs_recette()
-            except :
-                pass
+            self.recipe.efficiency = self.doubleSpinBoxRendemt.value()
+        self.initModele()                    
             
     def volume_changed(self) :
         if self.checkBoxIng.isChecked() :
