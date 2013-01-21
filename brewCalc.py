@@ -63,7 +63,19 @@ class CalcBrewday :
         
     def calcMashVolume(self, grainWeight) :
         self.grainVolume = float(grainWeight) * 1.5 / 1000
-        self.mashVolumeStrike = self.grainVolume + self.strikeVol
+        #volume d'eau pour saturer le grain
+        #1l + 500g de grain = 1.325 l. Au delà le volume d'eau est ajouté en intégralité.
+        satGrain = float(grainWeight) * 2 / 1000
+        volSat = satGrain * 1.325
+        volRestant = self.strikeVol - satGrain
+        self.mashVolumeStrike = volSat + volRestant
+
+    def calcMashVolumeBiab(self, grainWeight, strikeVol) :
+        self.grainVolume = float(grainWeight) * 1.5 / 1000
+        satGrain = float(grainWeight) * 2 / 1000
+        volSat = satGrain * 1.325
+        volRestant = strikeVol - satGrain
+        self.mashVolumeStrike = volSat + volRestant
         
     def calcGrainRetention(self, grainWeight) :
         grainRetentionRate = float(settings.conf.value("GrainRetention"))

@@ -2944,7 +2944,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
 
             #on calcule les volumes
             self.brewCalc.calcMashVolume(self.grainWeight)
-            self.mashVolumeLastStep = self.brewCalc.grainVolume + sum(self.stepsListVol)
+            self.mashVolumeLastStep = self.brewCalc.mashVolumeStrike + sum(self.stepsListVol) - self.stepsListVol[0]
             self.labelGrainVolume.setText("%.1f" %(self.brewCalc.grainVolume))       
             self.labelTotalVolumeStrike.setText("%.1f" %(self.brewCalc.mashVolumeStrike)) 
             self.labelTotalVolumeLast.setText("%.1f" %(self.mashVolumeLastStep))
@@ -2962,10 +2962,12 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
             self.pushButtonAdjustStep.setEnabled(False)
 
             #on calcule les volumes
-            self.brewCalc.calcMashVolume(self.grainWeight)
+            self.brewCalc.calcMashVolumeBiab(self.grainWeight, self.strikeVol)
+            logger.debug("strike vol : %s", self.strikeVol)
             self.mashVolumeLastStep = self.brewCalc.grainVolume + sum(self.stepsListVol)
-            self.labelGrainVolume.setText("%.1f" %(self.brewCalc.grainVolume))       
-            self.labelTotalVolumeStrike.setText("%.1f" %(self.strikeVol + self.brewCalc.grainVolume)) 
+            self.labelGrainVolume.setText("%.1f" %(self.brewCalc.grainVolume))
+
+            self.labelTotalVolumeStrike.setText("%.1f" %(self.brewCalc.mashVolumeStrike)) 
             self.labelTotalVolumeLast.setText("idem")
             
             #on vérifie que le profil est bien compatible avec un BIAB :
@@ -2978,9 +2980,6 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
                     self.labelWarningBiab.show()
                 else :
                     pass
-                    
-        
-
 
             
         
