@@ -11,4 +11,6 @@ class YeastView(QtCore.QObject):
 	def yeastDetailDisplay(self):
 		return "%s %s %s" % (self.model.name, self.model.labo, self.model.productId)
 	def QStandardItem_for_detail(self):
-		return QtGui.QStandardItem(self.yeastDetailDisplay())
+		item = QtGui.QStandardItem(self.yeastDetailDisplay())
+		item.setData(self.model, view.constants.MODEL_DATA_ROLE)
+		return item

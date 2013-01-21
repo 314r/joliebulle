@@ -1478,73 +1478,40 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         
     def enlever(self) :
         selection = self.tableViewF.selectionModel()
-        indexLigne = selection.currentIndex().row()
-        index = self.modele.index(indexLigne,0)
-        self.tableViewF.setCurrentIndex(index)
-        f = AppWindow.nbreFer
-        h = AppWindow.nbreHops
-        l = self.nbreLevures
-        m = AppWindow.nbreDivers
-        
-        
-        if indexLigne < 0 :
-            pass
-        else :
-            if indexLigne < f :
-                del self.liste_ingr[indexLigne]
-                del self.liste_fAmount[indexLigne]
-                del self.liste_fType[indexLigne]
-                del self.liste_fYield[indexLigne]
-                del self.liste_fMashed[indexLigne]
-                del self.liste_color[indexLigne]
-                del self.liste_fUse[indexLigne]
-                self.modele.removeRow(indexLigne)
-                AppWindow.nbreFer = f - 1
-                self.reverseMVC()
-                
-            if indexLigne > f-1 and indexLigne < f+h :      
-                del self.liste_houblons[indexLigne-f]
-                del self.liste_hAmount[indexLigne-f]
-                del self.liste_hForm[indexLigne-f]
-                del self.liste_hTime[indexLigne-f]
-                del self.liste_hAlpha[indexLigne-f]
-                del self.liste_hUse[indexLigne-f]
-                self.modele.removeRow(indexLigne)
-                AppWindow.nbreHops = h - 1
-                self.reverseMVC()   
+        data = None
+        logger.debug("Nb de lignes sélectionnées :%d", len(selection.selectedRows()))
+        logger.debug("Nb de colonnes sélectionnées :%d", len(selection.selectedColumns()))
+        for index in selection.selectedRows():
+            logger.debug("data=%s", index.data(view.constants.MODEL_DATA_ROLE))
+            data = index.data(view.constants.MODEL_DATA_ROLE)
+            if data is not None:
+                break
 
-                
-            if indexLigne > f+h-1 and indexLigne < f+h+m :
-                del self.liste_divers[indexLigne-(f+h)]
-                del self.liste_dAmount[indexLigne-(f+h)]
-                del self.liste_dType[indexLigne-(f+h)]
-                try :
-                    del self.liste_dTime[indexLigne-(f+h)]
-                except :
-                    pass
-                del self.liste_dUse[indexLigne-(f+h)]
-                self.modele.removeRow(indexLigne)
-                AppWindow.nbreDivers = m-1
-                self.reverseMVC()
-                
-                
-            if indexLigne > f+h+m-1 and indexLigne < f+h+m+l :
-                del self.liste_levures[indexLigne-(f+h+m)]
-                del self.liste_lForm[indexLigne-(f+h+m)]
-                del self.liste_lLabo[indexLigne-(f+h+m)]
-                del self.liste_lProdid[indexLigne-(f+h+m)]
-                del self.liste_levureAtten[indexLigne-(f+h+m)]
-                del self.liste_levuresDetail[indexLigne-(f+h+m)]
-                self.modele.removeRow(indexLigne)
-                self.nbreLevures = l-1
-                
-                self.reverseMVC()
-                
+        logger.debug("selection=%s data=%s",selection, data)
+        if data is not None:
+            if isinstance(data, Hop):
+                tailleAvant = len(self.recipe.listeHops)
+                self.recipe.listeHops.remove(data)
+                tailleApres = len(self.recipe.listeHops)
+                logger.debug("%d houblon supprimé", (tailleAvant-tailleApres))
+            elif isinstance(data, Fermentable):
+                tailleAvant = len(self.recipe.listeFermentables)
+                self.recipe.listeFermentables.remove(data)
+                tailleApres = len(self.recipe.listeFermentables)
+                logger.debug("%d fermentable supprimé", (tailleAvant-tailleApres))
+            elif isinstance(data, Yeast):
+                tailleAvant = len(self.recipe.listeYeasts)
+                self.recipe.listeYeasts.remove(data)
+                tailleApres = len(self.recipe.listeYeasts)
+                logger.debug("%d levure supprimé", (tailleAvant-tailleApres))
+            elif isinstance(data, Misc):
+                tailleAvant = len(self.recipe.listeMiscs)
+                self.recipe.listeMiscs.remove(data)
+                tailleApres = len(self.recipe.listeMiscs)
+                logger.debug("%d divers supprimé", (tailleAvant-tailleApres))
             else :
-                pass
-            self.calculs_recette()
-            logger.debug("enlever -> MVC")
-            self.MVC()
+                logger.warn("Impossible de supprimer un ingrédient de type: %s", type(data))
+            self.initModele()
 
     def importBeerXML(self) :
         fichierBeerXML = self.s
