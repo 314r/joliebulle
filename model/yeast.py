@@ -55,3 +55,12 @@ class Yeast:
                 y.attenuation = float(balise.text)
         #logger.debug(repr(y))
         return y
+
+    def copy(self):
+        copy = Yeast()
+        copy.name = self.name
+        copy.form = self.form
+        copy.labo = self.labo
+        copy.productId = self.productId
+        copy.attenuation = self.attenuation
+        return copy

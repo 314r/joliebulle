@@ -68,6 +68,7 @@ import view.constants
 from view.fermentableview import *
 from view.recipeview import *
 from view.hopview import *
+from view.yeastview import *
 
 # class BiblioFileSystem (QtGui.QFileSystemModel) :
 #     def __init__(self, parent=None):
@@ -1425,59 +1426,55 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
     def ajouterF(self) :
         comboText = self.comboBox.currentText()
         #Find selected Fermentable in database and copy it in recipe as new Fermentable
-        fBase = [f for f in ImportBase().listeFermentables if f.name == comboText][0]
-        newFermentable = fBase.copy()
-        newFermentable.amount = 1000
-        newFermentable.useAfterBoil = False
-        self.recipe.listeFermentables.append(newFermentable)
-        #Refill listView model
-        self.initModele()
+        try:
+            fBase = [f for f in ImportBase().listeFermentables if f.name == comboText][0]
+            newFermentable = fBase.copy()
+            newFermentable.amount = 1000
+            newFermentable.useAfterBoil = False
+            self.recipe.listeFermentables.append(newFermentable)
+            #Refill listView model
+            self.initModele()
+        except IndexError as e:
+            logger.error("Problème dans la base de données des Fermentables :%s", e)
         
     def ajouterH(self) : 
         comboText = self.comboBoxH.currentText()
         #Find selected Hop in database and copy it in recipe as new Hop
-        hBase = [h for h in ImportBase().listeHops if h.name == comboText][0]
-        newHop = hBase.copy()
-        newHop.amount = 0
-        newHop.time = 0.0
-        self.recipe.listeHops.append(newHop)
-        self.initModele()
+        try:
+            hBase = [h for h in ImportBase().listeHops if h.name == comboText][0]
+            newHop = hBase.copy()
+            newHop.amount = 0
+            newHop.time = 0.0
+            self.recipe.listeHops.append(newHop)
+            self.initModele()
+        except IndexError as e:
+            logger.error("Problème dans la base de données des Houblons :%s", e)
     
     def ajouterM(self) :
         comboText = self.comboBoxM.currentText()
         #Find selected Misc in database and copy it in recipe as new Misc object
-        mBase = [m for m in ImportBase().listeMiscs if m.name == comboText][0]
-        newMisc = mBase.copy()
-        self.recipe.listeMiscs.append(newMisc)
-        self.initModele()
+        try:
+            mBase = [m for m in ImportBase().listeMiscs if m.name == comboText][0]
+            newMisc = mBase.copy()
+            self.recipe.listeMiscs.append(newMisc)
+            self.initModele()
+        except IndexError as e:
+            logger.error("Problème dans la base de données des Divers :%s", e)
 
     def ajouterY(self) :
-        l = self.nbreLevures
-        f = AppWindow.nbreFer
-        h = AppWindow.nbreHops
-        m = AppWindow.nbreDivers
-        
-        i = self.comboBoxY.currentIndex()
-        
-        # itemY = QtGui.QStandardItem(self.base.liste_levures[i])
-        # item_lForm = QtGui.QStandardItem(self.base.liste_lForm[i])
-        # item_lLabo = QtGui.QStandardItem(self.base.liste_lLabo[i])
-        # item_lProdid = QtGui.QStandardItem(self.base.liste_lProdid[i])
-        # item_levureAtten = QtGui.QStandardItem(self.base.liste_levureAtten[i])
-        # item_levuresDetail =QtGui.QStandardItem(self.base.liste_levuresDetail[i])
-        
-        self.modele.insertRow(f+h+m+l)
-        
-        self.liste_levures.append(self.base.liste_levures[i])
-        self.liste_lForm.append(self.base.liste_lForm[i])
-        self.liste_lLabo.append(self.base.liste_lLabo[i])
-        self.liste_lProdid.append(self.base.liste_lProdid[i])
-        self.liste_levureAtten.append(self.base.liste_levureAtten[i])
-        self.liste_levuresDetail.append(self.base.liste_levuresDetail[i])
-        
-        self.nbreLevures = l + 1
-        logger.debug("ajouterY -> MVC")
-        self.MVC()
+        comboText = self.comboBoxY.currentText()
+        #Find selected Misc in database and copy it in recipe as new Misc object
+        yBase = None
+        for y in ImportBase().listeYeasts :
+            yView = YeastView(y)
+            if yView.yeastDetailDisplay() == comboText:
+                yBase = y
+        if yBase == None:
+            logger.error("Problème dans la base de données des Levures ...")
+        else:
+            newYeast = yBase.copy()
+            self.recipe.listeYeasts.append(newYeast)
+            self.initModele()
         
     def enlever(self) :
         selection = self.tableViewF.selectionModel()
