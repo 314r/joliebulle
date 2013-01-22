@@ -3,8 +3,8 @@
 
 
 
-#JolieBulle 2.7
-#Copyright (C) 2010-2012 Pierre Tavares
+#JolieBulle 2.8
+#Copyright (C) 2010-2013 Pierre Tavares
 
 #This program is free software; you can redistribute it and/or
 #modify it under the terms of the GNU General Public License
@@ -2099,7 +2099,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
                         dicStep['stepVol']= stepVol
                                             
             logger.debug(self.currentMash)
-            print(self.currentMash)
+            
             self.currentRecipeMash = self.currentMash
             # if self.mashName is not None :
             #     self.mashProfilesBase.listMash.append(self.currentMash)
@@ -2714,8 +2714,6 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         self.dlgMashDetail.setModal(True)
         self.dlgMashDetail.show()
         self.dlgMashDetail.setFields(self.currentMash)
-        print(self.currentMash)
-        print(self.comboBoxMashProfiles.currentIndex())
         self.dlgMashDetail.setAttribute( QtCore.Qt.WA_DeleteOnClose, True ) 
 
         

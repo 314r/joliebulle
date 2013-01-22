@@ -3,8 +3,8 @@
 
 
 
-#JolieBulle 2.7
-#Copyright (C) 2010-2012 Pierre Tavares
+#JolieBulle 2.8
+#Copyright (C) 2010-2013 Pierre Tavares
 
 #This program is free software; you can redistribute it and/or
 #modify it under the terms of the GNU General Public License
@@ -119,7 +119,6 @@ liste_fYield, liste_fMashed, liste_fUse, liste_color, dNom, dAmount, dType, nbre
 #            except:
 #                hForm.text = 'Leaf'
 
-            print(self.trUtf8('''Feuille'''))
                 
             hTime = ET.SubElement(hop, 'TIME')
             hTime.text = str(liste_hTime[i-1])
