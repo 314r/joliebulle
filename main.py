@@ -1410,7 +1410,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         self.tableWidgetStepsBrewday_currentRowChanged()
         self.dlgStepBrewday.setModal(True)
         self.dlgStepBrewday.show()
-        self.dlgStepBrewday.setFields(self.brewdayCurrentStepTargetTemp, self.brewdayCurrentStepRatio, self.brewdayCurrentStepInfuseAmount, self.brewdayCurrentStepWaterTemp, self.grainWeight, self.stepsListVol, self.brewdayCurrentRow, self.brewdayListTemp, self.strikeTargetTemp)
+        self.dlgStepBrewday.setFields(self.brewdayCurrentStepTargetTemp, self.brewdayCurrentStepRatio, self.brewdayCurrentStepInfuseAmount, self.brewdayCurrentStepWaterTemp, self.recipe.compute_grainWeight(), self.stepsListVol, self.brewdayCurrentRow, self.brewdayListTemp, self.strikeTargetTemp)
         
         
     def purge (self) :
@@ -1541,9 +1541,6 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         self.currentRecipeMash = self.recipe.mash
         try :
             self.popMashCombo()
-            logger.debug("mash name: %s", self.recipe.mash.name)
-            logger.debug("len(self.listMash): %s", len(self.listMash))
-            logger.debug("len(self.mashProfilesBase.listeMashes): %s", len(self.mashProfilesBase.listeMashes))
             if self.recipe.mash.name is not None :
                 # self.comboBoxMashProfiles.setCurrentIndex(len(self.listMash)-1)
                 self.comboBoxMashProfiles.addItem(self.recipe.mash.name + "*")
@@ -1970,32 +1967,32 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
             
         self.labelNoDecoction.hide()
                 
-        self.brewCalc.calcPreBoilVolume(self.volume, self.spinBoxBoil.value())
+        self.brewCalc.calcPreBoilVolume(self.recipe.volume, self.spinBoxBoil.value())
         
-        self.brewCalc.calcPreBoilSg(self.GU, self.volume)
+        self.brewCalc.calcPreBoilSg(self.recipe.compute_GU(), self.recipe.volume)
        
         
         self.labelPreBoilVol.setText("%.1f" %(self.brewCalc.volPreBoil) + " " + "L")
         self.labelPreBoilGravity.setText("%.3f" %(self.brewCalc.preBoilSg))
         
         
-        listSteps = self.currentMash['mashSteps']
-        spargeTemp = float(self.currentMash['spargeTemp'])
-#        print("la liste en breday mode", listSteps)
+        listSteps = self.recipe.mash.listeSteps
+        spargeTemp = float(self.recipe.mash.spargeTemp)
         
         strikeStep = listSteps[0]
-        strikeTargetTemp = strikeStep['stepTemp']
-        strikeName = strikeStep['name']
-        strikeTime = strikeStep['stepTime']
+        strikeTargetTemp = strikeStep.temp
+        strikeName = strikeStep.name
+        strikeTime = strikeStep.time
         
         self.tableWidgetStepsBrewday.setRowCount(len(listSteps))
         
 #       si on n'est pas dans le cas d'un BIAB
         if self.radioButtonClassicBrew.isChecked() :
             self.brewCalc.calcStrikeTemp(strikeTargetTemp, 3)
-            self.brewCalc.calcStrikeVol(self.grainWeight, 3)
-            self.brewCalc.calcMashVolume(self.grainWeight)
-            self.brewCalc.calcGrainRetention(self.grainWeight)
+            grainWeight = self.recipe.compute_grainWeight()
+            self.brewCalc.calcStrikeVol(grainWeight, 3)
+            self.brewCalc.calcMashVolume(grainWeight)
+            self.brewCalc.calcGrainRetention(grainWeight)
             self.pushButtonAdjustStep.setEnabled(True)
         
             listVol = []
@@ -2004,14 +2001,12 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
             listName = []
             #on traite les paliers autres que l'empâtage,
             i = 0
-            while i < len(listSteps)-1 :
-                i = i+1 
-                step = listSteps[i]
-                stepName = step['name']
-    #            stepVol =  float(step['stepVol'])
-                stepTemp = float(step['stepTemp'])
-                stepType= step['type']  
-                stepTime = step['stepTime']          
+            for step in self.recipe.mash.listeSteps[1::]:
+                i += 1
+                stepName = step.name
+                stepTemp = float(step.temp)
+                stepType= step.type
+                stepTime = step.time
                 
                 listName.append(stepName)
                 self.brewdayListTemp.append(stepTemp)
@@ -2020,15 +2015,15 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
                 elif i != 1 :
                     mashTemp = self.brewdayListTemp[i-2]
                 
-                self.brewCalc.calcInfusionStep(i, self.grainWeight, listVol, stepTemp, mashTemp, 90, stepType )
+                self.brewCalc.calcInfusionStep(i, self.recipe.compute_grainWeight(), listVol, stepTemp, mashTemp, 90, stepType )
 
                 listVol.append(self.brewCalc.infuseVol)
                 
                 self.tableWidgetStepsBrewday.setItem(i,0,QtGui.QTableWidgetItem(stepName))
                 self.tableWidgetStepsBrewday.setItem(i,1,QtGui.QTableWidgetItem("%.1f" %(self.brewCalc.infuseVol)))
-                if stepType == 'Infusion' :
+                if stepType == model.constants.MASH_STEP_INFUSION :
                     self.tableWidgetStepsBrewday.setItem(i,2,QtGui.QTableWidgetItem(str(90)))
-                elif stepType == 'Temperature' :
+                elif stepType == model.constants.MASH_STEP_TEMPERATURE:
                     self.tableWidgetStepsBrewday.setItem(i,2,QtGui.QTableWidgetItem(str(0)))
                 else : 
                     self.labelNoDecoction.show()
@@ -2041,7 +2036,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
             self.tableWidgetStepsBrewday.setItem(0,0,QtGui.QTableWidgetItem(strikeName))
             self.tableWidgetStepsBrewday.setItem(0,1,QtGui.QTableWidgetItem(str(self.brewCalc.strikeVol)))
             self.tableWidgetStepsBrewday.setItem(0,2,QtGui.QTableWidgetItem("%.1f" %(self.brewCalc.strikeTemp)))
-            self.tableWidgetStepsBrewday.setItem(0,3,QtGui.QTableWidgetItem("%.1f" %(self.brewCalc.strikeVol/(self.grainWeight/1000))))
+            self.tableWidgetStepsBrewday.setItem(0,3,QtGui.QTableWidgetItem("%.1f" %(self.brewCalc.strikeVol/(self.recipe.compute_grainWeight()/1000))))
             self.tableWidgetStepsBrewday.setItem(0,4,QtGui.QTableWidgetItem(str(strikeTargetTemp) + "°C, " + str(strikeTime) +" min"))
             
             self.stepsListVol = listVol
@@ -2053,16 +2048,16 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
             self.labelSpargeTemp.setText("%.1f" %(spargeTemp))
 
             #on calcule les volumes
-            self.brewCalc.calcMashVolume(self.grainWeight)
+            self.brewCalc.calcMashVolume(self.recipe.compute_grainWeight())
             self.mashVolumeLastStep = self.brewCalc.grainVolume + sum(self.stepsListVol)
             self.labelGrainVolume.setText("%.1f" %(self.brewCalc.grainVolume))       
             self.labelTotalVolumeStrike.setText("%.1f" %(self.brewCalc.mashVolumeStrike)) 
             self.labelTotalVolumeLast.setText("%.1f" %(self.mashVolumeLastStep))
     
         else :
-            self.brewCalc.calcGrainRetention(self.grainWeight)
+            self.brewCalc.calcGrainRetention(self.recipe.compute_grainWeight())
             self.strikeVol = self.brewCalc.volPreBoil + self.brewCalc.grainRetention
-            ratio = self.strikeVol / (self.grainWeight / 1000)
+            ratio = self.strikeVol / (self.recipe.compute_grainWeight() / 1000)
             self.brewCalc.calcStrikeTemp(strikeTargetTemp,ratio)
                 
             self.tableWidgetStepsBrewday.setItem(0,0,QtGui.QTableWidgetItem(strikeName))
@@ -2072,7 +2067,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
             self.pushButtonAdjustStep.setEnabled(False)
 
             #on calcule les volumes
-            self.brewCalc.calcMashVolume(self.grainWeight)
+            self.brewCalc.calcMashVolume(self.recipe.compute_grainWeight())
             self.mashVolumeLastStep = self.brewCalc.grainVolume + sum(self.stepsListVol)
             self.labelGrainVolume.setText("%.1f" %(self.brewCalc.grainVolume))       
             self.labelTotalVolumeStrike.setText("%.1f" %(self.strikeVol + self.brewCalc.grainVolume)) 
@@ -2083,21 +2078,16 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
             while i < len(listSteps)-1 :
                 i = i+1 
                 step = listSteps[i]
-                stepType= step['type']
-                if stepType != "Temperature" :
+                stepType= step.type
+                if stepType != model.constants.MASH_STEP_TEMPERATURE:
                     self.labelWarningBiab.show()
                 else :
                     pass
-                    
-        
-
-
-            
         
     def tableWidgetStepsBrewday_currentRowChanged (self) :
         listSteps = self.currentMash.listeSteps
         strikeStep = listSteps[0]
-        self.strikeTargetTemp = strikeStep.temp
+        strikeTargetTemp = strikeStep.temp
         self.brewdayCurrentRow = self.tableWidgetStepsBrewday.currentRow()
         i = self.tableWidgetStepsBrewday.currentRow()
         if i == -1 :
@@ -2130,32 +2120,29 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         listSteps = self.currentMash.listeSteps
         
         i = currentRow
-        
-
         while i < len(listSteps) - 1 :
             i = i+1
             step = listSteps[i]
-            stepType= step['type'] 
-            stepTemp = float(step['stepTemp'])
+            stepType= step.type
+            stepTemp = float(step.temp)
             if i == 1 :
                 strikeStep = listSteps[0]
-                strikeTargetTemp = strikeStep['stepTemp']
+                strikeTargetTemp = strikeStep.temp
                 mashTemp = strikeTargetTemp
             else :
                 mashTemp = self.brewdayListTemp[i-2]
-            self.brewCalc.calcInfusionStep(i-1, self.grainWeight, listVol, stepTemp, mashTemp, 90, stepType )
+            self.brewCalc.calcInfusionStep(i-1, self.recipe.compute_grainWeight(), listVol, stepTemp, mashTemp, 90, stepType )
 #            listVol.append(self.brewCalc.infuseVol)
             listVol[i] = self.brewCalc.infuseVol
             self.tableWidgetStepsBrewday.setItem(i,1,QtGui.QTableWidgetItem("%.1f" %(self.brewCalc.infuseVol)))
             self.tableWidgetStepsBrewday.setItem(i,3,QtGui.QTableWidgetItem("%.1f" %(self.brewCalc.newRatio)))
-            if stepType == 'Infusion' :
+            if stepType == model.constants.MASH_STEP_INFUSION:
                 self.tableWidgetStepsBrewday.setItem(i,2,QtGui.QTableWidgetItem("%.1f" %(90)))
             else :
                 self.tableWidgetStepsBrewday.setItem(i,2,QtGui.QTableWidgetItem("%.1f" %(0)))
             
             
         #on calcule les volumes
-        # self.brewCalc.calcMashVolume(self.grainWeight)
         self.mashVolumeLastStep = self.brewCalc.grainVolume + sum(self.stepsListVol)
         self.labelGrainVolume.setText("%.1f" %(self.brewCalc.grainVolume))       
         self.labelTotalVolumeStrike.setText("%.1f" %(self.brewCalc.grainVolume+listVol[0])) 

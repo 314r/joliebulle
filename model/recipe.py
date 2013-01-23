@@ -235,6 +235,12 @@ class Recipe:
             hash_proportion[f] = propGrain
         return hash_proportion
 
+    def compute_grainWeight(self):
+        grainWeight = 0
+        for f in self.listeFermentables:
+            grainWeight += f.amount
+        return grainWeight
+
     def calculs_recette (self) :
         
         #Calculs sur les ingredients fermentescibles
@@ -250,9 +256,7 @@ class Recipe:
         liste_equivSucreMashedPreBoil = list()
         liste_equivSucreNonMashedPreBoil = list()
         
-        grainWeight = 0
         for f in self.listeFermentables:
-            grainWeight += f.amount
             #division par 1000 et 100 pour passer des g aux kg et parce que le rendement est un pourcentage
             liste_equivSucre.append(f.equivSucre() )
             #for type in self.liste_fType [o-1] :
