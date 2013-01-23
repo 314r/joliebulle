@@ -40,6 +40,7 @@ include stepEditWindow.py
 include database.xml
 include launch.sh
 include joliebulle.desktop
+include AUTHORS
 include README
 include COPYING
 recursive-include images *
