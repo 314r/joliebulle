@@ -29,44 +29,36 @@ from PyQt4 import QtGui
 from PyQt4 import QtCore
 import xml.etree.ElementTree as ET
 from xml.dom import minidom
-
-
-
-  
+import model.constants
 
 class Export (QtCore.QObject):
-
-    
-    
     def prettify(self,elem):
 
         rough_string = ET.tostring(elem, 'utf-8')
         reparsed = minidom.parseString(rough_string)
         return reparsed.toprettyxml(indent="  ")
         
-
-
-    
-    def exportXML(self,nomRecette, styleRecette, typeRecette, brewer, volume, boil, rendement, OG, FG, nbreHops, liste_houblons,
-liste_hAmount, liste_hForm, liste_hTime, liste_hAlpha, liste_hUse, nbreFer, fNom, fAmount,
-fType, fYield, fMashed, color, liste_ingr, liste_fAmount, liste_fType,
-liste_fYield, liste_fMashed, liste_fUse, liste_color, dNom, dAmount, dType, nbreDivers, liste_divers, liste_dAmount, liste_dType, liste_dTime, liste_dUse, nbreLevures, lNom, lForm, lLabo, lProd, lAtten, liste_levures, liste_lForm, liste_lLabo, liste_lProdid, liste_levureAtten, recipeNotes, mashProfile) :
-
+    def exportXML(self,recipe) :
         self.recipes = ET.Element('RECIPES')
-        recipe = ET.SubElement(self.recipes, 'RECIPE')
-        name = ET.SubElement(recipe, 'NAME')
-        name.text = nomRecette
-        version = ET.SubElement(recipe, 'VERSION')
+        recipeTag = ET.SubElement(self.recipes, 'RECIPE')
+        name = ET.SubElement(recipeTag, 'NAME')
+        name.text = recipe.name
+        version = ET.SubElement(recipeTag, 'VERSION')
         version.text = "1"
-        type = ET.SubElement(recipe, 'TYPE')
-        type.text = typeRecette
-        brewerR = ET.SubElement(recipe, 'BREWER')
-        brewerR.text = brewer
+        type = ET.SubElement(recipeTag, 'TYPE')
+        if recipe.type == model.constants.RECIPE_TYPE_ALL_GRAIN:
+            type.text = "All Grain"
+        elif recipe.type == mode.constants.RECIPE_TYPE_EXTRACT:
+            type.text = "Extract"
+        elif recipe.type == mode.constants.RECIPE_PARTIAL_MASH:
+            type.text = "Partial Mash"
+        brewerR = ET.SubElement(recipeTag, 'BREWER')
+        brewerR.text = recipe.brewer
         
         
-        style = ET.SubElement(recipe, 'STYLE')
+        style = ET.SubElement(recipeTag, 'STYLE')
         sNom = ET.SubElement(style, 'NAME')
-        sNom.text = styleRecette
+        sNom.text = recipe.style
         sVersion = ET.SubElement(style, 'VERSION')
         sVersion.text = '1'
         sCategory = ET.SubElement(style, 'CATEGORY')
@@ -85,211 +77,160 @@ liste_fYield, liste_fMashed, liste_fUse, liste_color, dNom, dAmount, dType, nbre
         sColorMax = ET.SubElement (style, 'COLOR_MAX')
         
         
-        batch_size = ET.SubElement(recipe, 'BATCH_SIZE')
-        batch_size.text = str(volume)
-        boil_size = ET.SubElement(recipe, 'BOIL_SIZE')
-        boil_time = ET.SubElement(recipe, 'BOIL_TIME')
-        boil_time.text = str(boil)
-        efficiency = ET.SubElement(recipe, 'EFFICIENCY')
-        efficiency.text = str(rendement)
-        originalGravity = ET.SubElement(recipe, 'OG')
-        originalGravity.text = str(OG)
-        finalGravity = ET.SubElement(recipe, 'FG')
-        finalGravity.text = str(FG)
+        batch_size = ET.SubElement(recipeTag, 'BATCH_SIZE')
+        batch_size.text = str(recipe.volume)
+        boil_size = ET.SubElement(recipeTag, 'BOIL_SIZE')
+        boil_time = ET.SubElement(recipeTag, 'BOIL_TIME')
+        boil_time.text = str(recipe.boil)
+        efficiency = ET.SubElement(recipeTag, 'EFFICIENCY')
+        efficiency.text = str(recipe.efficiency)
+        originalGravity = ET.SubElement(recipeTag, 'OG')
+        originalGravity.text = str(recipe.compute_OG())
+        finalGravity = ET.SubElement(recipeTag, 'FG')
+        finalGravity.text = str(recipe.compute_FG())
         
-        hops = ET.SubElement(recipe, 'HOPS')
-        i=0
-        while i < nbreHops :
-            i = i+1
+        hops = ET.SubElement(recipeTag, 'HOPS')
+        for h in recipe.listeHops:
             hop = ET.SubElement(hops, 'HOP')
             hNom = ET.SubElement(hop, 'NAME')
             hVersion = ET.SubElement(hop, 'VERSION')
             hVersion.text = '1'
-            hNom.text = liste_houblons[i-1]
+            hNom.text = h.name
             hAmount = ET.SubElement(hop, 'AMOUNT')
-            hAmount.text = str(liste_hAmount[i-1]/1000)
+            hAmount.text = str(h.amount/1000)
             hForm = ET.SubElement(hop, 'FORM')
-#            try :
-            if str(liste_hForm[i-1]) == self.trUtf8('''Feuille''') :
+            if h.form == model.constants.HOP_FORM_LEAF:
                 hForm.text = 'Leaf'
-            if str(liste_hForm[i-1]) == self.trUtf8('''Pellet''') :
+            elif h.form == model.constants.HOP_FORM_PELLET:
                 hForm.text = 'Pellet'
-            if str(liste_hForm[i-1]) == self.trUtf8('''Cône''') :
+            elif h.form == model.constants.HOP_FORM_PLUG:
                 hForm.text = 'Plug'   
-#            except:
-#                hForm.text = 'Leaf'
-
-            print(self.trUtf8('''Feuille'''))
                 
             hTime = ET.SubElement(hop, 'TIME')
-            hTime.text = str(liste_hTime[i-1])
+            hTime.text = str(h.time)
             hAlpha = ET.SubElement(hop, 'ALPHA')
-            hAlpha.text = str(liste_hAlpha[i-1])
+            hAlpha.text = str(h.alpha)
             hUse = ET.SubElement(hop, 'USE')
-            try :
-                if str(liste_hUse[i-1]) == self.trUtf8('''Ébullition''') :
-                    hUse.text = 'Boil'
-                if str(liste_hUse[i-1]) == self.trUtf8('Dry Hop') or str(liste_hUse[i-1]) == 'Dry Hopping' :
-                    hUse.text = 'Dry Hop'  
-                if str(liste_hUse[i-1]) == self.trUtf8('''Empâtage''') :
-                    hUse.text = 'Mash'
-                if str(liste_hUse[i-1]) == self.trUtf8('''Premier Moût''') :
-                    hUse.text = 'First Wort' 
-                if str(liste_hUse[i-1]) == self.trUtf8('''Arôme''') :
-                    hUse.text = 'Aroma'  
-            except :
+            if h.use == model.constants.HOP_USE_BOIL :
                 hUse.text = 'Boil'
-            
-            
+            if h.use == model.constants.HOP_USE_DRY_HOP :
+                hUse.text = 'Dry Hop'  
+            if h.use == model.constants.HOP_USE_MASH :
+                hUse.text = 'Mash'
+            if h.use == model.constants.HOP_USE_FIRST_WORT :
+                hUse.text = 'First Wort' 
+            if h.use == model.constants.HOP_USE_AROMA :
+                hUse.text = 'Aroma'  
+            else :
+                hUse.text = 'Boil'
 
-        fermentables = ET.SubElement(recipe, 'FERMENTABLES')
-        
-        i = 0
-        while i < nbreFer :
-            i = i+1
+        fermentables = ET.SubElement(recipeTag, 'FERMENTABLES')
+        for f in recipe.listeFermentables:
             fermentable = ET.SubElement(fermentables, 'FERMENTABLE')
             fNom = ET.SubElement(fermentable,'NAME')
-            fNom.text = liste_ingr[i-1]
+            fNom.text = f.name
             fVersion = ET.SubElement(fermentable, 'VERSION')
             fVersion.text = '1'            
             fAmount = ET.SubElement(fermentable, 'AMOUNT')
-            fAmount.text = str(liste_fAmount[i-1]/1000)
+            fAmount.text = str(f.amount/1000)
             fType = ET.SubElement(fermentable, 'TYPE')
-            fType.text = liste_fType[i-1]
+            fType.text = f.type
             fYield = ET.SubElement(fermentable,'YIELD')
-            fYield.text = str(liste_fYield[i-1])
-            try:
-                fMashed = ET.SubElement(fermentable,'RECOMMEND_MASH')
-                if not liste_fMashed :
-                    pass
-                else :
-                    fMashed.text = liste_fMashed[i-1]
-            except :
-                pass
+            fYield.text = str(f.fyield)
+            fMashed = ET.SubElement(fermentable,'RECOMMEND_MASH')
+            fMashed.text = f.recommendMash
             fUse = ET.SubElement(fermentable,'ADD_AFTER_BOIL')
-            if liste_fUse[i-1] == self.trUtf8('Brassage') :
+            if f.useAfterBoil == False:
                 fUse.text = 'FALSE'
-            elif liste_fUse[i-1] == self.trUtf8('''Après ébullition''') :
-                fUse.text = 'TRUE'
             else :
-                fUse.text = 'FALSE'
-
+                fUse.text = 'TRUE'
             color = ET.SubElement(fermentable, 'COLOR')
-            color.text = str(liste_color[i-1]/1.97)
+            color.text = str(f.color/1.97)
             
-        miscs = ET.SubElement(recipe, 'MISCS')
-        i = 0
-        while i < nbreDivers :
-            i = i+1
+        miscs = ET.SubElement(recipeTag, 'MISCS')
+        for m in recipe.listeMiscs:
             misc = ET.SubElement(miscs, 'MISC')
             dNom = ET.SubElement(misc, 'NAME')
-            dNom.text = liste_divers[i-1]
+            dNom.text = m.name
             dVersion = ET.SubElement(misc, 'VERSION')
             dVersion.text = '1'
             dAmount = ET.SubElement(misc, 'AMOUNT')
-            dAmount.text = str(liste_dAmount[i-1]/1000)
+            dAmount.text = str(m.amount/1000)
             dType = ET.SubElement(misc, 'TYPE')
-            dType.text = liste_dType[i-1]
+            dType.text = m.type
             dTime = ET.SubElement(misc, 'TIME')
-            try :
-                dTime.text = str(liste_dTime[i-1])
-            except :
-                dTime.text = str(0)
+            dTime.text = str(m.time)
             dUse = ET.SubElement(misc, 'USE')
-            try :
-                if str(liste_dUse[i-1]) == self.trUtf8('''Ébullition''') : 
-                    dUse.text = 'Boil'
-                if str(liste_dUse[i-1]) == self.trUtf8('''Empâtage''') : 
-                    dUse.text = 'Mash'
-                if str(liste_dUse[i-1]) == self.trUtf8('''Primaire''') : 
-                    dUse.text = 'Primary'        
-                if str(liste_dUse[i-1]) == self.trUtf8('''Secondaire''') : 
-                    dUse.text = 'Secondary'
-                if str(liste_dUse[i-1]) == self.trUtf8('''Embouteillage''') : 
-                    dUse.text = 'Bottling'       
-            except :
+            if m.use == model.constants.MISC_USE_BOIL :
+                dUse.text = 'Boil'
+            if m.use == model.constants.MISC_USE_MASH :
+                dUse.text = 'Mash'
+            if m.use == model.constants.MISC_USE_PRIMARY :
+                dUse.text = 'Primary'        
+            if m.use == model.constants.MISC_USE_SECONDARY :
+                dUse.text = 'Secondary'
+            if m.use == model.constants.MISC_USE_BOTTLING :
+                dUse.text = 'Bottling'       
+            else :
                 dUse.text = 'Boil'
         
-        yeasts=ET.SubElement(recipe, 'YEASTS')  
-        i = 0  
-        while i < nbreLevures :
-            i = i+1
+        yeasts=ET.SubElement(recipeTag, 'YEASTS')  
+        for y in recipe.listeYeasts :
             yeast = ET.SubElement(yeasts, 'YEAST')
             lNom = ET.SubElement(yeast, 'NAME')
             lVersion = ET.SubElement(yeast, 'VERSION')
             lVersion.text = '1'
             lType = ET.SubElement(yeast ,'TYPE')
             lType = 'Ale'
-            lNom.text = liste_levures [i-1]
-            try :
-                lForm = ET.SubElement(yeast, 'FORM')
-                lForm.text = liste_lForm[i-1]
-            except :
-                pass
-            try :
-                lLabo = ET.SubElement(yeast, 'LABORATORY')
-                lLabo.text = liste_lLabo[i-1]
-            except :
-                pass
-            try :
-                lProd = ET.SubElement(yeast, 'PRODUCT_ID')
-                lProd.text = liste_lProdid[i-1]
-            except :
-                pass
+            lNom.text = y.name
+            lForm = ET.SubElement(yeast, 'FORM')
+            lForm.text = y.form
+            lLabo = ET.SubElement(yeast, 'LABORATORY')
+            lLabo.text = y.labo
+            lProd = ET.SubElement(yeast, 'PRODUCT_ID')
+            lProd.text = y.productId
             lAtten = ET.SubElement(yeast, 'ATTENUATION')
-            lAtten.text = str(liste_levureAtten[i-1])
+            lAtten.text = str(y.attenuation)
             
-        waters=ET.SubElement(recipe, 'WATERS')
+        waters=ET.SubElement(recipeTag, 'WATERS')
         
-        mash=ET.SubElement(recipe, 'MASH') 
+        mash=ET.SubElement(recipeTag, 'MASH') 
         mName = ET.SubElement(mash, 'NAME')
-        mName.text = mashProfile['name']
+        mName.text = recipe.mash.name
         mVersion = ET.SubElement(mash, 'VERSION')
         mVersion.text = '1'
         mGrainTemp = ET.SubElement(mash, 'GRAIN_TEMP')
-        mGrainTemp.text = str(mashProfile['grainTemp'])
+        mGrainTemp.text = str(recipe.mash.grainTemp)
         mTunTemp = ET.SubElement(mash, 'TUN_TEMP')
-        mTunTemp.text = str(mashProfile['tunTemp'])
+        mTunTemp.text = str(recipe.mash.tunTemp)
         mSpargeTemp = ET.SubElement(mash, 'SPARGE_TEMP')
-        mSpargeTemp.text = str(mashProfile['spargeTemp'])
+        mSpargeTemp.text = str(recipe.mash.spargeTemp)
         mPh = ET.SubElement(mash, 'PH')
-        mPh.text = str(mashProfile['ph'])
+        mPh.text = str(recipe.mash.ph)
         mSteps = ET.SubElement(mash, 'MASH_STEPS')
         
-        listSteps = mashProfile['mashSteps']
-        lenSteps = len(listSteps)
-        i = 0
-        while i < lenSteps :
-            i = i+1
+        for s in recipe.mash.listeSteps:
             mashStep =ET.SubElement(mSteps, 'MASH_STEP')           
-            dicStep = listSteps[i-1]
             stepName = ET.SubElement(mashStep, 'NAME')
-            stepName.text = dicStep['name']
+            stepName.text = s.name
             stepVersion = ET.SubElement(mashStep, 'VERSION')
             stepVersion.text = '1'
             stepType = ET.SubElement(mashStep, 'TYPE')
-            stepType.text = dicStep['type']
+            stepType.text = s.type
             stepTime = ET.SubElement(mashStep, 'STEP_TIME')
-            stepTime.text = str(dicStep['stepTime'])
+            stepTime.text = str(s.time)
             stepTemp = ET.SubElement(mashStep, 'STEP_TEMP')
-            stepTemp.text = str(dicStep['stepTemp'])
+            stepTemp.text = str(s.temp)
             stepVol = ET.SubElement(mashStep, 'INFUSE_AMOUNT')
-            stepVol.text = str(dicStep['stepVol'])
-            
-        
-        
-        
+            stepVol.text = str(s.infuseAmount)
+
         try :
-            notes = ET.SubElement(recipe, 'NOTES') 
-            notes.text = recipeNotes   
+            notes = ET.SubElement(recipeTag, 'NOTES') 
+            notes.text = self.recipe.recipeNotes
         except :
             pass       
-        
-        #print (ET.tostring(recipes))
-        #print (self.prettify(recipes))
-        #ET.ElementTree(recipes).write(file=None)
-        
-        #self.enregistrer()
+
+
     def enregistrer(self,s) :
        # print (ET.tostring(self.recipes))
         

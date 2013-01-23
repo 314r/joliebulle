@@ -474,7 +474,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         
 #        self.base.importBeerXML()
         self.s=0
-        self.nbreLevures = 0
+        self.recipe = None
         
         self.baseStyleListe = [self.trUtf8('Générique'), '1A. Lite American Lager', '1B. Standard American Lager', '1C. Premium American Lager', '1D. Munich Helles', '1E. Dortmunder Export', '2A. German Pilsner (Pils)', '2B. Bohemian Pilsener', '2C. Classic American Pilsner', '3A. Vienna Lager', '3B. Oktoberfest/Märzen', '4A. Dark American Lager', '4B. Munich Dunkel', '4C. Schwarzbier (Black Beer)', '5A. Maibock/Helles Bock', '5B. Traditional Bock', '5C. Doppelbock', '5D. Eisbock', '6A. Cream Ale', '6B. Blonde Ale', '6C. Kölsch', '6D. American Wheat or Rye Beer', '7A. Northern German Altbier', '7B. California Common Beer', '7C. Düsseldorf Altbier', '8A. Standard/Ordinary Bitter', '8B. Special/Best/Premium Bitter', '8C. Extra Special/Strong Bitter (English Pale Ale)', '9A. Scottish Light 60/-', '9B. Scottish Heavy 70/-', '9C. Scottish Export 80/- ', '9D. Irish Red Ale', '9E. Strong Scotch Ale', '10A. American Pale Ale', '10B. American Amber Ale', '10C. American Brown Ale', '11A. Mild','11B. Southern English Brown', '11C. Northern English Brown Ale', '12A. Brown Porter', '12B. Robust Porter', '12C. Baltic Porter', '13A. Dry Stout', '13B. Sweet Stout', '13C. Oatmeal Stout', '13D. Foreign Extra Stout', '13E. American Stout', '13F. Russian Imperial Stout', '14A. English IPA', '14B. American IPA', '14C. Imperial IPA','15A. Weizen/Weissbier', '15B. Dunkelweizen', '15C. Weizenbock', '15D. Roggenbier (German Rye Beer)','16A. Witbier', '16B. Belgian Pale Ale', '16C. Saison', '16D. Bière de Garde', '16E. Belgian Specialty Ale', '17A. Berliner Weisse', '17B. Flanders Red Ale', '17C. Flanders Brown Ale/Oud Bruin', '17D. Straight (Unblended) Lambic', '17E. Gueuze', '17F. Fruit Lambic', '18A. Belgian Blond Ale', '18B. Belgian Dubbel', '18C. Belgian Tripel', '18D. Belgian Golden Strong Ale', '18E. Belgian Dark Strong Ale', '19A. Old Ale', '19B. English Barleywine', '19C. American Barleywine', '20. Fruit Beer', '21A. Spice, Herb, or Vegetable Beer', '21B. Christmas/Winter Specialty Spiced Beer', '22A. Classic Rauchbier', '22B. Other Smoked Beer', '22C. Wood-Aged Beer', '23. Specialty Beer', '24A. Dry Mead', '24B. Semi-sweet Mead', '24C. Sweet Mead', '25A. Cyser', '25B. Pyment', '25C. Other Fruit Melomel', '26A. Metheglin', '26B. Braggot', '26C. Open Category Mead', '27A. Common Cider', '27B. English Cider', '27C. French Cider', '27D. Common Perry', '27E. Traditional Perry', '28A. New England Cider', '28B. Fruit Cider', '28C. Applewine', '28D. Other Specialty Cider/Perry']
        
@@ -1626,74 +1626,66 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         self.initModele()                    
             
     def typeChanged (self) :
-        if self.comboBoxType.currentIndex() == 0 :
-            self.typeRecette = "All Grain"
-        if self.comboBoxType.currentIndex() == 1 :   
-            self.typeRecette = "Extract"
-        if self.comboBoxType.currentIndex() == 2 :
-            self.typeRecette = "Partial Mash"
+        if self.recipe is not None:
+            if self.comboBoxType.currentIndex() == 0 :
+                self.recipe.type = model.constants.RECIPE_TYPE_ALL_GRAIN
+            if self.comboBoxType.currentIndex() == 1 :   
+                self.recipe.type = model.constants.RECIPE_TYPE_EXTRACT
+            if self.comboBoxType.currentIndex() == 2 :
+                self.recipe.type = model.constants.RECIPE_TYPE_PARTIAL_MASH
+            self.initModele()                    
 
+    def enregistrerRecette(self, destination):
+        self.recipe.name = self.lineEditRecette.text()
+        self.recipe.style = self.lineEditGenre.text()   
+        self.recipe.brewer = self.lineEditBrewer.text()        
+        self.recipe.boil = self.spinBoxBoil.value()
+        recettes = QtCore.QFile(recettes_dir)
+        exp=Export()
+        exp.exportXML(self.recipe)
+        exp.enregistrer(destination)
+        logger.info("Recette '%s' enregistrée dans le fichier %s", self.recipe.name, destination)
+        
     def enregistrer (self) :
         exp=Export()
-        self.nomRecette = self.lineEditRecette.text()
-        self.styleRecette = self.lineEditGenre.text()   
-        self.brewer = self.lineEditBrewer.text()        
-        self.boil = self.spinBoxBoil.value()
-        if not self.s : 
-            #self.enregistrerSous()
-            recettes = QtCore.QFile(recettes_dir)
-            self.s =  recettes_dir +"/" + self.nomRecette + ".xml"
-            if os.path.exists(self.s) :
-                warning = QtGui.QMessageBox.warning(self,
-                            self.trUtf8("Recette déjà existante"),
-                            self.trUtf8("Ce nom de recette existe déjà. L'enregistrement a été annulé. Vous pouvez choisir un nouveau nom.")
-                            )
-                self.s=''
-            else :
-                exp.exportXML(self.nomRecette, self.styleRecette, self.typeRecette, self.brewer, self.volume, self.boil, self.rendement,self.OG, self.FG, AppWindow.nbreHops, self.liste_houblons, self.liste_hAmount, self.liste_hForm, self.liste_hTime, self.liste_hAlpha,self.liste_hUse, AppWindow.nbreFer, self.fNom, self.fAmount ,self.fType, self.fYield, self.fMashed, self.color, self.liste_ingr, self.liste_fAmount, self.liste_fType, self.liste_fYield, self.liste_fMashed, self.liste_fUse, self.liste_color, self.dNom, self.dAmount, self.dType, AppWindow.nbreDivers, self.liste_divers, self.liste_dAmount, self.liste_dType, self.liste_dTime,self.liste_dUse, self.nbreLevures, self.lNom, self.lForm, self.lLabo, self.lProd, self.lAtten, self.liste_levures, self.liste_lForm, self.liste_lLabo, self.liste_lProdid, self.liste_levureAtten, self.recipeNotes,self.currentMash)
-                exp.enregistrer(self.s)
+        self.recipe.name = self.lineEditRecette.text()
+        self.recipe.style = self.lineEditGenre.text()   
+        self.recipe.brewer = self.lineEditBrewer.text()        
+        self.recipe.boil = self.spinBoxBoil.value()
+        if not self.s :
+            destination =  recettes_dir + "/" + nom_fichier + ".xml"
+            self.enregistrerRecette(destination)
         else :
-
-            
-            exp.exportXML(self.nomRecette, self.styleRecette, self.typeRecette, self.brewer, self.volume, self.boil, self.rendement, self.OG, self.FG,AppWindow.nbreHops, self.liste_houblons, self.liste_hAmount, self.liste_hForm, self.liste_hTime, self.liste_hAlpha,self.liste_hUse, AppWindow.nbreFer, self.fNom, self.fAmount ,self.fType, self.fYield, self.fMashed, self.color, self.liste_ingr, self.liste_fAmount, self.liste_fType, self.liste_fYield, self.liste_fMashed, self.liste_fUse, self.liste_color, self.dNom, self.dAmount, self.dType, AppWindow.nbreDivers, self.liste_divers, self.liste_dAmount, self.liste_dType, self.liste_dTime,self.liste_dUse, self.nbreLevures, self.lNom, self.lForm, self.lLabo, self.lProd, self.lAtten, self.liste_levures, self.liste_lForm, self.liste_lLabo, self.liste_lProdid, self.liste_levureAtten, self.recipeNotes,self.currentMash)
-            exp.enregistrer(self.s)
+            self.enregistrerRecette(self.s)
     
-        
     def enregistrerSous (self) :
-        exp=Export()
-        self.nomRecette = self.lineEditRecette.text()  
-        self.styleRecette = self.lineEditGenre.text()
-        self.brewer = self.lineEditBrewer.text()  
-        self.boil = self.spinBoxBoil.value()
         self.s = QtGui.QFileDialog.getSaveFileName (self,
                                                     self.trUtf8("Enregistrer dans un fichier"),
-                                                    recettes_dir + "/" + self.nomRecette,
+                                                    recettes_dir + "/" + self.recipe.name,
                                                     "BeerXML (*.xml)")
-        exp.exportXML(self.nomRecette, self.styleRecette, self.typeRecette, self.brewer, self.volume, self.boil, self.rendement,self.OG, self.FG, AppWindow.nbreHops, self.liste_houblons, self.liste_hAmount, self.liste_hForm, self.liste_hTime, self.liste_hAlpha, self.liste_hUse, AppWindow.nbreFer, self.fNom, self.fAmount ,self.fType, self.fYield, self.fMashed, self.color, self.liste_ingr, self.liste_fAmount, self.liste_fType, self.liste_fYield, self.liste_fMashed, self.liste_fUse, self.liste_color, self.dNom, self.dAmount, self.dType, AppWindow.nbreDivers, self.liste_divers, self.liste_dAmount, self.liste_dType, self.liste_dTime, self.liste_dUse, self.nbreLevures, self.lNom, self.lForm, self.lLabo, self.lProd, self.lAtten, self.liste_levures, self.liste_lForm, self.liste_lLabo, self.liste_lProdid, self.liste_levureAtten, self.recipeNotes,self.currentMash)
-        exp.enregistrer(self.s)  
+        if os.path.exists(destination) :
+            warning = QtGui.QMessageBox.warning(self,
+                        self.trUtf8("Recette déjà existante"),
+                        self.trUtf8("Ce nom de recette existe déjà. L'enregistrement a été annulé. Vous pouvez choisir un nouveau nom.")
+                        )
+        else :
+            self.enregistrerRecette(self.s)
+
     def exporterHtml (self) :
-        self.nomRecette = self.lineEditRecette.text()
-        self.styleRecette = self.lineEditGenre.text()
-        
+        self.recipe.name = self.lineEditRecette.text()
+        self.recipe.style = self.lineEditGenre.text()   
         exp = ExportHTML()
-        self.h = QtGui.QFileDialog.getSaveFileName (self,
+        fichier = QtGui.QFileDialog.getSaveFileName (self,
                                                     self.trUtf8("Enregistrer dans un fichier"),
-                                                    self.nomRecette,
+                                                    self.recipe.name,
                                                     "HTML (*.html)")    
-        
-        self.fileHtml = QtCore.QFile(self.h)
-        #exp.exportHtml(self.nomRecette,self.styleRecette, self.volume, self.boil, AppWindow.nbreFer, self.liste_ingr, self.liste_fAmount, self.liste_fUse, AppWindow.nbreHops, self.liste_houblons, self.liste_hAlpha, self.liste_hForm, self.liste_hAmount, self.liste_hTime,self.liste_hUse, AppWindow.nbreDivers, self.liste_divers, self.liste_dType, self.liste_dAmount, self.liste_dTime, self.liste_dUse, self.nbreLevures, self.liste_levuresDetail,self.rendement, self.OG, self.FG, self.ratioBuGu, self.EBC, self.ibuTot ,self.ABV, self.recipeNotes)
+        self.fileHtml = QtCore.QFile(fichier)
         exp.exportRecipeHtml(self.recipe)
-        
         exp.enregistrerHtml(self.fileHtml)
     
     def copierBbcode (self):
-        self.nomRecette = self.lineEditRecette.text()
-        self.styleRecette = self.lineEditGenre.text()
-        
         exp = ExportBBCode()
         exp.exportBbcode(self.nomRecette,self.styleRecette, self.volume, self.boil, AppWindow.nbreFer, self.liste_ingr, self.liste_fAmount, AppWindow.nbreHops, self.liste_houblons, self.liste_hAlpha, self.liste_hForm, self.liste_hAmount, self.liste_hTime,self.liste_hUse, AppWindow.nbreDivers, self.liste_divers, self.liste_dType, self.liste_dAmount, self.liste_dTime, self.liste_dUse, self.nbreLevures, self.liste_levuresDetail,self.rendement, self.OG, self.FG, self.EBC, self.ibuTot ,self.ABV, self.recipeNotes)
-        
         app.clipboard().setText(exp.generatedBbcode)
 
     def modifierStyle (self) :
