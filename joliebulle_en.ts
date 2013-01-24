@@ -253,11 +253,6 @@
         <source>Partial mash</source>
         <translation>Partial mash</translation>
     </message>
-    <message utf8="true">
-        <location filename="main.py" line="2376"/>
-        <source>&lt;h1&gt;JolieBulle&lt;/h1&gt; &lt;b&gt;version 2.7&lt;/b&gt;&lt;br/&gt;copyright (c) 2010-2012 Pierre Tavares&lt;p&gt; JolieBulle est un logiciel de lecture et de formulation de recettes de brassage.&lt;/p&gt;&lt;p&gt;&lt;a href =http://www.gnu.org/licenses/gpl-3.0.html&gt;Licence : Version 3 de la Licence Générale Publique GNU&lt;/a&gt;&lt;/p&gt;&lt;p&gt;Certaines icônes proviennent du pack Faenza par Tiheum (Matthieu James), également distribué sous licence GPL.&lt;/p&gt;</source>
-        <translation type="unfinished"></translation>
-    </message>
     <message>
         <location filename="main.py" line="518"/>
         <source>Profils de brassage</source>
@@ -272,6 +267,11 @@
         <location filename="main.py" line="2223"/>
         <source>Après ébullition</source>
         <translation>After Boil</translation>
+    </message>
+    <message utf8="true">
+        <location filename="main.py" line="2376"/>
+        <source>&lt;h1&gt;JolieBulle&lt;/h1&gt; &lt;b&gt;version 2.8&lt;/b&gt;&lt;br/&gt;copyright (c) 2010-2013 Pierre Tavares.&lt;br/&gt;copyright (c) 2012-2013 Les auteurs de JolieBulle.&lt;p&gt; JolieBulle est un logiciel de lecture et de formulation de recettes de brassage.&lt;/p&gt;&lt;p&gt;&lt;a href =http://www.gnu.org/licenses/gpl-3.0.html&gt;Licence : Version 3 de la Licence Générale Publique GNU&lt;/a&gt;&lt;/p&gt;&lt;p&gt;Certaines icônes proviennent du pack Faenza par Tiheum (Matthieu James), également distribué sous licence GPL.&lt;/p&gt; &lt;p&gt;Auteurs : Pierre Tavares, Nicolas Jouanin, Thomas Gerbet&lt;/p&gt;</source>
+        <translation>&lt;h1&gt;JolieBulle&lt;/h1&gt; &lt;b&gt;version 2.8&lt;/b&gt;&lt;br/&gt;copyright (c) 2010-2013 Pierre Tavares.&lt;br/&gt;copyright (c) 2012-2013 JolieBulle&apos;s authors.&lt;p&gt; JolieBulle is a beer brewing software.&lt;/p&gt;&lt;p&gt;&lt;a href =http://www.gnu.org/licenses/gpl-3.0.html&gt;Licence : GNU GPL v3&lt;/a&gt;&lt;/p&gt;&lt;p&gt;Some icons by Tiheum (Matthieu James), licenced under the GNU GPL&lt;/p&gt; &lt;p&gt;Authors : Pierre Tavares, Nicolas Jouanin, Thomas Gerbet&lt;/p&gt;</translation>
     </message>
 </context>
 <context>
@@ -1355,7 +1355,7 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>Export</name>
     <message>
-        <location filename="export.py" line="122"/>
+        <location filename="export.py" line="113"/>
         <source>Feuille</source>
         <translation>Leaf</translation>
     </message>
@@ -1370,52 +1370,52 @@ p, li { white-space: pre-wrap; }
         <translation>Plug</translation>
     </message>
     <message utf8="true">
-        <location filename="export.py" line="200"/>
+        <location filename="export.py" line="199"/>
         <source>Ébullition</source>
         <translation>Boil</translation>
     </message>
     <message>
-        <location filename="export.py" line="132"/>
+        <location filename="export.py" line="131"/>
         <source>Dry Hop</source>
         <translation>Dry Hop</translation>
     </message>
     <message utf8="true">
-        <location filename="export.py" line="202"/>
+        <location filename="export.py" line="201"/>
         <source>Empâtage</source>
         <translation>Mash</translation>
     </message>
     <message utf8="true">
-        <location filename="export.py" line="136"/>
+        <location filename="export.py" line="135"/>
         <source>Premier Moût</source>
         <translation>First Wort</translation>
     </message>
     <message utf8="true">
-        <location filename="export.py" line="138"/>
+        <location filename="export.py" line="137"/>
         <source>Arôme</source>
         <translation>Aroma</translation>
     </message>
     <message>
-        <location filename="export.py" line="204"/>
+        <location filename="export.py" line="203"/>
         <source>Primaire</source>
         <translation>Primary</translation>
     </message>
     <message>
-        <location filename="export.py" line="206"/>
+        <location filename="export.py" line="205"/>
         <source>Secondaire</source>
         <translation>Secondary</translation>
     </message>
     <message>
-        <location filename="export.py" line="208"/>
+        <location filename="export.py" line="207"/>
         <source>Embouteillage</source>
         <translation>Bottling</translation>
     </message>
     <message>
-        <location filename="export.py" line="170"/>
+        <location filename="export.py" line="169"/>
         <source>Brassage</source>
         <translation>Mash</translation>
     </message>
     <message utf8="true">
-        <location filename="export.py" line="172"/>
+        <location filename="export.py" line="171"/>
         <source>Après ébullition</source>
         <translation>After boil</translation>
     </message>
