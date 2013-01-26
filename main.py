@@ -784,10 +784,6 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         self.actionBrewdayMode.setChecked(False)
         self.buttonSave.hide()
         self.buttonNewRecipe.show()
-
-        
-
-
         
     #Une fonction qui gère l'aperçu des couleurs. 
     #Contient un tupple avec plusieurs références de couleurs, classées par rang selon la valeur SRM.
@@ -1351,7 +1347,6 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
                 items.append( QtGui.QStandardItem('') )
                 items.append( QtGui.QStandardItem('') )
                 items.append( mView.QStandardItem_for_use() )
-                items.append( QtGui.QStandardItem('') )
                 self.modele.appendRow(items)
 
             for y in self.recipe.listeYeasts:
@@ -1410,6 +1405,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         self.tableWidgetStepsBrewday_currentRowChanged()
         self.dlgStepBrewday.setModal(True)
         self.dlgStepBrewday.show()
+        #logger.debug(self.)
         self.dlgStepBrewday.setFields(self.brewdayCurrentStepTargetTemp, self.brewdayCurrentStepRatio, self.brewdayCurrentStepInfuseAmount, self.brewdayCurrentStepWaterTemp, self.recipe.compute_grainWeight(), self.stepsListVol, self.brewdayCurrentRow, self.brewdayListTemp, self.strikeTargetTemp)
         
         
@@ -2088,6 +2084,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         listSteps = self.currentMash.listeSteps
         strikeStep = listSteps[0]
         strikeTargetTemp = strikeStep.temp
+        self.strikeTargetTemp = strikeTargetTemp
         self.brewdayCurrentRow = self.tableWidgetStepsBrewday.currentRow()
         i = self.tableWidgetStepsBrewday.currentRow()
         if i == -1 :
