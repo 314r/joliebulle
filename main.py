@@ -93,6 +93,10 @@ import xml.etree.ElementTree as ET
 #         painter.restore()
 
 def initLogging():
+    home = QtCore.QDir(home_dir)
+    config = QtCore.QDir(config_dir)
+    if not config.exists() :
+        home.mkpath (config_dir)
     config = {
         'version': 1,              
         'root': {
