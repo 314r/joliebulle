@@ -69,6 +69,7 @@ from view.fermentableview import *
 from view.recipeview import *
 from view.hopview import *
 from view.yeastview import *
+import view.base
 import itertools
 
 # class BiblioFileSystem (QtGui.QFileSystemModel) :
@@ -812,19 +813,20 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
     #Une fonction qui recharge les combobox qd la base d'ingrédients a été modifiée. Pratique.
     #############################################################################################   
     def baseReload (self): 
-        self.base.importBeerXML()
+        if self.base is None:
+            self.base = ImportBase()
         
         self.comboBox.clear()
-        self.comboBox.setModel(self.base.getFermentablesQtModel() )
+        self.comboBox.setModel(view.base.getFermentablesQtModel() )
         
         self.comboBoxH.clear()
-        self.comboBoxH.setModel(self.base.getHopsQtModel() )
+        self.comboBoxH.setModel(view.base.getHopsQtModel() )
         
         self.comboBoxY.clear()
-        self.comboBoxY.setModel(self.base.getYeastsQtModel() )
+        self.comboBoxY.setModel(view.base.getYeastsQtModel() )
         
         self.comboBoxM.clear()
-        self.comboBoxM.setModel(self.base.getMiscsQtModel() )
+        self.comboBoxM.setModel(view.base.getMiscsQtModel() )
         
     def selectionRecette2(self):
         selection = self.treeViewBiblio.selectionModel()

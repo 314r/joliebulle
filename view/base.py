@@ -3,7 +3,12 @@ from base import ImportBase
 from view.yeastview import *
 
 def getFermentablesQtModel():
-    return QtGui.QStringListModel( [f.name for f in ImportBase().listeFermentables] )
+	model = QtGui.QStandardItemModel()
+	for f in ImportBase().listeFermentables:
+		item = QtGui.QStandardItem(f.name)
+		item.setData(f, view.constants.MODEL_DATA_ROLE)
+		model.appendRow(item)
+	return model
 
 def getHopsQtModel():
     return QtGui.QStringListModel( [h.name for h in ImportBase().listeHops] )
