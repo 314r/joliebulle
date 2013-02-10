@@ -35,6 +35,7 @@ import model.constants
 from editorG_ui import *
 import xml.etree.ElementTree as ET
 from xml.dom import minidom
+from operator import attrgetter
 
 logger = logging.getLogger(__name__)
 
@@ -124,33 +125,30 @@ class Dialog(QtGui.QDialog):
             
     def ajouter (self) :
         #Attention aux unités. Dans la base xml la couleur est en srm, dans la liste de la base la couleur est convertie en EBC
-        
-        nom = self.ui.lineEditNom.text()
-        self.base.liste_ingr.append(nom)
-        self.base.liste_ingr.sort()
-        i = self.base.liste_ingr.index(nom)
-        
-
-        self.base.liste_fYield.insert(i, self.ui.spinBoxRendmt.value())
+        f = Fermentable()
+        f.name = self.ui.lineEditNom.text()
+        f.fyield = self.ui.spinBoxRendmt.value()
         self.ui.radioButtonSRM.setChecked(True)
-        self.base.liste_color.insert(i, self.ui.spinBoxCouleur.value()*1.97)
-        
+        f.color = self.ui.spinBoxCouleur.value()*1.97
+
         if self.ui.comboBoxType.currentIndex() is 0 :
-            self.base.liste_fType.insert(i, 'Grain')
+            f.type = model.constants.FERMENTABLE_TYPE_GRAIN
         elif self.ui.comboBoxType.currentIndex() is 1 :
-            self.base.liste_fType.insert(i, 'Extract') 
+            f.type = model.constants.FERMENTABLE_TYPE_EXTRACT
         elif self.ui.comboBoxType.currentIndex() is 2 :
-            self.base.liste_fType.insert(i, 'Dry Extract')
+            f.type = model.constants.FERMENTABLE_TYPE_DRY_EXTRACT
         elif self.ui.comboBoxType.currentIndex() is 3 :
-            self.base.liste_fType.insert(i, 'Sugar')
+            f.type = model.constants.FERMENTABLE_TYPE_SUGAR
         elif self.ui.comboBoxType.currentIndex() is 4 :
-            self.base.liste_fType.insert(i, 'Adjunct')
+            f.type = model.constants.FERMENTABLE_TYPE_ADJUNCT
             
         if self.ui.comboBoxReco.currentIndex() is 0 :
-            self.base.liste_fMashed.insert(i, 'TRUE')
+            f.useAfterBoil = True
         else :
-            self.base.liste_fMashed.insert(i, 'FALSE')
+            f.useAfterBoil = False
         
+        ImportBase().listeFermentables.append(f)
+        ImportBase().listeFermentables = sorted(ImportBase().listeFermentables, key=attrgetter('name'))
         
         self.ui.listViewGrains.clear()   
         self.ui.listViewGrains.addItems(self.base.liste_ingr)

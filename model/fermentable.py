@@ -20,6 +20,7 @@
 #Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 import logging
 import model.constants
+import xml.etree.ElementTree as ET
 
 logger = logging.getLogger(__name__)
 
@@ -91,3 +92,25 @@ class Fermentable:
         copy.color = self.color
         copy.useAfterBoil = self.useAfterBoil
         return copy
+
+    def toXml(self, parent):
+        fermentable = ET.SubElement(parent, 'FERMENTABLE')
+        fNom = ET.SubElement(fermentable,'NAME')
+        fNom.text = self.name
+        fVersion = ET.SubElement(fermentable, 'VERSION')
+        fVersion.text = '1'            
+        fAmount = ET.SubElement(fermentable, 'AMOUNT')
+        fAmount.text = str(self.amount/1000)
+        fType = ET.SubElement(fermentable, 'TYPE')
+        fType.text = self.type
+        fYield = ET.SubElement(fermentable,'YIELD')
+        fYield.text = str(self.fyield)
+        fMashed = ET.SubElement(fermentable,'RECOMMEND_MASH')
+        fMashed.text = self.recommendMash
+        fUse = ET.SubElement(fermentable,'ADD_AFTER_BOIL')
+        if self.useAfterBoil == False:
+            fUse.text = 'FALSE'
+        else :
+            fUse.text = 'TRUE'
+        color = ET.SubElement(fermentable, 'COLOR')
+        color.text = str(self.color/1.97)

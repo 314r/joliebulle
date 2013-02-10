@@ -126,26 +126,7 @@ class Export (QtCore.QObject):
 
         fermentables = ET.SubElement(recipeTag, 'FERMENTABLES')
         for f in recipe.listeFermentables:
-            fermentable = ET.SubElement(fermentables, 'FERMENTABLE')
-            fNom = ET.SubElement(fermentable,'NAME')
-            fNom.text = f.name
-            fVersion = ET.SubElement(fermentable, 'VERSION')
-            fVersion.text = '1'            
-            fAmount = ET.SubElement(fermentable, 'AMOUNT')
-            fAmount.text = str(f.amount/1000)
-            fType = ET.SubElement(fermentable, 'TYPE')
-            fType.text = f.type
-            fYield = ET.SubElement(fermentable,'YIELD')
-            fYield.text = str(f.fyield)
-            fMashed = ET.SubElement(fermentable,'RECOMMEND_MASH')
-            fMashed.text = f.recommendMash
-            fUse = ET.SubElement(fermentable,'ADD_AFTER_BOIL')
-            if f.useAfterBoil == False:
-                fUse.text = 'FALSE'
-            else :
-                fUse.text = 'TRUE'
-            color = ET.SubElement(fermentable, 'COLOR')
-            color.text = str(f.color/1.97)
+            f.toXml(fermentables)
             
         miscs = ET.SubElement(recipeTag, 'MISCS')
         for m in recipe.listeMiscs:
