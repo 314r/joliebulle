@@ -68,11 +68,13 @@ class ImportBase(object,metaclass=Singleton) :
         #Ingredient fermentescibles
         for element in fermentables:
             self.listeFermentables.append( Fermentable.parse(element) )
+        self.listeFermentables = sorted(self.listeFermentables, key=attrgetter('name'))
         logger.debug( "%s fermentables in database, using %s bytes in memory", len(self.listeFermentables), sys.getsizeof(self.listeFermentables) )
 
         #Houblons
         for element in hops:
             self.listeHops.append( Hop.parse(element) )
+        self.listeHops = sorted(self.listeHops, key=attrgetter('name'))
         logger.debug( "%s hops in database, using %s bytes in memory", len(self.listeHops), sys.getsizeof(self.listeHops) )
 
         #Levures
@@ -91,10 +93,9 @@ class ImportBase(object,metaclass=Singleton) :
     def addFermentable(f):
         ImportBase().listeFermentables.append(f)
         ImportBase().listeFermentables = sorted(ImportBase().listeFermentables, key=attrgetter('name'))
-        i = ImportBase().listeFermentables.index(f)
 
         root = ImportBase().arbre.getroot()
-        root.insert(i, f.toXml())
+        root.append(f.toXml())
         databaseXML = open(database_file, 'wb')
         ImportBase().arbre._setroot(root)
         ImportBase().arbre.write(databaseXML, encoding="utf-8")
@@ -106,10 +107,44 @@ class ImportBase(object,metaclass=Singleton) :
         ImportBase().listeFermentables.remove(f)
         root = ImportBase().arbre.getroot()
         iterator = root.iter("FERMENTABLE")
-        item = list(iterator)[i]
-        root.remove(item)
+        item = None
+        for elem in iterator :
+            tempF = Fermentable.parse(elem)
+            if f.name == tempF.name :
+                item = elem
+        if item is not None:
+            root.remove(item)
+            databaseXML = open(database_file, 'wb')
+            ImportBase().arbre._setroot(root)
+            ImportBase().arbre.write(databaseXML, encoding="utf-8")
+            databaseXML.close() 
+
+    @staticmethod
+    def addHop(h):
+        ImportBase().listeHops.append(h)
+        ImportBase().listeHops = sorted(ImportBase().listeHops, key=attrgetter('name'))
+
+        root = ImportBase().arbre.getroot()
+        root.append(h.toXml())
         databaseXML = open(database_file, 'wb')
         ImportBase().arbre._setroot(root)
         ImportBase().arbre.write(databaseXML, encoding="utf-8")
-        databaseXML.close() 
+        databaseXML.close()
 
+    @staticmethod
+    def delHop(h):
+        i = ImportBase().listeHops.index(h)
+        ImportBase().listeHops.remove(h)
+        root = ImportBase().arbre.getroot()
+        iterator = root.iter("HOP")
+        item = None
+        for elem in iterator :
+            tempHop = Hop.parse(elem)
+            if h.name == tempHop.name :
+                item = elem
+        if item is not None:
+            root.remove(item)
+            databaseXML = open(database_file, 'wb')
+            ImportBase().arbre._setroot(root)
+            ImportBase().arbre.write(databaseXML, encoding="utf-8")
+            databaseXML.close() 

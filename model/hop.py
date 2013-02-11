@@ -21,6 +21,7 @@
 #Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 import logging
 import model.constants
+import xml.etree.ElementTree as ET
 
 logger = logging.getLogger(__name__)
 
@@ -84,3 +85,38 @@ class Hop:
         copy.alpha = self.alpha
         copy.use = self.use
         return copy
+
+    def toXml(self):
+        hop = ET.Element('HOP')
+        hNom = ET.SubElement(hop, 'NAME')
+        hVersion = ET.SubElement(hop, 'VERSION')
+        hVersion.text = '1'
+        hNom.text = self.name
+        hAmount = ET.SubElement(hop, 'AMOUNT')
+        hAmount.text = str(self.amount/1000)
+        hForm = ET.SubElement(hop, 'FORM')
+        if self.form == model.constants.HOP_FORM_LEAF:
+            hForm.text = 'Leaf'
+        elif self.form == model.constants.HOP_FORM_PELLET:
+            hForm.text = 'Pellet'
+        elif self.form == model.constants.HOP_FORM_PLUG:
+            hForm.text = 'Plug'   
+            
+        hTime = ET.SubElement(hop, 'TIME')
+        hTime.text = str(self.time)
+        hAlpha = ET.SubElement(hop, 'ALPHA')
+        hAlpha.text = str(self.alpha)
+        hUse = ET.SubElement(hop, 'USE')
+        if self.use == model.constants.HOP_USE_BOIL :
+            hUse.text = 'Boil'
+        if self.use == model.constants.HOP_USE_DRY_HOP :
+            hUse.text = 'Dry Hop'  
+        if self.use == model.constants.HOP_USE_MASH :
+            hUse.text = 'Mash'
+        if self.use == model.constants.HOP_USE_FIRST_WORT :
+            hUse.text = 'First Wort' 
+        if self.use == model.constants.HOP_USE_AROMA :
+            hUse.text = 'Aroma'  
+        else :
+            hUse.text = 'Boil'
+        return hop

@@ -91,38 +91,7 @@ class Export (QtCore.QObject):
         
         hops = ET.SubElement(recipeTag, 'HOPS')
         for h in recipe.listeHops:
-            hop = ET.SubElement(hops, 'HOP')
-            hNom = ET.SubElement(hop, 'NAME')
-            hVersion = ET.SubElement(hop, 'VERSION')
-            hVersion.text = '1'
-            hNom.text = h.name
-            hAmount = ET.SubElement(hop, 'AMOUNT')
-            hAmount.text = str(h.amount/1000)
-            hForm = ET.SubElement(hop, 'FORM')
-            if h.form == model.constants.HOP_FORM_LEAF:
-                hForm.text = 'Leaf'
-            elif h.form == model.constants.HOP_FORM_PELLET:
-                hForm.text = 'Pellet'
-            elif h.form == model.constants.HOP_FORM_PLUG:
-                hForm.text = 'Plug'   
-                
-            hTime = ET.SubElement(hop, 'TIME')
-            hTime.text = str(h.time)
-            hAlpha = ET.SubElement(hop, 'ALPHA')
-            hAlpha.text = str(h.alpha)
-            hUse = ET.SubElement(hop, 'USE')
-            if h.use == model.constants.HOP_USE_BOIL :
-                hUse.text = 'Boil'
-            if h.use == model.constants.HOP_USE_DRY_HOP :
-                hUse.text = 'Dry Hop'  
-            if h.use == model.constants.HOP_USE_MASH :
-                hUse.text = 'Mash'
-            if h.use == model.constants.HOP_USE_FIRST_WORT :
-                hUse.text = 'First Wort' 
-            if h.use == model.constants.HOP_USE_AROMA :
-                hUse.text = 'Aroma'  
-            else :
-                hUse.text = 'Boil'
+            hops.append(h.toXml())
 
         fermentables = ET.SubElement(recipeTag, 'FERMENTABLES')
         for f in recipe.listeFermentables:

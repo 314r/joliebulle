@@ -34,6 +34,7 @@ import view.base
 from editorH_ui import *
 import xml.etree.ElementTree as ET
 from xml.dom import minidom
+import model.constants
 
 
 class DialogH(QtGui.QDialog):
@@ -45,13 +46,12 @@ class DialogH(QtGui.QDialog):
         self.base = ImportBase()
         #self.base.importBeerXML()
         
-        #self.ui.listWidgetHoublons.addItems(self.base.liste_houblons)
         self.ui.listViewHoublons.setModel( view.base.getHopsQtModel() )
         self.ui.comboBoxForme.addItem(self.trUtf8('Feuille'))
         self.ui.comboBoxForme.addItem(self.trUtf8('Pellet'))
         self.ui.comboBoxForme.addItem(self.trUtf8('Cône'))
 
-        self.connect(self.ui.listViewHoublons, QtCore.SIGNAL("itemSelectionChanged ()"), self.voir)  
+        self.connect(self.ui.listViewHoublons.selectionModel(), QtCore.SIGNAL("currentChanged(const QModelIndex &, const QModelIndex &)"), self.voir)
         self.connect(self.ui.pushButtonNouveau, QtCore.SIGNAL("clicked()"), self.nouveau)
         self.connect(self.ui.pushButtonEnlever, QtCore.SIGNAL("clicked()"), self.enlever)
         self.connect(self.ui.pushButtonAjouter, QtCore.SIGNAL("clicked()"), self.ajouter)
@@ -63,68 +63,39 @@ class DialogH(QtGui.QDialog):
         self.ui.pushButtonAjouter.setEnabled(False)
         
         
-    def voir(self) :
-        i = self.ui.listViewHoublons.currentRow()
+    def voir(self, current, previous) :
         self.ui.lineEditNom.setEnabled(True)
         self.ui.spinBoxAlpha.setEnabled(True)
         self.ui.comboBoxForme.setEnabled(True)   
         self.ui.pushButtonAjouter.setEnabled(True)
           
-        self.ui.lineEditNom.setText(self.base.liste_houblons[i])
-        self.ui.spinBoxAlpha.setValue(self.base.liste_hAlpha[i])
+        h = current.data(view.constants.MODEL_DATA_ROLE)
+        self.ui.lineEditNom.setText(h.name)
+        self.ui.spinBoxAlpha.setValue(h.alpha)
         
-        if self.base.liste_hForm[i] == "Leaf" :
+        if model.constants.HOP_FORM_LEAF == h.form :
             self.ui.comboBoxForme.setCurrentIndex(0)
-        elif self.base.liste_hForm[i] == "Pellet" :
+        elif model.constants.HOP_FORM_PELLET == h.form :
             self.ui.comboBoxForme.setCurrentIndex(1)
-        elif self.base.liste_hForm[i] == "Plug" :
+        elif model.constants.HOP_FORM_PLUG == h.form  :
             self.ui.comboBoxForme.setCurrentIndex(2)
         else :
             self.ui.comboBoxForme.setCurrentIndex(0)
 
     def ajouter(self) :
-        self.base.importBeerXML()
-        nom = self.ui.lineEditNom.text()
-        self.base.liste_houblons.append(nom)
-        self.base.liste_houblons.sort()
-        i = self.base.liste_houblons.index(nom)
-        f = len(self.base.liste_ingr)
-        
-        self.base.liste_hAlpha.insert(i, self.ui.spinBoxAlpha.value())
+        h = Hop()
+        h.name = self.ui.lineEditNom.text()
+        h.alpha = self.ui.spinBoxAlpha.value()
         if self.ui.comboBoxForme.currentIndex() is 0 :
-            self.base.liste_hForm.insert(i, 'Leaf')
+            h.form = model.constants.HOP_FORM_LEAF
         elif self.ui.comboBoxForme.currentIndex() is 1 :
-            self.base.liste_hForm.insert(i, 'Pellet')  
+            h.form = model.constants.HOP_FORM_PELLET
         elif self.ui.comboBoxForme.currentIndex() is 2 :
-            self.base.liste_hForm.insert(i, 'Plug')   
+            h.form = model.constants.HOP_FORM_PLUG
         else :
-            self.base.liste_hForm.insert(i, 'Leaf')
-       
-        self.ui.listViewHoublons.clear()   
-        self.ui.listViewHoublons.addItems(self.base.liste_houblons)    
-        
-        databaseXML = codecs.open(database_file, encoding="utf-8")
-        database = ET.parse(databaseXML)
-        root= database.getroot()
-        databaseXML.close()  
-        
-        hop = ET.Element('HOP')
-        name = ET.SubElement(hop ,'NAME')
-        name.text = nom
-        alpha = ET.SubElement(hop, 'ALPHA')
-        alpha.text = str(self.base.liste_hAlpha[i])
-        form = ET.SubElement(hop, 'FORM')
-        form.text = self.base.liste_hForm[i]
-        
-        root.insert(i + f, hop)
-        #databaseXML = open(database_file, 'w')
-        #databaseXML.write(ET.tostring(root))
-        #databaseXML.close()
-        databaseXML = open(database_file, 'wb')
-        database._setroot(root)
-        database.write(databaseXML, encoding="utf-8")
-        databaseXML.close()
-        
+            h.form = model.constants.HOP_FORM_LEAF
+        ImportBase.addHop(h)
+        self.ui.listViewHoublons.setModel(view.base.getHopsQtModel() )
         
     def nouveau(self) :
         self.ui.lineEditNom.setEnabled(True)
@@ -137,30 +108,11 @@ class DialogH(QtGui.QDialog):
         self.ui.comboBoxForme.setCurrentIndex(2)
         
     def enlever(self) :
-        self.base.importBeerXML()
-        i = self.ui.listViewHoublons.currentRow()
-        f = len(self.base.liste_ingr)
-        
-        del self.base.liste_houblons[i]
-        del self.base.liste_hForm[i]
-        del self.base.liste_hAlpha[i]
-        self.ui.listViewHoublons.clear()
-        self.ui.listViewHoublons.addItems(self.base.liste_houblons)
-         
-        databaseXML = codecs.open(database_file, encoding="utf-8")
-        database = ET.parse(databaseXML)
-        root= database.getroot()
-        databaseXML.close()    
-        iterator = root.getiterator("HOP")
-        item = iterator[i] 
-        root.remove(item)
-        #databaseXML = open(database_file, 'w')
-        #databaseXML.write(ET.tostring(root))
-        #databaseXML.close()            
-        databaseXML = open(database_file, 'wb')
-        database._setroot(root)
-        database.write(databaseXML, encoding="utf-8")
-        databaseXML.close()
+        selection = self.ui.listViewHoublons.selectionModel().selectedIndexes()
+        for index in selection :
+            h = index.data(view.constants.MODEL_DATA_ROLE)
+            ImportBase().delHop(h)
+        self.ui.listViewHoublons.setModel(view.base.getHopsQtModel() )
         
     def rejected(self) :     
         self.baseChanged.emit()        

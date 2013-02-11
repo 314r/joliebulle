@@ -11,10 +11,25 @@ def getFermentablesQtModel():
 	return model
 
 def getHopsQtModel():
-    return QtGui.QStringListModel( [h.name for h in ImportBase().listeHops] )
+	model = QtGui.QStandardItemModel()
+	for h in ImportBase().listeHops :
+		item = QtGui.QStandardItem(h.name)
+		item.setData(h, view.constants.MODEL_DATA_ROLE)
+		model.appendRow(item)
+	return model
 
 def getMiscsQtModel():
-    return QtGui.QStringListModel( [m.name for m in ImportBase().listeMiscs] )
+	model = QtGui.QStandardItemModel()
+	for m in ImportBase().listeMiscs:
+		item = QtGui.QStandardItem(m.name)
+		item.setData(m, view.constants.MODEL_DATA_ROLE)
+		model.appendRow(item)
+	return model
 
 def getYeastsQtModel():
-    return QtGui.QStringListModel( [ YeastView(y).yeastDetailDisplay() for y in ImportBase().listeYeasts] )
+	model = QtGui.QStandardItemModel()
+	for y in ImportBase().listeYeasts:
+		item = QtGui.QStandardItem(YeastView(y).yeastDetailDisplay())
+		item.setData(y, view.constants.MODEL_DATA_ROLE)
+		model.appendRow(item)
+	return model
