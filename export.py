@@ -126,7 +126,7 @@ class Export (QtCore.QObject):
 
         fermentables = ET.SubElement(recipeTag, 'FERMENTABLES')
         for f in recipe.listeFermentables:
-            f.toXml(fermentables)
+            fermentables.append(f.toXml())
             
         miscs = ET.SubElement(recipeTag, 'MISCS')
         for m in recipe.listeMiscs:

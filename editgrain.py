@@ -35,7 +35,6 @@ import model.constants
 from editorG_ui import *
 import xml.etree.ElementTree as ET
 from xml.dom import minidom
-from operator import attrgetter
 
 logger = logging.getLogger(__name__)
 
@@ -143,47 +142,15 @@ class Dialog(QtGui.QDialog):
             f.type = model.constants.FERMENTABLE_TYPE_ADJUNCT
             
         if self.ui.comboBoxReco.currentIndex() is 0 :
-            f.useAfterBoil = True
-        else :
             f.useAfterBoil = False
+        else :
+            f.useAfterBoil = True
         
-        ImportBase().listeFermentables.append(f)
-        ImportBase().listeFermentables = sorted(ImportBase().listeFermentables, key=attrgetter('name'))
-        
-        self.ui.listViewGrains.clear()   
-        self.ui.listViewGrains.addItems(self.base.liste_ingr)
-        
-        
-        databaseXML = codecs.open(database_file,encoding="utf-8" )
-        database = ET.parse(databaseXML)
-        root= database.getroot()
-        databaseXML.close()
-
-        fermentable = ET.Element('FERMENTABLE')
-        name = ET.SubElement(fermentable, 'NAME')
-        name.text = nom
-        ftype = ET.SubElement(fermentable, 'TYPE')
-        ftype.text = self.base.liste_fType[i]
-        fyield = ET.SubElement(fermentable, 'YIELD')
-        fyield.text = str(self.base.liste_fYield[i])
-        color = ET.SubElement(fermentable, 'COLOR')
-        color.text = str(self.base.liste_color[i] / 1.97)
-        reco = ET.SubElement(fermentable, 'RECOMMEND_MASH')
-        reco.text = self.base.liste_fMashed[i]
-        
-        root.insert(i, fermentable)
-        #databaseXML = open(database_file, 'w')
-        #databaseXML.write(ET.tostring(root))
-        #databaseXML.close()
-        databaseXML = open(database_file, 'wb')
-        database._setroot(root)
-        database.write(databaseXML, encoding="utf-8")
-        databaseXML.close()
-        
-        
+        ImportBase.addFermentable(f)
+        #self.ui.listViewGrains.clear()   
+        self.ui.listViewGrains.setModel(view.base.getFermentablesQtModel() )
         
 
-        
     def nouveau (self) :
         logger.debug("nouveau")
         self.ui.lineEditNom.setEnabled(True)

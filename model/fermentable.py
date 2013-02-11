@@ -93,8 +93,8 @@ class Fermentable:
         copy.useAfterBoil = self.useAfterBoil
         return copy
 
-    def toXml(self, parent):
-        fermentable = ET.SubElement(parent, 'FERMENTABLE')
+    def toXml(self):
+        fermentable = ET.Element('FERMENTABLE')
         fNom = ET.SubElement(fermentable,'NAME')
         fNom.text = self.name
         fVersion = ET.SubElement(fermentable, 'VERSION')
@@ -114,3 +114,4 @@ class Fermentable:
             fUse.text = 'TRUE'
         color = ET.SubElement(fermentable, 'COLOR')
         color.text = str(self.color/1.97)
+        return fermentable

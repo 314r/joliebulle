@@ -33,6 +33,7 @@ from model.fermentable import *
 from model.hop import *
 from model.yeast import *
 from model.misc import *
+from operator import attrgetter
 
 logger = logging.getLogger(__name__)
 
@@ -50,13 +51,13 @@ class ImportBase(object,metaclass=Singleton) :
     def __init__(self):
         logger.debug("Import %s", database_file)
         fichierBeerXML = database_file
-        arbre = ET.parse(fichierBeerXML)
+        self.arbre = ET.parse(fichierBeerXML)
 
-        presentation=arbre.find('.//RECIPE')
-        fermentables=arbre.findall('.//FERMENTABLE')
-        hops = arbre.findall('.//HOP')
-        levures = arbre.findall('.//YEAST')
-        misc = arbre.findall('.//MISC')
+        presentation=self.arbre.find('.//RECIPE')
+        fermentables=self.arbre.findall('.//FERMENTABLE')
+        hops = self.arbre.findall('.//HOP')
+        levures = self.arbre.findall('.//YEAST')
+        misc = self.arbre.findall('.//MISC')
  
         
         self.listeFermentables = list()
@@ -85,3 +86,16 @@ class ImportBase(object,metaclass=Singleton) :
         logger.debug( "%s miscs in database, using %s bytes in memory", len(self.listeMiscs), sys.getsizeof(self.listeMiscs) )
 
         logger.debug("Import %s terminé", database_file)
+
+    @staticmethod
+    def addFermentable(f):
+        ImportBase().listeFermentables.append(f)
+        ImportBase().listeFermentables = sorted(ImportBase().listeFermentables, key=attrgetter('name'))
+        i = ImportBase().listeFermentables.index(f)
+
+        root = ImportBase().arbre.getroot()
+        root.insert(i, f.toXml())
+        databaseXML = open(database_file, 'wb')
+        ImportBase().arbre._setroot(root)
+        ImportBase().arbre.write(databaseXML, encoding="utf-8")
+        databaseXML.close()
