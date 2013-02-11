@@ -33,8 +33,6 @@ import view.base
 import model.constants
 
 from editorG_ui import *
-import xml.etree.ElementTree as ET
-from xml.dom import minidom
 
 logger = logging.getLogger(__name__)
 
@@ -145,12 +143,9 @@ class Dialog(QtGui.QDialog):
             f.useAfterBoil = False
         else :
             f.useAfterBoil = True
-        
         ImportBase.addFermentable(f)
-        #self.ui.listViewGrains.clear()   
         self.ui.listViewGrains.setModel(view.base.getFermentablesQtModel() )
         
-
     def nouveau (self) :
         logger.debug("nouveau")
         self.ui.lineEditNom.setEnabled(True)
@@ -168,40 +163,15 @@ class Dialog(QtGui.QDialog):
         self.ui.spinBoxRendmt.setValue(0)
         self.ui.comboBoxReco.setCurrentIndex(0)
         self.ui.comboBoxType.setCurrentIndex(0)
-        
-        
+                
     def enlever (self) :
-        logger.debug("enlever")
-        self.base.importBeerXML()
-        i = self.ui.listViewGrains.currentRow()
-        del self.base.liste_ingr[i]
-        del self.base.liste_fYield[i]
-        del self.base.liste_color[i]
-        del self.base.liste_fType[i]
-        del self.base.liste_fMashed[i]
-        self.ui.listViewGrains.clear()   
-        self.ui.listViewGrains.addItems(self.base.liste_ingr)
-        
-        databaseXML = codecs.open(database_file, encoding='utf-8')
-        database = ET.parse(databaseXML)
-        root= database.getroot()
-        databaseXML.close()
-        iterator = root.getiterator("FERMENTABLE")
-        item = iterator[i]
-        root.remove(item)
-        #databaseXML = open(database_file, 'w')
-        #databaseXML.write(ET.tostring(root))
-        #databaseXML.close()     
-        databaseXML = open(database_file, 'wb')
-        database._setroot(root)
-        database.write(databaseXML, encoding="utf-8")
-        databaseXML.close() 
+        selection = self.ui.listViewGrains.selectionModel().selectedIndexes()
+        for index in selection :
+            f = index.data(view.constants.MODEL_DATA_ROLE)
+            ImportBase().delFermentable(f)
+        self.ui.listViewGrains.setModel(view.base.getFermentablesQtModel() )
+        return
         
     def rejected(self) :     
         #self.emit( QtCore.SIGNAL( "baseChanged"))
         self.baseChanged.emit()
-        
-        
-
-        
-     

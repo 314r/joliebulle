@@ -99,3 +99,17 @@ class ImportBase(object,metaclass=Singleton) :
         ImportBase().arbre._setroot(root)
         ImportBase().arbre.write(databaseXML, encoding="utf-8")
         databaseXML.close()
+
+    @staticmethod
+    def delFermentable(f):
+        i = ImportBase().listeFermentables.index(f)
+        ImportBase().listeFermentables.remove(f)
+        root = ImportBase().arbre.getroot()
+        iterator = root.iter("FERMENTABLE")
+        item = list(iterator)[i]
+        root.remove(item)
+        databaseXML = open(database_file, 'wb')
+        ImportBase().arbre._setroot(root)
+        ImportBase().arbre.write(databaseXML, encoding="utf-8")
+        databaseXML.close() 
+
