@@ -99,30 +99,7 @@ class Export (QtCore.QObject):
             
         miscs = ET.SubElement(recipeTag, 'MISCS')
         for m in recipe.listeMiscs:
-            misc = ET.SubElement(miscs, 'MISC')
-            dNom = ET.SubElement(misc, 'NAME')
-            dNom.text = m.name
-            dVersion = ET.SubElement(misc, 'VERSION')
-            dVersion.text = '1'
-            dAmount = ET.SubElement(misc, 'AMOUNT')
-            dAmount.text = str(m.amount/1000)
-            dType = ET.SubElement(misc, 'TYPE')
-            dType.text = m.type
-            dTime = ET.SubElement(misc, 'TIME')
-            dTime.text = str(m.time)
-            dUse = ET.SubElement(misc, 'USE')
-            if m.use == model.constants.MISC_USE_BOIL :
-                dUse.text = 'Boil'
-            if m.use == model.constants.MISC_USE_MASH :
-                dUse.text = 'Mash'
-            if m.use == model.constants.MISC_USE_PRIMARY :
-                dUse.text = 'Primary'        
-            if m.use == model.constants.MISC_USE_SECONDARY :
-                dUse.text = 'Secondary'
-            if m.use == model.constants.MISC_USE_BOTTLING :
-                dUse.text = 'Bottling'       
-            else :
-                dUse.text = 'Boil'
+            miscs.append(m.toXml())
         
         yeasts=ET.SubElement(recipeTag, 'YEASTS')  
         for y in recipe.listeYeasts :

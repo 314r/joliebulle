@@ -85,6 +85,7 @@ class ImportBase(object,metaclass=Singleton) :
         #Ingredients divers
         for element in misc:
             self.listeMiscs.append( Misc.parse(element) )
+        self.listeMiscs = sorted(self.listeMiscs, key=attrgetter('name'))
         logger.debug( "%s miscs in database, using %s bytes in memory", len(self.listeMiscs), sys.getsizeof(self.listeMiscs) )
 
         logger.debug("Import %s terminé", database_file)
@@ -141,6 +142,36 @@ class ImportBase(object,metaclass=Singleton) :
         for elem in iterator :
             tempHop = Hop.parse(elem)
             if h.name == tempHop.name :
+                item = elem
+        if item is not None:
+            root.remove(item)
+            databaseXML = open(database_file, 'wb')
+            ImportBase().arbre._setroot(root)
+            ImportBase().arbre.write(databaseXML, encoding="utf-8")
+            databaseXML.close() 
+
+    @staticmethod
+    def addMisc(m):
+        ImportBase().listeMiscs.append(m)
+        ImportBase().listeMiscs = sorted(ImportBase().listeMiscs, key=attrgetter('name'))
+
+        root = ImportBase().arbre.getroot()
+        root.append(m.toXml())
+        databaseXML = open(database_file, 'wb')
+        ImportBase().arbre._setroot(root)
+        ImportBase().arbre.write(databaseXML, encoding="utf-8")
+        databaseXML.close()
+
+    @staticmethod
+    def delMisc(m):
+        i = ImportBase().listeMiscs.index(m)
+        ImportBase().listeMiscs.remove(m)
+        root = ImportBase().arbre.getroot()
+        iterator = root.iter("MISC")
+        item = None
+        for elem in iterator :
+            tempMisc = Misc.parse(elem)
+            if m.name == tempMisc.name :
                 item = elem
         if item is not None:
             root.remove(item)

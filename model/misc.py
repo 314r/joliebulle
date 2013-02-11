@@ -80,3 +80,30 @@ class Misc:
         copy.time = self.time
         copy.use = self.use
         return copy
+
+    def toXml(self):
+        misc = ET.Element('MISC')
+        dNom = ET.SubElement(misc, 'NAME')
+        dNom.text = self.name
+        dVersion = ET.SubElement(misc, 'VERSION')
+        dVersion.text = '1'
+        dAmount = ET.SubElement(misc, 'AMOUNT')
+        dAmount.text = str(self.amount/1000)
+        dType = ET.SubElement(misc, 'TYPE')
+        dType.text = self.type
+        dTime = ET.SubElement(misc, 'TIME')
+        dTime.text = str(self.time)
+        dUse = ET.SubElement(misc, 'USE')
+        if self.use == model.constants.MISC_USE_BOIL :
+            dUse.text = 'Boil'
+        if self.use == model.constants.MISC_USE_MASH :
+            dUse.text = 'Mash'
+        if self.use == model.constants.MISC_USE_PRIMARY :
+            dUse.text = 'Primary'        
+        if self.use == model.constants.MISC_USE_SECONDARY :
+            dUse.text = 'Secondary'
+        if self.use == model.constants.MISC_USE_BOTTLING :
+            dUse.text = 'Bottling'       
+        else :
+            dUse.text = 'Boil'
+        return misc
