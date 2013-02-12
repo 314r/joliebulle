@@ -122,31 +122,6 @@ class DialogD(QtGui.QDialog):
             m = index.data(view.constants.MODEL_DATA_ROLE)
             ImportBase().delMisc(m)
         self.ui.listViewDivers.setModel(view.base.getMiscsQtModel() )
-        return
-
-        self.base.importBeerXML()
-        i = self.ui.listViewDivers.currentRow()
-        
-        del self.base.liste_divers[i]
-        del self.base.liste_dType[i]
-        
-        self.ui.listViewDivers.clear()
-        self.ui.listViewDivers.addItems(self.base.liste_divers)
-        
-        databaseXML = codecs.open(database_file, encoding="utf-8")
-        database = ET.parse(databaseXML)
-        root= database.getroot()
-        databaseXML.close()    
-        iterator = root.getiterator("MISC")
-        item = iterator[i] 
-        root.remove(item)
-        #databaseXML = open('database.xml', 'w')
-        #databaseXML.write(ET.tostring(root))
-        #databaseXML.close()   
-        databaseXML = open(database_file, 'wb')
-        database._setroot(root)
-        database.write(databaseXML, encoding="utf-8")
-        databaseXML.close()
         
     def rejected(self) :     
         self.baseChanged.emit()    
