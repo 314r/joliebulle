@@ -46,14 +46,13 @@ class DialogL(QtGui.QDialog):
         self.base = ImportBase()
         #self.base.importBeerXML() 
         
-#        self.ui.listWidgetLevures.addItems(self.base.liste_levuresDetail)
         self.ui.listViewLevures.setModel( view.base.getYeastsQtModel() )
         self.ui.comboBoxForme.addItem(self.trUtf8('Liquide'))
         self.ui.comboBoxForme.addItem(self.trUtf8('Poudre'))
         self.ui.comboBoxForme.addItem(self.trUtf8('Gélose'))
         self.ui.comboBoxForme.addItem(self.trUtf8('Culture'))
         
-        self.connect(self.ui.listViewLevures, QtCore.SIGNAL("itemSelectionChanged ()"), self.voir)  
+        self.connect(self.ui.listViewLevures.selectionModel(), QtCore.SIGNAL("currentChanged(const QModelIndex &, const QModelIndex &)"), self.voir)  
         self.connect(self.ui.pushButtonNouveau, QtCore.SIGNAL("clicked()"), self.nouveau)
         self.connect(self.ui.pushButtonEnlever, QtCore.SIGNAL("clicked()"), self.enlever)
         self.connect(self.ui.pushButtonAjouter, QtCore.SIGNAL("clicked()"), self.ajouter)
@@ -67,9 +66,7 @@ class DialogL(QtGui.QDialog):
         self.ui.pushButtonAjouter.setEnabled(False)
         
         
-    def voir(self) :
-        i = self.ui.listViewLevures.currentRow()
-        
+    def voir(self, current, previous) :
         self.ui.lineEditNom.setEnabled(True)
         self.ui.comboBoxForme.setEnabled(True)
         self.ui.lineEditLabo.setEnabled(True)
@@ -77,77 +74,44 @@ class DialogL(QtGui.QDialog):
         self.ui.spinBoxAtten.setEnabled(True)
         self.ui.pushButtonAjouter.setEnabled(True)
         
-        self.ui.lineEditNom.setText(self.base.liste_levures[i])
-        self.ui.lineEditLabo.setText(self.base.liste_lLabo[i])
-        self.ui.lineEditID.setText(self.base.liste_lProdid[i])
-        self.ui.spinBoxAtten.setValue(self.base.liste_levureAtten[i])
+        y = current.data(view.constants.MODEL_DATA_ROLE)
+
+        self.ui.lineEditNom.setText(y.name)
+        self.ui.lineEditLabo.setText(y.labo)
+        self.ui.lineEditID.setText(y.productId)
+        self.ui.spinBoxAtten.setValue(y.attenuation)
         
-        if self.base.liste_lForm[i] == 'Liquid' :
+        if y.form == 'Liquid' :
             self.ui.comboBoxForme.setCurrentIndex(0)
-        elif self.base.liste_lForm[i] == 'Dry' :
+        elif y.form == 'Dry' :
             self.ui.comboBoxForme.setCurrentIndex(1)
-        elif self.base.liste_lForm[i] == 'Slant' :
+        elif y.form == 'Slant' :
             self.ui.comboBoxForme.setCurrentIndex(2)
-        elif self.base.liste_lForm[i] == 'Culture' :
+        elif y.form == 'Culture' :
             self.ui.comboBoxForme.setCurrentIndex(3)
         else :
             self.ui.comboBoxForme.setCurrentIndex(0)
             
     def ajouter(self) :
-        self.base.importBeerXML()
-        nom = self.ui.lineEditNom.text()
-        self.base.liste_levures.append(nom)
-        self.base.liste_levures.sort()
-        i = self.base.liste_levures.index(nom)
-        f = len(self.base.liste_ingr) 
-        h = len(self.base.liste_houblons)
-        m = len(self.base.liste_divers)
-        
-        self.base.liste_lLabo.insert(i, self.ui.lineEditLabo.text())
-        self.base.liste_lProdid.insert(i, self.ui.lineEditID.text())
-        self.base.liste_levureAtten.insert(i, self.ui.spinBoxAtten.value())
-                
+        y = Yeast()
+        y.name = self.ui.lineEditNom.text()
+        y.labo = self.ui.lineEditLabo.text()
+        y.productId = self.ui.lineEditID.text()
+        y.attenuation = self.ui.spinBoxAtten.value()
+
         if self.ui.comboBoxForme.currentIndex() is 0 :
-            self.base.liste_lForm.insert(i, 'Liquid')
+            y.form =  'Liquid'
         elif self.ui.comboBoxForme.currentIndex() is 1 :
-            self.base.liste_lForm.insert(i, 'Dry')
+            y.form = 'Dry'
         elif self.ui.comboBoxForme.currentIndex() is 2 :
-            self.base.liste_lForm.insert(i, 'Slant')
+            y.form = 'Slant'
         elif self.ui.comboBoxForme.currentIndex() is 3 :
-            self.base.liste_lForm.insert(i, 'Culture')
+            y.form = 'Culture'
         else :
-            self.base.liste_lForm.insert(i, 'Dry')
-        
-        self.base.liste_levuresDetail.insert(i, nom + ' ' + self.base.liste_lLabo[i] + ' ' + self.base.liste_lProdid[i]) 
-            
-        self.ui.listViewLevures.clear()
-        self.ui.listViewLevures.addItems(self.base.liste_levuresDetail)
-        
-        databaseXML = codecs.open(database_file, encoding="utf-8")
-        database = ET.parse(databaseXML)
-        root= database.getroot()
-        databaseXML.close()  
-        
-        levure = ET.Element('YEAST')
-        name = ET.SubElement(levure ,'NAME')
-        name.text = nom
-        forme = ET.SubElement(levure ,'FORM')
-        forme.text = self.base.liste_lForm[i]
-        labo = ET.SubElement(levure ,'LABORATORY')
-        labo.text = self.base.liste_lLabo[i]
-        prodid = ET.SubElement(levure ,'PRODUCT_ID')
-        prodid.text = self.base.liste_lProdid[i]
-        atten = ET.SubElement(levure ,'ATTENUATION')
-        atten.text = str(self.base.liste_levureAtten[i])
-        
-        root.insert(i + f + h + m, levure)
-        #databaseXML = open(database_file, 'w')
-        #databaseXML.write(ET.tostring(root))
-        #databaseXML.close()
-        databaseXML = open(database_file, 'wb')
-        database._setroot(root)
-        database.write(databaseXML, encoding="utf-8")
-        databaseXML.close()
+            y.form = 'Dry'
+
+        ImportBase.addYeast(y)
+        self.ui.listViewLevures.setModel( view.base.getYeastsQtModel() )
         
     def nouveau(self) :
         self.ui.lineEditNom.setEnabled(True)
@@ -164,31 +128,11 @@ class DialogL(QtGui.QDialog):
         self.ui.spinBoxAtten.setValue(0)
         
     def enlever(self) :
-        self.base.importBeerXML()
-        i = self.ui.listViewLevures.currentRow()
-        del self.base.liste_levures[i]
-        del self.base.liste_lLabo[i]
-        del self.base.liste_lProdid[i]
-        del self.base.liste_levureAtten[i]
-        del self.base.liste_lForm[i]
-        del self.base.liste_levuresDetail[i]
-        self.ui.listViewLevures.clear()
-        self.ui.listViewLevures.addItems(self.base.liste_levuresDetail)
-        
-        databaseXML = codecs.open(database_file, encoding="utf-8")
-        database = ET.parse(databaseXML)
-        root= database.getroot()
-        databaseXML.close()    
-        iterator = root.getiterator("YEAST")
-        item = iterator[i] 
-        root.remove(item)
-        #databaseXML = open(database_file, 'w')
-        #databaseXML.write(ET.tostring(root))
-        #databaseXML.close()  
-        databaseXML = open(database_file, 'wb')
-        database._setroot(root)
-        database.write(databaseXML, encoding="utf-8")
-        databaseXML.close()
+        selection = self.ui.listViewLevures.selectionModel().selectedIndexes()
+        for index in selection :
+            y = index.data(view.constants.MODEL_DATA_ROLE)
+            ImportBase().delYeast(y)
+        self.ui.listViewLevures.setModel( view.base.getYeastsQtModel() )
         
     def rejected(self) :     
         self.baseChanged.emit()

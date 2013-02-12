@@ -80,6 +80,7 @@ class ImportBase(object,metaclass=Singleton) :
         #Levures
         for element in levures:
             self.listeYeasts.append( Yeast.parse(element) )
+        self.listeYeasts = sorted(self.listeYeasts, key=attrgetter('name'))
         logger.debug( "%s yeasts in database, using %s bytes in memory", len(self.listeYeasts), sys.getsizeof(self.listeYeasts) )
 
         #Ingredients divers
@@ -172,6 +173,36 @@ class ImportBase(object,metaclass=Singleton) :
         for elem in iterator :
             tempMisc = Misc.parse(elem)
             if m.name == tempMisc.name :
+                item = elem
+        if item is not None:
+            root.remove(item)
+            databaseXML = open(database_file, 'wb')
+            ImportBase().arbre._setroot(root)
+            ImportBase().arbre.write(databaseXML, encoding="utf-8")
+            databaseXML.close() 
+
+    @staticmethod
+    def addYeast(y):
+        ImportBase().listeYeasts.append(y)
+        ImportBase().listeYeasts = sorted(ImportBase().listeYeasts, key=attrgetter('name'))
+
+        root = ImportBase().arbre.getroot()
+        root.append(y.toXml())
+        databaseXML = open(database_file, 'wb')
+        ImportBase().arbre._setroot(root)
+        ImportBase().arbre.write(databaseXML, encoding="utf-8")
+        databaseXML.close()
+
+    @staticmethod
+    def delYeast(y):
+        i = ImportBase().listeYeasts.index(y)
+        ImportBase().listeYeasts.remove(y)
+        root = ImportBase().arbre.getroot()
+        iterator = root.iter("YEAST")
+        item = None
+        for elem in iterator :
+            tempYeast = Yeast.parse(elem)
+            if y.name == tempYeast.name :
                 item = elem
         if item is not None:
             root.remove(item)

@@ -64,3 +64,21 @@ class Yeast:
         copy.productId = self.productId
         copy.attenuation = self.attenuation
         return copy
+
+    def toXml(self):
+        yeast = ET.Element('YEAST')
+        lNom = ET.SubElement(yeast, 'NAME')
+        lVersion = ET.SubElement(yeast, 'VERSION')
+        lVersion.text = '1'
+        lType = ET.SubElement(yeast ,'TYPE')
+        lType = 'Ale'
+        lNom.text = self.name
+        lForm = ET.SubElement(yeast, 'FORM')
+        lForm.text = self.form
+        lLabo = ET.SubElement(yeast, 'LABORATORY')
+        lLabo.text = self.labo
+        lProd = ET.SubElement(yeast, 'PRODUCT_ID')
+        lProd.text = self.productId
+        lAtten = ET.SubElement(yeast, 'ATTENUATION')
+        lAtten.text = str(self.attenuation)
+        return yeast
