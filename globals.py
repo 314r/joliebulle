@@ -23,7 +23,7 @@ settings = Settings()
 # à modifier à chaque release pour :
 #   - retirer le '-DEV' au moment de la livraison
 #   - incrémenter le numéro de version et remettre le '-DEV' au commencement de la nouvelle itération
-VERSION_JOLIBULLE = '2.8.0-DEV' 
+VERSION_JOLIBULLE = '2.9.0-DEV' 
 
 if platform == 'win32':
     home_dir = os.path.expanduser("~")
