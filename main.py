@@ -3,8 +3,8 @@
 
 
 
-#JolieBulle 2.7
-#Copyright (C) 2010-2012 Pierre Tavares
+#JolieBulle 2.8
+#Copyright (C) 2010-2013 Pierre Tavares
 
 #This program is free software; you can redistribute it and/or
 #modify it under the terms of the GNU General Public License
@@ -105,6 +105,10 @@ import itertools
 #         painter.restore()
 
 def initLogging():
+    home = QtCore.QDir(home_dir)
+    config = QtCore.QDir(config_dir)
+    if not config.exists() :
+        home.mkpath (config_dir)
     config = {
         'version': 1,              
         'root': {
@@ -1532,6 +1536,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
             self.comboBoxType.setCurrentIndex(1)
         else :
             self.comboBoxType.setCurrentIndex(0)
+
         self.lineEditBrewer.setText(self.recipe.brewer)
         self.displayProfile()
         self.colorPreview()
@@ -1589,7 +1594,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
     def about(self) : 
         QtGui.QMessageBox.about(self,
                 self.trUtf8("A propos"),
-                self.trUtf8("<h1>JolieBulle</h1> <b>version 2.7</b><br/>copyright (c) 2010-2012 Pierre Tavares<p> JolieBulle est un logiciel de lecture et de formulation de recettes de brassage.</p><p><a href =http://www.gnu.org/licenses/gpl-3.0.html>Licence : Version 3 de la Licence Générale Publique GNU</a></p><p>Certaines icônes proviennent du pack Faenza par Tiheum (Matthieu James), également distribué sous licence GPL.</p>"))
+                self.trUtf8("<h1>JolieBulle</h1> <b>version 2.8</b><br/>copyright (c) 2010-2013 Pierre Tavares.<br/>copyright (c) 2012-2013 Les auteurs de JolieBulle.<p> JolieBulle est un logiciel de lecture et de formulation de recettes de brassage.</p><p><a href =http://www.gnu.org/licenses/gpl-3.0.html>Licence : Version 3 de la Licence Générale Publique GNU</a></p><p>Certaines icônes proviennent du pack Faenza par Tiheum (Matthieu James), également distribué sous licence GPL.</p> <p>Auteurs : Pierre Tavares, Nicolas Jouanin, Thomas Gerbet</p>"))
         
             
     def rendemt_changed(self) :
@@ -1819,8 +1824,6 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         self.dlgMashDetail.setModal(True)
         self.dlgMashDetail.show()
         self.dlgMashDetail.setFields(self.currentMash)
-        print(self.currentMash)
-        print(self.comboBoxMashProfiles.currentIndex())
         self.dlgMashDetail.setAttribute( QtCore.Qt.WA_DeleteOnClose, True ) 
 
         
@@ -2067,8 +2070,9 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
             #on calcule les volumes
             self.brewCalc.calcMashVolume(self.recipe.compute_grainWeight())
             self.mashVolumeLastStep = self.brewCalc.grainVolume + sum(self.stepsListVol)
-            self.labelGrainVolume.setText("%.1f" %(self.brewCalc.grainVolume))       
-            self.labelTotalVolumeStrike.setText("%.1f" %(self.strikeVol + self.brewCalc.grainVolume)) 
+            self.labelGrainVolume.setText("%.1f" %(self.brewCalc.grainVolume))
+
+            self.labelTotalVolumeStrike.setText("%.1f" %(self.brewCalc.mashVolumeStrike)) 
             self.labelTotalVolumeLast.setText("idem")
             
             #on vérifie que le profil est bien compatible avec un BIAB :

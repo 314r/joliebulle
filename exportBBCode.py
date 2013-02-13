@@ -3,8 +3,8 @@
 
 
 
-#JolieBulle 2.7
-#Copyright (C) 2010-2012 Pierre Tavares
+#JolieBulle 2.8
+#Copyright (C) 2013 Thomas Gerbet
 
 #This program is free software; you can redistribute it and/or
 #modify it under the terms of the GNU General Public License
