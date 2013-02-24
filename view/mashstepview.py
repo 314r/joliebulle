@@ -16,3 +16,13 @@ class MashStepView(QtCore.QObject):
 		if self.model.type == model.constants.MASH_STEP_DECOCTION:
 			return self.trUtf8('''Décoction''')
 		return '?mashTypeDisplay?'
+
+	@staticmethod
+	def time_to_display(value):
+		'''Returns a displayable value for a time value'''
+		return "%s min" %(value)
+
+	@staticmethod
+	def temp_to_display(value):
+		'''Returns a displayable value for a time value'''
+		return "%s °C" %(value)

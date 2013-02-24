@@ -27,17 +27,13 @@ class ExportMash :
 #        print (listMash)
         
         self.database = ET.Element('DATABASE')
-        numMash = len(listMash)
-        listMash = sorted(listMash, key=itemgetter('name')) 
-        i = 0
-        while i < numMash :
-            i=i+1
+        listMash = sorted(listMash, key=attrgetter('name')) 
+        for m in listMash:
             mash = ET.SubElement(self.database, 'MASH')
-            dicMash = listMash[i-1]
             mashVersion = ET.SubElement(mash, 'VERSION')
             mashVersion.text = '1'
             mashName = ET.SubElement(mash, 'NAME')
-            mashName.text = dicMash['name']
+            mashName.text = m.name
             grainTemp = ET.SubElement(mash, 'GRAIN_TEMP')
 #            grainTemp.text = dicMash['grainTemp']
             grainTemp.text = '20'
@@ -45,33 +41,26 @@ class ExportMash :
 #            tunTemp.text = dicMash['tunTemp']
             tunTemp.text = '20'
             ph = ET.SubElement(mash, 'PH')
-            ph.text = str(dicMash['ph'])
+            ph.text = str(m.ph)
             spargeTemp = ET.SubElement(mash, 'SPARGE_TEMP')
-            spargeTemp.text =str(dicMash['spargeTemp'])
+            spargeTemp.text =str(m.spargeTemp)
             steps = ET.SubElement(mash, 'MASH_STEPS')
             
-            listSteps = dicMash['mashSteps']
-            numSteps = len(listSteps)
-            h = 0
-            while h < numSteps :
-                h = h+1
+            for s in m.listeSteps:
                 step = ET.SubElement(steps, 'MASH_STEP')
-                dicStep = listSteps[h-1] 
                 stepVersion = ET.SubElement(step, 'VERSION')
                 stepVersion.text = '1'
                 stepName = ET.SubElement(step, 'NAME')
-                stepName.text = dicStep['name']
+                stepName.text = s.name
                 stepType = ET.SubElement(step, 'TYPE')
-                stepType.text = dicStep['type']
+                stepType.text = s.type
                 stepTemp = ET.SubElement(step, 'STEP_TEMP')
-                stepTemp.text = str(dicStep['stepTemp'])
+                stepTemp.text = str(s.temp)
                 stepTime = ET.SubElement(step, 'STEP_TIME')
-                stepTime.text = str(dicStep['stepTime'])
+                stepTime.text = str(s.time)
                 stepVol = ET.SubElement(step, 'INFUSE_AMOUNT')
 #                stepVol.text = dicStep['stepVol']
                 stepVol.text = '0'
-          
-            
             
     def enregistrer (self, s) :    
         ET.ElementTree(self.database).write(s,encoding="utf-8")

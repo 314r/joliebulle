@@ -69,6 +69,7 @@ from view.fermentableview import *
 from view.recipeview import *
 from view.hopview import *
 from view.yeastview import *
+from view.mashstepview import *
 import view.base
 import itertools
 
@@ -473,7 +474,6 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         self.dlgStepBrewday = DialogStepAdjust(self)
 
         self.base = ImportBase()
-        self.mashProfilesBase = ImportMash()
         self.mashProfileExport = ExportMash()
         self.brewCalc = CalcBrewday()
         
@@ -1547,7 +1547,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
             if self.recipe.mash.name is not None :
                 # self.comboBoxMashProfiles.setCurrentIndex(len(self.listMash)-1)
                 self.comboBoxMashProfiles.addItem(self.recipe.mash.name + "*")
-                self.comboBoxMashProfiles.setCurrentIndex(len(self.mashProfilesBase.listeMashes))
+                self.comboBoxMashProfiles.setCurrentIndex(len(ImportMash().listeMashes))
             else :
                 self.comboBoxMashProfiles.setCurrentIndex(-1)
         except :
@@ -1719,7 +1719,6 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         self.spinBoxBoil.setValue(self.recipe.boil)
             
         self.currentMash = None
-        self.listStepsAll = list()
         self.dicMashDetail = {}
         self.mashName=None
         self.popMashCombo()
@@ -1749,9 +1748,8 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         self.switchToEditor()
         
     def popMashCombo (self):
-        self.listMash = self.mashProfilesBase.listeMashes
         self.comboBoxMashProfiles.clear() 
-        for mash in self.mashProfilesBase.listeMashes :
+        for mash in ImportMash().listeMashes :
            self.comboBoxMashProfiles.addItem(mash.name)
            
     def mashComboChanged (self) :
@@ -1760,7 +1758,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         self.enableBrewdayMode()
         try :
             i =self.comboBoxMashProfiles.currentIndex()
-            self.currentMash = self.mashProfilesBase.listeMashes[i]
+            self.currentMash = ImportMash().listeMashes[i]
         except :
             self.currentMash = self.currentRecipeMash
         self.tableWidgetStepsBrewday_currentRowChanged()
@@ -1770,10 +1768,8 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         self.switchToMash()
         self.listWidgetMashProfiles.clear() 
 #        print(self.mashProfilesBase.listMash)
-        self.numMash = self.mashProfilesBase.numMash
-        self.numSteps = self.mashProfilesBase.numSteps
-        self.listMash = self.mashProfilesBase.listMash
-        self.listStepsAll = list()
+        self.numMash = len(ImportMash().listeMashes)
+        #self.numSteps = self.mashProfilesBase.numSteps
         self.popMashList()
         self.pushButtonMashEdit.setEnabled(False)
         self.pushButtonRemoveProfile.setEnabled(False)
@@ -1782,28 +1778,23 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         
     def popMashList(self) :
         self.listWidgetMashProfiles.clear() 
-        for name in self.listMash :
-           self.listWidgetMashProfiles.addItem(name['name'])    
-        for steps in self.listMash :
-            dicStep = steps['mashSteps']
-            self.listStepsAll.append(dicStep)
-            
+        for mash in ImportMash().listeMashes :
+           self.listWidgetMashProfiles.addItem(mash.name)    
             
     def mashClicked(self) :
         self.listWidgetSteps.clear()         
         index = self.listWidgetMashProfiles.currentRow()
-        self.listSteps = self.listStepsAll[index]
-        self.dicMashDetail = self.listMash[index]
-        for stepName in self.listSteps :
-            self.listWidgetSteps.addItem(stepName['name'])
+        mash = ImportMash().listeMashes[index]
+        for step in mash.listeSteps :
+            self.listWidgetSteps.addItem(step.name)
             
         self.labelStepName.setTextFormat(QtCore.Qt.RichText)   
-        self.labelMashName.setText("<b>" + self.dicMashDetail['name'] + "</b>")
-        self.labelMashPh.setText("%.1f" %float(self.dicMashDetail['ph']))
+        self.labelMashName.setText("<b>" + mash.name + "</b>")
+        self.labelMashPh.setText("%.1f" %float(mash.ph))
 #        self.labelMashGrainTemp.setText("%.1f" %float(self.dicMashDetail['grainTemp']))
 #        self.labelMashTunTemp.setText("%.1f" %float(self.dicMashDetail['tunTemp']))
         try :
-            self.labelMashSpargeTemp.setText("%.1f" %float(self.dicMashDetail['spargeTemp']))
+            self.labelMashSpargeTemp.setText("%.1f" %float(mash.spargeTemp))
         except :
             pass
         try :
@@ -1814,12 +1805,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         self.pushButtonMashEdit.setEnabled(True)
         self.pushButtonRemoveProfile.setEnabled(True)
             
-                
     def mashDetails(self) :
-
-        # self.seeMash()
-        # i = self.comboBoxMashProfiles.currentIndex()
-        # self.listWidgetMashProfiles.setCurrentRow(i)
         self.dlgMashDetail = DialogMashDetail(self)
         self.dlgMashDetail.setModal(True)
         self.dlgMashDetail.show()
@@ -1828,29 +1814,17 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
 
         
     def stepDetails(self) :
+        index = self.listWidgetMashProfiles.currentRow()
+        selected_mash = ImportMash().listeMashes[index]
+
         i = self.listWidgetSteps.currentRow()
-        self.listStepName = list()
-        self.listStepType = list()
-        self.listStepTemp = list()
-        self.listStepTime = list()
-        self.listStepVol = list()  
-        for stepName in self.listSteps :
-            self.listStepName.append(stepName['name'])
-        for stepType in self.listSteps :
-            self.listStepType.append(stepType['type'])
-        for stepTime in self.listSteps :
-            self.listStepTime.append(float(stepTime['stepTime']))
-        for stepTemp in self.listSteps :
-            self.listStepTemp.append(float(stepTemp['stepTemp']))
-        for stepVol in self.listSteps :
-            self.listStepVol.append(float(stepVol['stepVol']))
-            
+        selected_step = selected_mash.listeSteps[i]
+
         self.labelStepName.setTextFormat(QtCore.Qt.RichText)
-        self.labelStepName.setText("<b>" + self.listStepName[i] +"</b>")            
-        self.labelStepType.setText(self.listStepType[i])
-        self.labelStepTemp.setText("%.1f" %(self.listStepTemp[i]))
-        self.labelStepTime.setText("%.0f" %(self.listStepTime[i]))  
-#        self.labelStepVol.setText("%.1f" %(self.listStepVol[i]))   
+        self.labelStepName.setText("<b>" + selected_step.name +"</b>")            
+        self.labelStepType.setText(selected_step.type)
+        self.labelStepTemp.setText(MashStepView.temp_to_display(selected_step.temp))
+        self.labelStepTime.setText(MashStepView.time_to_display(selected_step.time))  
         self.pushButtonStepRemove.setEnabled(True)
         self.pushButtonStepEdit.setEnabled(True)
             
@@ -1899,53 +1873,63 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         
         
     def mashEdit(self) :
-        i = self.listWidgetMashProfiles.currentRow()
+        index = self.listWidgetMashProfiles.currentRow()
+        selected_mash = ImportMash().listeMashes[index]
         self.dlgMash.show()
-        self.dlgMash.fields(self.dicMashDetail['name'],self.dicMashDetail['ph'],self.dicMashDetail['grainTemp'],self.dicMashDetail['tunTemp'],self.dicMashDetail['spargeTemp'])
+        self.dlgMash.fields(selected_mash)
         
-    def mashReload(self,name,ph,grainT,tunT,spargeT) :
+    def mashReload(self,mash) :
         #on remet le verrou à 0, il va falloir recalculer en repassant en brewday mode
         self.brewdayLock = 0
         
         f = self.listWidgetMashProfiles.currentRow()
-        self.dicMashDetail['name'] = name
-        self.dicMashDetail['ph'] = ph
-        self.dicMashDetail['grainTemp'] = 20
-        self.dicMashDetail['tunTemp'] = 20
-        self.dicMashDetail['spargeTemp'] = spargeT
-        del self.listMash[f]
-        self.listMash.insert(f, self.dicMashDetail)
+        selected_mash = ImportMash().listeMashes[f]
+        selected_mash.name = mash.name
+        selected_mash.ph = mash.ph
+        selected_mash.grainTemp = 20
+        selected_mash.tunTemp = 20
+        selected_mash.spargeTemp = mash.spargeTemp
         self.popMashList()
         self.listWidgetMashProfiles.setCurrentRow(f)
         
 #        print(self.dicMashDetail)
 
     def addMash(self) :
-        dicNewMash = {'name' : 'Nouveau profil', 'grainTemp' : '0', 'tunTemp' : '0', 'spargeTemp' : '78', 'ph' : '5.4', 'mashSteps' : [{'name' : 'Nouveau Palier', 'type' : 'Infusion', 'stepTime' : '0', 'stepTemp' : '0', 'stepVol' : '0'}]}
-        self.listMash.append(dicNewMash)
+        new_mash = Mash()
+        new_mash.name = 'Nouveau profil'
+        new_mash.grainTemp = '0'
+        new_mash.tunTemp = '0'
+        new_mash.spargeTemp = '78'
+        new_mash.ph = 5.4
+        new_step = MashStep()
+        new_step.name = 'Nouveau Palier'
+        new_step.type = 'Infusion'
+        new_step.time = '0'
+        new_step.temp = '0'
+        new_mash.listeSteps.append(new_step)
+        ImportMash().listeMashes.append(new_mash)
         self.seeMash()
-        self.listWidgetMashProfiles.setCurrentRow(len(self.listMash)-1)
+        self.listWidgetMashProfiles.setCurrentRow(len(ImportMash().listeMashes)-1)
         
     def removeMash(self) :
         i = self.listWidgetMashProfiles.currentRow()
-        del self.listMash[i]
+        del ImportMash().listeMashes[i]
         self.seeMash()
         self.listWidgetSteps.clear() 
         
     def mashRejected (self) :
-        self.mashProfilesBase.importBeerXML()
         self.switchToEditor()
         
     def mashAccepted (self) :
         i = self.listWidgetMashProfiles.currentRow()
-        self.currentMash = self.listMash[i]
+        self.currentMash = ImportMash().listeMashes[i]
         self.popMashCombo()
         self.switchToEditor()
         self.comboBoxMashProfiles.setCurrentIndex(i)
         logger.debug(self.currentMash)
         
     def saveProfile(self) : 
-        self.mashProfileExport.export(self.listMash)
+        self.mashProfileExport.export(ImportMash().listeMashes)
         self.mashProfileExport.enregistrer(mash_file)
         
         
