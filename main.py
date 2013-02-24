@@ -1839,24 +1839,21 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         self.dlgStep.show()
         self.dlgStep.fields (selected_step)
     
-    def stepReload(self, stepName, stepType, stepTime, stepTemp ,stepVol) :
-        f = self.listWidgetMashProfiles.currentRow()
+    def stepReload(self, step) :
+        index = self.listWidgetMashProfiles.currentRow()
+        selected_mash = ImportMash().listeMashes[index]
         i = self.listWidgetSteps.currentRow()
-        self.listStepName[i] = stepName
-        self.listStepType[i] = stepType
-        self.listStepTemp[i] = stepTemp
-        self.listStepTime[i] = stepTime
-        self.listStepVol[i] = stepVol
-        dicCurrentStep = {}
-        dicCurrentStep = {'name' : stepName, 'type' : stepType, 'stepTime' : stepTime, 'stepTemp' : stepTemp, 'stepVol' : stepVol}
-        del self.listSteps[i]
-        self.listSteps.insert(i, dicCurrentStep) 
-        self.listWidgetSteps.clear() 
+        selected_step = selected_mash.listeSteps[i]
+
+        selected_step.name = step.name
+        selected_step.type = step.type
+        selected_step.temp = step.temp
+        selected_step.time = step.time
+        selected_step.vol = step.vol
         self.seeMash()
         self.stepDetails()
-        self.listWidgetMashProfiles.setCurrentRow(f)
+        self.listWidgetMashProfiles.setCurrentRow(index)
         self.listWidgetSteps.setCurrentRow(i)
-        
         
     def removeStep(self) :
         i = self.listWidgetSteps.currentRow()
