@@ -1849,29 +1849,37 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         selected_step.type = step.type
         selected_step.temp = step.temp
         selected_step.time = step.time
-        selected_step.vol = step.vol
         self.seeMash()
         self.stepDetails()
         self.listWidgetMashProfiles.setCurrentRow(index)
         self.listWidgetSteps.setCurrentRow(i)
         
     def removeStep(self) :
+        index = self.listWidgetMashProfiles.currentRow()
+        selected_mash = ImportMash().listeMashes[index]
         i = self.listWidgetSteps.currentRow()
-        del self.listSteps[i]
+
+        del selected_mash.listeSteps[i]
         self.seeMash()
         
     def addStep(self) :
-        f = self.listWidgetMashProfiles.currentRow()
-        dicNewStep = {'name' : 'Nouveau Palier', 'type' : 'Infusion', 'stepTime' : '0', 'stepTemp' : '0', 'stepVol' : '0'}
-        self.listSteps.append(dicNewStep)
-        i = len(self.listSteps)
-        self.listWidgetMashProfiles.setCurrentRow(f)
+        index = self.listWidgetMashProfiles.currentRow()
+        selected_mash = ImportMash().listeMashes[index]
+        i = self.listWidgetSteps.currentRow()
+        step = MashStep()
+        step.name = 'Nouveau palier'
+        step.type = 'Infusion'
+        step.time = '0'
+        step.temp = '0'
+        step.vol = '0'
+        selected_mash.listeSteps.append(step)
+
+        self.listWidgetMashProfiles.setCurrentRow(index)
         self.seeMash()
         self.stepDetails()      
-        self.listWidgetMashProfiles.setCurrentRow(f)
+        self.listWidgetMashProfiles.setCurrentRow(index)
         self.listWidgetSteps.setCurrentRow(i-1)
         self.stepEdit()
-        
         
     def mashEdit(self) :
         index = self.listWidgetMashProfiles.currentRow()
