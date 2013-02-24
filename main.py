@@ -1831,9 +1831,13 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         
         
     def stepEdit(self) :
+        index = self.listWidgetMashProfiles.currentRow()
+        selected_mash = ImportMash().listeMashes[index]
         i = self.listWidgetSteps.currentRow()
+        selected_step = selected_mash.listeSteps[i]
+
         self.dlgStep.show()
-        self.dlgStep.fields (self.listStepName[i], self.listStepType[i], self.listStepTime[i], self.listStepTemp[i], self.listStepVol[i])
+        self.dlgStep.fields (selected_step)
     
     def stepReload(self, stepName, stepType, stepTime, stepTemp ,stepVol) :
         f = self.listWidgetMashProfiles.currentRow()

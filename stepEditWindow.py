@@ -43,16 +43,16 @@ class DialogStep(QtGui.QDialog):
         
         
         
-    def fields (self, stepName, stepType, stepTime, stepTemp, stepVol) :
-        self.ui.lineEditStepName.setText(stepName)
-        if stepType == self.trUtf8('''Infusion''') :
+    def fields (self, step) :
+        self.ui.lineEditStepName.setText(step.name)
+        if step.type == self.trUtf8('''Infusion''') :
             self.ui.comboBoxStepType.setCurrentIndex(0)
-        elif stepType== self.trUtf8('''Temperature''') :
+        elif step.type== self.trUtf8('''Temperature''') :
             self.ui.comboBoxStepType.setCurrentIndex(1)
-        elif stepType == self.trUtf8('''Decoction''') :
+        elif step.type == self.trUtf8('''Decoction''') :
             self.ui.comboBoxStepType.setCurrentIndex(2)              
-        self.ui.doubleSpinBoxStepTime.setValue(float(stepTime))
-        self.ui.doubleSpinBoxStepTemp.setValue(float(stepTemp))
+        self.ui.doubleSpinBoxStepTime.setValue(float(step.time))
+        self.ui.doubleSpinBoxStepTemp.setValue(float(step.temp))
 #        self.ui.doubleSpinBoxStepVol.setValue(float(stepVol))
         
         
