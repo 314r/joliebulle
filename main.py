@@ -979,6 +979,19 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         self.actionVueEditeurToolBar.setChecked(True)
         self.actionVueBibliothequeToolBar.setChecked(False) 
 
+        try :
+            self.comboBoxMashProfiles.blockSignals(True)
+            self.popMashCombo()
+            self.comboBoxMashProfiles.blockSignals(False)
+            if self.recipe.mash.name is not None :
+                # self.comboBoxMashProfiles.setCurrentIndex(len(self.listMash)-1)
+                self.comboBoxMashProfiles.addItem(self.recipe.mash.name + "*")
+                self.comboBoxMashProfiles.setCurrentIndex(len(ImportMash().listeMashes))
+            else :
+                self.comboBoxMashProfiles.setCurrentIndex(-1)
+        except :
+            self.comboBoxMashProfiles.setCurrentIndex(-1)
+
         
     def menuBiblio(self,position) :
         selection = self.treeViewBiblio.selectionModel()
@@ -1542,16 +1555,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         self.colorPreview()
         
         self.currentRecipeMash = self.recipe.mash
-        try :
-            self.popMashCombo()
-            if self.recipe.mash.name is not None :
-                # self.comboBoxMashProfiles.setCurrentIndex(len(self.listMash)-1)
-                self.comboBoxMashProfiles.addItem(self.recipe.mash.name + "*")
-                self.comboBoxMashProfiles.setCurrentIndex(len(ImportMash().listeMashes))
-            else :
-                self.comboBoxMashProfiles.setCurrentIndex(-1)
-        except :
-            self.comboBoxMashProfiles.setCurrentIndex(-1)
+
                     
     def displayProfile(self) :     
         self.labelOGV.setText("%.3f" %(self.recipe.compute_OG()))
