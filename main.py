@@ -1642,9 +1642,10 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         self.recipe.boil = self.spinBoxBoil.value()
         recettes = QtCore.QFile(recettes_dir)
         exp=Export()
+        #logger.info("Recette '%s' ", self.recipe.mName)
         exp.exportXML(self.recipe)
         exp.enregistrer(destination)
-        logger.info("Recette '%s' enregistrée dans le fichier %s", self.recipe.name, destination)
+        #logger.info("Recette '%s' enregistrée dans le fichier %s", self.recipe.name, destination)
         
     def enregistrer (self) :
         exp=Export()
@@ -1653,7 +1654,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         self.recipe.brewer = self.lineEditBrewer.text()        
         self.recipe.boil = self.spinBoxBoil.value()
         if not self.s :
-            destination =  recettes_dir + "/" + nom_fichier + ".xml"
+            destination =  recettes_dir + "/" + self.recipe.name + ".xml"
             self.enregistrerRecette(destination)
         else :
             self.enregistrerRecette(self.s)
@@ -1762,6 +1763,9 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         except :
             self.currentMash = self.currentRecipeMash
         self.tableWidgetStepsBrewday_currentRowChanged()
+        self.recipe.mash = self.currentMash
+        print("le profil :", self.currentMash)
+        print("profil recette :",self.recipe.mash.name)
 
         
     def seeMash(self) :

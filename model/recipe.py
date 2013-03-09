@@ -40,7 +40,7 @@ class Recipe:
         self.boil = 0.0
         self.recipeNotes = ""
         self.style = ""
-        self.mash = None
+        self.mash = Mash()
         self.listeFermentables = list()
         self.listeHops = list()
         self.listeYeasts = list()

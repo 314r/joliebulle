@@ -106,7 +106,7 @@ text-align : center;}
             self.trUtf8('<tr><td>Amertume</td>'), recipe.compute_IBU(), self.trUtf8('<tr><td>Ratio BU/GU</td>'), recipe.compute_ratioBUGU(),
             self.trUtf8('<tr><td>Alcool (vol)</td>'), recipe.compute_ABV())
 
-        self.recetteHtmlMashProfile = self.trUtf8(' <h2>Brassage</h2>') + '<p>' + recipe.mash.name + '<br/> pH : ' + recipe.mash.ph + '</p><p><b>' + self.trUtf8(''' Etapes : ''') + '</b> </p> '
+        self.recetteHtmlMashProfile = self.trUtf8(' <h2>Brassage</h2>') + '<p>' + recipe.mash.name + '<br/> pH : ' + str(recipe.mash.ph) + '</p><p><b>' + self.trUtf8(''' Etapes : ''') + '</b> </p> '
         for step in recipe.mash.listeSteps:
             mashStepUI = MashStepView(step)
             self.recetteHtmlMashProfile = self.recetteHtmlMashProfile + step.name + ' : ' + self.trUtf8(''' palier de type ''')+ mashStepUI.mashTypeDisplay() + self.trUtf8(''' à ''') + step.temp +'''°C'''+ self.trUtf8(''' pendant ''')+ step.time + self.trUtf8(''' minutes ''')+ '''<br/> '''

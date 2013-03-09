@@ -48,9 +48,9 @@ class Export (QtCore.QObject):
         type = ET.SubElement(recipeTag, 'TYPE')
         if recipe.type == model.constants.RECIPE_TYPE_ALL_GRAIN:
             type.text = "All Grain"
-        elif recipe.type == mode.constants.RECIPE_TYPE_EXTRACT:
+        elif recipe.type == model.constants.RECIPE_TYPE_EXTRACT:
             type.text = "Extract"
-        elif recipe.type == mode.constants.RECIPE_PARTIAL_MASH:
+        elif recipe.type == model.constants.RECIPE_PARTIAL_MASH:
             type.text = "Partial Mash"
         brewerR = ET.SubElement(recipeTag, 'BREWER')
         brewerR.text = recipe.brewer
