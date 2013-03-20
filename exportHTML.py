@@ -25,24 +25,24 @@ from PyQt4 import QtGui
 from PyQt4 import QtCore
 from base import *
 from globals import *
-
-
-
-  
+from view.hopview import *
+from view.miscview import *
+from view.yeastview import *
+from view.mashstepview import *
 
 class ExportHTML(QtGui.QDialog) : 
 
-    def exportHtml (self, nomRecette, styleRecette, volume, boil, nbreFer, liste_ingr, liste_fAmount, liste_fUse, nbreHops,liste_houblons, liste_hAlpha,liste_hForm,liste_hAmount,liste_hTime,liste_hUse,nbreDivers,liste_divers, liste_dType, liste_dAmount, liste_dTime, liste_dUse, nbreLevures, liste_levuresDetail, rendement, OG, FG, ratioBUGU, EBC, IBU, ABV, recipeNotes, currentMash) :
+    def exportRecipeHtml (self, recipe) :
         
         self.recetteHtmlHeader = '''
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-<title>''' + nomRecette +'''</title>
+<title>%s</title>
 <meta charset="utf-8" />
 <style type="text/css">
-html { font-size:100.01%; }
-body {width:800px;margin:auto;line-height: 1.5;color: #222; font-size:80%}
+html { font-size:100.01%%; }
+body {width:800px;margin:auto;line-height: 1.5;color: #222; font-size:80%%}
 h1,h2,h3,h4,h5,h6 { font-weight: normal; color: #111; }
 h1 { font-size: 2em; margin-bottom: 0; text-align:center;}
 h2 { font-size: 1.5em; line-height: 1; margin-bottom: 2em; margin-top:2em; padding-bottom:0.75em; padding-top:0.75em;border-bottom:solid 1px #ddd;clear:both;}
@@ -66,76 +66,61 @@ text-align : center;}
 </style>
 </head>
 <body>
-<h1>''' + nomRecette + '''</h1>
-<h2 class="genre">''' + styleRecette + '''</h2>'''
+<h1>%s</h1>
+<h2 class="genre">%s</h2>''' % (recipe.name, recipe.name, recipe.style)
 
 #         self.recetteHtmlInfo = self.trUtf8('''
 # Recette prévue pour un brassin de ''') + str(volume) + self.trUtf8(''' litres <br/>''')
 
-        grains_texte=self.trUtf8('''<h3>Grains et sucres</h3> ''') + '''<table class="ingredients">'''
-        i = 0
-        while i < nbreFer :
-            i=i+1
-            if liste_fUse[i-1] == self.trUtf8('''Après ébullition''') :
-                use = self.trUtf8('''Ajout après ébullition''')
+        grains_texte=self.trUtf8('<h3>Grains et sucres</h3> ') + '<table class="ingredients">'
+        for f in recipe.listeFermentables:
+            if f.useAfterBoil == True:
+                use = self.trUtf8('Ajout après ébullition')
             else :
                 use = ''
-            grains_texte = grains_texte + '''<tr>''' + '''<td>'''+str("%.0f" %(liste_fAmount[i-1])) + '''g''' + '''</td>''' + '''<td>'''+ liste_ingr[i-1]  +  '''</td>''' + '''<td>''' + use +'''</td>''' + '''</tr>'''
-        grains_texte=grains_texte + '''</table>'''
+            grains_texte = grains_texte + '<tr><td>%sg</td><td>%s</td><td>%s</td></tr>' % ( str("%.0f" %f.amount), f.name, use )
+        grains_texte=grains_texte + '</table>'
           
-        houblons_texte=self.trUtf8('''<h3>Houblons</h3> ''') + '''<table class="ingredients">'''
-        h = 0
-        while h < nbreHops : 
-            h = h+1    
-            houblons_texte = houblons_texte + '''<tr>''' + '''<td>''' + str("%.0f" %(liste_hAmount[h-1])) + '''g''' + '''</td>''' + '''<td>''' + liste_houblons[h-1]  + ''' (α''' +  str(liste_hAlpha[h-1]) +'''%''' + ''', ''' + liste_hForm[h-1] +''')''' + '''</td>''' + '''<td>''' + str("%.0f" %(liste_hTime[h-1])) + '''min (''' +str(liste_hUse[h-1])  +  ''')'''+  '''</td>'''+ '''</tr>'''
-        houblons_texte = houblons_texte + '''</table>'''
+        houblons_texte=self.trUtf8('<h3>Houblons</h3>') + '<table class="ingredients">'
+        for h in recipe.listeHops:
+            hUI = HopView(h)
+            houblons_texte = houblons_texte + '<tr><td>%sg</td><td>%s (α%s%%, %s)</td><td>%smin (%s)</td></tr>' % (str("%.0f" %(h.amount)), h.name, str(h.alpha), hUI.hopFormDisplay(), str("%.0f" %(h.time)), hUI.hopUseDisplay() )
+        houblons_texte = houblons_texte + '</table>'
         
-        divers_texte = self.trUtf8('''<h3>Ingrédients divers</h3> ''')  + '''<table class="ingredients">'''
-        m = 0
-        while  m < nbreDivers :
-            m = m + 1 
-            divers_texte = divers_texte +  '''<tr>''' + '''<td>''' +  str("%.0f" %(liste_dAmount[m-1])) + '''g''' + '''</td>'''+ '''<td>''' + liste_divers[m-1] +''' (''' + liste_dType[m-1] +''')''' + '''</td>''' + '''<td>''' + str("%.0f" %(liste_dTime[m-1]))+ '''min ('''+ str(liste_dUse[m-1]) + ''')</td>'''+ '''</tr>'''
-            # divers_texte = divers_texte +'''<b>''' + liste_divers[m-1] +'''</b>'''+''' (''' +liste_dType[m-1] +''')''' + ''' : ''' +'''<b>''' +str(liste_dAmount[m-1]) + '''g''' +'''</b>'''+''' pendant ''' + '''<b>''' + str(liste_dTime[m-1]) + '''</b>''' + self.trUtf8(''' minutes''') +'''<br/>'''
-        divers_texte = divers_texte + '''</table>'''
+        divers_texte = self.trUtf8('<h3>Ingrédients divers</h3>')  + '<table class="ingredients">'
+        for m in recipe.listeMiscs:
+            mUI = MiscView(m)
+            divers_texte = divers_texte +  '<tr><td>%sg</td><td>%s (%s)</td><td>%smin (%s)</td></tr>' % (str("%.0f" %(m.amount)), m.name, m.type, str("%.0f" %(m.time)), mUI.miscUseDisplay() )
+        divers_texte = divers_texte + '</table>'
         
-        levures_texte = self.trUtf8('''<h3>Levures</h3> ''')
-        l = 0
-        while l < nbreLevures : 
-            l = l+1
-            levures_texte = levures_texte + liste_levuresDetail[l-1] + '''<br/>'''
+        levures_texte = self.trUtf8('<h3>Levures</h3>')
+        for y in recipe.listeYeasts:
+            yUI = YeastView(y)
+            levures_texte = levures_texte + yUI.yeastDetailDisplay() + '<br/>'
         
-
-        self.recetteHtmlIng = self.trUtf8(''' <h2>Ingrédients pour un brassin de ''') + str(volume) + self.trUtf8(''' litres''')+ grains_texte + houblons_texte + divers_texte + levures_texte
+        self.recetteHtmlIng = self.trUtf8('<h2>Ingrédients pour un brassin de ') + str(recipe.volume) + self.trUtf8(' litres') + grains_texte + houblons_texte + divers_texte + levures_texte
         
-        
-        self.recetteHtmlProfil = ''' <table class="profil">'''+ self.trUtf8('''<tr><td>Rendement</td> ''') + '''<td> ''' + str(rendement) + '''% </td></tr>''' + self.trUtf8('''<tr><td>Densité initiale</td>''') + '''<td> '''  + str("%.3f" %(OG)) + '''</td></tr>''' + self.trUtf8('''<tr><td>Densité finale</td>''') + '''<td>''' + str("%.3f" %(FG)) + '''</td></tr>''' + self.trUtf8('''<tr><td>Teinte</td>''') + '''<td> '''+ str("%.0f" %(EBC)) + ''' EBC </td></tr>'''+ self.trUtf8('''<tr><td>Amertume</td>''') + '''<td> ''' + str("%.0f" %(IBU)) + ''' IBU </td></tr>''' + self.trUtf8('''<tr><td>Ratio BU/GU</td>''') + '''<td>''' + str("%.1f" %(ratioBUGU)) + '''</td></tr>''' + self.trUtf8('''<tr><td>Alcool (vol)</td>''') + '''<td>'''+ str("%.1f" %(ABV)) + ''' % </td></tr>''' + '''</table>'''             
+        self.recetteHtmlProfil = '<table class="profil">%s<td>%s%% </td></tr>%s<td>%.3f</td></tr>%s<td>%s</td></tr>%s<td>%.0f EBC </td></tr>%s<td>%.0f IBU </td></tr>%s<td>%.1f</td></tr>%s<td>%.1f%% </td></tr></table>' % \
+            (self.trUtf8('<tr><td>Rendement</td> '), str(recipe.efficiency), self.trUtf8('<tr><td>Densité initiale</td>'), recipe.compute_OG(),
+            self.trUtf8('<tr><td>Densité finale</td>'), str("%.3f" %(recipe.compute_FG())), self.trUtf8('<tr><td>Teinte</td>'), recipe.compute_EBC(),
+            self.trUtf8('<tr><td>Amertume</td>'), recipe.compute_IBU(), self.trUtf8('<tr><td>Ratio BU/GU</td>'), recipe.compute_ratioBUGU(),
+            self.trUtf8('<tr><td>Alcool (vol)</td>'), recipe.compute_ABV())
 
-        self.recetteHtmlMashProfile = self.trUtf8(''' <h2>Brassage</h2>''') + '''<p>''' + str(currentMash['name']) + '<br/>' + ''' pH : '''+currentMash['ph']+''' </p> ''' + '''<p>''' + '<b>' + self.trUtf8(''' Etapes : ''') + '</b>' + ''' </p> '''
-        dicSteps = currentMash['mashSteps']
-        for step in dicSteps:
-            stepName = step['name']
-            stepType = step['type']
-            if stepType == 'Infusion' :
-                stepType = self.trUtf8('''Infusion''')
-            elif stepType == 'Temperature' :
-                stepType = self.trUtf8('''Température''')
-            elif stepType == 'Decoction' :
-                stepType = self.trUtf8('''Décoction''')
-            else :
-                stepType = stepType
-            stepTime = step['stepTime']
-            stepTemp = step['stepTemp']
-            self.recetteHtmlMashProfile = self.recetteHtmlMashProfile + step['name'] + ' : ' + self.trUtf8(''' palier de type ''')+ stepType + self.trUtf8(''' à ''') + stepTemp +'''°C'''+ self.trUtf8(''' pendant ''')+ stepTime + self.trUtf8(''' minutes ''')+ '''<br/> '''
-        self.recetteHtmlMashProfile = self.recetteHtmlMashProfile + '''<p>''' + '<b>' + self.trUtf8(''' Rinçage : ''') + '</b>' + ''' </p> ''' + currentMash['spargeTemp'] + " °C"
+        self.recetteHtmlMashProfile = self.trUtf8(' <h2>Brassage</h2>') + '<p>' + recipe.mash.name + '<br/> pH : ' + str(recipe.mash.ph) + '</p><p><b>' + self.trUtf8(''' Etapes : ''') + '</b> </p> '
+        for step in recipe.mash.listeSteps:
+            mashStepUI = MashStepView(step)
+            self.recetteHtmlMashProfile = self.recetteHtmlMashProfile + step.name + ' : ' + self.trUtf8(''' palier de type ''')+ mashStepUI.mashTypeDisplay() + self.trUtf8(''' à ''') + step.temp +'''°C'''+ self.trUtf8(''' pendant ''')+ step.time + self.trUtf8(''' minutes ''')+ '''<br/> '''
+        self.recetteHtmlMashProfile = self.recetteHtmlMashProfile + '<p><b>' + self.trUtf8(''' Rinçage : ''') + '</b></p>' + recipe.mash.spargeTemp + ' °C'
 
+        if recipe.recipeNotes != None :
+            self.recipeNotes = self.trUtf8(' <h2>Notes</h2>') + '<p>' + str(recipe.recipeNotes) + '</p>'
+        else:
+            self.recipeNotes = self.trUtf8(' <h2>Notes</h2>') + '<p></p>'
 
-        self.recipeNotes = self.trUtf8(''' <h2>Notes</h2>''') + '''<p>''' + str(recipeNotes) + ''' </p> '''
-
-        self.recetteHtmlFooter =self.trUtf8( '''
+        self.recetteHtmlFooter =self.trUtf8('''
 # <footer class="footer">Une recette générée par JolieBulle, logiciel de brassage libre.</footer>
 </body>
 </html>''')
-                                        
                                         
     def generateHtml(self) :
         self.generatedHtml = self.recetteHtmlHeader + self.recetteHtmlProfil + self.recetteHtmlIng + self.recetteHtmlMashProfile + self.recipeNotes                                      

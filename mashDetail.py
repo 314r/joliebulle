@@ -34,18 +34,15 @@ class DialogMashDetail(QtGui.QDialog):
         self.ui.setupUi(self)
 
     def setFields (self,currentMash) :
-    	#la liste des paliers
-    	dicSteps = currentMash['mashSteps']
+    	self.ui.labelMashName.setText('''<p align="center"><b>''' + currentMash.name + '''</b></p>''')
+    	self.ui.labelPhValue.setText(currentMash.ph)
+    	self.ui.labelSpargeValue.setText(currentMash.spargeTemp)
 
-    	self.ui.labelMashName.setText('''<p align="center"><b>''' + currentMash['name'] + '''</b></p>''')
-    	self.ui.labelPhValue.setText(currentMash['ph'])
-    	self.ui.labelSpargeValue.setText(currentMash['spargeTemp'])
-
-    	#chaque dictionnaire dans la liste de palier
-    	for step in dicSteps:
-    		stepName = step['name']
+        #la liste des paliers
+    	for step in currentMash.listeSteps:
+    		stepName = step.name
     		stepNameLabelValue = QtGui.QLabel('<b>'+ stepName + '</b> :')
-    		stepDetail = QtGui.QLabel(step['type'] + ", " + step['stepTemp'] + self.trUtf8("°C, ") + step['stepTime'] + self.trUtf8(" min"))
+    		stepDetail = QtGui.QLabel(step.type + ", " + step.temp + self.trUtf8("°C, ") + step.time + self.trUtf8(" min"))
     		self.ui.formSteps.addRow(stepNameLabelValue, stepDetail)
 
 

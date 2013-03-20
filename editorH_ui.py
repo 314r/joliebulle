@@ -2,27 +2,10 @@
 
 # Form implementation generated from reading ui file 'editorH.ui'
 #
-# Created: Sat Feb  5 17:41:57 2011
-#      by: PyQt4 UI code generator 4.8.3
+# Created: Sun Dec 16 22:50:48 2012
+#      by: PyQt4 UI code generator 4.9.5
 #
 # WARNING! All changes made in this file will be lost!
-
-#JolieBulle 2.0
-#Copyright (C) 2010 Pierre Tavares
-
-#This program is free software; you can redistribute it and/or
-#modify it under the terms of the GNU General Public License
-#as published by the Free Software Foundation; either version 3
-#of the License, or (at your option) any later version.
-
-#This program is distributed in the hope that it will be useful,
-#but WITHOUT ANY WARRANTY; without even the implied warranty of
-#MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#GNU General Public License for more details.
-
-#You should have received a copy of the GNU General Public License
-#along with this program; if not, write to the Free Software
-#Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 from PyQt4 import QtCore, QtGui
 
@@ -42,9 +25,6 @@ class Ui_Dialog(object):
         self.gridLayout_2 = QtGui.QGridLayout(self.widget)
         self.gridLayout_2.setMargin(0)
         self.gridLayout_2.setObjectName(_fromUtf8("gridLayout_2"))
-        self.listWidgetHoublons = QtGui.QListWidget(self.widget)
-        self.listWidgetHoublons.setObjectName(_fromUtf8("listWidgetHoublons"))
-        self.gridLayout_2.addWidget(self.listWidgetHoublons, 0, 0, 1, 1)
         self.horizontalLayout = QtGui.QHBoxLayout()
         self.horizontalLayout.setObjectName(_fromUtf8("horizontalLayout"))
         self.pushButtonNouveau = QtGui.QPushButton(self.widget)
@@ -54,6 +34,9 @@ class Ui_Dialog(object):
         self.pushButtonEnlever.setObjectName(_fromUtf8("pushButtonEnlever"))
         self.horizontalLayout.addWidget(self.pushButtonEnlever)
         self.gridLayout_2.addLayout(self.horizontalLayout, 1, 0, 1, 1)
+        self.listViewHoublons = QtGui.QListView(self.widget)
+        self.listViewHoublons.setObjectName(_fromUtf8("listViewHoublons"))
+        self.gridLayout_2.addWidget(self.listViewHoublons, 0, 0, 1, 1)
         self.gridLayout.addWidget(self.widget, 0, 0, 1, 1)
         self.buttonBox = QtGui.QDialogButtonBox(Dialog)
         self.buttonBox.setOrientation(QtCore.Qt.Horizontal)

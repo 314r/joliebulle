@@ -28,6 +28,8 @@ from PyQt4 import QtGui
 from PyQt4 import QtCore
 from base import *
 from globals import *
+import view.base
+
 from editorM_ui import *
 import xml.etree.ElementTree as ET
 from xml.dom import minidom
@@ -41,9 +43,8 @@ class DialogD(QtGui.QDialog):
         self.ui = Ui_Dialog()
         self.ui.setupUi(self)
         self.base = ImportBase()
-        self.base.importBeerXML()
-        
-        self.ui.listWidgetDivers.addItems(self.base.liste_divers)
+
+        self.ui.listViewDivers.setModel( view.base.getMiscsQtModel() )
         self.ui.comboBoxType.addItem(self.trUtf8("Epice"))
         self.ui.comboBoxType.addItem(self.trUtf8("Clarifiant"))
         self.ui.comboBoxType.addItem(self.trUtf8("Traitement Eau"))
@@ -51,7 +52,7 @@ class DialogD(QtGui.QDialog):
         self.ui.comboBoxType.addItem(self.trUtf8("Arôme"))
         self.ui.comboBoxType.addItem(self.trUtf8("Autre"))
         
-        self.connect(self.ui.listWidgetDivers, QtCore.SIGNAL("itemSelectionChanged ()"), self.voir)
+        self.connect(self.ui.listViewDivers.selectionModel(), QtCore.SIGNAL("currentChanged(const QModelIndex &, const QModelIndex &)"), self.voir)
         self.connect(self.ui.pushButtonNouveau, QtCore.SIGNAL("clicked()"), self.nouveau)
         self.connect(self.ui.pushButtonEnlever, QtCore.SIGNAL("clicked()"), self.enlever)
         self.connect(self.ui.pushButtonAjouter, QtCore.SIGNAL("clicked()"), self.ajouter)
@@ -63,74 +64,49 @@ class DialogD(QtGui.QDialog):
         
         
         
-    def voir(self) :
-        i = self.ui.listWidgetDivers.currentRow()
+    def voir(self, current, previous) :
         self.ui.lineEditNom.setEnabled(True)
         self.ui.comboBoxType.setEnabled(True)
         self.ui.pushButtonAjouter.setEnabled(True)
-        
-        self.ui.lineEditNom.setText(self.base.liste_divers[i])
-        if self.base.liste_dType [i] == 'Spice' :
+
+        m = current.data(view.constants.MODEL_DATA_ROLE)
+
+        self.ui.lineEditNom.setText(m.name)
+        if m.type == 'Spice' :
             self.ui.comboBoxType.setCurrentIndex(0)
-        elif self.base.liste_dType [i] == 'Fining' :
+        elif m.type == 'Fining' :
             self.ui.comboBoxType.setCurrentIndex(1)
-        elif self.base.liste_dType [i] == 'Water Agent' :
+        elif m.type == 'Water Agent' :
             self.ui.comboBoxType.setCurrentIndex(2)
-        elif self.base.liste_dType [i] == 'Herb' :
+        elif m.type == 'Herb' :
             self.ui.comboBoxType.setCurrentIndex(3)
-        elif self.base.liste_dType [i] == 'Flavor' :
+        elif m.type == 'Flavor' :
             self.ui.comboBoxType.setCurrentIndex(4)
-        elif self.base.liste_dType [i] == 'Other' :
+        elif m.type == 'Other' :
             self.ui.comboBoxType.setCurrentIndex(5)
         else :
             self.ui.comboBoxType.setCurrentIndex(0)
             
     def ajouter(self) :
-        self.base.importBeerXML()
-        nom = self.ui.lineEditNom.text()
-        self.base.liste_divers.append(nom)
-        self.base.liste_divers.sort()
-        i = self.base.liste_divers.index(nom)
-        f = len(self.base.liste_ingr)
-        h = len(self.base.liste_houblons)
+        m = Misc()
+        m.name = self.ui.lineEditNom.text()
         
         if self.ui.comboBoxType.currentIndex() is 0 :
-            self.base.liste_dType.insert(i, 'Spice')
+            m.type = 'Spice'
         elif self.ui.comboBoxType.currentIndex() is 1 :
-            self.base.liste_dType.insert(i, 'Fining')
+            m.type = 'Fining'
         elif self.ui.comboBoxType.currentIndex() is 2 :
-            self.base.liste_dType.insert(i, 'Water Agent')
+            m.type = 'Water Agent'
         elif self.ui.comboBoxType.currentIndex() is 3 :
-            self.base.liste_dType.insert(i, 'Herb')
+            m.type = 'Herb'
         elif self.ui.comboBoxType.currentIndex() is 4 :
-            self.base.liste_dType.insert(i, 'Flavor')
+            m.type = 'Flavor'
         elif self.ui.comboBoxType.currentIndex() is 5 :
-              self.base.liste_dType.insert(i, 'Other')   
+              m.type = 'Other'
         else :
-              self.base.liste_dType.insert(i, 'Spice')
-              
-        self.ui.listWidgetDivers.clear()
-        self.ui.listWidgetDivers.addItems(self.base.liste_divers)
-        
-        databaseXML = codecs.open(database_file, encoding="utf-8")
-        database = ET.parse(databaseXML)
-        root= database.getroot()
-        databaseXML.close()
-        
-        divers = ET.Element('MISC')
-        name = ET.SubElement(divers, 'NAME')
-        name.text = nom
-        dtype = ET.SubElement(divers, 'TYPE')
-        dtype.text = self.base.liste_dType[i]
-        
-        root.insert(i + f + h, divers)
-        #databaseXML = open('database.xml', 'w')
-        #databaseXML.write(ET.tostring(root))
-        #databaseXML.close()
-        databaseXML = open(database_file, 'wb')
-        database._setroot(root)
-        database.write(databaseXML, encoding="utf-8")
-        databaseXML.close()
+              m.type = 'Spice'
+        ImportBase.addMisc(m)
+        self.ui.listViewDivers.setModel(view.base.getMiscsQtModel() )
         
     def nouveau(self) :
         self.ui.lineEditNom.setEnabled(True)
@@ -141,29 +117,11 @@ class DialogD(QtGui.QDialog):
         self.ui.comboBoxType.setCurrentIndex(0)
         
     def enlever(self) :
-        self.base.importBeerXML()
-        i = self.ui.listWidgetDivers.currentRow()
-        
-        del self.base.liste_divers[i]
-        del self.base.liste_dType[i]
-        
-        self.ui.listWidgetDivers.clear()
-        self.ui.listWidgetDivers.addItems(self.base.liste_divers)
-        
-        databaseXML = codecs.open(database_file, encoding="utf-8")
-        database = ET.parse(databaseXML)
-        root= database.getroot()
-        databaseXML.close()    
-        iterator = root.getiterator("MISC")
-        item = iterator[i] 
-        root.remove(item)
-        #databaseXML = open('database.xml', 'w')
-        #databaseXML.write(ET.tostring(root))
-        #databaseXML.close()   
-        databaseXML = open(database_file, 'wb')
-        database._setroot(root)
-        database.write(databaseXML, encoding="utf-8")
-        databaseXML.close()
+        selection = self.ui.listViewDivers.selectionModel().selectedIndexes()
+        for index in selection :
+            m = index.data(view.constants.MODEL_DATA_ROLE)
+            ImportBase().delMisc(m)
+        self.ui.listViewDivers.setModel(view.base.getMiscsQtModel() )
         
     def rejected(self) :     
         self.baseChanged.emit()    

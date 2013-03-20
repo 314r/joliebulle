@@ -2,27 +2,10 @@
 
 # Form implementation generated from reading ui file 'editorM.ui'
 #
-# Created: Sat Feb  5 17:41:33 2011
-#      by: PyQt4 UI code generator 4.8.3
+# Created: Sun Dec 16 23:08:19 2012
+#      by: PyQt4 UI code generator 4.9.5
 #
 # WARNING! All changes made in this file will be lost!
-
-#JolieBulle 2.0
-#Copyright (C) 2010 Pierre Tavares
-
-#This program is free software; you can redistribute it and/or
-#modify it under the terms of the GNU General Public License
-#as published by the Free Software Foundation; either version 3
-#of the License, or (at your option) any later version.
-
-#This program is distributed in the hope that it will be useful,
-#but WITHOUT ANY WARRANTY; without even the implied warranty of
-#MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#GNU General Public License for more details.
-
-#You should have received a copy of the GNU General Public License
-#along with this program; if not, write to the Free Software
-#Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 from PyQt4 import QtCore, QtGui
 
@@ -42,9 +25,6 @@ class Ui_Dialog(object):
         self.gridLayout = QtGui.QGridLayout(self.widget)
         self.gridLayout.setMargin(0)
         self.gridLayout.setObjectName(_fromUtf8("gridLayout"))
-        self.listWidgetDivers = QtGui.QListWidget(self.widget)
-        self.listWidgetDivers.setObjectName(_fromUtf8("listWidgetDivers"))
-        self.gridLayout.addWidget(self.listWidgetDivers, 0, 0, 1, 1)
         self.horizontalLayout = QtGui.QHBoxLayout()
         self.horizontalLayout.setObjectName(_fromUtf8("horizontalLayout"))
         self.pushButtonNouveau = QtGui.QPushButton(self.widget)
@@ -54,6 +34,9 @@ class Ui_Dialog(object):
         self.pushButtonEnlever.setObjectName(_fromUtf8("pushButtonEnlever"))
         self.horizontalLayout.addWidget(self.pushButtonEnlever)
         self.gridLayout.addLayout(self.horizontalLayout, 1, 0, 1, 1)
+        self.listViewDivers = QtGui.QListView(self.widget)
+        self.listViewDivers.setObjectName(_fromUtf8("listViewDivers"))
+        self.gridLayout.addWidget(self.listViewDivers, 0, 0, 1, 1)
         self.gridLayout_2.addWidget(self.widget, 0, 0, 2, 2)
         self.widget_2 = QtGui.QWidget(Dialog)
         self.widget_2.setObjectName(_fromUtf8("widget_2"))

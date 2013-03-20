@@ -25,182 +25,188 @@
 
 import PyQt4
 import sys
-from PyQt4 import QtGui
+import logging
 from PyQt4 import QtCore
 import xml.etree.ElementTree as ET
 from globals import *
+from model.fermentable import *
+from model.hop import *
+from model.yeast import *
+from model.misc import *
+from operator import attrgetter
+
+logger = logging.getLogger(__name__)
 
 
+#Singleton class, should be in some common module
+class Singleton(type):
+    _instances = {}
+    def __call__(cls, *args, **kwargs):
+        if cls not in cls._instances:
+            cls._instances[cls] = super(Singleton, cls).__call__(*args, **kwargs)
+        return cls._instances[cls]
 
-class ImportBase : 
+class ImportBase(object,metaclass=Singleton) :
 
-
-    def importBeerXML(self) :
+    def __init__(self):
+        logger.debug("Import %s", database_file)
         fichierBeerXML = database_file
-        arbre = ET.parse(fichierBeerXML)
+        self.arbre = ET.parse(fichierBeerXML)
 
-        presentation=arbre.find('.//RECIPE')
-        fermentables=arbre.findall('.//FERMENTABLE')
-        hops = arbre.findall('.//HOP')
-        levures = arbre.findall('.//YEAST')
-        misc = arbre.findall('.//MISC')
+        presentation=self.arbre.find('.//RECIPE')
+        fermentables=self.arbre.findall('.//FERMENTABLE')
+        hops = self.arbre.findall('.//HOP')
+        levures = self.arbre.findall('.//YEAST')
+        misc = self.arbre.findall('.//MISC')
  
-               
         
+        self.listeFermentables = list()
+        self.listeHops = list()
+        self.listeYeasts = list()
+        self.listeMiscs = list()
+
         #Ingredient fermentescibles
-        self.nbreFer = len(fermentables)
-        self.liste_ingr = list()
-        self.liste_fAmount = list()
-        self.liste_fType = list()
-        self.liste_fYield = list()
-        self.liste_fMashed = list()
-        self.liste_color = list()
-        self.fMashed = ''
-        
-        
-        i = 0
-        while i < self.nbreFer :
+        for element in fermentables:
+            self.listeFermentables.append( Fermentable.parse(element) )
+        self.listeFermentables = sorted(self.listeFermentables, key=attrgetter('name'))
+        logger.debug( "%s fermentables in database, using %s bytes in memory", len(self.listeFermentables), sys.getsizeof(self.listeFermentables) )
 
-            i=i+1
-            for nom in fermentables[i-1] :
-                if nom.tag == 'NAME' :
-                    self.fNom = nom.text
-                    self.liste_ingr.append(self.fNom)
-                    
-                if nom.tag =='AMOUNT' :
-                    self.fAmount = 1000*(float(nom.text)) 
-                    self.liste_fAmount.append(self.fAmount)
-                    
-                if nom.tag =='TYPE' :
-                    self.fType = nom.text 
-                    self.liste_fType.append(self.fType)
-                    
-                if nom.tag == 'YIELD' :
-                    self.fYield = float(nom.text)
-                    self.liste_fYield.append(self.fYield)
-                    
-                if nom.tag == 'RECOMMEND_MASH' :
-                    self.fMashed = nom.text
-                    self.liste_fMashed.append(self.fMashed)
-                    
-                #ATTENTION ! le format BeerXML utilise des unités SRM ! 
-                #srm*1.97 =ebc
-                if nom.tag == 'COLOR' :
-                    self.color = float(nom.text)*1.97
-                    self.liste_color.append(self.color)
-                    
-
-        
-        
         #Houblons
-        
-        self.nbreHops = len(hops)
-        self.liste_houblons = list()
-        self.liste_hAmount = list()
-        self.liste_hForm = list()
-        self.liste_hTime = list()
-        self.liste_hAlpha = list()
-        
-        
-        
-        h = 0
-        while h < self.nbreHops : 
-            h = h+1
-            for nom in hops [h-1] :
-                if nom.tag == 'NAME' :
-                    self.hNom = nom.text
-                    self.liste_houblons.append(self.hNom)
-                    
-                if nom.tag =='AMOUNT' :
-                    self.hAmount = 1000*(float(nom.text)) 
-                    self.liste_hAmount.append(self.hAmount)
-                    
-                if nom.tag =='FORM' :
-                    self.hForm = nom.text 
-                    self.liste_hForm.append(self.hForm)
-                    
-                if nom.tag =='TIME' :
-                    self.hTime = float(nom.text)
-                    self.liste_hTime.append(self.hTime)
-                    
-                
-                if nom.tag =='ALPHA' :
-                    self.hAlpha = float(nom.text)
-                    self.liste_hAlpha.append(self.hAlpha)                   
-                    
-                                                            
+        for element in hops:
+            self.listeHops.append( Hop.parse(element) )
+        self.listeHops = sorted(self.listeHops, key=attrgetter('name'))
+        logger.debug( "%s hops in database, using %s bytes in memory", len(self.listeHops), sys.getsizeof(self.listeHops) )
 
-        
-        
-        #Levure 
-        self.nbreLevures = len(levures)
-        self.liste_levures = list()
-        self.liste_lForm = list()
-        self.liste_lLabo = list()
-        self.liste_lProdid = list()
-        self.liste_levuresDetail = list()
-        self.liste_levureAtten = list ()
-        self.lNom = ""
-        self.lLabo =""
-        self.lProd =""
-        self.lForm = ""
-        self.lAtten=""
-        
-        l = 0
-        while l < self.nbreLevures : 
-            l = l+1
-            for nom in levures [l-1] :
-                if nom.tag == 'NAME' :
-                    self.lNom = str(nom.text)
-                    self.liste_levures.append(self.lNom)    
-                    
-                if nom.tag == 'FORM' :
-                    self.lForm = str(nom.text)
-                    self.liste_lForm.append(self.lForm)
-                    
-                if nom.tag == 'LABORATORY' :
-                    self.lLabo = str(nom.text)
-                    self.liste_lLabo.append(self.lLabo)
-                    
-                if nom.tag == 'PRODUCT_ID' :
-                    self.lProd = str(nom.text)
-                    self.liste_lProdid.append(self.lProd)
-                
-                if nom.tag == 'ATTENUATION' :
-                    self.lAtten = float(nom.text)
-                    self.liste_levureAtten.append(self.lAtten)
-                    
-                    
-                    
-            self.liste_levuresDetail.append (self.lNom+ ' ' + self.lLabo +' ' + self.lProd)
-                    
-                    
-                    
-        
-        
-        
+        #Levures
+        for element in levures:
+            self.listeYeasts.append( Yeast.parse(element) )
+        self.listeYeasts = sorted(self.listeYeasts, key=attrgetter('name'))
+        logger.debug( "%s yeasts in database, using %s bytes in memory", len(self.listeYeasts), sys.getsizeof(self.listeYeasts) )
+
         #Ingredients divers
-        self.nbreDivers = len(misc)
-        self.liste_divers = list ()
-        self.liste_dAmount = list ()
-        self.liste_dType = list ()
-        self.dNom = ''
-        self.dAmount = 0
-        self.dType = ''
-        
-        
-        m = 0
-        while  m < self.nbreDivers :
-            m = m+1
-            for nom in misc [m-1] : 
-                if nom.tag == 'NAME' :
-                    self.dNom = nom.text
-                    self.liste_divers.append(self.dNom)
-                    
-                if nom.tag == 'AMOUNT' :
-                    self.dAmount = float(nom.text)*1000
-                    self.liste_dAmount.append(self.dAmount)
-                    
-                if nom.tag == 'TYPE' :
-                        self.dType = nom.text
-                        self.liste_dType.append(self.dType)
+        for element in misc:
+            self.listeMiscs.append( Misc.parse(element) )
+        self.listeMiscs = sorted(self.listeMiscs, key=attrgetter('name'))
+        logger.debug( "%s miscs in database, using %s bytes in memory", len(self.listeMiscs), sys.getsizeof(self.listeMiscs) )
+
+        logger.debug("Import %s terminé", database_file)
+
+    @staticmethod
+    def addFermentable(f):
+        ImportBase().listeFermentables.append(f)
+        ImportBase().listeFermentables = sorted(ImportBase().listeFermentables, key=attrgetter('name'))
+
+        root = ImportBase().arbre.getroot()
+        root.append(f.toXml())
+        databaseXML = open(database_file, 'wb')
+        ImportBase().arbre._setroot(root)
+        ImportBase().arbre.write(databaseXML, encoding="utf-8")
+        databaseXML.close()
+
+    @staticmethod
+    def delFermentable(f):
+        i = ImportBase().listeFermentables.index(f)
+        ImportBase().listeFermentables.remove(f)
+        root = ImportBase().arbre.getroot()
+        iterator = root.iter("FERMENTABLE")
+        item = None
+        for elem in iterator :
+            tempF = Fermentable.parse(elem)
+            if f.name == tempF.name :
+                item = elem
+        if item is not None:
+            root.remove(item)
+            databaseXML = open(database_file, 'wb')
+            ImportBase().arbre._setroot(root)
+            ImportBase().arbre.write(databaseXML, encoding="utf-8")
+            databaseXML.close() 
+
+    @staticmethod
+    def addHop(h):
+        ImportBase().listeHops.append(h)
+        ImportBase().listeHops = sorted(ImportBase().listeHops, key=attrgetter('name'))
+
+        root = ImportBase().arbre.getroot()
+        root.append(h.toXml())
+        databaseXML = open(database_file, 'wb')
+        ImportBase().arbre._setroot(root)
+        ImportBase().arbre.write(databaseXML, encoding="utf-8")
+        databaseXML.close()
+
+    @staticmethod
+    def delHop(h):
+        i = ImportBase().listeHops.index(h)
+        ImportBase().listeHops.remove(h)
+        root = ImportBase().arbre.getroot()
+        iterator = root.iter("HOP")
+        item = None
+        for elem in iterator :
+            tempHop = Hop.parse(elem)
+            if h.name == tempHop.name :
+                item = elem
+        if item is not None:
+            root.remove(item)
+            databaseXML = open(database_file, 'wb')
+            ImportBase().arbre._setroot(root)
+            ImportBase().arbre.write(databaseXML, encoding="utf-8")
+            databaseXML.close() 
+
+    @staticmethod
+    def addMisc(m):
+        ImportBase().listeMiscs.append(m)
+        ImportBase().listeMiscs = sorted(ImportBase().listeMiscs, key=attrgetter('name'))
+
+        root = ImportBase().arbre.getroot()
+        root.append(m.toXml())
+        databaseXML = open(database_file, 'wb')
+        ImportBase().arbre._setroot(root)
+        ImportBase().arbre.write(databaseXML, encoding="utf-8")
+        databaseXML.close()
+
+    @staticmethod
+    def delMisc(m):
+        i = ImportBase().listeMiscs.index(m)
+        ImportBase().listeMiscs.remove(m)
+        root = ImportBase().arbre.getroot()
+        iterator = root.iter("MISC")
+        item = None
+        for elem in iterator :
+            tempMisc = Misc.parse(elem)
+            if m.name == tempMisc.name :
+                item = elem
+        if item is not None:
+            root.remove(item)
+            databaseXML = open(database_file, 'wb')
+            ImportBase().arbre._setroot(root)
+            ImportBase().arbre.write(databaseXML, encoding="utf-8")
+            databaseXML.close() 
+
+    @staticmethod
+    def addYeast(y):
+        ImportBase().listeYeasts.append(y)
+        ImportBase().listeYeasts = sorted(ImportBase().listeYeasts, key=attrgetter('name'))
+
+        root = ImportBase().arbre.getroot()
+        root.append(y.toXml())
+        databaseXML = open(database_file, 'wb')
+        ImportBase().arbre._setroot(root)
+        ImportBase().arbre.write(databaseXML, encoding="utf-8")
+        databaseXML.close()
+
+    @staticmethod
+    def delYeast(y):
+        i = ImportBase().listeYeasts.index(y)
+        ImportBase().listeYeasts.remove(y)
+        root = ImportBase().arbre.getroot()
+        iterator = root.iter("YEAST")
+        item = None
+        for elem in iterator :
+            tempYeast = Yeast.parse(elem)
+            if y.name == tempYeast.name :
+                item = elem
+        if item is not None:
+            root.remove(item)
+            databaseXML = open(database_file, 'wb')
+            ImportBase().arbre._setroot(root)
+            ImportBase().arbre.write(databaseXML, encoding="utf-8")
+            databaseXML.close() 

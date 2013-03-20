@@ -20,9 +20,10 @@ import sys
 from PyQt4 import QtGui
 from PyQt4 import QtCore
 from mashEditor_ui import *
+from model.mash import *
 
 class DialogMash(QtGui.QDialog):
-    mashChanged = QtCore.pyqtSignal(str,float,float,float,float)
+    mashChanged = QtCore.pyqtSignal(Mash)
     def __init__(self, parent = None):
         QtGui.QDialog.__init__(self,parent)
         self.ui = Ui_DialogMash()
@@ -35,21 +36,22 @@ class DialogMash(QtGui.QDialog):
         
         self.ui.buttonBox.accepted.connect(self.accepted)
         
-    def fields(self,name,ph,grainT,tunT,spargeT) :
-        self.ui.lineEditName.setText(name)
-        self.ui.doubleSpinBoxPh.setValue(float(ph))
+    def fields(self,mash) :
+        self.ui.lineEditName.setText(mash.name)
+        self.ui.doubleSpinBoxPh.setValue(float(mash.ph))
 #        self.ui.doubleSpinBoxGrainT.setValue(float(grainT))
 #        self.ui.doubleSpinBoxTunT.setValue(float(tunT))
-        self.ui.doubleSpinBoxSpargeT.setValue(float(spargeT))
+        self.ui.doubleSpinBoxSpargeT.setValue(float(mash.spargeTemp))
         
     def valueChanged(self) :
-        self.name = self.ui.lineEditName.text()
-        self.ph = self.ui.doubleSpinBoxPh.value()
-        self.grainT = 0
-        self.tunT = 0
-        self.spargeT =self.ui.doubleSpinBoxSpargeT.value()
+        self.mash = Mash()
+        self.mash.name = self.ui.lineEditName.text()
+        self.mash.ph = self.ui.doubleSpinBoxPh.value()
+        self.mash.grainTemp = 0
+        self.mash.tunTemp = 0
+        self.mash.spargeTemp =self.ui.doubleSpinBoxSpargeT.value()
         
     def accepted(self) :
-        self.mashChanged.emit(self.name,self.ph,self.grainT,self.tunT,self.spargeT)
+        self.mashChanged.emit(self.mash)
         
         

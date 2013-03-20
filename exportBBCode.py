@@ -21,58 +21,56 @@
 #Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 from PyQt4 import QtCore
-
+from view.hopview import *
+from view.miscview import *
+from view.yeastview import *
+from view.recipeview import *
 
 class ExportBBCode(QtCore.QObject):
     
-    def exportBbcode (self, nomRecette, styleRecette, volume, boil, nbreFer, liste_ingr, liste_fAmount, nbreHops,liste_houblons, liste_hAlpha,liste_hForm,liste_hAmount,liste_hTime,liste_hUse,nbreDivers,liste_divers, liste_dType, liste_dAmount, liste_dTime, liste_dUse, nbreLevures, liste_levuresDetail, rendement, OG, FG, EBC, IBU, ABV, recipeNotes) :
-        recetteHeader = "[b]" + nomRecette + "\n"
-        recetteHeader += "[i]" + styleRecette + "[/i][/b]\n\n"
+    def exportBbcode (self, recipe):
+        recipeView = RecipeView(recipe)
+        recetteHeader = '[b]%s\n[i]%s[/i][/b]\n\n' % (recipe.name, recipeView.recipeTypeDisplay())
         
-        specification_texte = self.trUtf8("Densité initiale : ") + str("%.3f" %(OG)) + "\n"
-        specification_texte += self.trUtf8("Densité finale : ") + str("%.3f" %(FG)) + "\n"
-        specification_texte += self.trUtf8("Teinte : ") + str("%.0f" %(EBC)) + " EBC\n"
-        specification_texte += self.trUtf8("Amertume : ") + str("%.0f" %(IBU)) + " IBU\n"
-        specification_texte += self.trUtf8("Alcool (vol) : ") + str("%.1f" %(ABV)) + " %\n\n"
+        specification_texte = self.trUtf8("Densité initiale : ") + str("%.3f" %(recipe.compute_OG())) + "\n"
+        specification_texte += self.trUtf8("Densité finale : ") + str("%.3f" %(recipe.compute_FG())) + "\n"
+        specification_texte += self.trUtf8("Teinte : ") + str("%.0f" %(recipe.compute_EBC())) + " EBC\n"
+        specification_texte += self.trUtf8("Amertume : ") + str("%.0f" %(recipe.compute_IBU())) + " IBU\n"
+        specification_texte += self.trUtf8("Alcool (vol) : ") + str("%.1f" %(recipe.compute_ABV())) + " %\n\n"
         
-        specification_texte += self.trUtf8("Rendement : ") + str(rendement) + " %\n"
-        specification_texte += self.trUtf8("Ingrédients prévus pour un brassin de ") + str(volume) + "L \n\n"
+        specification_texte += self.trUtf8("Rendement : ") + str(recipe.efficiency) + " %\n"
+        specification_texte += self.trUtf8("Ingrédients prévus pour un brassin de ") + str(recipe.volume) + "L \n\n"
         
         grains_texte = "[b]" + self.trUtf8("Grains et sucres") + "\n"
         grains_texte += "----------------------[/b]\n"
-        i = 0
-        while i < nbreFer :
-            i=i+1
-            grains_texte += str("%.0f" %(liste_fAmount[i-1])) + "g " + liste_ingr[i-1] + "\n"
+        for f in recipe.listeFermentables:
+            grains_texte += "%.0fg %s\n" %(f.amount, f.name)
         grains_texte += "\n"
         
         houblons_texte = "[b]" + self.trUtf8("Houblons") + "\n"
         houblons_texte += "----------------------[/b]\n"
-        h = 0
-        while h < nbreHops : 
-            h = h+1    
-            houblons_texte += str("%.0f" %(liste_hAmount[h-1])) + "g " + liste_houblons[h-1]  + " (α" +  str(liste_hAlpha[h-1]) +"%" + ", " + liste_hForm[h-1] +") @ " + str("%.0f" %(liste_hTime[h-1])) + "min (" +str(liste_hUse[h-1])  +  ")\n"
+        for h in recipe.listeHops:
+            hView = HopView(h)
+            houblons_texte += "%.0fg %s (α%s%%, %s) @ %s min(%s)\n" %(h.amount, h.name, h.alpha, hView.hopFormDisplay(), h.time, hView.hopUseDisplay())
         houblons_texte += "\n"
         
         divers_texte = ""
-        if nbreDivers > 0:
+        if len(recipe.listeMiscs) > 0:
             divers_texte = "[b]" + self.trUtf8("Ingrédients divers") + "\n"
             divers_texte += "----------------------[/b]\n"
-            m = 0
-            while  m < nbreDivers :
-                m = m + 1 
-                divers_texte += str("%.0f" %(liste_dAmount[m-1])) + "g " + liste_divers[m-1] +" (" + liste_dType[m-1] +") @ " + str("%.0f" %(liste_dTime[m-1]))+ "min ("+ str(liste_dUse[m-1]) + ")\n"
+            for m in recipe.listeMiscs:
+                mView = MiscView(m)
+                divers_texte += "%.0fg %s @ %.0f min(%s)\n" %(m.amount, m.name, m.time, mView.miscUseDisplay())
             divers_texte += "\n"
         
         levures_texte = "[b]" + self.trUtf8("Levures") + "\n"
         levures_texte += "----------------------[/b]\n"
-        l = 0
-        while l < nbreLevures : 
-            l = l+1
-            levures_texte += liste_levuresDetail[l-1] + "\n"
+        for y in recipe.listeYeasts:
+            levures_texte += y.name + "\n"
         levures_texte += "\n"
             
-        if recipeNotes != "":
-            recipeNotes = "[b]" + self.trUtf8("Notes") + "\n----------------------[/b]\n" + recipeNotes
+        recipeNotes = ""
+        if recipe.recipeNotes is not None:
+            recipeNotes = "[b]" + self.trUtf8("Notes") + "\n----------------------[/b]\n" + recipe.recipeNotes
             
         self.generatedBbcode = recetteHeader + specification_texte + grains_texte + houblons_texte + divers_texte + levures_texte + recipeNotes
