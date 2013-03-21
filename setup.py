@@ -12,7 +12,7 @@ setup_info = dict(
       license='GPLv3',
       options=dict(
 	py2app=dict(
-		iconfile='Mac/bulle.icns',
+		iconfile='dist/Mac/bulle.icns',
 		plist=dict(
 			CFBundleName               = NAME,
 			CFBundleShortVersionString = VERSION,     # must be in X.X.X format
@@ -43,6 +43,6 @@ if platform == 'darwin':
 elif platform.startswith('linux'):
     from distutils.core import setup
     setup_info['packages'] = [ "joliebulle" ]
-    setup_info['data_files'] = [("applications", ["joliebulle/joliebulle.desktop"])]
+    setup_info['data_files'] = [("applications", ["dist/Linux/joliebulle.desktop"])]
 
 setup(**setup_info)
