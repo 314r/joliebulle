@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 #­*­coding: utf­8 -­*­
 
-APP = ["../main.py"]
+APP = ["joliebulle/main.py"]
 NAME = "Joliebulle"
 VERSION = "2.8.0"
 
@@ -9,6 +9,7 @@ setup_info = dict(
       name = NAME,
       version = VERSION,
       app = APP,
+      license='GPLv3',
       options=dict(
 	py2app=dict(
 		iconfile='Mac/bulle.icns',
@@ -28,21 +29,20 @@ setup_info = dict(
       author = "Pierre Tavares",
       author_email = "contact.314r@gmail.com",
       url = "http://joliebulle.tuxfamily.org",
-      package_dir = { "":".." },
-      package_data = { "":["*.py", "*.qm", "*.xml", "Images/*.png", "Samples/*.xml", "README", "COPYING", "AUTHORS"] },
+      package_data = { "joliebulle":["*.py", "*.qm", "*.xml", "Images/*.png", "Samples/*.xml"] },
       setup_requires=['py2app'],
-      scripts = ["../joliebulle"],
-      iconfile='../Images/bulle.png'       
+      scripts = ["joliebulle/joliebulle"],
+      iconfile='joliebulle/Images/bulle.png'       
 )  
 
 from sys import platform
 
 if platform == 'darwin':
     from setuptools import setup
-    setup_info['data_files'] = ["../database.xml","../mash.xml", "Mac/qt.conf"]
+    setup_info['data_files'] = ["joliebulle/database.xml","joliebulle/mash.xml", "dist/Mac/qt.conf"]
 elif platform.startswith('linux'):
     from distutils.core import setup
-    setup_info['packages'] = [ "" ]
-    setup_info['data_files'] = [("applications", ["../joliebulle.desktop"])]
+    setup_info['packages'] = [ "joliebulle" ]
+    setup_info['data_files'] = [("applications", ["joliebulle/joliebulle.desktop"])]
 
 setup(**setup_info)
