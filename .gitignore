@@ -16,3 +16,6 @@ Desktop.ini
 .*
 !.gitignore
 *~
+
+#JolieBulle
+*_ui.py
