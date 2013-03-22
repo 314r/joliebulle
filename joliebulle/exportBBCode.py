@@ -74,11 +74,11 @@ class ExportBBCode(QtCore.QObject):
         brassage_texte += "----------------------[/b]\n"
         brassage_texte += "%s\n" %(recipe.mash.name)
         brassage_texte += "pH : %s\n\n" %(recipe.mash.ph)
-        brassage_texte += self.trUtf8(" Etapes : ") +"\n"
+        brassage_texte += self.trUtf8("Étapes : ") +"\n"
         for step in recipe.mash.listeSteps:
             mashStepView = MashStepView(step)
-            brassage_texte += step.name + " : " + self.trUtf8(" palier de type ")+ mashStepView.mashTypeDisplay() + self.trUtf8(" à ") + step.temp +" °C"+ self.trUtf8(" pendant ")+ step.time + self.trUtf8(" minutes ") + "\n"
-        brassage_texte += "\n" + self.trUtf8(" Rinçage : ") + recipe.mash.spargeTemp +" °C\n"
+            brassage_texte += step.name + " : " + self.trUtf8("palier de type")+ " " + mashStepView.mashTypeDisplay() + " " + self.trUtf8("à") + " " + step.temp +" °C "+ self.trUtf8("pendant") + " " +  step.time + " " + self.trUtf8("minutes") + "\n"
+        brassage_texte += "\n" + self.trUtf8("Rinçage : ") + recipe.mash.spargeTemp +" °C\n"
         brassage_texte += "\n"
 
         recipeNotes = ""
