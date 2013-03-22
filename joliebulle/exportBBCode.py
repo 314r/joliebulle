@@ -25,6 +25,7 @@ from view.hopview import *
 from view.miscview import *
 from view.yeastview import *
 from view.recipeview import *
+from view.mashstepview import *
 
 class ExportBBCode(QtCore.QObject):
     
@@ -68,9 +69,20 @@ class ExportBBCode(QtCore.QObject):
         for y in recipe.listeYeasts:
             levures_texte += y.name + "\n"
         levures_texte += "\n"
-            
+
+        brassage_texte = "[b]" + self.trUtf8("Brassage") + "\n"
+        brassage_texte += "----------------------[/b]\n"
+        brassage_texte += "%s\n" %(recipe.mash.name)
+        brassage_texte += "pH : %s\n\n" %(recipe.mash.ph)
+        brassage_texte += self.trUtf8(" Etapes : ") +"\n"
+        for step in recipe.mash.listeSteps:
+            mashStepView = MashStepView(step)
+            brassage_texte += step.name + " : " + self.trUtf8(" palier de type ")+ mashStepView.mashTypeDisplay() + self.trUtf8(" à ") + step.temp +" °C"+ self.trUtf8(" pendant ")+ step.time + self.trUtf8(" minutes ") + "\n"
+        brassage_texte += "\n" + self.trUtf8(" Rinçage : ") + recipe.mash.spargeTemp +" °C\n"
+        brassage_texte += "\n"
+
         recipeNotes = ""
         if recipe.recipeNotes is not None:
             recipeNotes = "[b]" + self.trUtf8("Notes") + "\n----------------------[/b]\n" + recipe.recipeNotes
             
-        self.generatedBbcode = recetteHeader + specification_texte + grains_texte + houblons_texte + divers_texte + levures_texte + recipeNotes
+        self.generatedBbcode = recetteHeader + specification_texte + grains_texte + houblons_texte + divers_texte + levures_texte + brassage_texte + recipeNotes

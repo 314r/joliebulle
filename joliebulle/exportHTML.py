@@ -123,15 +123,14 @@ text-align : center;}
 </html>''')
                                         
     def generateHtml(self) :
-        self.generatedHtml = self.recetteHtmlHeader + self.recetteHtmlProfil + self.recetteHtmlIng + self.recetteHtmlMashProfile + self.recipeNotes                                      
+        self.generatedHtml = self.recetteHtmlHeader + self.recetteHtmlProfil + self.recetteHtmlIng + self.recetteHtmlMashProfile + self.recipeNotes
                                         
                                         
-    def enregistrerHtml(self,fileHtml) :
-        #self.exportHtml(nomRecette)
-        contenuTexte = self.recetteHtmlHeader + self.recetteHtmlProfil + self.recetteHtmlIng + self.recipeNotes 
+    def enregistrerHtml(self,fileHtml) : 
         if  fileHtml.open(QtCore.QIODevice.WriteOnly) :
             self.stream = QtCore.QTextStream(fileHtml)
-            self.stream << contenuTexte
+            self.generateHtml()
+            self.stream << self.generatedHtml
                                      
         else :
             fileHtml.close()
