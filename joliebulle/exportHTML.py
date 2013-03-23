@@ -98,7 +98,7 @@ text-align : center;}
             yUI = YeastView(y)
             levures_texte = levures_texte + yUI.yeastDetailDisplay() + '<br/>'
         
-        self.recetteHtmlIng = self.trUtf8('<h2>Ingrédients pour un brassin de ') + str(recipe.volume) + self.trUtf8(' litres') + grains_texte + houblons_texte + divers_texte + levures_texte
+        self.recetteHtmlIng = self.trUtf8('<h2>Ingrédients pour un brassin de ') + str(recipe.volume) + self.trUtf8(' litres')+ '</h2>' + grains_texte + houblons_texte + divers_texte + levures_texte
         
         self.recetteHtmlProfil = '<table class="profil">%s<td>%s%% </td></tr>%s<td>%.3f</td></tr>%s<td>%s</td></tr>%s<td>%.0f EBC </td></tr>%s<td>%.0f IBU </td></tr>%s<td>%.1f</td></tr>%s<td>%.1f%% </td></tr></table>' % \
             (self.trUtf8('<tr><td>Rendement</td> '), str(recipe.efficiency), self.trUtf8('<tr><td>Densité initiale</td>'), recipe.compute_OG(),
@@ -117,13 +117,12 @@ text-align : center;}
         else:
             self.recipeNotes = self.trUtf8(' <h2>Notes</h2>') + '<p></p>'
 
-        self.recetteHtmlFooter =self.trUtf8('''
-# <footer class="footer">Une recette générée par JolieBulle, logiciel de brassage libre.</footer>
+        self.recetteHtmlFooter =self.trUtf8('''<footer class="footer">Une recette générée par JolieBulle, logiciel de brassage libre.</footer>
 </body>
 </html>''')
                                         
     def generateHtml(self) :
-        self.generatedHtml = self.recetteHtmlHeader + self.recetteHtmlProfil + self.recetteHtmlIng + self.recetteHtmlMashProfile + self.recipeNotes
+        self.generatedHtml = self.recetteHtmlHeader + self.recetteHtmlProfil + self.recetteHtmlIng + self.recetteHtmlMashProfile + self.recipeNotes + self.recetteHtmlFooter
                                         
                                         
     def enregistrerHtml(self,fileHtml) : 
