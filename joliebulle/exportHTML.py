@@ -117,9 +117,7 @@ text-align : center;}
         else:
             self.recipeNotes = self.trUtf8(' <h2>Notes</h2>') + '<p></p>'
 
-        self.recetteHtmlFooter =self.trUtf8('''<footer class="footer">Une recette générée par JolieBulle, logiciel de brassage libre.</footer>
-</body>
-</html>''')
+        self.recetteHtmlFooter = "</body></html>"
                                         
     def generateHtml(self) :
         self.generatedHtml = self.recetteHtmlHeader + self.recetteHtmlProfil + self.recetteHtmlIng + self.recetteHtmlMashProfile + self.recipeNotes + self.recetteHtmlFooter
