@@ -42,7 +42,7 @@ class DialogMashDetail(QtGui.QDialog):
     	for step in currentMash.listeSteps:
     		stepName = step.name
     		stepNameLabelValue = QtGui.QLabel('<b>'+ stepName + '</b> :')
-    		stepDetail = QtGui.QLabel(step.type + ", " + step.temp + self.trUtf8("°C, ") + step.time + self.trUtf8(" min"))
+    		stepDetail = QtGui.QLabel(step.type + ", " + str(step.temp) + self.trUtf8("°C, ") + str(step.time) + self.trUtf8(" min"))
     		self.ui.formSteps.addRow(stepNameLabelValue, stepDetail)
 
 
