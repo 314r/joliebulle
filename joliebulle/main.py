@@ -575,6 +575,8 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         
         #######################################################################################################
         # Profil de brassage       #########################################################################################################
+        
+        self.importMash = ImportMash()
         self.pushButtonMashDetails.clicked.connect(self.mashDetails)
         self.listWidgetSteps.itemSelectionChanged.connect (self.stepDetails)
         self.listWidgetMashProfiles.itemSelectionChanged.connect (self.mashClicked)
@@ -986,7 +988,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
             if self.recipe.mash.name is not None :
                 # self.comboBoxMashProfiles.setCurrentIndex(len(self.listMash)-1)
                 self.comboBoxMashProfiles.addItem(self.recipe.mash.name + "*")
-                self.comboBoxMashProfiles.setCurrentIndex(len(ImportMash().listeMashes))
+                self.comboBoxMashProfiles.setCurrentIndex(len(self.importMash.listeMashes))
             else :
                 self.comboBoxMashProfiles.setCurrentIndex(-1)
         except :
@@ -1768,15 +1770,13 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
             self.currentMash = self.currentRecipeMash
         self.tableWidgetStepsBrewday_currentRowChanged()
         self.recipe.mash = self.currentMash
-        print("le profil :", self.currentMash)
-        print("profil recette :",self.recipe.mash.name)
-
         
     def seeMash(self) :
         self.switchToMash()
-        self.listWidgetMashProfiles.clear() 
+        self.listWidgetMashProfiles.clear()
+        
 #        print(self.mashProfilesBase.listMash)
-        self.numMash = len(ImportMash().listeMashes)
+        self.numMash = len(self.importMash.listeMashes)
         #self.numSteps = self.mashProfilesBase.numSteps
         self.popMashList()
         self.pushButtonMashEdit.setEnabled(False)
@@ -1786,13 +1786,13 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         
     def popMashList(self) :
         self.listWidgetMashProfiles.clear() 
-        for mash in ImportMash().listeMashes :
+        for mash in self.importMash.listeMashes :
            self.listWidgetMashProfiles.addItem(mash.name)    
             
     def mashClicked(self) :
         self.listWidgetSteps.clear()         
         index = self.listWidgetMashProfiles.currentRow()
-        mash = ImportMash().listeMashes[index]
+        mash = self.importMash.listeMashes[index]
         for step in mash.listeSteps :
             self.listWidgetSteps.addItem(step.name)
             
@@ -1823,7 +1823,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         
     def stepDetails(self) :
         index = self.listWidgetMashProfiles.currentRow()
-        selected_mash = ImportMash().listeMashes[index]
+        selected_mash = self.importMash.listeMashes[index]
 
         i = self.listWidgetSteps.currentRow()
         selected_step = selected_mash.listeSteps[i]
@@ -1840,7 +1840,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         
     def stepEdit(self) :
         index = self.listWidgetMashProfiles.currentRow()
-        selected_mash = ImportMash().listeMashes[index]
+        selected_mash = self.importMash.listeMashes[index]
         i = self.listWidgetSteps.currentRow()
         selected_step = selected_mash.listeSteps[i]
 
@@ -1849,7 +1849,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
     
     def stepReload(self, step) :
         index = self.listWidgetMashProfiles.currentRow()
-        selected_mash = ImportMash().listeMashes[index]
+        selected_mash = self.importMash.listeMashes[index]
         i = self.listWidgetSteps.currentRow()
         selected_step = selected_mash.listeSteps[i]
 
@@ -1864,15 +1864,15 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         
     def removeStep(self) :
         index = self.listWidgetMashProfiles.currentRow()
-        selected_mash = ImportMash().listeMashes[index]
+        selected_mash = self.importMash.listeMashes[index]
         i = self.listWidgetSteps.currentRow()
-
+        self.listWidgetSteps.clearSelection()
         del selected_mash.listeSteps[i]
         self.seeMash()
         
     def addStep(self) :
         index = self.listWidgetMashProfiles.currentRow()
-        selected_mash = ImportMash().listeMashes[index]
+        selected_mash = self.importMash.listeMashes[index]
         i = self.listWidgetSteps.currentRow()
         step = MashStep()
         step.name = 'Nouveau palier'
@@ -1891,7 +1891,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         
     def mashEdit(self) :
         index = self.listWidgetMashProfiles.currentRow()
-        selected_mash = ImportMash().listeMashes[index]
+        selected_mash = self.importMash.listeMashes[index]
         self.dlgMash.show()
         self.dlgMash.fields(selected_mash)
         
@@ -1900,7 +1900,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         self.brewdayLock = 0
         
         f = self.listWidgetMashProfiles.currentRow()
-        selected_mash = ImportMash().listeMashes[f]
+        selected_mash = self.importMash.listeMashes[f]
         selected_mash.name = mash.name
         selected_mash.ph = mash.ph
         selected_mash.grainTemp = 20
@@ -1924,13 +1924,13 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         new_step.time = '0'
         new_step.temp = '0'
         new_mash.listeSteps.append(new_step)
-        ImportMash().listeMashes.append(new_mash)
+        self.importMash.listeMashes.append(new_mash)
         self.seeMash()
-        self.listWidgetMashProfiles.setCurrentRow(len(ImportMash().listeMashes)-1)
+        self.listWidgetMashProfiles.setCurrentRow(len(self.importMash.listeMashes)-1)
         
     def removeMash(self) :
         i = self.listWidgetMashProfiles.currentRow()
-        del ImportMash().listeMashes[i]
+        del self.importMash.listeMashes[i]
         self.seeMash()
         self.listWidgetSteps.clear() 
         
@@ -1939,14 +1939,14 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         
     def mashAccepted (self) :
         i = self.listWidgetMashProfiles.currentRow()
-        self.currentMash = ImportMash().listeMashes[i]
+        self.currentMash = self.importMash.listeMashes[i]
         self.popMashCombo()
         self.switchToEditor()
         self.comboBoxMashProfiles.setCurrentIndex(i)
         logger.debug(self.currentMash)
         
     def saveProfile(self) : 
-        self.mashProfileExport.export(ImportMash().listeMashes)
+        self.mashProfileExport.export(self.importMash.listeMashes)
         self.mashProfileExport.enregistrer(mash_file)
         
         
