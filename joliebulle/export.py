@@ -153,7 +153,7 @@ class Export (QtCore.QObject):
 
         try :
             notes = ET.SubElement(recipeTag, 'NOTES') 
-            notes.text = self.recipe.recipeNotes
+            notes.text = recipe.recipeNotes
         except :
             pass       
 
