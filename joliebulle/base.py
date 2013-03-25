@@ -33,18 +33,11 @@ from model.fermentable import *
 from model.hop import *
 from model.yeast import *
 from model.misc import *
+from model.mash import *
 from operator import attrgetter
+from singleton import Singleton
 
 logger = logging.getLogger(__name__)
-
-
-#Singleton class, should be in some common module
-class Singleton(type):
-    _instances = {}
-    def __call__(cls, *args, **kwargs):
-        if cls not in cls._instances:
-            cls._instances[cls] = super(Singleton, cls).__call__(*args, **kwargs)
-        return cls._instances[cls]
 
 class ImportBase(object,metaclass=Singleton) :
 
@@ -90,6 +83,20 @@ class ImportBase(object,metaclass=Singleton) :
         logger.debug( "%s miscs in database, using %s bytes in memory", len(self.listeMiscs), sys.getsizeof(self.listeMiscs) )
 
         logger.debug("Import %s terminé", database_file)
+
+        #Import Mash file
+        logger.debug("Import %s", mash_file)
+        arbre = ET.parse(mash_file)
+
+        mash = arbre.findall('.//MASH')
+        self.listeMashes = list()
+
+        for element in mash:
+            self.listeMashes.append( Mash.parse(element) )
+        logger.debug( "%s mash in database, using %s bytes in memory", len(self.listeMashes), sys.getsizeof(self.listeMashes) )
+
+        logger.debug("Import %s terminé", mash_file)
+
 
     @staticmethod
     def addFermentable(f):
