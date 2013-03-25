@@ -26,7 +26,7 @@ from model.hop import *
 from model.yeast import *
 from model.misc import *
 from model.mash import *
-from helper.recipeExporterRepository import *
+from joliebulle.helper.recipeExporterRepository import *
 
 logger = logging.getLogger(__name__)
 

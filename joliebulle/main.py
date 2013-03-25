@@ -34,7 +34,6 @@ from PyQt4 import QtGui
 from PyQt4 import QtCore
 from reader import *
 from settings import *
-from export import *
 from base import *
 from importMashXml import *
 from editgrain import *
@@ -1635,22 +1634,23 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
             self.initModele()                    
 
     def enregistrerRecette(self, destination):
-        self.recipe.name = self.lineEditRecette.text()
-        self.recipe.style = self.lineEditGenre.text()   
-        self.recipe.brewer = self.lineEditBrewer.text()        
-        self.recipe.boil = self.spinBoxBoil.value()
-        recettes = QtCore.QFile(recettes_dir)
-        exp=Export()
+        recipeFile = QtCore.QFile(destination)
+        if recipeFile.open(QtCore.QIODevice.WriteOnly):
+            try:
+                stream = QtCore.QTextStream(recipeFile)
+                stream << self.recipe.export("beerxml")
+            finally:
+                recipeFile.close()
+        else:
+            # TODO : Prévenir l'utilisateur en cas d'échec de l'enregistrement
+            pass
         #logger.info("Recette '%s' ", self.recipe.mName)
-        exp.exportXML(self.recipe)
-        exp.enregistrer(destination)
         #logger.info("Recette '%s' enregistrée dans le fichier %s", self.recipe.name, destination)
         
     def enregistrer (self) :
-        exp=Export()
         self.recipe.name = self.lineEditRecette.text()
-        self.recipe.style = self.lineEditGenre.text()   
-        self.recipe.brewer = self.lineEditBrewer.text()        
+        self.recipe.style = self.lineEditGenre.text()
+        self.recipe.brewer = self.lineEditBrewer.text()
         self.recipe.boil = self.spinBoxBoil.value()
         if not self.s :
             destination =  recettes_dir + "/" + self.recipe.name + ".xml"
@@ -1672,6 +1672,8 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
             self.enregistrerRecette(self.s)
 
     def exporterHtml (self) :
+        self.recipe.name = self.lineEditRecette.text()
+        self.recipe.style = self.lineEditGenre.text()
         fichier = QtGui.QFileDialog.getSaveFileName (self,
                                                     self.trUtf8("Enregistrer dans un fichier"),
                                                     self.recipe.name,
