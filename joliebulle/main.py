@@ -1886,8 +1886,8 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         self.seeMash()
         self.stepDetails()      
         self.listWidgetMashProfiles.setCurrentRow(index)
-        self.listWidgetSteps.setCurrentRow(i-1)
-        self.stepEdit()
+        # self.listWidgetSteps.setCurrentRow(i-1)
+        # self.stepEdit()
         
     def mashEdit(self) :
         index = self.listWidgetMashProfiles.currentRow()
