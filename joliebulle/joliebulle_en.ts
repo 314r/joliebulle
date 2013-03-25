@@ -4,7 +4,7 @@
 <context>
     <name>AppWindow</name>
     <message>
-        <location filename="main.py" line="1599"/>
+        <location filename="main.py" line="1593"/>
         <source>A propos</source>
         <translation>About</translation>
     </message>
@@ -14,52 +14,52 @@
         <translation type="obsolete">&lt;h1&gt;JolieBulle&lt;/h1&gt; &lt;b&gt;version 2.0&lt;/b&gt;&lt;br/&gt;copyright (c) 2010-2011 Pierre Tavares&lt;p&gt;JolieBulle is a beer brewing software.&lt;/p&gt;&lt;p&gt;&lt;a href =http://www.gnu.org/licenses/gpl-3.0.html&gt;Licence : Version 3 de la Licence Générale Publique GNU&lt;/a&gt;&lt;/p&gt;&lt;p&gt;Some icons are from the Faenza pack by Tiheum (Matthieu James), released under GPL.&lt;/p&gt;</translation>
     </message>
     <message>
-        <location filename="main.py" line="1711"/>
+        <location filename="main.py" line="1710"/>
         <source>Nouvelle Recette</source>
         <translation>New Recipe</translation>
     </message>
     <message utf8="true">
-        <location filename="main.py" line="1715"/>
+        <location filename="main.py" line="1714"/>
         <source>Générique</source>
         <translation>Generic</translation>
     </message>
     <message utf8="true">
-        <location filename="main.py" line="620"/>
+        <location filename="main.py" line="618"/>
         <source>Ingrédients</source>
         <translation>Ingredients</translation>
     </message>
     <message utf8="true">
-        <location filename="main.py" line="620"/>
+        <location filename="main.py" line="618"/>
         <source>Quantité (g)</source>
         <translation>Amount (g)</translation>
     </message>
     <message>
-        <location filename="main.py" line="620"/>
+        <location filename="main.py" line="618"/>
         <source>Temps (min)</source>
         <translation>Time (min)</translation>
     </message>
     <message>
-        <location filename="main.py" line="620"/>
+        <location filename="main.py" line="618"/>
         <source>Acide Alpha (%)</source>
         <translation>Alpha Acid (%)</translation>
     </message>
     <message>
-        <location filename="main.py" line="620"/>
+        <location filename="main.py" line="618"/>
         <source>Type</source>
         <translation>Type</translation>
     </message>
     <message>
-        <location filename="main.py" line="1578"/>
+        <location filename="main.py" line="1572"/>
         <source>Ouvrir un fichier</source>
         <translation>Open file</translation>
     </message>
     <message>
-        <location filename="main.py" line="1683"/>
+        <location filename="main.py" line="1677"/>
         <source>Enregistrer dans un fichier</source>
         <translation>Save in a file</translation>
     </message>
     <message>
-        <location filename="main.py" line="620"/>
+        <location filename="main.py" line="618"/>
         <source>Proportion</source>
         <translation>Ratio</translation>
     </message>
@@ -74,22 +74,22 @@
         <translation type="obsolete">&lt;h1&gt;JolieBulle&lt;/h1&gt; &lt;b&gt;version 2.2&lt;/b&gt;&lt;br/&gt;copyright (c) 2010-2011 Pierre Tavares&lt;p&gt; JolieBulle is a beer brewing software.&lt;/p&gt;&lt;p&gt;&lt;a href =http://www.gnu.org/licenses/gpl-3.0.html&gt;Licence :GPL v3&lt;/a&gt;&lt;/p&gt;&lt;p&gt;Some icons come from the Faenza pack by Tiheum (Matthieu James), also provided under GPL&lt;/p&gt;</translation>
     </message>
     <message>
-        <location filename="main.py" line="1041"/>
+        <location filename="main.py" line="1035"/>
         <source>Supprimer</source>
         <translation>Remove</translation>
     </message>
     <message utf8="true">
-        <location filename="main.py" line="1041"/>
+        <location filename="main.py" line="1035"/>
         <source>La recette sera définitivement supprimée &lt;br/&gt; Continuer ?</source>
         <translation>The recipe will be removed.&lt;br/&gt; Continue ?</translation>
     </message>
     <message>
-        <location filename="main.py" line="1205"/>
+        <location filename="main.py" line="1199"/>
         <source>Remplacer la base ?</source>
         <translation>Restore database</translation>
     </message>
     <message utf8="true">
-        <location filename="main.py" line="1205"/>
+        <location filename="main.py" line="1199"/>
         <source>La base des ingrédients actuelle va être effacée et remplacée par la base originale. Toutes vos modifications vont être effacées. Un redémarrage de l&apos;application sera nécessaire.&lt;br&gt; Continuer ?</source>
         <translation>The ingredients database is going to be removed and replaced by the original one. All changes you made will be removed. You will have to reboot JolieBulle. &lt;br/&gt; Continue ?</translation>
     </message>
@@ -104,12 +104,12 @@
         <translation type="obsolete">&lt;h1&gt;JolieBulle&lt;/h1&gt; &lt;b&gt;version 2.4&lt;/b&gt;&lt;br/&gt;copyright (c) 2010-2011 Pierre Tavares&lt;p&gt;JolieBulle is a beer brewing software.&lt;/p&gt;&lt;p&gt;&lt;a href =http://www.gnu.org/licenses/gpl-3.0.html&gt;Licence : Version 3 de la Licence Générale Publique GNU&lt;/a&gt;&lt;/p&gt;&lt;p&gt;Some icons are from the Faenza pack by Tiheum (Matthieu James), released under GPL.&lt;/p&gt;</translation>
     </message>
     <message utf8="true">
-        <location filename="main.py" line="620"/>
+        <location filename="main.py" line="618"/>
         <source>Étape</source>
         <translation>Step</translation>
     </message>
     <message>
-        <location filename="main.py" line="1001"/>
+        <location filename="main.py" line="995"/>
         <source>Renommer</source>
         <translation>Rename</translation>
     </message>
@@ -134,7 +134,7 @@
         <translation type="obsolete">Up</translation>
     </message>
     <message>
-        <location filename="main.py" line="1070"/>
+        <location filename="main.py" line="1064"/>
         <source>nouveau dossier</source>
         <translation>new folder</translation>
     </message>
@@ -204,57 +204,57 @@
         <translation type="obsolete">&lt;h1&gt;JolieBulle&lt;/h1&gt; &lt;b&gt;version 2.6&lt;/b&gt;&lt;br/&gt;copyright (c) 2010-2012 Pierre Tavares&lt;p&gt;JolieBulle is a beer brewing software.&lt;/p&gt;&lt;p&gt;&lt;a href =http://www.gnu.org/licenses/gpl-3.0.html&gt;Licence : Version 3 de la Licence Générale Publique GNU&lt;/a&gt;&lt;/p&gt;&lt;p&gt;Some icons are from the Faenza pack by Tiheum (Matthieu James), released under GPL.&lt;/p&gt;</translation>
     </message>
     <message>
-        <location filename="main.py" line="370"/>
+        <location filename="main.py" line="368"/>
         <source>Enregistrer</source>
         <translation>Save</translation>
     </message>
     <message>
-        <location filename="main.py" line="377"/>
+        <location filename="main.py" line="375"/>
         <source>Nouvelle recette</source>
         <translation>New recipe</translation>
     </message>
     <message>
-        <location filename="main.py" line="414"/>
+        <location filename="main.py" line="412"/>
         <source>Fichier</source>
         <translation>File</translation>
     </message>
     <message>
-        <location filename="main.py" line="440"/>
+        <location filename="main.py" line="438"/>
         <source>Outils</source>
         <translation>Tools</translation>
     </message>
     <message>
-        <location filename="main.py" line="1005"/>
+        <location filename="main.py" line="999"/>
         <source>Nouveau dossier</source>
         <translation>New folder</translation>
     </message>
     <message utf8="true">
-        <location filename="main.py" line="1672"/>
+        <location filename="main.py" line="1667"/>
         <source>Recette déjà existante</source>
         <translation>Recipe name exists </translation>
     </message>
     <message utf8="true">
-        <location filename="main.py" line="1672"/>
+        <location filename="main.py" line="1667"/>
         <source>Ce nom de recette existe déjà. L&apos;enregistrement a été annulé. Vous pouvez choisir un nouveau nom.</source>
         <translation>Recipe name already exists. You should choose another name.</translation>
     </message>
     <message>
-        <location filename="main.py" line="486"/>
+        <location filename="main.py" line="484"/>
         <source>Tout grain</source>
         <translation>All grain</translation>
     </message>
     <message>
-        <location filename="main.py" line="486"/>
+        <location filename="main.py" line="484"/>
         <source>Extrait</source>
         <translation>Extract</translation>
     </message>
     <message>
-        <location filename="main.py" line="486"/>
+        <location filename="main.py" line="484"/>
         <source>Partial mash</source>
         <translation>Partial mash</translation>
     </message>
     <message>
-        <location filename="main.py" line="436"/>
+        <location filename="main.py" line="434"/>
         <source>Profils de brassage</source>
         <translation>Mash profiles</translation>
     </message>
@@ -269,7 +269,7 @@
         <translation type="obsolete">After Boil</translation>
     </message>
     <message utf8="true">
-        <location filename="main.py" line="1599"/>
+        <location filename="main.py" line="1593"/>
         <source>&lt;h1&gt;JolieBulle&lt;/h1&gt; &lt;b&gt;version 2.8&lt;/b&gt;&lt;br/&gt;copyright (c) 2010-2013 Pierre Tavares.&lt;br/&gt;copyright (c) 2012-2013 Les auteurs de JolieBulle.&lt;p&gt; JolieBulle est un logiciel de lecture et de formulation de recettes de brassage.&lt;/p&gt;&lt;p&gt;&lt;a href =http://www.gnu.org/licenses/gpl-3.0.html&gt;Licence : Version 3 de la Licence Générale Publique GNU&lt;/a&gt;&lt;/p&gt;&lt;p&gt;Certaines icônes proviennent du pack Faenza par Tiheum (Matthieu James), également distribué sous licence GPL.&lt;/p&gt; &lt;p&gt;Auteurs : Pierre Tavares, Nicolas Jouanin, Thomas Gerbet&lt;/p&gt;</source>
         <translation>&lt;h1&gt;JolieBulle&lt;/h1&gt; &lt;b&gt;version 2.8&lt;/b&gt;&lt;br/&gt;copyright (c) 2010-2013 Pierre Tavares.&lt;br/&gt;copyright (c) 2012-2013 JolieBulle&apos;s authors.&lt;p&gt; JolieBulle is a beer brewing software.&lt;/p&gt;&lt;p&gt;&lt;a href =http://www.gnu.org/licenses/gpl-3.0.html&gt;Licence : GNU GPL v3&lt;/a&gt;&lt;/p&gt;&lt;p&gt;Some icons by Tiheum (Matthieu James), licenced under the GNU GPL&lt;/p&gt; &lt;p&gt;Authors : Pierre Tavares, Nicolas Jouanin, Thomas Gerbet&lt;/p&gt;</translation>
     </message>
@@ -1410,14 +1410,119 @@ p, li { white-space: pre-wrap; }
         <translation type="obsolete">Bottling</translation>
     </message>
     <message>
-        <location filename="export.py" line="169"/>
+        <location filename="helper/recipeexporter/exportBBCode.py" line="74"/>
         <source>Brassage</source>
-        <translation type="obsolete">Mash</translation>
+        <translation>Mash</translation>
     </message>
     <message utf8="true">
         <location filename="export.py" line="171"/>
         <source>Après ébullition</source>
         <translation type="obsolete">After boil</translation>
+    </message>
+    <message>
+        <location filename="helper/recipeexporter/exportBBCode.py" line="42"/>
+        <source>Rendement : </source>
+        <translation>Efficiency: </translation>
+    </message>
+    <message>
+        <location filename="helper/recipeexporter/exportBBCode.py" line="36"/>
+        <source>DensitÃ© initiale : </source>
+        <translation>Original gravity: </translation>
+    </message>
+    <message>
+        <location filename="helper/recipeexporter/exportBBCode.py" line="37"/>
+        <source>DensitÃ© finale : </source>
+        <translation>Final gravity: </translation>
+    </message>
+    <message>
+        <location filename="helper/recipeexporter/exportBBCode.py" line="38"/>
+        <source>Teinte : </source>
+        <translation>Color: </translation>
+    </message>
+    <message>
+        <location filename="helper/recipeexporter/exportBBCode.py" line="39"/>
+        <source>Amertume : </source>
+        <translation>Bitterness: </translation>
+    </message>
+    <message>
+        <location filename="helper/recipeexporter/exportHTML.py" line="74"/>
+        <source>Ratio BU/GU : </source>
+        <translation>BU/GU ratio</translation>
+    </message>
+    <message>
+        <location filename="helper/recipeexporter/exportBBCode.py" line="40"/>
+        <source>Alcool (vol) : </source>
+        <translation>Alcohol (by vol): </translation>
+    </message>
+    <message>
+        <location filename="helper/recipeexporter/exportBBCode.py" line="43"/>
+        <source>IngrÃ©dients prÃ©vus pour un brassin de</source>
+        <translation>Ingredients for a brew of </translation>
+    </message>
+    <message>
+        <location filename="helper/recipeexporter/exportHTML.py" line="79"/>
+        <source>litres</source>
+        <translation> liters</translation>
+    </message>
+    <message>
+        <location filename="helper/recipeexporter/exportBBCode.py" line="45"/>
+        <source>Grains et sucres</source>
+        <translation>Grains and sugars</translation>
+    </message>
+    <message>
+        <location filename="helper/recipeexporter/exportHTML.py" line="87"/>
+        <source>Ajout aprÃ¨s Ã©bullition</source>
+        <translation>Add after boil</translation>
+    </message>
+    <message>
+        <location filename="helper/recipeexporter/exportBBCode.py" line="51"/>
+        <source>Houblons</source>
+        <translation>Hops </translation>
+    </message>
+    <message>
+        <location filename="helper/recipeexporter/exportBBCode.py" line="60"/>
+        <source>IngrÃ©dients divers</source>
+        <translation>Miscellaneous </translation>
+    </message>
+    <message>
+        <location filename="helper/recipeexporter/exportBBCode.py" line="67"/>
+        <source>Levures</source>
+        <translation>Yeasts</translation>
+    </message>
+    <message>
+        <location filename="helper/recipeexporter/exportBBCode.py" line="78"/>
+        <source>Ãtapes : </source>
+        <translation>Steps: </translation>
+    </message>
+    <message>
+        <location filename="helper/recipeexporter/exportBBCode.py" line="81"/>
+        <source>palier de type</source>
+        <translation>step type</translation>
+    </message>
+    <message>
+        <location filename="helper/recipeexporter/exportBBCode.py" line="82"/>
+        <source>Ã </source>
+        <translation>at</translation>
+    </message>
+    <message>
+        <location filename="helper/recipeexporter/exportBBCode.py" line="83"/>
+        <source>pendant</source>
+        <translation>for</translation>
+    </message>
+    <message>
+        <location filename="helper/recipeexporter/exportBBCode.py" line="84"/>
+        <source>minutes</source>
+        <translation>minutes</translation>
+    </message>
+    <message>
+        <location filename="helper/recipeexporter/exportBBCode.py" line="85"/>
+        <source>RinÃ§age : </source>
+        <translation>Sparge: </translation>
+    </message>
+    <message>
+        <location filename="helper/recipeexporter/exportBBCode.py" line="89"/>
+        <source>Notes</source>
+        <translation>Notes</translation>
     </message>
 </context>
 <context>
@@ -1430,67 +1535,67 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="exportBBCode.py" line="45"/>
         <source>Grains et sucres</source>
-        <translation>Grains and sugars</translation>
+        <translation type="obsolete">Grains and sugars</translation>
     </message>
     <message>
         <location filename="exportBBCode.py" line="51"/>
         <source>Houblons</source>
-        <translation>Hops </translation>
+        <translation type="obsolete">Hops </translation>
     </message>
     <message utf8="true">
         <location filename="exportBBCode.py" line="60"/>
         <source>Ingrédients divers</source>
-        <translation>Miscellaneous </translation>
+        <translation type="obsolete">Miscellaneous </translation>
     </message>
     <message>
         <location filename="exportBBCode.py" line="67"/>
         <source>Levures</source>
-        <translation>Yeasts</translation>
+        <translation type="obsolete">Yeasts</translation>
     </message>
     <message utf8="true">
         <location filename="exportBBCode.py" line="36"/>
         <source>Densité initiale : </source>
-        <translation>Original gravity: </translation>
+        <translation type="obsolete">Original gravity: </translation>
     </message>
     <message utf8="true">
         <location filename="exportBBCode.py" line="37"/>
         <source>Densité finale : </source>
-        <translation>Final gravity: </translation>
+        <translation type="obsolete">Final gravity: </translation>
     </message>
     <message>
         <location filename="exportBBCode.py" line="38"/>
         <source>Teinte : </source>
-        <translation>Color: </translation>
+        <translation type="obsolete">Color: </translation>
     </message>
     <message>
         <location filename="exportBBCode.py" line="39"/>
         <source>Amertume : </source>
-        <translation>Bitterness: </translation>
+        <translation type="obsolete">Bitterness: </translation>
     </message>
     <message>
         <location filename="exportBBCode.py" line="40"/>
         <source>Alcool (vol) : </source>
-        <translation>Alcohol (by vol): </translation>
+        <translation type="obsolete">Alcohol (by vol): </translation>
     </message>
     <message>
         <location filename="exportBBCode.py" line="42"/>
         <source>Rendement : </source>
-        <translation>Efficiency: </translation>
+        <translation type="obsolete">Efficiency: </translation>
     </message>
     <message utf8="true">
         <location filename="exportBBCode.py" line="43"/>
         <source>Ingrédients prévus pour un brassin de </source>
-        <translation>Ingredients for a brew of </translation>
+        <translation type="obsolete">Ingredients for a brew of </translation>
     </message>
     <message>
         <location filename="exportBBCode.py" line="86"/>
         <source>Notes</source>
-        <translation>Notes</translation>
+        <translation type="obsolete">Notes</translation>
     </message>
     <message>
         <location filename="exportBBCode.py" line="73"/>
         <source>Brassage</source>
-        <translation>Mash</translation>
+        <translation type="obsolete">Mash</translation>
     </message>
     <message>
         <location filename="exportBBCode.py" line="77"/>
@@ -1525,32 +1630,32 @@ p, li { white-space: pre-wrap; }
     <message utf8="true">
         <location filename="exportBBCode.py" line="77"/>
         <source>Étapes : </source>
-        <translation>Steps: </translation>
+        <translation type="obsolete">Steps: </translation>
     </message>
     <message>
         <location filename="exportBBCode.py" line="80"/>
         <source>palier de type</source>
-        <translation>step type</translation>
+        <translation type="obsolete">step type</translation>
     </message>
     <message utf8="true">
         <location filename="exportBBCode.py" line="80"/>
         <source>à</source>
-        <translation>at</translation>
+        <translation type="obsolete">at</translation>
     </message>
     <message>
         <location filename="exportBBCode.py" line="80"/>
         <source>pendant</source>
-        <translation>for</translation>
+        <translation type="obsolete">for</translation>
     </message>
     <message>
         <location filename="exportBBCode.py" line="80"/>
         <source>minutes</source>
-        <translation>minutes</translation>
+        <translation type="obsolete">minutes</translation>
     </message>
     <message utf8="true">
         <location filename="exportBBCode.py" line="81"/>
         <source>Rinçage : </source>
-        <translation>Sparge: </translation>
+        <translation type="obsolete">Sparge: </translation>
     </message>
 </context>
 <context>
@@ -1579,7 +1684,7 @@ Recette prévue pour un brassin de </source>
     <message>
         <location filename="exportHTML.py" line="111"/>
         <source> pendant </source>
-        <translation> for </translation>
+        <translation type="obsolete"> for </translation>
     </message>
     <message utf8="true">
         <location filename="exportHTML.py" line="78"/>
@@ -1650,7 +1755,7 @@ Recette prévue pour un brassin de </source>
     <message>
         <location filename="exportHTML.py" line="117"/>
         <source> &lt;h2&gt;Notes&lt;/h2&gt;</source>
-        <translation> &lt;h2&gt;Notes&lt;/h2&gt;</translation>
+        <translation type="obsolete"> &lt;h2&gt;Notes&lt;/h2&gt;</translation>
     </message>
     <message>
         <location filename="exportHTML.py" line="84"/>
@@ -1660,7 +1765,7 @@ Recette prévue pour un brassin de </source>
     <message>
         <location filename="exportHTML.py" line="74"/>
         <source>&lt;h3&gt;Grains et sucres&lt;/h3&gt; </source>
-        <translation>&lt;h3&gt;Grains and sugars&lt;/h3&gt;</translation>
+        <translation type="obsolete">&lt;h3&gt;Grains and sugars&lt;/h3&gt;</translation>
     </message>
     <message utf8="true">
         <location filename="exportHTML.py" line="107"/>
@@ -1670,37 +1775,37 @@ Recette prévue pour un brassin de </source>
     <message>
         <location filename="exportHTML.py" line="100"/>
         <source> litres</source>
-        <translation> liters</translation>
+        <translation type="obsolete"> liters</translation>
     </message>
     <message>
         <location filename="exportHTML.py" line="103"/>
         <source>&lt;tr&gt;&lt;td&gt;Rendement&lt;/td&gt; </source>
-        <translation>&lt;tr&gt;&lt;td&gt;Yield&lt;/td&gt;</translation>
+        <translation type="obsolete">&lt;tr&gt;&lt;td&gt;Yield&lt;/td&gt;</translation>
     </message>
     <message utf8="true">
         <location filename="exportHTML.py" line="103"/>
         <source>&lt;tr&gt;&lt;td&gt;Densité initiale&lt;/td&gt;</source>
-        <translation>&lt;tr&gt;&lt;td&gt;Original gravity&lt;/td&gt;</translation>
+        <translation type="obsolete">&lt;tr&gt;&lt;td&gt;Original gravity&lt;/td&gt;</translation>
     </message>
     <message utf8="true">
         <location filename="exportHTML.py" line="103"/>
         <source>&lt;tr&gt;&lt;td&gt;Densité finale&lt;/td&gt;</source>
-        <translation>&lt;tr&gt;&lt;td&gt;Final gravity&lt;/td&gt;</translation>
+        <translation type="obsolete">&lt;tr&gt;&lt;td&gt;Final gravity&lt;/td&gt;</translation>
     </message>
     <message>
         <location filename="exportHTML.py" line="103"/>
         <source>&lt;tr&gt;&lt;td&gt;Teinte&lt;/td&gt;</source>
-        <translation>&lt;tr&gt;&lt;td&gt;Color&lt;/td&gt;</translation>
+        <translation type="obsolete">&lt;tr&gt;&lt;td&gt;Color&lt;/td&gt;</translation>
     </message>
     <message>
         <location filename="exportHTML.py" line="103"/>
         <source>&lt;tr&gt;&lt;td&gt;Amertume&lt;/td&gt;</source>
-        <translation>&lt;tr&gt;&lt;td&gt;Bitterness&lt;/td&gt;</translation>
+        <translation type="obsolete">&lt;tr&gt;&lt;td&gt;Bitterness&lt;/td&gt;</translation>
     </message>
     <message>
         <location filename="exportHTML.py" line="103"/>
         <source>&lt;tr&gt;&lt;td&gt;Alcool (vol)&lt;/td&gt;</source>
-        <translation>&lt;tr&gt;&lt;td&gt;Alcohol (by vol)&lt;/td&gt;</translation>
+        <translation type="obsolete">&lt;tr&gt;&lt;td&gt;Alcohol (by vol)&lt;/td&gt;</translation>
     </message>
     <message utf8="true">
         <location filename="exportHTML.py" line="119"/>
@@ -1708,7 +1813,7 @@ Recette prévue pour un brassin de </source>
 # &lt;footer class=&quot;footer&quot;&gt;Une recette générée par JolieBulle, logiciel de brassage libre.&lt;/footer&gt;
 &lt;/body&gt;
 &lt;/html&gt;</source>
-        <translation># &lt;footer class=&quot;footer&quot;&gt;A recipe generated by JolieBulle.&lt;/footer&gt;
+        <translation type="obsolete"># &lt;footer class=&quot;footer&quot;&gt;A recipe generated by JolieBulle.&lt;/footer&gt;
 &lt;/body&gt;
 &lt;/html&gt;</translation>
     </message>
@@ -1720,17 +1825,17 @@ Recette prévue pour un brassin de </source>
     <message utf8="true">
         <location filename="exportHTML.py" line="77"/>
         <source>Ajout après ébullition</source>
-        <translation>Add after boil</translation>
+        <translation type="obsolete">Add after boil</translation>
     </message>
     <message>
         <location filename="exportHTML.py" line="103"/>
         <source>&lt;tr&gt;&lt;td&gt;Ratio BU/GU&lt;/td&gt;</source>
-        <translation>&lt;tr&gt;&lt;td&gt;BU/GU ratio&lt;/td&gt;</translation>
+        <translation type="obsolete">&lt;tr&gt;&lt;td&gt;BU/GU ratio&lt;/td&gt;</translation>
     </message>
     <message>
         <location filename="exportHTML.py" line="108"/>
         <source> &lt;h2&gt;Brassage&lt;/h2&gt;</source>
-        <translation> &lt;h2&gt;Mash&lt;/h2&gt;</translation>
+        <translation type="obsolete"> &lt;h2&gt;Mash&lt;/h2&gt;</translation>
     </message>
     <message>
         <location filename="exportHTML.py" line="108"/>
@@ -1755,47 +1860,47 @@ Recette prévue pour un brassin de </source>
     <message>
         <location filename="exportHTML.py" line="111"/>
         <source> palier de type </source>
-        <translation>step type</translation>
+        <translation type="obsolete">step type</translation>
     </message>
     <message utf8="true">
         <location filename="exportHTML.py" line="111"/>
         <source> à </source>
-        <translation> at </translation>
+        <translation type="obsolete"> at </translation>
     </message>
     <message>
         <location filename="exportHTML.py" line="111"/>
         <source> minutes </source>
-        <translation> minutes </translation>
+        <translation type="obsolete"> minutes </translation>
     </message>
     <message utf8="true">
         <location filename="exportHTML.py" line="112"/>
         <source> Rinçage : </source>
-        <translation> Sparge : </translation>
+        <translation type="obsolete"> Sparge : </translation>
     </message>
     <message>
         <location filename="exportHTML.py" line="83"/>
         <source>&lt;h3&gt;Houblons&lt;/h3&gt;</source>
-        <translation>&lt;h3&gt;Hops&lt;/h3&gt;</translation>
+        <translation type="obsolete">&lt;h3&gt;Hops&lt;/h3&gt;</translation>
     </message>
     <message utf8="true">
         <location filename="exportHTML.py" line="89"/>
         <source>&lt;h3&gt;Ingrédients divers&lt;/h3&gt;</source>
-        <translation>&lt;h3&gt;Miscellaneous&lt;/h3&gt;</translation>
+        <translation type="obsolete">&lt;h3&gt;Miscellaneous&lt;/h3&gt;</translation>
     </message>
     <message>
         <location filename="exportHTML.py" line="95"/>
         <source>&lt;h3&gt;Levures&lt;/h3&gt;</source>
-        <translation>&lt;h3&gt;Yeasts&lt;/h3&gt; </translation>
+        <translation type="obsolete">&lt;h3&gt;Yeasts&lt;/h3&gt; </translation>
     </message>
     <message utf8="true">
         <location filename="exportHTML.py" line="100"/>
         <source>&lt;h2&gt;Ingrédients pour un brassin de </source>
-        <translation>&lt;h2&gt;Ingredients for a brew of </translation>
+        <translation type="obsolete">&lt;h2&gt;Ingredients for a brew of </translation>
     </message>
     <message utf8="true">
         <location filename="exportHTML.py" line="108"/>
         <source> Étapes : </source>
-        <translation>Steps: </translation>
+        <translation type="obsolete">Steps: </translation>
     </message>
 </context>
 <context>
