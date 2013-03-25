@@ -36,7 +36,6 @@ from reader import *
 from settings import *
 from export import *
 from exportHTML import *
-from exportBBCode import *
 from base import *
 from importMashXml import *
 from editgrain import *
@@ -63,6 +62,7 @@ from reader import *
 import xml.etree.ElementTree as ET
 from model.recipe import *
 from model.hop import *
+from joliebulle.model import recipe
 import model.constants
 import view.constants
 from view.fermentableview import *
@@ -1689,9 +1689,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         exp.enregistrerHtml(self.fileHtml)
     
     def copierBbcode (self):
-        exp = ExportBBCode()
-        exp.exportBbcode(self.recipe)
-        app.clipboard().setText(exp.generatedBbcode)
+        app.clipboard().setText(self.recipe.export("bbcode"))
 
     def modifierStyle (self) :
         if self.pushButtonChangerStyle.isChecked () :
