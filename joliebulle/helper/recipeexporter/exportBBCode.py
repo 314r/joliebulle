@@ -40,7 +40,7 @@ def exportBBCode(recipe):
     generatedBbcode += QCoreApplication.translate("Export", "Alcool (vol) : ") + "%.1f %%\n\n" % recipe.compute_ABV()
 
     generatedBbcode += QCoreApplication.translate("Export", "Rendement : ") + "%.1f %%\n" % recipe.efficiency
-    generatedBbcode += QCoreApplication.translate("Export", "Ingrédients prévus pour un brassin de ") + "%.1fL\n\n" % recipe.volume
+    generatedBbcode += QCoreApplication.translate("Export", "Ingrédients prévus pour un brassin de") + " %.1fL\n\n" % recipe.volume
 
     generatedBbcode += "[b]" + QCoreApplication.translate("Export", "Grains et sucres") + "\n"
     generatedBbcode += "----------------------[/b]\n"
