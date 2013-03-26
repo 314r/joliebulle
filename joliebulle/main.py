@@ -789,6 +789,9 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         self.actionBrewdayMode.setChecked(False)
         self.buttonSave.hide()
         self.buttonNewRecipe.show()
+
+        self.previousPage = [1]
+        self.stackedWidget.currentChanged.connect(self.pageChanged)
         
     #Une fonction qui gère l'aperçu des couleurs. 
     #Contient un tupple avec plusieurs références de couleurs, classées par rang selon la valeur SRM.
@@ -1196,8 +1199,16 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
             pass
         else :
             self.brewdayModeCalc()
-        self.tableWidgetStepsBrewday.setCurrentCell(0,0) 
-        
+        self.tableWidgetStepsBrewday.setCurrentCell(0,0)
+
+    def pageChanged(self, newIndex):
+        self.previousPage.append(newIndex)
+        if len(self.previousPage) > 2:
+            del self.previousPage[0]
+
+    def switchToPreviousPage(self):
+        self.stackedWidget.setCurrentIndex(self.previousPage[0])
+
     def restoreDataBase(self) :
         home = QtCore.QDir(home_dir)
         config = QtCore.QDir(config_dir)
@@ -1935,13 +1946,13 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         self.listWidgetSteps.clear() 
         
     def mashRejected (self) :
-        self.switchToEditor()
+        self.switchToPreviousPage()
         
     def mashAccepted (self) :
         i = self.listWidgetMashProfiles.currentRow()
         self.currentMash = ImportMash().listeMashes[i]
         self.popMashCombo()
-        self.switchToEditor()
+        self.switchToPreviousPage()
         self.comboBoxMashProfiles.setCurrentIndex(i)
         logger.debug(self.currentMash)
         
