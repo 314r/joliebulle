@@ -505,7 +505,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         self.connect(self.actionEditDivers, QtCore.SIGNAL("triggered()"), self.editDivers)
         self.connect(self.actionEditLevures, QtCore.SIGNAL("triggered()"), self.editLevures)
         self.connect(self.actionRestaurerIngredients, QtCore.SIGNAL("triggered()"), self.restoreDataBase)
-        self.actionManageProfiles.triggered.connect(self.seeMash)
+        self.actionManageProfiles.triggered.connect(self.switchToMash)
         
         self.connect(self.actionAbout, QtCore.SIGNAL("triggered()"), self.about)
         self.connect(self.actionCorrectionDens, QtCore.SIGNAL("triggered()"), self.outilDens)
@@ -1188,7 +1188,8 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
 
         
     def switchToMash(self) :
-        self.stackedWidget.setCurrentIndex(3)        
+        self.stackedWidget.setCurrentIndex(3)
+        self.seeMash()
 
         
     def switchToBrewday(self) :
@@ -1781,15 +1782,13 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         self.recipe.mash = self.currentMash
         print("le profil :", self.currentMash)
         print("profil recette :",self.recipe.mash.name)
-
         
-    def seeMash(self) :
-        self.switchToMash()
-        self.listWidgetMashProfiles.clear() 
+    def seeMash(self):
 #        print(self.mashProfilesBase.listMash)
         self.numMash = len(ImportMash().listeMashes)
         #self.numSteps = self.mashProfilesBase.numSteps
         self.popMashList()
+        self.listWidgetSteps.clear()
         self.pushButtonMashEdit.setEnabled(False)
         self.pushButtonRemoveProfile.setEnabled(False)
         self.pushButtonStepRemove.setEnabled(False)
@@ -1801,28 +1800,27 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
            self.listWidgetMashProfiles.addItem(mash.name)    
             
     def mashClicked(self) :
-        self.listWidgetSteps.clear()         
+        self.refreshSteps()
+
         index = self.listWidgetMashProfiles.currentRow()
-        mash = ImportMash().listeMashes[index]
-        for step in mash.listeSteps :
-            self.listWidgetSteps.addItem(step.name)
-            
-        self.labelStepName.setTextFormat(QtCore.Qt.RichText)   
-        self.labelMashName.setText("<b>" + mash.name + "</b>")
-        self.labelMashPh.setText("%.1f" %float(mash.ph))
-#        self.labelMashGrainTemp.setText("%.1f" %float(self.dicMashDetail['grainTemp']))
-#        self.labelMashTunTemp.setText("%.1f" %float(self.dicMashDetail['tunTemp']))
-        try :
-            self.labelMashSpargeTemp.setText("%.1f" %float(mash.spargeTemp))
-        except :
-            pass
-        try :
-            self.listWidgetSteps.setCurrentRow(0)
-        except :
-            pass
-#        print(self.dicMashDetail)
-        self.pushButtonMashEdit.setEnabled(True)
-        self.pushButtonRemoveProfile.setEnabled(True)
+        if len(ImportMash().listeMashes) > index:
+            mash = ImportMash().listeMashes[index]
+            self.labelStepName.setTextFormat(QtCore.Qt.RichText)
+            self.labelMashName.setText("<b>" + mash.name + "</b>")
+            self.labelMashPh.setText("%.1f" %float(mash.ph))
+    #        self.labelMashGrainTemp.setText("%.1f" %float(self.dicMashDetail['grainTemp']))
+    #        self.labelMashTunTemp.setText("%.1f" %float(self.dicMashDetail['tunTemp']))
+            try :
+                self.labelMashSpargeTemp.setText("%.1f" %float(mash.spargeTemp))
+            except :
+                pass
+            try :
+                self.listWidgetSteps.setCurrentRow(0)
+            except :
+                pass
+    #        print(self.dicMashDetail)
+            self.pushButtonMashEdit.setEnabled(True)
+            self.pushButtonRemoveProfile.setEnabled(True)
             
     def mashDetails(self) :
         self.dlgMashDetail = DialogMashDetail(self)
@@ -1834,20 +1832,27 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         
     def stepDetails(self) :
         index = self.listWidgetMashProfiles.currentRow()
-        selected_mash = ImportMash().listeMashes[index]
+        if len(ImportMash().listeMashes) > index:
+            selected_mash = ImportMash().listeMashes[index]
 
-        i = self.listWidgetSteps.currentRow()
-        selected_step = selected_mash.listeSteps[i]
+            indexStep = self.listWidgetSteps.currentRow()
+            if len(selected_mash.listeSteps) > 0:
+                selected_step = selected_mash.listeSteps[0]
+                if indexStep >= 0:
+                    selected_step = selected_mash.listeSteps[indexStep]
 
-        self.labelStepName.setTextFormat(QtCore.Qt.RichText)
-        self.labelStepName.setText("<b>" + selected_step.name +"</b>")            
-        self.labelStepType.setText(selected_step.type)
-        self.labelStepTemp.setText(MashStepView.temp_to_display(selected_step.temp))
-        self.labelStepTime.setText(MashStepView.time_to_display(selected_step.time))  
-        self.pushButtonStepRemove.setEnabled(True)
-        self.pushButtonStepEdit.setEnabled(True)
-            
-        
+                self.labelStepName.setTextFormat(QtCore.Qt.RichText)
+                self.labelStepName.setText("<b>" + selected_step.name +"</b>")
+                self.labelStepType.setText(selected_step.type)
+                self.labelStepTemp.setText(MashStepView.temp_to_display(selected_step.temp))
+                self.labelStepTime.setText(MashStepView.time_to_display(selected_step.time))
+            else:
+                self.labelStepName.setText("")
+                self.labelStepType.setText("")
+                self.labelStepTemp.setText("")
+                self.labelStepTime.setText("")
+            self.pushButtonStepRemove.setEnabled(True)
+            self.pushButtonStepEdit.setEnabled(True)
         
     def stepEdit(self) :
         index = self.listWidgetMashProfiles.currentRow()
@@ -1868,7 +1873,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         selected_step.type = step.type
         selected_step.temp = step.temp
         selected_step.time = step.time
-        self.seeMash()
+        self.refreshSteps()
         self.stepDetails()
         self.listWidgetMashProfiles.setCurrentRow(index)
         self.listWidgetSteps.setCurrentRow(i)
@@ -1879,7 +1884,8 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         i = self.listWidgetSteps.currentRow()
 
         del selected_mash.listeSteps[i]
-        self.seeMash()
+        self.listWidgetSteps.setCurrentRow(i - 1)
+        self.refreshSteps()
         
     def addStep(self) :
         index = self.listWidgetMashProfiles.currentRow()
@@ -1894,11 +1900,19 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         selected_mash.listeSteps.append(step)
 
         self.listWidgetMashProfiles.setCurrentRow(index)
-        self.seeMash()
+        self.refreshSteps()
         self.stepDetails()      
         self.listWidgetMashProfiles.setCurrentRow(index)
         self.listWidgetSteps.setCurrentRow(i-1)
         self.stepEdit()
+
+    def refreshSteps(self):
+        self.listWidgetSteps.clear()
+        index = self.listWidgetMashProfiles.currentRow()
+        if len(ImportMash().listeMashes) > index:
+            mash = ImportMash().listeMashes[index]
+            for step in mash.listeSteps:
+                self.listWidgetSteps.addItem(step.name)
         
     def mashEdit(self) :
         index = self.listWidgetMashProfiles.currentRow()
