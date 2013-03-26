@@ -1,8 +1,6 @@
 #!/usr/bin/python3.1
 #­*­coding: utf­8 -­*­
 
-
-
 #JolieBulle 2.6
 #Copyright (C) 2010-2012 Pierre Tavares
 
@@ -19,6 +17,7 @@
 #You should have received a copy of the GNU General Public License
 #along with this program; if not, write to the Free Software
 #Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
+
 import logging
 import model.constants
 from model.fermentable import *
@@ -113,10 +112,7 @@ class Recipe:
         return recipe
 
     def compute_fermentablesWeight(self):
-        grainWeight = 0
-        for f in self.listeFermentables:
-            grainWeight += f.amount
-        return grainWeight
+        return sum([f.amount for f in self.listeFermentables])
 
     def compute_equivSugar(self):
         self.equivSugar = 0.0
@@ -236,7 +232,4 @@ class Recipe:
         return hash_proportion
 
     def compute_grainWeight(self):
-        grainWeight = 0
-        for f in self.listeFermentables:
-            grainWeight += f.amount
-        return grainWeight
+        return sum([f.amount for f in self.listeFermentables if f.type != model.constants.FERMENTABLE_TYPE_SUGAR])
