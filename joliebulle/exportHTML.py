@@ -98,7 +98,7 @@ text-align : center;}
             yUI = YeastView(y)
             levures_texte = levures_texte + yUI.yeastDetailDisplay() + '<br/>'
         
-        self.recetteHtmlIng = self.trUtf8('<h2>Ingrédients pour un brassin de ') + str(recipe.volume) + self.trUtf8(' litres') + grains_texte + houblons_texte + divers_texte + levures_texte
+        self.recetteHtmlIng = self.trUtf8('<h2>Ingrédients pour un brassin de ') + str(recipe.volume) + self.trUtf8(' litres')+ '</h2>' + grains_texte + houblons_texte + divers_texte + levures_texte
         
         self.recetteHtmlProfil = '<table class="profil">%s<td>%s%% </td></tr>%s<td>%.3f</td></tr>%s<td>%s</td></tr>%s<td>%.0f EBC </td></tr>%s<td>%.0f IBU </td></tr>%s<td>%.1f</td></tr>%s<td>%.1f%% </td></tr></table>' % \
             (self.trUtf8('<tr><td>Rendement</td> '), str(recipe.efficiency), self.trUtf8('<tr><td>Densité initiale</td>'), recipe.compute_OG(),
@@ -106,7 +106,7 @@ text-align : center;}
             self.trUtf8('<tr><td>Amertume</td>'), recipe.compute_IBU(), self.trUtf8('<tr><td>Ratio BU/GU</td>'), recipe.compute_ratioBUGU(),
             self.trUtf8('<tr><td>Alcool (vol)</td>'), recipe.compute_ABV())
 
-        self.recetteHtmlMashProfile = self.trUtf8(' <h2>Brassage</h2>') + '<p>' + recipe.mash.name + '<br/> pH : ' + str(recipe.mash.ph) + '</p><p><b>' + self.trUtf8(''' Etapes : ''') + '</b> </p> '
+        self.recetteHtmlMashProfile = self.trUtf8(' <h2>Brassage</h2>') + '<p>' + recipe.mash.name + '<br/> pH : ' + str(recipe.mash.ph) + '</p><p><b>' + self.trUtf8(''' Étapes : ''') + '</b> </p> '
         for step in recipe.mash.listeSteps:
             mashStepUI = MashStepView(step)
             self.recetteHtmlMashProfile = self.recetteHtmlMashProfile + step.name + ' : ' + self.trUtf8(''' palier de type ''')+ mashStepUI.mashTypeDisplay() + self.trUtf8(''' à ''') + step.temp +'''°C'''+ self.trUtf8(''' pendant ''')+ step.time + self.trUtf8(''' minutes ''')+ '''<br/> '''
@@ -117,21 +117,17 @@ text-align : center;}
         else:
             self.recipeNotes = self.trUtf8(' <h2>Notes</h2>') + '<p></p>'
 
-        self.recetteHtmlFooter =self.trUtf8('''
-# <footer class="footer">Une recette générée par JolieBulle, logiciel de brassage libre.</footer>
-</body>
-</html>''')
+        self.recetteHtmlFooter = "</body></html>"
                                         
     def generateHtml(self) :
-        self.generatedHtml = self.recetteHtmlHeader + self.recetteHtmlProfil + self.recetteHtmlIng + self.recetteHtmlMashProfile + self.recipeNotes                                      
+        self.generatedHtml = self.recetteHtmlHeader + self.recetteHtmlProfil + self.recetteHtmlIng + self.recetteHtmlMashProfile + self.recipeNotes + self.recetteHtmlFooter
                                         
                                         
-    def enregistrerHtml(self,fileHtml) :
-        #self.exportHtml(nomRecette)
-        contenuTexte = self.recetteHtmlHeader + self.recetteHtmlProfil + self.recetteHtmlIng + self.recipeNotes 
+    def enregistrerHtml(self,fileHtml) : 
         if  fileHtml.open(QtCore.QIODevice.WriteOnly) :
             self.stream = QtCore.QTextStream(fileHtml)
-            self.stream << contenuTexte
+            self.generateHtml()
+            self.stream << self.generatedHtml
                                      
         else :
             fileHtml.close()
