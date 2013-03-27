@@ -2140,8 +2140,8 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
                 self.pushButtonAdjustStep.setEnabled(True)
             else :
                 self.pushButtonAdjustStep.setEnabled(False)
-        except:
-            logger.debug(e)
+        except IndexError as e:
+            logger.debug("Le profil sélectionné '%s' n'a pas de paliers", self.currentMash.name)
             
             
     def stepAdjustBrewday_closed (self, targetRatio, infuseAmount, waterTemp,listVol, currentRow, listTemp) :
