@@ -1782,6 +1782,8 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         
     def seeMash(self) :
         self.switchToMash()
+        index = self.listWidgetMashProfiles.currentRow()
+        i = self.listWidgetSteps.currentRow()
         self.listWidgetMashProfiles.clear()
         
 #        print(self.mashProfilesBase.listMash)
@@ -1792,6 +1794,8 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         self.pushButtonRemoveProfile.setEnabled(False)
         self.pushButtonStepRemove.setEnabled(False)
         self.pushButtonStepEdit.setEnabled(False)
+        self.listWidgetMashProfiles.setCurrentRow(index)
+        self.listWidgetSteps.setCurrentRow(i)
         
     def popMashList(self) :
         self.listWidgetMashProfiles.clear() 
@@ -1801,26 +1805,27 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
     def mashClicked(self) :
         self.listWidgetSteps.clear()         
         index = self.listWidgetMashProfiles.currentRow()
-        mash = ImportBase().listeMashes[index]
-        for step in mash.listeSteps :
-            self.listWidgetSteps.addItem(step.name)
-            
-        self.labelStepName.setTextFormat(QtCore.Qt.RichText)   
-        self.labelMashName.setText("<b>" + mash.name + "</b>")
-        self.labelMashPh.setText("%.1f" %float(mash.ph))
-#        self.labelMashGrainTemp.setText("%.1f" %float(self.dicMashDetail['grainTemp']))
-#        self.labelMashTunTemp.setText("%.1f" %float(self.dicMashDetail['tunTemp']))
-        try :
-            self.labelMashSpargeTemp.setText("%.1f" %float(mash.spargeTemp))
-        except :
-            pass
-        try :
-            self.listWidgetSteps.setCurrentRow(0)
-        except :
-            pass
-#        print(self.dicMashDetail)
-        self.pushButtonMashEdit.setEnabled(True)
-        self.pushButtonRemoveProfile.setEnabled(True)
+        if index > -1:
+            mash = ImportBase().listeMashes[index]
+            for step in mash.listeSteps :
+                self.listWidgetSteps.addItem(step.name)
+
+            self.labelStepName.setTextFormat(QtCore.Qt.RichText)
+            self.labelMashName.setText("<b>" + mash.name + "</b>")
+            self.labelMashPh.setText("%.1f" %float(mash.ph))
+    #        self.labelMashGrainTemp.setText("%.1f" %float(self.dicMashDetail['grainTemp']))
+    #        self.labelMashTunTemp.setText("%.1f" %float(self.dicMashDetail['tunTemp']))
+            try :
+                self.labelMashSpargeTemp.setText("%.1f" %float(mash.spargeTemp))
+            except :
+                pass
+            try :
+                self.listWidgetSteps.setCurrentRow(0)
+            except :
+                pass
+    #        print(self.dicMashDetail)
+            self.pushButtonMashEdit.setEnabled(True)
+            self.pushButtonRemoveProfile.setEnabled(True)
             
     def mashDetails(self) :
         self.dlgMashDetail = DialogMashDetail(self)
@@ -1832,52 +1837,59 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         
     def stepDetails(self) :
         index = self.listWidgetMashProfiles.currentRow()
-        selected_mash = ImportBase().listeMashes[index]
-
-        i = self.listWidgetSteps.currentRow()
-        selected_step = selected_mash.listeSteps[i]
-
-        self.labelStepName.setTextFormat(QtCore.Qt.RichText)
-        self.labelStepName.setText("<b>" + selected_step.name +"</b>")            
-        self.labelStepType.setText(selected_step.type)
-        self.labelStepTemp.setText(MashStepView.temp_to_display(selected_step.temp))
-        self.labelStepTime.setText(MashStepView.time_to_display(selected_step.time))  
-        self.pushButtonStepRemove.setEnabled(True)
-        self.pushButtonStepEdit.setEnabled(True)
+        if index > -1:
+            selected_mash = ImportBase().listeMashes[index]
+            i = self.listWidgetSteps.currentRow()
+            if i > -1:
+                selected_step = selected_mash.listeSteps[i]
+                self.labelStepName.setTextFormat(QtCore.Qt.RichText)
+                self.labelStepName.setText("<b>" + selected_step.name +"</b>")
+                self.labelStepType.setText(selected_step.type)
+                self.labelStepTemp.setText(MashStepView.temp_to_display(selected_step.temp))
+                self.labelStepTime.setText(MashStepView.time_to_display(selected_step.time))
+                self.pushButtonStepRemove.setEnabled(True)
+                self.pushButtonStepEdit.setEnabled(True)
             
         
         
     def stepEdit(self) :
         index = self.listWidgetMashProfiles.currentRow()
-        selected_mash = ImportBase().listeMashes[index]
-        i = self.listWidgetSteps.currentRow()
-        selected_step = selected_mash.listeSteps[i]
+        if  index > -1:
+            selected_mash = ImportBase().listeMashes[index]
+            i = self.listWidgetSteps.currentRow()
+            if i > -1:
+                selected_step = selected_mash.listeSteps[i]
 
-        self.dlgStep.show()
-        self.dlgStep.fields (selected_step)
+                self.dlgStep.show()
+                self.dlgStep.fields (selected_step)
     
     def stepReload(self, step) :
         index = self.listWidgetMashProfiles.currentRow()
-        selected_mash = ImportBase().listeMashes[index]
-        i = self.listWidgetSteps.currentRow()
-        selected_step = selected_mash.listeSteps[i]
+        if index > -1:
+            selected_mash = ImportBase().listeMashes[index]
+            i = self.listWidgetSteps.currentRow()
+            if i > -1:
+                selected_step = selected_mash.listeSteps[i]
 
-        selected_step.name = step.name
-        selected_step.type = step.type
-        selected_step.temp = step.temp
-        selected_step.time = step.time
-        self.seeMash()
-        self.stepDetails()
-        self.listWidgetMashProfiles.setCurrentRow(index)
-        self.listWidgetSteps.setCurrentRow(i)
+                selected_step.name = step.name
+                selected_step.type = step.type
+                selected_step.temp = step.temp
+                selected_step.time = step.time
+                self.seeMash()
+                self.stepDetails()
+                self.listWidgetMashProfiles.setCurrentRow(index)
+                self.listWidgetSteps.setCurrentRow(i)
         
     def removeStep(self) :
         index = self.listWidgetMashProfiles.currentRow()
-        selected_mash = ImportBase().listeMashes[index]
-        i = self.listWidgetSteps.currentRow()
-        self.listWidgetSteps.clearSelection()
-        del selected_mash.listeSteps[i]
-        self.seeMash()
+        if index > -1:
+            selected_mash = ImportBase().listeMashes[index]
+            i = self.listWidgetSteps.currentRow()
+            if i > -1:
+                del selected_mash.listeSteps[i]
+                # self.listWidgetSteps.clearSelection()
+                self.listWidgetSteps.setCurrentRow(-1)
+                self.seeMash()
         
     def addStep(self) :
         index = self.listWidgetMashProfiles.currentRow()
