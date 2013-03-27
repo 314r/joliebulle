@@ -1785,8 +1785,8 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         index = self.listWidgetMashProfiles.currentRow()
         i = self.listWidgetSteps.currentRow()
         self.listWidgetMashProfiles.clear()
-        
-#        print(self.mashProfilesBase.listMash)
+        self.listWidgetSteps.clear()
+
         self.numMash = len(ImportBase().listeMashes)
         #self.numSteps = self.mashProfilesBase.numSteps
         self.popMashList()
@@ -1796,7 +1796,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         self.pushButtonStepEdit.setEnabled(False)
         self.listWidgetMashProfiles.setCurrentRow(index)
         self.listWidgetSteps.setCurrentRow(i)
-        
+
     def popMashList(self) :
         self.listWidgetMashProfiles.clear() 
         for mash in ImportBase().listeMashes :
@@ -1841,15 +1841,17 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
             selected_mash = ImportBase().listeMashes[index]
             i = self.listWidgetSteps.currentRow()
             if i > -1:
-                selected_step = selected_mash.listeSteps[i]
-                self.labelStepName.setTextFormat(QtCore.Qt.RichText)
-                self.labelStepName.setText("<b>" + selected_step.name +"</b>")
-                self.labelStepType.setText(selected_step.type)
-                self.labelStepTemp.setText(MashStepView.temp_to_display(selected_step.temp))
-                self.labelStepTime.setText(MashStepView.time_to_display(selected_step.time))
-                self.pushButtonStepRemove.setEnabled(True)
-                self.pushButtonStepEdit.setEnabled(True)
-            
+                try:
+                    selected_step = selected_mash.listeSteps[i]
+                    self.labelStepName.setTextFormat(QtCore.Qt.RichText)
+                    self.labelStepName.setText("<b>" + selected_step.name +"</b>")
+                    self.labelStepType.setText(selected_step.type)
+                    self.labelStepTemp.setText(MashStepView.temp_to_display(selected_step.temp))
+                    self.labelStepTime.setText(MashStepView.time_to_display(selected_step.time))
+                    self.pushButtonStepRemove.setEnabled(True)
+                    self.pushButtonStepEdit.setEnabled(True)
+                except:
+                    pass
         
         
     def stepEdit(self) :
@@ -1886,9 +1888,12 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
             selected_mash = ImportBase().listeMashes[index]
             i = self.listWidgetSteps.currentRow()
             if i > -1:
+                item = self.listWidgetSteps.currentItem()
                 del selected_mash.listeSteps[i]
                 # self.listWidgetSteps.clearSelection()
-                self.listWidgetSteps.setCurrentRow(-1)
+                #self.listWidgetSteps.takeItem(item)
+                #On force la sélection sur la ligne précédente
+                self.listWidgetSteps.setCurrentRow(i-1)
                 self.seeMash()
         
     def addStep(self) :
@@ -1964,7 +1969,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         self.popMashCombo()
         self.switchToPreviousPage()
         self.comboBoxMashProfiles.setCurrentIndex(i)
-        logger.debug(self.currentMash)
+        logger.debug("Mash accepted: %s", self.currentMash)
         
     def saveProfile(self) : 
         self.mashProfileExport.export(ImportBase().listeMashes)
@@ -2110,30 +2115,33 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         
     def tableWidgetStepsBrewday_currentRowChanged (self) :
         listSteps = self.currentMash.listeSteps
-        strikeStep = listSteps[0]
-        strikeTargetTemp = strikeStep.temp
-        self.strikeTargetTemp = strikeTargetTemp
-        self.brewdayCurrentRow = self.tableWidgetStepsBrewday.currentRow()
-        i = self.tableWidgetStepsBrewday.currentRow()
-        if i == -1 :
-            return  #No selection in tableWidgetStepsBrewday
+        try:
+            strikeStep = listSteps[0]
+            strikeTargetTemp = strikeStep.temp
+            self.strikeTargetTemp = strikeTargetTemp
+            self.brewdayCurrentRow = self.tableWidgetStepsBrewday.currentRow()
+            i = self.tableWidgetStepsBrewday.currentRow()
+            if i == -1 :
+                return  #No selection in tableWidgetStepsBrewday
 
-        step = listSteps[i]
-        stepType= step.type
-        
-        self.brewdayCurrentStepName = self.tableWidgetStepsBrewday.item(i,0).text()
-        self.brewdayCurrentStepInfuseAmount = self.tableWidgetStepsBrewday.item(i,1).text()
-        self.brewdayCurrentStepWaterTemp = self.tableWidgetStepsBrewday.item(i,2).text()
-        self.brewdayCurrentStepRatio = self.tableWidgetStepsBrewday.item(i,3).text()
-        if i == 0 :
-            self.brewdayCurrentStepTargetTemp = strikeTargetTemp
-        else :
-            self.brewdayCurrentStepTargetTemp = self.brewdayListTemp[i-1]
-            
-        if stepType == 'Infusion' and self.radioButtonClassicBrew.isChecked ():
-            self.pushButtonAdjustStep.setEnabled(True)
-        else :
-            self.pushButtonAdjustStep.setEnabled(False)
+            step = listSteps[i]
+            stepType= step.type
+
+            self.brewdayCurrentStepName = self.tableWidgetStepsBrewday.item(i,0).text()
+            self.brewdayCurrentStepInfuseAmount = self.tableWidgetStepsBrewday.item(i,1).text()
+            self.brewdayCurrentStepWaterTemp = self.tableWidgetStepsBrewday.item(i,2).text()
+            self.brewdayCurrentStepRatio = self.tableWidgetStepsBrewday.item(i,3).text()
+            if i == 0 :
+                self.brewdayCurrentStepTargetTemp = strikeTargetTemp
+            else :
+                self.brewdayCurrentStepTargetTemp = self.brewdayListTemp[i-1]
+
+            if stepType == 'Infusion' and self.radioButtonClassicBrew.isChecked ():
+                self.pushButtonAdjustStep.setEnabled(True)
+            else :
+                self.pushButtonAdjustStep.setEnabled(False)
+        except:
+            logger.debug(e)
             
             
     def stepAdjustBrewday_closed (self, targetRatio, infuseAmount, waterTemp,listVol, currentRow, listTemp) :
