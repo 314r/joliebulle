@@ -26,6 +26,7 @@ from model.hop import *
 from model.yeast import *
 from model.misc import *
 from model.mash import *
+from joliebulle.helper.recipeExporterRepository import *
 
 logger = logging.getLogger(__name__)
 
@@ -111,6 +112,9 @@ class Recipe:
         #logger.debug(repr(recipe))
         logger.debug("End parsing recipe")
         return recipe
+
+    def export(self, type):
+        return RecipeExporterRepository[type](self)
 
     def compute_fermentablesWeight(self):
         grainWeight = 0
