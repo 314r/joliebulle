@@ -1174,6 +1174,10 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
             self.menuBar.show()
             self.buttonMenu.hide()
 
+        newLevel = settings.conf.value("logging/level")
+        logger.info("Preferences changed. Configuring logging level to %s", newLevel)
+        logging.getLogger().setLevel(newLevel)
+
         
     def switchToEditor(self) :
         self.stackedWidget.setCurrentIndex(0)
