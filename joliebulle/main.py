@@ -1720,7 +1720,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
     def nouvelle(self) :
         self.recipe = Recipe()
         self.recipe.name = self.trUtf8('Nouvelle Recette')
-        self.recipe.efficiency = 0.75
+        self.recipe.efficiency = 75
         self.recipe.volume = 10
         self.recipe.boil = 60
         self.recipe.style = self.trUtf8('''Générique''')
