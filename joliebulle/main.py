@@ -131,11 +131,18 @@ def initRep() :
 
 def initLogging():
     initRep()
+
+    settings = Settings()
+    if not settings.conf.contains("logging/level") :
+        settings.conf.setValue("logging/level", 'DEBUG')
+    if not settings.conf.contains("logging/fileName") :
+        settings.conf.setValue("logging/fileName", os.path.join(config_dir,'joliebulle.log'))
+
     config = {
         'version': 1,              
         'root': {
             'handlers': ['console','file'],
-            'level': 'DEBUG'
+            'level': settings.conf.value("logging/level")
         },
         'disable_existing_loggers': False,
         'formatters': {
@@ -158,7 +165,7 @@ def initLogging():
                 'level':'DEBUG',
                 'formatter':'detailed',
                 'mode':'a',
-                'filename':os.path.join(config_dir,'joliebulle.log')
+                'filename':settings.conf.value("logging/fileName")
             }  
         }
     }
