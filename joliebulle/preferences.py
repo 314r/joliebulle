@@ -69,7 +69,7 @@ class DialogPref(QtGui.QDialog):
         except :
             pass
             
-        #les connections
+        #les connexions
         self.ui.pushButtonChangeLib.clicked.connect(self.changePushed)
         self.ui.buttonBox.accepted.connect(self.accepted)
         self.ui.buttonBox.rejected.connect(self.rejected)
