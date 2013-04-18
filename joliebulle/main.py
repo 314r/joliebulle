@@ -34,9 +34,6 @@ from PyQt4 import QtGui
 from PyQt4 import QtCore
 from reader import *
 from settings import *
-from export import *
-from exportHTML import *
-from exportBBCode import *
 from base import *
 from editgrain import *
 from edithoublon import *
@@ -62,6 +59,7 @@ from reader import *
 import xml.etree.ElementTree as ET
 from model.recipe import *
 from model.hop import *
+from joliebulle.model import recipe
 import model.constants
 import view.constants
 from view.fermentableview import *
@@ -866,15 +864,11 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
             self.s = self.chemin
             
             self.importBeerXML()
-            exp = ExportHTML()
-            exp.exportRecipeHtml(self.recipe)
-            exp.generateHtml()
-            self.webViewBiblio.setHtml(exp.generatedHtml, )
+            self.webViewBiblio.setHtml(self.recipe.export("html"))
             # self.modele.blockSignals(True)
             #logger.debug("viewRecipeBiblio -> MVC")
             #self.MVC()
             # self.modele.blockSignals(False)
-            self.HtmlRecipe = exp.generatedHtml
         else :
             logger.debug("Répertoire sélectionné")
 
@@ -1651,22 +1645,23 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
             self.initModele()                    
 
     def enregistrerRecette(self, destination):
-        self.recipe.name = self.lineEditRecette.text()
-        self.recipe.style = self.lineEditGenre.text()   
-        self.recipe.brewer = self.lineEditBrewer.text()        
-        self.recipe.boil = self.spinBoxBoil.value()
-        recettes = QtCore.QFile(recettes_dir)
-        exp=Export()
+        recipeFile = QtCore.QFile(destination)
+        if recipeFile.open(QtCore.QIODevice.WriteOnly):
+            try:
+                stream = QtCore.QTextStream(recipeFile)
+                stream << self.recipe.export("beerxml")
+            finally:
+                recipeFile.close()
+        else:
+            # TODO : Prévenir l'utilisateur en cas d'échec de l'enregistrement
+            pass
         #logger.info("Recette '%s' ", self.recipe.mName)
-        exp.exportXML(self.recipe)
-        exp.enregistrer(destination)
         #logger.info("Recette '%s' enregistrée dans le fichier %s", self.recipe.name, destination)
         
     def enregistrer (self) :
-        exp=Export()
         self.recipe.name = self.lineEditRecette.text()
-        self.recipe.style = self.lineEditGenre.text()   
-        self.recipe.brewer = self.lineEditBrewer.text()        
+        self.recipe.style = self.lineEditGenre.text()
+        self.recipe.brewer = self.lineEditBrewer.text()
         self.recipe.boil = self.spinBoxBoil.value()
         if not self.s :
             destination =  recettes_dir + "/" + self.recipe.name + ".xml"
@@ -1689,20 +1684,24 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
 
     def exporterHtml (self) :
         self.recipe.name = self.lineEditRecette.text()
-        self.recipe.style = self.lineEditGenre.text()   
-        exp = ExportHTML()
+        self.recipe.style = self.lineEditGenre.text()
         fichier = QtGui.QFileDialog.getSaveFileName (self,
                                                     self.trUtf8("Enregistrer dans un fichier"),
                                                     self.recipe.name,
-                                                    "HTML (*.html)")    
-        self.fileHtml = QtCore.QFile(fichier)
-        exp.exportRecipeHtml(self.recipe)
-        exp.enregistrerHtml(self.fileHtml)
+                                                    "HTML (*.html)")
+        fileHtml = QtCore.QFile(fichier)
+        if fileHtml.open(QtCore.QIODevice.WriteOnly):
+            try:
+                stream = QtCore.QTextStream(fileHtml)
+                stream << self.recipe.export("html")
+            finally:
+                fileHtml.close()
+        else:
+            # TODO : Prévenir l'utilisateur en cas d'échec de l'export
+            pass
     
     def copierBbcode (self):
-        exp = ExportBBCode()
-        exp.exportBbcode(self.recipe)
-        app.clipboard().setText(exp.generatedBbcode)
+        app.clipboard().setText(self.recipe.export("bbcode"))
 
     def modifierStyle (self) :
         if self.pushButtonChangerStyle.isChecked () :
