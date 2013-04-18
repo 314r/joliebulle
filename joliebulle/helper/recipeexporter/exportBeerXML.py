@@ -22,7 +22,7 @@
 
 
 import xml.etree.ElementTree as ET
-from joliebulle.model.constants import *
+from model.constants import *
 
 def exportBeerXML(recipe):
     recipes = ET.Element('RECIPES')

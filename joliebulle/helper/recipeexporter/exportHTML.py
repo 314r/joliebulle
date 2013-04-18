@@ -22,14 +22,14 @@
 
 from PyQt4.QtCore import QCoreApplication
 
-from joliebulle.view.hopview import *
-from joliebulle.view.miscview import *
-from joliebulle.view.yeastview import *
-from joliebulle.view.mashstepview import *
+from view.hopview import *
+from view.miscview import *
+from view.yeastview import *
+from view.mashstepview import *
 
 
 def exportHTML(recipe):
-    resultHtml = u'''
+    resultHtml = '''
 <!DOCTYPE html>
 <html lang="fr">
 <head>

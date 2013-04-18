@@ -59,7 +59,7 @@ from reader import *
 import xml.etree.ElementTree as ET
 from model.recipe import *
 from model.hop import *
-from joliebulle.model import recipe
+from model import recipe
 import model.constants
 import view.constants
 from view.fermentableview import *

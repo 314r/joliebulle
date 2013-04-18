@@ -18,9 +18,9 @@
 #along with this program; if not, write to the Free Software
 #Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-from joliebulle.helper.recipeexporter.exportBeerXML import *
-from joliebulle.helper.recipeexporter.exportHTML import *
-from joliebulle.helper.recipeexporter.exportBBCode import *
+from helper.recipeexporter.exportBeerXML import *
+from helper.recipeexporter.exportHTML import *
+from helper.recipeexporter.exportBBCode import *
 
 RecipeExporterRepository = {
     "beerxml": exportBeerXML,

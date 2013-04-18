@@ -22,16 +22,16 @@
 
 from PyQt4.QtCore import QCoreApplication
 
-from joliebulle.view.hopview import *
-from joliebulle.view.yeastview import *
-from joliebulle.view.miscview import *
-from joliebulle.view.recipeview import *
-from joliebulle.view.mashstepview import *
+from view.hopview import *
+from view.yeastview import *
+from view.miscview import *
+from view.recipeview import *
+from view.mashstepview import *
 
 
 def exportBBCode(recipe):
     recipeView = RecipeView(recipe)
-    generatedBbcode = u'[b]%s\n[i]%s[/i][/b]\n\n' % (recipe.name, recipeView.recipeTypeDisplay())
+    generatedBbcode = '[b]%s\n[i]%s[/i][/b]\n\n' % (recipe.name, recipeView.recipeTypeDisplay())
 
     generatedBbcode += QCoreApplication.translate("Export", "Densité initiale : ") + "%.3f\n" % recipe.compute_OG()
     generatedBbcode += QCoreApplication.translate("Export", "Densité finale : ") + "%.3f\n" % recipe.compute_FG()
