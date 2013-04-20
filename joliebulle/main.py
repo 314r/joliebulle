@@ -1659,7 +1659,13 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         self.recipe.boil = self.spinBoxBoil.value()
         if not self.s :
             destination =  recettes_dir + "/" + self.recipe.name + ".xml"
-            self.enregistrerRecette(destination)
+            if os.path.exists(destination) :
+                warning = QtGui.QMessageBox.warning(self,
+                            self.trUtf8("Recette déjà existante"),
+                            self.trUtf8("Ce nom de recette existe déjà. L'enregistrement a été annulé. Vous pouvez choisir un nouveau nom.")
+                            )
+            else :
+                self.enregistrerRecette(destination)
         else :
             self.enregistrerRecette(self.s)
     
