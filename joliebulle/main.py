@@ -897,16 +897,20 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         while j < len(filenameList) :
             j=j+1
             recipe = fileList[j-1]
-            arbre = ET.parse(recipe)
-            presentation=arbre.find('.//RECIPE')
-            for nom in presentation :
-                try :
-                    if nom.tag == "NAME" : 
-                       nomRecette = nom.text
-                       newFileNameList.append(nomRecette)
-                except :
-                    pass
-        # print('newFileNameList', newFileNameList)
+            try :
+                arbre = ET.parse(recipe)
+                presentation=arbre.find('.//RECIPE')
+                for nom in presentation :
+                    try :
+                        if nom.tag == "NAME" : 
+                           nomRecette = nom.text
+                           newFileNameList.append(nomRecette)
+                    except :
+                        pass
+            except :
+                logger.debug("le fichier %s n'est pas une recette" %(recipe))
+                print("le fichier %s n'est pas une recette" %(recipe))
+                newFileNameList.append(None)
 
         #on reconstitue
         newFileList=[]
@@ -915,9 +919,10 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
             i=i+1
             folder = rootList[i-1]
             recipe = newFileNameList[i-1]
-            newName = os.path.join(folder,recipe)
-            
-         
+            try :
+                newName = os.path.join(folder,recipe)
+            except :
+                newName = None
             if newName in newFileList :
                 logger.debug('doublon !')
                 sameCount= 0 
@@ -934,26 +939,15 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         logger.debug(newFileList)
 
         #on renomme
-        # k=0
-        # while k < len(newFileNameList) :
-        #     k=k+1
-        #     old=fileList[k-1]
-        #     new=newFileList[k-1] 
-        #     if old == new :
-        #         pass
-        #     else: 
-        #         try :
-        #             os.rename(old,new)
-        #         except :
-        #             print("raté")
-
-        #on renomme
         dir = QtCore.QDir(recettes_dir)
         k=0
         while k < len(newFileNameList) :
             k=k+1
             old=fileList[k-1]
-            new=newFileList[k-1]  + '.xml'
+            try :
+                new=newFileList[k-1]  + '.xml'
+            except :
+                pass
             if old == new :
                 pass
             else :
