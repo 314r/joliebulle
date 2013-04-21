@@ -887,9 +887,6 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
                 fileList.append(os.path.join(root,file2))
                 rootList.append(root)
                 filenameList.append(file2)
-        # print ('liste',fileList)
-        # print('liste dossiers',rootList)
-        # print('liste nom',filenameList)
 
         #on parse
         newFileNameList = []
@@ -909,7 +906,6 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
                         pass
             except :
                 logger.debug("le fichier %s n'est pas une recette" %(recipe))
-                print("le fichier %s n'est pas une recette" %(recipe))
                 newFileNameList.append(None)
 
         #on reconstitue
@@ -923,7 +919,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
                 newName = os.path.join(folder,recipe)
             except :
                 newName = None
-            if newName in newFileList :
+            if newName in newFileList and newName != None:
                 logger.debug('doublon !')
                 sameCount= 0 
                 while sameCount < len(newFileNameList) :
