@@ -907,6 +907,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
             except :
                 logger.debug("le fichier %s n'est pas une recette" %(recipe))
                 newFileNameList.append(None)
+                
 
         #on reconstitue
         newFileList=[]
@@ -1524,32 +1525,36 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
 
     def importBeerXML(self) :
         fichierBeerXML = self.s
+        try :
+            arbre = ET.parse(fichierBeerXML)
+            self.recipe = Recipe.parse(arbre)
+            self.lineEditRecette.setText(self.recipe.name)
+            self.lineEditGenre.setText(self.recipe.style)
+            self.doubleSpinBox_2Volume.setValue(self.recipe.volume)
+            self.doubleSpinBoxRendemt.setValue(self.recipe.efficiency)
+            self.spinBoxBoil.setValue(self.recipe.boil)
+            self.doubleSpinBoxVolPre.setValue(self.recipe.volume)
+            
+            if self.recipe.type == model.constants.RECIPE_TYPE_ALL_GRAIN :
+                self.comboBoxType.setCurrentIndex(0)
+            elif self.recipe.type == model.constants.RECIPE_TYPE_PARTIAL_MASH :
+                self.comboBoxType.setCurrentIndex(2)
+            elif self.recipe.type == model.constants.RECIPE_TYPE_EXTRACT :
+                self.comboBoxType.setCurrentIndex(1)
+            else :
+                self.comboBoxType.setCurrentIndex(0)
 
-        arbre = ET.parse(fichierBeerXML)
+            self.lineEditBrewer.setText(self.recipe.brewer)
+            self.displayProfile()
+            self.colorPreview()
+            
+            self.currentRecipeMash = self.recipe.mash
 
-        self.recipe = Recipe.parse(arbre)
-
-        self.lineEditRecette.setText(self.recipe.name)
-        self.lineEditGenre.setText(self.recipe.style)
-        self.doubleSpinBox_2Volume.setValue(self.recipe.volume)
-        self.doubleSpinBoxRendemt.setValue(self.recipe.efficiency)
-        self.spinBoxBoil.setValue(self.recipe.boil)
-        self.doubleSpinBoxVolPre.setValue(self.recipe.volume)
-        
-        if self.recipe.type == model.constants.RECIPE_TYPE_ALL_GRAIN :
-            self.comboBoxType.setCurrentIndex(0)
-        elif self.recipe.type == model.constants.RECIPE_TYPE_PARTIAL_MASH :
-            self.comboBoxType.setCurrentIndex(2)
-        elif self.recipe.type == model.constants.RECIPE_TYPE_EXTRACT :
-            self.comboBoxType.setCurrentIndex(1)
-        else :
-            self.comboBoxType.setCurrentIndex(0)
-
-        self.lineEditBrewer.setText(self.recipe.brewer)
-        self.displayProfile()
-        self.colorPreview()
-        
-        self.currentRecipeMash = self.recipe.mash
+        except :
+            warning = QtGui.QMessageBox.warning(self,
+                                self.trUtf8("Fichier incompatible"),
+                                self.trUtf8("Le fichier que vous essayez d'ouvrir n'est pas une recette ou n'est pas compatible.")
+                                )
 
                     
     def displayProfile(self) :     
