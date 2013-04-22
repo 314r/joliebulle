@@ -1048,8 +1048,20 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
             self.trUtf8("Ouvrir un fichier"),
             home_dir,
             )
+        try :
+            arbre = ET.parse(self.s)
+            recipe = Recipe.parse(arbre)
+            shutil.copy(self.s, recettes_dir)
 
-        shutil.copy(self.s, recettes_dir)
+        except :
+            logger.debug("Fichier incompatible. L'importation a échoué")
+            warning = QtGui.QMessageBox.warning(self,
+                        self.trUtf8("Fichier incompatible"),
+                        self.trUtf8("Le fichier que vous essayez d'importer n'est pas une recette ou n'est pas compatible.")
+                        )
+
+        
+
 
         
     def createFolder(self) :
