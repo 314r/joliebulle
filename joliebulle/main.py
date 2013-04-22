@@ -1051,18 +1051,24 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         try :
             arbre = ET.parse(self.s)
             recipe = Recipe.parse(arbre)
-            shutil.copy(self.s, recettes_dir)
+            finalDest = recettes_dir + "/" + os.path.basename(self.s)
+            if os.path.exists(finalDest) :
+                logger.debug("Le fichier existe déjà dans la bibliothèque")
+                warning = QtGui.QMessageBox.warning(self,
+                        self.trUtf8("Fichier existant"),
+                        self.trUtf8("Un fichier portant le même nom existe déjà dans la bibliothèque. \
+				JolieBulle a bloqué l'importation pour éviter son écrasement. ")
+                        )
+            else :
+                shutil.copy(self.s, recettes_dir)
 
-        except :
+        except (TypeError, SyntaxError, AttributeError):
             logger.debug("Fichier incompatible. L'importation a échoué")
             warning = QtGui.QMessageBox.warning(self,
                         self.trUtf8("Fichier incompatible"),
                         self.trUtf8("Le fichier que vous essayez d'importer n'est pas une recette ou n'est pas compatible.")
                         )
-
-        
-
-
+     
         
     def createFolder(self) :
         selection = self.treeViewBiblio.selectionModel()
