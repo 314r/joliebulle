@@ -36,8 +36,8 @@ def exportHTML(recipe):
 <title>%s</title>
 <meta charset="utf-8" />
 <style type="text/css">
-html { font-size:100.01%%; }
-body {width:800px;margin:auto;line-height: 1.5;color: #222; font-size:80%%}
+html { font-size:100.01%%; background-color : white;}
+body {width:800px;margin:auto;line-height: 1.5;color: #222; font-size:80%%; background-color : white;}
 h1,h2,h3,h4,h5,h6 { font-weight: normal; color: #111; }
 h1 { font-size: 2em; margin-bottom: 0; text-align:center;}
 h2 { font-size: 1.5em; line-height: 1; margin-bottom: 2em; margin-top:2em; padding-bottom:0.75em; padding-top:0.75em;border-bottom:solid 1px #ddd;clear:both;}
