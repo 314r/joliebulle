@@ -966,7 +966,9 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         self.stackedWidget.setCurrentIndex(0)
         self.actionVueEditeurToolBar.setChecked(True)
         self.actionVueBibliothequeToolBar.setChecked(False) 
+        self.setComboBoxMash()
 
+    def setComboBoxMash(self) :
         try :
             self.comboBoxMashProfiles.blockSignals(True)
             self.popMashCombo()
@@ -1982,13 +1984,9 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         self.switchToPreviousPage()
         
     def mashAccepted (self) :
-        i = self.listWidgetMashProfiles.currentRow()
-        self.currentMash = ImportBase().listeMashes[i]
-        self.popMashCombo()
         self.switchToPreviousPage()
-        self.comboBoxMashProfiles.setCurrentIndex(i)
-        logger.debug("Mash accepted: %s", self.currentMash)
-        
+        self.setComboBoxMash()
+
     def saveProfile(self) : 
         self.mashProfileExport.export(ImportBase().listeMashes)
         self.mashProfileExport.enregistrer(mash_file)
