@@ -44,6 +44,7 @@ from outilAlc import *
 from outilDilution import *
 from outilEvaporation import *
 from outilPaliers import * 
+from preBoilDialog import *
 from stepEditWindow import *
 from mashEditWindow import *
 from mashDetail import * 
@@ -717,6 +718,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         self.tableWidgetStepsBrewday.itemSelectionChanged.connect(self.tableWidgetStepsBrewday_currentRowChanged)
         self.dlgStepBrewday.stepAdjustBrewdayClosed.connect(self.stepAdjustBrewday_closed)
         self.radioButtonClassicBrew.toggled.connect(self.brewdayModeCalc)
+        self.pushButtonCheckPreBoil.clicked.connect(self.preBoilCheck)
 
 
 
@@ -1431,6 +1433,12 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
     def outilPaliers (self) :
         self.dlgOutilPaliers.setModal(True)
         self.dlgOutilPaliers.show()
+
+    def preBoilCheck(self) :
+        self.dlgPreBoil = DialogPreBoil(self)
+        self.dlgPreBoil.setModal(True)
+        self.dlgPreBoil.show()
+        self.dlgPreBoil.setData(self.brewCalc.volPreBoil, self.brewCalc.preBoilSg, self.recipe.compute_GU(), self.recipe.volume)
         
     def dialogPreferences (self) :
         self.dlgPref.setModal(True)
@@ -1736,7 +1744,6 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         else :
             self.widgetVol.hide()
 
-            
     def nouvelle(self) :
         self.recipe = Recipe()
         self.recipe.name = self.trUtf8('Nouvelle Recette')
