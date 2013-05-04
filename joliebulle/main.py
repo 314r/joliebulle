@@ -1436,9 +1436,10 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
 
     def preBoilCheck(self) :
         self.dlgPreBoil = DialogPreBoil(self)
+        self.dlgPreBoil.setData(self.brewCalc.volPreBoil, self.brewCalc.preBoilSg, self.recipe.compute_GU(), self.recipe.volume)
         self.dlgPreBoil.setModal(True)
         self.dlgPreBoil.show()
-        self.dlgPreBoil.setData(self.brewCalc.volPreBoil, self.brewCalc.preBoilSg, self.recipe.compute_GU(), self.recipe.volume)
+
         
     def dialogPreferences (self) :
         self.dlgPref.setModal(True)
