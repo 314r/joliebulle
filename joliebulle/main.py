@@ -564,6 +564,8 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         self.connect(self.pushButtonEnlever, QtCore.SIGNAL("clicked()"), self.enlever)
         self.connect(self.pushButtonChangerStyle, QtCore.SIGNAL("clicked()"), self.modifierStyle)
 
+        
+        
         self.connect(self.comboBoxStyle, QtCore.SIGNAL("currentIndexChanged(QString)"), self.addStyle)
         #self.connect(self.pushButtonEssai, QtCore.SIGNAL("clicked()"), self.essai)
         self.connect(self.comboBoxType, QtCore.SIGNAL("currentIndexChanged(QString)"), self.typeChanged)
@@ -1557,7 +1559,6 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
             self.doubleSpinBox_2Volume.setValue(self.recipe.volume)
             self.doubleSpinBoxRendemt.setValue(self.recipe.efficiency)
             self.spinBoxBoil.setValue(self.recipe.boil)
-            self.doubleSpinBoxVolPre.setValue(self.recipe.volume)
             
             if self.recipe.type == model.constants.RECIPE_TYPE_ALL_GRAIN :
                 self.comboBoxType.setCurrentIndex(0)
@@ -1588,6 +1589,9 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         self.labelIBUV.setText("%.0f" %(self.recipe.compute_IBU() ))
         self.labelAlcv.setText("%.1f%%" %(self.recipe.compute_ABV() ))
         self.labelRatioBuGu.setText("%.1f" %(self.recipe.compute_ratioBUGU()))
+        
+        
+                        
         
         
     def ouvrir_clicked (self) :    
@@ -1725,6 +1729,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
             self.comboBoxStyle.show()
         else :
             self.comboBoxStyle.hide()   
+
 
     def nouvelle(self) :
         self.recipe = Recipe()
