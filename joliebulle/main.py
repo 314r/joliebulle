@@ -2031,7 +2031,6 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
             self.brewCalc.calcStrikeVol(grainWeight, 3)
             self.brewCalc.calcMashVolume(grainWeight)
             self.brewCalc.calcGrainRetention(grainWeight)
-            self.pushButtonAdjustStep.setEnabled(True)
         
             listVol = []
             listVol.append(self.brewCalc.strikeVol)
@@ -2076,12 +2075,20 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
             self.tableWidgetStepsBrewday.setItem(0,2,QtGui.QTableWidgetItem("%.1f" %(self.brewCalc.strikeTemp)))
             self.tableWidgetStepsBrewday.setItem(0,3,QtGui.QTableWidgetItem("%.1f" %(self.brewCalc.strikeVol/(self.recipe.compute_grainWeight()/1000))))
             self.tableWidgetStepsBrewday.setItem(0,4,QtGui.QTableWidgetItem(str(strikeTargetTemp) + "°C, " + str(strikeTime) +" min"))
-            
+
+            # Vérifie si le bouton ajuster doit être utilisable.
+            j = self.tableWidgetStepsBrewday.currentRow()
+            step = listSteps[j]
+            stepType= step.type
+            if stepType == model.constants.MASH_STEP_INFUSION :
+                self.pushButtonAdjustStep.setEnabled(True)
+            else :
+                self.pushButtonAdjustStep.setEnabled(False)
+
             self.stepsListVol = listVol
             
             self.brewCalc.calcSpargeVol(self.stepsListVol, self.brewCalc.volPreBoil, self.brewCalc.grainRetention)
-    #        print('volume de rinçage :', self.brewCalc.spargeVol)
-    
+
             self.labelSpargeVol.setText("%.1f" %(self.brewCalc.spargeVol))
             self.labelSpargeTemp.setText("%.1f" %(spargeTemp))
 
