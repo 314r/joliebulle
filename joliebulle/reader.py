@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'reader.ui'
 #
-# Created: Sun May  5 00:26:28 2013
+# Created: Sun May  5 12:36:10 2013
 #      by: PyQt4 UI code generator 4.10
 #
 # WARNING! All changes made in this file will be lost!
@@ -259,35 +259,7 @@ class Ui_MainWindow(object):
         self.doubleSpinBox_2Volume = QtGui.QDoubleSpinBox(self.widgetProfile)
         self.doubleSpinBox_2Volume.setObjectName(_fromUtf8("doubleSpinBox_2Volume"))
         self.formLayout_4.setWidget(3, QtGui.QFormLayout.FieldRole, self.doubleSpinBox_2Volume)
-        self.pushButtonVolMore = QtGui.QPushButton(self.widgetProfile)
-        self.pushButtonVolMore.setText(_fromUtf8(""))
-        icon2 = QtGui.QIcon()
-        icon2.addPixmap(QtGui.QPixmap(_fromUtf8("Images/more.png")), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.pushButtonVolMore.setIcon(icon2)
-        self.pushButtonVolMore.setCheckable(True)
-        self.pushButtonVolMore.setObjectName(_fromUtf8("pushButtonVolMore"))
-        self.formLayout_4.setWidget(4, QtGui.QFormLayout.FieldRole, self.pushButtonVolMore)
         self.verticalLayout_6.addLayout(self.formLayout_4)
-        self.widgetVol = QtGui.QWidget(self.widgetProfile)
-        self.widgetVol.setObjectName(_fromUtf8("widgetVol"))
-        self.formLayout_5 = QtGui.QFormLayout(self.widgetVol)
-        self.formLayout_5.setMargin(0)
-        self.formLayout_5.setObjectName(_fromUtf8("formLayout_5"))
-        self.label = QtGui.QLabel(self.widgetVol)
-        self.label.setObjectName(_fromUtf8("label"))
-        self.formLayout_5.setWidget(0, QtGui.QFormLayout.LabelRole, self.label)
-        self.doubleSpinBoxVolPre = QtGui.QDoubleSpinBox(self.widgetVol)
-        self.doubleSpinBoxVolPre.setMaximum(999.0)
-        self.doubleSpinBoxVolPre.setSingleStep(10.0)
-        self.doubleSpinBoxVolPre.setObjectName(_fromUtf8("doubleSpinBoxVolPre"))
-        self.formLayout_5.setWidget(0, QtGui.QFormLayout.FieldRole, self.doubleSpinBoxVolPre)
-        self.labelSG = QtGui.QLabel(self.widgetVol)
-        self.labelSG.setObjectName(_fromUtf8("labelSG"))
-        self.formLayout_5.setWidget(1, QtGui.QFormLayout.FieldRole, self.labelSG)
-        self.label_2 = QtGui.QLabel(self.widgetVol)
-        self.label_2.setObjectName(_fromUtf8("label_2"))
-        self.formLayout_5.setWidget(1, QtGui.QFormLayout.LabelRole, self.label_2)
-        self.verticalLayout_6.addWidget(self.widgetVol)
         self.pushButtonRecipeNotes = QtGui.QPushButton(self.widgetProfile)
         self.pushButtonRecipeNotes.setObjectName(_fromUtf8("pushButtonRecipeNotes"))
         self.verticalLayout_6.addWidget(self.pushButtonRecipeNotes)
@@ -826,19 +798,19 @@ class Ui_MainWindow(object):
         self.menuProfils_de_brassage.setObjectName(_fromUtf8("menuProfils_de_brassage"))
         MainWindow.setMenuBar(self.menuBar)
         self.actionOuvrir = QtGui.QAction(MainWindow)
-        icon3 = QtGui.QIcon()
-        icon3.addPixmap(QtGui.QPixmap(_fromUtf8("Images/document-open.png")), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.actionOuvrir.setIcon(icon3)
+        icon2 = QtGui.QIcon()
+        icon2.addPixmap(QtGui.QPixmap(_fromUtf8("Images/document-open.png")), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.actionOuvrir.setIcon(icon2)
         self.actionOuvrir.setObjectName(_fromUtf8("actionOuvrir"))
         self.actionQuitter = QtGui.QAction(MainWindow)
-        icon4 = QtGui.QIcon()
-        icon4.addPixmap(QtGui.QPixmap(_fromUtf8("Images/application-exit.png")), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.actionQuitter.setIcon(icon4)
+        icon3 = QtGui.QIcon()
+        icon3.addPixmap(QtGui.QPixmap(_fromUtf8("Images/application-exit.png")), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.actionQuitter.setIcon(icon3)
         self.actionQuitter.setObjectName(_fromUtf8("actionQuitter"))
         self.actionAbout = QtGui.QAction(MainWindow)
-        icon5 = QtGui.QIcon()
-        icon5.addPixmap(QtGui.QPixmap(_fromUtf8("Images/help-about.png")), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.actionAbout.setIcon(icon5)
+        icon4 = QtGui.QIcon()
+        icon4.addPixmap(QtGui.QPixmap(_fromUtf8("Images/help-about.png")), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.actionAbout.setIcon(icon4)
         self.actionAbout.setObjectName(_fromUtf8("actionAbout"))
         self.actionEnregistrer = QtGui.QAction(MainWindow)
         self.actionEnregistrer.setObjectName(_fromUtf8("actionEnregistrer"))
@@ -857,7 +829,9 @@ class Ui_MainWindow(object):
         self.actionEditLevures = QtGui.QAction(MainWindow)
         self.actionEditLevures.setObjectName(_fromUtf8("actionEditLevures"))
         self.actionNouvelle_recette = QtGui.QAction(MainWindow)
-        self.actionNouvelle_recette.setIcon(icon2)
+        icon5 = QtGui.QIcon()
+        icon5.addPixmap(QtGui.QPixmap(_fromUtf8("Images/more.png")), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.actionNouvelle_recette.setIcon(icon5)
         self.actionNouvelle_recette.setObjectName(_fromUtf8("actionNouvelle_recette"))
         self.actionCorrectionDens = QtGui.QAction(MainWindow)
         self.actionCorrectionDens.setObjectName(_fromUtf8("actionCorrectionDens"))
@@ -956,7 +930,7 @@ class Ui_MainWindow(object):
         self.menuBar.addAction(self.menuAide.menuAction())
 
         self.retranslateUi(MainWindow)
-        self.stackedWidget.setCurrentIndex(4)
+        self.stackedWidget.setCurrentIndex(0)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
     def retranslateUi(self, MainWindow):
@@ -1020,17 +994,6 @@ class Ui_MainWindow(object):
 "p, li { white-space: pre-wrap; }\n"
 "</style></head><body style=\" font-family:\'Ubuntu\'; font-size:11pt; font-weight:400; font-style:normal;\">\n"
 "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:\'Droid Sans\'; font-size:9pt;\">Volume (L)</span></p></body></html>", None))
-        self.label.setText(_translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
-"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
-"p, li { white-space: pre-wrap; }\n"
-"</style></head><body style=\" font-family:\'Ubuntu\'; font-size:11pt; font-weight:400; font-style:normal;\">\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:9pt;\">Volume pré-ébullition</span></p></body></html>", None))
-        self.labelSG.setText(_translate("MainWindow", "0", None))
-        self.label_2.setText(_translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
-"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
-"p, li { white-space: pre-wrap; }\n"
-"</style></head><body style=\" font-family:\'Ubuntu\'; font-size:11pt; font-weight:400; font-style:normal;\">\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:9pt;\">Densité  pré-ébullition :</span></p></body></html>", None))
         self.pushButtonRecipeNotes.setText(_translate("MainWindow", "Notes", None))
         self.label_6.setText(_translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"

@@ -563,10 +563,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         self.connect(self.pushButtonAjouterM, QtCore.SIGNAL("clicked()"), self.ajouterM)
         self.connect(self.pushButtonEnlever, QtCore.SIGNAL("clicked()"), self.enlever)
         self.connect(self.pushButtonChangerStyle, QtCore.SIGNAL("clicked()"), self.modifierStyle)
-        self.connect(self.pushButtonVolMore, QtCore.SIGNAL("clicked()"), self.volMore)
-        self.connect(self.doubleSpinBoxVolPre, QtCore.SIGNAL("valueChanged(QString)"), self.volPreCalc)
-        
-        
+
         self.connect(self.comboBoxStyle, QtCore.SIGNAL("currentIndexChanged(QString)"), self.addStyle)
         #self.connect(self.pushButtonEssai, QtCore.SIGNAL("clicked()"), self.essai)
         self.connect(self.comboBoxType, QtCore.SIGNAL("currentIndexChanged(QString)"), self.typeChanged)
@@ -742,8 +739,6 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         
         self.comboBoxType.addItems(self.typesList)
         self.comboBoxType.setCurrentIndex(0)
-
-        self.widgetVol.hide()
         
         self.nouvelle()
  
@@ -1595,14 +1590,6 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         self.labelRatioBuGu.setText("%.1f" %(self.recipe.compute_ratioBUGU()))
         
         
-                        
-    def volPreCalc(self) :
-        indice = float(self.recipe.volume) / self.doubleSpinBoxVolPre.value()       
-        self.GUS = self.recipe.compute_GU() * indice
-        self.SG = 1+ (self.GUS/1000) 
-        self.labelSG.setText("%.3f" %self.SG)
-        
-        
     def ouvrir_clicked (self) :    
         self.s = QtGui.QFileDialog.getOpenFileName(self,
             self.trUtf8("Ouvrir un fichier"),
@@ -1738,12 +1725,6 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
             self.comboBoxStyle.show()
         else :
             self.comboBoxStyle.hide()   
-
-    def volMore (self) :
-        if self.pushButtonVolMore.isChecked() :
-            self.widgetVol.show()
-        else :
-            self.widgetVol.hide()
 
     def nouvelle(self) :
         self.recipe = Recipe()
