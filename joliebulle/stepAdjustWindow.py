@@ -42,6 +42,7 @@ class DialogStepAdjust(QtGui.QDialog):
         
         self.ui.doubleSpinBoxWaterTemp.valueChanged.connect(self.waterTempChanged)
         self.ui.doubleSpinBoxInfuseAmount.valueChanged.connect(self.infuseAmountChanged)
+        self.ui.doubleSpinBoxTargetRatio.valueChanged.connect(self.ratioChanged)
         self.ui.buttonBox.accepted.connect(self.accepted)
         
         
@@ -143,7 +144,12 @@ class DialogStepAdjust(QtGui.QDialog):
             
             self.listVol[i] = self.ui.doubleSpinBoxInfuseAmount.value()
             newRatio = sum(self.listVol[0:i+1])/(self.grainWeight/1000)
-            self.ui.doubleSpinBoxTargetRatio.setValue(newRatio)            
+            self.ui.doubleSpinBoxTargetRatio.setValue(newRatio)  
+
+
+    def ratioChanged(self):
+        newVolume = (self.grainWeight/1000) * self.ui.doubleSpinBoxTargetRatio.value()  
+        self.ui.doubleSpinBoxInfuseAmount.setValue(newVolume)               
             
         
     def accepted(self) :
