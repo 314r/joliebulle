@@ -45,7 +45,7 @@ class DialogH(QtGui.QDialog):
         self.ui.setupUi(self)
         self.base = ImportBase()
         #self.base.importBeerXML()
-        
+
         
         self.ui.listViewHoublons.setModel( view.base.getHopsQtModel() )
         self.ui.comboBoxForme.addItem(self.trUtf8('Feuille'))
@@ -62,6 +62,8 @@ class DialogH(QtGui.QDialog):
         self.ui.spinBoxAlpha.setEnabled(False)
         self.ui.comboBoxForme.setEnabled(False)
         self.ui.pushButtonAjouter.setEnabled(False)
+
+        view.base.getHopsQtModel()
         
         
     def voir(self, current, previous) :

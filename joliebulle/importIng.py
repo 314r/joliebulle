@@ -62,10 +62,10 @@ class ImportIng :
 
         for element in hops:
             ImportBase.addHop( Hop.parse(element) )
-            logger.debug(Hop.parse(element))
 
-        
-
-
+        view.base.getHopsQtModel()
+        view.base.getFermentablesQtModel()
+        view.base.getYeastsQtModel()
+        view.base.getMiscsQtModel()
 
  
