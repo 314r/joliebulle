@@ -1887,6 +1887,7 @@ color: rgb(255, 255, 255);</string>
     <addaction name="actionEditDivers"/>
     <addaction name="actionEditLevures"/>
     <addaction name="actionRestaurerIngredients"/>
+    <addaction name="actionImportIng"/>
    </widget>
    <widget class="QMenu" name="menuOutils">
     <property name="title">
@@ -2158,6 +2159,11 @@ color: rgb(255, 255, 255);</string>
   <action name="actionManageProfiles">
    <property name="text">
     <string>Gérer les profils</string>
+   </property>
+  </action>
+  <action name="actionImportIng">
+   <property name="text">
+    <string>Importer des ingrédients</string>
    </property>
   </action>
  </widget>

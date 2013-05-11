@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'reader.ui'
 #
-# Created: Sun May  5 13:13:25 2013
+# Created: Sat May 11 17:28:57 2013
 #      by: PyQt4 UI code generator 4.10
 #
 # WARNING! All changes made in this file will be lost!
@@ -899,6 +899,8 @@ class Ui_MainWindow(object):
         self.actionCopierBbcode.setObjectName(_fromUtf8("actionCopierBbcode"))
         self.actionManageProfiles = QtGui.QAction(MainWindow)
         self.actionManageProfiles.setObjectName(_fromUtf8("actionManageProfiles"))
+        self.actionImportIng = QtGui.QAction(MainWindow)
+        self.actionImportIng.setObjectName(_fromUtf8("actionImportIng"))
         self.menuFichier.addAction(self.actionImporter)
         self.menuFichier.addAction(self.actionOuvrir)
         self.menuFichier.addAction(self.actionEnregistrer)
@@ -914,6 +916,7 @@ class Ui_MainWindow(object):
         self.menuIngr_dients.addAction(self.actionEditDivers)
         self.menuIngr_dients.addAction(self.actionEditLevures)
         self.menuIngr_dients.addAction(self.actionRestaurerIngredients)
+        self.menuIngr_dients.addAction(self.actionImportIng)
         self.menuOutils.addAction(self.actionCorrectionDens)
         self.menuOutils.addAction(self.actionCalculAlc)
         self.menuOutils.addAction(self.actionDilution)
@@ -1167,6 +1170,7 @@ class Ui_MainWindow(object):
         self.actionImporter.setText(_translate("MainWindow", "Importer dans la bibliothèque", None))
         self.actionCopierBbcode.setText(_translate("MainWindow", "Copier le BBCode dans le presse papier", None))
         self.actionManageProfiles.setText(_translate("MainWindow", "Gérer les profils", None))
+        self.actionImportIng.setText(_translate("MainWindow", "Importer des ingrédients", None))
 
 from PyQt4 import QtWebKit
 import ressources_rc

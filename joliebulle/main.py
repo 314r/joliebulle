@@ -39,6 +39,7 @@ from editgrain import *
 from edithoublon import *
 from editdivers import * 
 from editlevures import *
+from importIng import *
 from outilDens import *
 from outilAlc import *
 from outilDilution import *
@@ -429,6 +430,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         menuIngredients.addAction(self.actionEditDivers)
         menuIngredients.addAction(self.actionEditLevures)
         menuIngredients.addAction(self.actionRestaurerIngredients)
+        menuIngredients.addAction(self.actionImportIng)
 
         # le menu profils
         menuProfiles = generalMenu.addMenu(self.trUtf8('''Profils de brassage'''))
@@ -503,6 +505,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         self.connect(self.actionEditDivers, QtCore.SIGNAL("triggered()"), self.editDivers)
         self.connect(self.actionEditLevures, QtCore.SIGNAL("triggered()"), self.editLevures)
         self.connect(self.actionRestaurerIngredients, QtCore.SIGNAL("triggered()"), self.restoreDataBase)
+        self.actionImportIng.triggered.connect(self.importIng)
         self.actionManageProfiles.triggered.connect(self.seeMash)
         
         self.connect(self.actionAbout, QtCore.SIGNAL("triggered()"), self.about)
@@ -1761,6 +1764,19 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         else :
             self.clearModele()
             self.initModele()
+
+    def importIng(self):
+        self.s = QtGui.QFileDialog.getOpenFileName(self,
+            self.trUtf8("Ouvrir un fichier"),
+            home_dir,
+            )
+        if not self.s :
+            pass
+        self.importIngList = ImportIng()
+        self.importIngList.parseFile(self.s)
+
+        self.baseReload
+
 
                         
     def addStyle(self) :

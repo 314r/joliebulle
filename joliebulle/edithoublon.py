@@ -46,6 +46,7 @@ class DialogH(QtGui.QDialog):
         self.base = ImportBase()
         #self.base.importBeerXML()
         
+        
         self.ui.listViewHoublons.setModel( view.base.getHopsQtModel() )
         self.ui.comboBoxForme.addItem(self.trUtf8('Feuille'))
         self.ui.comboBoxForme.addItem(self.trUtf8('Pellet'))
