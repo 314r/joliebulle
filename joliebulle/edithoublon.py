@@ -46,7 +46,6 @@ class DialogH(QtGui.QDialog):
         self.base = ImportBase()
         #self.base.importBeerXML()
 
-        
         self.ui.listViewHoublons.setModel( view.base.getHopsQtModel() )
         self.ui.comboBoxForme.addItem(self.trUtf8('Feuille'))
         self.ui.comboBoxForme.addItem(self.trUtf8('Pellet'))
@@ -63,16 +62,20 @@ class DialogH(QtGui.QDialog):
         self.ui.comboBoxForme.setEnabled(False)
         self.ui.pushButtonAjouter.setEnabled(False)
 
-        view.base.getHopsQtModel()
         
+    def setModel(self):
+        self.ui.listViewHoublons.setModel( view.base.getHopsQtModel() )
+        self.connect(self.ui.listViewHoublons.selectionModel(), QtCore.SIGNAL("currentChanged(const QModelIndex &, const QModelIndex &)"), self.voir)
         
     def voir(self, current, previous) :
+
         self.ui.lineEditNom.setEnabled(True)
         self.ui.spinBoxAlpha.setEnabled(True)
         self.ui.comboBoxForme.setEnabled(True)   
-        self.ui.pushButtonAjouter.setEnabled(True)
-          
+        self.ui.pushButtonAjouter.setEnabled(True) 
+
         h = current.data(view.constants.MODEL_DATA_ROLE)
+        
         self.ui.lineEditNom.setText(h.name)
         self.ui.spinBoxAlpha.setValue(h.alpha)
         
@@ -97,8 +100,10 @@ class DialogH(QtGui.QDialog):
             h.form = model.constants.HOP_FORM_PLUG
         else :
             h.form = model.constants.HOP_FORM_LEAF
-        ImportBase.addHop(h)
+        ImportBase.addHop(h) 
         self.ui.listViewHoublons.setModel(view.base.getHopsQtModel() )
+        self.connect(self.ui.listViewHoublons.selectionModel(), QtCore.SIGNAL("currentChanged(const QModelIndex &, const QModelIndex &)"), self.voir)
+
         
     def nouveau(self) :
         self.ui.lineEditNom.setEnabled(True)
@@ -116,6 +121,7 @@ class DialogH(QtGui.QDialog):
             h = index.data(view.constants.MODEL_DATA_ROLE)
             ImportBase().delHop(h)
         self.ui.listViewHoublons.setModel(view.base.getHopsQtModel() )
+        self.connect(self.ui.listViewHoublons.selectionModel(), QtCore.SIGNAL("currentChanged(const QModelIndex &, const QModelIndex &)"), self.voir)
         
     def rejected(self) :     
         self.baseChanged.emit()        

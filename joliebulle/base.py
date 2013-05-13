@@ -37,6 +37,7 @@ from model.mash import *
 from operator import attrgetter
 from singleton import Singleton
 
+
 logger = logging.getLogger(__name__)
 
 class ImportBase(object,metaclass=Singleton) :
@@ -139,6 +140,7 @@ class ImportBase(object,metaclass=Singleton) :
         ImportBase().arbre._setroot(root)
         ImportBase().arbre.write(databaseXML, encoding="utf-8")
         databaseXML.close()
+        
 
     @staticmethod
     def delHop(h):

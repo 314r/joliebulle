@@ -56,16 +56,11 @@ class ImportIng :
         levures = self.arbre.findall('.//YEAST')
         misc = self.arbre.findall('.//MISC')
 
-        for element in fermentables:
-            self.listeFermentables.append( Fermentable.parse(element) )
-            self.listeFermentables = sorted(self.listeFermentables, key=attrgetter('name'))
-
         for element in hops:
             ImportBase.addHop( Hop.parse(element) )
 
         view.base.getHopsQtModel()
-        view.base.getFermentablesQtModel()
-        view.base.getYeastsQtModel()
-        view.base.getMiscsQtModel()
+
+
 
  

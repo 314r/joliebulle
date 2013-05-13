@@ -1404,6 +1404,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         
     def editHoublons(self) :
         self.dlgEditH.setModal(True)
+        self.dlgEditH.setModel()
         self.dlgEditH.show()
         
     def editDivers(self) :
