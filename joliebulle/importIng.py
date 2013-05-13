@@ -57,9 +57,11 @@ class ImportIng :
         misc = self.arbre.findall('.//MISC')
 
         for element in hops:
-            ImportBase.addHop( Hop.parse(element) )
+            ImportBase.addHop( Hop.parse(element))
+        for element in fermentables:
+            ImportBase.addFermentable(Fermentable.parse(element))
 
-        view.base.getHopsQtModel()
+        
 
 
 

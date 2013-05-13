@@ -1400,6 +1400,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
                 
     def editGrains(self) :
         self.dlgEditG.setModal(True)
+        self.dlgEditG.setModel()
         self.dlgEditG.show()
         
     def editHoublons(self) :

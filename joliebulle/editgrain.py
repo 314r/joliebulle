@@ -47,7 +47,7 @@ class Dialog(QtGui.QDialog):
         logger.debug("init Dialog")
         
         #self.ui.listWidgetGrains.addItems(self.base.listeFermentables)
-        self.ui.listViewGrains.setModel(view.base.getFermentablesQtModel() )
+        self.ui.listViewGrains.setModel(view.base.getFermentablesQtModel())
         self.ui.comboBoxType.addItem(self.trUtf8('Grain'))
         self.ui.comboBoxType.addItem(self.trUtf8('Extrait'))
         self.ui.comboBoxType.addItem(self.trUtf8('Extrait sec'))
@@ -76,7 +76,11 @@ class Dialog(QtGui.QDialog):
         self.ui.pushButtonAjouter.setEnabled(False)
         self.ui.radioButtonSRM.setEnabled(False)
         self.ui.radioButtonEBC.setEnabled(False)
-        
+
+    def setModel(self) :
+        self.ui.listViewGrains.setModel(view.base.getFermentablesQtModel())
+        self.connect(self.ui.listViewGrains.selectionModel(), QtCore.SIGNAL("currentChanged(const QModelIndex &, const QModelIndex &)"), self.voir)
+            
     def voir (self, current, previous) :
 
         self.ui.lineEditNom.setEnabled(True)
@@ -144,7 +148,7 @@ class Dialog(QtGui.QDialog):
         else :
             f.useAfterBoil = True
         ImportBase.addFermentable(f)
-        self.ui.listViewGrains.setModel(view.base.getFermentablesQtModel() )
+        self.setModel()
         
     def nouveau (self) :
         logger.debug("nouveau")
@@ -169,8 +173,8 @@ class Dialog(QtGui.QDialog):
         for index in selection :
             f = index.data(view.constants.MODEL_DATA_ROLE)
             ImportBase().delFermentable(f)
-        self.ui.listViewGrains.setModel(view.base.getFermentablesQtModel() )
-        return
+        self.setModel()
+        
         
     def rejected(self) :     
         #self.emit( QtCore.SIGNAL( "baseChanged"))
