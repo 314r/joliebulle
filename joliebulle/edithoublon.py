@@ -101,8 +101,7 @@ class DialogH(QtGui.QDialog):
         else :
             h.form = model.constants.HOP_FORM_LEAF
         ImportBase.addHop(h) 
-        self.ui.listViewHoublons.setModel(view.base.getHopsQtModel() )
-        self.connect(self.ui.listViewHoublons.selectionModel(), QtCore.SIGNAL("currentChanged(const QModelIndex &, const QModelIndex &)"), self.voir)
+        self.setModel()
 
         
     def nouveau(self) :
@@ -120,8 +119,7 @@ class DialogH(QtGui.QDialog):
         for index in selection :
             h = index.data(view.constants.MODEL_DATA_ROLE)
             ImportBase().delHop(h)
-        self.ui.listViewHoublons.setModel(view.base.getHopsQtModel() )
-        self.connect(self.ui.listViewHoublons.selectionModel(), QtCore.SIGNAL("currentChanged(const QModelIndex &, const QModelIndex &)"), self.voir)
+        self.setModel()
         
     def rejected(self) :     
         self.baseChanged.emit()        
