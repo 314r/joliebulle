@@ -486,7 +486,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
 
 
         #Les connexions
-        self.connect(self.actionNouvelle_recette, QtCore.SIGNAL("triggered()"), self.purge)
+        self.connect(self.actionNouvelle_recette, QtCore.SIGNAL("triggered()"), self.newRecipeFromLibrary)
         self.connect(self.actionEnregistrer, QtCore.SIGNAL("triggered()"), self.enregistrer)
         self.connect(self.actionEnregistrerToolBar, QtCore.SIGNAL("triggered()"), self.enregistrer)
         self.connect(self.actionEnregistrer_Sous, QtCore.SIGNAL("triggered()"), self.enregistrerSous)
