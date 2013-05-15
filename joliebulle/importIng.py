@@ -22,9 +22,11 @@
 
 
 
-
+import os
+import os.path
 import PyQt4
 import sys
+from sys import platform
 import logging
 from PyQt4 import QtCore
 import xml.etree.ElementTree as ET
@@ -40,12 +42,9 @@ import view.base
 
 logger = logging.getLogger(__name__)
 
-class ImportIng :
-    def __init__(self):
-        self.listeFermentables = list()
-        self.listeHops = list()
-        self.listeYeasts = list()
-        self.listeMiscs = list()
+class ImportIng (QtGui.QDialog) :
+    def __init__(self,parent=None):
+        QtGui.QDialog.__init__(self, parent)
 
     def parseFile(self, s) :
         fichierBeerXML = s
@@ -64,6 +63,16 @@ class ImportIng :
             ImportBase.addMisc(Misc.parse(element))
         for element in levures:
             ImportBase.addYeast(Yeast.parse(element))
+
+        self.hopsNum = len(hops) 
+        self.fermNum = len(fermentables)
+        self.miscNum = len(misc)
+        self.yeastNum = len(levures)   
+
+        self.info()    
+
+    def info(self):
+        info = QtGui.QMessageBox.information(self, self.trUtf8("Importation réussie"), self.trUtf8("Importation réussie de %s houblons, %s fermentables, %s ingrédients divers, %s levures." %(self.hopsNum, self.fermNum, self.miscNum, self.yeastNum)))
 
         
 

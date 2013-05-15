@@ -1778,11 +1778,8 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
             pass
         self.importIngList = ImportIng()
         self.importIngList.parseFile(self.s)
-
         self.baseReload
-
-
-                        
+                    
     def addStyle(self) :
         self.lineEditGenre.setText(self.comboBoxStyle.currentText())
         
