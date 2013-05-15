@@ -48,21 +48,24 @@ class ImportIng (QtGui.QDialog) :
 
     def parseFile(self, s) :
         fichierBeerXML = s
-        self.arbre = ET.parse(fichierBeerXML)
-        presentation=self.arbre.find('.//RECIPE')
-        fermentables=self.arbre.findall('.//FERMENTABLE')
-        hops = self.arbre.findall('.//HOP')
-        levures = self.arbre.findall('.//YEAST')
-        misc = self.arbre.findall('.//MISC')
+        try:
+            self.arbre = ET.parse(fichierBeerXML)
+            presentation=self.arbre.find('.//RECIPE')
+            fermentables=self.arbre.findall('.//FERMENTABLE')
+            hops = self.arbre.findall('.//HOP')
+            levures = self.arbre.findall('.//YEAST')
+            misc = self.arbre.findall('.//MISC')
 
-        for element in hops:
-            ImportBase.addHop( Hop.parse(element))
-        for element in fermentables:
-            ImportBase.addFermentable(Fermentable.parse(element))
-        for element in misc:
-            ImportBase.addMisc(Misc.parse(element))
-        for element in levures:
-            ImportBase.addYeast(Yeast.parse(element))
+            for element in hops:
+                ImportBase.addHop( Hop.parse(element))
+            for element in fermentables:
+                ImportBase.addFermentable(Fermentable.parse(element))
+            for element in misc:
+                ImportBase.addMisc(Misc.parse(element))
+            for element in levures:
+                ImportBase.addYeast(Yeast.parse(element))
+        except:
+            self.warningFile()
 
         self.hopsNum = len(hops) 
         self.fermNum = len(fermentables)
@@ -73,6 +76,13 @@ class ImportIng (QtGui.QDialog) :
 
     def info(self):
         info = QtGui.QMessageBox.information(self, self.trUtf8("Importation réussie"), self.trUtf8("Importation réussie de %s houblons, %s fermentables, %s ingrédients divers, %s levures." %(self.hopsNum, self.fermNum, self.miscNum, self.yeastNum)))
+
+    def warningFile(self):
+        warning = QtGui.QMessageBox.warning(self,
+                        self.trUtf8("Fichier non compatible"),
+                        self.trUtf8("Le fichier n'est pas compatible.")
+                        )
+
 
         
 
