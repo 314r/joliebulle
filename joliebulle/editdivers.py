@@ -44,7 +44,7 @@ class DialogD(QtGui.QDialog):
         self.ui.setupUi(self)
         self.base = ImportBase()
 
-        self.ui.listViewDivers.setModel( view.base.getMiscsQtModel() )
+        self.ui.listViewDivers.setModel(view.base.getMiscsQtModel())
         self.ui.comboBoxType.addItem(self.trUtf8("Epice"))
         self.ui.comboBoxType.addItem(self.trUtf8("Clarifiant"))
         self.ui.comboBoxType.addItem(self.trUtf8("Traitement Eau"))
@@ -62,7 +62,10 @@ class DialogD(QtGui.QDialog):
         self.ui.comboBoxType.setEnabled(False)
         self.ui.pushButtonAjouter.setEnabled(False)
         
-        
+       
+    def setModel(self):
+        self.ui.listViewDivers.setModel( view.base.getMiscsQtModel()) 
+        self.connect(self.ui.listViewDivers.selectionModel(), QtCore.SIGNAL("currentChanged(const QModelIndex &, const QModelIndex &)"), self.voir) 
         
     def voir(self, current, previous) :
         self.ui.lineEditNom.setEnabled(True)
@@ -106,7 +109,7 @@ class DialogD(QtGui.QDialog):
         else :
               m.type = 'Spice'
         ImportBase.addMisc(m)
-        self.ui.listViewDivers.setModel(view.base.getMiscsQtModel() )
+        self.setModel()
         
     def nouveau(self) :
         self.ui.lineEditNom.setEnabled(True)
@@ -121,7 +124,7 @@ class DialogD(QtGui.QDialog):
         for index in selection :
             m = index.data(view.constants.MODEL_DATA_ROLE)
             ImportBase().delMisc(m)
-        self.ui.listViewDivers.setModel(view.base.getMiscsQtModel() )
+        self.setModel()
         
     def rejected(self) :     
         self.baseChanged.emit()    

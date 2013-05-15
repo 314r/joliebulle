@@ -60,6 +60,8 @@ class ImportIng :
             ImportBase.addHop( Hop.parse(element))
         for element in fermentables:
             ImportBase.addFermentable(Fermentable.parse(element))
+        for element in misc:
+            ImportBase.addMisc(Misc.parse(element))
 
         
 

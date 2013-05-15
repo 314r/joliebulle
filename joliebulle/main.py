@@ -1410,6 +1410,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         
     def editDivers(self) :
         self.dlgEditD.setModal(True)
+        self.dlgEditD.setModel()
         self.dlgEditD.show()   
     
     def editLevures(self) :
