@@ -62,6 +62,8 @@ class ImportIng :
             ImportBase.addFermentable(Fermentable.parse(element))
         for element in misc:
             ImportBase.addMisc(Misc.parse(element))
+        for element in levures:
+            ImportBase.addYeast(Yeast.parse(element))
 
         
 

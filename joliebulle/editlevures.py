@@ -64,7 +64,10 @@ class DialogL(QtGui.QDialog):
         self.ui.lineEditID.setEnabled(False)
         self.ui.spinBoxAtten.setEnabled(False)
         self.ui.pushButtonAjouter.setEnabled(False)
-        
+
+    def setModel(self) :
+        self.ui.listViewLevures.setModel( view.base.getYeastsQtModel() ) 
+        self.connect(self.ui.listViewLevures.selectionModel(), QtCore.SIGNAL("currentChanged(const QModelIndex &, const QModelIndex &)"), self.voir) 
         
     def voir(self, current, previous) :
         self.ui.lineEditNom.setEnabled(True)
@@ -111,7 +114,7 @@ class DialogL(QtGui.QDialog):
             y.form = 'Dry'
 
         ImportBase.addYeast(y)
-        self.ui.listViewLevures.setModel( view.base.getYeastsQtModel() )
+        self.setModel()
         
     def nouveau(self) :
         self.ui.lineEditNom.setEnabled(True)
@@ -132,7 +135,7 @@ class DialogL(QtGui.QDialog):
         for index in selection :
             y = index.data(view.constants.MODEL_DATA_ROLE)
             ImportBase().delYeast(y)
-        self.ui.listViewLevures.setModel( view.base.getYeastsQtModel() )
+        self.setModel()
         
     def rejected(self) :     
         self.baseChanged.emit()

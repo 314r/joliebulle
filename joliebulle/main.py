@@ -1415,6 +1415,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
     
     def editLevures(self) :
         self.dlgEditY.setModal(True)
+        self.dlgEditY.setModel()
         self.dlgEditY.show()     
         
     def outilDens(self) : 
