@@ -412,7 +412,6 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         # le menu fichier
         menuFile=generalMenu.addMenu(self.trUtf8('''Fichier'''))
         menuFile.addAction(self.actionImporter)
-        menuFile.addAction(self.actionOuvrir_2)
         menuFile.addAction(self.actionNouvelle_recette)
         menuFile.addAction(self.actionRecharger)
         menuFile.addAction(self.actionImprimer)
@@ -487,8 +486,6 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
 
 
         #Les connexions
-        self.connect(self.actionOuvrir, QtCore.SIGNAL("triggered()"), self.ouvrir_clicked)
-        self.connect(self.actionOuvrir_2, QtCore.SIGNAL("triggered()"), self.ouvrir_clicked)
         self.connect(self.actionNouvelle_recette, QtCore.SIGNAL("triggered()"), self.purge)
         self.connect(self.actionEnregistrer, QtCore.SIGNAL("triggered()"), self.enregistrer)
         self.connect(self.actionEnregistrerToolBar, QtCore.SIGNAL("triggered()"), self.enregistrer)
@@ -1597,22 +1594,6 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         self.labelAlcv.setText("%.1f%%" %(self.recipe.compute_ABV() ))
         self.labelRatioBuGu.setText("%.1f" %(self.recipe.compute_ratioBUGU()))
         
-        
-                        
-        
-        
-    def ouvrir_clicked (self) :    
-        self.s = QtGui.QFileDialog.getOpenFileName(self,
-            self.trUtf8("Ouvrir un fichier"),
-            home_dir,
-            )
-        if not self.s :
-            pass
-        else :
-            self.nouvelle()
-            self.importBeerXML()
-            self.initModele()
-            self.switchToEditor()
        
     def openRecipeFile(self,filePath):
         self.s = filePath
@@ -1677,8 +1658,6 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         else:
             # TODO : Prévenir l'utilisateur en cas d'échec de l'enregistrement
             pass
-        #logger.info("Recette '%s' ", self.recipe.mName)
-        #logger.info("Recette '%s' enregistrée dans le fichier %s", self.recipe.name, destination)
         
     def enregistrer (self) :
         self.recipe.name = self.lineEditRecette.text()

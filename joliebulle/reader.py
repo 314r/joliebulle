@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'reader.ui'
 #
-# Created: Sat May 11 17:28:57 2013
+# Created: Wed May 15 22:00:25 2013
 #      by: PyQt4 UI code generator 4.10
 #
 # WARNING! All changes made in this file will be lost!
@@ -902,7 +902,6 @@ class Ui_MainWindow(object):
         self.actionImportIng = QtGui.QAction(MainWindow)
         self.actionImportIng.setObjectName(_fromUtf8("actionImportIng"))
         self.menuFichier.addAction(self.actionImporter)
-        self.menuFichier.addAction(self.actionOuvrir)
         self.menuFichier.addAction(self.actionEnregistrer)
         self.menuFichier.addAction(self.actionEnregistrer_Sous)
         self.menuFichier.addAction(self.actionExporterHtml)

@@ -1868,7 +1868,6 @@ color: rgb(255, 255, 255);</string>
      <string>Fichier</string>
     </property>
     <addaction name="actionImporter"/>
-    <addaction name="actionOuvrir"/>
     <addaction name="actionEnregistrer"/>
     <addaction name="actionEnregistrer_Sous"/>
     <addaction name="actionExporterHtml"/>
