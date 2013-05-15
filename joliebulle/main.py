@@ -861,7 +861,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
             self.purge()
             
             self.s = self.chemin
-            
+
             self.importBeerXML()
             self.webViewBiblio.setHtml(self.recipe.export("html"))
             # self.modele.blockSignals(True)
@@ -1666,6 +1666,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         self.recipe.boil = self.spinBoxBoil.value()
         if not self.s :
             destination =  recettes_dir + "/" + self.recipe.name + ".xml"
+            self.s = destination
             if os.path.exists(destination) :
                 warning = QtGui.QMessageBox.warning(self,
                             self.trUtf8("Recette déjà existante"),
@@ -1749,14 +1750,14 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
             self.initModele()
 
     def importIng(self):
-        self.s = QtGui.QFileDialog.getOpenFileName(self,
+        s = QtGui.QFileDialog.getOpenFileName(self,
             self.trUtf8("Ouvrir un fichier"),
             home_dir,
             )
         if not self.s :
             pass
         self.importIngList = ImportIng()
-        self.importIngList.parseFile(self.s)
+        self.importIngList.parseFile(s)
         self.baseReload
                     
     def addStyle(self) :
