@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'reader.ui'
 #
-# Created: Wed May 15 22:00:25 2013
+# Created: Wed May 15 22:02:00 2013
 #      by: PyQt4 UI code generator 4.10
 #
 # WARNING! All changes made in this file will be lost!
@@ -1166,7 +1166,7 @@ class Ui_MainWindow(object):
         self.actionNouveau_Dossier.setToolTip(_translate("MainWindow", "Créer un nouveau dossier dans la bibliothèque", None))
         self.actionNouvelle_recette_2.setText(_translate("MainWindow", "Nouvelle recette", None))
         self.actionNouvelle_recette_2.setToolTip(_translate("MainWindow", "Créer une nouvelle recette", None))
-        self.actionImporter.setText(_translate("MainWindow", "Importer dans la bibliothèque", None))
+        self.actionImporter.setText(_translate("MainWindow", "Importer une recette", None))
         self.actionCopierBbcode.setText(_translate("MainWindow", "Copier le BBCode dans le presse papier", None))
         self.actionManageProfiles.setText(_translate("MainWindow", "Gérer les profils", None))
         self.actionImportIng.setText(_translate("MainWindow", "Importer des ingrédients", None))

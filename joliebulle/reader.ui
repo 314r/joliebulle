@@ -2147,7 +2147,7 @@ color: rgb(255, 255, 255);</string>
   </action>
   <action name="actionImporter">
    <property name="text">
-    <string>Importer dans la bibliothèque</string>
+    <string>Importer une recette</string>
    </property>
   </action>
   <action name="actionCopierBbcode">
