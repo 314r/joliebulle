@@ -236,4 +236,4 @@ class Recipe:
         return hash_proportion
 
     def compute_grainWeight(self):
-        return sum([f.amount for f in self.listeFermentables if f.type != model.constants.FERMENTABLE_TYPE_SUGAR])
+        return sum([f.amount for f in self.listeFermentables if f.type != model.constants.FERMENTABLE_TYPE_SUGAR and f.type != model.constants.FERMENTABLE_TYPE_EXTRACT])
