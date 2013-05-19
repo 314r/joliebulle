@@ -35,8 +35,8 @@ class DialogMashDetail(QtGui.QDialog):
 
     def setFields (self,currentMash) :
     	self.ui.labelMashName.setText('''<p align="center"><b>''' + currentMash.name + '''</b></p>''')
-    	self.ui.labelPhValue.setText(currentMash.ph)
-    	self.ui.labelSpargeValue.setText(currentMash.spargeTemp)
+    	self.ui.labelPhValue.setText(str(currentMash.ph))
+    	self.ui.labelSpargeValue.setText(str(currentMash.spargeTemp))
 
         #la liste des paliers
     	for step in currentMash.listeSteps:

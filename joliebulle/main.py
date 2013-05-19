@@ -2194,6 +2194,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         self.brewCalc.calcMashVolume(self.recipe.compute_grainWeight())
         self.mashVolumeLastStep = self.brewCalc.mashVolumeStrike + sum(self.stepsListVol) - self.stepsListVol[0]
         self.labelTotalVolumeLast.setText("%.1f" %(self.mashVolumeLastStep))
+        logger.debug(self.mashVolumeLastStep)
         self.labelTotalVolumeStrike.setText("%.1f" %(self.brewCalc.mashVolumeStrike))
             
 #            print('température du moût', mashTemp)
