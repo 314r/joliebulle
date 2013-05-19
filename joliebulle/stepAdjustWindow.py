@@ -49,6 +49,7 @@ class DialogStepAdjust(QtGui.QDialog):
     def setFields (self, targetTemp, targetRatio, infuseAmount, waterTemp, grainWeight, listVol, currentRow, listTemp, strikeTargetTemp) :
         self.ui.doubleSpinBoxInfuseAmount.blockSignals(True)
         self.ui.doubleSpinBoxWaterTemp.blockSignals(True)
+        self.ui.doubleSpinBoxTargetRatio.blockSignals(True)
         if currentRow == 0 :
             self.ui.labelTargetTemp.setText(str(strikeTargetTemp))
         else :
@@ -63,6 +64,7 @@ class DialogStepAdjust(QtGui.QDialog):
         self.listTemp = listTemp
         self.ui.doubleSpinBoxInfuseAmount.blockSignals(False)
         self.ui.doubleSpinBoxWaterTemp.blockSignals(False)
+        self.ui.doubleSpinBoxTargetRatio.blockSignals(False)
         self.strikeTemp = strikeTargetTemp
         
     def waterTempChanged(self) :
