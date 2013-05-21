@@ -1050,26 +1050,20 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
             self.trUtf8("Ouvrir un fichier"),
             home_dir,
             )
+        errors=Errors()
         try :
             arbre = ET.parse(self.s)
             recipe = Recipe.parse(arbre)
             finalDest = recettes_dir + "/" + os.path.basename(self.s)
             if os.path.exists(finalDest) :
                 logger.debug("Le fichier existe déjà dans la bibliothèque")
-                warning = QtGui.QMessageBox.warning(self,
-                        self.trUtf8("Fichier existant"),
-                        self.trUtf8("Un fichier portant le même nom existe déjà dans la bibliothèque. \
-				JolieBulle a bloqué l'importation pour éviter son écrasement. ")
-                        )
+                errors.warningExistingFile()
             else :
                 shutil.copy(self.s, recettes_dir)
 
         except (TypeError, SyntaxError, AttributeError):
             logger.debug("Fichier incompatible. L'importation a échoué")
-            warning = QtGui.QMessageBox.warning(self,
-                        self.trUtf8("Fichier incompatible"),
-                        self.trUtf8("Le fichier que vous essayez d'importer n'est pas une recette ou n'est pas compatible.")
-                        )
+            errors.warningXml()
      
         
     def createFolder(self) :
@@ -1673,10 +1667,8 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
             destination =  recettes_dir + "/" + self.recipe.name + ".xml"
             self.s = destination
             if os.path.exists(destination) :
-                warning = QtGui.QMessageBox.warning(self,
-                            self.trUtf8("Recette déjà existante"),
-                            self.trUtf8("Ce nom de recette existe déjà. L'enregistrement a été annulé. Vous pouvez choisir un nouveau nom.")
-                            )
+                errors=Errors()
+                errors.warningExistingPath()
             else :
                 self.enregistrerRecette(destination)
         else :
@@ -1688,10 +1680,8 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
                                                     recettes_dir + "/" + self.recipe.name,
                                                     "BeerXML (*.xml)")
         if os.path.exists(destination) :
-            warning = QtGui.QMessageBox.warning(self,
-                        self.trUtf8("Recette déjà existante"),
-                        self.trUtf8("Ce nom de recette existe déjà. L'enregistrement a été annulé. Vous pouvez choisir un nouveau nom.")
-                        )
+            errors=Errors()
+            errors.warningExistingPath()
         else :
             self.enregistrerRecette(self.s)
 

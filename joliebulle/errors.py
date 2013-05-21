@@ -50,3 +50,15 @@ class Errors (QtGui.QWidget) :
                                 self.trUtf8("Fichier incompatible"),
                                 self.trUtf8("Le fichier que vous essayez d'ouvrir n'est pas une recette ou n'est pas compatible.")
                                 )
+
+    def warningExistingPath(self) :
+        warning = QtGui.QMessageBox.warning(self,
+                            self.trUtf8("Recette déjà existante"),
+                            self.trUtf8("Ce nom de recette existe déjà. L'enregistrement a été annulé. Vous pouvez choisir un nouveau nom.")
+                            )
+
+    def warningExistingFile(self):
+        warning = QtGui.QMessageBox.warning(self,
+                        self.trUtf8("Fichier existant"),
+                        self.trUtf8("Un fichier portant le même nom existe déjà dans la bibliothèque. JolieBulle a bloqué l'importation pour éviter son écrasement.")
+                        )
