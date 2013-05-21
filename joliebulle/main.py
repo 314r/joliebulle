@@ -71,6 +71,7 @@ from view.yeastview import *
 from view.mashstepview import *
 import view.base
 import itertools
+from errors import *
 
 # class BiblioFileSystem (QtGui.QFileSystemModel) :
 #     def __init__(self, parent=None):
@@ -1196,6 +1197,12 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
 
         
     def switchToBrewday(self) :
+        if not self.recipe.mash.listeSteps: 
+            errors = Errors()
+            errors.errorMashMissing()
+        else :
+            pass
+
         logger.debug ("lock %s",self.brewdayLock)
         self.stackedWidget.setCurrentIndex(4)        
 
@@ -1580,11 +1587,9 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
             self.currentRecipeMash = self.recipe.mash
 
         except :
-            warning = QtGui.QMessageBox.warning(self,
-                                self.trUtf8("Fichier incompatible"),
-                                self.trUtf8("Le fichier que vous essayez d'ouvrir n'est pas une recette ou n'est pas compatible.")
-                                )
-
+            errors = Errors()
+            errors.warningXml()
+            
                     
     def displayProfile(self) :     
         self.labelOGV.setText("%.3f" %(self.recipe.compute_OG()))

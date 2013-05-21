@@ -26,6 +26,7 @@ from model.yeast import *
 from model.misc import *
 from model.mash import *
 from helper.recipeExporterRepository import *
+from errors import *
 
 logger = logging.getLogger(__name__)
 
@@ -46,6 +47,7 @@ class Recipe:
         self.listeYeasts = list()
         self.listeMiscs = list()
         self.listeMashSteps = list()
+        
 
     def __repr__(self):
         return ('recipe[name="%s", brewer="%s", type=%s, volume=%s, efficiency=%s, boil=%s, recipeNotes="%s", style="%s"]' %
@@ -63,7 +65,12 @@ class Recipe:
         misc = tree.findall('.//MISC')
         style=tree.find('.//STYLE')
         mash = tree.find('.//MASH')
-        mashStep = mash.findall('.//MASH_STEP')
+        try:
+            mashStep = mash.findall('.//MASH_STEP')
+        except:
+            pass
+            
+
 
         for element in presentation :
             if 'NAME' == element.tag : 
@@ -96,8 +103,10 @@ class Recipe:
         for element in style :
             if "NAME" == element.tag :
                 recipe.style = element.text
-
-        recipe.mash = Mash.parse(mash)
+        try :
+            recipe.mash = Mash.parse(mash)
+        except :
+            pass
 
         for element in fermentables:
             recipe.listeFermentables.append( Fermentable.parse(element) )

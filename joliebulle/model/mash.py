@@ -35,9 +35,12 @@ class Mash:
             if 'PH' == element.tag :
                 m.ph = element.text
 
-        mashStep = tree.findall('.//MASH_STEP')
-        for element in mashStep:
-            m.listeSteps.append(MashStep.parse(element))
+        try :
+            mashStep = tree.findall('.//MASH_STEP')
+            for element in mashStep:
+                m.listeSteps.append(MashStep.parse(element))
+        except :
+            pass
 
         logger.debug(repr(m))
         return m
