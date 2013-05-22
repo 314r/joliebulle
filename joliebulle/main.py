@@ -922,6 +922,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
                 newName = None
             if newName in newFileList and newName != None:
                 logger.debug('doublon !')
+                logger.debug(newName)
                 sameCount= 0 
                 while sameCount < len(newFileNameList) :
                     sameCount = sameCount+1
@@ -931,27 +932,34 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
                     else :
                         newFileList.append(newNameModif)
                         break
+
             else :
                 newFileList.append(newName) 
         logger.debug(newFileList)
 
         #on renomme
-        dir = QtCore.QDir(recettes_dir)
+        r = QtCore.QDir(recettes_dir)
         k=0
         while k < len(newFileNameList) :
             k=k+1
-            old=fileList[k-1]
+            #on parcourt la liste à l'envers pour éviter des collisions dans les noms, qui empechent le renommage.
+            old=fileList[-k+1]
             try :
-                new=newFileList[k-1]  + '.xml'
+                new=newFileList[-k+1]  + '.xml'
             except :
                 pass
             if old == new :
                 pass
             else :
                 try :
-                    dir.rename(old,new)
+                    check = r.rename(old,new)
+                    logger.debug(check)
                 except:
                     pass
+
+
+
+
       
 
     def editCurrentRecipe(self):
@@ -1657,6 +1665,8 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         else:
             # TODO : Prévenir l'utilisateur en cas d'échec de l'enregistrement
             pass
+
+
         
     def enregistrer (self) :
         self.recipe.name = self.lineEditRecette.text()
@@ -1673,6 +1683,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
                 self.enregistrerRecette(destination)
         else :
             self.enregistrerRecette(self.s)
+
     
     def enregistrerSous (self) :
         self.s = QtGui.QFileDialog.getSaveFileName (self,
