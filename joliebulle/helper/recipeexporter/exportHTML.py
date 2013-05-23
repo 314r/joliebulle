@@ -43,6 +43,7 @@ h1 { font-size: 2em; margin-bottom: 0; text-align:center;}
 h2 { font-size: 1.5em; line-height: 1; margin-bottom: 2em; margin-top:2em; padding-bottom:0.75em; padding-top:0.75em;border-bottom:solid 1px #ddd;clear:both;}
 h3 { font-size: 1.2em; line-height: 1.25; margin-bottom: 1.25em; text-align:left; background-color:#eeeeee; border-bottom:1px solid #cccccc; border-top:1px solid #cccccc; padding:0.5em 0 0.5em 0.5em;}
 ul{list-style-type: none;text-align:left;}
+pre {white-space: pre-wrap;font-size:1.25em;}
 .genre {font-style:italic; text-align:center;color:#ddd;margin-top:0;padding-top:0;border:0;border-bottom:solid 1px #ddd;}
 .profil{text-align:left;margin-bottom:1em; width:400px;background:url(/Images/glade.png);}
 .profil td {min-width: 200px;}
@@ -143,7 +144,7 @@ text-align : center;}
 
     #Notes
     if recipe.recipeNotes is not None:
-        resultHtml += '<h2>%s</h2><p>%s</p>' % (QCoreApplication.translate("Export", "Notes"), recipe.recipeNotes)
+        resultHtml += '<h2>%s</h2><pre>%s</pre>' % (QCoreApplication.translate("Export", "Notes"), recipe.recipeNotes)
 
     resultHtml += '</body></html>'
 
