@@ -15,7 +15,7 @@ FORMS            += preferences.ui
 FORMS            += stepAdjust.ui
 FORMS            += stepEditor.ui
 
-
+SOURCES          += base.py
 SOURCES          += brewCalc.py
 SOURCES          += main.py
 SOURCES          += editdivers.py
@@ -26,8 +26,10 @@ SOURCES          += helper/recipeexporter/exportBeerXML.py
 SOURCES          += helper/recipeexporter/exportHTML.py
 SOURCES          += helper/recipeexporter/exportBBCode.py
 SOURCES          += exportMash.py
+SOURCES          += errors.py
 SOURCES          += home.py
 SOURCES          += importMashXml.py
+SOURCES          += importIng.py
 SOURCES          += mashEditWindow.py
 FORMS            += mashDetail.py
 SOURCES          += outilAlc.py
@@ -38,6 +40,29 @@ SOURCES          += outilPaliers.py
 SOURCES          += preferences.py
 SOURCES          += stepAdjustWindow.py
 SOURCES          += stepEditWindow.py
+SOURCES          += view/base.py
+SOURCES          += view/fermentableview.py
+SOURCES          += view/hopview.py
+SOURCES          += view/mashstepview.py
+SOURCES          += view/miscview.py
+SOURCES          += view/recipeview.py
+SOURCES          += view/yeastview.py
+SOURCES          += model/fermentable.py
+SOURCES          += model/hop.py
+SOURCES          += model/mash.py
+SOURCES          += model/mashstep.py
+SOURCES          += model/misc.py
+SOURCES          += model/recipe.py
+SOURCES          += model/yeast.py
+
+
+
+
+
+
+
+
+
 
 
 TRANSLATIONS     += joliebulle_en.ts
