@@ -681,8 +681,9 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         self.treeViewBiblio.setColumnHidden(3,True)
 
         # self.webViewBiblio.setHtml('''<html><p>hello world</p></html>''')
-        self.connect(self.treeViewBiblio, QtCore.SIGNAL("doubleClicked(const QModelIndex &)"), self.selectionRecette2)
+        self.connect(self.treeViewBiblio, QtCore.SIGNAL("doubleClicked(const QModelIndex &)"), self.viewRecipeBiblio)
         self.connect(self.treeViewBiblio, QtCore.SIGNAL("clicked(const QModelIndex &)"), self.viewRecipeBiblio)
+
 
         self.pushButtonEditCurrentRecipe.clicked.connect(self.editCurrentRecipe)
 
@@ -1188,8 +1189,21 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
     def switchToLibrary(self) :
         self.stackedWidget.setCurrentIndex(1)        
         self.viewRecipeBiblio()
-
-        
+        #on remet à jour, au cas où le nom de recette aurait changé
+        try :
+            # if self.nameChanged == True:
+            self.listdir(recettes_dir)
+            #on redéfinit la sélection
+            self.treeViewBiblio.clearSelection()
+            path =  recettes_dir + "/" + self.recipe.name + ".xml"
+            currentFileIndex = self.modeleBiblio.index(path)
+            self.treeViewBiblio.setCurrentIndex(currentFileIndex)
+            self.viewRecipeBiblio()
+        # else :
+        #     pass
+        except :
+            self.treeViewBiblio.clearSelection()
+ 
     def switchToNotes(self) :
         self.stackedWidget.setCurrentIndex(2)        
 
@@ -1664,27 +1678,31 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
                 recipeFile.close()
         else:
             # TODO : Prévenir l'utilisateur en cas d'échec de l'enregistrement
-            pass
+            pass  
 
-
-        
+               
     def enregistrer (self) :
+        if self.recipe.name != self.lineEditRecette.text() :
+            self.nameChanged = True       
+        else :
+            self.nameChanged = False
+
         self.recipe.name = self.lineEditRecette.text()
         self.recipe.style = self.lineEditGenre.text()
         self.recipe.brewer = self.lineEditBrewer.text()
         self.recipe.boil = self.spinBoxBoil.value()
-        if not self.s :
-            destination =  recettes_dir + "/" + self.recipe.name + ".xml"
-            self.s = destination
+        if not self.s:
+            destination = recettes_dir + "/" + self.recipe.name + ".xml"
             if os.path.exists(destination) :
                 errors=Errors()
                 errors.warningExistingPath()
             else :
+                self.s = destination
                 self.enregistrerRecette(destination)
         else :
             self.enregistrerRecette(self.s)
-
-    
+        
+  
     def enregistrerSous (self) :
         self.s = QtGui.QFileDialog.getSaveFileName (self,
                                                     self.trUtf8("Enregistrer dans un fichier"),
@@ -1747,6 +1765,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         self.popMashCombo()
         self.comboBoxMashProfiles.setCurrentIndex(-1)
         self.brewdayLock = 0
+        
         
     def recharger(self) :
         if not self.s :
