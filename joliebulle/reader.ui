@@ -37,7 +37,7 @@
        <number>1</number>
       </property>
       <property name="currentIndex">
-       <number>0</number>
+       <number>1</number>
       </property>
       <widget class="QWidget" name="page">
        <layout class="QGridLayout" name="gridLayout">
@@ -826,6 +826,9 @@ p, li { white-space: pre-wrap; }
         </property>
         <item row="0" column="0">
          <layout class="QHBoxLayout" name="horizontalLayout_20">
+          <property name="spacing">
+           <number>3</number>
+          </property>
           <item>
            <widget class="QTreeView" name="treeViewBiblio">
             <property name="maximumSize">
@@ -865,6 +868,12 @@ p, li { white-space: pre-wrap; }
           </item>
           <item>
            <layout class="QVBoxLayout" name="verticalLayout_13">
+            <property name="spacing">
+             <number>6</number>
+            </property>
+            <property name="leftMargin">
+             <number>0</number>
+            </property>
             <item>
              <widget class="QWebView" name="webViewBiblio" native="true">
               <property name="sizePolicy">

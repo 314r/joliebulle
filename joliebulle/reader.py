@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'reader.ui'
 #
-# Created: Wed May 15 22:02:00 2013
+# Created: Sat May 25 23:18:31 2013
 #      by: PyQt4 UI code generator 4.10
 #
 # WARNING! All changes made in this file will be lost!
@@ -363,6 +363,7 @@ class Ui_MainWindow(object):
         self.gridLayout_13.setMargin(0)
         self.gridLayout_13.setObjectName(_fromUtf8("gridLayout_13"))
         self.horizontalLayout_20 = QtGui.QHBoxLayout()
+        self.horizontalLayout_20.setSpacing(3)
         self.horizontalLayout_20.setObjectName(_fromUtf8("horizontalLayout_20"))
         self.treeViewBiblio = QtGui.QTreeView(self.page_6)
         self.treeViewBiblio.setMaximumSize(QtCore.QSize(250, 16777215))
@@ -378,6 +379,8 @@ class Ui_MainWindow(object):
         self.treeViewBiblio.setObjectName(_fromUtf8("treeViewBiblio"))
         self.horizontalLayout_20.addWidget(self.treeViewBiblio)
         self.verticalLayout_13 = QtGui.QVBoxLayout()
+        self.verticalLayout_13.setSpacing(6)
+        self.verticalLayout_13.setContentsMargins(0, -1, -1, -1)
         self.verticalLayout_13.setObjectName(_fromUtf8("verticalLayout_13"))
         self.webViewBiblio = QtWebKit.QWebView(self.page_6)
         sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Expanding)
@@ -932,7 +935,7 @@ class Ui_MainWindow(object):
         self.menuBar.addAction(self.menuAide.menuAction())
 
         self.retranslateUi(MainWindow)
-        self.stackedWidget.setCurrentIndex(0)
+        self.stackedWidget.setCurrentIndex(1)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
     def retranslateUi(self, MainWindow):
