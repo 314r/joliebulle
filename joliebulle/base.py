@@ -181,7 +181,7 @@ class ImportBase(object,metaclass=Singleton) :
         item = None
         for elem in iterator :
             tempMisc = Misc.parse(elem)
-            if m.name == tempMisc.name :
+            if m.name == tempMisc.name and m.type == tempMisc.type:
                 item = elem
         if item is not None:
             root.remove(item)
