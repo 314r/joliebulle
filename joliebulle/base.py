@@ -211,7 +211,7 @@ class ImportBase(object,metaclass=Singleton) :
         item = None
         for elem in iterator :
             tempYeast = Yeast.parse(elem)
-            if y.name == tempYeast.name :
+            if y.name == tempYeast.name and y.form == tempYeast.form and y.labo == tempYeast.labo and y.productId == tempYeast.productId and y.attenuation == tempYeast.attenuation :
                 item = elem
         if item is not None:
             root.remove(item)
