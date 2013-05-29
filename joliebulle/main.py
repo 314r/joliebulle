@@ -1273,7 +1273,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
 
         #Update Hop item
         if isinstance(modelInstance, Hop):
-            #logger.debug("Model update at [row=%d,column=%d] for Hop:%s; newValue=%s", row, column, modelInstance, newValue)
+            logger.debug("Model update at [row=%d,column=%d] for Hop:%s; newValue=%s", row, column, modelInstance, newValue)
             hopLabels = HopViewLabels()
             if column == 1:
                 #Update Hop amount value
@@ -1669,6 +1669,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
             self.initModele()                    
 
     def enregistrerRecette(self, destination):
+        logger.debug(self.recipe.listeHops)
         recipeFile = QtCore.QFile(destination)
         if recipeFile.open(QtCore.QIODevice.WriteOnly):
             try:
@@ -1701,6 +1702,8 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
                 self.enregistrerRecette(destination)
         else :
             self.enregistrerRecette(self.s)
+
+        logger.debug(self.recipe.listeHops)
         
   
     def enregistrerSous (self) :

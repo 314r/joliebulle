@@ -208,6 +208,8 @@ class Recipe:
                         ibu = (mgAA * aaUtil) + 0.1*(mgAA * aaUtil)
                     else :
                         ibu = mgAA * aaUtil 
+                else :
+                    ibu = 0
             except:
                 if h.form == model.constants.HOP_FORM_PELLET :
                     ibu = (mgAA * aaUtil) + 0.1*(mgAA * aaUtil)
