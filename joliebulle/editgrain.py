@@ -172,7 +172,7 @@ class Dialog(QtGui.QDialog):
         selection = self.ui.listViewGrains.selectionModel().selectedIndexes()
         for index in selection :
             f = index.data(view.constants.MODEL_DATA_ROLE)
-            ImportBase().delFermentable(f)
+        ImportBase().delFermentable(f)
         self.setModel()
         
         

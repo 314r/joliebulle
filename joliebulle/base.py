@@ -120,7 +120,7 @@ class ImportBase(object,metaclass=Singleton) :
         item = None
         for elem in iterator :
             tempF = Fermentable.parse(elem)
-            if f.name == tempF.name :
+            if f.name == tempF.name and f.type == tempF.type and f.color == tempF.color and f.recommendMash == tempF.recommendMash and f.fyield == tempF.fyield :
                 item = elem
         if item is not None:
             root.remove(item)
