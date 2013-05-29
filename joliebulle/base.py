@@ -151,7 +151,7 @@ class ImportBase(object,metaclass=Singleton) :
         item = None
         for elem in iterator :
             tempHop = Hop.parse(elem)
-            if h.name == tempHop.name :
+            if h.name == tempHop.name and h.form == tempHop.form and h.alpha == tempHop.alpha :
                 item = elem
         if item is not None:
             root.remove(item)

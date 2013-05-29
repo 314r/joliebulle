@@ -118,7 +118,7 @@ class DialogH(QtGui.QDialog):
         selection = self.ui.listViewHoublons.selectionModel().selectedIndexes()
         for index in selection :
             h = index.data(view.constants.MODEL_DATA_ROLE)
-            ImportBase().delHop(h)
+        ImportBase().delHop(h)
         self.setModel()
         
     def rejected(self) :     

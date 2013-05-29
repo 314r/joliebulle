@@ -93,13 +93,20 @@ p, li { white-space: pre-wrap; }
       <item row="1" column="1">
        <widget class="QComboBox" name="comboBoxForme"/>
       </item>
-      <item row="2" column="1">
-       <widget class="QSpinBox" name="spinBoxAlpha"/>
-      </item>
       <item row="3" column="1">
        <widget class="QPushButton" name="pushButtonAjouter">
         <property name="text">
          <string>Ajouter</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="1">
+       <widget class="QDoubleSpinBox" name="spinBoxAlpha">
+        <property name="decimals">
+         <number>1</number>
+        </property>
+        <property name="maximum">
+         <double>1000.000000000000000</double>
         </property>
        </widget>
       </item>
