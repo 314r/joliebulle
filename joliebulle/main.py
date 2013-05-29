@@ -2029,7 +2029,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
                 
         self.brewCalc.calcPreBoilVolume(self.recipe.volume, self.spinBoxBoil.value())
         
-        self.brewCalc.calcPreBoilSg(self.recipe.compute_GU(), self.recipe.volume)
+        self.brewCalc.calcPreBoilSg(self.recipe.compute_GU_PreBoil(), self.recipe.volume)
        
         
         self.labelPreBoilVol.setText("%.1f" %(self.brewCalc.volPreBoil) + " " + "L")
