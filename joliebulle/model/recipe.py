@@ -121,6 +121,7 @@ class Recipe:
         logger.debug("End parsing recipe")
         return recipe
 
+
     def export(self, type):
         return RecipeExporterRepository[type](self)
 

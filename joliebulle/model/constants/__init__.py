@@ -7,7 +7,7 @@ HOP_FORM_LEAF = 1
 HOP_FORM_PLUG = 2
 
 HOP_USE_BOIL = 'Boil'
-HOP_USE_DRY_HOP = 'Dry hop'
+HOP_USE_DRY_HOP = 'Dry Hop'
 HOP_USE_MASH = 'Mash'
 HOP_USE_FIRST_WORT = 'First Wort'
 HOP_USE_AROMA = 'Aroma'

@@ -66,7 +66,7 @@ class Hop:
                 elif 'Dry Hop' == balise.text or 'Dry Hopping' == balise.text:
                     h.use = model.constants.HOP_USE_DRY_HOP
                 elif 'Mash' == balise.text:
-                    h.use == model.constants.HOP_USE_MASH
+                    h.use = model.constants.HOP_USE_MASH
                 elif 'First Wort' == balise.text:
                     h.use = model.constants.HOP_USE_FIRST_WORT
                 elif 'Aroma' == balise.text:
@@ -74,6 +74,7 @@ class Hop:
                 else :
                     logger.warn ("Unkown hop use '%s', assuming 'Boil' by default", balise.text)
                     h.use = model.constants.HOP_USE_BOIL
+
         return h
 
     def copy(self):

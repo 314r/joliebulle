@@ -98,6 +98,7 @@ text-align : center;}
         resultHtml += '<td>%.0fg</td>' % h.amount
         resultHtml += '<td>%s (α%.1f%%, %s)</td>' % (h.name, h.alpha, hUI.hopFormDisplay())
         resultHtml += '<td>%.0fmin (%s)</td>' % (h.time, hUI.hopUseDisplay())
+
         resultHtml += '</tr>'
     resultHtml += '</table>'
 

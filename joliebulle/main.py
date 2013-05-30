@@ -1669,7 +1669,6 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
             self.initModele()                    
 
     def enregistrerRecette(self, destination):
-        logger.debug(self.recipe.listeHops)
         recipeFile = QtCore.QFile(destination)
         if recipeFile.open(QtCore.QIODevice.WriteOnly):
             try:

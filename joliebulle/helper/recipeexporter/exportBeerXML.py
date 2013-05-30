@@ -75,7 +75,29 @@ def exportBeerXML(recipe):
 
     hops = ET.SubElement(recipeTag, 'HOPS')
     for h in recipe.listeHops:
-        hops.append(h.toXml())
+        # hops.append(h.toXml())
+        hop = ET.SubElement(hops, 'HOP')
+        hNom = ET.SubElement(hop, 'NAME')
+        hNom.text = h.name
+        hVersion = ET.SubElement(hop, 'VERSION')
+        hVersion.text = '1'
+        hAmount = ET.SubElement(hop, 'AMOUNT')
+        hAmount.text = str(h.amount)
+        hForm = ET.SubElement(hop, 'FORM')
+        if h.form == HOP_FORM_PELLET :
+            hForm.text = 'Pellet'
+        elif h.form == HOP_FORM_LEAF :
+            hForm.text = 'Leaf'
+        elif h.form == HOP_FORM_PLUG :
+            hForm.text = 'Plug'
+        hTime = ET.SubElement(hop, 'TIME')
+        hTime.text = str(h.time)
+        hAlpha = ET.SubElement(hop, 'ALPHA')
+        hAlpha.text = str(h.alpha)
+        hUse = ET.SubElement(hop, 'USE')
+        hUse.text = h.use
+        
+        
 
     fermentables = ET.SubElement(recipeTag, 'FERMENTABLES')
     for f in recipe.listeFermentables:
