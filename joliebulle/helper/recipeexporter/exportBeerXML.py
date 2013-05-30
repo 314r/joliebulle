@@ -82,7 +82,7 @@ def exportBeerXML(recipe):
         hVersion = ET.SubElement(hop, 'VERSION')
         hVersion.text = '1'
         hAmount = ET.SubElement(hop, 'AMOUNT')
-        hAmount.text = str(h.amount)
+        hAmount.text = str(h.amount/1000)
         hForm = ET.SubElement(hop, 'FORM')
         if h.form == HOP_FORM_PELLET :
             hForm.text = 'Pellet'
