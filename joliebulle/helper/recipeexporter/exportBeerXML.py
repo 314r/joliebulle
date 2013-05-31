@@ -103,9 +103,33 @@ def exportBeerXML(recipe):
     for f in recipe.listeFermentables:
         fermentables.append(f.toXml())
 
+
     miscs = ET.SubElement(recipeTag, 'MISCS')
     for m in recipe.listeMiscs:
-        miscs.append(m.toXml())
+        # miscs.append(m.toXml())
+        misc = ET.SubElement(miscs, 'MISC')
+        mName = ET.SubElement(misc, 'NAME')
+        mName.text = m.name
+        mVersion = ET.SubElement(misc, 'VERSION')
+        mVersion.text = '1'
+        mAmount = ET.SubElement(misc, 'AMOUNT')
+        mAmount.text = str(m.amount/1000)
+        mType = ET.SubElement(misc, 'TYPE')
+        mType.text = m.type
+        mTime = ET.SubElement(misc, 'TIME')
+        mTime.text = str(m.time)
+        mUse = ET.SubElement(misc, 'USE')
+        if m.use == MISC_USE_BOIL :
+            mUse.text = 'Boil'
+        elif m.use == MISC_USE_MASH :
+            mUse.text = 'Mash'
+        elif m.use == MISC_USE_PRIMARY : 
+            mUse.text = 'Primary'
+        elif m.use == MISC_USE_SECONDARY :
+            mUse.text = 'Secondary'  
+        elif m.use == MISC_USE_BOTTLING :
+            mUse.text = 'Bottling'
+
 
     yeasts = ET.SubElement(recipeTag, 'YEASTS')
     for y in recipe.listeYeasts:
