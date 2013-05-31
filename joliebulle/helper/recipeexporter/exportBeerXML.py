@@ -101,8 +101,28 @@ def exportBeerXML(recipe):
 
     fermentables = ET.SubElement(recipeTag, 'FERMENTABLES')
     for f in recipe.listeFermentables:
-        fermentables.append(f.toXml())
-
+        # fermentables.append(f.toXml())
+        fermentable = ET.SubElement(fermentables, 'FERMENTABLE')
+        fName = ET.SubElement(fermentable,'NAME')
+        fName.text = f.name
+        fVersion = ET.SubElement(fermentable, 'VERSION')
+        fVersion.text = '1'            
+        fAmount = ET.SubElement(fermentable, 'AMOUNT')
+        fAmount.text = str(f.amount/1000)
+        fType = ET.SubElement(fermentable, 'TYPE')
+        fType.text = f.type
+        fYield = ET.SubElement(fermentable,'YIELD')
+        fYield.text = str(f.fyield)
+        fMashed = ET.SubElement(fermentable,'RECOMMEND_MASH')
+        fMashed.text = f.recommendMash
+        fUse = ET.SubElement(fermentable,'ADD_AFTER_BOIL')
+        if f.useAfterBoil : 
+            fUse.text = 'TRUE'
+        else :
+            fUse.text = 'FALSE'
+        color = ET.SubElement(fermentable, 'COLOR')
+        color.text = str(f.color/1.97)
+        print(f.useAfterBoil)
 
     miscs = ET.SubElement(recipeTag, 'MISCS')
     for m in recipe.listeMiscs:
