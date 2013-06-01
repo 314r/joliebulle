@@ -875,14 +875,14 @@ p, li { white-space: pre-wrap; }
              <number>0</number>
             </property>
             <item>
-             <widget class="QWebView" name="webViewBiblio" native="true">
+             <widget class="QWebView" name="webViewBiblio">
               <property name="sizePolicy">
                <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
                 <horstretch>0</horstretch>
                 <verstretch>0</verstretch>
                </sizepolicy>
               </property>
-              <property name="url" stdset="0">
+              <property name="url">
                <url>
                 <string>about:blank</string>
                </url>
@@ -915,16 +915,25 @@ p, li { white-space: pre-wrap; }
               </item>
               <item>
                <widget class="QPushButton" name="pushButtonEditCurrentRecipe">
+                <property name="enabled">
+                 <bool>false</bool>
+                </property>
                 <property name="toolTip">
-                 <string>Editer</string>
+                 <string>Éditer</string>
                 </property>
                 <property name="text">
-                 <string>Editer</string>
+                 <string>Éditer</string>
+                </property>
+                <property name="checkable">
+                 <bool>false</bool>
                 </property>
                </widget>
               </item>
               <item>
                <widget class="QPushButton" name="pushButtonBrewRecipeBiblio">
+                <property name="enabled">
+                 <bool>false</bool>
+                </property>
                 <property name="toolTip">
                  <string>Brasser</string>
                 </property>
@@ -1960,11 +1969,17 @@ color: rgb(255, 255, 255);</string>
    </property>
   </action>
   <action name="actionEnregistrer">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
    <property name="text">
     <string>&amp;Enregistrer</string>
    </property>
   </action>
   <action name="actionEnregistrer_Sous">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
    <property name="text">
     <string>Enregistrer &amp;sous</string>
    </property>
@@ -2038,6 +2053,9 @@ color: rgb(255, 255, 255);</string>
    </property>
   </action>
   <action name="actionExporterHtml">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
    <property name="text">
     <string>Exporter vers html</string>
    </property>
@@ -2160,6 +2178,9 @@ color: rgb(255, 255, 255);</string>
    </property>
   </action>
   <action name="actionCopierBbcode">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
    <property name="text">
     <string>Copier le BBCode dans le presse papier</string>
    </property>
