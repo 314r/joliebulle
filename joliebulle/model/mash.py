@@ -32,6 +32,8 @@ class Mash:
                 m.tunTemp = element.text
             if 'SPARGE_TEMP' == element.tag  :
                 m.spargeTemp = element.text
+            # else :
+            #     m.spargeTemp = 78
             if 'PH' == element.tag :
                 m.ph = element.text
 

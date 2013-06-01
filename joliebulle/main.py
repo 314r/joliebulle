@@ -2039,7 +2039,9 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         
         
         listSteps = self.recipe.mash.listeSteps
+  
         spargeTemp = float(self.recipe.mash.spargeTemp)
+
         
         strikeStep = listSteps[0]
         strikeTargetTemp = strikeStep.temp
@@ -2155,7 +2157,10 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
                     pass
         
     def tableWidgetStepsBrewday_currentRowChanged (self) :
-        listSteps = self.currentMash.listeSteps
+
+        # listSteps = self.currentMash.listeSteps
+
+        listSteps=self.recipe.mash.listeSteps
         try:
             strikeStep = listSteps[0]
             strikeTargetTemp = strikeStep.temp
@@ -2164,7 +2169,6 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
             i = self.tableWidgetStepsBrewday.currentRow()
             if i == -1 :
                 return  #No selection in tableWidgetStepsBrewday
-
             step = listSteps[i]
             stepType= step.type
 

@@ -67,6 +67,7 @@ class DialogStepAdjust(QtGui.QDialog):
         self.ui.doubleSpinBoxTargetRatio.blockSignals(False)
         self.strikeTemp = strikeTargetTemp
         
+        
     def waterTempChanged(self) :
         waterTemp = self.ui.doubleSpinBoxWaterTemp.value()
         i = self.currentRow
