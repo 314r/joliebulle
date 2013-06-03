@@ -236,7 +236,7 @@ class AlphaDelegate(QtGui.QItemDelegate):
         if isinstance(data, Hop):
             editor = QtGui.QDoubleSpinBox(parent)
             editor.setMinimum(0)
-            editor.setMaximum(20000)
+            editor.setMaximum(100)
             editor.installEventFilter(self)
         return editor
 
