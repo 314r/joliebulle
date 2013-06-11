@@ -32,9 +32,22 @@ class Hop:
         self.amount = 0.0
         self.form = model.constants.HOP_FORM_LEAF
         self.time = 0.0
-        self.alpha = 0.0
+        self._alpha = 0.0
         self.use = model.constants.HOP_USE_BOIL
-    
+
+    @property
+    def alpha(self):
+        return self._alpha
+
+    @alpha.setter
+    def alpha(self, value):
+        if value > 100:
+            self._alpha = 100
+        elif value < 0:
+            self._alpha = 0
+        else:
+            self._alpha = value
+
     def __repr__(self):
         return 'hop[name="%s", amount=%s, form=%s, time=%s, alpha=%s, use=%s]' % (self.name, self.amount, self.form, self.time, self.alpha, self.use)
 
