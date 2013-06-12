@@ -27,7 +27,6 @@ import sys
 from PyQt4 import QtGui
 from PyQt4 import QtCore
 from base import *
-from reader import *
 from globals import *
 import view.base
 import model.constants
@@ -42,7 +41,6 @@ class Dialog(QtGui.QDialog):
         QtGui.QDialog.__init__(self,parent)
         self.ui = Ui_Dialog()
         self.ui.setupUi(self)
-        self.uiMain = Ui_MainWindow ()
         self.base = ImportBase()
         logger.debug("init Dialog")
         
