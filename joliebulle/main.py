@@ -32,7 +32,7 @@ import PyQt4
 import sys
 from PyQt4 import QtGui
 from PyQt4 import QtCore
-from reader import *
+from reader_ui import *
 from settings import *
 from base import *
 from editgrain import *
@@ -56,7 +56,6 @@ from stepAdjustWindow import *
 from home import *
 from globals import *
 #from ui.MainWindow import *
-from reader import *
 
 import xml.etree.ElementTree as ET
 from model.recipe import *
@@ -853,7 +852,14 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
             logger.debug("Répertoire sélectionné")
 
 
-    def viewRecipeBiblio(self) :
+    def viewRecipeBiblio(self):
+        self.pushButtonEditCurrentRecipe.setEnabled(True)
+        self.pushButtonBrewRecipeBiblio.setEnabled(True)
+        self.actionEnregistrer.setEnabled(True)
+        self.actionEnregistrer_Sous.setEnabled(True)
+        self.actionExporterHtml.setEnabled(True)
+        self.actionCopierBbcode.setEnabled(True)
+
         selection = self.treeViewBiblio.selectionModel()
         self.indexRecette = selection.currentIndex()
 
