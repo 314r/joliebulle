@@ -87,7 +87,7 @@ class Hop:
                 else :
                     logger.warn ("Unkown hop use '%s', assuming 'Boil' by default", balise.text)
                     h.use = model.constants.HOP_USE_BOIL
-
+                    
         return h
 
     def copy(self):
