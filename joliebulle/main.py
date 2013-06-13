@@ -2237,6 +2237,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
 #            print('température du moût', mashTemp)
             
         self.brewCalc.calcSpargeVol(self.stepsListVol, self.brewCalc.volPreBoil, self.brewCalc.grainRetention)
+        self.labelSpargeVol.setText("%.1f" %(self.brewCalc.spargeVol))
 #        print('volume de rinçage :', self.brewCalc.spargeVol)
 
         self.tableWidgetStepsBrewday_currentRowChanged()
