@@ -1714,13 +1714,9 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
     def enregistrerSous (self) :
         self.s = QtGui.QFileDialog.getSaveFileName (self,
                                                     self.trUtf8("Enregistrer dans un fichier"),
-                                                    recettes_dir + "/" + self.recipe.name,
+                                                    recettes_dir + "/" + self.recipe.name + ".xml",
                                                     "BeerXML (*.xml)")
-        if os.path.exists(destination) :
-            errors=Errors()
-            errors.warningExistingPath()
-        else :
-            self.enregistrerRecette(self.s)
+        self.enregistrerRecette(self.s)
 
     def exporterHtml (self) :
         self.recipe.name = self.lineEditRecette.text()
