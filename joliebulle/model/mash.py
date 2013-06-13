@@ -31,11 +31,11 @@ class Mash:
             if 'TUN_TEMP' == element.tag  :
                 m.tunTemp = element.text
             if 'SPARGE_TEMP' == element.tag  :
-                m.spargeTemp = element.text
+                m.spargeTemp = "%.1f" %float(element.text)
             # else :
             #     m.spargeTemp = 78
             if 'PH' == element.tag :
-                m.ph = element.text
+                m.ph = "%.1f" %float(element.text)
 
         try :
             mashStep = tree.findall('.//MASH_STEP')

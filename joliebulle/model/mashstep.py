@@ -56,9 +56,9 @@ class MashStep:
                 elif 'Decoction' == balise.text:
                     m.type = model.constants.MASH_STEP_DECOCTION
             if 'STEP_TIME' == balise.tag:
-                m.time = balise.text
+                m.time = "%.0f" %float(balise.text)
             if 'STEP_TEMP' == balise.tag:
-                m.temp = balise.text
+                m.temp = "%.1f" %float(balise.text)
             if 'INFUSE_AMOUNT' == balise.tag:
                 m.infuseAmount = float(balise.text)
         logger.debug(repr(m))

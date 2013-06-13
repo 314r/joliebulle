@@ -2103,7 +2103,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
             
               
             self.tableWidgetStepsBrewday.setItem(0,0,QtGui.QTableWidgetItem(strikeName))
-            self.tableWidgetStepsBrewday.setItem(0,1,QtGui.QTableWidgetItem(str(self.brewCalc.strikeVol)))
+            self.tableWidgetStepsBrewday.setItem(0,1,QtGui.QTableWidgetItem("%.1f" %(self.brewCalc.strikeVol)))
             self.tableWidgetStepsBrewday.setItem(0,2,QtGui.QTableWidgetItem("%.1f" %(self.brewCalc.strikeTemp)))
             self.tableWidgetStepsBrewday.setItem(0,3,QtGui.QTableWidgetItem("%.1f" %(self.brewCalc.strikeVol/(self.recipe.compute_grainWeight()/1000))))
             self.tableWidgetStepsBrewday.setItem(0,4,QtGui.QTableWidgetItem(str(strikeTargetTemp) + "°C, " + str(strikeTime) +" min"))
