@@ -2041,8 +2041,9 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         
         
         listSteps = self.recipe.mash.listeSteps
-  
+
         spargeTemp = float(self.recipe.mash.spargeTemp)
+
 
         
         strikeStep = listSteps[0]

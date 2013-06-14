@@ -37,7 +37,7 @@
        <number>1</number>
       </property>
       <property name="currentIndex">
-       <number>1</number>
+       <number>4</number>
       </property>
       <widget class="QWidget" name="page">
        <layout class="QGridLayout" name="gridLayout">
@@ -875,14 +875,14 @@ p, li { white-space: pre-wrap; }
              <number>0</number>
             </property>
             <item>
-             <widget class="QWebView" name="webViewBiblio">
+             <widget class="QWebView" name="webViewBiblio" native="true">
               <property name="sizePolicy">
                <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
                 <horstretch>0</horstretch>
                 <verstretch>0</verstretch>
                </sizepolicy>
               </property>
-              <property name="url">
+              <property name="url" stdset="0">
                <url>
                 <string>about:blank</string>
                </url>
@@ -1579,6 +1579,9 @@ p, li { white-space: pre-wrap; }
             <layout class="QGridLayout" name="gridLayout_10">
              <item row="0" column="0">
               <layout class="QFormLayout" name="formLayoutSparge">
+               <property name="fieldGrowthPolicy">
+                <enum>QFormLayout::AllNonFixedFieldsGrow</enum>
+               </property>
                <item row="0" column="0">
                 <widget class="QLabel" name="labelSparge1">
                  <property name="text">
@@ -1586,17 +1589,17 @@ p, li { white-space: pre-wrap; }
                  </property>
                 </widget>
                </item>
-               <item row="1" column="0">
-                <widget class="QLabel" name="labelSparge2">
-                 <property name="text">
-                  <string>Température de rinçage :</string>
-                 </property>
-                </widget>
-               </item>
                <item row="0" column="1">
                 <widget class="QLabel" name="labelSpargeVol">
                  <property name="text">
                   <string>0</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="1" column="0">
+                <widget class="QLabel" name="labelSparge2">
+                 <property name="text">
+                  <string>Température de rinçage :</string>
                  </property>
                 </widget>
                </item>
@@ -1878,7 +1881,7 @@ color: rgb(255, 255, 255);</string>
      <x>0</x>
      <y>0</y>
      <width>1238</width>
-     <height>27</height>
+     <height>29</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuFichier">

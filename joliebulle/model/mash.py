@@ -12,7 +12,7 @@ class Mash:
         self.name = ""
         self.grainTemp = ""
         self.tunTemp = ""
-        self.spargeTemp = ""
+        self.spargeTemp = "0"
         self.ph = 0.0
         self.listeSteps = list()
 
