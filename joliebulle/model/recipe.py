@@ -99,10 +99,13 @@ class Recipe:
             if "NOTES" == element.tag :
                 recipe.recipeNotes = element.text
                 logger.debug(" Recipe notes: %s", recipe.recipeNotes)
-        
-        for element in style :
-            if "NAME" == element.tag :
-                recipe.style = element.text
+        try :
+            for element in style :
+                if "NAME" == element.tag :
+                    recipe.style = element.text
+        except TypeError :
+            recipe.style = ""
+
         try :
             recipe.mash = Mash.parse(mash)
         except :
