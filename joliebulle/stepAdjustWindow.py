@@ -83,12 +83,16 @@ class DialogStepAdjust(QtGui.QDialog):
 #            print('la liste des temperatures :', self.listTemp)
             self.infuseVol = self.brewCalc.infuseVol
             self.ui.doubleSpinBoxInfuseAmount.blockSignals(True)
+
             self.ui.doubleSpinBoxInfuseAmount.setValue(float(self.infuseVol))
             self.ui.doubleSpinBoxInfuseAmount.blockSignals(False)
+
             self.listVol[i] = self.ui.doubleSpinBoxInfuseAmount.value()
             
             newRatio = sum(self.listVol[0:i+1])/(self.grainWeight/1000)
+            self.ui.doubleSpinBoxTargetRatio.blockSignals(True)
             self.ui.doubleSpinBoxTargetRatio.setValue(newRatio)
+            self.ui.doubleSpinBoxTargetRatio.blockSignals(False)
             
         #le calcul est différent pour le premier palier d'empatage      
         else :
@@ -106,12 +110,10 @@ class DialogStepAdjust(QtGui.QDialog):
             self.listVol[i] = self.ui.doubleSpinBoxInfuseAmount.value()
             
             newRatio = sum(self.listVol[0:i+1])/(self.grainWeight/1000)
-            self.ui.doubleSpinBoxTargetRatio.setValue(newRatio)            
-           
-            
-        
-        
-        
+            self.ui.doubleSpinBoxTargetRatio.blockSignals(True)
+            self.ui.doubleSpinBoxTargetRatio.setValue(newRatio) 
+            self.ui.doubleSpinBoxTargetRatio.blockSignals(False)         
+              
     def infuseAmountChanged(self) :
         i = self.currentRow
         if i != 0 :
@@ -129,10 +131,13 @@ class DialogStepAdjust(QtGui.QDialog):
             self.ui.doubleSpinBoxWaterTemp.blockSignals(True)
             self.ui.doubleSpinBoxWaterTemp.setValue(self.waterTemp)
             self.ui.doubleSpinBoxWaterTemp.blockSignals(False)
+
             
             self.listVol[i] = self.ui.doubleSpinBoxInfuseAmount.value()
             newRatio = sum(self.listVol[0:i+1])/(self.grainWeight/1000)
+            self.ui.doubleSpinBoxTargetRatio.blockSignals(True)
             self.ui.doubleSpinBoxTargetRatio.setValue(newRatio)
+            self.ui.doubleSpinBoxTargetRatio.blockSignals(False)
             
         #le calcul est différent pour le premier palier d'empatage   
         else :            
@@ -145,15 +150,18 @@ class DialogStepAdjust(QtGui.QDialog):
             self.ui.doubleSpinBoxWaterTemp.setValue(self.waterTemp)
             self.ui.doubleSpinBoxWaterTemp.blockSignals(False)
             
+
             self.listVol[i] = self.ui.doubleSpinBoxInfuseAmount.value()
             newRatio = sum(self.listVol[0:i+1])/(self.grainWeight/1000)
-            self.ui.doubleSpinBoxTargetRatio.setValue(newRatio)  
+            self.ui.doubleSpinBoxTargetRatio.blockSignals(True)
+            self.ui.doubleSpinBoxTargetRatio.setValue(newRatio) 
+            self.ui.doubleSpinBoxTargetRatio.blockSignals(False) 
 
 
     def ratioChanged(self):
-        newVolume = (self.grainWeight/1000) * self.ui.doubleSpinBoxTargetRatio.value()  
+        newVolume = (self.grainWeight/1000) * self.ui.doubleSpinBoxTargetRatio.value() 
         self.ui.doubleSpinBoxInfuseAmount.setValue(newVolume)               
-            
+
         
     def accepted(self) :
         targetRatio = self.ui.doubleSpinBoxTargetRatio.value()
