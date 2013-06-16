@@ -929,7 +929,6 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
                 newName = None
             if newName in newFileList and newName != None:
                 logger.debug('doublon !')
-                logger.debug(newName)
                 sameCount= 0 
                 while sameCount < len(newFileNameList) :
                     sameCount = sameCount+1
@@ -942,7 +941,6 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
 
             else :
                 newFileList.append(newName) 
-        logger.debug(newFileList)
 
         #on renomme
         r = QtCore.QDir(recettes_dir)
@@ -960,7 +958,6 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
             else :
                 try :
                     check = r.rename(old,new)
-                    logger.debug(check)
                 except:
                     pass
 
@@ -2228,7 +2225,6 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         self.brewCalc.calcMashVolume(self.recipe.compute_grainWeight())
         self.mashVolumeLastStep = self.brewCalc.mashVolumeStrike + sum(self.stepsListVol) - self.stepsListVol[0]
         self.labelTotalVolumeLast.setText("%.1f" %(self.mashVolumeLastStep))
-        logger.debug(self.mashVolumeLastStep)
         self.labelTotalVolumeStrike.setText("%.1f" %(self.brewCalc.mashVolumeStrike))
             
 #            print('température du moût', mashTemp)
