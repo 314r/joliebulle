@@ -68,8 +68,23 @@ class DialogPref(QtGui.QDialog):
                 self.ui.radioButtonMenuBar.setChecked(True)
         except :
             pass
-            
-        #les connections
+
+        level = settings.conf.value("logging/level")
+        if 'DEBUG' == level:
+            self.ui.comboBoxLevel.setCurrentIndex(0)
+        elif 'INFO' == level:
+            self.ui.comboBoxLevel.setCurrentIndex(1)
+        elif 'WARNING' == level:
+            self.ui.comboBoxLevel.setCurrentIndex(2)
+        elif 'ERROR' == level:
+            self.ui.comboBoxLevel.setCurrentIndex(3)
+        elif 'CRITICAL' == level:
+            self.ui.comboBoxLevel.setCurrentIndex(4)
+        else:
+            logger.error("Le setting 'logging/level' possède une valeur incorrecte: %s", level)
+
+        self.ui.lineEditEmplacementFichier.setText(settings.conf.value("logging/fileName"))
+        #les connexions
         self.ui.pushButtonChangeLib.clicked.connect(self.changePushed)
         self.ui.buttonBox.accepted.connect(self.accepted)
         self.ui.buttonBox.rejected.connect(self.rejected)
@@ -102,6 +117,18 @@ class DialogPref(QtGui.QDialog):
             settings.conf.setValue("Menus", "button")
         else :
             settings.conf.setValue("Menus", "menubar")
+
+        indexLevel = self.ui.comboBoxLevel.currentIndex()
+        if indexLevel == 0:
+            settings.conf.setValue("logging/level", 'DEBUG')
+        elif indexLevel == 1:
+            settings.conf.setValue("logging/level", 'INFO')
+        elif indexLevel == 2:
+            settings.conf.setValue("logging/level", 'WARNING')
+        elif indexLevel == 3:
+            settings.conf.setValue("logging/level", 'ERROR')
+        elif indexLevel == 4:
+            settings.conf.setValue("logging/level", 'CRITICAL')
 
         self.prefAccepted.emit()
         

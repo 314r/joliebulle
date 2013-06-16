@@ -104,16 +104,45 @@ from errors import *
 #         painter.drawPixmap(option.rect.topLeft(), image)
 #         painter.restore()
 
-def initLogging():
+def initRep() :
     home = QtCore.QDir(home_dir)
     config = QtCore.QDir(config_dir)
+    logger.debug (config)
     if not config.exists() :
         home.mkpath (config_dir)
+    else :
+        pass
+    database = QtCore.QFile(database_file)
+    if not database.exists() :
+        database.copy(database_root, database_file)
+    else :
+        pass
+    recettes = QtCore.QFile(recettes_dir)
+    if not recettes.exists() :
+        try :
+            shutil.copytree(samples_dir, samples_target)
+        except :
+            home.mkpath(recettes_dir)
+    mash  = QtCore.QFile(mash_file)
+    if not mash.exists() :
+        mash.copy(mash_root, mash_file)
+    else :
+        pass
+
+def initLogging():
+    initRep()
+
+    settings = Settings()
+    if not settings.conf.contains("logging/level") :
+        settings.conf.setValue("logging/level", 'DEBUG')
+    if not settings.conf.contains("logging/fileName") :
+        settings.conf.setValue("logging/fileName", os.path.join(config_dir,'joliebulle.log'))
+
     config = {
         'version': 1,              
         'root': {
             'handlers': ['console','file'],
-            'level': 'DEBUG'
+            'level': settings.conf.value("logging/level")
         },
         'disable_existing_loggers': False,
         'formatters': {
@@ -136,7 +165,7 @@ def initLogging():
                 'level':'DEBUG',
                 'formatter':'detailed',
                 'mode':'a',
-                'filename':os.path.join(config_dir,'joliebulle.log')
+                'filename':settings.conf.value("logging/fileName")
             }  
         }
     }
@@ -457,7 +486,6 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
 ######################################################################################
 ######################################################################################
         self.settings = Settings()
-        self.initRep()
         self.dlgEditG = Dialog(self)
         self.dlgEditH = DialogH(self)
         self.dlgEditD = DialogD(self)
@@ -1136,31 +1164,8 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         self.buttonSave.hide()
         self.buttonNewRecipe.show()
               
-    def initRep(self) :   
-        home = QtCore.QDir(home_dir)
-        config = QtCore.QDir(config_dir)
-        logger.debug (config)
-        if not config.exists() :
-            home.mkpath (config_dir)
-        else :
-            pass
-        database = QtCore.QFile(database_file)
-        if not database.exists() :
-            database.copy(database_root, database_file)
-        else :
-            pass
-        recettes = QtCore.QFile(recettes_dir)
-        if not recettes.exists() :
-            try :
-                shutil.copytree(samples_dir, samples_target)
-            except :
-                home.mkpath(recettes_dir)
-        mash  = QtCore.QFile(mash_file)
-        if not mash.exists() :
-            mash.copy(mash_root, mash_file)
-        else :
-            pass
-        
+    def prefReload(self) :
+        initRep()
         # on configure des valeurs par défaut
         if not settings.conf.contains("BoilOffRate") :
             settings.conf.setValue("BoilOffRate", 10)
@@ -1183,9 +1188,10 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
             self.menuBar.show()
             self.buttonMenu.hide()
 
-    def prefReload(self) :
-        self.initRep()
-  
+        newLevel = settings.conf.value("logging/level")
+        logger.info("Preferences changed. Configuring logging level to %s", newLevel)
+        logging.getLogger().setLevel(newLevel)
+
         
     def switchToEditor(self) :
         self.stackedWidget.setCurrentIndex(0)
