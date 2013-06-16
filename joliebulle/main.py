@@ -1665,10 +1665,17 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         if self.recipe is not None:
             if self.comboBoxType.currentIndex() == 0 :
                 self.recipe.type = model.constants.RECIPE_TYPE_ALL_GRAIN
+                self.comboBoxMashProfiles.setEnabled(True)
+                self.pushButtonMashDetails.setEnabled(True)
             if self.comboBoxType.currentIndex() == 1 :   
                 self.recipe.type = model.constants.RECIPE_TYPE_EXTRACT
+                self.comboBoxMashProfiles.setEnabled(False)
+                self.comboBoxMashProfiles.setCurrentIndex(-1)
+                self.pushButtonMashDetails.setEnabled(False)
             if self.comboBoxType.currentIndex() == 2 :
                 self.recipe.type = model.constants.RECIPE_TYPE_PARTIAL_MASH
+                self.comboBoxMashProfiles.setEnabled(True)
+                self.pushButtonMashDetails.setEnabled(True)
             self.initModele()                    
 
     def enregistrerRecette(self, destination):
