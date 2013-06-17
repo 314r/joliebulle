@@ -960,11 +960,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
                     check = r.rename(old,new)
                 except:
                     pass
-
-
-
-
-      
+  
 
     def editCurrentRecipe(self):
         self.switchToEditor()
@@ -1821,6 +1817,8 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
             self.currentMash = ImportBase().listeMashes[i]
         except :
             self.currentMash = self.currentRecipeMash
+        if i == -1 :
+            self.currentMash = Mash()
         self.tableWidgetStepsBrewday_currentRowChanged()
         self.recipe.mash = self.currentMash
         
