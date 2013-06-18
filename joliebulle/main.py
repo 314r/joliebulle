@@ -1214,11 +1214,20 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
 
         
     def switchToBrewday(self) :
-        if not self.recipe.mash.listeSteps: 
+        if not self.recipe.mash.listeSteps and self.recipe.type != 2 : 
             errors = Errors()
             errors.errorMashMissing()
+            self.radioButtonClassicBrew.setEnabled(False)
+            self.radioButtonBIAB.setEnabled(False)
+            self.tableWidgetStepsBrewday.setEnabled(False)
+        elif self.recipe.type == 2 :
+            self.radioButtonClassicBrew.setEnabled(False)
+            self.radioButtonBIAB.setEnabled(False)
+            self.tableWidgetStepsBrewday.setEnabled(False)
         else :
-            pass
+            self.radioButtonClassicBrew.setEnabled(True)
+            self.radioButtonBIAB.setEnabled(True)
+            self.tableWidgetStepsBrewday.setEnabled(True)
 
         logger.debug ("lock %s",self.brewdayLock)
         self.stackedWidget.setCurrentIndex(4)        
