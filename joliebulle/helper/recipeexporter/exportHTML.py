@@ -68,6 +68,7 @@ text-align : center;}
     #Profil
     resultHtml += '<table class="profil">'
     resultHtml += '<tr><td>%s</td><td>%.1f %%</td></tr>' % (QCoreApplication.translate("Export", "Rendement : "), recipe.efficiency)
+    resultHtml += '<tr><td>%s</td><td>%.1f %%</td></tr>' % (QCoreApplication.translate("Export", "Rendement : "), recipe.efficiency)
     resultHtml += '<tr><td>%s</td><td>%.3f</td></tr>' % (QCoreApplication.translate("Export", "Densité initiale : "), recipe.compute_OG())
     resultHtml += '<tr><td>%s</td><td>%.3f</td></tr>' % (QCoreApplication.translate("Export", "Densité finale : "), recipe.compute_FG())
     resultHtml += '<tr><td>%s</td><td>%.0f EBC</td></tr>' % (QCoreApplication.translate("Export", "Teinte : "), recipe.compute_EBC())
