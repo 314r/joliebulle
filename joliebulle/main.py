@@ -1118,7 +1118,10 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
 
     def okRecipe(self):
         self.enregistrer()
-        self.switchToLibrary()
+        if self.fileSaved :
+            self.switchToLibrary()
+        else :
+            pass
 
     def closeBrewday(self) :
         self.stackedWidget.setCurrentIndex(1)        
@@ -1684,6 +1687,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         else:
             # TODO : Prévenir l'utilisateur en cas d'échec de l'enregistrement
             pass  
+        self.fileSaved = True    
 
                
     def enregistrer (self) :
@@ -1701,6 +1705,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
             if os.path.exists(destination) :
                 errors=Errors()
                 errors.warningExistingPath()
+                self.fileSaved = False
             else :
                 self.s = destination
                 self.enregistrerRecette(destination)
