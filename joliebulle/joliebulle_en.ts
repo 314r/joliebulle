@@ -271,7 +271,12 @@
     <message utf8="true">
         <location filename="main.py" line="1638"/>
         <source>&lt;h1&gt;JolieBulle&lt;/h1&gt; &lt;b&gt;version 2.8&lt;/b&gt;&lt;br/&gt;copyright (c) 2010-2013 Pierre Tavares.&lt;br/&gt;copyright (c) 2012-2013 Les auteurs de JolieBulle.&lt;p&gt; JolieBulle est un logiciel de lecture et de formulation de recettes de brassage.&lt;/p&gt;&lt;p&gt;&lt;a href =http://www.gnu.org/licenses/gpl-3.0.html&gt;Licence : Version 3 de la Licence Générale Publique GNU&lt;/a&gt;&lt;/p&gt;&lt;p&gt;Certaines icônes proviennent du pack Faenza par Tiheum (Matthieu James), également distribué sous licence GPL.&lt;/p&gt; &lt;p&gt;Auteurs : Pierre Tavares, Nicolas Jouanin, Thomas Gerbet&lt;/p&gt;</source>
-        <translation>&lt;h1&gt;JolieBulle&lt;/h1&gt; &lt;b&gt;version 2.8&lt;/b&gt;&lt;br/&gt;copyright (c) 2010-2013 Pierre Tavares.&lt;br/&gt;copyright (c) 2012-2013 JolieBulle&apos;s authors.&lt;p&gt; JolieBulle is a beer brewing software.&lt;/p&gt;&lt;p&gt;&lt;a href =http://www.gnu.org/licenses/gpl-3.0.html&gt;Licence : GNU GPL v3&lt;/a&gt;&lt;/p&gt;&lt;p&gt;Some icons by Tiheum (Matthieu James), licenced under the GNU GPL&lt;/p&gt; &lt;p&gt;Authors : Pierre Tavares, Nicolas Jouanin, Thomas Gerbet&lt;/p&gt;</translation>
+        <translation type="obsolete">&lt;h1&gt;JolieBulle&lt;/h1&gt; &lt;b&gt;version 2.8&lt;/b&gt;&lt;br/&gt;copyright (c) 2010-2013 Pierre Tavares.&lt;br/&gt;copyright (c) 2012-2013 JolieBulle&apos;s authors.&lt;p&gt; JolieBulle is a beer brewing software.&lt;/p&gt;&lt;p&gt;&lt;a href =http://www.gnu.org/licenses/gpl-3.0.html&gt;Licence : GNU GPL v3&lt;/a&gt;&lt;/p&gt;&lt;p&gt;Some icons by Tiheum (Matthieu James), licenced under the GNU GPL&lt;/p&gt; &lt;p&gt;Authors : Pierre Tavares, Nicolas Jouanin, Thomas Gerbet&lt;/p&gt;</translation>
+    </message>
+    <message utf8="true">
+        <location filename="main.py" line="1638"/>
+        <source>&lt;h1&gt;JolieBulle&lt;/h1&gt; &lt;b&gt;version 2.9&lt;/b&gt;&lt;br/&gt;copyright (c) 2010-2013 Pierre Tavares.&lt;br/&gt;copyright (c) 2012-2013 Les auteurs de JolieBulle.&lt;p&gt; JolieBulle est un logiciel de lecture et de formulation de recettes de brassage.&lt;/p&gt;&lt;p&gt;&lt;a href =http://www.gnu.org/licenses/gpl-3.0.html&gt;Licence : Version 3 de la Licence Générale Publique GNU&lt;/a&gt;&lt;/p&gt;&lt;p&gt;Certaines icônes proviennent du pack Faenza par Tiheum (Matthieu James), également distribué sous licence GPL.&lt;/p&gt; &lt;p&gt;Auteurs : Pierre Tavares, Nicolas Jouanin, Thomas Gerbet&lt;/p&gt;</source>
+        <translation>&lt;h1&gt;JolieBulle&lt;/h1&gt; &lt;b&gt;version 2.9&lt;/b&gt;&lt;br/&gt;copyright (c) 2010-2013 Pierre Tavares.&lt;br/&gt;copyright (c) 2012-2013 JolieBulle&apos;s authors.&lt;p&gt; JolieBulle is a beer brewing software.&lt;/p&gt;&lt;p&gt;&lt;a href =http://www.gnu.org/licenses/gpl-3.0.html&gt;Licence : GNU GPL v3&lt;/a&gt;&lt;/p&gt;&lt;p&gt;Some icons by Tiheum (Matthieu James), licenced under the GNU GPL&lt;/p&gt; &lt;p&gt;Authors : Pierre Tavares, Nicolas Jouanin, Thomas Gerbet&lt;/p&gt;</translation>
     </message>
 </context>
 <context>
@@ -1953,37 +1958,37 @@ Recette prévue pour un brassin de </source>
 <context>
     <name>FermentableViewLabels</name>
     <message>
-        <location filename="view/fermentableview.py" line="11"/>
+        <location filename="view/fermentableview.py" line="30"/>
         <source>Brassage</source>
         <translation>Mash</translation>
     </message>
     <message utf8="true">
-        <location filename="view/fermentableview.py" line="12"/>
+        <location filename="view/fermentableview.py" line="31"/>
         <source>Après ébullition</source>
         <translation>After boil</translation>
     </message>
     <message>
-        <location filename="view/fermentableview.py" line="15"/>
+        <location filename="view/fermentableview.py" line="34"/>
         <source>Grain</source>
         <translation>Grain</translation>
     </message>
     <message>
-        <location filename="view/fermentableview.py" line="16"/>
+        <location filename="view/fermentableview.py" line="35"/>
         <source>Sucre</source>
         <translation>Sugar</translation>
     </message>
     <message>
-        <location filename="view/fermentableview.py" line="17"/>
+        <location filename="view/fermentableview.py" line="36"/>
         <source>Extrait</source>
         <translation>Extract</translation>
     </message>
     <message>
-        <location filename="view/fermentableview.py" line="18"/>
+        <location filename="view/fermentableview.py" line="37"/>
         <source>Extrait sec</source>
         <translation>Dry Extract</translation>
     </message>
     <message utf8="true">
-        <location filename="view/fermentableview.py" line="19"/>
+        <location filename="view/fermentableview.py" line="38"/>
         <source>Complément</source>
         <translation>Adjunct</translation>
     </message>
@@ -1991,42 +1996,42 @@ Recette prévue pour un brassin de </source>
 <context>
     <name>HopViewLabels</name>
     <message>
-        <location filename="view/hopview.py" line="14"/>
+        <location filename="view/hopview.py" line="34"/>
         <source>Pellet</source>
         <translation>Pellet</translation>
     </message>
     <message>
-        <location filename="view/hopview.py" line="15"/>
+        <location filename="view/hopview.py" line="35"/>
         <source>Feuille</source>
         <translation>Leaf</translation>
     </message>
     <message utf8="true">
-        <location filename="view/hopview.py" line="16"/>
+        <location filename="view/hopview.py" line="36"/>
         <source>Cône</source>
         <translation>Plug</translation>
     </message>
     <message utf8="true">
-        <location filename="view/hopview.py" line="19"/>
+        <location filename="view/hopview.py" line="39"/>
         <source>Ébullition</source>
         <translation>Boil</translation>
     </message>
     <message>
-        <location filename="view/hopview.py" line="20"/>
+        <location filename="view/hopview.py" line="40"/>
         <source>Dry Hop</source>
         <translation>Dry Hop</translation>
     </message>
     <message utf8="true">
-        <location filename="view/hopview.py" line="21"/>
+        <location filename="view/hopview.py" line="41"/>
         <source>Empâtage</source>
         <translation>Mash</translation>
     </message>
     <message utf8="true">
-        <location filename="view/hopview.py" line="22"/>
+        <location filename="view/hopview.py" line="42"/>
         <source>Premier Moût</source>
         <translation>First Wort</translation>
     </message>
     <message utf8="true">
-        <location filename="view/hopview.py" line="23"/>
+        <location filename="view/hopview.py" line="43"/>
         <source>Arôme</source>
         <translation>Aroma</translation>
     </message>
@@ -3133,17 +3138,17 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>MashStepView</name>
     <message>
-        <location filename="view/mashstepview.py" line="13"/>
+        <location filename="view/mashstepview.py" line="33"/>
         <source>Infusion</source>
         <translation>Infusion</translation>
     </message>
     <message utf8="true">
-        <location filename="view/mashstepview.py" line="15"/>
+        <location filename="view/mashstepview.py" line="35"/>
         <source>Température</source>
         <translation>Temperature</translation>
     </message>
     <message utf8="true">
-        <location filename="view/mashstepview.py" line="17"/>
+        <location filename="view/mashstepview.py" line="37"/>
         <source>Décoction</source>
         <translation>Decoction</translation>
     </message>
@@ -3151,27 +3156,27 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>MiscViewLabels</name>
     <message utf8="true">
-        <location filename="view/miscview.py" line="11"/>
+        <location filename="view/miscview.py" line="31"/>
         <source>Ébullition</source>
         <translation>Boil</translation>
     </message>
     <message utf8="true">
-        <location filename="view/miscview.py" line="12"/>
+        <location filename="view/miscview.py" line="32"/>
         <source>Empâtage</source>
         <translation>Mash</translation>
     </message>
     <message>
-        <location filename="view/miscview.py" line="13"/>
+        <location filename="view/miscview.py" line="33"/>
         <source>Primaire</source>
         <translation>Primary</translation>
     </message>
     <message>
-        <location filename="view/miscview.py" line="14"/>
+        <location filename="view/miscview.py" line="34"/>
         <source>Secondaire</source>
         <translation>Secondary</translation>
     </message>
     <message>
-        <location filename="view/miscview.py" line="15"/>
+        <location filename="view/miscview.py" line="35"/>
         <source>Embouteillage</source>
         <translation>Bottling</translation>
     </message>
@@ -3313,17 +3318,17 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>recipeViewLabels</name>
     <message>
-        <location filename="view/recipeview.py" line="13"/>
+        <location filename="view/recipeview.py" line="33"/>
         <source>Tout grain</source>
         <translation>All grain</translation>
     </message>
     <message>
-        <location filename="view/recipeview.py" line="14"/>
+        <location filename="view/recipeview.py" line="34"/>
         <source>Extrait</source>
         <translation>Extract</translation>
     </message>
     <message>
-        <location filename="view/recipeview.py" line="15"/>
+        <location filename="view/recipeview.py" line="35"/>
         <source>Partial mash</source>
         <translation>Partial mash</translation>
     </message>
