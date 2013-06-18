@@ -1,8 +1,10 @@
 #!/usr/bin/python3.1
 #­*­coding: utf­8 -­*­
 
-#JolieBulle 2.6
-#Copyright (C) 2010-2012 Pierre Tavares
+#JolieBulle 2.9
+#Copyright (C) 2010-2013 Pierre Tavares
+#Copyright (C) 2012-2013 joliebulle's authors
+#See AUTHORS file.
 
 #This program is free software; you can redistribute it and/or
 #modify it under the terms of the GNU General Public License
@@ -17,6 +19,7 @@
 #You should have received a copy of the GNU General Public License
 #along with this program; if not, write to the Free Software
 #Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
+
 
 import logging
 import model.constants
@@ -70,8 +73,6 @@ class Recipe:
         except:
             pass
             
-
-
         for element in presentation :
             if 'NAME' == element.tag : 
                 recipe.name = element.text

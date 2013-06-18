@@ -3,7 +3,7 @@
 
 
 
-#JolieBulle 2.8
+#JolieBulle 2.9
 #Copyright (C) 2013 Thomas Gerbet
 
 #This program is free software; you can redistribute it and/or

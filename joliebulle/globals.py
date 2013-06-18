@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 #­*­coding: utf­8 -­*­
 
-#JolieBulle 2.8
+#JolieBulle 2.9
 #Copyright (C) 2010-2013 Pierre Tavares
 #This program is distributed in the hope that it will be useful,
 #but WITHOUT ANY WARRANTY; without even the implied warranty of

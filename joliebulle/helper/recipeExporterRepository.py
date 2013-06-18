@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 #­*­coding: utf­8 -­*­
 
-#JolieBulle
+#JolieBulle 2.9
 #Copyright (C) 2013 Thomas Gerbet
 
 #This program is free software; you can redistribute it and/or
