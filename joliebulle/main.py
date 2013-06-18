@@ -577,7 +577,6 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         self.listWidgetSteps.itemSelectionChanged.connect (self.stepDetails)
         self.listWidgetMashProfiles.itemSelectionChanged.connect (self.mashClicked)
         self.buttonBoxMashDetails.rejected.connect(self.mashRejected)
-        self.buttonBoxMashDetails.accepted.connect(self.mashAccepted)
 #        self.comboBoxStepType.addItems(["Infusion", "Température", "Décoction"])
         self.pushButtonStepEdit.clicked.connect(self.stepEdit)
         self.dlgStep.stepChanged.connect(self.stepReload)
@@ -2004,16 +2003,11 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         
     def mashRejected (self) :
         self.switchToPreviousPage()
-        
-    def mashAccepted (self) :
-        self.switchToPreviousPage()
-        self.setComboBoxMash()
 
     def saveProfile(self) : 
         self.mashProfileExport.export(ImportBase().listeMashes)
         self.mashProfileExport.enregistrer(mash_file)
-        
-        
+               
     def brewdayModeCalc(self) :
         self.labelWarningBiab.hide() 
         self.brewdayLock = 1
