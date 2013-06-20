@@ -1690,6 +1690,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         if recipeFile.open(QtCore.QIODevice.WriteOnly):
             try:
                 stream = QtCore.QTextStream(recipeFile)
+                stream.setCodec("UTF-8")
                 stream << self.recipe.export("beerxml")
             finally:
                 recipeFile.close()
