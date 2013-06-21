@@ -3,6 +3,9 @@
 
 #JolieBulle 2.9
 #Copyright (C) 2010-2013 Pierre Tavares
+#Copyright (C) 2012-2013 joliebulle's authors
+#See AUTHORS file.
+
 #This program is distributed in the hope that it will be useful,
 #but WITHOUT ANY WARRANTY; without even the implied warranty of
 #MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
