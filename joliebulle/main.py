@@ -112,7 +112,7 @@ def initLogging():
     config = {
         'version': 1,              
         'root': {
-            'handlers': ['console','file'],
+            'handlers': ['console'],
             'level': 'DEBUG'
         },
         'disable_existing_loggers': False,
@@ -131,13 +131,6 @@ def initLogging():
                 'stream':'ext://sys.stdout',
                 'formatter':'standard'
             },
-            'file': {
-                'class':'logging.FileHandler',
-                'level':'DEBUG',
-                'formatter':'detailed',
-                'mode':'a',
-                'filename':os.path.join(config_dir,'joliebulle.log')
-            }  
         }
     }
     logging.config.dictConfig(config)
