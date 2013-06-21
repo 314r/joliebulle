@@ -1596,109 +1596,109 @@ p, li { white-space: pre-wrap; }
         <location filename="helper/recipeexporter/exportBBCode.py" line="42"/>
         <source>Rendement : </source>
         <comment>UTF-8</comment>
-        <translation type="unfinished">Efficiency: </translation>
+        <translation>Efficiency: </translation>
     </message>
     <message>
         <location filename="helper/recipeexporter/exportHTML.py" line="71"/>
         <source>Ebullition : </source>
         <comment>UTF-8</comment>
-        <translation type="unfinished">Boil : </translation>
+        <translation>Boil : </translation>
     </message>
     <message>
         <location filename="helper/recipeexporter/exportBBCode.py" line="36"/>
         <source>DensitÃ© initiale : </source>
         <comment>UTF-8</comment>
-        <translation type="unfinished">Original gravity: </translation>
+        <translation>Original gravity: </translation>
     </message>
     <message>
         <location filename="helper/recipeexporter/exportBBCode.py" line="37"/>
         <source>DensitÃ© finale : </source>
         <comment>UTF-8</comment>
-        <translation type="unfinished">Final gravity: </translation>
+        <translation>Final gravity: </translation>
     </message>
     <message>
         <location filename="helper/recipeexporter/exportBBCode.py" line="38"/>
         <source>Teinte : </source>
         <comment>UTF-8</comment>
-        <translation type="unfinished">Color: </translation>
+        <translation>Color: </translation>
     </message>
     <message>
         <location filename="helper/recipeexporter/exportBBCode.py" line="39"/>
         <source>Amertume : </source>
         <comment>UTF-8</comment>
-        <translation type="unfinished">Bitterness: </translation>
+        <translation>Bitterness: </translation>
     </message>
     <message>
         <location filename="helper/recipeexporter/exportHTML.py" line="76"/>
         <source>Ratio BU/GU : </source>
         <comment>UTF-8</comment>
-        <translation type="unfinished">BU/GU ratio : </translation>
+        <translation>BU/GU ratio : </translation>
     </message>
     <message>
         <location filename="helper/recipeexporter/exportBBCode.py" line="40"/>
         <source>Alcool (vol) : </source>
         <comment>UTF-8</comment>
-        <translation type="unfinished">Alcohol (by vol): </translation>
+        <translation>Alcohol (by vol): </translation>
     </message>
     <message>
         <location filename="helper/recipeexporter/exportHTML.py" line="81"/>
         <source>litres</source>
         <comment>UTF-8</comment>
-        <translation type="unfinished"> liters</translation>
+        <translation> liters</translation>
     </message>
     <message>
         <location filename="helper/recipeexporter/exportBBCode.py" line="45"/>
         <source>Grains et sucres</source>
         <comment>UTF-8</comment>
-        <translation type="unfinished">Grains and sugars</translation>
+        <translation>Grains and sugars</translation>
     </message>
     <message>
         <location filename="helper/recipeexporter/exportHTML.py" line="89"/>
         <source>Ajout aprÃ¨s Ã©bullition</source>
         <comment>UTF-8</comment>
-        <translation type="unfinished">Add after boil</translation>
+        <translation>Add after boil</translation>
     </message>
     <message>
         <location filename="helper/recipeexporter/exportBBCode.py" line="51"/>
         <source>Houblons</source>
         <comment>UTF-8</comment>
-        <translation type="unfinished">Hops </translation>
+        <translation>Hops </translation>
     </message>
     <message>
         <location filename="helper/recipeexporter/exportBBCode.py" line="60"/>
         <source>IngrÃ©dients divers</source>
         <comment>UTF-8</comment>
-        <translation type="unfinished">Miscellaneous </translation>
+        <translation>Miscellaneous </translation>
     </message>
     <message>
         <location filename="helper/recipeexporter/exportBBCode.py" line="67"/>
         <source>Levures</source>
         <comment>UTF-8</comment>
-        <translation type="unfinished">Yeasts</translation>
+        <translation>Yeasts</translation>
     </message>
     <message>
         <location filename="helper/recipeexporter/exportBBCode.py" line="74"/>
         <source>Brassage</source>
         <comment>UTF-8</comment>
-        <translation type="unfinished">Mash</translation>
+        <translation>Mash</translation>
     </message>
     <message>
         <location filename="helper/recipeexporter/exportBBCode.py" line="78"/>
         <source>Ãtapes : </source>
         <comment>UTF-8</comment>
-        <translation type="unfinished">Steps: </translation>
+        <translation>Steps: </translation>
     </message>
     <message>
         <location filename="helper/recipeexporter/exportBBCode.py" line="81"/>
         <source>palier de type</source>
         <comment>UTF-8</comment>
-        <translation type="unfinished">step type</translation>
+        <translation>step type</translation>
     </message>
     <message>
         <location filename="helper/recipeexporter/exportBBCode.py" line="82"/>
         <source>Ã </source>
         <comment>UTF-8</comment>
-        <translation type="unfinished">at</translation>
+        <translation>at</translation>
     </message>
     <message>
         <location filename="helper/recipeexporter/exportBBCode.py" line="83"/>
@@ -1710,19 +1710,19 @@ p, li { white-space: pre-wrap; }
         <location filename="helper/recipeexporter/exportBBCode.py" line="84"/>
         <source>minutes</source>
         <comment>UTF-8</comment>
-        <translation type="unfinished">minutes</translation>
+        <translation>minutes</translation>
     </message>
     <message>
         <location filename="helper/recipeexporter/exportBBCode.py" line="85"/>
         <source>RinÃ§age : </source>
         <comment>UTF-8</comment>
-        <translation type="unfinished">Sparge: </translation>
+        <translation>Sparge: </translation>
     </message>
     <message>
         <location filename="helper/recipeexporter/exportBBCode.py" line="89"/>
         <source>Notes</source>
         <comment>UTF-8</comment>
-        <translation type="unfinished">Notes</translation>
+        <translation>Notes</translation>
     </message>
 </context>
 <context>
@@ -3334,22 +3334,22 @@ p, li { white-space: pre-wrap; }
     <message utf8="true">
         <location filename="preboil.ui" line="14"/>
         <source>Pré-Ebullition</source>
-        <translation type="unfinished"></translation>
+        <translation>Preboil</translation>
     </message>
     <message utf8="true">
         <location filename="preboil.ui" line="60"/>
         <source>Volume mesuré :</source>
-        <translation type="unfinished"></translation>
+        <translation>Measured volume :</translation>
     </message>
     <message utf8="true">
         <location filename="preboil.ui" line="86"/>
         <source>La densité devrait être :</source>
-        <translation type="unfinished"></translation>
+        <translation>Gravity should be : </translation>
     </message>
     <message>
         <location filename="preboil.ui" line="93"/>
         <source>1.000</source>
-        <translation type="unfinished">1.000</translation>
+        <translation>1.000</translation>
     </message>
 </context>
 <context>
