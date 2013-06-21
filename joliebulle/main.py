@@ -2264,8 +2264,8 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
             self.webViewBiblio.print(printer)
                 
 
-from plugins import PluginManager
-from plugins.ExtensionPoints import AppLifecycleExtensionPoint
+# from plugins import PluginManager
+# from plugins.ExtensionPoints import AppLifecycleExtensionPoint
 
 if __name__ == "__main__":
 
@@ -2273,8 +2273,8 @@ if __name__ == "__main__":
 
     logger = logging.getLogger(__name__)
 
-    for p in AppLifecycleExtensionPoint.plugins:
-        p().startup()
+    # for p in AppLifecycleExtensionPoint.plugins:
+    #     p().startup()
 
     logger.debug("Initializing UI");
     QtCore.QTextCodec.setCodecForCStrings(QtCore.QTextCodec.codecForName("utf-8"))
@@ -2298,6 +2298,6 @@ if __name__ == "__main__":
 
     app.exec_()
 
-    for p in AppLifecycleExtensionPoint.plugins:
-        p().shutdown()
+    # for p in AppLifecycleExtensionPoint.plugins:
+    #     p().shutdown()
 
