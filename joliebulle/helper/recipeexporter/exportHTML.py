@@ -67,31 +67,31 @@ text-align : center;}
 
     #Profil
     resultHtml += '<table class="profil">'
-    resultHtml += '<tr><td>%s</td><td>%.1f %%</td></tr>' % (QCoreApplication.translate("Export", "Rendement : ", "UTF-8"), recipe.efficiency)
-    resultHtml += '<tr><td>%s</td><td>%.0f min</td></tr>' % (QCoreApplication.translate("Export", "Ebullition : ", "UTF-8"), recipe.boil)
-    resultHtml += '<tr><td>%s</td><td>%.3f</td></tr>' % (QCoreApplication.translate("Export", "Densité initiale : ", "UTF-8"), recipe.compute_OG())
-    resultHtml += '<tr><td>%s</td><td>%.3f</td></tr>' % (QCoreApplication.translate("Export", "Densité finale : ", "UTF-8"), recipe.compute_FG())
-    resultHtml += '<tr><td>%s</td><td>%.0f EBC</td></tr>' % (QCoreApplication.translate("Export", "Teinte : ", "UTF-8"), recipe.compute_EBC())
-    resultHtml += '<tr><td>%s</td><td>%.0f IBU</td></tr>' % (QCoreApplication.translate("Export", "Amertume : ", "UTF-8"), recipe.compute_IBU())
-    resultHtml += '<tr><td>%s</td><td>%.1f</td></tr>' % (QCoreApplication.translate("Export", "Ratio BU/GU : ", "UTF-8"), recipe.compute_ratioBUGU())
-    resultHtml += '<tr><td>%s</td><td>%.1f %%</td></tr>' % (QCoreApplication.translate("Export", "Alcool (vol) : ", "UTF-8"), recipe.compute_ABV())
+    resultHtml += '<tr><td>%s</td><td>%.1f %%</td></tr>' % (QCoreApplication.translate("Export", "Rendement : ", None, QCoreApplication.UnicodeUTF8), recipe.efficiency)
+    resultHtml += '<tr><td>%s</td><td>%.0f min</td></tr>' % (QCoreApplication.translate("Export", "Ébullition : ", None, QCoreApplication.UnicodeUTF8), recipe.boil)
+    resultHtml += '<tr><td>%s</td><td>%.3f</td></tr>' % (QCoreApplication.translate("Export", "Densité initiale : ", None, QCoreApplication.UnicodeUTF8), recipe.compute_OG())
+    resultHtml += '<tr><td>%s</td><td>%.3f</td></tr>' % (QCoreApplication.translate("Export", "Densité finale : ", None, QCoreApplication.UnicodeUTF8), recipe.compute_FG())
+    resultHtml += '<tr><td>%s</td><td>%.0f EBC</td></tr>' % (QCoreApplication.translate("Export", "Teinte : ", None, QCoreApplication.UnicodeUTF8), recipe.compute_EBC())
+    resultHtml += '<tr><td>%s</td><td>%.0f IBU</td></tr>' % (QCoreApplication.translate("Export", "Amertume : ", None, QCoreApplication.UnicodeUTF8), recipe.compute_IBU())
+    resultHtml += '<tr><td>%s</td><td>%.1f</td></tr>' % (QCoreApplication.translate("Export", "Ratio BU/GU : ", None, QCoreApplication.UnicodeUTF8), recipe.compute_ratioBUGU())
+    resultHtml += '<tr><td>%s</td><td>%.1f %%</td></tr>' % (QCoreApplication.translate("Export", "Alcool (vol) : ", None, QCoreApplication.UnicodeUTF8), recipe.compute_ABV())
     resultHtml += '</table>'
 
     #Ingredients informations
     resultHtml += '<h2>%s %.1f %s</h2>' % (
-        QCoreApplication.translate("Export", "Ingrédients prévus pour un brassin de", "UTF-8"),
-        recipe.volume, QCoreApplication.translate("Export", "litres", "UTF-8"))
+        QCoreApplication.translate("Export", "Ingrédients prévus pour un brassin de", None, QCoreApplication.UnicodeUTF8),
+        recipe.volume, QCoreApplication.translate("Export", "litres", None, QCoreApplication.UnicodeUTF8))
 
     #Grains
-    resultHtml += '<h3>%s</h3>' % QCoreApplication.translate("Export", "Grains et sucres", "UTF-8")
+    resultHtml += '<h3>%s</h3>' % QCoreApplication.translate("Export", "Grains et sucres", None, QCoreApplication.UnicodeUTF8)
     resultHtml += '<table class="ingredients">'
     for f in recipe.listeFermentables:
-        use = QCoreApplication.translate("Export", "Ajout après ébullition", "UTF-8") if f.useAfterBoil else ''
+        use = QCoreApplication.translate("Export", "Ajout après ébullition", None, QCoreApplication.UnicodeUTF8) if f.useAfterBoil else ''
         resultHtml += '<tr><td>%.0fg</td><td>%s</td><td>%s</td></tr>' % (f.amount, f.name, use)
     resultHtml += '</table>'
 
     #Houblons
-    resultHtml += '<h3>%s</h3>' % QCoreApplication.translate("Export", "Houblons", "UTF-8")
+    resultHtml += '<h3>%s</h3>' % QCoreApplication.translate("Export", "Houblons", None, QCoreApplication.UnicodeUTF8)
     resultHtml += '<table class="ingredients">'
     for h in recipe.listeHops:
         hUI = HopView(h)
@@ -105,7 +105,7 @@ text-align : center;}
 
     #Ingredients divers
     if len(recipe.listeMiscs) > 0:
-        resultHtml += '<h3>%s</h3>' % QCoreApplication.translate("Export", "Ingrédients divers", "UTF-8")
+        resultHtml += '<h3>%s</h3>' % QCoreApplication.translate("Export", "Ingrédients divers", None, QCoreApplication.UnicodeUTF8)
         resultHtml += '<table class="ingredients">'
         for m in recipe.listeMiscs:
             mUI = MiscView(m)
@@ -117,7 +117,7 @@ text-align : center;}
         resultHtml += '</table>'
 
     #Levures
-    resultHtml += '<h3>%s</h3>' % QCoreApplication.translate("Export", "Levures", "UTF-8")
+    resultHtml += '<h3>%s</h3>' % QCoreApplication.translate("Export", "Levures", None, QCoreApplication.UnicodeUTF8)
     resultHtml += '<table class="ingredients">'
     for y in recipe.listeYeasts:
         yUI = YeastView(y)
@@ -125,28 +125,28 @@ text-align : center;}
     resultHtml += '</table>'
 
     #Brassage informations
-    resultHtml += '<h2>%s</h2>' % QCoreApplication.translate("Export", "Brassage", "UTF-8")
+    resultHtml += '<h2>%s</h2>' % QCoreApplication.translate("Export", "Brassage", None, QCoreApplication.UnicodeUTF8)
     resultHtml += '<p>%s<br />pH : %s</p>' % (recipe.mash.name, recipe.mash.ph)
 
     #Etapes brassage
     resultHtml += '<p>'
-    resultHtml += '<b>%s</b><br />' % QCoreApplication.translate("Export", "Étapes : ", "UTF-8")
+    resultHtml += '<b>%s</b><br />' % QCoreApplication.translate("Export", "Étapes : ", None, QCoreApplication.UnicodeUTF8)
     for step in recipe.mash.listeSteps:
         mashStepUI = MashStepView(step)
         resultHtml += '%s : %s %s %s %s °C %s %s %s<br />' % (step.name,
-                                                           QCoreApplication.translate("Export", "palier de type", "UTF-8"),
+                                                           QCoreApplication.translate("Export", "palier de type", None, QCoreApplication.UnicodeUTF8),
                                                            mashStepUI.mashTypeDisplay(),
-                                                           QCoreApplication.translate("Export", "à", "UTF-8"), step.temp,
-                                                           QCoreApplication.translate("Export", "pendant", "UTF-8"), step.time,
-                                                           QCoreApplication.translate("Export", "minutes", "UTF-8"))
+                                                           QCoreApplication.translate("Export", "à", None, QCoreApplication.UnicodeUTF8), step.temp,
+                                                           QCoreApplication.translate("Export", "pendant", None, QCoreApplication.UnicodeUTF8), step.time,
+                                                           QCoreApplication.translate("Export", "minutes", None, QCoreApplication.UnicodeUTF8))
     resultHtml += '</p>'
 
     #Rincage
-    resultHtml += '<p><b>%s</b>%s °C</p>' % (QCoreApplication.translate("Export", "Rinçage : ", "UTF-8"), recipe.mash.spargeTemp)
+    resultHtml += '<p><b>%s</b>%s °C</p>' % (QCoreApplication.translate("Export", "Rinçage : ", None, QCoreApplication.UnicodeUTF8), recipe.mash.spargeTemp)
 
     #Notes
     if recipe.recipeNotes is not None:
-        resultHtml += '<h2>%s</h2><pre>%s</pre>' % (QCoreApplication.translate("Export", "Notes", "UTF-8"), recipe.recipeNotes)
+        resultHtml += '<h2>%s</h2><pre>%s</pre>' % (QCoreApplication.translate("Export", "Notes", None, QCoreApplication.UnicodeUTF8), recipe.recipeNotes)
 
     resultHtml += '</body></html>'
 
