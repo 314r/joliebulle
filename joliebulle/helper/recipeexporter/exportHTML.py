@@ -87,7 +87,7 @@ text-align : center;}
     resultHtml += '<table class="ingredients">'
     for f in recipe.listeFermentables:
         use = QCoreApplication.translate("Export", "Ajout après ébullition", None, QCoreApplication.UnicodeUTF8) if f.useAfterBoil else ''
-        resultHtml += '<tr><td>%.0fg</td><td>%s</td><td>%s</td></tr>' % (f.amount, f.name, use)
+        resultHtml += '<tr><td>%.0f g</td><td>%s</td><td>%s</td></tr>' % (f.amount, f.name, use)
     resultHtml += '</table>'
 
     #Houblons
@@ -96,9 +96,9 @@ text-align : center;}
     for h in recipe.listeHops:
         hUI = HopView(h)
         resultHtml += '<tr>'
-        resultHtml += '<td>%.0fg</td>' % h.amount
-        resultHtml += '<td>%s (α%.1f%%, %s)</td>' % (h.name, h.alpha, hUI.hopFormDisplay())
-        resultHtml += '<td>%.0fmin (%s)</td>' % (h.time, hUI.hopUseDisplay())
+        resultHtml += '<td>%.0f g</td>' % h.amount
+        resultHtml += '<td>%s (α %.1f %%, %s)</td>' % (h.name, h.alpha, hUI.hopFormDisplay())
+        resultHtml += '<td>%.0f min (%s)</td>' % (h.time, hUI.hopUseDisplay())
 
         resultHtml += '</tr>'
     resultHtml += '</table>'
@@ -110,9 +110,9 @@ text-align : center;}
         for m in recipe.listeMiscs:
             mUI = MiscView(m)
             resultHtml += '<tr>'
-            resultHtml += '<td>%.0fg</td>' % m.amount
+            resultHtml += '<td>%.0f g</td>' % m.amount
             resultHtml += '<td>%s (%s)</td>' % (m.name, m.type)
-            resultHtml += '<td>%.0fmin (%s)</td>' % (m.time, mUI.miscUseDisplay())
+            resultHtml += '<td>%.0f min (%s)</td>' % (m.time, mUI.miscUseDisplay())
             resultHtml += '</tr>'
         resultHtml += '</table>'
 
