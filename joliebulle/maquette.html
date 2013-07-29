@@ -1,0 +1,274 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<title>Blanche</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0 "/>
+<link rel="stylesheet" href="static/bootstrap/css/bootstrap.css">
+<link rel="stylesheet" href="static/font-awesome/css/font-awesome.min.css">
+<!-- <link href="static/bootstrap/css/bootstrap-responsive.css" rel="stylesheet"> -->
+    <style>
+      /*body { padding-top: 60px;  60px to make the container go all the way to the bottom of the topbar  }*/
+       .container,
+  .navbar-static-top .container,
+  .navbar-fixed-top .container,
+  .navbar-fixed-bottom .container {
+    width: 800px;
+  }
+
+  body {padding-top : 60px;color: #222; font-size:80%%; background-color : white;}
+h1,h2,h3,h4,h5,h6 { font-weight: normal; color: #111; }
+/*h1 { font-size: 2em; margin-bottom: 0; text-align:center;}*/
+h2 { font-size: 1.5em; line-height: 1; margin-bottom: 2em; margin-top:2em; padding-bottom:0.75em; padding-top:0.75em;border-bottom:solid 1px #ddd;clear:both;}
+h3 { font-size: 1.2em; line-height: 1.25; margin-bottom: 1.25em; text-align:left; background-color:#eeeeee; border-bottom:1px solid #cccccc; border-top:1px solid #cccccc; padding:0.5em 0 0.5em 0.5em;}
+ul{list-style-type: none;text-align:left;}
+pre {white-space: pre-wrap;font-size:1.25em;}
+.genre {font-style:italic; text-align:center;color:#ddd;margin-top:0;padding-top:0;border:0;border-bottom:solid 1px #ddd;}
+.profil{text-align:left;margin-bottom:1em; width:400px;background:url(/Images/glade.png);}
+.profil td {min-width: 200px;}
+.ingredients{text-align:left; margin-bottom:2em;}
+.ingredients td {min-width: 200px;}
+.profilNav{padding-right: 2.5em;}
+.context{padding-right: 2.5em;}
+.info{margin-bottom:2.75em; margin-top:1.75em;}
+.navbar-inner{background-color: white;background-image: none;}
+.profil2{ text-align: center}
+.navbar-inner .brand {color:#222;}
+#brewChart {padding-top :1.5em;}
+
+    </style>
+
+
+</head>
+<body onload="createChart();">
+
+<!-- 	<div class="navbar navbar-fixed-top">
+			<div class="navbar-inner">
+				<div class="container">
+				<a class="brand" href="#">Blanche</a>
+				<ul class="nav">
+				<li class="active"><a href="#">Home</a></li>
+				<li><a href="#">Link</a></li>
+				<li><a href="#">Link</a></li>
+				</ul>
+				<div class="pull-right">
+				<a class="btn btn-primary">Editer</a>
+				<a class="btn btn-primary">Brasser</a>
+				</div>
+				
+				</div>
+
+			</div>
+	</div> -->
+
+	<div class="navbar navbar-fixed-top">
+			<div class="navbar-inner">
+				<div class="container">
+					<a class="brand" href="#">Blanche</a>
+			<div class="profil2 pull-right">				
+				<span class="navbar-text profilNav" data-toggle="tooltip" data-placement="bottom" title="Amertume">16 IBU</span>
+				<span class="navbar-text profilNav" data-toggle="tooltip" data-placement="bottom" title="Teinte">7 EBC</span>
+				<span class="navbar-text profilNav" data-toggle="tooltip" data-placement="bottom" title="Densité initiale">DI 1.049</span>
+				<span class="navbar-text profilNav" data-toggle="tooltip" data-placement="bottom" title="Densité finale">DF 1.012</span>
+				<span class="navbar-text profilNav" data-toggle="tooltip" data-placement="bottom" title="Ratio BU/GU">BU/GU 0.3</span>
+				<span class="navbar-text" data-toggle="tooltip" data-placement="bottom" title="Taux d'alcool">Alc 9%</span>
+			</div>
+				</div>
+				
+				</div>
+
+			</div>
+	</div>
+
+
+	<div class="container">
+		<!-- <h1>Blanche</h1> -->
+		<div class="info">
+			<span class="context">Style : <span class="badge">Blanche</span></span>
+			<span class="context">Rendement : <span class="badge">70%</span></span>
+			<span class="context">Volume : <span class="badge">10L</span></span>
+			<span class="context">Ebullition : <span class="badge">60 min</span></span>
+		</div>
+
+<!-- 		<h1>Blanche</h1>
+		<h2 class="genre">Blanche</h2>
+			<div class="profil2">				
+				<span class="navbar-text profilNav" data-toggle="tooltip" data-placement="bottom" title="Amertume">16 IBU</span>
+				<span class="navbar-text profilNav" data-toggle="tooltip" data-placement="bottom" title="Teinte">7 EBC</span>
+				<span class="navbar-text profilNav" data-toggle="tooltip" data-placement="bottom" title="Densité initiale">DI 1.049</span>
+				<span class="navbar-text profilNav" data-toggle="tooltip" data-placement="bottom" title="Densité finale">DF 1.012</span>
+				<span class="navbar-text profilNav" data-toggle="tooltip" data-placement="bottom" title="Ratio BU/GU">BU/GU 0.3</span>
+				<span class="navbar-text profilNav" data-toggle="tooltip" data-placement="bottom" title="Taux d'alcool">Alc 9%</span>
+			</div>
+ -->
+		<!-- <span data-toggle="tooltip" data-placement="right" title="Amertume">16 IBU</span> -->
+		<!-- <i class="icon-camera-retro"></i> icon-camera-retro -->
+
+<!-- 		<table class="profil">
+			<tr>
+				<td>Rendement : </td>
+				<td>70.0 %</td>
+			</tr>
+			<tr>
+				<td>Ébullition : </td>
+				<td>60 min</td>
+			</tr>
+			<tr>
+				<td>Densité initiale : </td>
+				<td>1.049</td>
+			</tr>
+			<tr>
+				<td>Densité finale : </td>
+				<td>1.012</td>
+			</tr>
+			<tr>
+				<td>Teinte : </td>
+				<td>7 EBC</td>
+			</tr>
+			<tr>
+				<td>Amertume : </td>
+				<td><a href="#" data-toggle="tooltip" data-placement="right" title="Amertume">16 IBU</a></td>
+			</tr>
+			<tr>
+				<td>Ratio BU/GU : </td>
+				<td>0.3</td>
+			</tr>
+			<tr>
+				<td>Alcool (vol) : </td>
+				<td>4.9 %</td>
+			</tr> -->
+		</table>
+		<!-- <h2>Ingrédients prévus pour un brassin de 10.0 litres</h2> -->
+		<h3>Grains et sucres</h3>
+		<table class="ingredients">
+			<tr>
+				<td ><span data-toggle="popover" data-html="true" data-content="EBC : 7 <br/> Rendement : 80% <br/> Type : Grain <br/> Etape : empâtage" data-placement="bottom"><a href="#" data-toggle="tooltip" data-trigger="hover focus click" data-placement="bottom" title="Cliquez pour plus de détails">Pilsner</a></span></td>
+				<td>1000 g</td>
+				
+			</tr>
+			<tr data-toggle="popover" data-html="true" data-content="EBC : 7 <br/> Rendement : 80% <br/> Type : Grain <br/> Etape : empâtage" data-placement="left">
+				<td><a>Pale Wheat Malt</a></td>
+				<td>1000 g</td>
+				
+			</tr>
+			<tr>
+				<td><a href="#" data-toggle="tooltip" data-trigger="hover focus click" data-placement="bottom" title="Cliquez pour plus de détails">Flaked Wheat</a></td>
+				<td>300 g</td>
+				<td></td>
+			</tr>
+		</table>
+		<h3>Houblons</h3>
+		<table class="ingredients">
+			<tr>
+				<td><a data-toggle="popover" data-html="true" data-content="Acides alpha : 5% <br/> Forme : feuille <br/> Etape : ébullition <br/> Proportion : 11.6 IBU" data-placement="bottom" data-trigger="hover focus click">Hallertauer Mittelfrueh</a></td>
+				<td>10 g</td>
+				<td>60 min (Ébullition)</td>
+			</tr>
+			<tr data-toggle="popover" data-html="true" data-content="Acides alpha : 5% <br/> Forme : feuille <br/> Etape : ébullition <br/> Proportion : 11.6 IBU" data-placement="right" data-trigger="hover focus click">
+				<td><a data-toggle="popover" data-html="true" data-content="Acides alpha : 5% <br/> Forme : feuille <br/> Etape : ébullition <br/> Proportion : 4.2 IBU" data-placement="right">Hallertauer Mittelfrueh</a></td>
+				<td>10 g</td>
+				<td>10 min (Ébullition)</td>
+			</tr>
+		</table>
+		<h3>Ingrédients divers</h3>
+		<table class="ingredients">
+			<tr>
+				<td>Coriandre (Spice)</td>
+				<td>5 g</td>
+				<td>0 min (Ébullition)</td>
+			</tr>
+			<tr>
+				<td>Zeste d'orange (Flavor)</td>
+				<td>10 g</td>
+				<td>0 min (Ébullition)</td>
+			</tr>
+		</table>
+		<h3>Levures</h3>
+		<table class="ingredients ">Belgian Wit Ale White Labs WLP400<br />
+		</table>
+		<h2>Brassage</h2>
+			
+			<p>
+			<b>Infusion simple, corps moyen</b><br/>
+			pH : 5.4<br/>
+			</p>
+
+			
+			
+			
+			<p><span class="label label-info">Empâtage</span> : palier de type Infusion à 67.0 °C pendant 60 minutes</p>
+			<p><span class="label label-info">Mash Out</span> : palier de type Température à 75.0 °C pendant 10 minutes</p>
+			
+			
+			<p><span class="label label-inverse">Rinçage</span> : 78.0 °C<p>
+
+		    <p><canvas id="brewChart" width="400" height="300"></canvas></p>
+		
+		
+		
+
+	</div>
+
+	    <!-- Le javascript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="static/bootstrap/js/jquery.js"></script>
+    <script src="static/bootstrap/js/bootstrap.js"></script>
+    <script src="static/chartjs/Chart.js"></script>
+    
+
+<script type="text/javascript">
+$(function () {
+$("[data-toggle='tooltip']").tooltip();
+});
+</script>
+
+<script type="text/javascript">
+$(function () {
+$("[data-toggle='popover']").popover();
+});
+</script>
+
+
+    <script type="text/javascript">
+function createChart()
+        {
+            //Get the context of the canvas element we want to select
+            var ctx = document.getElementById("brewChart").getContext("2d");
+ 
+            //Create the data object to pass to the chart
+            var data = {
+                labels : ["Empâtage","60 min","Mash Out","10 min"],
+                datasets : [
+							{
+								fillColor : "rgba(220,220,220,0.5)",
+								strokeColor : "rgba(220,220,220,1)",
+								pointColor : "rgba(220,220,220,1)",
+								pointStrokeColor : "#fff",
+								data : [67,67,75,75]
+							},
+						]
+                      };
+ 
+            //The options we are going to pass to the chart
+            options = {
+							bezierCurve : false,
+							scaleOverride : true,
+							//Number - The number of steps in a hard coded scale
+							scaleSteps : 12,
+							//Number - The value jump in the hard coded scale
+							scaleStepWidth : 1,
+							//Number - The scale starting value
+							scaleStartValue : 65,
+							
+            };
+ 
+            //Create the chart
+            new Chart(ctx).Line(data, options);
+        }
+</script>
+
+
+</body>
+</html>
