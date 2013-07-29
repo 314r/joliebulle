@@ -863,7 +863,9 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
             self.s = self.chemin
 
             self.importBeerXML()
-            self.webViewBiblio.setHtml(self.recipe.export("html"))
+            pyDir = os.path.abspath(os.path.dirname(__file__))
+            baseUrl = QtCore.QUrl.fromLocalFile(os.path.join(pyDir, "static/"))
+            self.webViewBiblio.setHtml(self.recipe.export("html"), baseUrl)
             # self.modele.blockSignals(True)
             #logger.debug("viewRecipeBiblio -> MVC")
             #self.MVC()

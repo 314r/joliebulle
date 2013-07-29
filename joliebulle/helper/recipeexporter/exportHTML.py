@@ -35,6 +35,7 @@ def exportHTML(recipe):
 <head>
 <title>%s</title>
 <meta charset="utf-8" />
+<link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
 <style type="text/css">
 html { font-size:100.01%%; background-color : white;}
 body {width:800px;margin:auto;line-height: 1.5;color: #222; font-size:80%%; background-color : white;}
