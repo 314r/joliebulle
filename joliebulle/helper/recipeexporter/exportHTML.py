@@ -116,7 +116,7 @@ pre {white-space: pre-wrap;font-size:1.25em;}
     resultHtml += '<table class="ingredients">'
     for f in recipe.listeFermentables:
         use = QCoreApplication.translate("Export", "Ajout après ébullition", None, QCoreApplication.UnicodeUTF8) if f.useAfterBoil else ''
-        resultHtml += '<tr><td><a>%s</a></td><td>%.0f g</td><td>%s</td></tr>' % (f.name, f.amount, use)
+        resultHtml += '<tr><td><span data-toggle="popover" data-trigger="hover" data-html="true" data-content="EBC : %0.f <br/> Rendement : %0.f%% <br/> Type : %s " data-placement="bottom"><a>%s</a></span></td><td>%.0f g</td><td>%s</td></tr>' % (f.color, f.fyield, f.type, f.name, f.amount, use)
     resultHtml += '</table>'
 
     #Houblons
@@ -125,7 +125,7 @@ pre {white-space: pre-wrap;font-size:1.25em;}
     for h in recipe.listeHops:
         hUI = HopView(h)
         resultHtml += '<tr>'
-        resultHtml += '<td><a>%s</a></td>' % h.name
+        resultHtml += '<td><span data-toggle="popover" data-trigger="hover" data-html="true" data-placement="bottom" data-content="α : %.1f%% <br/> Forme : %s <br/> Etape : %s <br/> Proportion : %.1f IBU"><a>%s</a></span></td>' % (h.alpha,hUI.hopFormDisplay(),hUI.hopUseDisplay(),recipe.compute_IBUPart()[h],h.name)
         resultHtml += '<td>%.0f g</td>' % h.amount
         # resultHtml += '<td>%s (α %.1f %%, %s)</td>' % (h.name, h.alpha, hUI.hopFormDisplay())
         resultHtml += '<td>%.0f min (%s)</td>' % (h.time, hUI.hopUseDisplay())
@@ -140,7 +140,7 @@ pre {white-space: pre-wrap;font-size:1.25em;}
         for m in recipe.listeMiscs:
             mUI = MiscView(m)
             resultHtml += '<tr>'
-            resultHtml += '<td><a>%s</a> (%s)</td>' % (m.name, m.type)
+            resultHtml += '<td><span <span data-toggle="popover" data-trigger="hover" data-html="true" data-placement="bottom" data-content="Type : %s"><a>%s</a></span></td>' % (m.type,m.name)
             resultHtml += '<td>%.0f g</td>' % m.amount
             resultHtml += '<td>%.0f min (%s)</td>' % (m.time, mUI.miscUseDisplay())
             resultHtml += '</tr>'
@@ -151,7 +151,15 @@ pre {white-space: pre-wrap;font-size:1.25em;}
     resultHtml += '<table class="ingredients">'
     for y in recipe.listeYeasts:
         yUI = YeastView(y)
-        resultHtml += '<a>%s</a><br />' % yUI.yeastDetailDisplay()
+        if y.form == "Liquid" :
+            form = QCoreApplication.translate("Export", "Liquide", None, QCoreApplication.UnicodeUTF8)
+        elif y.form == "Dry" : 
+            form = QCoreApplication.translate("Export", "Sèche", None, QCoreApplication.UnicodeUTF8)
+        elif y.form == "Culture" : 
+            form = QCoreApplication.translate("Export", "Culture", None, QCoreApplication.UnicodeUTF8)
+        elif y.form == "Slant" : 
+            form = QCoreApplication.translate("Export", "Gélose", None, QCoreApplication.UnicodeUTF8)    
+        resultHtml += '<span data-toggle="popover" data-trigger="hover" data-html="true" data-placement="bottom" data-content="Atténuation : %0.f%% <br/> Forme : %s"><a>%s</a></span><br />' % (y.attenuation,form,yUI.yeastDetailDisplay())
     resultHtml += '</table>'
 
     #Brassage informations
@@ -159,8 +167,13 @@ pre {white-space: pre-wrap;font-size:1.25em;}
     resultHtml += '<p><b>%s</b><br />pH : %s <br/></p>' % (recipe.mash.name, recipe.mash.ph)
 
     #Etapes brassage
+    stepsNameString=''
+    stepsTempString=''
     for step in recipe.mash.listeSteps:
         mashStepUI = MashStepView(step)
+        #la chaine utilisée pour le graphique :
+        stepsNameString += '''"%s (%s min)", "",''' %(step.name, step.time)
+        stepsTempString += '''%s, %s, ''' %(step.temp,step.temp)
         resultHtml += '<p><span class="label label-info">%s</span> : %s %s %s %s °C %s %s %s</p>' % (step.name,
                                                            QCoreApplication.translate("Export", "palier de type", None, QCoreApplication.UnicodeUTF8),
                                                            mashStepUI.mashTypeDisplay(),
@@ -172,6 +185,9 @@ pre {white-space: pre-wrap;font-size:1.25em;}
     #Rincage
     resultHtml += '<p><span class="label label-inverse">%s</span> : %s °C</p>' % (QCoreApplication.translate("Export", "Rinçage", None, QCoreApplication.UnicodeUTF8), recipe.mash.spargeTemp)
 
+    #Canvas
+    resultHtml += '''<p><canvas id="brewChart" width="400" height="300"></canvas></p>'''
+
     #Notes
     if recipe.recipeNotes is not None:
         resultHtml += '<h2>%s</h2><pre>%s</pre>' % (QCoreApplication.translate("Export", "Notes", None, QCoreApplication.UnicodeUTF8), recipe.recipeNotes)
@@ -179,6 +195,66 @@ pre {white-space: pre-wrap;font-size:1.25em;}
     
     #Fin div container
     resultHtml += ''' </div>'''
+
+    #Le javascript
+    resultHtml += '''<script src="jquery/jquery.js"></script>
+                     <script src="bootstrap/js/bootstrap.js"></script>
+                     <script src="chartjs/Chart.js"></script>'''
+
+    #Tooltips
+    resultHtml += ''' <script type="text/javascript">
+                    $(function () {
+                    $("[data-toggle='tooltip']").tooltip();
+                    });
+                    </script>'''
+                    
+    #Popovers
+    resultHtml += ''' <script type="text/javascript">
+                    $(function () {
+                    $("[data-toggle='popover']").popover();
+                    });
+                    </script>'''
+
+    #Graphique
+    resultHtml += '''     <script type="text/javascript">
+function createChart()
+        {
+            //Get the context of the canvas element we want to select
+            var ctx = document.getElementById("brewChart").getContext("2d");
+ 
+            //Create the data object to pass to the chart
+            var data = {
+                labels : [%s],
+                datasets : [
+                            {
+                                fillColor : "rgba(220,220,220,0.5)",
+                                strokeColor : "rgba(220,220,220,1)",
+                                pointColor : "rgba(220,220,220,1)",
+                                pointStrokeColor : "#fff",
+                                data : [%s]
+                            },
+                        ]
+                      };
+ 
+            //The options we are going to pass to the chart
+            options = {
+                            bezierCurve : false,
+                            scaleOverride : true,
+                            //Number - The number of steps in a hard coded scale
+                            scaleSteps : 12,
+                            //Number - The value jump in the hard coded scale
+                            scaleStepWidth : 1,
+                            //Number - The scale starting value
+                            scaleStartValue : 65,
+                            
+            };
+ 
+            //Create the chart
+            new Chart(ctx).Line(data, options);
+        }
+</script>''' %(stepsNameString,stepsTempString)
+
+                
 
     resultHtml += '</body></html>'
 
