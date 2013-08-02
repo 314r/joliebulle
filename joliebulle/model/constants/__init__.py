@@ -18,6 +18,13 @@ MISC_USE_PRIMARY = 'Primary'
 MISC_USE_SECONDARY = 'Secondary'
 MISC_USE_BOTTLING = 'Bottling'
 
+MISC_TYPE_SPICE = 'Spice'
+MISC_TYPE_FLAVOR = 'Flavor'
+MISC_TYPE_WATER ='Water Agent'
+MISC_TYPE_HERB = 'Herb'
+MISC_TYPE_FINING = 'Fining'
+MISC_TYPE_OTHER = 'Other'
+
 MASH_STEP_INFUSION = 'Infusion'
 MASH_STEP_TEMPERATURE = 'Temperature'
 MASH_STEP_DECOCTION = 'Decoction'

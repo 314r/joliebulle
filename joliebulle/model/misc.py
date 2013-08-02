@@ -50,7 +50,21 @@ class Misc:
             elif 'AMOUNT' == balise.tag :
                 m.amount = float(balise.text)*1000
             elif 'TYPE' == balise.tag :
-                m.type = balise.text
+                if 'Spice' == balise.text :
+                    m.type = model.constants.MISC_TYPE_SPICE
+                elif 'Flavor' == balise.text :
+                    m.type = model.constants.MISC_TYPE_FLAVOR
+                elif 'Water Agent' == balise.text :
+                    m.type = model.constants.MISC_TYPE_WATER
+                elif 'Herb' == balise.text :
+                    m.type = model.constants.MISC_TYPE_HERB
+                elif 'Fining' == balise.text :
+                    m.type = model.constants.MISC_TYPE_FINING
+                elif 'Other' == balise.text :
+                    m.type = model.constants.MISC_TYPE_OTHER
+                else :
+                    m.type = model.constants.MISC_TYPE_OTHER
+
             elif 'TIME' == balise.tag:
                 try :
                     m.time = float(balise.text)
