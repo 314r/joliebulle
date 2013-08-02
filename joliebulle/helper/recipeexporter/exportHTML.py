@@ -150,16 +150,8 @@ pre {white-space: pre-wrap;font-size:1.25em;}
     resultHtml += '<h3>%s</h3>' % QCoreApplication.translate("Export", "Levures", None, QCoreApplication.UnicodeUTF8)
     resultHtml += '<table class="ingredients">'
     for y in recipe.listeYeasts:
-        yUI = YeastView(y)
-        if y.form == "Liquid" :
-            form = QCoreApplication.translate("Export", "Liquide", None, QCoreApplication.UnicodeUTF8)
-        elif y.form == "Dry" : 
-            form = QCoreApplication.translate("Export", "Sèche", None, QCoreApplication.UnicodeUTF8)
-        elif y.form == "Culture" : 
-            form = QCoreApplication.translate("Export", "Culture", None, QCoreApplication.UnicodeUTF8)
-        elif y.form == "Slant" : 
-            form = QCoreApplication.translate("Export", "Gélose", None, QCoreApplication.UnicodeUTF8)    
-        resultHtml += '<span data-toggle="popover" data-trigger="hover" data-html="true" data-placement="bottom" data-content="Atténuation : %0.f%% <br/> Forme : %s"><a>%s</a></span><br />' % (y.attenuation,form,yUI.yeastDetailDisplay())
+        yUI = YeastView(y)   
+        resultHtml += '<span data-toggle="popover" data-trigger="hover" data-html="true" data-placement="bottom" data-content="Atténuation : %0.f%% <br/> Forme : %s"><a>%s</a></span><br />' % (y.attenuation,yUI.yeastFormDisplay(),yUI.yeastDetailDisplay())
     resultHtml += '</table>'
 
     #Brassage informations

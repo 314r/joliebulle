@@ -23,14 +23,32 @@ from PyQt4 import QtGui
 import model.constants
 import view.constants
 
-class YeastView(QtCore.QObject):
-	def __init__(self, yeast):
-		QtCore.QObject.__init__(self)
-		self.model = yeast
+class YeastViewLabels(QtCore.QObject):
+    def __init__(self):
+        QtCore.QObject.__init__(self)
+        self.formLabels = {
+            model.constants.YEAST_FORM_LIQUID : self.trUtf8('Liquide'),
+            model.constants.YEAST_FORM_DRY : self.trUtf8('Sèche'),
+            model.constants.YEAST_FORM_SLANT : self.trUtf8('Gélose'),
+            model.constants.YEAST_FORM_CULTURE : self.trUtf8('Culture')
+        }
 
-	def yeastDetailDisplay(self):
-		return "%s %s %s" % (self.model.name, self.model.labo, self.model.productId)
-	def QStandardItem_for_detail(self):
-		item = QtGui.QStandardItem(self.yeastDetailDisplay())
-		item.setData(self.model, view.constants.MODEL_DATA_ROLE)
-		return item
+
+class YeastView(QtCore.QObject):
+    def __init__(self, yeast):
+        QtCore.QObject.__init__(self)
+        self.model = yeast
+        self.yeastLabels = YeastViewLabels()
+
+    def yeastFormDisplay(self) :
+        try:
+            return self.yeastLabels.formLabels[self.model.form] 
+        except KeyError :
+            return '?yeastFormDisplay?'
+
+    def yeastDetailDisplay(self):
+        return "%s %s %s" % (self.model.name, self.model.labo, self.model.productId)
+    def QStandardItem_for_detail(self):
+        item = QtGui.QStandardItem(self.yeastDetailDisplay())
+        item.setData(self.model, view.constants.MODEL_DATA_ROLE)
+        return item
