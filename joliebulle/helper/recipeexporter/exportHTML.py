@@ -125,7 +125,7 @@ pre {white-space: pre-wrap;font-size:1.25em;}
     for h in recipe.listeHops:
         hUI = HopView(h)
         resultHtml += '<tr>'
-        resultHtml += '<td><span data-toggle="popover" data-trigger="hover" data-html="true" data-placement="bottom" data-content="α : %.1f%% <br/> Forme : %s <br/> Etape : %s <br/> Proportion : %.1f IBU"><a>%s</a></span></td>' % (h.alpha,hUI.hopFormDisplay(),hUI.hopUseDisplay(),recipe.compute_IBUPart()[h],h.name)
+        resultHtml += '<td><span data-toggle="popover" data-trigger="hover" data-html="true" data-placement="bottom" data-content="α : %.1f%% <br/> Forme : %s <br/> Proportion : %.1f IBU"><a>%s</a></span></td>' % (h.alpha,hUI.hopFormDisplay(),recipe.compute_IBUPart()[h],h.name)
         resultHtml += '<td>%.0f g</td>' % h.amount
         # resultHtml += '<td>%s (α %.1f %%, %s)</td>' % (h.name, h.alpha, hUI.hopFormDisplay())
         resultHtml += '<td>%.0f min (%s)</td>' % (h.time, hUI.hopUseDisplay())
@@ -140,7 +140,7 @@ pre {white-space: pre-wrap;font-size:1.25em;}
         for m in recipe.listeMiscs:
             mUI = MiscView(m)
             resultHtml += '<tr>'
-            resultHtml += '<td><span <span data-toggle="popover" data-trigger="hover" data-html="true" data-placement="bottom" data-content="Type : %s"><a>%s</a></span></td>' % (m.type,m.name)
+            resultHtml += '<td><span <span data-toggle="popover" data-trigger="hover" data-html="true" data-placement="bottom" data-content="Type : %s"><a>%s</a></span></td>' % (mUI.miscTypeDisplay(),m.name)
             resultHtml += '<td>%.0f g</td>' % m.amount
             resultHtml += '<td>%.0f min (%s)</td>' % (m.time, mUI.miscUseDisplay())
             resultHtml += '</tr>'
