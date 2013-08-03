@@ -22,6 +22,7 @@
 
 from PyQt4.QtCore import QCoreApplication
 
+from view.fermentableview import *
 from view.hopview import *
 from view.miscview import *
 from view.yeastview import *
@@ -115,8 +116,9 @@ pre {white-space: pre-wrap;font-size:1.25em;}
     resultHtml += '<h3>%s</h3>' % QCoreApplication.translate("Export", "Grains et sucres", None, QCoreApplication.UnicodeUTF8)
     resultHtml += '<table class="ingredients">'
     for f in recipe.listeFermentables:
+        fUI=FermentableView(f)
         use = QCoreApplication.translate("Export", "Ajout après ébullition", None, QCoreApplication.UnicodeUTF8) if f.useAfterBoil else ''
-        resultHtml += '<tr><td><span data-toggle="popover" data-trigger="hover" data-html="true" data-content="EBC : %0.f <br/> Rendement : %0.f%% <br/> Type : %s " data-placement="bottom"><a>%s</a></span></td><td>%.0f g</td><td>%s</td></tr>' % (f.color, f.fyield, f.type, f.name, f.amount, use)
+        resultHtml += '<tr><td><span data-toggle="popover" data-trigger="hover" data-html="true" data-content="EBC : %0.f <br/> Rendement : %0.f%% <br/> Type : %s " data-placement="bottom"><a>%s</a></span></td><td>%.0f g</td><td>%s</td></tr>' % (f.color, f.fyield, fUI.fermentableTypeDisplay(), f.name, f.amount, use)
     resultHtml += '</table>'
 
     #Houblons
