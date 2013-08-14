@@ -37,7 +37,7 @@
        <number>1</number>
       </property>
       <property name="currentIndex">
-       <number>0</number>
+       <number>1</number>
       </property>
       <widget class="QWidget" name="page">
        <layout class="QGridLayout" name="gridLayout">
@@ -831,7 +831,7 @@ p, li { white-space: pre-wrap; }
         <item row="0" column="0">
          <layout class="QHBoxLayout" name="horizontalLayout_20">
           <property name="spacing">
-           <number>3</number>
+           <number>1</number>
           </property>
           <item>
            <widget class="QTreeView" name="treeViewBiblio">
@@ -1885,7 +1885,7 @@ color: rgb(255, 255, 255);</string>
      <x>0</x>
      <y>0</y>
      <width>1238</width>
-     <height>29</height>
+     <height>27</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuFichier">
