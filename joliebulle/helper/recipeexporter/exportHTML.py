@@ -101,7 +101,7 @@ pre {white-space: pre-wrap;}
                                     <span class="navbar-text profilNav" data-toggle="tooltip" data-placement="bottom" title="Teinte">%.0f EBC</span>
                                     <span class="navbar-text profilNav" data-toggle="tooltip" data-placement="bottom" title="Densité initiale">DI %.3f</span>
                                     <span class="navbar-text profilNav" data-toggle="tooltip" data-placement="bottom" title="Densité finale">DF %.3f</span>
-                                    <span class="navbar-text profilNav" data-toggle="tooltip" data-placement="bottom" title="Ratio BU/GU">BU/GU %.1f</span>
+                                    <span class="navbar-text profilNav" data-toggle="tooltip" data-placement="bottom" title="Ratio amertume/densité">BU/GU %.1f</span>
                                     <span class="navbar-text" data-toggle="tooltip" data-placement="bottom" title="Taux d'alcool">Alc %.1f%%</span>
                                 </div>
                             </div>
