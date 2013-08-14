@@ -37,31 +37,43 @@ def exportHTML(recipe):
 <title>%s</title>
 <meta charset="utf-8" />
 <link rel="stylesheet" href="bootstrap/css/bootstrap.css">
-<style type="text/css">
-.container,
-.navbar-static-top .container,
-.navbar-fixed-top .container,
-.navbar-fixed-bottom .container {width: 800px;}
-body {padding-top : 60px;color: #222; font-size:80%%; background-color : white;}
+    <style>
+       .container,
+  .navbar-static-top .container,
+  .navbar-fixed-top .container,
+  .navbar-fixed-bottom .container {
+    width: 800px;
+  }
+
+  body {padding-top : 70px; padding-bottom: 50px;}
 h1,h2,h3,h4,h5,h6 { font-weight: normal; color: #111; }
 /*h1 { font-size: 2em; margin-bottom: 0; text-align:center;}*/
-h2 { font-size: 1.5em; line-height: 1; margin-bottom: 2em; margin-top:2em; padding-bottom:0.75em; padding-top:0.75em;border-bottom:solid 1px #ddd;clear:both;}
-h3 { font-size: 1.2em; line-height: 1.25; margin-bottom: 1.25em; text-align:left; background-color:#eeeeee; border-bottom:1px solid #cccccc; border-top:1px solid #cccccc; padding:0.5em 0 0.5em 0.5em;}
+h2 { font-size: 1.5em; line-height: 1; margin-bottom: 2em; margin-top:2em; padding-bottom:0.75em; padding-top:0.75em;clear:both;}
+/*h3 { font-size: 1.2em; line-height: 1.25; margin-bottom: 1.25em; text-align:left; background-color:#eeeeee; border-bottom:1px solid #cccccc; border-top:1px solid #cccccc; padding:0.5em 0 0.5em 0.5em;}*/
+h3{margin-bottom: 1.25em;color:white;background-color: rgb(14, 144, 210);display:inline-block;font-size: 1em;padding: 0.5em 0.5em 0.5em 0.5em;}
 ul{list-style-type: none;text-align:left;}
-pre {white-space: pre-wrap;font-size:1.25em;}
+pre {white-space: pre-wrap;}
 .genre {font-style:italic; text-align:center;color:#ddd;margin-top:0;padding-top:0;border:0;border-bottom:solid 1px #ddd;}
-.profil{text-align:left;margin-bottom:1em; width:400px;background:url(/Images/glade.png);}
-.profil td {min-width: 200px;}
 .ingredients{text-align:left; margin-bottom:2em;}
 .ingredients td {min-width: 200px;}
 .profilNav{padding-right: 2.5em;}
-.context{padding-right: 2.5em;}
-.info{margin-bottom:2.75em; margin-top:1.75em;}
-.navbar-inner{background-color: white;background-image: none;}
+.context{display:inline-block;width:150px;padding: 0.5em 0.5em 0.5em 0.5em;}
+.info{padding-bottom:1.25em; padding-top:1.25em; margin-bottom:1em; margin-top:1em;border-bottom:1px solid #ddd; border-top:1px solid #ddd ;}
+.info-titre{display: block;text-transform: uppercase;color:#777; font-size:0.8em;}
+.navbar{border-bottom:solid 4px #e3e3e3;background-color: white;}
+.navbar-inner{background-color: white; background-image: none;}
+.navbar-text{color:#777;}
 .profil2{ text-align: center}
-.navbar-inner .brand {color:#222;}
-#brewChart {padding-top :1.5em;}
-</style>
+.navbar-inner .navbar-brand {color:#222;}
+.brassage-title{background-color: #2c3e50;}
+.brassage-profil{}
+.label-step{background-color:#a1b5bf;padding:0.2em 0.5em 0.2em 0.5em;color:white; font-size:85%%; font-weight: bold;}
+.label-sparge{background-color:#a1b5bf;padding:0.2em 0.5em 0.2em 0.5em;color:white; font-size:85%%; font-weight: bold;}
+.notes{background-color: #19a956;}
+#brewChart {margin-top :2.5em; }
+
+
+    </style>
 </head>
 <body onload="createChart();">
 ''' % (recipe.name)
@@ -82,7 +94,7 @@ pre {white-space: pre-wrap;font-size:1.25em;}
     resultHtml += '''<div class="navbar navbar-fixed-top">
                         <div class="navbar-inner">
                             <div class="container">
-                                <a class="brand" href="#">%s</a>
+                                <a class="navbar-brand" href="#">%s</a>
                                 <div class="profil2 pull-right">                
                                     <span class="navbar-text profilNav" data-toggle="tooltip" data-placement="bottom" title="Amertume">%.0f IBU</span>
                                     <span class="navbar-text profilNav" data-toggle="tooltip" data-placement="bottom" title="Teinte">%.0f EBC</span>
@@ -105,11 +117,13 @@ pre {white-space: pre-wrap;font-size:1.25em;}
     #Container
     resultHtml += ''' <div class="container"> '''
 
+    resultHtml += ''' <button type="button" class="btn btn-link">Editer la recette</button> <button type="button" class="btn btn-link">Mode brassage</button>'''
+
     resultHtml += '''<div class="info">
-                        <span class="context">Style : <span class="badge">%s</span></span>
-                        <span class="context">Rendement : <span class="badge">%.1f%%</span></span>
-                        <span class="context">Volume : <span class="badge">%.1fL</span></span>
-                        <span class="context">Ebullition : <span class="badge">%.0f min</span></span>
+                        <span class="context"><span class="info-titre">Style</span>%s</span>
+                        <span class="context"><span class="info-titre">Rendement</span>%.1f%%</span>
+                        <span class="context"><span class="info-titre">Volume</span>%.1fL</span>
+                        <span class="context"><span class="info-titre">Ebullition</span>%.0f min</span>
                     </div>''' % (recipe.style, recipe.efficiency, recipe.volume, recipe.boil)
 
     #Grains
@@ -152,13 +166,15 @@ pre {white-space: pre-wrap;font-size:1.25em;}
     resultHtml += '<h3>%s</h3>' % QCoreApplication.translate("Export", "Levures", None, QCoreApplication.UnicodeUTF8)
     resultHtml += '<table class="ingredients">'
     for y in recipe.listeYeasts:
-        yUI = YeastView(y)   
-        resultHtml += '<span data-toggle="popover" data-trigger="hover" data-html="true" data-placement="bottom" data-content="Atténuation : %0.f%% <br/> Forme : %s"><a>%s</a></span><br />' % (y.attenuation,yUI.yeastFormDisplay(),yUI.yeastDetailDisplay())
+        yUI = YeastView(y)
+        resultHtml += '<tr>'   
+        resultHtml += '<td data-toggle="popover" data-trigger="hover" data-html="true" data-placement="bottom" data-content="Atténuation : %0.f%% <br/> Forme : %s"><a>%s</a></td>' % (y.attenuation,yUI.yeastFormDisplay(),yUI.yeastDetailDisplay())
+        resultHtml += '</tr>'
     resultHtml += '</table>'
 
     #Brassage informations
-    resultHtml += '<h2>%s</h2>' % QCoreApplication.translate("Export", "Brassage", None, QCoreApplication.UnicodeUTF8)
-    resultHtml += '<p><b>%s</b><br />pH : %s <br/></p>' % (recipe.mash.name, recipe.mash.ph)
+    resultHtml += '<h3 class="brassage-title">%s</h3>' % QCoreApplication.translate("Export", "Brassage", None, QCoreApplication.UnicodeUTF8)
+    resultHtml += '<p class="brassage-profil"><b>%s</b></p><p>pH : %s</p>' % (recipe.mash.name, recipe.mash.ph)
 
     #Etapes brassage
     stepsNameString=''
@@ -168,7 +184,7 @@ pre {white-space: pre-wrap;font-size:1.25em;}
         #la chaine utilisée pour le graphique :
         stepsNameString += '''"%s (%s min)", "",''' %(step.name, step.time)
         stepsTempString += '''%s, %s, ''' %(step.temp,step.temp)
-        resultHtml += '<p><span class="label label-info">%s</span> : %s %s %s %s °C %s %s %s</p>' % (step.name,
+        resultHtml += '<p><span class="label-step">%s</span> %s %s %s %s °C %s %s %s</p>' % (step.name,
                                                            QCoreApplication.translate("Export", "palier de type", None, QCoreApplication.UnicodeUTF8),
                                                            mashStepUI.mashTypeDisplay(),
                                                            QCoreApplication.translate("Export", "à", None, QCoreApplication.UnicodeUTF8), step.temp,
@@ -177,14 +193,14 @@ pre {white-space: pre-wrap;font-size:1.25em;}
     
 
     #Rincage
-    resultHtml += '<p><span class="label label-inverse">%s</span> : %s °C</p>' % (QCoreApplication.translate("Export", "Rinçage", None, QCoreApplication.UnicodeUTF8), recipe.mash.spargeTemp)
+    resultHtml += '<p><span class="label-sparge">%s</span> %s °C</p>' % (QCoreApplication.translate("Export", "Rinçage", None, QCoreApplication.UnicodeUTF8), recipe.mash.spargeTemp)
 
     #Canvas
     resultHtml += '''<p><canvas id="brewChart" width="400" height="300"></canvas></p>'''
 
     #Notes
     if recipe.recipeNotes is not None:
-        resultHtml += '<h2>%s</h2><pre>%s</pre>' % (QCoreApplication.translate("Export", "Notes", None, QCoreApplication.UnicodeUTF8), recipe.recipeNotes)
+        resultHtml += '<h3 class="notes">%s</h3><pre>%s</pre>' % (QCoreApplication.translate("Export", "Notes", None, QCoreApplication.UnicodeUTF8), recipe.recipeNotes)
 
     
     #Fin div container
