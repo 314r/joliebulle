@@ -50,7 +50,7 @@ h1,h2,h3,h4,h5,h6 { font-weight: normal; color: #111; }
 /*h1 { font-size: 2em; margin-bottom: 0; text-align:center;}*/
 h2 { font-size: 1.5em; line-height: 1; margin-bottom: 2em; margin-top:2em; padding-bottom:0.75em; padding-top:0.75em;clear:both;}
 /*h3 { font-size: 1.2em; line-height: 1.25; margin-bottom: 1.25em; text-align:left; background-color:#eeeeee; border-bottom:1px solid #cccccc; border-top:1px solid #cccccc; padding:0.5em 0 0.5em 0.5em;}*/
-h3{margin-bottom: 1.25em;color:white;background-color: rgb(14, 144, 210);display:inline-block;font-size: 1em;padding: 0.5em 0.5em 0.5em 0.5em;}
+h3{margin-bottom: 1.25em;color:white;background-color:#e55f51;display:inline-block;font-size: 1em;padding: 0.5em 0.5em 0.5em 0.5em;}
 ul{list-style-type: none;text-align:left;}
 pre {white-space: pre-wrap;}
 .genre {font-style:italic; text-align:center;color:#ddd;margin-top:0;padding-top:0;border:0;border-bottom:solid 1px #ddd;}
