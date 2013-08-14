@@ -56,9 +56,10 @@ pre {white-space: pre-wrap;}
 .genre {font-style:italic; text-align:center;color:#ddd;margin-top:0;padding-top:0;border:0;border-bottom:solid 1px #ddd;}
 .ingredients{text-align:left; margin-bottom:2em;}
 .ingredients td {min-width: 200px;}
+.ingredients a{color:#333333;}
 .profilNav{padding-right: 2.5em;}
 .context{display:inline-block;width:150px;padding: 0.5em 0.5em 0.5em 0.5em;}
-.info{padding-bottom:1.25em; padding-top:1.25em; margin-bottom:1em; margin-top:1em;border-bottom:1px solid #ddd; border-top:1px solid #ddd ;}
+.info{padding-bottom:1.25em; padding-top:0.5em; margin-bottom:1em;border-bottom:1px solid #ddd;}
 .info-titre{display: block;text-transform: uppercase;color:#777; font-size:0.8em;}
 .navbar{border-bottom:solid 4px #e3e3e3;background-color: white;}
 .navbar-inner{background-color: white; background-image: none;}
@@ -117,7 +118,7 @@ pre {white-space: pre-wrap;}
     #Container
     resultHtml += ''' <div class="container"> '''
 
-    resultHtml += ''' <button type="button" class="btn btn-link">Editer la recette</button> <button type="button" class="btn btn-link">Mode brassage</button>'''
+    # resultHtml += ''' <button type="button" class="btn btn-link">Editer la recette</button> <button type="button" class="btn btn-link">Mode brassage</button>'''
 
     resultHtml += '''<div class="info">
                         <span class="context"><span class="info-titre">Style</span>%s</span>
