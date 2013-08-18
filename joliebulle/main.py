@@ -866,6 +866,9 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
             pyDir = os.path.abspath(os.path.dirname(__file__))
             baseUrl = QtCore.QUrl.fromLocalFile(os.path.join(pyDir, "static/"))
             self.webViewBiblio.setHtml(self.recipe.export("html"), baseUrl)
+            self.webViewBiblio.page().mainFrame().addToJavaScriptWindowObject("editButton", self.pushButtonEditCurrentRecipe)
+            self.webViewBiblio.page().mainFrame().addToJavaScriptWindowObject("brewdayModeButton", self.pushButtonBrewRecipeBiblio)
+
             # self.modele.blockSignals(True)
             #logger.debug("viewRecipeBiblio -> MVC")
             #self.MVC()

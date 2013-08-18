@@ -113,7 +113,7 @@ body {background:url(images/furley_bg.png);}
 
     #Outils
     resultHtml += '''<div class="tools">
-                        <button type="button"><i class="icon-wrench"></i> Editer la recette</button> <button type="button"><i class="icon-dashboard"></i> Mode brassage</button>
+                        <button type="button" value="edit" onClick="editButton.clicked()"><i class="icon-wrench"></i> Editer la recette</button> <button type="button" value="brewday" onClick="brewdayModeButton.clicked()"><i class="icon-dashboard"></i> Mode brassage</button>
                     </div>'''
 
     # resultHtml += ''' <button type="button" class="btn btn-link">Editer la recette</button> <button type="button" class="btn btn-link">Mode brassage</button>'''
