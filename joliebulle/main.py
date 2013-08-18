@@ -675,7 +675,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         self.connect(self.treeViewBiblio, QtCore.SIGNAL("doubleClicked(const QModelIndex &)"), self.viewRecipeBiblio)
         self.connect(self.treeViewBiblio, QtCore.SIGNAL("clicked(const QModelIndex &)"), self.viewRecipeBiblio)
 
-
+        self.widgetSwitchButtons.hide()
         self.pushButtonEditCurrentRecipe.clicked.connect(self.editCurrentRecipe)
 
         # self.pushButtonRemoveRecipeBiblio.clicked.connect(self.supprimerBiblio)
