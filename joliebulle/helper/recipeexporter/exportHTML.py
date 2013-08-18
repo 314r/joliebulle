@@ -37,47 +37,49 @@ def exportHTML(recipe):
 <title>%s</title>
 <meta charset="utf-8" />
 <link rel="stylesheet" href="bootstrap/css/bootstrap.css">
+<link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
     <style>
-       .container,
-  .navbar-static-top .container,
-  .navbar-fixed-top .container,
-  .navbar-fixed-bottom .container {
-    width: 800px;
-  }
-
-  body {padding-top : 70px; padding-bottom: 50px;}
-h1,h2,h3,h4,h5,h6 { font-weight: normal; color: #111; }
-/*h1 { font-size: 2em; margin-bottom: 0; text-align:center;}*/
-h2 { font-size: 1.5em; line-height: 1; margin-bottom: 2em; margin-top:2em; padding-bottom:0.75em; padding-top:0.75em;clear:both;}
-/*h3 { font-size: 1.2em; line-height: 1.25; margin-bottom: 1.25em; text-align:left; background-color:#eeeeee; border-bottom:1px solid #cccccc; border-top:1px solid #cccccc; padding:0.5em 0 0.5em 0.5em;}*/
-h3{margin-bottom: 1.25em;color:white;background-color:#e55f51;display:inline-block;font-size: 1em;padding: 0.5em 0.5em 0.5em 0.5em;}
-ul{list-style-type: none;text-align:left;}
-pre {white-space: pre-wrap;}
-.genre {font-style:italic; text-align:center;color:#ddd;margin-top:0;padding-top:0;border:0;border-bottom:solid 1px #ddd;}
+body {background:url(images/furley_bg.png);}
+.beer-profile{width:800px;margin:auto;padding-top:0.5em;padding-bottom:1em;}
+.beer-profile h1{color:#999;font-weight:bold;margin:auto;padding-top:0.1em; font-size:24px ;float:left;}
+.beer-profile span{padding-right:20px; color:#999;font-weight:bold;padding-top:0.7em;float:right;}
+.beer-profile-last{margin-right: -15px;}
+.part-container{margin:auto;margin-top:3em; margin-bottom:3em; background-color: white; width:800px;border: 1px solid rgba(0, 0, 0, 0.1);box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.08);}
+.tools{margin:auto;margin-top:3em;width:800px;margin-bottom:-2.5em;text-align:right;}
+.tools button {background:none; border:none; color:#999;margin-left:15px;padding:0;padding-right: 3px;}
+.tools button:hover{color:#333333;}
+.info{padding-bottom:1.25em; padding-top:1.25em; text-align:center;}
+.info-titre{display: block;text-transform: uppercase;color:#777; font-size:0.8em;}
+.grains{padding-left: 50px;padding-right: 50px;}
+.grains a {color:#333333;}
+.grains h3 {margin-bottom:1em;}
+.hops{padding-left: 50px;padding-right: 50px;}
+.hops a {color:#333333;}
+.hops h3 {margin-bottom:1em;}
+.miscs{padding-left:50px;padding-right: 50px;}
+.miscs a {color:#333333;}
+.miscs h3 {margin-bottom:1em;}
+.yeasts{padding-left: 50px;padding-right: 50px;}
+.yeasts a {color:#333333;}
+.yeasts h3 {margin-bottom:1em;}
+.profile{padding-left: 50px;padding-right: 50px;}
+.profile a {color:#333333;}
+.profile h3 {margin-bottom:1em;}
+.notes{padding-left: 50px;padding-right: 50px;}
+.notes a {color:#333333;}
+.notes h3 {margin-bottom:1em;}
+.notes pre{border:none;background:none;font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;font-size: 14px;white-space: pre-wrap;}
 .ingredients{text-align:left; margin-bottom:2em;}
 .ingredients td {min-width: 200px;}
-.ingredients a{color:#333333;}
-.profilNav{padding-right: 2.5em;}
 .context{display:inline-block;width:150px;padding: 0.5em 0.5em 0.5em 0.5em;}
-.info{padding-bottom:1.25em; padding-top:0.5em; margin-bottom:1em;border-bottom:1px solid #ddd;}
-.info-titre{display: block;text-transform: uppercase;color:#777; font-size:0.8em;}
-.navbar{border-bottom:solid 4px #e3e3e3;background-color: white;}
-.navbar-inner{background-color: white; background-image: none;}
-.navbar-text{color:#777;}
-.profil2{ text-align: center}
-.navbar-inner .navbar-brand {color:#222;}
-.brassage-title{background-color: #2c3e50;}
-.brassage-profil{}
 .label-step{background-color:#a1b5bf;padding:0.2em 0.5em 0.2em 0.5em;color:white; font-size:85%%; font-weight: bold;}
 .label-sparge{background-color:#a1b5bf;padding:0.2em 0.5em 0.2em 0.5em;color:white; font-size:85%%; font-weight: bold;}
-.notes{background-color: #19a956;}
-#brewChart {margin-top :2.5em; }
-
+#brewChart {margin-top:2.5em; }
 
     </style>
 </head>
 <body onload="createChart();">
-''' % (recipe.name)
+''' %(recipe.name)
 
     #Profil
     # resultHtml += '<table class="profil">'
@@ -92,20 +94,14 @@ pre {white-space: pre-wrap;}
     # resultHtml += '</table>'
 
     #Navbar
-    resultHtml += '''<div class="navbar navbar-fixed-top">
-                        <div class="navbar-inner">
-                            <div class="container">
-                                <a class="navbar-brand" href="#">%s</a>
-                                <div class="profil2 pull-right">                
-                                    <span class="navbar-text profilNav" data-toggle="tooltip" data-placement="bottom" title="Amertume">%.0f IBU</span>
-                                    <span class="navbar-text profilNav" data-toggle="tooltip" data-placement="bottom" title="Teinte">%.0f EBC</span>
-                                    <span class="navbar-text profilNav" data-toggle="tooltip" data-placement="bottom" title="Densité initiale">DI %.3f</span>
-                                    <span class="navbar-text profilNav" data-toggle="tooltip" data-placement="bottom" title="Densité finale">DF %.3f</span>
-                                    <span class="navbar-text profilNav" data-toggle="tooltip" data-placement="bottom" title="Ratio amertume/densité">BU/GU %.1f</span>
-                                    <span class="navbar-text" data-toggle="tooltip" data-placement="bottom" title="Taux d'alcool">Alc %.1f%%</span>
-                                </div>
-                            </div>
-                        </div>
+    resultHtml += '''<div class="beer-profile">
+                        <h1>%s</h1>       
+                        <span class="beer-profile-last" data-toggle="tooltip" data-placement="bottom" title="Amertume">%.0f IBU</span>
+                        <span data-toggle="tooltip" data-placement="bottom" title="Teinte">%.0f EBC</span>
+                        <span data-toggle="tooltip" data-placement="bottom" title="Densité initiale">DI %.3f</span>
+                        <span data-toggle="tooltip" data-placement="bottom" title="Densité finale">DF %.3f</span>
+                        <span data-toggle="tooltip" data-placement="bottom" title="Ratio amertume/densité">BU/GU %.1f</span>
+                        <span data-toggle="tooltip" data-placement="bottom" title="Taux d'alcool">Alc %.1f%%</span>     
                     </div>''' % (recipe.name,recipe.compute_IBU(), recipe.compute_EBC(), recipe.compute_OG(), recipe.compute_FG(),recipe.compute_ratioBUGU(),recipe.compute_ABV())
 
 
@@ -115,12 +111,14 @@ pre {white-space: pre-wrap;}
     #     QCoreApplication.translate("Export", "Ingrédients prévus pour un brassin de", None, QCoreApplication.UnicodeUTF8),
     #     recipe.volume, QCoreApplication.translate("Export", "litres", None, QCoreApplication.UnicodeUTF8))
 
-    #Container
-    resultHtml += ''' <div class="container"> '''
+    #Outils
+    resultHtml += '''<div class="tools">
+                        <button type="button"><i class="icon-wrench"></i> Editer la recette</button> <button type="button"><i class="icon-dashboard"></i> Mode brassage</button>
+                    </div>'''
 
     # resultHtml += ''' <button type="button" class="btn btn-link">Editer la recette</button> <button type="button" class="btn btn-link">Mode brassage</button>'''
 
-    resultHtml += '''<div class="info">
+    resultHtml += '''<div class="part-container info">
                         <span class="context"><span class="info-titre">Style</span>%s</span>
                         <span class="context"><span class="info-titre">Rendement</span>%.1f%%</span>
                         <span class="context"><span class="info-titre">Volume</span>%.1fL</span>
@@ -128,15 +126,18 @@ pre {white-space: pre-wrap;}
                     </div>''' % (recipe.style, recipe.efficiency, recipe.volume, recipe.boil)
 
     #Grains
+    resultHtml += '<div class="part-container grains">'
     resultHtml += '<h3>%s</h3>' % QCoreApplication.translate("Export", "Grains et sucres", None, QCoreApplication.UnicodeUTF8)
     resultHtml += '<table class="ingredients">'
     for f in recipe.listeFermentables:
         fUI=FermentableView(f)
         use = QCoreApplication.translate("Export", "Ajout après ébullition", None, QCoreApplication.UnicodeUTF8) if f.useAfterBoil else ''
         resultHtml += '<tr><td><span data-toggle="popover" data-trigger="hover" data-html="true" data-content="EBC : %0.f <br/> Rendement : %0.f%% <br/> Type : %s " data-placement="bottom"><a>%s</a></span></td><td>%.0f g</td><td>%s</td></tr>' % (f.color, f.fyield, fUI.fermentableTypeDisplay(), f.name, f.amount, use)
-    resultHtml += '</table>'
+    resultHtml += '</table></div>'
+
 
     #Houblons
+    resultHtml += '<div class="part-container hops">'
     resultHtml += '<h3>%s</h3>' % QCoreApplication.translate("Export", "Houblons", None, QCoreApplication.UnicodeUTF8)
     resultHtml += '<table class="ingredients">'
     for h in recipe.listeHops:
@@ -148,10 +149,11 @@ pre {white-space: pre-wrap;}
         resultHtml += '<td>%.0f min (%s)</td>' % (h.time, hUI.hopUseDisplay())
 
         resultHtml += '</tr>'
-    resultHtml += '</table>'
+    resultHtml += '</table></div>'
 
     #Ingredients divers
     if len(recipe.listeMiscs) > 0:
+        resultHtml += '<div class="part-container miscs">'
         resultHtml += '<h3>%s</h3>' % QCoreApplication.translate("Export", "Ingrédients divers", None, QCoreApplication.UnicodeUTF8)
         resultHtml += '<table class="ingredients">'
         for m in recipe.listeMiscs:
@@ -161,9 +163,10 @@ pre {white-space: pre-wrap;}
             resultHtml += '<td>%.0f g</td>' % m.amount
             resultHtml += '<td>%.0f min (%s)</td>' % (m.time, mUI.miscUseDisplay())
             resultHtml += '</tr>'
-        resultHtml += '</table>'
+        resultHtml += '</table></div>'
 
     #Levures
+    resultHtml += '<div class="part-container yeasts">'
     resultHtml += '<h3>%s</h3>' % QCoreApplication.translate("Export", "Levures", None, QCoreApplication.UnicodeUTF8)
     resultHtml += '<table class="ingredients">'
     for y in recipe.listeYeasts:
@@ -171,9 +174,10 @@ pre {white-space: pre-wrap;}
         resultHtml += '<tr>'   
         resultHtml += '<td data-toggle="popover" data-trigger="hover" data-html="true" data-placement="bottom" data-content="Atténuation : %0.f%% <br/> Forme : %s"><a>%s</a></td>' % (y.attenuation,yUI.yeastFormDisplay(),yUI.yeastDetailDisplay())
         resultHtml += '</tr>'
-    resultHtml += '</table>'
+    resultHtml += '</table></div>'
 
     #Brassage informations
+    resultHtml += '<div class="part-container profile">'
     resultHtml += '<h3 class="brassage-title">%s</h3>' % QCoreApplication.translate("Export", "Brassage", None, QCoreApplication.UnicodeUTF8)
     resultHtml += '<p class="brassage-profil"><b>%s</b></p><p>pH : %s</p>' % (recipe.mash.name, recipe.mash.ph)
 
@@ -191,6 +195,7 @@ pre {white-space: pre-wrap;}
                                                            QCoreApplication.translate("Export", "à", None, QCoreApplication.UnicodeUTF8), step.temp,
                                                            QCoreApplication.translate("Export", "pendant", None, QCoreApplication.UnicodeUTF8), step.time,
                                                            QCoreApplication.translate("Export", "minutes", None, QCoreApplication.UnicodeUTF8))
+
     
 
     #Rincage
@@ -198,14 +203,14 @@ pre {white-space: pre-wrap;}
 
     #Canvas
     resultHtml += '''<p><canvas id="brewChart" width="400" height="300"></canvas></p>'''
+    resultHtml += '</div>'
 
     #Notes
     if recipe.recipeNotes is not None:
-        resultHtml += '<h3 class="notes">%s</h3><pre>%s</pre>' % (QCoreApplication.translate("Export", "Notes", None, QCoreApplication.UnicodeUTF8), recipe.recipeNotes)
-
+        resultHtml += '<div class="part-container notes">'
+        resultHtml += '<h3>%s</h3><pre>%s</pre>' % (QCoreApplication.translate("Export", "Notes", None, QCoreApplication.UnicodeUTF8), recipe.recipeNotes)
+        resultHtml += '</div>'
     
-    #Fin div container
-    resultHtml += ''' </div>'''
 
     #Le javascript
     resultHtml += '''<script src="jquery/jquery.js"></script>

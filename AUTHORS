@@ -1,5 +1,5 @@
 
-Liste des contributeurs au code de JolieBulle
+Liste des contributeurs au code de JolieBulle / Code contributors
 ###################################################
 ###################################################
 
@@ -10,19 +10,33 @@ Nicolas Jouanin
 Thomas Gerbet 
 
 
-JolieBulle utilise Jquery
+JolieBulle utilise Jquery / JolieBulle uses Jquery
 ------------------------------
 Copyright 2013 jQuery Foundation and other contributors
 http://jquery.com/
-Licence de type MIT
+MIT License
 
-JolieBulle utilise Bootstrap
+JolieBulle utilise Bootstrap / JolieBulle uses Bootstrap
 ------------------------------
 Copyright 2012 Twitter, Inc under the Apache 2.0 license.
 
-JolieBulle utilise Chart.js
+JolieBulle utilise Font-Awesome / JolieBulle uses Font-Awesome 
+--------------------------------------
+"Font Awesome by Dave Gandy - http://fontawesome.io". 
+License: SIL OFL 1.1 & MIT
+From the website : "Font Awesome is fully open source and is GPL compatible. You can use it for commercial projects, open source projects, or really just about whatever you want."
+
+JolieBulle utilise Chart.js / JolieBulle uses Chart.js /
 ---------------------------------------------
 Copyright (c) 2013 Nick Downie
-Licence de type MIT
+MIT License
 
+
+JolieBulle utilise des images de http://subtlepatterns.com/, à l'origine sous Creative Commons Attribution-ShareAlike 3.0 Unported, avec la permission de Atle Mo.
+
+JolieBulle uses some images from http://subtlepatterns.com/, originally under Creative Commons Attribution-ShareAlike 3.0 Unported license, with the permission of Atle Mo.
+
+Le design html/css des recettes s'inspire lourdement du design de l'application Alt Reader par David Johnstone, sous licence MIT : https://github.com/davidjohnstone/alt
+
+Recipe html/css design is heavily inspired by Alt Reader by David Johnstone, under a MIT license : https://github.com/davidjohnstone/alt
 
