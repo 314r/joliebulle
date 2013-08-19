@@ -95,14 +95,15 @@ body {background:url(images/furley_bg.png);}
 
     #Navbar
     resultHtml += '''<div class="beer-profile">
-                        <h1>%s</h1>       
-                        <span class="beer-profile-last" data-toggle="tooltip" data-placement="bottom" title="Amertume">%.0f IBU</span>
-                        <span data-toggle="tooltip" data-placement="bottom" title="Teinte">%.0f EBC</span>
-                        <span data-toggle="tooltip" data-placement="bottom" title="Densité initiale">DI %.3f</span>
+                        <h1>%s</h1> 
+                        <span class="beer-profile-last" data-toggle="tooltip" data-placement="bottom" title="Taux d'alcool">Alc %.1f%%</span> 
+                        <span data-toggle="tooltip" data-placement="bottom" title="Ratio amertume/densité">BU/GU %.1f</span>      
                         <span data-toggle="tooltip" data-placement="bottom" title="Densité finale">DF %.3f</span>
-                        <span data-toggle="tooltip" data-placement="bottom" title="Ratio amertume/densité">BU/GU %.1f</span>
-                        <span data-toggle="tooltip" data-placement="bottom" title="Taux d'alcool">Alc %.1f%%</span>     
-                    </div>''' % (recipe.name,recipe.compute_IBU(), recipe.compute_EBC(), recipe.compute_OG(), recipe.compute_FG(),recipe.compute_ratioBUGU(),recipe.compute_ABV())
+                        <span data-toggle="tooltip" data-placement="bottom" title="Densité initiale">DI %.3f</span>
+                        <span data-toggle="tooltip" data-placement="bottom" title="Teinte">%.0f EBC</span> 
+                        <span data-toggle="tooltip" data-placement="bottom" title="Amertume">%.0f IBU</span>
+
+                    </div>''' % (recipe.name, recipe.compute_ABV(), recipe.compute_ratioBUGU(), recipe.compute_FG(), recipe.compute_OG(), recipe.compute_EBC(), recipe.compute_IBU())
 
 
 
