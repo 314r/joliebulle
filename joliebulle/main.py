@@ -866,8 +866,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
             pyDir = os.path.abspath(os.path.dirname(__file__))
             baseUrl = QtCore.QUrl.fromLocalFile(os.path.join(pyDir, "static/"))
             self.webViewBiblio.setHtml(self.recipe.export("html"), baseUrl)
-            self.webViewBiblio.page().mainFrame().addToJavaScriptWindowObject("editButton", self.pushButtonEditCurrentRecipe)
-            self.webViewBiblio.page().mainFrame().addToJavaScriptWindowObject("brewdayModeButton", self.pushButtonBrewRecipeBiblio)
+            self.webViewBiblio.page().mainFrame().addToJavaScriptWindowObject("main", self)
 
             # self.modele.blockSignals(True)
             #logger.debug("viewRecipeBiblio -> MVC")
@@ -958,7 +957,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
                 except:
                     pass
   
-
+    @QtCore.pyqtSlot()               
     def editCurrentRecipe(self):
         self.switchToEditor()
         self.s = self.chemin
@@ -1210,7 +1209,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
     def switchToMash(self) :
         self.stackedWidget.setCurrentIndex(3)        
 
-        
+    @QtCore.pyqtSlot()     
     def switchToBrewday(self) :
         if not self.recipe.mash.listeSteps and self.recipe.type != 2 : 
             errors = Errors()
