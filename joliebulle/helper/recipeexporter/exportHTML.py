@@ -96,14 +96,14 @@ body {background:url(images/furley_bg.png);}
     #Navbar
     resultHtml += '''<div class="beer-profile">
                         <h1>%s</h1> 
-                        <span class="beer-profile-last" data-toggle="tooltip" data-placement="bottom" title="Taux d'alcool">Alc %.1f%%</span> 
-                        <span data-toggle="tooltip" data-placement="bottom" title="Ratio amertume/densité">BU/GU %.1f</span>      
-                        <span data-toggle="tooltip" data-placement="bottom" title="Densité finale">DF %.3f</span>
-                        <span data-toggle="tooltip" data-placement="bottom" title="Densité initiale">DI %.3f</span>
-                        <span data-toggle="tooltip" data-placement="bottom" title="Teinte">%.0f EBC</span> 
-                        <span data-toggle="tooltip" data-placement="bottom" title="Amertume">%.0f IBU</span>
+                        <span class="beer-profile-last" data-toggle="tooltip" data-placement="bottom" title="%s">%s %.1f%%</span> 
+                        <span data-toggle="tooltip" data-placement="bottom" title="%s">%s %.1f</span>      
+                        <span data-toggle="tooltip" data-placement="bottom" title="%s">%s %.3f</span>
+                        <span data-toggle="tooltip" data-placement="bottom" title="%s">%s %.3f</span>
+                        <span data-toggle="tooltip" data-placement="bottom" title="%s">%.0f %s</span> 
+                        <span data-toggle="tooltip" data-placement="bottom" title="%s">%.0f %s</span>
 
-                    </div>''' % (recipe.name, recipe.compute_ABV(), recipe.compute_ratioBUGU(), recipe.compute_FG(), recipe.compute_OG(), recipe.compute_EBC(), recipe.compute_IBU())
+                    </div>''' % (recipe.name,QCoreApplication.translate("Export", "Taux d'alcool", None, QCoreApplication.UnicodeUTF8),QCoreApplication.translate("Export", "Alc", None, QCoreApplication.UnicodeUTF8), recipe.compute_ABV(), QCoreApplication.translate("Export", "Ratio amertume/densité", None, QCoreApplication.UnicodeUTF8),QCoreApplication.translate("Export", "BU/GU", None, QCoreApplication.UnicodeUTF8),recipe.compute_ratioBUGU(), QCoreApplication.translate("Export", "Densité finale", None, QCoreApplication.UnicodeUTF8),QCoreApplication.translate("Export", "DF", None, QCoreApplication.UnicodeUTF8),recipe.compute_FG(), QCoreApplication.translate("Export", "Densité initiale", None, QCoreApplication.UnicodeUTF8), QCoreApplication.translate("Export", "DI", None, QCoreApplication.UnicodeUTF8),recipe.compute_OG(), QCoreApplication.translate("Export", "Teinte", None, QCoreApplication.UnicodeUTF8),recipe.compute_EBC(),QCoreApplication.translate("Export", "EBC", None, QCoreApplication.UnicodeUTF8), QCoreApplication.translate("Export", "Amertume", None, QCoreApplication.UnicodeUTF8),recipe.compute_IBU(),QCoreApplication.translate("Export", "IBU", None, QCoreApplication.UnicodeUTF8),)
 
 
 
@@ -114,17 +114,17 @@ body {background:url(images/furley_bg.png);}
 
     #Outils
     resultHtml += '''<div class="tools">
-                        <button type="button" value="edit" onClick="main.editCurrentRecipe()"><i class="icon-wrench"></i> Editer la recette</button> <button type="button" value="brewday" onClick="main.switchToBrewday()"><i class="icon-dashboard"></i> Mode brassage</button>
-                    </div>'''
+                        <button type="button" value="edit" onClick="main.editCurrentRecipe()"><i class="icon-wrench"></i> %s</button> <button type="button" value="brewday" onClick="main.switchToBrewday()"><i class="icon-dashboard"></i> %s</button>
+                    </div>'''%(QCoreApplication.translate("Export", "Editer la recette", None, QCoreApplication.UnicodeUTF8),QCoreApplication.translate("Export", "Mode brassage", None, QCoreApplication.UnicodeUTF8))
 
     # resultHtml += ''' <button type="button" class="btn btn-link">Editer la recette</button> <button type="button" class="btn btn-link">Mode brassage</button>'''
 
     resultHtml += '''<div class="part-container info">
-                        <span class="context"><span class="info-titre">Style</span>%s</span>
-                        <span class="context"><span class="info-titre">Rendement</span>%.1f%%</span>
-                        <span class="context"><span class="info-titre">Volume</span>%.1fL</span>
-                        <span class="context"><span class="info-titre">Ebullition</span>%.0f min</span>
-                    </div>''' % (recipe.style, recipe.efficiency, recipe.volume, recipe.boil)
+                        <span class="context"><span class="info-titre">%s</span>%s</span>
+                        <span class="context"><span class="info-titre">%s</span>%.1f%%</span>
+                        <span class="context"><span class="info-titre">%s</span>%.1fL</span>
+                        <span class="context"><span class="info-titre">%s</span>%.0f min</span>
+                    </div>''' % (QCoreApplication.translate("Export", "Style", None, QCoreApplication.UnicodeUTF8),recipe.style, QCoreApplication.translate("Export", "Rendement", None, QCoreApplication.UnicodeUTF8),recipe.efficiency, QCoreApplication.translate("Export", "Volume", None, QCoreApplication.UnicodeUTF8),recipe.volume, QCoreApplication.translate("Export", "Ebullition", None, QCoreApplication.UnicodeUTF8), recipe.boil)
 
     #Grains
     resultHtml += '<div class="part-container grains">'
@@ -133,7 +133,7 @@ body {background:url(images/furley_bg.png);}
     for f in recipe.listeFermentables:
         fUI=FermentableView(f)
         use = QCoreApplication.translate("Export", "Ajout après ébullition", None, QCoreApplication.UnicodeUTF8) if f.useAfterBoil else ''
-        resultHtml += '<tr><td><span data-toggle="popover" data-trigger="hover" data-html="true" data-content="EBC : %0.f <br/> Rendement : %0.f%% <br/> Type : %s " data-placement="bottom"><a>%s</a></span></td><td>%.0f g</td><td>%s</td></tr>' % (f.color, f.fyield, fUI.fermentableTypeDisplay(), f.name, f.amount, use)
+        resultHtml += '<tr><td><span data-toggle="popover" data-trigger="hover" data-html="true" data-content="%s : %0.f <br/> %s : %0.f%% <br/> %s : %s " data-placement="bottom"><a>%s</a></span></td><td>%.0f g</td><td>%s</td></tr>' % (QCoreApplication.translate("Export", "EBC", None, QCoreApplication.UnicodeUTF8),f.color,QCoreApplication.translate("Export", "Rendement", None, QCoreApplication.UnicodeUTF8), f.fyield, QCoreApplication.translate("Export", "Type", None, QCoreApplication.UnicodeUTF8),fUI.fermentableTypeDisplay(), f.name, f.amount, use)
     resultHtml += '</table></div>'
 
 
@@ -144,7 +144,7 @@ body {background:url(images/furley_bg.png);}
     for h in recipe.listeHops:
         hUI = HopView(h)
         resultHtml += '<tr>'
-        resultHtml += '<td><span data-toggle="popover" data-trigger="hover" data-html="true" data-placement="bottom" data-content="α : %.1f%% <br/> Forme : %s <br/> Proportion : %.1f IBU"><a>%s</a></span></td>' % (h.alpha,hUI.hopFormDisplay(),recipe.compute_IBUPart()[h],h.name)
+        resultHtml += '<td><span data-toggle="popover" data-trigger="hover" data-html="true" data-placement="bottom" data-content="α : %.1f%% <br/> %s : %s <br/> %s : %.1f IBU"><a>%s</a></span></td>' % (h.alpha,QCoreApplication.translate("Export", "Forme", None, QCoreApplication.UnicodeUTF8),hUI.hopFormDisplay(),QCoreApplication.translate("Export", "Proportion", None, QCoreApplication.UnicodeUTF8),recipe.compute_IBUPart()[h],h.name)
         resultHtml += '<td>%.0f g</td>' % h.amount
         # resultHtml += '<td>%s (α %.1f %%, %s)</td>' % (h.name, h.alpha, hUI.hopFormDisplay())
         resultHtml += '<td>%.0f min (%s)</td>' % (h.time, hUI.hopUseDisplay())
@@ -160,7 +160,7 @@ body {background:url(images/furley_bg.png);}
         for m in recipe.listeMiscs:
             mUI = MiscView(m)
             resultHtml += '<tr>'
-            resultHtml += '<td><span <span data-toggle="popover" data-trigger="hover" data-html="true" data-placement="bottom" data-content="Type : %s"><a>%s</a></span></td>' % (mUI.miscTypeDisplay(),m.name)
+            resultHtml += '<td><span <span data-toggle="popover" data-trigger="hover" data-html="true" data-placement="bottom" data-content="%s : %s"><a>%s</a></span></td>' % (QCoreApplication.translate("Export", "Type", None, QCoreApplication.UnicodeUTF8),mUI.miscTypeDisplay(),m.name)
             resultHtml += '<td>%.0f g</td>' % m.amount
             resultHtml += '<td>%.0f min (%s)</td>' % (m.time, mUI.miscUseDisplay())
             resultHtml += '</tr>'
@@ -173,7 +173,7 @@ body {background:url(images/furley_bg.png);}
     for y in recipe.listeYeasts:
         yUI = YeastView(y)
         resultHtml += '<tr>'   
-        resultHtml += '<td data-toggle="popover" data-trigger="hover" data-html="true" data-placement="bottom" data-content="Atténuation : %0.f%% <br/> Forme : %s"><a>%s</a></td>' % (y.attenuation,yUI.yeastFormDisplay(),yUI.yeastDetailDisplay())
+        resultHtml += '<td data-toggle="popover" data-trigger="hover" data-html="true" data-placement="bottom" data-content="%s : %0.f%% <br/> %s : %s"><a>%s</a></td>' % (QCoreApplication.translate("Export", "Atténuation", None, QCoreApplication.UnicodeUTF8),y.attenuation,QCoreApplication.translate("Export", "Forme", None, QCoreApplication.UnicodeUTF8),yUI.yeastFormDisplay(),yUI.yeastDetailDisplay())
         resultHtml += '</tr>'
     resultHtml += '</table></div>'
 
