@@ -34,32 +34,25 @@ class HomePage (QtCore.QObject) :
 		self.homePage = '''
 		<!DOCTYPE html>
 <html lang="fr">
+<!DOCTYPE html>
+<html lang="fr">
 <head>
-<title>HomePage</title>
+<title>%s</title>
 <meta charset="utf-8" />
-<style type="text/css">
-html { font-size:100.01%; background-color:white; }
-body {width:800px;margin:auto;line-height: 1.5;color: #222; font-size:80%; background-color : white;}
-h1,h2,h3,h4,h5,h6 { font-weight: normal; color: #111; }
-h1 { font-size: 2em; margin-bottom: 0; text-align:center; margin-top:200px;}
-h2 { font-size: 1.5em; line-height: 1; margin-bottom: 2em; margin-top:2em; padding-bottom:0.75em; padding-top:0.75em;border-bottom:solid 1px #ddd;clear:both;}
-h3 { font-size: 1.2em; line-height: 1.25; margin-bottom: 1.25em; text-align:center; background-color:#eeeeee; border-bottom:1px solid #cccccc; border-top:1px solid #cccccc; padding:0.5em 0 0.5em 0.5em;}
-
-
-.footer { width:700px;
-margin:auto; 
-margin-top:4em;
-margin-bottom:4em;
-padding:0.5em;
-background-color:#eeeeee;
-border-bottom :1px solid #cccccc;
-border-top :1px solid #cccccc;
-text-align : center;}
-</style>
+<link rel="stylesheet" href="bootstrap/css/bootstrap.css">
+<link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
+    <style>
+body {background:url(images/furley_bg.png);}
+.container{width:800px;margin:auto; margin-top: 16em;background-color: white;border: 1px solid rgba(0, 0, 0, 0.1);box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.08)}
+.container h1{text-align:center;color:;}
+.container h3{text-align:center;color:#999;}
+    </style>
 </head>
 <body>
-<h1>JolieBulle</h1>
-<h3>Brasser librement</h3>
+	<div class="container">
+		<h1>JolieBulle</h1>
+		<h3>Brasser librement</h3>
+	</div class="container">
 </body>
 </html>
 '''
