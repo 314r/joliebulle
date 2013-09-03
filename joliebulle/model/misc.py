@@ -1,8 +1,5 @@
 #!/usr/bin/python3.1
 #­*­coding: utf­8 -­*­
-
-
-
 #JolieBulle 2.9
 #Copyright (C) 2010-2013 Pierre Tavares
 #Copyright (C) 2012-2013 joliebulle's authors
@@ -29,7 +26,8 @@ from model.hop import *
 
 logger = logging.getLogger(__name__)
 
-class Misc:
+
+class Misc(Element):
     """A class for storing Misc attributes"""
     def __init__(self):
         self.name = ''
@@ -40,54 +38,6 @@ class Misc:
     
     def __repr__(self):
         return 'misc[name="%s", amount=%s, type="%s", time=%s, use="%s"]' % (self.name, self.amount, self.type, self.time, self.use)
-        
-    @staticmethod
-    def parse(element):
-        m = Misc()
-        for balise in element:
-            if 'NAME' == balise.tag :
-                m.name = balise.text
-            elif 'AMOUNT' == balise.tag :
-                m.amount = float(balise.text)*1000
-            elif 'TYPE' == balise.tag :
-                if 'Spice' == balise.text :
-                    m.type = model.constants.MISC_TYPE_SPICE
-                elif 'Flavor' == balise.text :
-                    m.type = model.constants.MISC_TYPE_FLAVOR
-                elif 'Water Agent' == balise.text :
-                    m.type = model.constants.MISC_TYPE_WATER
-                elif 'Herb' == balise.text :
-                    m.type = model.constants.MISC_TYPE_HERB
-                elif 'Fining' == balise.text :
-                    m.type = model.constants.MISC_TYPE_FINING
-                elif 'Other' == balise.text :
-                    m.type = model.constants.MISC_TYPE_OTHER
-                else :
-                    m.type = model.constants.MISC_TYPE_OTHER
-
-            elif 'TIME' == balise.tag:
-                try :
-                    m.time = float(balise.text)
-                except : 
-                    m.time = 0.0
-                    logger.debug("misc time attribute is not numeric:%s", balise.text)
-            elif 'USE' == balise.tag:
-                if 'Boil' == balise.text:
-                    m.use = model.constants.MISC_USE_BOIL
-                elif 'Mash' == balise.text:
-                    m.use = model.constants.MISC_USE_MASH
-                elif 'Primary' == balise.text:
-                    m.use = model.constants.MISC_USE_PRIMARY
-                elif 'Secondary' == balise.text:
-                    m.use = model.constants.MISC_USE_SECONDARY
-                elif 'Bottling' == balise.text:
-                    m.use = model.constants.MISC_USE_BOTTLING
-                else :
-                    logger.warn ("Unkown misc use '%s', assuming 'Boil' by default", balise.text)
-                    m.use = model.constants.MISC_USE_BOIL
-
-        #logger.debug(repr(m))
-        return m
 
     def copy(self):
         copy = Misc()

@@ -24,10 +24,12 @@
 import logging
 import model.constants
 import xml.etree.ElementTree as ET
+from model.element import Element
 
 logger = logging.getLogger(__name__)
 
-class Hop:
+
+class Hop(Element):
     """A class for storing Hops attributes"""
     def __init__(self):
         self.name = ''
@@ -52,45 +54,6 @@ class Hop:
 
     def __repr__(self):
         return 'hop[name="%s", amount=%s, form=%s, time=%s, alpha=%s, use=%s]' % (self.name, self.amount, self.form, self.time, self.alpha, self.use)
-
-    @staticmethod
-    def parse(element):
-        h = Hop()
-        for balise in element:
-            if 'NAME' == balise.tag :
-                h.name = balise.text
-            elif 'AMOUNT' == balise.tag :
-                h.amount = 1000*(float(balise.text)) 
-            elif 'FORM' == balise.tag :
-                if 'Pellet' == balise.text:
-                    h.form = model.constants.HOP_FORM_PELLET
-                elif 'Leaf' == balise.text:
-                    h.form = model.constants.HOP_FORM_LEAF
-                elif 'Plug' == balise.text:
-                    h.form = model.constants.HOP_FORM_PLUG
-                else :
-                    logger.warn ("Unkown hop form '%s', assuming 'Pellet' by default", balise.text)
-                    h.form = model.constants.HOP_FORM_PELLET
-            elif 'TIME' == balise.tag :
-                h.time = float(balise.text)
-            elif 'ALPHA' == balise.tag :
-                h.alpha = float(balise.text)
-            elif 'USE' == balise.tag:
-                if 'Boil' == balise.text :
-                    h.use = model.constants.HOP_USE_BOIL
-                elif 'Dry Hop' == balise.text or 'Dry Hopping' == balise.text:
-                    h.use = model.constants.HOP_USE_DRY_HOP
-                elif 'Mash' == balise.text:
-                    h.use = model.constants.HOP_USE_MASH
-                elif 'First Wort' == balise.text:
-                    h.use = model.constants.HOP_USE_FIRST_WORT
-                elif 'Aroma' == balise.text:
-                    h.use = model.constants.HOP_USE_AROMA
-                else :
-                    logger.warn ("Unkown hop use '%s', assuming 'Boil' by default", balise.text)
-                    h.use = model.constants.HOP_USE_BOIL
-                    
-        return h
 
     def copy(self):
         copy = Hop()
