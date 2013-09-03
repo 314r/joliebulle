@@ -85,7 +85,7 @@ def exportBBCode(recipe):
     generatedBbcode += "\n"
 
     if recipe.recipeNotes is not None:
-        generatedBbcode = "[b]" + QCoreApplication.translate("Export", "Notes", None, QCoreApplication.UnicodeUTF8) + \
+        generatedBbcode += "[b]" + QCoreApplication.translate("Export", "Notes", None, QCoreApplication.UnicodeUTF8) + \
                           "\n----------------------[/b]\n" + recipe.recipeNotes
 
     return generatedBbcode
