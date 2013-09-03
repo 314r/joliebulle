@@ -30,12 +30,20 @@ logger = logging.getLogger(__name__)
 class Hop:
     """A class for storing Hops attributes"""
     def __init__(self):
-        self.name = ''
+        self._name = ''
         self.amount = 0.0
         self.form = model.constants.HOP_FORM_LEAF
         self.time = 0.0
         self._alpha = 0.0
         self.use = model.constants.HOP_USE_BOIL
+
+    @property
+    def name(self):
+        return self._name
+
+    @name.setter
+    def name(self, value):
+        self._name = value if value is not None else ''
 
     @property
     def alpha(self):

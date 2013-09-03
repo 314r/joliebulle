@@ -30,11 +30,19 @@ logger = logging.getLogger(__name__)
 class Yeast:
     """A class for storing Yeast attributes"""
     def __init__(self):
-        self.name = ''
+        self._name = ''
         self.form = ''
         self.labo = ''
         self.productId = ''
         self.attenuation = 0.0
+
+    @property
+    def name(self):
+        return self._name
+
+    @name.setter
+    def name(self, value):
+        self._name = value if value is not None else ''
     
     def __repr__(self):
         return ('yeast[name="%s", form=%s, labo=%s, productId=%s, attenuation=%s]' % 
