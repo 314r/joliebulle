@@ -19,10 +19,11 @@
 #You should have received a copy of the GNU General Public License
 #along with this program; if not, write to the Free Software
 #Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
-
+from encodings.punycode import selective_find
 
 import logging
 import model.constants
+from model.element import Element
 from model.fermentable import *
 from model.hop import *
 from model.yeast import *
@@ -33,7 +34,7 @@ from errors import *
 
 logger = logging.getLogger(__name__)
 
-class Recipe:
+class Recipe(Element):
     """A class for storing recipes attributes"""
     def __init__(self):
         self.name = ""
@@ -55,76 +56,6 @@ class Recipe:
     def __repr__(self):
         return ('recipe[name="%s", brewer="%s", type=%s, volume=%s, efficiency=%s, boil=%s, recipeNotes="%s", style="%s"]' %
                 (self.name, self.brewer, self.type, self.volume, self.efficiency, self.boil, self.recipeNotes, self.style) )
-    
-    @staticmethod
-    def parse(tree):
-        logger.debug("Start parsing recipe")
-        recipe = Recipe()
-        
-        presentation=tree.find('.//RECIPE')
-        fermentables=tree.findall('.//FERMENTABLE')
-        hops = tree.findall('.//HOP')
-        levures = tree.findall('.//YEAST')
-        misc = tree.findall('.//MISC')
-        style=tree.find('.//STYLE')
-        mash = tree.find('.//MASH')
-        try:
-            mashStep = mash.findall('.//MASH_STEP')
-        except:
-            pass
-            
-        for element in presentation :
-            if 'NAME' == element.tag : 
-                recipe.name = element.text
-                logger.debug(" Recipe name: %s", recipe.name)
-            if 'BREWER' == element.tag :
-                recipe.brewer = element.text
-                logger.debug(" Recipe brewer: %s", recipe.brewer)
-            if 'TYPE' == element.tag:
-                if "All Grain" == element.text :
-                    recipe.type = model.constants.RECIPE_TYPE_ALL_GRAIN
-                elif "Partial Mash" == element.text :
-                    recipe.type = model.constants.RECIPE_TYPE_PARTIAL_MASH
-                elif "Extract" == element.text :
-                    recipe.type = model.constants.RECIPE_TYPE_EXTRACT
-                logger.debug(" Recipe type: %s", recipe.type)
-            if "BATCH_SIZE" == element.tag :
-                recipe.volume = float(element.text)
-                logger.debug(" Recipe volume: %s", recipe.volume)
-            if "EFFICIENCY" == element.tag :
-                recipe.efficiency= float(element.text)
-                logger.debug(" Recipe efficiency: %s", recipe.efficiency)
-            if "BOIL_TIME" == element.tag :
-                recipe.boil = float(element.text)
-                logger.debug(" Recipe boil time: %s", recipe.boil)
-            if "NOTES" == element.tag :
-                recipe.recipeNotes = element.text
-                logger.debug(" Recipe notes: %s", recipe.recipeNotes)
-        try :
-            for element in style :
-                if "NAME" == element.tag :
-                    recipe.style = element.text
-        except TypeError :
-            recipe.style = ""
-
-        try :
-            recipe.mash = Mash.parse(mash)
-        except :
-            pass
-
-        for element in fermentables:
-            recipe.listeFermentables.append( Fermentable.parse(element) )
-        for element in hops:
-            recipe.listeHops.append(Hop.parse(element))
-        for element in levures:
-            recipe.listeYeasts.append(Yeast.parse(element))
-        for element in misc:
-            recipe.listeMiscs.append(Misc.parse(element))
-
-        #logger.debug(repr(recipe))
-        logger.debug("End parsing recipe")
-        return recipe
-
 
     def export(self, type):
         return RecipeExporterRepository[type](self)

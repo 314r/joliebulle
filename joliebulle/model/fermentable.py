@@ -23,10 +23,11 @@
 import logging
 import model.constants
 import xml.etree.ElementTree as ET
+from model.element import Element
 
 logger = logging.getLogger(__name__)
 
-class Fermentable:
+class Fermentable(Element):
     """"A class for storing Fermentable attributes"""
 
     def __init__(self):
@@ -41,44 +42,6 @@ class Fermentable:
     def __repr__(self):
         return ('fermentable[name="%s", amount=%s, type=%s, yield=%s, recommendMash=%s, color=%s, useAfterBoil=%s]' % 
             (self.name, self.amount, self.type, self.fyield, self.recommendMash, self.color, self.useAfterBoil) )
-
-    @staticmethod
-    def parse(element):
-        f = Fermentable()
-        for balise in element:
-            if 'NAME' == balise.tag:
-                f.name = balise.text
-            elif 'AMOUNT' == balise.tag:
-                f.amount = 1000*(float(balise.text))
-            elif 'TYPE' == balise.tag:
-                if 'Grain' == balise.text:
-                    f.type = model.constants.FERMENTABLE_TYPE_GRAIN
-                elif 'Sugar' == balise.text:
-                    f.type = model.constants.FERMENTABLE_TYPE_SUGAR
-                elif 'Extract' == balise.text:
-                    f.type = model.constants.FERMENTABLE_TYPE_EXTRACT
-                elif 'Dry Extract' == balise.text:
-                    f.type = model.constants.FERMENTABLE_TYPE_DRY_EXTRACT
-                elif 'Adjunct' == balise.text:
-                    f.type = model.constants.FERMENTABLE_TYPE_ADJUNCT
-                else:
-                    logger.warn ("Unkown fermentable type '%', assuming 'Sugar' by default", balise.text)
-                    f.type = model.constants.FERMENTABLE_TYPE_SUGAR
-            elif 'YIELD' == balise.tag:
-                f.fyield = float(balise.text)
-            elif 'RECOMMEND_MASH' == balise.tag:
-                f.recommendMash = balise.text
-            elif 'COLOR' == balise.tag:
-                #ATTENTION ! le format BeerXML utilise des unités SRM ! 
-                #srm*1.97 =ebc
-                f.color = float(balise.text)*1.97
-            elif 'ADD_AFTER_BOIL' == balise.tag:
-                if balise.text == 'FALSE' :
-                    f.useAfterBoil = False
-                elif balise.text == 'TRUE':
-                    f.useAfterBoil = True
-        #logger.debug(repr(f))
-        return f
 
     def equivSucre(self):
         #division par 1000 et 100 pour passer des g aux kg et parce que le rendement est un pourcentage

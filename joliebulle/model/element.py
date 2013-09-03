@@ -1,10 +1,8 @@
-#!/usr/bin/python3.1
+#!/usr/bin/python3
 #­*­coding: utf­8 -­*­
 
 #JolieBulle 2.9
-#Copyright (C) 2010-2013 Pierre Tavares
-#Copyright (C) 2012-2013 joliebulle's authors
-#See AUTHORS file.
+#Copyright (C) 2013 Thomas Gerbet
 
 #This program is free software; you can redistribute it and/or
 #modify it under the terms of the GNU General Public License
@@ -21,25 +19,8 @@
 #Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 
-import logging
-from model.mashstep import *
-
-logger = logging.getLogger(__name__)
-
-
-class Mash(Element):
-    def __init__(self):
-        self.name = ""
-        self.grainTemp = ""
-        self.tunTemp = ""
-        self.spargeTemp = "0"
-        self.ph = 0.0
-        self.listeSteps = list()
-
-    def __repr__(self):
-        return ('mash[name="%s", grainTemp="%s", tunTemp=%s, spargeTemp=%s, ph=%s]' %
-                (self.name, self.grainTemp, self.tunTemp, self.spargeTemp, self.ph) )
-
-        logger.debug(repr(m))
-        return m
-
+class Element:
+    @classmethod
+    def parse(cls, data, parser="beerxml"):
+        from helper.recipeImporterRepository import RecipeImporterRepository
+        return RecipeImporterRepository[parser][cls](data)

@@ -27,7 +27,8 @@ from model.hop import *
 
 logger = logging.getLogger(__name__)
 
-class Yeast:
+
+class Yeast(Element):
     """A class for storing Yeast attributes"""
     def __init__(self):
         self.name = ''
@@ -39,30 +40,6 @@ class Yeast:
     def __repr__(self):
         return ('yeast[name="%s", form=%s, labo=%s, productId=%s, attenuation=%s]' % 
                 (self.name, self.form, self.labo, self.productId, self.attenuation))
-
-    @staticmethod
-    def parse(element):
-        y = Yeast()
-        for balise in element:
-            if 'NAME' == balise.tag :
-                y.name = balise.text
-            elif 'FORM' == balise.tag :
-                if 'Liquid' == balise.text :
-                    y.form = model.constants.YEAST_FORM_LIQUID
-                elif 'Dry' == balise.text :
-                    y.form = model.constants.YEAST_FORM_DRY
-                elif 'Slant' == balise.text :
-                    y.form = model.constants.YEAST_FORM_SLANT
-                elif 'Culture' == balise.text :
-                    y.form = model.constants.YEAST_FORM_CULTURE  
-            elif 'LABORATORY' == balise.tag :
-                y.labo = balise.text
-            elif 'PRODUCT_ID' == balise.tag :
-                y.productId = balise.text
-            elif 'ATTENUATION' == balise.tag:
-                y.attenuation = float(balise.text)
-        #logger.debug(repr(y))
-        return y
 
     def copy(self):
         copy = Yeast()

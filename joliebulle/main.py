@@ -1581,9 +1581,8 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
 
     def importBeerXML(self) :
         fichierBeerXML = self.s
-        try :
-            arbre = ET.parse(fichierBeerXML)
-            self.recipe = Recipe.parse(arbre)
+        try:
+            self.recipe = Recipe.parse(fichierBeerXML)
             self.lineEditRecette.setText(self.recipe.name)
             self.lineEditGenre.setText(self.recipe.style)
             self.doubleSpinBox_2Volume.setValue(self.recipe.volume)
