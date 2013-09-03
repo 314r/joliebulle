@@ -43,8 +43,8 @@ class HomePage (QtCore.QObject) :
 <link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
     <style>
 body {background:url(images/furley_bg.png);}
-.container{width:800px;margin:auto; margin-top: 16em;background-color: white;border: 1px solid rgba(0, 0, 0, 0.1);box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.08)}
-.container h1{text-align:center;color:;}
+.container{width:800px;margin:auto; margin-top: 16em;background-color: white;border: 1px solid rgba(0, 0, 0, 0.1);box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.08);}
+.container h1{text-align:center;}
 .container h3{text-align:center;color:#999;}
     </style>
 </head>

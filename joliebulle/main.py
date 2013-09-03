@@ -1736,13 +1736,13 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         self.recipe.style = self.lineEditGenre.text()
         fichier = QtGui.QFileDialog.getSaveFileName (self,
                                                     self.trUtf8("Enregistrer dans un fichier"),
-                                                    self.recipe.name,
+                                                    self.recipe.name+".html",
                                                     "HTML (*.html)")
         fileHtml = QtCore.QFile(fichier)
         if fileHtml.open(QtCore.QIODevice.WriteOnly):
             try:
                 stream = QtCore.QTextStream(fileHtml)
-                stream << self.recipe.export("html")
+                stream << self.recipe.export("html-legacy")
             finally:
                 fileHtml.close()
         else:
@@ -2265,9 +2265,12 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         dialog = QtGui.QPrintDialog(printer)
         dialog.setModal(True)
         dialog.setWindowTitle("Print Document" )
-        # dialog.addEnabledOption(QAbstractPrintDialog.PrintSelection)
         if dialog.exec_() == True:
-            self.webViewBiblio.print(printer)
+            # self.webViewBiblio.print(printer)
+            document=QtGui.QTextDocument()
+            stringHtml=self.recipe.export("print")
+            document.setHtml(stringHtml)
+            document.print(printer)
                 
 
 # from plugins import PluginManager
