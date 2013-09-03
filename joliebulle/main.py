@@ -675,13 +675,9 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         self.connect(self.treeViewBiblio, QtCore.SIGNAL("doubleClicked(const QModelIndex &)"), self.viewRecipeBiblio)
         self.connect(self.treeViewBiblio, QtCore.SIGNAL("clicked(const QModelIndex &)"), self.viewRecipeBiblio)
 
-        self.widgetSwitchButtons.hide()
-        self.pushButtonEditCurrentRecipe.clicked.connect(self.editCurrentRecipe)
-
         # self.pushButtonRemoveRecipeBiblio.clicked.connect(self.supprimerBiblio)
         # self.pushButtonNewFolderBiblio.clicked.connect(self.createFolder)
         # self.pushButtonEditRecipeBiblio.clicked.connect(self.renommerBiblio)
-        self.pushButtonBrewRecipeBiblio.clicked.connect(self.switchToBrewday)
 
         self.listdir(recettes_dir)
         # self.delegRecipes=RecipesDelegate(self)
@@ -845,8 +841,6 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
 
 
     def viewRecipeBiblio(self):
-        self.pushButtonEditCurrentRecipe.setEnabled(True)
-        self.pushButtonBrewRecipeBiblio.setEnabled(True)
         self.actionEnregistrer.setEnabled(True)
         self.actionEnregistrer_Sous.setEnabled(True)
         self.actionExporterHtml.setEnabled(True)
