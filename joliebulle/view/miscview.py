@@ -35,6 +35,15 @@ class MiscViewLabels(QtCore.QObject):
 			model.constants.MISC_USE_BOTTLING	: self.trUtf8('Embouteillage')
 		}
 
+		self.typeLabels = {
+			model.constants.MISC_TYPE_SPICE : self.trUtf8('Épice'),
+			model.constants.MISC_TYPE_FLAVOR : self.trUtf8('Arôme'),
+			model.constants.MISC_TYPE_WATER : self.trUtf8('Traitement Eau'),
+			model.constants.MISC_TYPE_HERB : self.trUtf8('Herbe'),
+			model.constants.MISC_TYPE_FINING : self.trUtf8('Clarifiant'),
+			model.constants.MISC_TYPE_OTHER : self.trUtf8('Autre')
+		}
+
 class MiscView(QtCore.QObject):
 	def __init__(self, misc):
 		QtCore.QObject.__init__(self)
@@ -47,6 +56,12 @@ class MiscView(QtCore.QObject):
 			return self.miscLabels.useLabels[self.model.use]
 		except KeyError :
 			return '?miscUseDisplay?'
+	def miscTypeDisplay(self):
+		try:
+			return self.miscLabels.typeLabels[self.model.type]
+		except KeyError :
+			return '?miscTypeDisplay?'
+
 
 	def QStandardItem_for_name_type(self):
 		'''Return a QStandardItem for displaying Misc name attribute.

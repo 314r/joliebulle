@@ -675,13 +675,9 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         self.connect(self.treeViewBiblio, QtCore.SIGNAL("doubleClicked(const QModelIndex &)"), self.viewRecipeBiblio)
         self.connect(self.treeViewBiblio, QtCore.SIGNAL("clicked(const QModelIndex &)"), self.viewRecipeBiblio)
 
-
-        self.pushButtonEditCurrentRecipe.clicked.connect(self.editCurrentRecipe)
-
         # self.pushButtonRemoveRecipeBiblio.clicked.connect(self.supprimerBiblio)
         # self.pushButtonNewFolderBiblio.clicked.connect(self.createFolder)
         # self.pushButtonEditRecipeBiblio.clicked.connect(self.renommerBiblio)
-        self.pushButtonBrewRecipeBiblio.clicked.connect(self.switchToBrewday)
 
         self.listdir(recettes_dir)
         # self.delegRecipes=RecipesDelegate(self)
@@ -845,8 +841,6 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
 
 
     def viewRecipeBiblio(self):
-        self.pushButtonEditCurrentRecipe.setEnabled(True)
-        self.pushButtonBrewRecipeBiblio.setEnabled(True)
         self.actionEnregistrer.setEnabled(True)
         self.actionEnregistrer_Sous.setEnabled(True)
         self.actionExporterHtml.setEnabled(True)
@@ -866,6 +860,8 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
             pyDir = os.path.abspath(os.path.dirname(__file__))
             baseUrl = QtCore.QUrl.fromLocalFile(os.path.join(pyDir, "static/"))
             self.webViewBiblio.setHtml(self.recipe.export("html"), baseUrl)
+            self.webViewBiblio.page().mainFrame().addToJavaScriptWindowObject("main", self)
+
             # self.modele.blockSignals(True)
             #logger.debug("viewRecipeBiblio -> MVC")
             #self.MVC()
@@ -875,8 +871,10 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
 
     def setHomePage(self) :
         home = HomePage()
+        pyDir = os.path.abspath(os.path.dirname(__file__))
+        baseUrl = QtCore.QUrl.fromLocalFile(os.path.join(pyDir, "static/"))
         home.generateHomePage()
-        self.webViewBiblio.setHtml(home.homePage, )
+        self.webViewBiblio.setHtml(home.homePage, baseUrl)
 
 
     def listdir(self, rootdir) :
@@ -955,7 +953,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
                 except:
                     pass
   
-
+    @QtCore.pyqtSlot()               
     def editCurrentRecipe(self):
         self.switchToEditor()
         self.s = self.chemin
@@ -1207,7 +1205,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
     def switchToMash(self) :
         self.stackedWidget.setCurrentIndex(3)        
 
-        
+    @QtCore.pyqtSlot()     
     def switchToBrewday(self) :
         if not self.recipe.mash.listeSteps and self.recipe.type != 2 : 
             errors = Errors()
@@ -1732,13 +1730,13 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         self.recipe.style = self.lineEditGenre.text()
         fichier = QtGui.QFileDialog.getSaveFileName (self,
                                                     self.trUtf8("Enregistrer dans un fichier"),
-                                                    self.recipe.name,
+                                                    self.recipe.name+".html",
                                                     "HTML (*.html)")
         fileHtml = QtCore.QFile(fichier)
         if fileHtml.open(QtCore.QIODevice.WriteOnly):
             try:
                 stream = QtCore.QTextStream(fileHtml)
-                stream << self.recipe.export("html")
+                stream << self.recipe.export("html-legacy")
             finally:
                 fileHtml.close()
         else:
@@ -2261,9 +2259,12 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         dialog = QtGui.QPrintDialog(printer)
         dialog.setModal(True)
         dialog.setWindowTitle("Print Document" )
-        # dialog.addEnabledOption(QAbstractPrintDialog.PrintSelection)
         if dialog.exec_() == True:
-            self.webViewBiblio.print(printer)
+            # self.webViewBiblio.print(printer)
+            document=QtGui.QTextDocument()
+            stringHtml=self.recipe.export("print")
+            document.setHtml(stringHtml)
+            document.print(printer)
                 
 
 # from plugins import PluginManager

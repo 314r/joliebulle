@@ -37,7 +37,15 @@ setup_info = dict(
             "Images/*.png",
             "Samples/*.xml",
             "*/*.py",
-            "*/*/*.py"
+            "*/*/*.py",
+            "static/bootstrap/LICENCE",
+            "static/bootstrap/css/*",
+            "static/bootstrap/js/*",
+            "static/chartjs/*",
+            "static/images/*",
+            "static/font-awesome/css/*",
+            "static/font-awesome/font/*",
+            "static/jquery/*",
         ]
     },
     setup_requires=['py2app'],

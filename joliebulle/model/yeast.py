@@ -47,7 +47,14 @@ class Yeast:
             if 'NAME' == balise.tag :
                 y.name = balise.text
             elif 'FORM' == balise.tag :
-                y.form = balise.text
+                if 'Liquid' == balise.text :
+                    y.form = model.constants.YEAST_FORM_LIQUID
+                elif 'Dry' == balise.text :
+                    y.form = model.constants.YEAST_FORM_DRY
+                elif 'Slant' == balise.text :
+                    y.form = model.constants.YEAST_FORM_SLANT
+                elif 'Culture' == balise.text :
+                    y.form = model.constants.YEAST_FORM_CULTURE  
             elif 'LABORATORY' == balise.tag :
                 y.labo = balise.text
             elif 'PRODUCT_ID' == balise.tag :
