@@ -20,6 +20,17 @@
 
 
 class Element:
+    def __init__(self):
+        self._name=''
+
+    @property
+    def name(self):
+        return self._name
+
+    @name.setter
+    def name(self, value):
+        self._name = value if value is not None else '' 
+
     @classmethod
     def parse(cls, data, parser="beerxml"):
         from helper.recipeImporterRepository import RecipeImporterRepository
