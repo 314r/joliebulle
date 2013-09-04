@@ -29,12 +29,20 @@ logger = logging.getLogger(__name__)
 
 class MashStep(Element):
     def __init__(self):
-        self.name = ""
+        self._name = ""
         self.type = ""
         self.time = ""
         self.temp = ""
         self.infuseAmount = 0.0
         self.version = 1
+
+    @property
+    def name(self):
+        return self._name
+
+    @name.setter
+    def name(self, value):
+        self._name = value if value is not None else ''
 
     def __repr__(self):
         return ('mashStep[name="%s", type="%s", time=%s, temp=%s, infuseAmount=%f, version=%d]' %

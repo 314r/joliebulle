@@ -31,13 +31,21 @@ class Fermentable(Element):
     """"A class for storing Fermentable attributes"""
 
     def __init__(self):
-        self.name = ''
+        self._name = ''
         self.amount = 0.0
         self.type = ''
         self.fyield = 0.0
         self.recommendMash = ''
         self.color = 0.0
         self.useAfterBoil = False
+
+    @property
+    def name(self):
+        return self._name
+
+    @name.setter
+    def name(self, value):
+        self._name = value if value is not None else ''
 
     def __repr__(self):
         return ('fermentable[name="%s", amount=%s, type=%s, yield=%s, recommendMash=%s, color=%s, useAfterBoil=%s]' % 

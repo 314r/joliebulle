@@ -30,11 +30,19 @@ logger = logging.getLogger(__name__)
 class Misc(Element):
     """A class for storing Misc attributes"""
     def __init__(self):
-        self.name = ''
+        self._name = ''
         self.amount = 0.0
         self.type = ''
         self.time = 0.0
         self.use = model.constants.MISC_USE_BOIL
+
+    @property
+    def name(self):
+        return self._name
+
+    @name.setter
+    def name(self, value):
+        self._name = value if value is not None else ''
     
     def __repr__(self):
         return 'misc[name="%s", amount=%s, type="%s", time=%s, use="%s"]' % (self.name, self.amount, self.type, self.time, self.use)

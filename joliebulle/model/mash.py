@@ -29,12 +29,20 @@ logger = logging.getLogger(__name__)
 
 class Mash(Element):
     def __init__(self):
-        self.name = ""
+        self._name = ""
         self.grainTemp = ""
         self.tunTemp = ""
         self.spargeTemp = "0"
         self.ph = 0.0
         self.listeSteps = list()
+
+    @property
+    def name(self):
+        return self._name
+
+    @name.setter
+    def name(self, value):
+        self._name = value if value is not None else ''
 
     def __repr__(self):
         return ('mash[name="%s", grainTemp="%s", tunTemp=%s, spargeTemp=%s, ph=%s]' %

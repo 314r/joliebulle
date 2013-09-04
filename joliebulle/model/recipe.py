@@ -37,7 +37,7 @@ logger = logging.getLogger(__name__)
 class Recipe(Element):
     """A class for storing recipes attributes"""
     def __init__(self):
-        self.name = ""
+        self._name = ""
         self.brewer = ""
         self.type = model.constants.RECIPE_TYPE_ALL_GRAIN
         self.volume = 0.0
@@ -51,7 +51,14 @@ class Recipe(Element):
         self.listeYeasts = list()
         self.listeMiscs = list()
         self.listeMashSteps = list()
-        
+
+    @property
+    def name(self):
+        return self._name
+
+    @name.setter
+    def name(self, value):
+        self._name = value if value is not None else ''
 
     def __repr__(self):
         return ('recipe[name="%s", brewer="%s", type=%s, volume=%s, efficiency=%s, boil=%s, recipeNotes="%s", style="%s"]' %
