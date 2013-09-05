@@ -30,7 +30,6 @@ logger = logging.getLogger(__name__)
 class Misc(Element):
     """A class for storing Misc attributes"""
     def __init__(self):
-        self.name = ''
         self.amount = 0.0
         self.type = ''
         self.time = 0.0

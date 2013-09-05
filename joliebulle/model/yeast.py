@@ -31,7 +31,6 @@ logger = logging.getLogger(__name__)
 class Yeast(Element):
     """A class for storing Yeast attributes"""
     def __init__(self):
-        self.name = ''
         self.form = ''
         self.labo = ''
         self.productId = ''
