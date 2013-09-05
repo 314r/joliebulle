@@ -31,7 +31,6 @@ class Fermentable(Element):
     """"A class for storing Fermentable attributes"""
 
     def __init__(self):
-        self.name = ''
         self.amount = 0.0
         self.type = ''
         self.fyield = 0.0

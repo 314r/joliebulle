@@ -32,7 +32,6 @@ logger = logging.getLogger(__name__)
 class Hop(Element):
     """A class for storing Hops attributes"""
     def __init__(self):
-        self.name = ''
         self.amount = 0.0
         self.form = model.constants.HOP_FORM_LEAF
         self.time = 0.0
