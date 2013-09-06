@@ -34,6 +34,7 @@ from PyQt4 import QtGui
 from PyQt4 import QtCore
 from reader_ui import *
 from settings import *
+from about import *
 from base import *
 from editgrain import *
 from edithoublon import *
@@ -1608,7 +1609,6 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
             errors = Errors()
             errors.warningXml()
             
-                    
     def displayProfile(self) :     
         self.labelOGV.setText("%.3f" %(self.recipe.compute_OG()))
         self.labelFGV.setText("%.3f" %(self.recipe.compute_FG() ))
@@ -1617,7 +1617,6 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         self.labelAlcv.setText("%.1f%%" %(self.recipe.compute_ABV() ))
         self.labelRatioBuGu.setText("%.1f" %(self.recipe.compute_ratioBUGU()))
         
-       
     def openRecipeFile(self,filePath):
         self.s = filePath
         self.nouvelle()
@@ -1625,13 +1624,10 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         self.initModele()
         self.switchToEditor()
 
-    
     def about(self) : 
-        QtGui.QMessageBox.about(self,
-                self.trUtf8("A propos"),
-                self.trUtf8("<h1>JolieBulle</h1> <b>version 2.9</b><br/>copyright (c) 2010-2013 Pierre Tavares.<br/>copyright (c) 2012-2013 Les auteurs de JolieBulle.<p> JolieBulle est un logiciel de lecture et de formulation de recettes de brassage.</p><p><a href =http://www.gnu.org/licenses/gpl-3.0.html>Licence : Version 3 de la Licence Générale Publique GNU</a></p><p>Certaines icônes proviennent du pack Faenza par Tiheum (Matthieu James), également distribué sous licence GPL.</p> <p>Auteurs : Pierre Tavares, Nicolas Jouanin, Thomas Gerbet</p>"))
-        
-            
+        about = DialogAbout(self)
+        about.show()
+                  
     def rendemt_changed(self) :
         if self.checkBoxIng.isChecked() :
             try:
@@ -1642,7 +1638,6 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
                 self.recipe.efficiency = self.doubleSpinBoxRendemt.value()
             except ZeroDivisionError:
                 pass
-
         else :
             self.recipe.efficiency = self.doubleSpinBoxRendemt.value()
         self.initModele()                    

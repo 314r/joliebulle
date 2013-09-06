@@ -32,11 +32,12 @@ Copyright (c) 2013 Nick Downie
 MIT License
 
 
-JolieBulle utilise des images de http://subtlepatterns.com/, à l'origine sous Creative Commons Attribution-ShareAlike 3.0 Unported, avec la permission de Atle Mo.
+JolieBulle utilise des icônes du pack Faenza par Tiheum (Matthieu James), sous licence GPL.
+JolieBulle uses some icons from the Faenza pack by Tiheum (Matthieu James), under GPL.
 
+JolieBulle utilise des images de http://subtlepatterns.com/, à l'origine sous Creative Commons Attribution-ShareAlike 3.0 Unported, avec la permission de Atle Mo.
 JolieBulle uses some images from http://subtlepatterns.com/, originally under Creative Commons Attribution-ShareAlike 3.0 Unported license, with the permission of Atle Mo.
 
 Le design html/css des recettes s'inspire lourdement du design de l'application Alt Reader par David Johnstone, sous licence MIT : https://github.com/davidjohnstone/alt
-
-Recipe html/css design is heavily inspired by Alt Reader by David Johnstone, under a MIT license : https://github.com/davidjohnstone/alt
+Recipes design (html/css) is heavily inspired by Alt Reader by David Johnstone, under a MIT license : https://github.com/davidjohnstone/alt
 

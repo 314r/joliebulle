@@ -79,19 +79,7 @@ body {background:url(images/furley_bg.png);}
     </style>
 </head>
 <body onload="createChart();">
-''' %(recipe.name)
-
-    #Profil
-    # resultHtml += '<table class="profil">'
-    # resultHtml += '<tr><td>%s</td><td>%.1f %%</td></tr>' % (QCoreApplication.translate("Export", "Rendement : ", None, QCoreApplication.UnicodeUTF8), recipe.efficiency)
-    # resultHtml += '<tr><td>%s</td><td>%.0f min</td></tr>' % (QCoreApplication.translate("Export", "Ébullition : ", None, QCoreApplication.UnicodeUTF8), recipe.boil)
-    # resultHtml += '<tr><td>%s</td><td>%.3f</td></tr>' % (QCoreApplication.translate("Export", "Densité initiale : ", None, QCoreApplication.UnicodeUTF8), recipe.compute_OG())
-    # resultHtml += '<tr><td>%s</td><td>%.3f</td></tr>' % (QCoreApplication.translate("Export", "Densité finale : ", None, QCoreApplication.UnicodeUTF8), recipe.compute_FG())
-    # resultHtml += '<tr><td>%s</td><td>%.0f EBC</td></tr>' % (QCoreApplication.translate("Export", "Teinte : ", None, QCoreApplication.UnicodeUTF8), recipe.compute_EBC())
-    # resultHtml += '<tr><td>%s</td><td>%.0f IBU</td></tr>' % (QCoreApplication.translate("Export", "Amertume : ", None, QCoreApplication.UnicodeUTF8), recipe.compute_IBU())
-    # resultHtml += '<tr><td>%s</td><td>%.1f</td></tr>' % (QCoreApplication.translate("Export", "Ratio BU/GU : ", None, QCoreApplication.UnicodeUTF8), recipe.compute_ratioBUGU())
-    # resultHtml += '<tr><td>%s</td><td>%.1f %%</td></tr>' % (QCoreApplication.translate("Export", "Alcool (vol) : ", None, QCoreApplication.UnicodeUTF8), recipe.compute_ABV())
-    # resultHtml += '</table>'
+''' %(recipe.name)    
 
     #Navbar
     resultHtml += '''<div class="beer-profile">
