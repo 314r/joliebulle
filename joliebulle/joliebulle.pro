@@ -1,4 +1,5 @@
 FORMS            += reader.ui
+FORMS            += about.ui
 FORMS            += densimetre.ui
 FORMS            += editorG.ui
 FORMS            += editorH.ui
@@ -16,6 +17,7 @@ FORMS            += preferences.ui
 FORMS            += stepAdjust.ui
 FORMS            += stepEditor.ui
 
+SOURCES          += about.py
 SOURCES          += base.py
 SOURCES          += brewCalc.py
 SOURCES          += main.py
