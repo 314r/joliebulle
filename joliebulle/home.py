@@ -39,7 +39,7 @@ class HomePage (QtCore.QObject) :
 <head>
 <title>%s</title>
 <meta charset="utf-8" />
-<link rel="stylesheet" href="bootstrap/css/bootstrap.css">
+<link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
 <link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
     <style>
 body {background:url(images/furley_bg.png);}

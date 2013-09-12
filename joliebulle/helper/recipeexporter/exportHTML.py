@@ -36,7 +36,7 @@ def exportHTML(recipe):
 <head>
 <title>%s</title>
 <meta charset="utf-8" />
-<link rel="stylesheet" href="bootstrap/css/bootstrap.css">
+<link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
 <link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
     <style>
 body {background:url(images/furley_bg.png);}
@@ -203,7 +203,7 @@ body {background:url(images/furley_bg.png);}
 
     #Le javascript
     resultHtml += '''<script src="jquery/jquery.js"></script>
-                     <script src="bootstrap/js/bootstrap.js"></script>
+                     <script src="bootstrap/js/bootstrap.min.js"></script>
                      <script src="chartjs/Chart.js"></script>'''
 
     #Tooltips
