@@ -176,7 +176,7 @@ body {background:url(images/furley_bg.png);}
     for step in recipe.mash.listeSteps:
         mashStepUI = MashStepView(step)
         #la chaine utilisée pour le graphique :
-        stepsNameString += '''"%s (%s min)", "",''' %(step.name, step.time)
+        stepsNameString += '''"%s (%s min)", "",''' %(step.name[:15], step.time)
         stepsTempString += '''%s, %s, ''' %(step.temp,step.temp)
         resultHtml += '<p><span class="label-step">%s</span> %s %s %s %s °C %s %s %s</p>' % (step.name,
                                                            QCoreApplication.translate("Export", "palier de type", None, QCoreApplication.UnicodeUTF8),
@@ -246,11 +246,11 @@ function createChart()
                             bezierCurve : false,
                             scaleOverride : true,
                             //Number - The number of steps in a hard coded scale
-                            scaleSteps : 12,
+                            scaleSteps : 10,
                             //Number - The value jump in the hard coded scale
-                            scaleStepWidth : 1,
+                            scaleStepWidth : 3,
                             //Number - The scale starting value
-                            scaleStartValue : 65,
+                            scaleStartValue : 50,
                             
             };
  
