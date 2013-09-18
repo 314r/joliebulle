@@ -267,8 +267,8 @@ function createChart()
 
 
 def shorten (name) :
-    if len(name) < 31 :
+    if len(name) < 25 :
         shortName = name
     else :
-        shortName = name[:28] + '...'
+        shortName = name[:22] + '...'
     return shortName
