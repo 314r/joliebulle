@@ -91,7 +91,7 @@ body {background:url(images/furley_bg.png);}
                         <span data-toggle="tooltip" data-placement="bottom" title="%s">%.0f %s</span> 
                         <span data-toggle="tooltip" data-placement="bottom" title="%s">%.0f %s</span>
 
-                    </div>''' % (recipe.name,QCoreApplication.translate("Export", "Taux d'alcool", None, QCoreApplication.UnicodeUTF8),QCoreApplication.translate("Export", "Alc", None, QCoreApplication.UnicodeUTF8), recipe.compute_ABV(), QCoreApplication.translate("Export", "Ratio amertume/densité", None, QCoreApplication.UnicodeUTF8),QCoreApplication.translate("Export", "BU/GU", None, QCoreApplication.UnicodeUTF8),recipe.compute_ratioBUGU(), QCoreApplication.translate("Export", "Densité finale", None, QCoreApplication.UnicodeUTF8),QCoreApplication.translate("Export", "DF", None, QCoreApplication.UnicodeUTF8),recipe.compute_FG(), QCoreApplication.translate("Export", "Densité initiale", None, QCoreApplication.UnicodeUTF8), QCoreApplication.translate("Export", "DI", None, QCoreApplication.UnicodeUTF8),recipe.compute_OG(), QCoreApplication.translate("Export", "Teinte", None, QCoreApplication.UnicodeUTF8),recipe.compute_EBC(),QCoreApplication.translate("Export", "EBC", None, QCoreApplication.UnicodeUTF8), QCoreApplication.translate("Export", "Amertume", None, QCoreApplication.UnicodeUTF8),recipe.compute_IBU(),QCoreApplication.translate("Export", "IBU", None, QCoreApplication.UnicodeUTF8),)
+                    </div>''' % (shorten(recipe.name),QCoreApplication.translate("Export", "Taux d'alcool", None, QCoreApplication.UnicodeUTF8),QCoreApplication.translate("Export", "Alc", None, QCoreApplication.UnicodeUTF8), recipe.compute_ABV(), QCoreApplication.translate("Export", "Ratio amertume/densité", None, QCoreApplication.UnicodeUTF8),QCoreApplication.translate("Export", "BU/GU", None, QCoreApplication.UnicodeUTF8),recipe.compute_ratioBUGU(), QCoreApplication.translate("Export", "Densité finale", None, QCoreApplication.UnicodeUTF8),QCoreApplication.translate("Export", "DF", None, QCoreApplication.UnicodeUTF8),recipe.compute_FG(), QCoreApplication.translate("Export", "Densité initiale", None, QCoreApplication.UnicodeUTF8), QCoreApplication.translate("Export", "DI", None, QCoreApplication.UnicodeUTF8),recipe.compute_OG(), QCoreApplication.translate("Export", "Teinte", None, QCoreApplication.UnicodeUTF8),recipe.compute_EBC(),QCoreApplication.translate("Export", "EBC", None, QCoreApplication.UnicodeUTF8), QCoreApplication.translate("Export", "Amertume", None, QCoreApplication.UnicodeUTF8),recipe.compute_IBU(),QCoreApplication.translate("Export", "IBU", None, QCoreApplication.UnicodeUTF8),)
 
 
 
@@ -264,3 +264,11 @@ function createChart()
     resultHtml += '</body></html>'
 
     return resultHtml
+
+
+def shorten (name) :
+    if len(name) < 31 :
+        shortName = name
+    else :
+        shortName = name[:28] + '...'
+    return shortName
