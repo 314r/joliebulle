@@ -58,6 +58,8 @@ from sys import platform
 if platform == 'darwin':
     from setuptools import setup
     setup_info['data_files'] = ["joliebulle/database.xml","joliebulle/mash.xml", "dist/Mac/qt.conf"]
+    setup_info['data_files'] += ["joliebulle/static/"]
+    setup_info['data_files'] += ["joliebulle/"]
 elif platform.startswith('linux'):
     from distutils.core import setup
     setup_info['packages'] = [ "joliebulle" ]
