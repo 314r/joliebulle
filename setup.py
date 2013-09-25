@@ -19,7 +19,6 @@ setup_info = dict(
                 CFBundleGetInfoString      = NAME + " " + VERSION,
                 CFBundleExecutable         = NAME,
                 CFBundleIdentifier         = "com.joliebulle",
-                LSEnvironment			   = {'LC_ALL':'en_US.UTF-8'}
             ),
             argv_emulation=True,
             includes=['sip', 'PyQt4','PyQt4.QtNetwork'],
