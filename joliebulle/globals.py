@@ -39,6 +39,7 @@ if platform == 'win32':
     mash_file = os.path.join(os.path.expanduser("~"), "AppData", "Local", "joliebulle", "mash.xml")
     samples_dir = 'Samples'
     samples_target = os.path.join(os.path.expanduser("~"), "AppData", "Local", "joliebulle", "recettes","Samples")
+    journal_file = os.path.join(os.path.expanduser("~"), "AppData", "Local", "joliebulle", "journal.json")
     
 elif platform == 'darwin':
     home_dir = os.path.expanduser("~")
@@ -54,6 +55,7 @@ elif platform == 'darwin':
     mash_root = os.path.join(resourcePath, "mash.xml")
     samples_dir='Samples'
     samples_target = os.path.join(os.path.expanduser("~"), ".config", "joliebulle", "recettes", "Samples")
+    journal_file = os.path.join(os.path.expanduser("~"), ".config", "joliebulle", "journal.json")
 
     
 else:
@@ -68,4 +70,5 @@ else:
     mash_root = '/usr/share/joliebulle/mash.xml'
     samples_dir='Samples'
     samples_target = os.path.join(os.path.expanduser("~"), ".config", "joliebulle", "recettes", "Samples")
+    journal_file = os.path.join(os.path.expanduser("~"), ".config", "joliebulle", "journal.json")
 

@@ -1,0 +1,32 @@
+<html>
+  <head>
+    <title>Remove DIV</title>
+    <script type="text/javascript">
+      function create(id, obj)
+      {
+        var target = document.getElementById(id);
+        var elem = document.createElement(obj);
+        var txt = document.createTextNode('Petit test');
+        
+        elem.appendChild(txt);
+        elem.id = 'test';
+        
+        target.appendChild(elem);
+      }
+      
+      function delElem(parent, child)
+      {
+        var obj = document.getElementById(parent);
+        var old = document.getElementById(child);
+        
+        obj.removeChild(old);
+      }        
+    </script>    
+  </head>
+  <body onload="create('div', 'h4');">
+    <div id='div'>
+      <!-- -->
+      <a href="javascript:delElem('div', 'test');" title="Supprimer">Supprimer</a>
+    </div>
+  </body>
+</html>

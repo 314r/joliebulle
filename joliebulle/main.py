@@ -60,6 +60,7 @@ from globals import *
 
 import xml.etree.ElementTree as ET
 from model.recipe import *
+from model.journal import *
 from model.hop import *
 from model import recipe
 import model.constants
@@ -415,6 +416,9 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         menuFile.addAction(self.actionCopierBbcode)
         menuFile.addAction(self.actionQuitter_2)
 
+        # le menu journal
+        menuJournal=generalMenu.addMenu(self.trUtf8('''Journal'''))
+        menuJournal.addAction(self.actionShowJournal)
 
         # le menu ingredients
         menuIngredients=generalMenu.addMenu(self.trUtf8('''Ingrédients'''))
@@ -490,6 +494,8 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         #self.connect(self.actionSwitch, QtCore.SIGNAL("triggered()"), self.switch)
         self.actionImporter.triggered.connect(self.importInLib)
         self.connect(self.actionQuitter, QtCore.SIGNAL("triggered()"), app, QtCore.SLOT("quit()"))
+
+        self.actionShowJournal.triggered.connect(self.showJournal)
         
         self.connect(self.actionEditGrains, QtCore.SIGNAL("triggered()"), self.editGrains)
         self.connect(self.actionEditHoublons, QtCore.SIGNAL("triggered()"), self.editHoublons)
@@ -779,6 +785,31 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
 
         self.previousPage = [1]
         self.stackedWidget.currentChanged.connect(self.pageChanged)
+
+
+
+###########################################################
+############### TEST TEST TEST TEST TEST ##################
+###########################################################
+
+
+    def showJournal(self) :
+        self.journal=Journal()
+        self.journal.loadJournal()
+        pyDir = os.path.abspath(os.path.dirname(__file__))
+        baseUrl = QtCore.QUrl.fromLocalFile(os.path.join(pyDir, "static/"))
+        self.webViewBiblio.setHtml(self.journal.export("html"), baseUrl)
+        self.webViewBiblio.page().mainFrame().addToJavaScriptWindowObject("main", self)
+
+    @QtCore.pyqtSlot(int) 
+    def delJournal(self,index) :
+        self.journal.delEntry(index-1)
+        
+
+
+
+
+
         
     #Une fonction qui gère l'aperçu des couleurs. 
     #Contient un tupple avec plusieurs références de couleurs, classées par rang selon la valeur SRM.
