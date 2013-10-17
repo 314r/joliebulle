@@ -40,10 +40,50 @@ def exportHTML(itemsList):
 </head>
 <body>
 '''    
-    i=0
-    for entry in itemsList :
-        i=i+1
-        resultHtml += '''<div class="entry">%s <button type="button" value="delete" onClick="main.delJournal(%s)"> Supprimer </button></div>''' %(entry["recipe"],i)
+    
+
+    resultHtml +=''' <div class="container"></div>'''
+
+
+    # i=0
+    # for entry in itemsList :
+    #     i=i+1
+    #     resultHtml += '''<div class="entry" id="%s">%s <button type="button" value="delete" onClick="main.delJournal(%s);deleteEntry(%s)" > <i class="icon-wrench"></i> Supprimer </button></div>''' %(i,entry["recipe"],i,i)
+
+    resultHtml += '''<script src="jquery/jquery.js"></script>
+                     <script src="mustache/mustache.js"></script>
+                     '''
+
+    resultHtml += ''' <script type="text/javascript">
+                    function deleteEntry(id) {
+                    $("#" + id).remove();
+                    }
+                </script>'''
+
+    resultHtml += '''<script type="text/javascript"> 
+
+                        var entryLists = %s 
+                        for(var i=0;i<entryLists.length;i++)
+                            {
+                                tableau=entryLists[i];
+                                $(".container").append("<div class =%s id="+i+">" + tableau["recipe"] +' <button type="button" value="delete" onClick="main.delJournal('+tableau["date"]+');deleteEntry('+i+ ')" > Supprimer </button>'+ "</div>");
+
+                            }
+                     </script>''' %(str(itemsList), "entry")
+
+
+
+
+
+    # resultHtml += ''' <script type="text/javascript">
+    #                 $(".entry").append('coincoin');
+    #             </script>'''
+    # resultHtml+='''<script type="text/javascript">
+    # var data = {title: "Javascript: the Good Parts", author: "Douglas Crockford"};
+    # var template = 'Title: <b>{{title}}</b> <br/> Author: {{author}}';
+    # var output = Mustache.render(template, data);
+    # $(".entry").append(output);
+    # </script>'''
 
     resultHtml += ''' </body></html>'''
 

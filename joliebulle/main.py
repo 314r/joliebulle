@@ -803,7 +803,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
 
     @QtCore.pyqtSlot(int) 
     def delJournal(self,index) :
-        self.journal.delEntry(index-1)
+        self.journal.delEntry(index)
         
 
 

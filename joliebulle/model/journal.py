@@ -9,6 +9,7 @@ class Journal :
     def __init__(self):
         self.dct={}
         self.itemsList=list()
+        self.text=""
 
     @staticmethod
     def load (jsonFile) :
@@ -16,6 +17,7 @@ class Journal :
         with open(jsonFile, "r", encoding="utf-8") as f :
             journal.dct=json.load(f)
             journal.itemsList = journal.dct["items"]
+            journal.itemsList=sorted(journal.itemsList, key= lambda k :k['date'], reverse=True)
             # print(journal.itemsList)
         return journal
 
@@ -49,12 +51,15 @@ class Journal :
         self.journal.dump(self.journal,journal_file)
 
     def delEntry(self,index):
-        del self.journal.itemsList[index]
+        # del self.journal.itemsList[index]
+        self.journal.itemsList=[dic for dic in self.journal.itemsList if dic.get('date') != str(index)]
+        print(self.journal.itemsList)
         self.dump(self.journal,journal_file)
         
         
 
     def export(self,type) :
-        return JournalExporterRepository[type](self.journal.itemsList)
+        return JournalExporterRepository[type](json.dumps(self.journal.itemsList))
+
 
 
