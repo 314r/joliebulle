@@ -810,7 +810,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
     @QtCore.pyqtSlot(str)
     def addToJournal(self,event) :
         self.loadJournal()
-        self.journal.addJournal(self.recipe.name,event) 
+        self.journal.addJournal(self.recipe.name,self.journal.eventsLabels[event]) 
 
         
 

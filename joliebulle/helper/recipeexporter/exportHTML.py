@@ -105,8 +105,8 @@ body {background:url(images/furley_bg.png);}
                         <div class="btn-group"><button type="button"data-toggle="dropdown">%s</button>
                               <ul class="dropdown-menu" role="menu">
                                 <li><a onClick="main.addToJournal('brewed')" href="#">Brassage</a></li>
-                                <li><a href="#">Fermentation</a></li>
-                                <li><a href="#">Embouteillage</a></li>
+                                <li><a onClick="main.addToJournal('ferment')" href="#">Fermentation</a></li>
+                                <li><a onClick="main.addToJournal('bottled')" href="#">Embouteillage</a></li>
                                 <li class="divider"></li>
                                 <li><a href="#">Voir le journal</a></li>
                               </ul></button></div> 

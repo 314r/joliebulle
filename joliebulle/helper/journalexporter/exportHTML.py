@@ -70,10 +70,10 @@ def exportHTML(itemsList):
                                 date.setTime(tableau["date"]*1000);
                                 date = date.getDate() + '/' + (date.getMonth() + 1) + '/' + date.getFullYear();
                                 event = tableau["event"]
-                                $(".container").append("<div class =%s id="+i+">" + '<span class="date">'+ date + '</span>' + tableau["recipe"] + '<span class="event">' + event + '</span>' +'<button type="button" value="delete" onClick="main.delJournal('+tableau["date"]+');deleteEntry('+i+ ')" > Supprimer </button>' +"</div>");
+                                $(".container").append("<div class =%s id="+i+">" + '<span class="date">'+ date + ' </span>' + tableau["recipe"] + ' %s <span class="event">' + event + '</span>' +'<button type="button" value="delete" onClick="main.delJournal('+tableau["date"]+');deleteEntry('+i+ ')" > Supprimer </button>' +"</div>");
 
                             }
-                     </script>''' %(str(itemsList), "entry")
+                     </script>''' %(str(itemsList), "entry",'a été marquée comme')
 
 
 

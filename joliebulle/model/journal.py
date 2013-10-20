@@ -1,6 +1,6 @@
 #!/usr/bin/python3.1
 #­*­coding: utf­8 -­*­
-
+from PyQt4.QtCore import QCoreApplication
 import json
 from globals import *
 from helper.journalExporterRepository import *
@@ -11,6 +11,12 @@ class Journal :
         self.dct={}
         self.itemsList=list()
         self.text=""
+
+        self.eventsLabels = {
+            'brewed': QCoreApplication.translate("Export", "brassée", None, QCoreApplication.UnicodeUTF8),
+            'ferment': QCoreApplication.translate("Export", "mise en fermentation", None, QCoreApplication.UnicodeUTF8),
+            'bottled': QCoreApplication.translate("Export", "embouteillée", None, QCoreApplication.UnicodeUTF8)
+        }
 
     @staticmethod
     def load (jsonFile) :
