@@ -792,10 +792,12 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
 ############### TEST TEST TEST TEST TEST ##################
 ###########################################################
 
+    def loadJournal(self):
+        self.journal=Journal()
+        self.journal.loadJournal()     
 
     def showJournal(self) :
-        self.journal=Journal()
-        self.journal.loadJournal()
+        self.loadJournal()
         pyDir = os.path.abspath(os.path.dirname(__file__))
         baseUrl = QtCore.QUrl.fromLocalFile(os.path.join(pyDir, "static/"))
         self.webViewBiblio.setHtml(self.journal.export("html"), baseUrl)
@@ -804,6 +806,12 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
     @QtCore.pyqtSlot(int) 
     def delJournal(self,index) :
         self.journal.delEntry(index)
+
+    @QtCore.pyqtSlot(str)
+    def addToJournal(self,event) :
+        self.loadJournal()
+        self.journal.addJournal(self.recipe.name,event) 
+
         
 
 

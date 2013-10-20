@@ -66,7 +66,11 @@ def exportHTML(itemsList):
                         for(var i=0;i<entryLists.length;i++)
                             {
                                 tableau=entryLists[i];
-                                $(".container").append("<div class =%s id="+i+">" + tableau["recipe"] +' <button type="button" value="delete" onClick="main.delJournal('+tableau["date"]+');deleteEntry('+i+ ')" > Supprimer </button>'+ "</div>");
+                                date= new Date();
+                                date.setTime(tableau["date"]*1000);
+                                date = date.getDate() + '/' + (date.getMonth() + 1) + '/' + date.getFullYear();
+                                event = tableau["event"]
+                                $(".container").append("<div class =%s id="+i+">" + '<span class="date">'+ date + '</span>' + tableau["recipe"] + '<span class="event">' + event + '</span>' +'<button type="button" value="delete" onClick="main.delJournal('+tableau["date"]+');deleteEntry('+i+ ')" > Supprimer </button>' +"</div>");
 
                             }
                      </script>''' %(str(itemsList), "entry")

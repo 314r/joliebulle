@@ -102,8 +102,17 @@ body {background:url(images/furley_bg.png);}
 
     #Outils
     resultHtml += '''<div class="tools">
-                        <button type="button" value="edit" onClick="main.editCurrentRecipe()"><i class="icon-wrench"></i> %s</button> <button type="button" value="brewday" onClick="main.switchToBrewday()"><i class="icon-dashboard"></i> %s</button>
-                    </div>'''%(QCoreApplication.translate("Export", "Editer la recette", None, QCoreApplication.UnicodeUTF8),QCoreApplication.translate("Export", "Mode brassage", None, QCoreApplication.UnicodeUTF8))
+                        <div class="btn-group"><button type="button"data-toggle="dropdown">%s</button>
+                              <ul class="dropdown-menu" role="menu">
+                                <li><a onClick="main.addToJournal('brewed')" href="#">Brassage</a></li>
+                                <li><a href="#">Fermentation</a></li>
+                                <li><a href="#">Embouteillage</a></li>
+                                <li class="divider"></li>
+                                <li><a href="#">Voir le journal</a></li>
+                              </ul></button></div> 
+                              <button type="button" value="edit" onClick="main.editCurrentRecipe()"><i class="icon-wrench"></i> %s</button> 
+                              <button type="button" value="brewday" onClick="main.switchToBrewday()"><i class="icon-dashboard"></i> %s</button>
+                    </div>'''%('Journal',QCoreApplication.translate("Export", "Editer la recette", None, QCoreApplication.UnicodeUTF8),QCoreApplication.translate("Export", "Mode brassage", None, QCoreApplication.UnicodeUTF8))
 
     # resultHtml += ''' <button type="button" class="btn btn-link">Editer la recette</button> <button type="button" class="btn btn-link">Mode brassage</button>'''
 
@@ -210,6 +219,13 @@ body {background:url(images/furley_bg.png);}
     resultHtml += ''' <script type="text/javascript">
                     $(function () {
                     $("[data-toggle='tooltip']").tooltip();
+                    });
+                    </script>'''
+
+    #Dropdown
+    resultHtml += ''' <script type="text/javascript">
+                    $(function () {
+                    $("[data-toggle='dropdown']").dropdown();
                     });
                     </script>'''
                     

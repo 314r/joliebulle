@@ -4,6 +4,7 @@
 import json
 from globals import *
 from helper.journalExporterRepository import *
+import time
 
 class Journal :
     def __init__(self):
@@ -40,13 +41,14 @@ class Journal :
         self.journal = Journal().load(journal_file)
         for entry in self.journal.itemsList :
             print("nom de la recette :", entry['recipe'])
-        self.addJournal()
+        # self.addJournal("essai", "event")
 
-    def addJournal(self):
+    def addJournal(self,recipe,event):
         entry = {}
-        entry['recipe'] = 'toto'
-        entry['date'] ="231415"
-        entry['event'] ="essai"
+        entry['recipe'] = recipe
+        entry['date'] =str(int(time.time()))
+        entry['event'] = event
+        entry['__class__'] = 'JournalItem'
         self.journal.itemsList.append(entry)
         self.journal.dump(self.journal,journal_file)
 
@@ -56,8 +58,6 @@ class Journal :
         print(self.journal.itemsList)
         self.dump(self.journal,journal_file)
         
-        
-
     def export(self,type) :
         return JournalExporterRepository[type](json.dumps(self.journal.itemsList))
 
