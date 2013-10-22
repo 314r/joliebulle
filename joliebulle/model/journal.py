@@ -49,10 +49,10 @@ class Journal :
             print("nom de la recette :", entry['recipe'])
         # self.addJournal("essai", "event")
 
-    def addJournal(self,recipe,event):
+    def addJournal(self,date,event,recipe):
         entry = {}
         entry['recipe'] = recipe
-        entry['date'] =str(int(time.time()))
+        entry['date'] =date
         entry['event'] = event
         entry['__class__'] = 'JournalItem'
         self.journal.itemsList.append(entry)

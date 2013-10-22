@@ -1891,6 +1891,7 @@ color: rgb(255, 255, 255);</string>
      <string>Journal</string>
     </property>
     <addaction name="actionShowJournal"/>
+    <addaction name="actionEditJournal"/>
    </widget>
    <addaction name="menuFichier"/>
    <addaction name="menuEdition"/>
@@ -2157,6 +2158,11 @@ color: rgb(255, 255, 255);</string>
   <action name="actionShowJournal">
    <property name="text">
     <string>Ouvrir le journal</string>
+   </property>
+  </action>
+  <action name="actionEditJournal">
+   <property name="text">
+    <string>Ajouter une entrée</string>
    </property>
   </action>
  </widget>

@@ -41,6 +41,7 @@ from edithoublon import *
 from editdivers import * 
 from editlevures import *
 from importIng import *
+from journalEdit import *
 from outilDens import *
 from outilAlc import *
 from outilDilution import *
@@ -419,6 +420,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         # le menu journal
         menuJournal=generalMenu.addMenu(self.trUtf8('''Journal'''))
         menuJournal.addAction(self.actionShowJournal)
+        menuJournal.addAction(self.actionEditJournal)
 
         # le menu ingredients
         menuIngredients=generalMenu.addMenu(self.trUtf8('''Ingrédients'''))
@@ -469,6 +471,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         self.dlgStep = DialogStep(self)
         self.dlgMash = DialogMash(self)
         self.dlgStepBrewday = DialogStepAdjust(self)
+        self.dlgEditJournal = DialogJournalEdit(self)
 
         self.base = ImportBase()
         self.mashProfileExport = ExportMash()
@@ -496,6 +499,8 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         self.connect(self.actionQuitter, QtCore.SIGNAL("triggered()"), app, QtCore.SLOT("quit()"))
 
         self.actionShowJournal.triggered.connect(self.showJournal)
+        self.actionEditJournal.triggered.connect(self.editJournal)
+        self.dlgEditJournal.journalEdited.connect(self.journalEdition)
         
         self.connect(self.actionEditGrains, QtCore.SIGNAL("triggered()"), self.editGrains)
         self.connect(self.actionEditHoublons, QtCore.SIGNAL("triggered()"), self.editHoublons)
@@ -802,15 +807,40 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         baseUrl = QtCore.QUrl.fromLocalFile(os.path.join(pyDir, "static/"))
         self.webViewBiblio.setHtml(self.journal.export("html"), baseUrl)
         self.webViewBiblio.page().mainFrame().addToJavaScriptWindowObject("main", self)
+        self.webViewBiblio.page().settings().setAttribute(QtWebKit.QWebSettings.DeveloperExtrasEnabled, True)
+        # self.webInspector = QtWebKit.QWebInspector(self)
+        # self.webInspector.setPage(self.webViewBiblio.page())
+        # self.webInspector.setVisible(True)
+        # self.verticalLayout_13.addWidget(self.webInspector)
+
 
     @QtCore.pyqtSlot(int) 
     def delJournal(self,index) :
         self.journal.delEntry(index)
 
     @QtCore.pyqtSlot(str)
-    def addToJournal(self,event) :
+    def addToJournal(self,event,recipe=None,date=str(int(time.time()))) :
         self.loadJournal()
-        self.journal.addJournal(self.recipe.name,self.journal.eventsLabels[event]) 
+        if recipe == None :
+            recipe=self.recipe.name
+        else :
+            recipe=recipe
+        try :
+            event=self.journal.eventsLabels[event]
+        except :
+            event=event
+        print(event,recipe,date)
+        self.journal.addJournal(date,event,recipe) 
+
+    @QtCore.pyqtSlot(int,str,str)
+    def editJournalEntry(self,date,event,recipe) :
+        self.editJournal()
+        self.dlgEditJournal.setFields(date,event,recipe)
+
+    def journalEdition(self,date,event,recipe,oldDate) :
+        self.delJournal(oldDate)
+        self.addToJournal(event,recipe,str(date))
+        self.showJournal()
 
         
 
@@ -1480,6 +1510,10 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         self.dlgEditY.setModal(True)
         self.dlgEditY.setModel()
         self.dlgEditY.show()     
+
+    def editJournal(self):
+        self.dlgEditJournal.setModal(True)
+        self.dlgEditJournal.show()
         
     def outilDens(self) : 
         self.dlgOutilDens.setModal(True)
