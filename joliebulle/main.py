@@ -809,10 +809,10 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         self.webViewBiblio.setHtml(self.journal.export("html"), baseUrl)
         self.webViewBiblio.page().mainFrame().addToJavaScriptWindowObject("main", self)
         self.webViewBiblio.page().settings().setAttribute(QtWebKit.QWebSettings.DeveloperExtrasEnabled, True)
-        # self.webInspector = QtWebKit.QWebInspector(self)
-        # self.webInspector.setPage(self.webViewBiblio.page())
-        # self.webInspector.setVisible(True)
-        # self.verticalLayout_13.addWidget(self.webInspector)
+        self.webInspector = QtWebKit.QWebInspector(self)
+        self.webInspector.setPage(self.webViewBiblio.page())
+        self.webInspector.setVisible(True)
+        self.verticalLayout_13.addWidget(self.webInspector)
 
 
     @QtCore.pyqtSlot(int) 

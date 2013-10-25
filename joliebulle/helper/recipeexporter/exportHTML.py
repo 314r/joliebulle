@@ -48,6 +48,8 @@ body {background:url(images/furley_bg.png);}
 .tools{margin:auto;margin-top:3em;width:800px;margin-bottom:-2.5em;text-align:right;}
 .tools button {background:none; border:none; color:#999;margin-left:15px;padding:0;padding-right: 3px;}
 .tools button:hover{color:#333333;}
+.journalMenu{text-align:left; float:left;}   
+.journalMenu button {margin-left:0;}
 .info{padding-bottom:1.25em; padding-top:1.25em; text-align:center;}
 .info-titre{display: block;text-transform: uppercase;color:#777; font-size:0.8em;}
 .grains{padding-left: 50px;padding-right: 50px;}
@@ -102,14 +104,16 @@ body {background:url(images/furley_bg.png);}
 
     #Outils
     resultHtml += '''<div class="tools">
-                        <div class="btn-group"><button type="button"data-toggle="dropdown">%s</button>
+                        <div class="btn-group journalMenu">
+                              <button type="button" data-toggle="dropdown"><i class="icon-flag"></i> %s <span class="icon-caret-down"></span></button>
                               <ul class="dropdown-menu" role="menu">
                                 <li><a onClick="main.addToJournal('brewed')" href="#">Brassage</a></li>
                                 <li><a onClick="main.addToJournal('ferment')" href="#">Fermentation</a></li>
                                 <li><a onClick="main.addToJournal('bottled')" href="#">Embouteillage</a></li>
                                 <li class="divider"></li>
                                 <li><a onClick="main.showJournal()" href="#">Voir le journal</a></li>
-                              </ul></button></div> 
+                              </ul>
+                        </div> 
                               <button type="button" value="edit" onClick="main.editCurrentRecipe()"><i class="icon-wrench"></i> %s</button> 
                               <button type="button" value="brewday" onClick="main.switchToBrewday()"><i class="icon-dashboard"></i> %s</button>
                     </div>'''%('Journal',QCoreApplication.translate("Export", "Editer la recette", None, QCoreApplication.UnicodeUTF8),QCoreApplication.translate("Export", "Mode brassage", None, QCoreApplication.UnicodeUTF8))
