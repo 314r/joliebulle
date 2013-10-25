@@ -45,8 +45,8 @@ class Journal :
 
     def loadJournal(self):
         self.journal = Journal().load(journal_file)
-        for entry in self.journal.itemsList :
-            print("nom de la recette :", entry['recipe'])
+        # for entry in self.journal.itemsList :
+        #     print("nom de la recette :", entry['recipe'])
         # self.addJournal("essai", "event")
 
     def addJournal(self,date,event,recipe):

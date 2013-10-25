@@ -829,7 +829,6 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
             event=self.journal.eventsLabels[event]
         except :
             event=event
-        print(event,recipe,date)
         self.journal.addJournal(date,event,recipe) 
 
     @QtCore.pyqtSlot(int,str,str)
@@ -1217,6 +1216,11 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         mash  = QtCore.QFile(mash_file)
         if not mash.exists() :
             mash.copy(mash_root, mash_file)
+        else :
+            pass
+        journal  = QtCore.QFile(mash_file)
+        if not journal.exists() :
+            journal.copy(journal_root, journal_file)
         else :
             pass
         
