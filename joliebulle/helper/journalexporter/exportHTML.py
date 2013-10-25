@@ -73,7 +73,7 @@ def exportHTML(itemsList):
                                 recipe = "'" + tableau["recipe"] + "'"
                                 stringSignal = tableau["date"] + ',' + event + ',' + recipe
                                 console.log(event)
-                                $(".container").append("<div class =%s id="+i+">" + '<span class="date">'+ date + ' </span>' + tableau["recipe"] + ' %s <span class="event">' + event + '</span><button type="button" value="delete" onClick="main.delJournal('+tableau["date"]+');deleteEntry('+i+ ')" > Supprimer </button><button type="button" value="delete" onClick="main.editJournalEntry('+stringSignal+')" > Modifier </button></div>');
+                                $(".container").append("<div class =%s id="+i+">" + '<span class="date">'+ date + ' </span>' + tableau["recipe"] + ' %s <span class="event">' + tableau["event"] + '</span><button type="button" value="delete" onClick="main.delJournal('+tableau["date"]+');deleteEntry('+i+ ')" > Supprimer </button><button type="button" value="delete" onClick="main.editJournalEntry('+stringSignal+')" > Modifier </button></div>');
 
                             }
                      </script>''' %(str(itemsList), "entry","a été marquée comme")
