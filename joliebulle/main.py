@@ -837,8 +837,9 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         self.editJournal()
         self.dlgEditJournal.setFields(date,event,recipe)
 
-    def journalEdition(self,date,event,recipe,oldDate) :
-        self.delJournal(oldDate)
+    def journalEdition(self,date,event,recipe,oldDate,delItem) :
+        if delItem == 1 :
+            self.delJournal(oldDate)
         self.addToJournal(event,recipe,str(date))
         self.showJournal()
 

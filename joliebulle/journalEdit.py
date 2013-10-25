@@ -25,7 +25,7 @@ from PyQt4 import QtCore
 from journalEdit_ui import *
 
 class DialogJournalEdit(QtGui.QDialog):
-    journalEdited = QtCore.pyqtSignal(int,str,str,int)
+    journalEdited = QtCore.pyqtSignal(int,str,str,int,int)
     def __init__(self, parent = None):
         QtGui.QDialog.__init__(self,parent)
         self.ui = Ui_Dialog()
@@ -43,4 +43,9 @@ class DialogJournalEdit(QtGui.QDialog):
         date = QtCore.QDateTime.toTime_t(self.ui.dateEdit.dateTime())
         event=self.ui.lineEditEvent.text()
         recipe=self.ui.lineEditRecipe.text()
-        self.journalEdited.emit(date,event,recipe,self.oldDate)
+        if not self.oldDate :
+            self.oldDate = 0
+            delItem = 0
+        else :
+            delItem = 1
+        self.journalEdited.emit(date,event,recipe,self.oldDate,delItem)
