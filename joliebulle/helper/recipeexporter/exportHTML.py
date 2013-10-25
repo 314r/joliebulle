@@ -108,7 +108,7 @@ body {background:url(images/furley_bg.png);}
                                 <li><a onClick="main.addToJournal('ferment')" href="#">Fermentation</a></li>
                                 <li><a onClick="main.addToJournal('bottled')" href="#">Embouteillage</a></li>
                                 <li class="divider"></li>
-                                <li><a href="#">Voir le journal</a></li>
+                                <li><a onClick="main.showJournal()" href="#">Voir le journal</a></li>
                               </ul></button></div> 
                               <button type="button" value="edit" onClick="main.editCurrentRecipe()"><i class="icon-wrench"></i> %s</button> 
                               <button type="button" value="brewday" onClick="main.switchToBrewday()"><i class="icon-dashboard"></i> %s</button>

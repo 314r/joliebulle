@@ -801,6 +801,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         self.journal=Journal()
         self.journal.loadJournal()     
 
+    @QtCore.pyqtSlot()
     def showJournal(self) :
         self.loadJournal()
         pyDir = os.path.abspath(os.path.dirname(__file__))
