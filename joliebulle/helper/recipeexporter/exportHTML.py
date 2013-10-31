@@ -19,8 +19,16 @@
 #along with this program; if not, write to the Free Software
 #Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-
+import PyQt4
 from PyQt4.QtCore import QCoreApplication
+import sys
+import shutil
+import os
+import os.path
+import glob
+import logging
+import logging.config
+from sys import platform
 
 from view.fermentableview import *
 from view.hopview import *

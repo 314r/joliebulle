@@ -809,10 +809,10 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         self.webViewBiblio.setHtml(self.journal.export("html"), baseUrl)
         self.webViewBiblio.page().mainFrame().addToJavaScriptWindowObject("main", self)
         self.webViewBiblio.page().settings().setAttribute(QtWebKit.QWebSettings.DeveloperExtrasEnabled, True)
-        self.webInspector = QtWebKit.QWebInspector(self)
-        self.webInspector.setPage(self.webViewBiblio.page())
-        self.webInspector.setVisible(True)
-        self.verticalLayout_13.addWidget(self.webInspector)
+        # self.webInspector = QtWebKit.QWebInspector(self)
+        # self.webInspector.setPage(self.webViewBiblio.page())
+        # self.webInspector.setVisible(True)
+        # self.verticalLayout_13.addWidget(self.webInspector)
 
 
     @QtCore.pyqtSlot(int) 
@@ -820,16 +820,25 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         self.journal.delEntry(index)
 
     @QtCore.pyqtSlot(str)
-    def addToJournal(self,event,recipe=None,date=str(int(time.time()))) :
+    def addToJournal(self,event,recipe=None,date=None) :
+        
         self.loadJournal()
+
+        if date  == None :
+            date = str(int(time.time()))
+        else :
+            date=date
+
         if recipe == None :
             recipe=self.recipe.name
         else :
             recipe=recipe
+
         try :
             event=self.journal.eventsLabels[event]
         except :
             event=event
+        print (date)    
         self.journal.addJournal(date,event,recipe) 
 
     @QtCore.pyqtSlot(int,str,str)
