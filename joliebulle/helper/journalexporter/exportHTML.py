@@ -35,14 +35,25 @@ def exportHTML(itemsList):
 <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
 <link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
     <style>
-
+    body {background:url(images/furley_bg.png);}
+    .journal {width:800px;margin:auto;padding-top:0.5em;padding-bottom:1em;}
+    .journal h1{color:#999;font-weight:bold;margin:auto;padding-top:0.1em; font-size:24px ;float:left;}
+    .journal-list{margin:auto;margin-top:3em; margin-bottom:3em; background-color: white; width:800px;border: 1px solid rgba(0, 0, 0, 0.1);box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.08);padding: 50px;}
+    .entry{min-height:3em;}
+    .date{background-color:#a1b5bf;padding:0.2em 0.5em 0.2em 0.5em;margin-right:20px;color:white; font-size:85%%; font-weight: bold;}
+    .entry button{color:white;}
+    .entry:hover button{color:#428bca;}
+    .event{padding-right:20px;}
     </style>
 </head>
 <body>
 '''    
     
 
-    resultHtml +=''' <div class="container"></div>'''
+    resultHtml +=''' <div class="journal">
+                        <h1>Journal</h1>
+                    </div>
+                    <div class="journal-list"></div>'''
 
 
     # i=0
@@ -68,12 +79,12 @@ def exportHTML(itemsList):
                                 tableau=entryLists[i];
                                 date= new Date();
                                 date.setTime(tableau["date"]*1000);
-                                date = date.getDate() + '/' + (date.getMonth() + 1) + '/' + date.getFullYear();
+                                date = ('0'+date.getDate()).slice(-2) + '/' + ('0'+(date.getMonth() + 1)).slice(-2) + '/' + date.getFullYear();
                                 event = "'" + tableau["event"] + "'"
                                 recipe = "'" + tableau["recipe"] + "'"
                                 stringSignal = tableau["date"] + ',' + event + ',' + recipe
                                 console.log(event)
-                                $(".container").append("<div class =%s id="+i+">" + '<span class="date">'+ date + ' </span>' + tableau["recipe"] + ' %s <span class="event">' + tableau["event"] + '</span><button type="button" value="delete" onClick="main.delJournal('+tableau["date"]+');deleteEntry('+i+ ')" > Supprimer </button><button type="button" value="delete" onClick="main.editJournalEntry('+stringSignal+')" > Modifier </button></div>');
+                                $(".journal-list").append("<div class =%s id="+i+">" + '<span class="date">'+ date + ' </span>' + tableau["recipe"] + ' %s <span class="event">' + tableau["event"] + '.</span><button class="btn btn-link btn-xs" type="button" value="delete" onClick="main.delJournal('+tableau["date"]+');deleteEntry('+i+ ')" > Supprimer </button><button class="btn btn-link btn-xs" type="button" value="delete" onClick="main.editJournalEntry('+stringSignal+')" > Modifier </button></div>');
 
                             }
                      </script>''' %(str(itemsList), "entry","a été marquée comme")

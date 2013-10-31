@@ -50,6 +50,7 @@ body {background:url(images/furley_bg.png);}
 .tools button:hover{color:#333333;}
 .journalMenu{text-align:left; float:left;}   
 .journalMenu button {margin-left:0;}
+.journalMenu-description{padding-left:20px;padding-bottom:5px;padding-top:2px;display:block;}
 .info{padding-bottom:1.25em; padding-top:1.25em; text-align:center;}
 .info-titre{display: block;text-transform: uppercase;color:#777; font-size:0.8em;}
 .grains{padding-left: 50px;padding-right: 50px;}
@@ -107,16 +108,17 @@ body {background:url(images/furley_bg.png);}
                         <div class="btn-group journalMenu">
                               <button type="button" data-toggle="dropdown"><i class="icon-flag"></i> %s <span class="icon-caret-down"></span></button>
                               <ul class="dropdown-menu" role="menu">
-                                <li><a onClick="main.addToJournal('brewed')" href="#">Brassage</a></li>
-                                <li><a onClick="main.addToJournal('ferment')" href="#">Fermentation</a></li>
-                                <li><a onClick="main.addToJournal('bottled')" href="#">Embouteillage</a></li>
+                                <i class="journalMenu-description">Marquer comme :</i>
+                                <li><a onClick="main.addToJournal('brewed')" href="#">%s</a></li>
+                                <li><a onClick="main.addToJournal('ferment')" href="#">%s</a></li>
+                                <li><a onClick="main.addToJournal('bottled')" href="#">%s</a></li>
                                 <li class="divider"></li>
                                 <li><a onClick="main.showJournal()" href="#">Voir le journal</a></li>
                               </ul>
                         </div> 
                               <button type="button" value="edit" onClick="main.editCurrentRecipe()"><i class="icon-wrench"></i> %s</button> 
                               <button type="button" value="brewday" onClick="main.switchToBrewday()"><i class="icon-dashboard"></i> %s</button>
-                    </div>'''%('Journal',QCoreApplication.translate("Export", "Editer la recette", None, QCoreApplication.UnicodeUTF8),QCoreApplication.translate("Export", "Mode brassage", None, QCoreApplication.UnicodeUTF8))
+                    </div>'''%('Journal',QCoreApplication.translate("Export", "Brassée", None, QCoreApplication.UnicodeUTF8),QCoreApplication.translate("Export", "Mise en fermentation", None, QCoreApplication.UnicodeUTF8),QCoreApplication.translate("Export", "Embouteillée", None, QCoreApplication.UnicodeUTF8),QCoreApplication.translate("Export", "Editer la recette", None, QCoreApplication.UnicodeUTF8),QCoreApplication.translate("Export", "Mode brassage", None, QCoreApplication.UnicodeUTF8))
 
     # resultHtml += ''' <button type="button" class="btn btn-link">Editer la recette</button> <button type="button" class="btn btn-link">Mode brassage</button>'''
 
