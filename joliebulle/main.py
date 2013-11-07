@@ -499,7 +499,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         self.connect(self.actionQuitter, QtCore.SIGNAL("triggered()"), app, QtCore.SLOT("quit()"))
 
         self.actionShowJournal.triggered.connect(self.showJournal)
-        self.actionEditJournal.triggered.connect(self.editJournal)
+        self.actionEditJournal.triggered.connect(self.addNewEntry)
         self.dlgEditJournal.journalEdited.connect(self.journalEdition)
         
         self.connect(self.actionEditGrains, QtCore.SIGNAL("triggered()"), self.editGrains)
@@ -828,17 +828,14 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
             date = str(int(time.time()))
         else :
             date=date
-
         if recipe == None :
             recipe=self.recipe.name
         else :
             recipe=recipe
-
         try :
             event=self.journal.eventsLabels[event]
         except :
-            event=event
-        print (date)    
+            event=event   
         self.journal.addJournal(date,event,recipe) 
 
     @QtCore.pyqtSlot(int,str,str)
@@ -852,6 +849,9 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         self.addToJournal(event,recipe,str(date))
         self.showJournal()
 
+    def addNewEntry(self):
+        self.editJournal()
+        self.dlgEditJournal.setFields(int(time.time()),'','')
         
 
 
