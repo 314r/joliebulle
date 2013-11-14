@@ -2161,6 +2161,9 @@ color: rgb(255, 255, 255);</string>
    </property>
   </action>
   <action name="actionEditJournal">
+   <property name="enabled">
+    <bool>true</bool>
+   </property>
    <property name="text">
     <string>Ajouter une entrée</string>
    </property>

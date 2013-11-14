@@ -799,7 +799,8 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
 
     def loadJournal(self):
         self.journal=Journal()
-        self.journal.loadJournal()     
+        self.journal.loadJournal()
+        # self.actionEditJournal.setEnabled(True)     
 
     @QtCore.pyqtSlot()
     def showJournal(self) :
@@ -844,6 +845,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         self.dlgEditJournal.setFields(date,event,recipe)
 
     def journalEdition(self,date,event,recipe,oldDate,delItem) :
+        self.loadJournal()
         if delItem == 1 :
             self.delJournal(oldDate)
         self.addToJournal(event,recipe,str(date))
