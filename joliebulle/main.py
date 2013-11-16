@@ -41,6 +41,7 @@ from edithoublon import *
 from editdivers import * 
 from editlevures import *
 from importIng import *
+from journalEdit import *
 from outilDens import *
 from outilAlc import *
 from outilDilution import *
@@ -60,6 +61,7 @@ from globals import *
 
 import xml.etree.ElementTree as ET
 from model.recipe import *
+from model.journal import *
 from model.hop import *
 from model import recipe
 import model.constants
@@ -415,6 +417,10 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         menuFile.addAction(self.actionCopierBbcode)
         menuFile.addAction(self.actionQuitter_2)
 
+        # le menu journal
+        menuJournal=generalMenu.addMenu(self.trUtf8('''Journal'''))
+        menuJournal.addAction(self.actionShowJournal)
+        menuJournal.addAction(self.actionEditJournal)
 
         # le menu ingredients
         menuIngredients=generalMenu.addMenu(self.trUtf8('''Ingrédients'''))
@@ -465,6 +471,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         self.dlgStep = DialogStep(self)
         self.dlgMash = DialogMash(self)
         self.dlgStepBrewday = DialogStepAdjust(self)
+        self.dlgEditJournal = DialogJournalEdit(self)
 
         self.base = ImportBase()
         self.mashProfileExport = ExportMash()
@@ -490,6 +497,10 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         #self.connect(self.actionSwitch, QtCore.SIGNAL("triggered()"), self.switch)
         self.actionImporter.triggered.connect(self.importInLib)
         self.connect(self.actionQuitter, QtCore.SIGNAL("triggered()"), app, QtCore.SLOT("quit()"))
+
+        self.actionShowJournal.triggered.connect(self.showJournal)
+        self.actionEditJournal.triggered.connect(self.addNewEntry)
+        self.dlgEditJournal.journalEdited.connect(self.journalEdition)
         
         self.connect(self.actionEditGrains, QtCore.SIGNAL("triggered()"), self.editGrains)
         self.connect(self.actionEditHoublons, QtCore.SIGNAL("triggered()"), self.editHoublons)
@@ -779,6 +790,76 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
 
         self.previousPage = [1]
         self.stackedWidget.currentChanged.connect(self.pageChanged)
+
+
+
+###########################################################
+############### TEST TEST TEST TEST TEST ##################
+###########################################################
+
+    def loadJournal(self):
+        self.journal=Journal()
+        self.journal.loadJournal()
+        # self.actionEditJournal.setEnabled(True)     
+
+    @QtCore.pyqtSlot()
+    def showJournal(self) :
+        self.loadJournal()
+        pyDir = os.path.abspath(os.path.dirname(__file__))
+        baseUrl = QtCore.QUrl.fromLocalFile(os.path.join(pyDir, "static/"))
+        self.webViewBiblio.setHtml(self.journal.export("html"), baseUrl)
+        self.webViewBiblio.page().mainFrame().addToJavaScriptWindowObject("main", self)
+        self.webViewBiblio.page().settings().setAttribute(QtWebKit.QWebSettings.DeveloperExtrasEnabled, True)
+        # self.webInspector = QtWebKit.QWebInspector(self)
+        # self.webInspector.setPage(self.webViewBiblio.page())
+        # self.webInspector.setVisible(True)
+        # self.verticalLayout_13.addWidget(self.webInspector)
+
+
+    @QtCore.pyqtSlot(int) 
+    def delJournal(self,index) :
+        self.journal.delEntry(index)
+
+    @QtCore.pyqtSlot(str)
+    def addToJournal(self,event,recipe=None,date=None) :
+        
+        self.loadJournal()
+
+        if date  == None :
+            date = str(int(time.time()))
+        else :
+            date=date
+        if recipe == None :
+            recipe=self.recipe.name
+        else :
+            recipe=recipe
+        try :
+            event=self.journal.eventsLabels[event]
+        except :
+            event=event   
+        self.journal.addJournal(date,event,recipe) 
+
+    @QtCore.pyqtSlot(int,str,str)
+    def editJournalEntry(self,date,event,recipe) :
+        self.editJournal()
+        self.dlgEditJournal.setFields(date,event,recipe)
+
+    def journalEdition(self,date,event,recipe,oldDate,delItem) :
+        self.loadJournal()
+        if delItem == 1 :
+            self.delJournal(oldDate)
+        self.addToJournal(event,recipe,str(date))
+        self.showJournal()
+
+    def addNewEntry(self):
+        self.editJournal()
+        self.dlgEditJournal.setFields(int(time.time()),'','')
+        
+
+
+
+
+
         
     #Une fonction qui gère l'aperçu des couleurs. 
     #Contient un tupple avec plusieurs références de couleurs, classées par rang selon la valeur SRM.
@@ -1149,6 +1230,11 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
             mash.copy(mash_root, mash_file)
         else :
             pass
+        journal  = QtCore.QFile(mash_file)
+        if not journal.exists() :
+            journal.copy(journal_root, journal_file)
+        else :
+            pass
         
         # on configure des valeurs par défaut
         if not settings.conf.contains("BoilOffRate") :
@@ -1441,6 +1527,10 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         self.dlgEditY.setModal(True)
         self.dlgEditY.setModel()
         self.dlgEditY.show()     
+
+    def editJournal(self):
+        self.dlgEditJournal.setModal(True)
+        self.dlgEditJournal.show()
         
     def outilDens(self) : 
         self.dlgOutilDens.setModal(True)

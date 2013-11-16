@@ -19,8 +19,16 @@
 #along with this program; if not, write to the Free Software
 #Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-
+import PyQt4
 from PyQt4.QtCore import QCoreApplication
+import sys
+import shutil
+import os
+import os.path
+import glob
+import logging
+import logging.config
+from sys import platform
 
 from view.fermentableview import *
 from view.hopview import *
@@ -48,6 +56,9 @@ body {background:url(images/furley_bg.png);}
 .tools{margin:auto;margin-top:3em;width:800px;margin-bottom:-2.5em;text-align:right;}
 .tools button {background:none; border:none; color:#999;margin-left:15px;padding:0;padding-right: 3px;}
 .tools button:hover{color:#333333;}
+.journalMenu{text-align:left; float:left;}   
+.journalMenu button {margin-left:0;}
+.journalMenu-description{padding-left:20px;padding-bottom:5px;padding-top:2px;display:block;}
 .info{padding-bottom:1.25em; padding-top:1.25em; text-align:center;}
 .info-titre{display: block;text-transform: uppercase;color:#777; font-size:0.8em;}
 .grains{padding-left: 50px;padding-right: 50px;}
@@ -102,8 +113,20 @@ body {background:url(images/furley_bg.png);}
 
     #Outils
     resultHtml += '''<div class="tools">
-                        <button type="button" value="edit" onClick="main.editCurrentRecipe()"><i class="icon-wrench"></i> %s</button> <button type="button" value="brewday" onClick="main.switchToBrewday()"><i class="icon-dashboard"></i> %s</button>
-                    </div>'''%(QCoreApplication.translate("Export", "Editer la recette", None, QCoreApplication.UnicodeUTF8),QCoreApplication.translate("Export", "Mode brassage", None, QCoreApplication.UnicodeUTF8))
+                        <div class="btn-group journalMenu">
+                              <button type="button" data-toggle="dropdown"><i class="icon-flag"></i> %s <span class="icon-caret-down"></span></button>
+                              <ul class="dropdown-menu" role="menu">
+                                <i class="journalMenu-description">Marquer comme :</i>
+                                <li><a onClick="main.addToJournal('brewed')" href="#">%s</a></li>
+                                <li><a onClick="main.addToJournal('ferment')" href="#">%s</a></li>
+                                <li><a onClick="main.addToJournal('bottled')" href="#">%s</a></li>
+                                <li class="divider"></li>
+                                <li><a onClick="main.showJournal()" href="#">Voir le journal</a></li>
+                              </ul>
+                        </div> 
+                              <button type="button" value="edit" onClick="main.editCurrentRecipe()"><i class="icon-wrench"></i> %s</button> 
+                              <button type="button" value="brewday" onClick="main.switchToBrewday()"><i class="icon-dashboard"></i> %s</button>
+                    </div>'''%('Journal',QCoreApplication.translate("Export", "Brassée", None, QCoreApplication.UnicodeUTF8),QCoreApplication.translate("Export", "Mise en fermentation", None, QCoreApplication.UnicodeUTF8),QCoreApplication.translate("Export", "Embouteillée", None, QCoreApplication.UnicodeUTF8),QCoreApplication.translate("Export", "Editer la recette", None, QCoreApplication.UnicodeUTF8),QCoreApplication.translate("Export", "Mode brassage", None, QCoreApplication.UnicodeUTF8))
 
     # resultHtml += ''' <button type="button" class="btn btn-link">Editer la recette</button> <button type="button" class="btn btn-link">Mode brassage</button>'''
 
@@ -210,6 +233,13 @@ body {background:url(images/furley_bg.png);}
     resultHtml += ''' <script type="text/javascript">
                     $(function () {
                     $("[data-toggle='tooltip']").tooltip();
+                    });
+                    </script>'''
+
+    #Dropdown
+    resultHtml += ''' <script type="text/javascript">
+                    $(function () {
+                    $("[data-toggle='dropdown']").dropdown();
                     });
                     </script>'''
                     
