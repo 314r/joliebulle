@@ -60,7 +60,7 @@ class Hop(Element):
         copy.amount = self.amount
         copy.form = self.form
         copy.time = self.time
-        copy.alpha = self.alpha
+        copy._alpha = self._alpha
         copy.use = self.use
         return copy
 
