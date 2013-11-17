@@ -1886,9 +1886,17 @@ color: rgb(255, 255, 255);</string>
     </property>
     <addaction name="actionManageProfiles"/>
    </widget>
+   <widget class="QMenu" name="menuJOurnal">
+    <property name="title">
+     <string>Journal</string>
+    </property>
+    <addaction name="actionShowJournal"/>
+    <addaction name="actionEditJournal"/>
+   </widget>
    <addaction name="menuFichier"/>
    <addaction name="menuEdition"/>
    <addaction name="menuIngr_dients"/>
+   <addaction name="menuJOurnal"/>
    <addaction name="menuProfils_de_brassage"/>
    <addaction name="menuOutils"/>
    <addaction name="menuAide"/>
@@ -2145,6 +2153,19 @@ color: rgb(255, 255, 255);</string>
   <action name="actionImportIng">
    <property name="text">
     <string>Importer des ingrédients</string>
+   </property>
+  </action>
+  <action name="actionShowJournal">
+   <property name="text">
+    <string>Ouvrir le journal</string>
+   </property>
+  </action>
+  <action name="actionEditJournal">
+   <property name="enabled">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Ajouter une entrée</string>
    </property>
   </action>
  </widget>
