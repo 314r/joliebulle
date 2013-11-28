@@ -1874,11 +1874,12 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
             self.trUtf8("Ouvrir un fichier"),
             home_dir,
             )
-        if not self.s :
+        if not s :
             pass
-        self.importIngList = ImportIng()
-        self.importIngList.parseFile(s)
-        self.baseReload
+        else :
+            self.importIngList = ImportIng()
+            self.importIngList.parseFile(s)
+            self.baseReload
                     
     def addStyle(self) :
         self.lineEditGenre.setText(self.comboBoxStyle.currentText())
