@@ -56,9 +56,6 @@ p, li { white-space: pre-wrap; }
         </property>
        </widget>
       </item>
-      <item row="2" column="1">
-       <widget class="QSpinBox" name="spinBoxRendmt"/>
-      </item>
       <item row="3" column="0">
        <widget class="QLabel" name="label_4">
         <property name="text">
@@ -73,9 +70,12 @@ p, li { white-space: pre-wrap; }
       <item row="3" column="1">
        <layout class="QHBoxLayout" name="horizontalLayout_2">
         <item>
-         <widget class="QSpinBox" name="spinBoxCouleur">
+         <widget class="QDoubleSpinBox" name="spinBoxCouleur">
+          <property name="decimals">
+           <number>1</number>
+          </property>
           <property name="maximum">
-           <number>9000</number>
+           <double>10000.000000000000000</double>
           </property>
          </widget>
         </item>
@@ -115,6 +115,9 @@ p, li { white-space: pre-wrap; }
          <string>Ajouter</string>
         </property>
        </widget>
+      </item>
+      <item row="2" column="1">
+       <widget class="QSpinBox" name="spinBoxRendmt"/>
       </item>
      </layout>
     </widget>

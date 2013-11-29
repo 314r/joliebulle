@@ -120,9 +120,9 @@ class Dialog(QtGui.QDialog):
     def toggleUnits (self) :
         
         if self.ui.radioButtonEBC.isChecked() :
-            self.ui.spinBoxCouleur.setValue(round(self.ui.spinBoxCouleur.value()*1.97))
+            self.ui.spinBoxCouleur.setValue(round(self.ui.spinBoxCouleur.value()*1.97,1))
         else :
-            self.ui.spinBoxCouleur.setValue(round(self.ui.spinBoxCouleur.value()/1.97))
+            self.ui.spinBoxCouleur.setValue(round(self.ui.spinBoxCouleur.value()/1.97,1))
             
     def ajouter (self) :
         #Attention aux unités. Dans la base xml la couleur est en srm, dans la liste de la base la couleur est convertie en EBC
