@@ -980,9 +980,12 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
                 presentation=arbre.find('.//RECIPE')
                 for nom in presentation :
                     try :
-                        if nom.tag == "NAME" : 
+                        if nom.tag == "NAME" :
                            nomRecette = nom.text
+                           if nom.text == None :
+                               nomRecette = " "
                            newFileNameList.append(nomRecette)
+                           print("nomRecette",nomRecette)
                     except :
                         pass
             except :
