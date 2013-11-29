@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>424</width>
-    <height>312</height>
+    <height>340</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -31,7 +31,11 @@ p, li { white-space: pre-wrap; }
       </widget>
      </item>
      <item row="0" column="1">
-      <widget class="QDoubleSpinBox" name="doubleSpinBoxPreVol"/>
+      <widget class="QDoubleSpinBox" name="doubleSpinBoxPreVol">
+       <property name="value">
+        <double>10.000000000000000</double>
+       </property>
+      </widget>
      </item>
      <item row="1" column="0">
       <widget class="QLabel" name="label_11">
@@ -94,6 +98,9 @@ p, li { white-space: pre-wrap; }
      </item>
      <item row="3" column="1">
       <widget class="QSpinBox" name="spinBoxEbu">
+       <property name="maximum">
+        <number>1000</number>
+       </property>
        <property name="value">
         <number>60</number>
        </property>
