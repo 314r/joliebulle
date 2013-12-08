@@ -2128,7 +2128,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         self.brewCalc.calcPreBoilSg(self.recipe.compute_GU_PreBoil(), self.recipe.volume)
        
         
-        self.labelPreBoilVol.setText("%.1f" %(self.brewCalc.volPreBoil) + " " + "L")
+        self.labelPreBoilVol.setText("%.2f" %(self.brewCalc.volPreBoil) + " " + "L")
         self.labelPreBoilGravity.setText("%.3f" %(self.brewCalc.preBoilSg))
         
         
@@ -2210,15 +2210,15 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
             
             self.brewCalc.calcSpargeVol(self.stepsListVol, self.brewCalc.volPreBoil, self.brewCalc.grainRetention)
 
-            self.labelSpargeVol.setText("%.1f" %(self.brewCalc.spargeVol))
-            self.labelSpargeTemp.setText("%.1f" %(spargeTemp))
+            self.labelSpargeVol.setText("%.2f" %(self.brewCalc.spargeVol) + " " + "L")
+            self.labelSpargeTemp.setText("%.1f" %(spargeTemp)+ " " + "°C")
 
             #on calcule les volumes
             self.brewCalc.calcMashVolume(self.recipe.compute_grainWeight())
             self.mashVolumeLastStep = self.brewCalc.mashVolumeStrike + sum(self.stepsListVol) - self.stepsListVol[0]
-            self.labelGrainVolume.setText("%.1f" %(self.brewCalc.grainVolume))       
-            self.labelTotalVolumeStrike.setText("%.1f" %(self.brewCalc.mashVolumeStrike)) 
-            self.labelTotalVolumeLast.setText("%.1f" %(self.mashVolumeLastStep))
+            self.labelGrainVolume.setText("%.2f" %(self.brewCalc.grainVolume) + " " + "L")       
+            self.labelTotalVolumeStrike.setText("%.2f" %(self.brewCalc.mashVolumeStrike) + " " + "L") 
+            self.labelTotalVolumeLast.setText("%.2f" %(self.mashVolumeLastStep) + " " + "L")
     
         else :
             self.brewCalc.calcGrainRetention(self.recipe.compute_grainWeight())
@@ -2235,9 +2235,9 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
             #on calcule les volumes
             self.brewCalc.calcMashVolumeBiab(self.recipe.compute_grainWeight(),self.strikeVol)
             self.mashVolumeLastStep = self.brewCalc.grainVolume + sum(self.stepsListVol)
-            self.labelGrainVolume.setText("%.1f" %(self.brewCalc.grainVolume))
+            self.labelGrainVolume.setText("%.2f" %(self.brewCalc.grainVolume) + " " + "L")
 
-            self.labelTotalVolumeStrike.setText("%.1f" %(self.brewCalc.mashVolumeStrike)) 
+            self.labelTotalVolumeStrike.setText("%.2f" %(self.brewCalc.mashVolumeStrike) + " " + "L") 
             self.labelTotalVolumeLast.setText("idem")
             
             #on vérifie que le profil est bien compatible avec un BIAB :
@@ -2319,13 +2319,13 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         self.brewCalc.calcStrikeVol(self.recipe.compute_grainWeight(),targetRatio)
         self.brewCalc.calcMashVolume(self.recipe.compute_grainWeight())
         self.mashVolumeLastStep = self.brewCalc.mashVolumeStrike + sum(self.stepsListVol) - self.stepsListVol[0]
-        self.labelTotalVolumeLast.setText("%.1f" %(self.mashVolumeLastStep))
-        self.labelTotalVolumeStrike.setText("%.1f" %(self.brewCalc.mashVolumeStrike))
+        self.labelTotalVolumeLast.setText("%.2f" %(self.mashVolumeLastStep) + " " + "L")
+        self.labelTotalVolumeStrike.setText("%.2f" %(self.brewCalc.mashVolumeStrike) + " " + "L")
             
 #            print('température du moût', mashTemp)
             
         self.brewCalc.calcSpargeVol(self.stepsListVol, self.brewCalc.volPreBoil, self.brewCalc.grainRetention)
-        self.labelSpargeVol.setText("%.1f" %(self.brewCalc.spargeVol))
+        self.labelSpargeVol.setText("%.2f" %(self.brewCalc.spargeVol) + " " + "L")
 #        print('volume de rinçage :', self.brewCalc.spargeVol)
 
         self.tableWidgetStepsBrewday_currentRowChanged()
