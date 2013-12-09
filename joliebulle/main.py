@@ -1459,7 +1459,6 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
     def initModele(self) :
         if self.recipe is not None:
             self.displayProfile()
-            self.colorPreview()
             self.clearModele()
             recipeView = RecipeView(self.recipe)
             
@@ -1694,7 +1693,6 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
 
             self.lineEditBrewer.setText(self.recipe.brewer)
             self.displayProfile()
-            self.colorPreview()
             
             self.currentRecipeMash = self.recipe.mash
 
@@ -1702,7 +1700,8 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
             errors = Errors()
             errors.warningXml()
             
-    def displayProfile(self) :     
+    def displayProfile(self) : 
+        self.colorPreview()    
         self.labelOGV.setText("%.3f" %(self.recipe.compute_OG()))
         self.labelFGV.setText("%.3f" %(self.recipe.compute_FG() ))
         self.labelEBCV.setText("%.0f" %(self.recipe.compute_EBC() ))
