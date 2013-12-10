@@ -794,7 +794,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
 
 
 ###########################################################
-############### TEST TEST TEST TEST TEST ##################
+############### Journal ##################
 ###########################################################
 
     def loadJournal(self):
@@ -855,10 +855,6 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         self.editJournal()
         self.dlgEditJournal.setFields(int(time.time()),'','')
         
-
-
-
-
 
         
     #Une fonction qui gère l'aperçu des couleurs. 
