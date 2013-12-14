@@ -26,6 +26,9 @@ joliebulle/globals.py
 joliebulle/home.py
 joliebulle/importIng.py
 joliebulle/joliebulle_en.qm
+joliebulle/journal.json
+joliebulle/journalEdit.py
+joliebulle/journalEdit_ui.py
 joliebulle/main.py
 joliebulle/mash.xml
 joliebulle/mashDetail.py
@@ -79,8 +82,10 @@ joliebulle/Images/stock_bookmark.png
 joliebulle/Samples/Blanche.xml
 joliebulle/Samples/SMASH Amarillo.xml
 joliebulle/helper/__init__.py
+joliebulle/helper/journalExporterRepository.py
 joliebulle/helper/recipeExporterRepository.py
 joliebulle/helper/recipeImporterRepository.py
+joliebulle/helper/journalexporter/exportHTML.py
 joliebulle/helper/recipeexporter/__init__.py
 joliebulle/helper/recipeexporter/exportBBCode.py
 joliebulle/helper/recipeexporter/exportBeerXML.py
@@ -93,6 +98,7 @@ joliebulle/model/__init__.py
 joliebulle/model/element.py
 joliebulle/model/fermentable.py
 joliebulle/model/hop.py
+joliebulle/model/journal.py
 joliebulle/model/mash.py
 joliebulle/model/mashstep.py
 joliebulle/model/misc.py

@@ -1229,7 +1229,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
             mash.copy(mash_root, mash_file)
         else :
             pass
-        journal  = QtCore.QFile(mash_file)
+        journal  = QtCore.QFile(journal_file)
         if not journal.exists() :
             journal.copy(journal_root, journal_file)
         else :

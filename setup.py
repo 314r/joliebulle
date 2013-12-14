@@ -3,7 +3,7 @@
 
 APP = ["joliebulle/main.py"]
 NAME = "Joliebulle"
-VERSION = "3.0.0"
+VERSION = "3.1.0"
 
 setup_info = dict(
     name = NAME,
@@ -33,6 +33,7 @@ setup_info = dict(
             "*.py",
             "*.qm",
             "*.xml",
+            "*.json",
             "Images/*.png",
             "Samples/*.xml",
             "*/*.py",
@@ -56,7 +57,7 @@ from sys import platform
 
 if platform == 'darwin':
     from setuptools import setup
-    setup_info['data_files'] = ["joliebulle/database.xml","joliebulle/mash.xml", "dist/Mac/qt.conf"]
+    setup_info['data_files'] = ["joliebulle/database.xml","joliebulle/mash.xml","joliebulle/journal.json", "dist/Mac/qt.conf"]
     setup_info['data_files'] += ["joliebulle/static/"]
     setup_info['data_files'] += ["joliebulle/"]
 elif platform.startswith('linux'):
