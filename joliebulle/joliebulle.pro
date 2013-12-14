@@ -64,13 +64,4 @@ SOURCES          += model/yeast.py
 
 
 
-
-
-
-
-
-
-
-
-
 TRANSLATIONS     += joliebulle_en.ts

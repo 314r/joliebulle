@@ -3,7 +3,7 @@
 
 
 
-#joliebulle 3.0
+#joliebulle 3.1
 #Copyright (C) 2010-2013 Pierre Tavares
 
 #This program is free software; you can redistribute it and/or

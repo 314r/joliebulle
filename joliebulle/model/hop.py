@@ -2,7 +2,7 @@
 #­*­coding: utf­8 -­*­
 
 
-#joliebulle 3.0
+#joliebulle 3.1
 #Copyright (C) 2010-2013 Pierre Tavares
 #Copyright (C) 2012-2013 joliebulle's authors
 #See AUTHORS file.
