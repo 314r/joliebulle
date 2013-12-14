@@ -84,10 +84,10 @@ def exportHTML(itemsList):
                                 recipe = "'" + tableau["recipe"] + "'"
                                 stringSignal = tableau["date"] + ',' + event + ',' + recipe
                                 console.log(event)
-                                $(".journal-list").append("<div class =%s id="+i+">" + '<span class="date">'+ date + ' </span>' + tableau["recipe"] + ' %s <span class="event">' + tableau["event"] + '.</span><button class="btn btn-link btn-xs" type="button" value="delete" onClick="main.delJournal('+tableau["date"]+');deleteEntry('+i+ ')" > Supprimer </button><button class="btn btn-link btn-xs" type="button" value="delete" onClick="main.editJournalEntry('+stringSignal+')" > Modifier </button></div>');
+                                $(".journal-list").append("<div class =%s id="+i+">" + '<span class="date">'+ date + ' </span>' + tableau["recipe"] + ' %s <span class="event">' + tableau["event"] + '.</span><button class="btn btn-link btn-xs" type="button" value="delete" onClick="main.delJournal('+tableau["date"]+');deleteEntry('+i+ ')" > %s </button><button class="btn btn-link btn-xs" type="button" value="delete" onClick="main.editJournalEntry('+stringSignal+')" > %s </button></div>');
 
                             }
-                     </script>''' %(str(itemsList), "entry","a été marquée comme")
+                     </script>''' %(str(itemsList), "entry",QCoreApplication.translate("Export","a été marquée comme", None, QCoreApplication.UnicodeUTF8),QCoreApplication.translate("Export","Supprimer", None, QCoreApplication.UnicodeUTF8),QCoreApplication.translate("Export","Modifier", None, QCoreApplication.UnicodeUTF8))
 
 
 

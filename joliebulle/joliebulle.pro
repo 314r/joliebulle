@@ -5,6 +5,7 @@ FORMS            += editorG.ui
 FORMS            += editorH.ui
 FORMS            += editorY.ui
 FORMS            += editorM.ui
+FORMS            += journalEdit.ui
 FORMS            += mash.ui
 FORMS            += mashDetail.ui
 FORMS            += mashEditor.ui
@@ -28,6 +29,7 @@ SOURCES          += editlevures.py
 SOURCES          += helper/recipeexporter/exportBeerXML.py
 SOURCES          += helper/recipeexporter/exportHTML.py
 SOURCES          += helper/recipeexporter/exportBBCode.py
+SOURCES          += helper/journalexporter/exportHTML.py
 SOURCES          += exportMash.py
 SOURCES          += errors.py
 SOURCES          += home.py
@@ -56,8 +58,10 @@ SOURCES          += model/hop.py
 SOURCES          += model/mash.py
 SOURCES          += model/mashstep.py
 SOURCES          += model/misc.py
+SOURCES          += model/journal.py
 SOURCES          += model/recipe.py
 SOURCES          += model/yeast.py
+
 
 
 

@@ -116,17 +116,17 @@ body {background:url(images/furley_bg.png);}
                         <div class="btn-group journalMenu">
                               <button type="button" data-toggle="dropdown"><i class="icon-flag"></i> %s <span class="icon-caret-down"></span></button>
                               <ul class="dropdown-menu" role="menu">
-                                <i class="journalMenu-description">Marquer comme :</i>
+                                <i class="journalMenu-description">%s :</i>
                                 <li><a onClick="main.addToJournal('brewed')" href="#">%s</a></li>
                                 <li><a onClick="main.addToJournal('ferment')" href="#">%s</a></li>
                                 <li><a onClick="main.addToJournal('bottled')" href="#">%s</a></li>
                                 <li class="divider"></li>
-                                <li><a onClick="main.showJournal()" href="#">Voir le journal</a></li>
+                                <li><a onClick="main.showJournal()" href="#">%s</a></li>
                               </ul>
                         </div> 
                               <button type="button" value="edit" onClick="main.editCurrentRecipe()"><i class="icon-wrench"></i> %s</button> 
                               <button type="button" value="brewday" onClick="main.switchToBrewday()"><i class="icon-dashboard"></i> %s</button>
-                    </div>'''%('Journal',QCoreApplication.translate("Export", "Brassée", None, QCoreApplication.UnicodeUTF8),QCoreApplication.translate("Export", "Mise en fermentation", None, QCoreApplication.UnicodeUTF8),QCoreApplication.translate("Export", "Embouteillée", None, QCoreApplication.UnicodeUTF8),QCoreApplication.translate("Export", "Editer la recette", None, QCoreApplication.UnicodeUTF8),QCoreApplication.translate("Export", "Mode brassage", None, QCoreApplication.UnicodeUTF8))
+                    </div>'''%('Journal',QCoreApplication.translate("Export","Marquer comme", None, QCoreApplication.UnicodeUTF8),QCoreApplication.translate("Export", "Brassée", None, QCoreApplication.UnicodeUTF8),QCoreApplication.translate("Export", "Mise en fermentation", None, QCoreApplication.UnicodeUTF8),QCoreApplication.translate("Export", "Embouteillée", None, QCoreApplication.UnicodeUTF8),QCoreApplication.translate("Export", "Voir le journal", None, QCoreApplication.UnicodeUTF8),QCoreApplication.translate("Export", "Editer la recette", None, QCoreApplication.UnicodeUTF8),QCoreApplication.translate("Export", "Mode brassage", None, QCoreApplication.UnicodeUTF8))
 
     # resultHtml += ''' <button type="button" class="btn btn-link">Editer la recette</button> <button type="button" class="btn btn-link">Mode brassage</button>'''
 

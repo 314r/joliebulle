@@ -9,132 +9,132 @@
         <translation type="obsolete">About</translation>
     </message>
     <message>
-        <location filename="main.py" line="1752"/>
+        <location filename="main.py" line="1869"/>
         <source>Nouvelle Recette</source>
         <translation>New Recipe</translation>
     </message>
     <message utf8="true">
-        <location filename="main.py" line="1756"/>
+        <location filename="main.py" line="1873"/>
         <source>Générique</source>
         <translation>Generic</translation>
     </message>
     <message utf8="true">
-        <location filename="main.py" line="611"/>
+        <location filename="main.py" line="622"/>
         <source>Ingrédients</source>
         <translation>Ingredients</translation>
     </message>
     <message utf8="true">
-        <location filename="main.py" line="611"/>
+        <location filename="main.py" line="622"/>
         <source>Quantité (g)</source>
         <translation>Amount (g)</translation>
     </message>
     <message>
-        <location filename="main.py" line="611"/>
+        <location filename="main.py" line="622"/>
         <source>Temps (min)</source>
         <translation>Time (min)</translation>
     </message>
     <message>
-        <location filename="main.py" line="611"/>
+        <location filename="main.py" line="622"/>
         <source>Acide Alpha (%)</source>
         <translation>Alpha Acid (%)</translation>
     </message>
     <message>
-        <location filename="main.py" line="611"/>
+        <location filename="main.py" line="622"/>
         <source>Type</source>
         <translation>Type</translation>
     </message>
     <message>
-        <location filename="main.py" line="1783"/>
+        <location filename="main.py" line="1900"/>
         <source>Ouvrir un fichier</source>
         <translation>Open file</translation>
     </message>
     <message>
-        <location filename="main.py" line="1725"/>
+        <location filename="main.py" line="1842"/>
         <source>Enregistrer dans un fichier</source>
         <translation>Save in a file</translation>
     </message>
     <message>
-        <location filename="main.py" line="611"/>
+        <location filename="main.py" line="622"/>
         <source>Proportion</source>
         <translation>Ratio</translation>
     </message>
     <message>
-        <location filename="main.py" line="1032"/>
+        <location filename="main.py" line="1112"/>
         <source>Supprimer</source>
         <translation>Remove</translation>
     </message>
     <message utf8="true">
-        <location filename="main.py" line="1032"/>
+        <location filename="main.py" line="1112"/>
         <source>La recette sera définitivement supprimée &lt;br/&gt; Continuer ?</source>
         <translation>The recipe will be removed.&lt;br/&gt; Continue ?</translation>
     </message>
     <message>
-        <location filename="main.py" line="1247"/>
+        <location filename="main.py" line="1361"/>
         <source>Remplacer la base ?</source>
         <translation>Restore database</translation>
     </message>
     <message utf8="true">
-        <location filename="main.py" line="1247"/>
+        <location filename="main.py" line="1361"/>
         <source>La base des ingrédients actuelle va être effacée et remplacée par la base originale. Toutes vos modifications vont être effacées. Un redémarrage de l&apos;application sera nécessaire.&lt;br&gt; Continuer ?</source>
         <translation>The ingredients database is going to be removed and replaced by the original one. All changes you made will be removed. You will have to reboot JolieBulle. &lt;br/&gt; Continue ?</translation>
     </message>
     <message utf8="true">
-        <location filename="main.py" line="611"/>
+        <location filename="main.py" line="622"/>
         <source>Étape</source>
         <translation>Step</translation>
     </message>
     <message>
-        <location filename="main.py" line="992"/>
+        <location filename="main.py" line="1072"/>
         <source>Renommer</source>
         <translation>Rename</translation>
     </message>
     <message>
-        <location filename="main.py" line="1073"/>
+        <location filename="main.py" line="1153"/>
         <source>nouveau dossier</source>
         <translation>new folder</translation>
     </message>
     <message>
-        <location filename="main.py" line="363"/>
+        <location filename="main.py" line="365"/>
         <source>Enregistrer</source>
         <translation>Save</translation>
     </message>
     <message>
-        <location filename="main.py" line="370"/>
+        <location filename="main.py" line="372"/>
         <source>Nouvelle recette</source>
         <translation>New recipe</translation>
     </message>
     <message>
-        <location filename="main.py" line="407"/>
+        <location filename="main.py" line="409"/>
         <source>Fichier</source>
         <translation>File</translation>
     </message>
     <message>
-        <location filename="main.py" line="433"/>
+        <location filename="main.py" line="439"/>
         <source>Outils</source>
         <translation>Tools</translation>
     </message>
     <message>
-        <location filename="main.py" line="996"/>
+        <location filename="main.py" line="1076"/>
         <source>Nouveau dossier</source>
         <translation>New folder</translation>
     </message>
     <message>
-        <location filename="main.py" line="479"/>
+        <location filename="main.py" line="486"/>
         <source>Tout grain</source>
         <translation>All grain</translation>
     </message>
     <message>
-        <location filename="main.py" line="479"/>
+        <location filename="main.py" line="486"/>
         <source>Extrait</source>
         <translation>Extract</translation>
     </message>
     <message>
-        <location filename="main.py" line="479"/>
+        <location filename="main.py" line="486"/>
         <source>Partial mash</source>
         <translation>Partial mash</translation>
     </message>
     <message>
-        <location filename="main.py" line="429"/>
+        <location filename="main.py" line="435"/>
         <source>Profils de brassage</source>
         <translation>Mash profiles</translation>
     </message>
@@ -142,6 +142,11 @@
         <location filename="main.py" line="1635"/>
         <source>&lt;h1&gt;JolieBulle&lt;/h1&gt; &lt;b&gt;version 2.9&lt;/b&gt;&lt;br/&gt;copyright (c) 2010-2013 Pierre Tavares.&lt;br/&gt;copyright (c) 2012-2013 Les auteurs de JolieBulle.&lt;p&gt; JolieBulle est un logiciel de lecture et de formulation de recettes de brassage.&lt;/p&gt;&lt;p&gt;&lt;a href =http://www.gnu.org/licenses/gpl-3.0.html&gt;Licence : Version 3 de la Licence Générale Publique GNU&lt;/a&gt;&lt;/p&gt;&lt;p&gt;Certaines icônes proviennent du pack Faenza par Tiheum (Matthieu James), également distribué sous licence GPL.&lt;/p&gt; &lt;p&gt;Auteurs : Pierre Tavares, Nicolas Jouanin, Thomas Gerbet&lt;/p&gt;</source>
         <translation type="obsolete">&lt;h1&gt;JolieBulle&lt;/h1&gt; &lt;b&gt;version 2.9&lt;/b&gt;&lt;br/&gt;copyright (c) 2010-2013 Pierre Tavares.&lt;br/&gt;copyright (c) 2012-2013 JolieBulle&apos;s authors.&lt;p&gt; JolieBulle is a beer brewing software.&lt;/p&gt;&lt;p&gt;&lt;a href =http://www.gnu.org/licenses/gpl-3.0.html&gt;Licence : GNU GPL v3&lt;/a&gt;&lt;/p&gt;&lt;p&gt;Some icons by Tiheum (Matthieu James), licenced under the GNU GPL&lt;/p&gt; &lt;p&gt;Authors : Pierre Tavares, Nicolas Jouanin, Thomas Gerbet&lt;/p&gt;</translation>
+    </message>
+    <message>
+        <location filename="main.py" line="421"/>
+        <source>Journal</source>
+        <translation>Journal</translation>
     </message>
 </context>
 <context>
@@ -319,7 +324,7 @@ p, li { white-space: pre-wrap; }
         <translation>No</translation>
     </message>
     <message>
-        <location filename="editorG.ui" line="65"/>
+        <location filename="editorG.ui" line="62"/>
         <source>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
@@ -452,6 +457,26 @@ p, li { white-space: pre-wrap; }
         <source> °C</source>
         <translation> °C</translation>
     </message>
+    <message>
+        <location filename="journalEdit.ui" line="14"/>
+        <source>Journal</source>
+        <translation>Journal</translation>
+    </message>
+    <message>
+        <location filename="journalEdit.ui" line="22"/>
+        <source>Date</source>
+        <translation>Date</translation>
+    </message>
+    <message utf8="true">
+        <location filename="journalEdit.ui" line="32"/>
+        <source>Évènement</source>
+        <translation>Event</translation>
+    </message>
+    <message>
+        <location filename="journalEdit.ui" line="42"/>
+        <source>Recette</source>
+        <translation>Recipe</translation>
+    </message>
 </context>
 <context>
     <name>DialogAbout</name>
@@ -463,7 +488,7 @@ p, li { white-space: pre-wrap; }
     <message utf8="true">
         <location filename="about.ui" line="20"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:20pt;&quot;&gt;JolieBulle&lt;/span&gt;&lt;br/&gt;Lecture et formulation de recettes de brassage&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:9pt;&quot;&gt;copyright (c) 2010-2013 Pierre Tavares&lt;br/&gt;copyright (c) 2012-2013 Les auteurs de JolieBulle.&lt;/span&gt;&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;&lt;a href=&quot;http://www.gnu.org/licenses/gpl-3.0.html&quot;&gt;&lt;span style=&quot; font-size:9pt; text-decoration: underline; color:#0000ff;&quot;&gt;Licence : Version 3 de la Licence Générale Publique GNU&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:20pt;&quot;&gt;JolieBulle&lt;/span&gt;&lt;br/&gt;Read and create beer recipes.&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:9pt;&quot;&gt;copyright (c) 2010-2013 Pierre Tavares&lt;br/&gt;copyright (c) 2012-2013 JolieBulle&apos;s authors.&lt;/span&gt;&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;&lt;a href=&quot;http://www.gnu.org/licenses/gpl-3.0.html&quot;&gt;&lt;span style=&quot; font-size:9pt; text-decoration: underline; color:#0000ff;&quot;&gt;Licence :   GNU GPLv3&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+        <translation type="obsolete">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:20pt;&quot;&gt;JolieBulle&lt;/span&gt;&lt;br/&gt;Read and create beer recipes.&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:9pt;&quot;&gt;copyright (c) 2010-2013 Pierre Tavares&lt;br/&gt;copyright (c) 2012-2013 JolieBulle&apos;s authors.&lt;/span&gt;&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;&lt;a href=&quot;http://www.gnu.org/licenses/gpl-3.0.html&quot;&gt;&lt;span style=&quot; font-size:9pt; text-decoration: underline; color:#0000ff;&quot;&gt;Licence :   GNU GPLv3&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message utf8="true">
         <location filename="about.ui" line="37"/>
@@ -575,6 +600,11 @@ p, li { white-space: pre-wrap; }
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;by Tiheum (Matthieu James)&lt;/p&gt;
 &lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;*Recipes design (html/css) inspired by David Johnstone&apos;s Alt Reader&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+    </message>
+    <message utf8="true">
+        <location filename="about.ui" line="20"/>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:20pt;&quot;&gt;JolieBulle&lt;/span&gt;&lt;br/&gt;Lecture et formulation de recettes de brassage&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;version 3.0&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:9pt;&quot;&gt;copyright (c) 2010-2013 Pierre Tavares&lt;br/&gt;copyright (c) 2012-2013 Les auteurs de JolieBulle.&lt;/span&gt;&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;&lt;a href=&quot;http://www.gnu.org/licenses/gpl-3.0.html&quot;&gt;&lt;span style=&quot; font-size:9pt; text-decoration: underline; color:#0000ff;&quot;&gt;Licence : Version 3 de la Licence Générale Publique GNU&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -861,7 +891,7 @@ p, li { white-space: pre-wrap; }
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Pre-boil volume (L)&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message utf8="true">
-        <location filename="outilEvaporation.ui" line="39"/>
+        <location filename="outilEvaporation.ui" line="43"/>
         <source>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
@@ -874,7 +904,7 @@ p, li { white-space: pre-wrap; }
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Pre-boil gravity&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message utf8="true">
-        <location filename="outilEvaporation.ui" line="69"/>
+        <location filename="outilEvaporation.ui" line="73"/>
         <source>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
@@ -887,7 +917,7 @@ p, li { white-space: pre-wrap; }
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Evaporation rate (%/hour)&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message utf8="true">
-        <location filename="outilEvaporation.ui" line="87"/>
+        <location filename="outilEvaporation.ui" line="91"/>
         <source>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
@@ -900,7 +930,7 @@ p, li { white-space: pre-wrap; }
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Boil time (min)&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="outilEvaporation.ui" line="105"/>
+        <location filename="outilEvaporation.ui" line="112"/>
         <source>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
@@ -913,7 +943,7 @@ p, li { white-space: pre-wrap; }
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Cooling loss (%)&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message utf8="true">
-        <location filename="outilEvaporation.ui" line="136"/>
+        <location filename="outilEvaporation.ui" line="143"/>
         <source>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
@@ -926,7 +956,7 @@ p, li { white-space: pre-wrap; }
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Volume boiled off (boiling) (L) : &lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="outilEvaporation.ui" line="169"/>
+        <location filename="outilEvaporation.ui" line="176"/>
         <source>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
@@ -939,7 +969,7 @@ p, li { white-space: pre-wrap; }
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;0&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message utf8="true">
-        <location filename="outilEvaporation.ui" line="158"/>
+        <location filename="outilEvaporation.ui" line="165"/>
         <source>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
@@ -952,7 +982,7 @@ p, li { white-space: pre-wrap; }
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Volume boiled off (cooling) (L) : &lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="outilEvaporation.ui" line="180"/>
+        <location filename="outilEvaporation.ui" line="187"/>
         <source>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
@@ -965,7 +995,7 @@ p, li { white-space: pre-wrap; }
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Final volume (L) : &lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message utf8="true">
-        <location filename="outilEvaporation.ui" line="191"/>
+        <location filename="outilEvaporation.ui" line="198"/>
         <source>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
@@ -978,7 +1008,7 @@ p, li { white-space: pre-wrap; }
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Specific gravity : &lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="outilEvaporation.ui" line="202"/>
+        <location filename="outilEvaporation.ui" line="209"/>
         <source>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
@@ -1410,7 +1440,7 @@ p, li { white-space: pre-wrap; }
         <translation>Grains and sugars</translation>
     </message>
     <message utf8="true">
-        <location filename="helper/recipeexporter/exportHTML.py" line="123"/>
+        <location filename="helper/recipeexporter/exportHTML.py" line="146"/>
         <source>Ajout après ébullition</source>
         <translation>Add after boil</translation>
     </message>
@@ -1475,119 +1505,174 @@ p, li { white-space: pre-wrap; }
         <translation type="obsolete">Boil: </translation>
     </message>
     <message>
-        <location filename="helper/recipeexporter/exportHTML.py" line="94"/>
+        <location filename="helper/recipeexporter/exportHTML.py" line="105"/>
         <source>Taux d&apos;alcool</source>
         <translation>Alcohol by Vol</translation>
     </message>
     <message>
-        <location filename="helper/recipeexporter/exportHTML.py" line="94"/>
+        <location filename="helper/recipeexporter/exportHTML.py" line="105"/>
         <source>Alc</source>
         <translation>Alc</translation>
     </message>
     <message utf8="true">
-        <location filename="helper/recipeexporter/exportHTML.py" line="94"/>
+        <location filename="helper/recipeexporter/exportHTML.py" line="105"/>
         <source>Ratio amertume/densité</source>
         <translation>Bitterness/Gravity ratio</translation>
     </message>
     <message>
-        <location filename="helper/recipeexporter/exportHTML.py" line="94"/>
+        <location filename="helper/recipeexporter/exportHTML.py" line="105"/>
         <source>BU/GU</source>
         <translation>BU/GU</translation>
     </message>
     <message utf8="true">
-        <location filename="helper/recipeexporter/exportHTML.py" line="94"/>
+        <location filename="helper/recipeexporter/exportHTML.py" line="105"/>
         <source>Densité finale</source>
         <translation>Final Gravity</translation>
     </message>
     <message>
-        <location filename="helper/recipeexporter/exportHTML.py" line="94"/>
+        <location filename="helper/recipeexporter/exportHTML.py" line="105"/>
         <source>DF</source>
         <translation>FG</translation>
     </message>
     <message utf8="true">
-        <location filename="helper/recipeexporter/exportHTML.py" line="94"/>
+        <location filename="helper/recipeexporter/exportHTML.py" line="105"/>
         <source>Densité initiale</source>
         <translation>Original gravity</translation>
     </message>
     <message>
-        <location filename="helper/recipeexporter/exportHTML.py" line="94"/>
+        <location filename="helper/recipeexporter/exportHTML.py" line="105"/>
         <source>DI</source>
         <translation>OG</translation>
     </message>
     <message>
-        <location filename="helper/recipeexporter/exportHTML.py" line="94"/>
+        <location filename="helper/recipeexporter/exportHTML.py" line="105"/>
         <source>Teinte</source>
         <translation>Color</translation>
     </message>
     <message>
-        <location filename="helper/recipeexporter/exportHTML.py" line="124"/>
+        <location filename="helper/recipeexporter/exportHTML.py" line="147"/>
         <source>EBC</source>
         <translation>EBC</translation>
     </message>
     <message>
-        <location filename="helper/recipeexporter/exportHTML.py" line="94"/>
+        <location filename="helper/recipeexporter/exportHTML.py" line="105"/>
         <source>Amertume</source>
         <translation>Bitterness</translation>
     </message>
     <message>
-        <location filename="helper/recipeexporter/exportHTML.py" line="94"/>
+        <location filename="helper/recipeexporter/exportHTML.py" line="105"/>
         <source>IBU</source>
         <translation>IBU</translation>
     </message>
     <message>
-        <location filename="helper/recipeexporter/exportHTML.py" line="106"/>
+        <location filename="helper/recipeexporter/exportHTML.py" line="129"/>
         <source>Editer la recette</source>
         <translation>Edit recipe</translation>
     </message>
     <message>
-        <location filename="helper/recipeexporter/exportHTML.py" line="106"/>
+        <location filename="helper/recipeexporter/exportHTML.py" line="129"/>
         <source>Mode brassage</source>
         <translation>Brewday mode </translation>
     </message>
     <message>
-        <location filename="helper/recipeexporter/exportHTML.py" line="115"/>
+        <location filename="helper/recipeexporter/exportHTML.py" line="138"/>
         <source>Style</source>
         <translation>Style</translation>
     </message>
     <message>
-        <location filename="helper/recipeexporter/exportHTML.py" line="124"/>
+        <location filename="helper/recipeexporter/exportHTML.py" line="147"/>
         <source>Rendement</source>
         <translation>Yield</translation>
     </message>
     <message>
-        <location filename="helper/recipeexporter/exportHTML.py" line="115"/>
+        <location filename="helper/recipeexporter/exportHTML.py" line="138"/>
         <source>Volume</source>
         <translation>Volume</translation>
     </message>
     <message>
-        <location filename="helper/recipeexporter/exportHTML.py" line="115"/>
+        <location filename="helper/recipeexporter/exportHTML.py" line="138"/>
         <source>Ebullition</source>
         <translation>Boil time</translation>
     </message>
     <message>
-        <location filename="helper/recipeexporter/exportHTML.py" line="151"/>
+        <location filename="helper/recipeexporter/exportHTML.py" line="174"/>
         <source>Type</source>
         <translation>Type</translation>
     </message>
     <message>
-        <location filename="helper/recipeexporter/exportHTML.py" line="164"/>
+        <location filename="helper/recipeexporter/exportHTML.py" line="187"/>
         <source>Forme</source>
         <translation>Form</translation>
     </message>
     <message>
-        <location filename="helper/recipeexporter/exportHTML.py" line="135"/>
+        <location filename="helper/recipeexporter/exportHTML.py" line="158"/>
         <source>Proportion</source>
         <translation>Ratio</translation>
     </message>
     <message utf8="true">
-        <location filename="helper/recipeexporter/exportHTML.py" line="164"/>
+        <location filename="helper/recipeexporter/exportHTML.py" line="187"/>
         <source>Atténuation</source>
         <translation>Attenuation</translation>
     </message>
     <message utf8="true">
-        <location filename="helper/recipeexporter/exportHTML.py" line="191"/>
+        <location filename="helper/recipeexporter/exportHTML.py" line="214"/>
         <source>Rinçage</source>
         <translation>Sparge</translation>
+    </message>
+    <message>
+        <location filename="helper/recipeexporter/exportHTML.py" line="129"/>
+        <source>Marquer comme</source>
+        <translation>Mark as</translation>
+    </message>
+    <message utf8="true">
+        <location filename="helper/recipeexporter/exportHTML.py" line="129"/>
+        <source>Brassée</source>
+        <translation>Brewed</translation>
+    </message>
+    <message>
+        <location filename="helper/recipeexporter/exportHTML.py" line="129"/>
+        <source>Mise en fermentation</source>
+        <translation>Put into fermentation</translation>
+    </message>
+    <message utf8="true">
+        <location filename="helper/recipeexporter/exportHTML.py" line="129"/>
+        <source>Embouteillée</source>
+        <translation>Bottled</translation>
+    </message>
+    <message>
+        <location filename="helper/recipeexporter/exportHTML.py" line="129"/>
+        <source>Voir le journal</source>
+        <translation>See journal</translation>
+    </message>
+    <message utf8="true">
+        <location filename="helper/journalexporter/exportHTML.py" line="90"/>
+        <source>a été marquée comme</source>
+        <translation>as been marked as</translation>
+    </message>
+    <message>
+        <location filename="helper/journalexporter/exportHTML.py" line="90"/>
+        <source>Supprimer</source>
+        <translation>Remove</translation>
+    </message>
+    <message>
+        <location filename="helper/journalexporter/exportHTML.py" line="90"/>
+        <source>Modifier</source>
+        <translation>Edit</translation>
+    </message>
+    <message utf8="true">
+        <location filename="model/journal.py" line="16"/>
+        <source>brassée</source>
+        <translation>brewed</translation>
+    </message>
+    <message>
+        <location filename="model/journal.py" line="17"/>
+        <source>mise en fermentation</source>
+        <translation>put into fermentation</translation>
+    </message>
+    <message utf8="true">
+        <location filename="model/journal.py" line="18"/>
+        <source>embouteillée</source>
+        <translation>bottled</translation>
     </message>
 </context>
 <context>
@@ -1733,7 +1818,7 @@ p, li { white-space: pre-wrap; }
         <translation>BJCP Style list</translation>
     </message>
     <message>
-        <location filename="reader.ui" line="1627"/>
+        <location filename="reader.ui" line="1637"/>
         <source>0</source>
         <translation></translation>
     </message>
@@ -1776,147 +1861,147 @@ p, li { white-space: pre-wrap; }
         <translation>Add Yeast</translation>
     </message>
     <message>
-        <location filename="reader.ui" line="1809"/>
+        <location filename="reader.ui" line="1819"/>
         <source>toolBar</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="reader.ui" line="1838"/>
+        <location filename="reader.ui" line="1848"/>
         <source>Fichier</source>
         <translation>File</translation>
     </message>
     <message>
-        <location filename="reader.ui" line="1873"/>
+        <location filename="reader.ui" line="1883"/>
         <source>Edition</source>
         <translation>Edit</translation>
     </message>
     <message>
-        <location filename="reader.ui" line="1863"/>
+        <location filename="reader.ui" line="1873"/>
         <source>Outils</source>
         <translation>Tools</translation>
     </message>
     <message>
-        <location filename="reader.ui" line="1902"/>
+        <location filename="reader.ui" line="1920"/>
         <source>Ouvrir</source>
         <translation>Open</translation>
     </message>
     <message>
-        <location filename="reader.ui" line="1941"/>
+        <location filename="reader.ui" line="1959"/>
         <source>Quitter</source>
         <translation>Quit</translation>
     </message>
     <message>
-        <location filename="reader.ui" line="1920"/>
+        <location filename="reader.ui" line="1938"/>
         <source>A propos</source>
         <translation>About</translation>
     </message>
     <message>
-        <location filename="reader.ui" line="2088"/>
+        <location filename="reader.ui" line="2106"/>
         <source>&amp;Enregistrer</source>
         <translation>Save</translation>
     </message>
     <message>
-        <location filename="reader.ui" line="1936"/>
+        <location filename="reader.ui" line="1954"/>
         <source>Enregistrer &amp;sous</source>
         <translation>Save as</translation>
     </message>
     <message>
-        <location filename="reader.ui" line="1946"/>
+        <location filename="reader.ui" line="1964"/>
         <source>&amp;Ouvrir</source>
         <translation>Open</translation>
     </message>
     <message>
-        <location filename="reader.ui" line="1951"/>
+        <location filename="reader.ui" line="1969"/>
         <source>Editer la base de Grains</source>
         <translation>Edit Grains database</translation>
     </message>
     <message>
-        <location filename="reader.ui" line="1956"/>
+        <location filename="reader.ui" line="1974"/>
         <source>Editer la base de Houblons</source>
         <translation>Edit Hops database</translation>
     </message>
     <message>
-        <location filename="reader.ui" line="1961"/>
+        <location filename="reader.ui" line="1979"/>
         <source>Editer la base de Divers</source>
         <translation>Edit Miscs database</translation>
     </message>
     <message>
-        <location filename="reader.ui" line="1966"/>
+        <location filename="reader.ui" line="1984"/>
         <source>Editer la base de Levures</source>
         <translation>Edit Yeasts database</translation>
     </message>
     <message>
-        <location filename="reader.ui" line="2121"/>
+        <location filename="reader.ui" line="2139"/>
         <source>Nouvelle recette</source>
         <translation>New recipe</translation>
     </message>
     <message utf8="true">
-        <location filename="reader.ui" line="1980"/>
+        <location filename="reader.ui" line="1998"/>
         <source>Correction densimètre</source>
         <translation>Hydrometer correction</translation>
     </message>
     <message>
-        <location filename="reader.ui" line="1985"/>
+        <location filename="reader.ui" line="2003"/>
         <source>Calcul taux d&apos;alcool</source>
         <translation>Alcohol percentage</translation>
     </message>
     <message>
-        <location filename="reader.ui" line="1994"/>
+        <location filename="reader.ui" line="2012"/>
         <source>Imprimer</source>
         <translation>Print</translation>
     </message>
     <message>
-        <location filename="reader.ui" line="1999"/>
+        <location filename="reader.ui" line="2017"/>
         <source>Dilution</source>
         <translation>Dilution</translation>
     </message>
     <message>
-        <location filename="reader.ui" line="2004"/>
+        <location filename="reader.ui" line="2022"/>
         <source>Evaporation</source>
         <translation>Boil off</translation>
     </message>
     <message>
-        <location filename="reader.ui" line="2012"/>
+        <location filename="reader.ui" line="2030"/>
         <source>Exporter vers html</source>
         <translation>Export to html</translation>
     </message>
     <message>
-        <location filename="reader.ui" line="2017"/>
+        <location filename="reader.ui" line="2035"/>
         <source>Assistant paliers</source>
         <translation>Step assistant</translation>
     </message>
     <message>
-        <location filename="reader.ui" line="1879"/>
+        <location filename="reader.ui" line="1889"/>
         <source>Aide</source>
         <translation>Help</translation>
     </message>
     <message utf8="true">
-        <location filename="reader.ui" line="2022"/>
+        <location filename="reader.ui" line="2040"/>
         <source>Restaurer la base des ingrédients</source>
         <translation>Restore ingredients database</translation>
     </message>
     <message>
-        <location filename="reader.ui" line="2031"/>
+        <location filename="reader.ui" line="2049"/>
         <source>Recharger</source>
         <translation>Reload</translation>
     </message>
     <message>
-        <location filename="reader.ui" line="2036"/>
+        <location filename="reader.ui" line="2054"/>
         <source>switch</source>
         <translation>switch</translation>
     </message>
     <message utf8="true">
-        <location filename="reader.ui" line="2079"/>
+        <location filename="reader.ui" line="2097"/>
         <source>Bibiliothèque de recettes</source>
         <translation>Library</translation>
     </message>
     <message>
-        <location filename="reader.ui" line="2064"/>
+        <location filename="reader.ui" line="2082"/>
         <source>Editeur</source>
         <translation>Editor</translation>
     </message>
     <message utf8="true">
-        <location filename="reader.ui" line="2076"/>
+        <location filename="reader.ui" line="2094"/>
         <source>Bibiliothèque</source>
         <translation>Library</translation>
     </message>
@@ -2105,7 +2190,7 @@ p, li { white-space: pre-wrap; }
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:&apos;Ubuntu&apos;; font-size:9pt; font-weight:600;&quot;&gt;TINT&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message utf8="true">
-        <location filename="reader.ui" line="2093"/>
+        <location filename="reader.ui" line="2111"/>
         <source>Préférences</source>
         <translation>Preferences</translation>
     </message>
@@ -2243,42 +2328,42 @@ p, li { white-space: pre-wrap; }
         <translation>Save profiles</translation>
     </message>
     <message utf8="true">
-        <location filename="reader.ui" line="1526"/>
+        <location filename="reader.ui" line="1536"/>
         <source>Rinçage</source>
         <translation>Sparge</translation>
     </message>
     <message utf8="true">
-        <location filename="reader.ui" line="1537"/>
+        <location filename="reader.ui" line="1547"/>
         <source>Volume de rinçage :</source>
         <translation>Sparge volume</translation>
     </message>
     <message utf8="true">
-        <location filename="reader.ui" line="1551"/>
+        <location filename="reader.ui" line="1561"/>
         <source>Température de rinçage :</source>
         <translation>Sparge temperature</translation>
     </message>
     <message utf8="true">
-        <location filename="reader.ui" line="1574"/>
+        <location filename="reader.ui" line="1584"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;   Pas de rinçage en BIAB&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;   No sparge when BIAB&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message utf8="true">
-        <location filename="reader.ui" line="1637"/>
+        <location filename="reader.ui" line="1647"/>
         <source>Pré-ébullition</source>
         <translation>Preboil</translation>
     </message>
     <message utf8="true">
-        <location filename="reader.ui" line="1648"/>
+        <location filename="reader.ui" line="1658"/>
         <source>Volume théorique pré-ébullition :</source>
         <translation>Preboil target volume</translation>
     </message>
     <message utf8="true">
-        <location filename="reader.ui" line="1662"/>
+        <location filename="reader.ui" line="1672"/>
         <source>Densité pré-ébullition :</source>
         <translation>Preboil gravity</translation>
     </message>
     <message>
-        <location filename="reader.ui" line="1669"/>
+        <location filename="reader.ui" line="1679"/>
         <source>1.000</source>
         <translation>1.000</translation>
     </message>
@@ -2323,7 +2408,7 @@ p, li { white-space: pre-wrap; }
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;JolieBulle can&apos;t manage decoctions. Not yet !&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="reader.ui" line="1494"/>
+        <location filename="reader.ui" line="1504"/>
         <source>Ajuster</source>
         <translation>Adjust</translation>
     </message>
@@ -2343,12 +2428,12 @@ p, li { white-space: pre-wrap; }
         <translation>Full volume (BIAB)</translation>
     </message>
     <message>
-        <location filename="reader.ui" line="2041"/>
+        <location filename="reader.ui" line="2059"/>
         <source>Editeur de recettes</source>
         <translation>Recipe editor</translation>
     </message>
     <message utf8="true">
-        <location filename="reader.ui" line="2046"/>
+        <location filename="reader.ui" line="2064"/>
         <source>Bibliothèque de recettes</source>
         <translation>Recipe library</translation>
     </message>
@@ -2378,72 +2463,72 @@ p, li { white-space: pre-wrap; }
         <translation type="obsolete">Brewday</translation>
     </message>
     <message>
-        <location filename="reader.ui" line="1586"/>
+        <location filename="reader.ui" line="1596"/>
         <source>Volumes</source>
         <translation>Volumes</translation>
     </message>
     <message>
-        <location filename="reader.ui" line="1592"/>
+        <location filename="reader.ui" line="1602"/>
         <source>Volume de grains :</source>
         <translation>Grain volume :</translation>
     </message>
     <message utf8="true">
-        <location filename="reader.ui" line="1606"/>
+        <location filename="reader.ui" line="1616"/>
         <source>Volume total (empâtage) :</source>
         <translation>Total volume (initial strike) :</translation>
     </message>
     <message>
-        <location filename="reader.ui" line="1620"/>
+        <location filename="reader.ui" line="1630"/>
         <source>Volume total (dernier palier) :</source>
         <translation>Total volume (last step) :</translation>
     </message>
     <message>
-        <location filename="reader.ui" line="1736"/>
+        <location filename="reader.ui" line="1746"/>
         <source>Fermer</source>
         <translation>Close</translation>
     </message>
     <message utf8="true">
-        <location filename="reader.ui" line="1852"/>
+        <location filename="reader.ui" line="1862"/>
         <source>Ingrédients</source>
         <translation>Ingredients</translation>
     </message>
     <message>
-        <location filename="reader.ui" line="2105"/>
+        <location filename="reader.ui" line="2123"/>
         <source>Brassage</source>
         <translation>Mash</translation>
     </message>
     <message>
-        <location filename="reader.ui" line="2108"/>
+        <location filename="reader.ui" line="2126"/>
         <source>Mode brassage</source>
         <translation>Brewday </translation>
     </message>
     <message>
-        <location filename="reader.ui" line="2113"/>
+        <location filename="reader.ui" line="2131"/>
         <source>Nouveau dossier</source>
         <translation>New folder</translation>
     </message>
     <message utf8="true">
-        <location filename="reader.ui" line="2116"/>
+        <location filename="reader.ui" line="2134"/>
         <source>Créer un nouveau dossier dans la bibliothèque</source>
         <translation>Create a new folder in library</translation>
     </message>
     <message utf8="true">
-        <location filename="reader.ui" line="2124"/>
+        <location filename="reader.ui" line="2142"/>
         <source>Créer une nouvelle recette</source>
         <translation>Create a new recipe</translation>
     </message>
     <message>
-        <location filename="reader.ui" line="2137"/>
+        <location filename="reader.ui" line="2155"/>
         <source>Copier le BBCode dans le presse papier</source>
         <translation>Copy BBCode into clipboard</translation>
     </message>
     <message>
-        <location filename="reader.ui" line="1885"/>
+        <location filename="reader.ui" line="1895"/>
         <source>Profils de brassage</source>
         <translation>Mash profiles</translation>
     </message>
     <message utf8="true">
-        <location filename="reader.ui" line="2142"/>
+        <location filename="reader.ui" line="2160"/>
         <source>Gérer les profils</source>
         <translation>Manage profiles</translation>
     </message>
@@ -2453,17 +2538,17 @@ p, li { white-space: pre-wrap; }
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:9pt;&quot;&gt;BU/GU  ratio :&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message utf8="true">
-        <location filename="reader.ui" line="1688"/>
+        <location filename="reader.ui" line="1698"/>
         <source>Vérifier</source>
         <translation>Check</translation>
     </message>
     <message>
-        <location filename="reader.ui" line="2129"/>
+        <location filename="reader.ui" line="2147"/>
         <source>Importer une recette</source>
         <translation>Import a recipe</translation>
     </message>
     <message utf8="true">
-        <location filename="reader.ui" line="2147"/>
+        <location filename="reader.ui" line="2165"/>
         <source>Importer des ingrédients</source>
         <translation>Import ingredients</translation>
     </message>
@@ -2471,6 +2556,26 @@ p, li { white-space: pre-wrap; }
         <location filename="reader.ui" line="930"/>
         <source>Éditer</source>
         <translation type="obsolete">Edit</translation>
+    </message>
+    <message utf8="true">
+        <location filename="reader.ui" line="1482"/>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Brassage en extrait. La plupart des fonctionnalités sont désactivées.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Extract brewing. Some features are disabled.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+    </message>
+    <message>
+        <location filename="reader.ui" line="1901"/>
+        <source>Journal</source>
+        <translation>Journal</translation>
+    </message>
+    <message>
+        <location filename="reader.ui" line="2170"/>
+        <source>Ouvrir le journal</source>
+        <translation>Open journal</translation>
+    </message>
+    <message utf8="true">
+        <location filename="reader.ui" line="2178"/>
+        <source>Ajouter une entrée</source>
+        <translation>Add entry</translation>
     </message>
 </context>
 <context>
