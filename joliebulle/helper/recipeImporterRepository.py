@@ -19,6 +19,7 @@
 #Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 from helper.recipeimporter.importBeerXML import *
+from helper.recipeimporter.importBSMX import *
 
 RecipeImporterRepository = {
     "beerxml": {
@@ -30,4 +31,13 @@ RecipeImporterRepository = {
         Misc: importBeerXMLMisc,
         Yeast: importBeerXMLYeast
     },
+    "bsmx": {
+        Recipe: importBSMXRecipe,
+        Fermentable: importBSMXFermentable,
+        Hop: importBeerXMLHop,
+        Mash: importBSMXMash,
+        MashStep: importBSMXMashStep,
+        Misc: importBSMXMisc,
+        Yeast: importBSMXYeast
+    }
 }
