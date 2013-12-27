@@ -113,7 +113,10 @@ def exportBeerXML(recipe):
         fYield = ET.SubElement(fermentable,'YIELD')
         fYield.text = str(f.fyield)
         fMashed = ET.SubElement(fermentable,'RECOMMEND_MASH')
-        fMashed.text = f.recommendMash
+        if f.recommendMash:
+            fMashed.text = 'TRUE'
+        else:
+            fMashed.text = 'FALSE'
         fUse = ET.SubElement(fermentable,'ADD_AFTER_BOIL')
         if f.useAfterBoil : 
             fUse.text = 'TRUE'
@@ -121,7 +124,6 @@ def exportBeerXML(recipe):
             fUse.text = 'FALSE'
         color = ET.SubElement(fermentable, 'COLOR')
         color.text = str(f.color/1.97)
-        print(f.useAfterBoil)
 
     miscs = ET.SubElement(recipeTag, 'MISCS')
     for m in recipe.listeMiscs:
