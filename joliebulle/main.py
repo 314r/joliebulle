@@ -1138,7 +1138,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
             # By default BeerXML is used
             else:
                 recipe = Recipe.parse(self.s, 'beerxml')
-            finalDest = recettes_dir + "/" + recipe.name + ".xml"
+            finalDest = recettes_dir + "/" + recipe.name.replace('/', ' ') + ".xml"
             if os.path.exists(finalDest):
                 logger.debug("Le fichier existe déjà dans la bibliothèque")
                 errors.warningExistingFile()
@@ -1818,7 +1818,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         self.recipe.brewer = self.lineEditBrewer.text()
         self.recipe.boil = self.spinBoxBoil.value()
         if not self.s:
-            destination = recettes_dir + "/" + self.recipe.name + ".xml"
+            destination = recettes_dir + "/" + self.recipe.name.replace('/', ' ') + ".xml"
             if os.path.exists(destination) :
                 errors=Errors()
                 errors.warningExistingPath()
@@ -1835,7 +1835,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
     def enregistrerSous (self) :
         self.s = QtGui.QFileDialog.getSaveFileName (self,
                                                     self.trUtf8("Enregistrer dans un fichier"),
-                                                    recettes_dir + "/" + self.recipe.name + ".xml",
+                                                    recettes_dir + "/" + self.recipe.name.replace('/', ' ') + ".xml",
                                                     "BeerXML (*.xml)")
         self.enregistrerRecette(self.s)
 

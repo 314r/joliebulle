@@ -36,13 +36,18 @@ logger = logging.getLogger(__name__)
 
 def importBSMXRecipe(data):
     logger.debug("Start parsing BSMX recipe")
+    
+    #BSMX format use not valid entities
+    def correct_bsmx_entities(text):
+        text = re.sub('(ld|rd|rs)quo;', 'quot;', text)
+        text = text.replace('&deg;', '°')
+        return text
     try:
-        #BSMX format use not valid entities
-        tree = ElementTree.fromstring(re.sub('(ld|rd|rs)quo;', 'quot;', open(data, 'r').read()))
+        tree = ElementTree.fromstring(correct_bsmx_entities(open(data, 'r').read()))
     except TypeError:
         tree = data
     except FileNotFoundError:
-        tree = ElementTree.fromstring(re.sub('(ld|rd|rs)quo;', 'quot;', data))
+        tree = ElementTree.fromstring(correct_bsmx_entities(data))
     except:
         raise
 
