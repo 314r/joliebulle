@@ -41,6 +41,7 @@ from editgrain import *
 from edithoublon import *
 from editdivers import * 
 from editlevures import *
+from helper.toolExporterRepository import *
 from importIng import *
 from journalEdit import *
 from outilDens import *
@@ -514,7 +515,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         self.connect(self.actionAbout, QtCore.SIGNAL("triggered()"), self.about)
         self.connect(self.actionCorrectionDens, QtCore.SIGNAL("triggered()"), self.outilDens)
         self.connect(self.actionCalculAlc, QtCore.SIGNAL("triggered()"), self.outilAlc)
-        self.connect(self.actionDilution, QtCore.SIGNAL("triggered()"), self.outilDilution)
+        self.connect(self.actionDilution, QtCore.SIGNAL("triggered()"), self.showTools)
         self.connect(self.actionEvaporation, QtCore.SIGNAL("triggered()"), self.outilEvaporation)
         self.connect(self.actionPaliers, QtCore.SIGNAL("triggered()"), self.outilPaliers)
         self.connect(self.actionPreferences, QtCore.SIGNAL("triggered()"), self.dialogPreferences)
@@ -855,6 +856,30 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
     def addNewEntry(self):
         self.editJournal()
         self.dlgEditJournal.setFields(int(time.time()),'','')
+
+
+
+
+###### Outils ############################################
+##########################################################
+
+
+    def showTools(self):
+        pyDir = os.path.abspath(os.path.dirname(__file__))
+        baseUrl = QtCore.QUrl.fromLocalFile(os.path.join(pyDir, "static/"))
+        self.webViewBiblio.setHtml(ToolExporterRepository["html"](), baseUrl)
+        self.webViewBiblio.page().mainFrame().addToJavaScriptWindowObject("main", self)
+        self.webViewBiblio.page().settings().setAttribute(QtWebKit.QWebSettings.DeveloperExtrasEnabled, True)
+        self.webInspector = QtWebKit.QWebInspector(self)
+        self.webInspector.setPage(self.webViewBiblio.page())
+        self.webInspector.setVisible(True)
+        self.verticalLayout_13.addWidget(self.webInspector)
+        
+
+
+
+
+
         
 
         
