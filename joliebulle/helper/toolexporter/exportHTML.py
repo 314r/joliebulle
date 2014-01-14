@@ -80,7 +80,7 @@ input::-webkit-inner-spin-button {
                 <h3>Correction du densimètre</h3>
                 <form class="form-horizontal" role="form">
                 <div class="form-group">
-                    <label class="col-sm-3 control-label">Densité mesurée</label>
+                    <label class="col-sm-3 control-label">{0}</label>
                     <div class="col-sm-2">
                         <input type="number" min="1.000" max="1.999" step="0.001" ng-model="measuredGravity" class="form-control">
                     </div>
@@ -327,7 +327,7 @@ input::-webkit-inner-spin-button {
     <!-- Fin container -->
     </div>
 </body>
-</html>'''
+</html>'''.format(QCoreApplication.translate("Export","Densité mesurée", None, QCoreApplication.UnicodeUTF8))
 
 
    
