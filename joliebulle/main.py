@@ -32,6 +32,7 @@ import PyQt4
 import sys
 from PyQt4 import QtGui
 from PyQt4 import QtCore
+from gi._gi import enum_register_new_gtype_and_add
 from reader_ui import *
 from settings import *
 from about import *
@@ -1126,22 +1127,24 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         else :
             pass
 
-    def importInLib (self) :
-        self.s = QtGui.QFileDialog.getOpenFileName(self,
-            self.trUtf8("Ouvrir un fichier"),
-            home_dir,
-            )
-        errors=Errors()
-        try :
-            arbre = ET.parse(self.s)
-            recipe = Recipe.parse(arbre)
-            finalDest = recettes_dir + "/" + os.path.basename(self.s)
-            if os.path.exists(finalDest) :
+    def importInLib (self):
+        self.s = QtGui.QFileDialog.getOpenFileName(self, self.trUtf8("Ouvrir un fichier"), home_dir,
+                                                   self.trUtf8("All (*);;BeerXML (*.xml);;BeerSmith 2 (*.bsmx)"))
+        errors = Errors()
+        try:
+            filename = os.path.basename(self.s)
+            if filename.endswith('.bsmx'):
+                recipe = Recipe.parse(self.s, 'bsmx')
+            # By default BeerXML is used
+            else:
+                recipe = Recipe.parse(self.s, 'beerxml')
+            finalDest = recettes_dir + "/" + recipe.name.replace('/', ' ') + ".xml"
+            if os.path.exists(finalDest):
                 logger.debug("Le fichier existe déjà dans la bibliothèque")
                 errors.warningExistingFile()
-            else :
-                shutil.copy(self.s, recettes_dir)
-
+            else:
+                self.recipe = recipe
+                self.enregistrerRecette(finalDest)
         except (TypeError, SyntaxError, AttributeError):
             logger.debug("Fichier incompatible. L'importation a échoué")
             errors.warningXml()
@@ -1815,7 +1818,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         self.recipe.brewer = self.lineEditBrewer.text()
         self.recipe.boil = self.spinBoxBoil.value()
         if not self.s:
-            destination = recettes_dir + "/" + self.recipe.name + ".xml"
+            destination = recettes_dir + "/" + self.recipe.name.replace('/', ' ') + ".xml"
             if os.path.exists(destination) :
                 errors=Errors()
                 errors.warningExistingPath()
@@ -1832,7 +1835,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
     def enregistrerSous (self) :
         self.s = QtGui.QFileDialog.getSaveFileName (self,
                                                     self.trUtf8("Enregistrer dans un fichier"),
-                                                    recettes_dir + "/" + self.recipe.name + ".xml",
+                                                    recettes_dir + "/" + self.recipe.name.replace('/', ' ') + ".xml",
                                                     "BeerXML (*.xml)")
         self.enregistrerRecette(self.s)
 
