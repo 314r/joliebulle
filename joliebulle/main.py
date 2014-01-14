@@ -2314,6 +2314,9 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         self.tableWidgetStepsBrewday.setItem(currentRow,2,QtGui.QTableWidgetItem("%.1f" %(waterTemp)))
         self.tableWidgetStepsBrewday.setItem(currentRow,3,QtGui.QTableWidgetItem("%.1f" %(targetRatio)))
         #il faut tout recalculer après la ligne modifiée
+
+        # BUG BUG BUG BUG
+
         listSteps = self.currentMash.listeSteps
         
         i = currentRow
