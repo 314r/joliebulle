@@ -1840,7 +1840,7 @@ color: rgb(255, 255, 255);</string>
      <x>0</x>
      <y>0</y>
      <width>1238</width>
-     <height>27</height>
+     <height>29</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuFichier">
@@ -1872,11 +1872,7 @@ color: rgb(255, 255, 255);</string>
     <property name="title">
      <string>Outils</string>
     </property>
-    <addaction name="actionCorrectionDens"/>
-    <addaction name="actionCalculAlc"/>
-    <addaction name="actionDilution"/>
-    <addaction name="actionEvaporation"/>
-    <addaction name="actionPaliers"/>
+    <addaction name="actionAllTools"/>
    </widget>
    <widget class="QMenu" name="menuEdition">
     <property name="title">
@@ -2176,6 +2172,11 @@ color: rgb(255, 255, 255);</string>
    </property>
    <property name="text">
     <string>Ajouter une entrée</string>
+   </property>
+  </action>
+  <action name="actionAllTools">
+   <property name="text">
+    <string>Tous les outils</string>
    </property>
   </action>
  </widget>

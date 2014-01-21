@@ -44,11 +44,6 @@ from editlevures import *
 from helper.toolExporterRepository import *
 from importIng import *
 from journalEdit import *
-from outilDens import *
-from outilAlc import *
-from outilDilution import *
-from outilEvaporation import *
-from outilPaliers import * 
 from preBoilDialog import *
 from stepEditWindow import *
 from mashEditWindow import *
@@ -439,11 +434,8 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
 
         # le menu outils
         menuTools=generalMenu.addMenu(self.trUtf8('''Outils'''))
-        menuTools.addAction(self.actionCorrectionDens)
-        menuTools.addAction(self.actionCalculAlc)
-        menuTools.addAction(self.actionDilution)
-        menuTools.addAction(self.actionEvaporation)
-        menuTools.addAction(self.actionPaliers)
+        menuTools.addAction(self.actionAllTools)
+
 
 
         generalMenu.addAction(self.actionPreferences)
@@ -464,11 +456,6 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         self.dlgEditH = DialogH(self)
         self.dlgEditD = DialogD(self)
         self.dlgEditY = DialogL(self)
-        self.dlgOutilDens = DialogOutilDens(self)
-        self.dlgOutilAlc = DialogAlc(self)
-        self.dlgOutilDilution = DialogDilution(self)
-        self.dlgOutilEvaporation = DialogEvaporation(self)
-        self.dlgOutilPaliers = DialogPaliers(self)
         self.dlgPref = DialogPref(self)
         self.dlgStep = DialogStep(self)
         self.dlgMash = DialogMash(self)
@@ -513,11 +500,9 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         self.actionManageProfiles.triggered.connect(self.seeMash)
         
         self.connect(self.actionAbout, QtCore.SIGNAL("triggered()"), self.about)
-        self.connect(self.actionCorrectionDens, QtCore.SIGNAL("triggered()"), self.outilDens)
-        self.connect(self.actionCalculAlc, QtCore.SIGNAL("triggered()"), self.outilAlc)
-        self.connect(self.actionDilution, QtCore.SIGNAL("triggered()"), self.showTools)
-        self.connect(self.actionEvaporation, QtCore.SIGNAL("triggered()"), self.outilEvaporation)
-        self.connect(self.actionPaliers, QtCore.SIGNAL("triggered()"), self.outilPaliers)
+
+        self.connect(self.actionAllTools, QtCore.SIGNAL("triggered()"), self.showTools)
+
         self.connect(self.actionPreferences, QtCore.SIGNAL("triggered()"), self.dialogPreferences)
         
         self.spinBoxBoil.valueChanged.connect(self.unlockBrewdayMode)
@@ -526,9 +511,6 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         self.pushButtonCancel.clicked.connect(self.cancelRecipe)
         self.pushButtonOk.clicked.connect(self.okRecipe)
         self.pushButtonBrewdayModeClose.clicked.connect(self.closeBrewday)
-        
-
-
 
         
         #Les vues
@@ -869,11 +851,11 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         baseUrl = QtCore.QUrl.fromLocalFile(os.path.join(pyDir, "static/"))
         self.webViewBiblio.setHtml(ToolExporterRepository["html"](), baseUrl)
         self.webViewBiblio.page().mainFrame().addToJavaScriptWindowObject("main", self)
-        self.webViewBiblio.page().settings().setAttribute(QtWebKit.QWebSettings.DeveloperExtrasEnabled, True)
-        self.webInspector = QtWebKit.QWebInspector(self)
-        self.webInspector.setPage(self.webViewBiblio.page())
-        self.webInspector.setVisible(True)
-        self.verticalLayout_13.addWidget(self.webInspector)
+        # self.webViewBiblio.page().settings().setAttribute(QtWebKit.QWebSettings.DeveloperExtrasEnabled, True)
+        # self.webInspector = QtWebKit.QWebInspector(self)
+        # self.webInspector.setPage(self.webViewBiblio.page())
+        # self.webInspector.setVisible(True)
+        # self.verticalLayout_13.addWidget(self.webInspector)
         
 
 
@@ -1586,26 +1568,6 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
     def editJournal(self):
         self.dlgEditJournal.setModal(True)
         self.dlgEditJournal.show()
-        
-    def outilDens(self) : 
-        self.dlgOutilDens.setModal(True)
-        self.dlgOutilDens.show()
-        
-    def outilAlc(self) :
-        self.dlgOutilAlc.setModal(True)
-        self.dlgOutilAlc.show()
-        
-    def outilDilution(self) :
-        self.dlgOutilDilution.setModal(True)
-        self.dlgOutilDilution.show()
-    
-    def outilEvaporation (self) :
-        self.dlgOutilEvaporation.setModal(True)
-        self.dlgOutilEvaporation.show()
-        
-    def outilPaliers (self) :
-        self.dlgOutilPaliers.setModal(True)
-        self.dlgOutilPaliers.show()
 
     def preBoilCheck(self) :
         self.dlgPreBoil = DialogPreBoil(self)
