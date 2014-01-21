@@ -81,7 +81,7 @@ input::-webkit-inner-spin-button {
 
         <div class="row">
             <div class="tools-header col-sm-3">
-                <h1>Outils</h1>
+                <h1>{0}</h1>
             </div>
             <div class="menu btn-group col-sm-2 col-sm-offset-7">
                 <i class="icon-reorder" data-toggle="dropdown"></i>
@@ -96,9 +96,11 @@ input::-webkit-inner-spin-button {
                               </ul>
                         
             </div>
-        </div>
+        </div>'''.format(QCoreApplication.translate("Export","Outils", None, QCoreApplication.UnicodeUTF8))
 
-        <div class="row row-tools" id="gravity">
+
+
+    resultHtml+='''<div class="row row-tools" id="gravity">
             <div ng-controller="GravityToolCtrl" class="tool-block">
                 <h3>Correction du densimètre</h3>
                 <form class="form-horizontal" role="form">
@@ -429,9 +431,6 @@ input::-webkit-inner-spin-button {
 </script>    
 </body>
 </html>'''
-
-
-   
 
     
 
