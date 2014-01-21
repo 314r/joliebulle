@@ -31,10 +31,7 @@ toolsApp.controller('BoiloffToolCtrl', ['$scope', function ($scope) {
         /*sg finale * volume final = (sg preEbu * vol preEbu) - vol manquant*/
         finalSg = ((preBoilGravity * volPre) - (volBoilOff + volCoolingLoss)) / finalVol;
         
-        return {boilOffVol : volBoilOff, coolingLoss : volCoolingLoss, finalVol : finalVol, finalSg : finalSg};
-        
-        
-
-        
+        return {boilOffVol : volBoilOff.toFixed(1), coolingLoss : volCoolingLoss.toFixed(1), finalVol : finalVol.toFixed(1), finalSg : finalSg.toFixed(3)};
+                
 	};
 }]);

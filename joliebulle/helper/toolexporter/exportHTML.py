@@ -33,22 +33,32 @@ def exportHTML():
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <script src="angular/angular.min.js"></script>
+<script src="jquery/jquery.js"></script>
+<script src="bootstrap/js/bootstrap.min.js"></script>
 <script src="controllers/main.js"></script>
 <script src="controllers/gravity.js"></script>
 <script src="controllers/steps.js"></script>
 <script src="controllers/alcool.js"></script>
 <script src="controllers/dilution.js"></script>
 <script src="controllers/boiloff.js"></script>
+<script src="controllers/decoction.js"></script>
+<script src="controllers/sgplato.js"></script>
 <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
 <link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
 
 
 <style>
-body {background:url(images/furley_bg.png);}
-.tools-header {padding-top:0.5em;padding-bottom:1em;}
-.tools-header h1 {color:#999;font-weight:bold;margin:auto;padding-top:0.1em; font-size:24px ;float:left;}
-.tool-block {margin-top:3em; margin-bottom:1em; background-color: white; border: 1px solid rgba(0, 0, 0, 0.1);box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.08);padding: 50px;padding-top: 0;}
-h3{margin-bottom: 2em;}
+    body {background:url(images/furley_bg.png);}
+    .menu{text-align: right; color: #999; font-size: 24px;float:right;margin: auto; padding-top:0.6em;}
+    .menu i:hover{color:#333333;}
+    .menu ul{text-align: left;}
+    .tools-header {padding-bottom:1em;margin: auto;float:left;}
+    .tools-header h1 {color:#999;font-weight:bold; font-size:24px ;}
+    .tool-block {margin-top:3em; margin-bottom:1em; background-color: white; border: 1px solid rgba(0, 0, 0, 0.1);box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.08);padding: 50px;padding-top: 0;}
+    h3{margin-bottom: 2em;}
+    .tool-result{margin-top:4em;}
+    .last{margin-bottom: 3em;}
+    .row-tools{padding-left: 15px; padding-right: 15px;}
 .tool-result{margin-top:4em;}
 
 
@@ -70,17 +80,30 @@ input::-webkit-inner-spin-button {
     <div class="container">
 
         <div class="row">
-            <div class="tools-header">
+            <div class="tools-header col-sm-3">
                 <h1>Outils</h1>
+            </div>
+            <div class="menu btn-group col-sm-2 col-sm-offset-7">
+                <i class="icon-reorder" data-toggle="dropdown"></i>
+                <ul class="dropdown-menu pull-right" role="menu">    
+                                <li><a href="#gravity">Correction du densimètre</a></li>
+                                <li><a href="#step">Assistant paliers</a></li>
+                                <li><a href="#alc">Taux d'alcool</a></li>
+                                <li><a href="#dilution">Dilution</a></li>
+                                <li><a href="#boiloff">Evaporation</a></li>
+                                <li><a href="#decoc">Décoction</a></li>
+                                <li><a href="#sg">Densité - Plato</a></li>
+                              </ul>
+                        
             </div>
         </div>
 
-        <div class="row">
+        <div class="row row-tools" id="gravity">
             <div ng-controller="GravityToolCtrl" class="tool-block">
                 <h3>Correction du densimètre</h3>
                 <form class="form-horizontal" role="form">
                 <div class="form-group">
-                    <label class="col-sm-3 control-label">{0}</label>
+                    <label class="col-sm-3 control-label">Densité mesurée</label>
                     <div class="col-sm-2">
                         <input type="number" min="1.000" max="1.999" step="0.001" ng-model="measuredGravity" class="form-control">
                     </div>
@@ -107,9 +130,7 @@ input::-webkit-inner-spin-button {
             </div>
         </div>
 
-
-
-        <div class="row">
+        <div class="row row-tools" id="step">
             <div ng-controller="StepAssistantCtrl" class="tool-block">
                 <h3>Assistant paliers</h3>
                 <form class="form-horizontal" role="form">
@@ -179,7 +200,7 @@ input::-webkit-inner-spin-button {
 
 
 
-        <div class="row">
+        <div class="row row-tools" id="alc">
             <div ng-controller="AlcToolCtrl" class="tool-block">
                 <h3>Taux d'alcool</h3>
                 <form class="form-horizontal" role="form">
@@ -213,7 +234,7 @@ input::-webkit-inner-spin-button {
 
 
 
-        <div class="row">
+        <div class="row row-tools" id="dilution">
             <div ng-controller="DilutionToolCtrl" class="tool-block">
                 <h3>Dilution</h3>
                 <form class="form-horizontal" role="form">
@@ -259,7 +280,7 @@ input::-webkit-inner-spin-button {
         </div>
         
         
-        <div class="row">
+        <div class="row row-tools" id="boiloff">
             <div ng-controller="BoiloffToolCtrl" class="tool-block">
                 <h3>Evaporation</h3>
                 <form class="form-horizontal" role="form">
@@ -284,7 +305,7 @@ input::-webkit-inner-spin-button {
                 <div class="form-group">
                     <label class="col-sm-3 control-label">Durée d'ébullition (min)</label>
                     <div class="col-sm-2">
-                        <input type="number" class="form-control" min="1" max="100" step="10000" ng-model="boilTime">
+                        <input type="number" class="form-control" min="1" max="100000" step="10" ng-model="boilTime">
                     </div>
                     
                 </div>
@@ -321,13 +342,93 @@ input::-webkit-inner-spin-button {
                 </form>
             </div>
         </div>
+        
+        
+        <div class="row row-tools" id="decoc">
+            <div ng-controller="DecocToolCtrl" class="tool-block">
+                <h3>Décoction</h3>
+                <form class="form-horizontal" role="form">
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">Volume de moût (L)</label>
+                    <div class="col-sm-2">
+                        <input type="number" class="form-control" min="0" max="100000" step="1" ng-model="mashVol">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">Température cible (°C)</label>
+                    <div class="col-sm-2">
+                        <input type="number" class="form-control" min="0" max="100" step="1" ng-model="targetTemp">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">Température de départ (°C)</label>
+                    <div class="col-sm-2">
+                        <input type="number" class="form-control" min="0" max="100000" step="1" ng-model="startTemp">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">Température d'ébullition (°C)</label>
+                    <div class="col-sm-2">
+                        <input type="number" class="form-control" min="0" max="1000" step="1" ng-model="boilTemp">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">Facteur de correction (%)</label>
+                    <div class="col-sm-2">
+                        <input type="number" class="form-control" min="0" max="1000" step="1" ng-model="correction">
+                    </div>
+                </div>
+                <div class="form-group tool-result">
+                    <label class="col-sm-3 control-label">Volume de décoction (L)</label>
+                    <div class="col-sm-2">
+                        <label class="control-label">{{calcDecoction().decocVol}}</label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">Fraction du moût (%)</label>
+                    <div class="col-sm-2">
+                        <label class="control-label">{{calcDecoction().fraction}}</label>
+                    </div>
+                </div>
+                </form>
+            </div>
+        </div>
+        
+        
+        <div class="row row-tools last" id="sg">
+            <div ng-controller="SgPlatoToolCtrl" class="tool-block">
+                <h3>Densité spécifique - Plato</h3>
+                <form class="form-horizontal" role="form">
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">Densité spécifique</label>
+                    <div class="col-sm-2">
+                        <input type="number" class="form-control" min="0" max="10" step="0.001" ng-model="specificGravity" ng-change="sgChanged()">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">Plato</label>
+                    <div class="col-sm-2">
+                        <input type="number" class="form-control" min="0" max="100" step="1" ng-model="plato" ng-change="platoChanged()">
+                    </div>
+                </div>
+                </div>
+                </form>
+            </div>
+        </div>
 
 
 
     <!-- Fin container -->
     </div>
+
+
+<script type="text/javascript">
+                    $(function () {
+                    $("[data-toggle='dropdown']").dropdown();
+                    });
+</script>    
 </body>
-</html>'''.format(QCoreApplication.translate("Export","Densité mesurée", None, QCoreApplication.UnicodeUTF8))
+</html>'''
 
 
    

@@ -31,8 +31,6 @@ toolsApp.controller('DilutionToolCtrl', ['$scope', function ($scope) {
     
     
     
-    
-    
     $scope.finalVolChanged = function () {
         $scope.addedVolume = $scope.finalVol - $scope.initialVol;
     };
