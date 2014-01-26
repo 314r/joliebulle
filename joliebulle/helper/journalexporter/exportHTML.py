@@ -25,85 +25,115 @@ from PyQt4.QtCore import QCoreApplication
 
 
 
-def exportHTML(itemsList):
+def exportHTML(itemsList,newItem):
     resultHtml = '''
-<!DOCTYPE html>
-<html lang="fr">
+<!doctype html>
+<html manifest="tools.manifest">
 <head>
-<title>Journal</title>
 <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script src="angular/angular.min.js"></script>
+<script src="jquery/jquery.js"></script>
+<script src="bootstrap/js/bootstrap.min.js"></script>
+<script src="underscore/underscore-min.js"></script>
+<script src="controllers/journal/main.js"></script>
+<script src="controllers/journal/journal.js"></script>
 <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
 <link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
-    <style>
+
+
+<style>
     body {background:url(images/furley_bg.png);}
-    .journal {width:800px;margin:auto;padding-top:0.5em;padding-bottom:1em;}
-    .journal h1{color:#999;font-weight:bold;margin:auto;padding-top:0.1em; font-size:24px ;float:left;}
-    .journal-list{margin:auto;margin-top:3em; margin-bottom:3em; background-color: white; width:800px;border: 1px solid rgba(0, 0, 0, 0.1);box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.08);padding: 50px;}
+    .journal-header {padding-bottom:1em;margin: auto;float:left;}
+    .journal-header h1 {color:#999;font-weight:bold; font-size:24px ;}
+    .journal-list{ margin-bottom:1em; background-color: white; border: 1px solid rgba(0, 0, 0, 0.1);box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.08);padding: 50px;padding-top: 2em;}
+    .row-journal{padding-left: 15px; padding-right: 15px;}
     .entry{min-height:3em;}
     .date{background-color:#a1b5bf;padding:0.2em 0.5em 0.2em 0.5em;margin-right:20px;color:white; font-size:85%%; font-weight: bold;}
     .entry button{color:white;}
     .entry:hover button{color:#428bca;}
     .event{padding-right:20px;}
-    </style>
-</head>
-<body>
-'''    
-    
+    .newButton{padding-bottom:2em;padding-right:5px;}
+    .newButton button {background:none; border:none; color:#999;margin-left:15px;padding:0;padding-right: 3px; float:right;}
+    .newButton button:hover{color:#333333;}
+    .new-form {margin-bottom:1em; background-color: white; border: 1px solid rgba(0, 0, 0, 0.1);box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.08);padding: 50px;padding-top: 1em; padding-bottom:1em;}
+    .entry .saveButton {color:#428bca;}
+</style>
 
-    resultHtml +=''' <div class="journal">
-                        <h1>Journal</h1>
+
+
+</head>'''
+
+
+    resultHtml+='''<body ng-app="journal">
+
+
+    <div class="container">
+
+        <div class="row">
+            <div class="journal-header col-sm-3">
+                <h1>Journal</h1>
+            </div>
+        </div>
+
+       
+        
+        <div ng-controller="JournalCtrl" ng-init='dataJson={0};'>
+            
+              <div class="new row row-journal" ng-init="newEntry={1}">
+                <div class="newButton">
+                    <button ng-click="newEntry.editing = !newEntry.editing" ng-hide="newEntry.editing"><i class="icon-plus"> </i>Ajouter une entrée</button>
+                </div>
+                
+                <form class="form-inline new-form" role="form" ng-show="newEntry.editing">
+                  <div class="form-group">
+                    <input class="form-control datepicker" type="date" ng-model="newEntryDate" ng-show="newEntry.editing" />
+                  </div>
+                  <div class="form-group">
+                    <input class="form-control" type="text" ng-model="newEntryEvent" ng-show="newEntry.editing"/>
+                  </div>
+                  <div class="form-group">
+                    <input class="form-control" type="text" ng-model="newEntryRecipe" ng-show="newEntry.editing"/>
+                  </div>
+                  <button class="btn-link btn-xs" type="button" ng-click="saveNew(newEntryRecipe, newEntryDate, newEntryEvent); newEntry.editing = !newEntry.editing" ng-show="newEntry.editing">enregistrer</button>
+                </form>
+              </div>
+
+              <div class="row row-journal">
+                <div class="journal-list">
+                  <div ng-repeat="entry in entries">
+                    <div class = "entry">
+                      <div ng-hide="entry.editing"><span class="date">{2}</span> {3} a été marquée comme <span class="event"> {4}</span> 
+                      <button class="btn-link btn-xs" type="button" ng-click="edit(entry)" ng-hide="entry.editing">modifier</button>
+                      <button class="btn-link btn-xs" type="button" ng-click="delete(entry)" ng-hide="entry.editing">supprimer</button></div>
+                      <form class="form-inline" role="form" ng-show="entry.editing">
+                        <div class="form-group">
+                          <input class="form-control datepicker" type="date" ng-model="entry.date" ng-show="entry.editing"/>
+                        </div>
+                        <div class="form-group">
+                          <input class="form-control" type="text" ng-model="entry.event" ng-show="entry.editing"/>
+                        </div>
+                        <div class="form-group">
+                          <input class="form-control" type="text" ng-model="entry.recipe" ng-show="entry.editing"/>
+                        </div>
+                       
+                        <button class="btn-link btn-xs saveButton" ng-click="save(entry)" ng-show="entry.editing">enregistrer</button>
+                        
+                      </form>
+
                     </div>
-                    <div class="journal-list"></div>'''
+                  </div>
+                </div>
+            </div>
+        </div>
 
+       
+    <!-- Fin container     -->
+    </div>
 
-    # i=0
-    # for entry in itemsList :
-    #     i=i+1
-    #     resultHtml += '''<div class="entry" id="%s">%s <button type="button" value="delete" onClick="main.delJournal(%s);deleteEntry(%s)" > <i class="icon-wrench"></i> Supprimer </button></div>''' %(i,entry["recipe"],i,i)
-
-    resultHtml += '''<script src="jquery/jquery.js"></script>
-                     <script src="mustache/mustache.js"></script>
-                     '''
-
-    resultHtml += ''' <script type="text/javascript">
-                    function deleteEntry(id) {
-                    $("#" + id).remove();
-                    }
-                </script>'''
-
-    resultHtml += '''<script type="text/javascript"> 
-
-                        var entryLists = %s 
-                        for(var i=0;i<entryLists.length;i++)
-                            {
-                                tableau=entryLists[i];
-                                date= new Date();
-                                date.setTime(tableau["date"]*1000);
-                                date = ('0'+date.getDate()).slice(-2) + '/' + ('0'+(date.getMonth() + 1)).slice(-2) + '/' + date.getFullYear();
-                                event = "'" + tableau["event"] + "'"
-                                recipe = "'" + tableau["recipe"] + "'"
-                                stringSignal = tableau["date"] + ',' + event + ',' + recipe
-                                console.log(event)
-                                $(".journal-list").append("<div class =%s id="+i+">" + '<span class="date">'+ date + ' </span>' + tableau["recipe"] + ' %s <span class="event">' + tableau["event"] + '.</span><button class="btn btn-link btn-xs" type="button" value="delete" onClick="main.delJournal('+tableau["date"]+');deleteEntry('+i+ ')" > %s </button><button class="btn btn-link btn-xs" type="button" value="delete" onClick="main.editJournalEntry('+stringSignal+')" > %s </button></div>');
-
-                            }
-                     </script>''' %(str(itemsList), "entry",QCoreApplication.translate("Export","a été marquée comme", None, QCoreApplication.UnicodeUTF8),QCoreApplication.translate("Export","Supprimer", None, QCoreApplication.UnicodeUTF8),QCoreApplication.translate("Export","Modifier", None, QCoreApplication.UnicodeUTF8))
-
-
-
-
-
-    # resultHtml += ''' <script type="text/javascript">
-    #                 $(".entry").append('coincoin');
-    #             </script>'''
-    # resultHtml+='''<script type="text/javascript">
-    # var data = {title: "Javascript: the Good Parts", author: "Douglas Crockford"};
-    # var template = 'Title: <b>{{title}}</b> <br/> Author: {{author}}';
-    # var output = Mustache.render(template, data);
-    # $(".entry").append(output);
-    # </script>'''
-
-    resultHtml += ''' </body></html>'''
+</script>    
+</body>
+</html>''' .format(str(itemsList) , newItem, "{{entry.date*1000 | date:'d/M/yy'}}", "{{entry.recipe}}", "{{entry.event}}" )
 
     return resultHtml
 

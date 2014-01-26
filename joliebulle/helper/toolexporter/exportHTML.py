@@ -35,14 +35,14 @@ def exportHTML():
 <script src="angular/angular.min.js"></script>
 <script src="jquery/jquery.js"></script>
 <script src="bootstrap/js/bootstrap.min.js"></script>
-<script src="controllers/main.js"></script>
-<script src="controllers/gravity.js"></script>
-<script src="controllers/steps.js"></script>
-<script src="controllers/alcool.js"></script>
-<script src="controllers/dilution.js"></script>
-<script src="controllers/boiloff.js"></script>
-<script src="controllers/decoction.js"></script>
-<script src="controllers/sgplato.js"></script>
+<script src="controllers/tools/main.js"></script>
+<script src="controllers/tools/gravity.js"></script>
+<script src="controllers/tools/steps.js"></script>
+<script src="controllers/tools/alcool.js"></script>
+<script src="controllers/tools/dilution.js"></script>
+<script src="controllers/tools/boiloff.js"></script>
+<script src="controllers/tools/decoction.js"></script>
+<script src="controllers/tools/sgplato.js"></script>
 <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
 <link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
 

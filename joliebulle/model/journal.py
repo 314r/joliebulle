@@ -65,7 +65,7 @@ class Journal :
         self.dump(self.journal,journal_file)
         
     def export(self,type) :
-        return JournalExporterRepository[type](json.dumps(self.journal.itemsList))
+        return JournalExporterRepository[type](json.dumps(self.journal.itemsList), '{recipe : '', date : '',event:''}')
 
 
 
