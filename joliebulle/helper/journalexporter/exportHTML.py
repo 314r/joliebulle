@@ -82,7 +82,7 @@ def exportHTML(itemsList,newItem):
             
               <div class="new row row-journal" ng-init="newEntry={1}">
                 <div class="newButton">
-                    <button ng-click="newEntry.editing = !newEntry.editing" ng-hide="newEntry.editing"><i class="icon-plus"> </i>Ajouter une entrée</button>
+                    <button ng-click="newEntry.editing = !newEntry.editing;newClicked('recette', 'événement')" ng-hide="newEntry.editing"><i class="icon-plus"> </i>Ajouter une entrée</button>
                 </div>
                 
                 <form class="form-inline new-form" role="form" ng-show="newEntry.editing">
@@ -133,7 +133,7 @@ def exportHTML(itemsList,newItem):
 
 </script>    
 </body>
-</html>''' .format(str(itemsList) , newItem, "{{entry.date*1000 | date:'d/M/yy'}}", "{{entry.recipe}}", "{{entry.event}}" )
+</html>''' .format(str(itemsList) , newItem, "{{entry.date*1000 | date:'dd/MM/yy'}}", "{{entry.recipe}}", "{{entry.event}}" )
 
     return resultHtml
 

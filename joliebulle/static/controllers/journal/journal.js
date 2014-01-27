@@ -37,8 +37,11 @@ toolsApp.controller('JournalCtrl', ['$scope','$http', '$filter', function ($scop
         $scope.entries.splice($scope.entries.indexOf(entry),1);
     };
 
-    $scope.newClicked = function(newEntry) {
-        newEntry.editing = !newEntry.editing;
+    $scope.newClicked = function(recipe, event) {
+        $scope.newEntry.recipe = recipe;
+        $scope.newEntry.event = event;
+        var date = new Date();
+        $scope.newEntry.date = date / 1000;
     };
 
 
