@@ -787,11 +787,11 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         # self.actionEditJournal.setEnabled(True)     
 
     @QtCore.pyqtSlot()
-    def showJournal(self) :
+    def showJournal(self,entry="") :
         self.loadJournal()
         pyDir = os.path.abspath(os.path.dirname(__file__))
         baseUrl = QtCore.QUrl.fromLocalFile(os.path.join(pyDir, "static/"))
-        self.webViewBiblio.setHtml(self.journal.export("html"), baseUrl)
+        self.webViewBiblio.setHtml(self.journal.export("html",entry), baseUrl)
         self.webViewBiblio.page().mainFrame().addToJavaScriptWindowObject("main", self)
         self.webViewBiblio.page().settings().setAttribute(QtWebKit.QWebSettings.DeveloperExtrasEnabled, True)
         # self.webInspector = QtWebKit.QWebInspector(self)
@@ -805,23 +805,31 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         self.journal.delEntry(index)
 
     @QtCore.pyqtSlot(str)
-    def addToJournal(self,event,recipe=None,date=None) :
-        
-        self.loadJournal()
+    def addToJournal(self,event) :
+        entry = '''{recipe:%s,date:%s,event:%s,editing:'True'} ''' %( "'" + self.recipe.name + "'", "'" + str(int(time.time())) + "'" , "'" + self.journal.eventsLabels[event] + "'")
+        self.showJournal(entry)
 
-        if date  == None :
-            date = str(int(time.time()))
-        else :
-            date=date
-        if recipe == None :
-            recipe=self.recipe.name
-        else :
-            recipe=recipe
-        try :
-            event=self.journal.eventsLabels[event]
-        except :
-            event=event   
-        self.journal.addJournal(date,event,recipe) 
+
+        
+        # self.loadJournal()
+
+        # if date  == None :
+        #     date = str(int(time.time()))
+        # else :
+        #     date=date
+        # if recipe == None :
+        #     recipe=self.recipe.name
+        # else :
+        #     recipe=recipe
+        # try :
+        #     event=self.journal.eventsLabels[event]
+        # except :
+        #     event=event   
+        # self.journal.addJournal(date,event,recipe) 
+
+    @QtCore.pyqtSlot(str)
+    def dumpJournal(self,str) :
+        print(str)
 
     @QtCore.pyqtSlot(int,str,str)
     def editJournalEntry(self,date,event,recipe) :

@@ -1,7 +1,9 @@
 toolsApp.controller('JournalCtrl', ['$scope','$http', '$filter', function ($scope,$http,$filter) {
     "use strict";
 
-    $scope.$watch('newEntry', function () {
+    $scope.entries=[];
+
+    $scope.$watch($scope.newEntry, function () {
         $scope.newEntryRecipe = $scope.newEntry.recipe;
         $scope.newEntryDate = $filter('date')($scope.newEntry.date*1000, "yyyy-MM-dd");
         $scope.newEntryEvent = $scope.newEntry.event;
@@ -31,6 +33,8 @@ toolsApp.controller('JournalCtrl', ['$scope','$http', '$filter', function ($scop
         entry.event = event;
         $scope.entries.push(entry);
         $scope.entries = _.sortBy( $scope.entries, 'date' ).reverse();
+        main.dumpJournal(JSON.stringify($scope.entries));
+
     };
 
     $scope.delete = function(entry) {
@@ -42,6 +46,10 @@ toolsApp.controller('JournalCtrl', ['$scope','$http', '$filter', function ($scop
         $scope.newEntry.event = event;
         var date = new Date();
         $scope.newEntry.date = date / 1000;
+
+        $scope.newEntryRecipe = $scope.newEntry.recipe;
+        $scope.newEntryEvent = $scope.newEntry.event;
+        $scope.newEntryDate = $filter('date')($scope.newEntry.date*1000, "yyyy-MM-dd");
     };
 
 

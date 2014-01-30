@@ -87,7 +87,7 @@ def exportHTML(itemsList,newItem):
                 
                 <form class="form-inline new-form" role="form" ng-show="newEntry.editing">
                   <div class="form-group">
-                    <input class="form-control datepicker" type="date" ng-model="newEntryDate" ng-show="newEntry.editing" />
+                    <input class="form-control" type="date" ng-model="newEntryDate" ng-show="newEntry.editing" />
                   </div>
                   <div class="form-group">
                     <input class="form-control" type="text" ng-model="newEntryEvent" ng-show="newEntry.editing"/>
@@ -95,7 +95,7 @@ def exportHTML(itemsList,newItem):
                   <div class="form-group">
                     <input class="form-control" type="text" ng-model="newEntryRecipe" ng-show="newEntry.editing"/>
                   </div>
-                  <button class="btn-link btn-xs" type="button" ng-click="saveNew(newEntryRecipe, newEntryDate, newEntryEvent); newEntry.editing = !newEntry.editing" ng-show="newEntry.editing">enregistrer</button>
+                  <button class="btn-link btn-xs" type="button" ng-click="saveNew(newEntryRecipe, newEntryDate, newEntryEvent); newEntry.editing = !newEntry.editing;" ng-show="newEntry.editing">enregistrer</button>
                 </form>
               </div>
 
@@ -108,7 +108,7 @@ def exportHTML(itemsList,newItem):
                       <button class="btn-link btn-xs" type="button" ng-click="delete(entry)" ng-hide="entry.editing">supprimer</button></div>
                       <form class="form-inline" role="form" ng-show="entry.editing">
                         <div class="form-group">
-                          <input class="form-control datepicker" type="date" ng-model="entry.date" ng-show="entry.editing"/>
+                          <input class="form-control" type="date" ng-model="entry.date" ng-show="entry.editing"/>
                         </div>
                         <div class="form-group">
                           <input class="form-control" type="text" ng-model="entry.event" ng-show="entry.editing"/>
