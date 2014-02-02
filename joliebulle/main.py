@@ -828,8 +828,12 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         # self.journal.addJournal(date,event,recipe) 
 
     @QtCore.pyqtSlot(str)
-    def dumpJournal(self,str) :
-        print(str)
+    def dumpJournal(self,journalJson) :
+        journalJson= '{"name":"journal","items": %s }' %journalJson 
+        d=json.loads(journalJson)
+        with open(journal_file, mode="w", encoding="utf-8") as f :
+            json.dump(d,f,indent=2)
+        
 
     @QtCore.pyqtSlot(int,str,str)
     def editJournalEntry(self,date,event,recipe) :

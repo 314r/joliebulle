@@ -5,14 +5,16 @@ toolsApp.controller('JournalCtrl', ['$scope','$http', '$filter', function ($scop
 
     $scope.$watch($scope.newEntry, function () {
         $scope.newEntryRecipe = $scope.newEntry.recipe;
-        $scope.newEntryDate = $filter('date')($scope.newEntry.date*1000, "yyyy-MM-dd");
+        $scope.newEntryDate = $filter('date')($scope.newEntry.date*1000, "shortDate");
+        console.log($scope.newEntryDate);
         $scope.newEntryEvent = $scope.newEntry.event;
     });
 
 
     $scope.$watch('dataJson', function () {
         $scope.entries = $scope.dataJson;
-        return $scope.entries;
+        $scope.entries = _.sortBy( $scope.entries, 'date' ).reverse();
+        return $scope.entries;    
 });
 
     $scope.edit = function(entry) {
@@ -29,12 +31,15 @@ toolsApp.controller('JournalCtrl', ['$scope','$http', '$filter', function ($scop
     $scope.saveNew = function(recipe, date, event) {
         var entry = {};
         entry.recipe = recipe;
-        entry.date = new Date(date).getTime() / 1000;
+        // On veut une date plus précise, histoire d'etre sur de respecter la chronologie des entrées
+        entry.date = (new Date(date).getTime() / 1000) + (new Date().getHours() * 3600) + (new Date().getMinutes() * 60) + (new Date().getSeconds());
+        entry.date = entry.date.toString();
         entry.event = event;
         $scope.entries.push(entry);
+        // On trie avec Underscore
         $scope.entries = _.sortBy( $scope.entries, 'date' ).reverse();
-        main.dumpJournal(JSON.stringify($scope.entries));
-
+        // Il faut nettoyer le JSON produit des clés indésirables
+        main.dumpJournal(JSON.stringify($scope.entries, $scope.cleanJson));
     };
 
     $scope.delete = function(entry) {
@@ -52,6 +57,14 @@ toolsApp.controller('JournalCtrl', ['$scope','$http', '$filter', function ($scop
         $scope.newEntryDate = $filter('date')($scope.newEntry.date*1000, "yyyy-MM-dd");
     };
 
-
+    $scope.cleanJson = function(key,value) {
+        if (key == "$$hashKey")
+            {
+                return undefined ;
+            } else 
+            {
+                return value ;
+            }        
+    };
 
 }]);
