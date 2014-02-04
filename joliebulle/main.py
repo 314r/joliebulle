@@ -787,7 +787,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         # self.actionEditJournal.setEnabled(True)     
 
     @QtCore.pyqtSlot()
-    def showJournal(self,entry="") :
+    def showJournal(self,entry=" '' ") :
         self.loadJournal()
         pyDir = os.path.abspath(os.path.dirname(__file__))
         baseUrl = QtCore.QUrl.fromLocalFile(os.path.join(pyDir, "static/"))
