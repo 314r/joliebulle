@@ -806,6 +806,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
 
     @QtCore.pyqtSlot(str)
     def addToJournal(self,event) :
+        self.loadJournal()
         entry = '''{recipe:%s,date:%s,event:%s,editing:'True'} ''' %( "'" + self.recipe.name + "'", "'" + str(int(time.time())) + "'" , "'" + self.journal.eventsLabels[event] + "'")
         self.showJournal(entry)
 

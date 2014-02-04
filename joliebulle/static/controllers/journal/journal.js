@@ -5,7 +5,7 @@ toolsApp.controller('JournalCtrl', ['$scope', '$http', '$filter', function ($sco
 
     $scope.$watch($scope.newEntry, function () {
         $scope.newEntryRecipe = $scope.newEntry.recipe;
-        $scope.newEntryDate = $filter('date')($scope.newEntry.date * 1000, "shortDate");
+        $scope.newEntryDate = $filter('date')($scope.newEntry.date * 1000, "yyyy-MM-dd");
         $scope.newEntryEvent = $scope.newEntry.event;
     });
 
