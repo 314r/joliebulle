@@ -488,8 +488,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         self.connect(self.actionQuitter, QtCore.SIGNAL("triggered()"), app, QtCore.SLOT("quit()"))
 
         self.actionShowJournal.triggered.connect(self.showJournal)
-        self.actionEditJournal.triggered.connect(self.addNewEntry)
-        self.dlgEditJournal.journalEdited.connect(self.journalEdition)
+        
         
         self.connect(self.actionEditGrains, QtCore.SIGNAL("triggered()"), self.editGrains)
         self.connect(self.actionEditHoublons, QtCore.SIGNAL("triggered()"), self.editHoublons)
@@ -800,33 +799,12 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         # self.verticalLayout_13.addWidget(self.webInspector)
 
 
-    @QtCore.pyqtSlot(int) 
-    def delJournal(self,index) :
-        self.journal.delEntry(index)
-
     @QtCore.pyqtSlot(str)
     def addToJournal(self,event) :
         self.loadJournal()
         entry = '''{recipe:%s,date:%s,event:%s,editing:'True'} ''' %( "'" + self.recipe.name + "'", "'" + str(int(time.time())) + "'" , "'" + self.journal.eventsLabels[event] + "'")
         self.showJournal(entry)
 
-
-        
-        # self.loadJournal()
-
-        # if date  == None :
-        #     date = str(int(time.time()))
-        # else :
-        #     date=date
-        # if recipe == None :
-        #     recipe=self.recipe.name
-        # else :
-        #     recipe=recipe
-        # try :
-        #     event=self.journal.eventsLabels[event]
-        # except :
-        #     event=event   
-        # self.journal.addJournal(date,event,recipe) 
 
     @QtCore.pyqtSlot(str)
     def dumpJournal(self,journalJson) :
@@ -835,22 +813,6 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         with open(journal_file, mode="w", encoding="utf-8") as f :
             json.dump(d,f,indent=2)
         
-
-    @QtCore.pyqtSlot(int,str,str)
-    def editJournalEntry(self,date,event,recipe) :
-        self.editJournal()
-        self.dlgEditJournal.setFields(date,event,recipe)
-
-    def journalEdition(self,date,event,recipe,oldDate,delItem) :
-        self.loadJournal()
-        if delItem == 1 :
-            self.delJournal(oldDate)
-        self.addToJournal(event,recipe,str(date))
-        self.showJournal()
-
-    def addNewEntry(self):
-        self.editJournal()
-        self.dlgEditJournal.setFields(int(time.time()),'','')
 
 
 
