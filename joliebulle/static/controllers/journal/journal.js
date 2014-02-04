@@ -23,7 +23,10 @@ toolsApp.controller('JournalCtrl', ['$scope', '$http', '$filter', function ($sco
 
     $scope.save = function (entry) {
         entry.editing = !entry.editing;
-        entry.date = new Date(entry.date).getTime() / 1000;
+        entry.date = new Date(entry.date).getTime() / 1000 + (new Date().getHours() * 3600) + (new Date().getMinutes() * 60) + (new Date().getSeconds());;
+        entry.date = entry.date.toString();
+        $scope.entries = _.sortBy($scope.entries, 'date').reverse();
+        main.dumpJournal(JSON.stringify($scope.entries, $scope.cleanJson));
         return entry;
     };
 
@@ -59,7 +62,7 @@ toolsApp.controller('JournalCtrl', ['$scope', '$http', '$filter', function ($sco
     };
 
     $scope.cleanJson = function (key, value) {
-        if (key === "$$hashKey") {
+        if (key === "$$hashKey" || key === "editing") {
             return undefined;
         } else {
             return value;
