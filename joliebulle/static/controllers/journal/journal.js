@@ -44,6 +44,7 @@ toolsApp.controller('JournalCtrl', ['$scope', '$http', '$filter', function ($sco
     $scope.delete = function (entry) {
         /*attention delete est un mot réservé : à remplacer*/
         $scope.entries.splice($scope.entries.indexOf(entry), 1);
+        main.dumpJournal(JSON.stringify($scope.entries, $scope.cleanJson));
     };
 
     $scope.newClicked = function (recipe, event) {
