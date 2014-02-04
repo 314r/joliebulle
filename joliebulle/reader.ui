@@ -879,14 +879,14 @@ p, li { white-space: pre-wrap; }
              <number>0</number>
             </property>
             <item>
-             <widget class="QWebView" name="webViewBiblio">
+             <widget class="QWebView" name="webViewBiblio" native="true">
               <property name="sizePolicy">
                <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
                 <horstretch>0</horstretch>
                 <verstretch>0</verstretch>
                </sizepolicy>
               </property>
-              <property name="url">
+              <property name="url" stdset="0">
                <url>
                 <string>about:blank</string>
                </url>
@@ -1840,7 +1840,7 @@ color: rgb(255, 255, 255);</string>
      <x>0</x>
      <y>0</y>
      <width>1238</width>
-     <height>29</height>
+     <height>25</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuFichier">
@@ -1897,7 +1897,6 @@ color: rgb(255, 255, 255);</string>
      <string>Journal</string>
     </property>
     <addaction name="actionShowJournal"/>
-    <addaction name="actionEditJournal"/>
    </widget>
    <addaction name="menuFichier"/>
    <addaction name="menuEdition"/>
