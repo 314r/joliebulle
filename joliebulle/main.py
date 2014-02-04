@@ -43,7 +43,6 @@ from editdivers import *
 from editlevures import *
 from helper.toolExporterRepository import *
 from importIng import *
-from journalEdit import *
 from preBoilDialog import *
 from stepEditWindow import *
 from mashEditWindow import *
@@ -417,7 +416,6 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         # le menu journal
         menuJournal=generalMenu.addMenu(self.trUtf8('''Journal'''))
         menuJournal.addAction(self.actionShowJournal)
-        menuJournal.addAction(self.actionEditJournal)
 
         # le menu ingredients
         menuIngredients=generalMenu.addMenu(self.trUtf8('''Ingrédients'''))
@@ -460,7 +458,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         self.dlgStep = DialogStep(self)
         self.dlgMash = DialogMash(self)
         self.dlgStepBrewday = DialogStepAdjust(self)
-        self.dlgEditJournal = DialogJournalEdit(self)
+        
 
         self.base = ImportBase()
         self.mashProfileExport = ExportMash()
@@ -1539,10 +1537,6 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         self.dlgEditY.setModal(True)
         self.dlgEditY.setModel()
         self.dlgEditY.show()     
-
-    def editJournal(self):
-        self.dlgEditJournal.setModal(True)
-        self.dlgEditJournal.show()
 
     def preBoilCheck(self) :
         self.dlgPreBoil = DialogPreBoil(self)
