@@ -2369,7 +2369,8 @@ if __name__ == "__main__":
 
     main_window = AppWindow()
     #main_window = MainWindow()
-    main_window.show()
+    # main_window.show()
+    main_window.showMaximized()
 
     logger.debug("UI initialized");
 
