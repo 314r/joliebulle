@@ -2,8 +2,7 @@
 #­*­coding: utf­8 -­*­
 
 #joliebulle 3.1
-#Copyright (C) 2010-2013 Pierre Tavares
-#Copyright (C) 2013 Thomas Gerbet
+#Copyright (C) 2010-2014 Pierre Tavares
 
 #This program is free software; you can redistribute it and/or
 #modify it under the terms of the GNU General Public License
@@ -445,17 +444,17 @@ input::-webkit-inner-spin-button {
     <!-- Fin container -->
     </div>
 
-<script type="text/javascript">
-                    $(function () {
-                    $("[data-toggle='dropdown']").dropdown();
-                    });
-</script>    
+{3}   
 </body>
 </html>''' .format(QCoreApplication.translate("Export","Densité spécifique - Plato", None, QCoreApplication.UnicodeUTF8),
             QCoreApplication.translate("Export","Densité spécifique", None, QCoreApplication.UnicodeUTF8),
-            QCoreApplication.translate("Export","Plato", None, QCoreApplication.UnicodeUTF8))
-
-    
+            QCoreApplication.translate("Export","Plato", None, QCoreApplication.UnicodeUTF8),
+'''            <script type="text/javascript">
+                                $(function () {
+                                $("[data-toggle='dropdown']").dropdown();
+                                });
+            </script> '''
+            )
 
     return resultHtml
 

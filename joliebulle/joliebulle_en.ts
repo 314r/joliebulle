@@ -580,7 +580,7 @@ p, li { white-space: pre-wrap; }
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;par Tiheum (Matthieu James)&lt;/p&gt;
 &lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;*Design html/css des recettes inspiré par David Johnstone pour Alt Reader&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+        <translation type="obsolete">&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
 &lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;Cantarell&apos;; font-size:11pt; font-weight:400; font-style:normal;&quot;&gt;
@@ -609,7 +609,77 @@ p, li { white-space: pre-wrap; }
     <message utf8="true">
         <location filename="about.ui" line="20"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:20pt;&quot;&gt;JolieBulle&lt;/span&gt;&lt;br/&gt;Lecture et formulation de recettes de brassage&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;version 3.1&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:9pt;&quot;&gt;copyright (c) 2010-2013 Pierre Tavares&lt;br/&gt;copyright (c) 2012-2013 Les auteurs de JolieBulle.&lt;/span&gt;&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;&lt;a href=&quot;http://www.gnu.org/licenses/gpl-3.0.html&quot;&gt;&lt;span style=&quot; font-size:9pt; text-decoration: underline; color:#0000ff;&quot;&gt;Licence : Version 3 de la Licence Générale Publique GNU&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:20pt;&quot;&gt;JolieBulle&lt;/span&gt;&lt;br/&gt;Read and create beer recipes.&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;3.1&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:9pt;&quot;&gt;copyright (c) 2010-2013 Pierre Tavares&lt;br/&gt;copyright (c) 2012-2013 JolieBulle&apos;s authors.&lt;/span&gt;&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;&lt;a href=&quot;http://www.gnu.org/licenses/gpl-3.0.html&quot;&gt;&lt;span style=&quot; font-size:9pt; text-decoration: underline; color:#0000ff;&quot;&gt;Licence :   GNU GPLv3&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+        <translation type="obsolete">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:20pt;&quot;&gt;JolieBulle&lt;/span&gt;&lt;br/&gt;Read and create beer recipes.&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;3.1&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:9pt;&quot;&gt;copyright (c) 2010-2013 Pierre Tavares&lt;br/&gt;copyright (c) 2012-2013 JolieBulle&apos;s authors.&lt;/span&gt;&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;&lt;a href=&quot;http://www.gnu.org/licenses/gpl-3.0.html&quot;&gt;&lt;span style=&quot; font-size:9pt; text-decoration: underline; color:#0000ff;&quot;&gt;Licence :   GNU GPLv3&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+    </message>
+    <message utf8="true">
+        <location filename="about.ui" line="20"/>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:20pt;&quot;&gt;JolieBulle&lt;/span&gt;&lt;br/&gt;Lecture et formulation de recettes de brassage&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;version 3.2&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:9pt;&quot;&gt;copyright (c) 2010-2014 Pierre Tavares&lt;br/&gt;copyright (c) 2012-2014 Les auteurs de JolieBulle.&lt;/span&gt;&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;&lt;a href=&quot;http://www.gnu.org/licenses/gpl-3.0.html&quot;&gt;&lt;span style=&quot; font-size:9pt; text-decoration: underline; color:#0000ff;&quot;&gt;Licence : Version 3 de la Licence Générale Publique GNU&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:20pt;&quot;&gt;JolieBulle&lt;/span&gt;&lt;br/&gt;Read and create beer recipes.&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;3.2&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:9pt;&quot;&gt;copyright (c) 2010-2014 Pierre Tavares&lt;br/&gt;copyright (c) 2012-2014 JolieBulle&apos;s authors.&lt;/span&gt;&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;&lt;a href=&quot;http://www.gnu.org/licenses/gpl-3.0.html&quot;&gt;&lt;span style=&quot; font-size:9pt; text-decoration: underline; color:#0000ff;&quot;&gt;Licence :   GNU GPLv3&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+    </message>
+    <message utf8="true">
+        <location filename="about.ui" line="44"/>
+        <source>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;Ubuntu&apos;; font-size:11pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:&apos;Cantarell&apos;;&quot;&gt;*Développeurs*&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:&apos;Cantarell&apos;;&quot;&gt;Pierre Tavares&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:&apos;Cantarell&apos;;&quot;&gt;Thomas Gerbet&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:&apos;Cantarell&apos;;&quot;&gt;Nicolas Jouanin&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:&apos;Cantarell&apos;;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:&apos;Cantarell&apos;;&quot;&gt;*JQuery&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:&apos;Cantarell&apos;;&quot;&gt;par jQuery Foundation and other contributors-http://jquery.com/&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:&apos;Cantarell&apos;;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:&apos;Cantarell&apos;;&quot;&gt;*Bootstrap&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:&apos;Cantarell&apos;;&quot;&gt;par Twitter, Inc &lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:&apos;Cantarell&apos;;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:&apos;Cantarell&apos;;&quot;&gt;*Chart.js&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:&apos;Cantarell&apos;;&quot;&gt;par Nick Downie&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:&apos;Cantarell&apos;;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:&apos;Cantarell&apos;;&quot;&gt;*Font-Awesome&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:&apos;Cantarell&apos;;&quot;&gt;par Dave Gandy - http://fontawesome.io&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:&apos;Cantarell&apos;;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:&apos;Cantarell&apos;;&quot;&gt;*Underscore&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:&apos;Cantarell&apos;;&quot;&gt;par Jeremy Ashkenas, DocumentCloud and InvestigativeReporters &amp;amp; Editors &lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:&apos;Cantarell&apos;;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:&apos;Cantarell&apos;;&quot;&gt;*Angular&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:&apos;Cantarell&apos;;&quot;&gt;par Google, Inc. http://angularjs.org&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:&apos;Cantarell&apos;;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:&apos;Cantarell&apos;;&quot;&gt;*Icones Faenza &lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:&apos;Cantarell&apos;;&quot;&gt;par Tiheum (Matthieu James)&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:&apos;Cantarell&apos;;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:&apos;Cantarell&apos;;&quot;&gt;*Design html/css des recettes inspiré par David Johnstone pour Alt Reader&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;Ubuntu&apos;; font-size:11pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:&apos;Cantarell&apos;;&quot;&gt;*Developers*&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:&apos;Cantarell&apos;;&quot;&gt;Pierre Tavares&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:&apos;Cantarell&apos;;&quot;&gt;Thomas Gerbet&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:&apos;Cantarell&apos;;&quot;&gt;Nicolas Jouanin&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:&apos;Cantarell&apos;;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:&apos;Cantarell&apos;;&quot;&gt;*JQuery&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:&apos;Cantarell&apos;;&quot;&gt;by jQuery Foundation and other contributors-http://jquery.com/&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:&apos;Cantarell&apos;;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:&apos;Cantarell&apos;;&quot;&gt;*Bootstrap&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:&apos;Cantarell&apos;;&quot;&gt;by Twitter, Inc &lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:&apos;Cantarell&apos;;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:&apos;Cantarell&apos;;&quot;&gt;*Chart.js&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:&apos;Cantarell&apos;;&quot;&gt;by Nick Downie&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:&apos;Cantarell&apos;;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:&apos;Cantarell&apos;;&quot;&gt;*Font-Awesome&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:&apos;Cantarell&apos;;&quot;&gt;by Dave Gandy - http://fontawesome.io&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:&apos;Cantarell&apos;;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:&apos;Cantarell&apos;;&quot;&gt;*Underscore&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:&apos;Cantarell&apos;;&quot;&gt;by Jeremy Ashkenas, DocumentCloud and InvestigativeReporters &amp;amp; Editors &lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:&apos;Cantarell&apos;;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:&apos;Cantarell&apos;;&quot;&gt;*Angular&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:&apos;Cantarell&apos;;&quot;&gt;by Google, Inc. http://angularjs.org&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:&apos;Cantarell&apos;;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:&apos;Cantarell&apos;;&quot;&gt;*Icones Faenza &lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:&apos;Cantarell&apos;;&quot;&gt;by Tiheum (Matthieu James)&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:&apos;Cantarell&apos;;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:&apos;Cantarell&apos;;&quot;&gt;*Design html/css des recettes inspired by David Johnstone pour Alt Reader&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
 </context>
 <context>
@@ -1496,7 +1566,7 @@ p, li { white-space: pre-wrap; }
         <translation type="obsolete">Boil: </translation>
     </message>
     <message>
-        <location filename="helper/toolexporter/exportHTML.py" line="236"/>
+        <location filename="helper/toolexporter/exportHTML.py" line="235"/>
         <source>Taux d&apos;alcool</source>
         <translation>Alcohol by Vol</translation>
     </message>
@@ -1516,7 +1586,7 @@ p, li { white-space: pre-wrap; }
         <translation>BU/GU</translation>
     </message>
     <message utf8="true">
-        <location filename="helper/toolexporter/exportHTML.py" line="236"/>
+        <location filename="helper/toolexporter/exportHTML.py" line="235"/>
         <source>Densité finale</source>
         <translation>Final Gravity</translation>
     </message>
@@ -1526,7 +1596,7 @@ p, li { white-space: pre-wrap; }
         <translation>FG</translation>
     </message>
     <message utf8="true">
-        <location filename="helper/toolexporter/exportHTML.py" line="236"/>
+        <location filename="helper/toolexporter/exportHTML.py" line="235"/>
         <source>Densité initiale</source>
         <translation>Original gravity</translation>
     </message>
@@ -1666,242 +1736,242 @@ p, li { white-space: pre-wrap; }
         <translation>bottled</translation>
     </message>
     <message>
-        <location filename="helper/toolexporter/exportHTML.py" line="99"/>
+        <location filename="helper/toolexporter/exportHTML.py" line="98"/>
         <source>Outils</source>
         <translation>Tools</translation>
     </message>
     <message utf8="true">
-        <location filename="helper/journalexporter/exportHTML.py" line="100"/>
+        <location filename="helper/journalexporter/exportHTML.py" line="99"/>
         <source>Ajouter une entrée</source>
         <translation>Add entry</translation>
     </message>
     <message>
-        <location filename="helper/journalexporter/exportHTML.py" line="131"/>
+        <location filename="helper/journalexporter/exportHTML.py" line="130"/>
         <source>enregistrer</source>
         <translation>save</translation>
     </message>
     <message>
-        <location filename="helper/journalexporter/exportHTML.py" line="131"/>
+        <location filename="helper/journalexporter/exportHTML.py" line="130"/>
         <source>modifier</source>
         <translation>edit</translation>
     </message>
     <message>
-        <location filename="helper/journalexporter/exportHTML.py" line="131"/>
+        <location filename="helper/journalexporter/exportHTML.py" line="130"/>
         <source>supprimer</source>
         <translation>remove</translation>
     </message>
     <message utf8="true">
-        <location filename="helper/toolexporter/exportHTML.py" line="133"/>
+        <location filename="helper/toolexporter/exportHTML.py" line="132"/>
         <source>Correction du densimètre</source>
         <translation>Hydrometer correction</translation>
     </message>
     <message>
-        <location filename="helper/toolexporter/exportHTML.py" line="202"/>
+        <location filename="helper/toolexporter/exportHTML.py" line="201"/>
         <source>Assistant paliers</source>
         <translation>Step assistant</translation>
     </message>
     <message>
-        <location filename="helper/toolexporter/exportHTML.py" line="283"/>
+        <location filename="helper/toolexporter/exportHTML.py" line="282"/>
         <source>Dilution</source>
         <translation>Dilution</translation>
     </message>
     <message>
-        <location filename="helper/toolexporter/exportHTML.py" line="347"/>
+        <location filename="helper/toolexporter/exportHTML.py" line="346"/>
         <source>Evaporation</source>
         <translation>Boil off</translation>
     </message>
     <message utf8="true">
-        <location filename="helper/toolexporter/exportHTML.py" line="411"/>
+        <location filename="helper/toolexporter/exportHTML.py" line="410"/>
         <source>Décoction</source>
         <translation>Decoction</translation>
     </message>
     <message utf8="true">
-        <location filename="helper/toolexporter/exportHTML.py" line="99"/>
+        <location filename="helper/toolexporter/exportHTML.py" line="98"/>
         <source>Densité - Plato</source>
         <translation>Specific Gravity - Plato</translation>
     </message>
     <message utf8="true">
-        <location filename="helper/toolexporter/exportHTML.py" line="133"/>
+        <location filename="helper/toolexporter/exportHTML.py" line="132"/>
         <source>Densité mesurée</source>
         <translation>Measured gravity</translation>
     </message>
     <message utf8="true">
-        <location filename="helper/toolexporter/exportHTML.py" line="133"/>
+        <location filename="helper/toolexporter/exportHTML.py" line="132"/>
         <source>Température de calibration (°C)</source>
         <translation>Calibration temperature (°C)</translation>
     </message>
     <message utf8="true">
-        <location filename="helper/toolexporter/exportHTML.py" line="133"/>
+        <location filename="helper/toolexporter/exportHTML.py" line="132"/>
         <source>Température mesurée (°C)</source>
         <translation>Measured temperature (°C)</translation>
     </message>
     <message utf8="true">
-        <location filename="helper/toolexporter/exportHTML.py" line="133"/>
+        <location filename="helper/toolexporter/exportHTML.py" line="132"/>
         <source>Densité corrigée</source>
         <translation>Calculated gravity</translation>
     </message>
     <message utf8="true">
-        <location filename="helper/toolexporter/exportHTML.py" line="411"/>
+        <location filename="helper/toolexporter/exportHTML.py" line="410"/>
         <source>Température cible (°C)</source>
         <translation>Target temperature (°C)</translation>
     </message>
     <message utf8="true">
-        <location filename="helper/toolexporter/exportHTML.py" line="283"/>
+        <location filename="helper/toolexporter/exportHTML.py" line="282"/>
         <source>Volume ajouté (L)</source>
         <translation>Added volume (L)</translation>
     </message>
     <message>
-        <location filename="helper/toolexporter/exportHTML.py" line="202"/>
+        <location filename="helper/toolexporter/exportHTML.py" line="201"/>
         <source>Poids du grain (Kg)</source>
         <translation>Grain weight (Kg)</translation>
     </message>
     <message utf8="true">
-        <location filename="helper/toolexporter/exportHTML.py" line="202"/>
+        <location filename="helper/toolexporter/exportHTML.py" line="201"/>
         <source>Température du grain (°C)</source>
         <translation>Grain temperature (°C)</translation>
     </message>
     <message utf8="true">
-        <location filename="helper/toolexporter/exportHTML.py" line="202"/>
+        <location filename="helper/toolexporter/exportHTML.py" line="201"/>
         <source>Température de la maîche (°C)</source>
         <translation>Mash temperature (°C)</translation>
     </message>
     <message utf8="true">
-        <location filename="helper/toolexporter/exportHTML.py" line="202"/>
+        <location filename="helper/toolexporter/exportHTML.py" line="201"/>
         <source>Volume d&apos;eau dans la maîche (L)</source>
         <translation>Water volume in mash (L)</translation>
     </message>
     <message>
-        <location filename="helper/toolexporter/exportHTML.py" line="202"/>
+        <location filename="helper/toolexporter/exportHTML.py" line="201"/>
         <source>Facteur de correction</source>
         <translation>Fudge factor</translation>
     </message>
     <message utf8="true">
-        <location filename="helper/toolexporter/exportHTML.py" line="202"/>
+        <location filename="helper/toolexporter/exportHTML.py" line="201"/>
         <source>Température de l&apos;eau (°C)</source>
         <translation>Water temperature (°C)</translation>
     </message>
     <message>
-        <location filename="helper/toolexporter/exportHTML.py" line="202"/>
+        <location filename="helper/toolexporter/exportHTML.py" line="201"/>
         <source>Ratio (L/Kg)</source>
         <translation>Ratio (L/Kg)</translation>
     </message>
     <message utf8="true">
-        <location filename="helper/toolexporter/exportHTML.py" line="236"/>
+        <location filename="helper/toolexporter/exportHTML.py" line="235"/>
         <source>Sucre ajouté (g/L)</source>
         <translation>Added sugar (g/L)</translation>
     </message>
     <message>
-        <location filename="helper/toolexporter/exportHTML.py" line="236"/>
+        <location filename="helper/toolexporter/exportHTML.py" line="235"/>
         <source>Alcool par volume (%)</source>
         <translation>Alcohol by vol (%)</translation>
     </message>
     <message>
-        <location filename="helper/toolexporter/exportHTML.py" line="283"/>
+        <location filename="helper/toolexporter/exportHTML.py" line="282"/>
         <source>Volume initial (L)</source>
         <translation>Initial volume (L)</translation>
     </message>
     <message utf8="true">
-        <location filename="helper/toolexporter/exportHTML.py" line="283"/>
+        <location filename="helper/toolexporter/exportHTML.py" line="282"/>
         <source>Densité spécifique initiale</source>
         <translation>Original gravity</translation>
     </message>
     <message utf8="true">
-        <location filename="helper/toolexporter/exportHTML.py" line="283"/>
+        <location filename="helper/toolexporter/exportHTML.py" line="282"/>
         <source>Densité de l&apos;ajout</source>
         <translation>Addition gravity</translation>
     </message>
     <message>
-        <location filename="helper/toolexporter/exportHTML.py" line="283"/>
+        <location filename="helper/toolexporter/exportHTML.py" line="282"/>
         <source>1 si ajout d&apos;eau</source>
         <translation>1 if water</translation>
     </message>
     <message>
-        <location filename="helper/toolexporter/exportHTML.py" line="347"/>
+        <location filename="helper/toolexporter/exportHTML.py" line="346"/>
         <source>Volume final (L)</source>
         <translation>Final volume (L)</translation>
     </message>
     <message utf8="true">
-        <location filename="helper/toolexporter/exportHTML.py" line="283"/>
+        <location filename="helper/toolexporter/exportHTML.py" line="282"/>
         <source>Densité spécifique finale</source>
         <translation>Final gravity</translation>
     </message>
     <message utf8="true">
-        <location filename="helper/toolexporter/exportHTML.py" line="347"/>
+        <location filename="helper/toolexporter/exportHTML.py" line="346"/>
         <source>Volume pré-ébullition (L)</source>
         <translation>Preboil volume (L)</translation>
     </message>
     <message utf8="true">
-        <location filename="helper/toolexporter/exportHTML.py" line="347"/>
+        <location filename="helper/toolexporter/exportHTML.py" line="346"/>
         <source>Densité spécifique pré-ébullition</source>
         <translation>Preboil gravity</translation>
     </message>
     <message utf8="true">
-        <location filename="helper/toolexporter/exportHTML.py" line="347"/>
+        <location filename="helper/toolexporter/exportHTML.py" line="346"/>
         <source>Taux d&apos;évaporation (%/heure)</source>
         <translation>Boil off rate (%/h)</translation>
     </message>
     <message utf8="true">
-        <location filename="helper/toolexporter/exportHTML.py" line="347"/>
+        <location filename="helper/toolexporter/exportHTML.py" line="346"/>
         <source>Durée d&apos;ébullition (min)</source>
         <translation>Boil time (min)</translation>
     </message>
     <message>
-        <location filename="helper/toolexporter/exportHTML.py" line="347"/>
+        <location filename="helper/toolexporter/exportHTML.py" line="346"/>
         <source>Pertes par refroidissement (%)</source>
         <translation>Cooling losses (%)</translation>
     </message>
     <message utf8="true">
-        <location filename="helper/toolexporter/exportHTML.py" line="347"/>
+        <location filename="helper/toolexporter/exportHTML.py" line="346"/>
         <source>Volume évaporé (ébullition) (L)</source>
         <translation>Boiled off volume (boiling) (L)</translation>
     </message>
     <message utf8="true">
-        <location filename="helper/toolexporter/exportHTML.py" line="347"/>
+        <location filename="helper/toolexporter/exportHTML.py" line="346"/>
         <source>Volume évaporé (refroidissement) (L)</source>
         <translation>Boiled off volume (cooling) (L)</translation>
     </message>
     <message utf8="true">
-        <location filename="helper/toolexporter/exportHTML.py" line="454"/>
+        <location filename="helper/toolexporter/exportHTML.py" line="449"/>
         <source>Densité spécifique</source>
         <translation>Specific gravity</translation>
     </message>
     <message utf8="true">
-        <location filename="helper/toolexporter/exportHTML.py" line="411"/>
+        <location filename="helper/toolexporter/exportHTML.py" line="410"/>
         <source>Volume de moût (L)</source>
         <translation>Mash volume (L)</translation>
     </message>
     <message utf8="true">
-        <location filename="helper/toolexporter/exportHTML.py" line="411"/>
+        <location filename="helper/toolexporter/exportHTML.py" line="410"/>
         <source>Température de départ (°C)</source>
         <translation>Starting temperature (°C)</translation>
     </message>
     <message utf8="true">
-        <location filename="helper/toolexporter/exportHTML.py" line="411"/>
+        <location filename="helper/toolexporter/exportHTML.py" line="410"/>
         <source>Température d&apos;ébullition (°C)</source>
         <translation>Boiling temperature (°C)</translation>
     </message>
     <message>
-        <location filename="helper/toolexporter/exportHTML.py" line="411"/>
+        <location filename="helper/toolexporter/exportHTML.py" line="410"/>
         <source>Facteur de correction (%)</source>
         <translation>Correction factor (%)</translation>
     </message>
     <message utf8="true">
-        <location filename="helper/toolexporter/exportHTML.py" line="411"/>
+        <location filename="helper/toolexporter/exportHTML.py" line="410"/>
         <source>Volume de décoction (L)</source>
         <translation>Decoction volume (L)</translation>
     </message>
     <message utf8="true">
-        <location filename="helper/toolexporter/exportHTML.py" line="411"/>
+        <location filename="helper/toolexporter/exportHTML.py" line="410"/>
         <source>Fraction du moût (%)</source>
         <translation>Volume fraction (%)</translation>
     </message>
     <message utf8="true">
-        <location filename="helper/toolexporter/exportHTML.py" line="454"/>
+        <location filename="helper/toolexporter/exportHTML.py" line="449"/>
         <source>Densité spécifique - Plato</source>
         <translation>Specific Gravity - Plato</translation>
     </message>
     <message>
-        <location filename="helper/toolexporter/exportHTML.py" line="454"/>
+        <location filename="helper/toolexporter/exportHTML.py" line="449"/>
         <source>Plato</source>
         <translation>Plato</translation>
     </message>
