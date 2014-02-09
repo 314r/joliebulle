@@ -86,55 +86,56 @@ input::-webkit-inner-spin-button {
             <div class="menu btn-group col-sm-2 col-sm-offset-7">
                 <i class="icon-reorder" data-toggle="dropdown"></i>
                 <ul class="dropdown-menu pull-right" role="menu">    
-                                <li><a href="#gravity">Correction du densimètre</a></li>
-                                <li><a href="#step">Assistant paliers</a></li>
-                                <li><a href="#alc">Taux d'alcool</a></li>
-                                <li><a href="#dilution">Dilution</a></li>
-                                <li><a href="#boiloff">Evaporation</a></li>
-                                <li><a href="#decoc">Décoction</a></li>
-                                <li><a href="#sg">Densité - Plato</a></li>
+                                <li><a href="#gravity">{1}</a></li>
+                                <li><a href="#step">{2}</a></li>
+                                <li><a href="#alc">{3}</a></li>
+                                <li><a href="#dilution">{4}</a></li>
+                                <li><a href="#boiloff">{5}</a></li>
+                                <li><a href="#decoc">{6}</a></li>
+                                <li><a href="#sg">{7}</a></li>
                               </ul>
                         
             </div>
-        </div>'''.format(QCoreApplication.translate("Export","Outils", None, QCoreApplication.UnicodeUTF8))
+        </div>''' .format(QCoreApplication.translate("Export","Outils", None, QCoreApplication.UnicodeUTF8), QCoreApplication.translate("Export","Correction du densimètre", None, QCoreApplication.UnicodeUTF8), QCoreApplication.translate("Export","Assistant paliers", None, QCoreApplication.UnicodeUTF8), QCoreApplication.translate("Export","Taux d'alcool", None, QCoreApplication.UnicodeUTF8), QCoreApplication.translate("Export","Dilution", None, QCoreApplication.UnicodeUTF8), QCoreApplication.translate("Export","Evaporation", None, QCoreApplication.UnicodeUTF8), QCoreApplication.translate("Export","Décoction", None, QCoreApplication.UnicodeUTF8), QCoreApplication.translate("Export","Densité - Plato", None, QCoreApplication.UnicodeUTF8))
 
 
 
     resultHtml+='''<div class="row row-tools" id="gravity">
             <div ng-controller="GravityToolCtrl" class="tool-block">
-                <h3>Correction du densimètre</h3>
+                <h3>{0}</h3>
                 <form class="form-horizontal" role="form">
                 <div class="form-group">
-                    <label class="col-sm-3 control-label">Densité mesurée</label>
+                    <label class="col-sm-3 control-label">{1}</label>
                     <div class="col-sm-2">
                         <input type="number" min="1.000" max="1.999" step="0.001" ng-model="measuredGravity" class="form-control">
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-sm-3 control-label">Température de calibration (°C)</label>
+                    <label class="col-sm-3 control-label">{2}</label>
                     <div class="col-sm-2">
                         <input type="number" min="0" max="100" step="1" ng-model="calibTemp" class="form-control">
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-sm-3 control-label">Température mesurée (°C)</label>
+                    <label class="col-sm-3 control-label">{3}</label>
                     <div class="col-sm-2">
                         <input type="number" min="0" max="110" step="1" ng-model="sampleTemp" class="form-control">
                     </div>
                 </div>
                 <div class="form-group tool-result">
-                    <label class="col-sm-3 control-label">Densité corrigée</label>
+                    <label class="col-sm-3 control-label">{4}</label>
                     <div class="col-sm-2">
-                        <label class="control-label">{{calcGravity()}}</label>
+                        <label class="control-label">{5}</label>
                     </div>
                 </div>
                 </form>
             </div>
-        </div>
+        </div>''' .format(QCoreApplication.translate("Export","Correction du densimètre", None, QCoreApplication.UnicodeUTF8),QCoreApplication.translate("Export","Densité mesurée", None, QCoreApplication.UnicodeUTF8),QCoreApplication.translate("Export","Température de calibration (°C)", None, QCoreApplication.UnicodeUTF8), QCoreApplication.translate("Export","Température mesurée (°C)", None, QCoreApplication.UnicodeUTF8),QCoreApplication.translate("Export","Densité corrigée", None, QCoreApplication.UnicodeUTF8), "{{calcGravity()}}")
 
-        <div class="row row-tools" id="step">
+
+    resultHtml+='''<div class="row row-tools" id="step">
             <div ng-controller="StepAssistantCtrl" class="tool-block">
-                <h3>Assistant paliers</h3>
+                <h3>{0}</h3>
                 <form class="form-horizontal" role="form">
                     <div class="form-group">
                         <label class="col-sm-3 control-label">Mode</label>
@@ -143,272 +144,295 @@ input::-webkit-inner-spin-button {
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="col-sm-3 control-label">Température cible (°C)</label>
+                        <label class="col-sm-3 control-label">{1}</label>
                         <div class="col-sm-3">
                             <input type="number" min="1.000" max="100" step="1" ng-model="targetTemp" class="form-control">
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="col-sm-3 control-label">Volume ajouté (L)</label>
+                        <label class="col-sm-3 control-label">{2}</label>
                         <div class="col-sm-3">
                             <input type="number" min="0" max="10000" step="1" ng-model="addedVolume" class="form-control">
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="col-sm-3 control-label">Poids du grain (Kg)</label>
+                        <label class="col-sm-3 control-label">{3}</label>
                         <div class="col-sm-3">
                             <input type="number" min="0" max="10000" step="1" ng-model="grainWeight" class="form-control">
                         </div>
                     </div>
                     <div class="form-group" ng-hide="stepType=='Palier'">
-                        <label class="col-sm-3 control-label">Température du grain (°C)</label>
+                        <label class="col-sm-3 control-label">{4}</label>
                         <div class="col-sm-3">
                             <input type="number" min="0.1" max="100" step="1" ng-model="grainTemp" class="form-control">
                         </div>
                     </div>
                     <div class="form-group" ng-hide="stepType=='Empâtage'">
-                        <label class="col-sm-3 control-label">Température de la maîche (°C)</label>
+                        <label class="col-sm-3 control-label">{5}</label>
                         <div class="col-sm-3">
                             <input type="number" min="0.1" max="100" step="1" ng-model="mashTemp" class="form-control">
                         </div>
                     </div>
                     <div class="form-group" ng-hide="stepType=='Empâtage'">
-                        <label class="col-sm-3 control-label">Volume d'eau dans la maîche (L)</label>
+                        <label class="col-sm-3 control-label">{6}</label>
                         <div class="col-sm-3">
                             <input type="number" min="0" max="10000" step="1" ng-model="waterVolumeMash" class="form-control">
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="col-sm-3 control-label">Facteur de correction</label>
+                        <label class="col-sm-3 control-label">{7}</label>
                         <div class="col-sm-3">
                             <input type="number" min="0" max="100" step="1" ng-model="factor" class="form-control">
                         </div>
                     </div>
                     <div class="form-group tool-result">
-                    <label class="col-sm-3 control-label">Température de l'eau (°C)</label>
+                    <label class="col-sm-3 control-label">{8}</label>
                     <div class="col-sm-3">
-                        <label class="control-label">{{waterTemp().temp}}</label>
+                        <label class="control-label">{9}</label>
                     </div>
                     </div>
                     <div class="form-group">
-                    <label class="col-sm-3 control-label">Ratio (L/Kg)</label>
+                    <label class="col-sm-3 control-label">{10}</label>
                     <div class="col-sm-3">
-                        <label class="control-label">{{waterTemp().ratio}}</label>
+                        <label class="control-label">{11}</label>
                     </div>
                     </div>
                 </form>
             </div>
-        </div>
+        </div>''' .format(QCoreApplication.translate("Export","Assistant paliers", None, QCoreApplication.UnicodeUTF8), QCoreApplication.translate("Export","Température cible (°C)", None, QCoreApplication.UnicodeUTF8), QCoreApplication.translate("Export","Volume ajouté (L)", None, QCoreApplication.UnicodeUTF8), QCoreApplication.translate("Export","Poids du grain (Kg)", None, QCoreApplication.UnicodeUTF8),QCoreApplication.translate("Export","Température du grain (°C)", None, QCoreApplication.UnicodeUTF8),QCoreApplication.translate("Export","Température de la maîche (°C)", None, QCoreApplication.UnicodeUTF8),QCoreApplication.translate("Export","Volume d'eau dans la maîche (L)", None, QCoreApplication.UnicodeUTF8),QCoreApplication.translate("Export","Facteur de correction", None, QCoreApplication.UnicodeUTF8),QCoreApplication.translate("Export","Température de l'eau (°C)", None, QCoreApplication.UnicodeUTF8),"{{waterTemp().temp}}",QCoreApplication.translate("Export","Ratio (L/Kg)", None, QCoreApplication.UnicodeUTF8),"{{waterTemp().ratio}}")
 
 
 
-        <div class="row row-tools" id="alc">
+    resultHtml+='''<div class="row row-tools" id="alc">
             <div ng-controller="AlcToolCtrl" class="tool-block">
-                <h3>Taux d'alcool</h3>
+                <h3>{0}</h3>
                 <form class="form-horizontal" role="form">
                 <div class="form-group">
-                    <label class="col-sm-3 control-label">Densité initiale</label>
+                    <label class="col-sm-3 control-label">{1}</label>
                     <div class="col-sm-2">
                         <input type="number" class="form-control" min="0.001" max="100" step="0.001" ng-model="originalGravity">
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-sm-3 control-label">Densité finale</label>
+                    <label class="col-sm-3 control-label">{2}</label>
                     <div class="col-sm-2">
                         <input type="number" class="form-control" min="0.001" max="100" step="0.001" ng-model="finalGravity">
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-sm-3 control-label">Sucre ajouté (g/L)</label>
+                    <label class="col-sm-3 control-label">{3}</label>
                     <div class="col-sm-2">
                         <input type="number" class="form-control" min="0" max="100000" step="1" ng-model="addedSugar">
                     </div>
                 </div>
                 <div class="form-group tool-result">
-                    <label class="col-sm-3 control-label">Alcool par volume (%)</label>
+                    <label class="col-sm-3 control-label">{4}</label>
                     <div class="col-sm-2">
-                        <label class="control-label">{{calcAlcoolVol()}}</label>
+                        <label class="control-label">{5}</label>
                     </div>
                 </div>
                 </form>
             </div>
-        </div>
+        </div>'''.format(QCoreApplication.translate("Export","Taux d'alcool", None, QCoreApplication.UnicodeUTF8),QCoreApplication.translate("Export","Densité initiale", None, QCoreApplication.UnicodeUTF8),QCoreApplication.translate("Export","Densité finale", None, QCoreApplication.UnicodeUTF8), QCoreApplication.translate("Export","Sucre ajouté (g/L)", None, QCoreApplication.UnicodeUTF8),QCoreApplication.translate("Export","Alcool par volume (%)", None, QCoreApplication.UnicodeUTF8),"{{calcAlcoolVol()}}")
 
 
 
-        <div class="row row-tools" id="dilution">
+    resultHtml+='''<div class="row row-tools" id="dilution">
             <div ng-controller="DilutionToolCtrl" class="tool-block">
-                <h3>Dilution</h3>
+                <h3>{0}</h3>
                 <form class="form-horizontal" role="form">
                 <div class="form-group">
-                    <label class="col-sm-3 control-label">Volume initial (L)</label>
+                    <label class="col-sm-3 control-label">{1}</label>
                     <div class="col-sm-2">
                         <input type="number" class="form-control" min="0" max="10000000" step="1" ng-model="initialVol">
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-sm-3 control-label" >Densité spécifique initiale</label>
+                    <label class="col-sm-3 control-label" >{2}</label>
                     <div class="col-sm-2">
                         <input type="number"  class="form-control" min="0.001" max="100" step="0.001" ng-model="initialGravity">
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-sm-3 control-label">Volume ajouté (L)</label>
+                    <label class="col-sm-3 control-label">{3}</label>
                     <div class="col-sm-2">
                         <input type="number" class="form-control" min="0" max="10000000" step="1" ng-model="addedVolume">
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-sm-3 control-label">Densité de l'ajout</label>
+                    <label class="col-sm-3 control-label">{4}</label>
                     <div class="col-sm-2">
                         <input type="number" class="form-control" min="0.001" max="100" step="0.001" ng-model="addedGravity">
                     </div>
-                    <p class="help-block col-sm-3">1 si ajout d'eau</p>
+                    <p class="help-block col-sm-3">{5}</p>
                 </div>
                 <div class="form-group">
-                    <label class="col-sm-3 control-label">Volume final (L)</label>
+                    <label class="col-sm-3 control-label">{6}</label>
                     <div class="col-sm-2">
                         <input type="number" class="form-control" min="0" max="10000000" step="1" ng-change="finalVolChanged()" ng-model="finalVol">
                     </div>
                 </div>
                 <div class="form-group tool-result">
-                    <label class="col-sm-3 control-label">Densité spécifique finale</label>
+                    <label class="col-sm-3 control-label">{7}</label>
                     <div class="col-sm-2">
-                        <label class="control-label">{{calcDilution()}}</label>
+                        <label class="control-label">{8}</label>
                     </div>
                 </div>
                 </form>
             </div>
-        </div>
+        </div>'''.format(QCoreApplication.translate("Export","Dilution", None, QCoreApplication.UnicodeUTF8),QCoreApplication.translate("Export","Volume initial (L)", None, QCoreApplication.UnicodeUTF8),QCoreApplication.translate("Export","Densité spécifique initiale", None, QCoreApplication.UnicodeUTF8),QCoreApplication.translate("Export","Volume ajouté (L)", None, QCoreApplication.UnicodeUTF8),QCoreApplication.translate("Export","Densité de l'ajout", None, QCoreApplication.UnicodeUTF8),QCoreApplication.translate("Export","1 si ajout d'eau", None, QCoreApplication.UnicodeUTF8),QCoreApplication.translate("Export","Volume final (L)", None, QCoreApplication.UnicodeUTF8),QCoreApplication.translate("Export","Densité spécifique finale", None, QCoreApplication.UnicodeUTF8),"{{calcDilution()}}")
         
         
-        <div class="row row-tools" id="boiloff">
+    resultHtml+='''<div class="row row-tools" id="boiloff">
             <div ng-controller="BoiloffToolCtrl" class="tool-block">
-                <h3>Evaporation</h3>
+                <h3>{0}</h3>
                 <form class="form-horizontal" role="form">
                 <div class="form-group">
-                    <label class="col-sm-3 control-label">Volume pré-ébullition (L)</label>
+                    <label class="col-sm-3 control-label">{1}</label>
                     <div class="col-sm-2">
                         <input type="number" class="form-control" min="0" max="10000000" step="1" ng-model="preboilVol">
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-sm-3 control-label" >Densité spécifique pré-ébullition</label>
+                    <label class="col-sm-3 control-label" >{2}</label>
                     <div class="col-sm-2">
                         <input type="number"  class="form-control" min="0.001" max="100" step="0.001" ng-model="preboilGravity">
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-sm-3 control-label">Taux d'évaporation (%/heure)</label>
+                    <label class="col-sm-3 control-label">{3}</label>
                     <div class="col-sm-2">
                         <input type="number" class="form-control" min="0" max="10000000" step="1" ng-model="boilOffRate">
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-sm-3 control-label">Durée d'ébullition (min)</label>
+                    <label class="col-sm-3 control-label">{4}</label>
                     <div class="col-sm-2">
                         <input type="number" class="form-control" min="1" max="100000" step="10" ng-model="boilTime">
                     </div>
                     
                 </div>
                 <div class="form-group">
-                    <label class="col-sm-3 control-label">Pertes par refroidissement (%)</label>
+                    <label class="col-sm-3 control-label">{5}</label>
                     <div class="col-sm-2">
                         <input type="number" class="form-control" min="0" max="10000000" step="1" ng-change="" ng-model="coolingLoss">
                     </div>
                 </div>
                 <div class="form-group tool-result">
-                    <label class="col-sm-3 control-label">Volume évaporé (ébullition) (L)</label>
+                    <label class="col-sm-3 control-label">{6}</label>
                     <div class="col-sm-2">
-                        <label class="control-label">{{calcBoilOff().boilOffVol}}</label>
+                        <label class="control-label">{7}</label>
                     </div>
                 </div>
                 <div class="form-group ">
-                    <label class="col-sm-3 control-label">Volume évaporé (refroidissement) (L)</label>
+                    <label class="col-sm-3 control-label">{8}</label>
                     <div class="col-sm-2">
-                        <label class="control-label">{{calcBoilOff().coolingLoss}}</label>
+                        <label class="control-label">{9}</label>
                     </div>
                 </div>
                 <div class="form-group ">
-                    <label class="col-sm-3 control-label">Volume final (L)</label>
+                    <label class="col-sm-3 control-label">{10}</label>
                     <div class="col-sm-2">
-                        <label class="control-label">{{calcBoilOff().finalVol}}</label>
+                        <label class="control-label">{11}</label>
                     </div>
                 </div>
                 <div class="form-group ">
-                    <label class="col-sm-3 control-label">Densité spécifique)</label>
+                    <label class="col-sm-3 control-label">{12}</label>
                     <div class="col-sm-2">
-                        <label class="control-label">{{calcBoilOff().finalSg}}</label>
+                        <label class="control-label">{13}</label>
                     </div>
                 </div>
                 </form>
             </div>
-        </div>
+        </div>''' .format(QCoreApplication.translate("Export","Evaporation", None, QCoreApplication.UnicodeUTF8),
+            QCoreApplication.translate("Export","Volume pré-ébullition (L)", None, QCoreApplication.UnicodeUTF8),
+            QCoreApplication.translate("Export","Densité spécifique pré-ébullition", None, QCoreApplication.UnicodeUTF8),
+            QCoreApplication.translate("Export","Taux d'évaporation (%/heure)", None, QCoreApplication.UnicodeUTF8),
+            QCoreApplication.translate("Export","Durée d'ébullition (min)", None, QCoreApplication.UnicodeUTF8),
+            QCoreApplication.translate("Export","Pertes par refroidissement (%)", None, QCoreApplication.UnicodeUTF8),
+            QCoreApplication.translate("Export","Volume évaporé (ébullition) (L)", None, QCoreApplication.UnicodeUTF8),
+            "{{calcBoilOff().boilOffVol}}",            
+            QCoreApplication.translate("Export","Volume évaporé (refroidissement) (L)", None, QCoreApplication.UnicodeUTF8),
+            "{{calcBoilOff().coolingLoss}}",
+            QCoreApplication.translate("Export","Volume final (L)", None, QCoreApplication.UnicodeUTF8),
+            "{{calcBoilOff().finalVol}}",
+            QCoreApplication.translate("Export","Densité spécifique", None, QCoreApplication.UnicodeUTF8),
+            "{{calcBoilOff().finalSg}}")
         
         
-        <div class="row row-tools" id="decoc">
+    resultHtml+='''<div class="row row-tools" id="decoc">
             <div ng-controller="DecocToolCtrl" class="tool-block">
-                <h3>Décoction</h3>
+                <h3>{0}</h3>
                 <form class="form-horizontal" role="form">
                 <div class="form-group">
-                    <label class="col-sm-3 control-label">Volume de moût (L)</label>
+                    <label class="col-sm-3 control-label">{1}</label>
                     <div class="col-sm-2">
                         <input type="number" class="form-control" min="0" max="100000" step="1" ng-model="mashVol">
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-sm-3 control-label">Température cible (°C)</label>
+                    <label class="col-sm-3 control-label">{2}</label>
                     <div class="col-sm-2">
                         <input type="number" class="form-control" min="0" max="100" step="1" ng-model="targetTemp">
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-sm-3 control-label">Température de départ (°C)</label>
+                    <label class="col-sm-3 control-label">{3}</label>
                     <div class="col-sm-2">
                         <input type="number" class="form-control" min="0" max="100000" step="1" ng-model="startTemp">
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-sm-3 control-label">Température d'ébullition (°C)</label>
+                    <label class="col-sm-3 control-label">{4}</label>
                     <div class="col-sm-2">
                         <input type="number" class="form-control" min="0" max="1000" step="1" ng-model="boilTemp">
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-sm-3 control-label">Facteur de correction (%)</label>
+                    <label class="col-sm-3 control-label">{5}</label>
                     <div class="col-sm-2">
                         <input type="number" class="form-control" min="0" max="1000" step="1" ng-model="correction">
                     </div>
                 </div>
                 <div class="form-group tool-result">
-                    <label class="col-sm-3 control-label">Volume de décoction (L)</label>
+                    <label class="col-sm-3 control-label">{6}</label>
                     <div class="col-sm-2">
-                        <label class="control-label">{{calcDecoction().decocVol}}</label>
+                        <label class="control-label">{7}</label>
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-sm-3 control-label">Fraction du moût (%)</label>
+                    <label class="col-sm-3 control-label">{8}</label>
                     <div class="col-sm-2">
-                        <label class="control-label">{{calcDecoction().fraction}}</label>
+                        <label class="control-label">{9}</label>
                     </div>
                 </div>
                 </form>
             </div>
-        </div>
+        </div>'''.format(QCoreApplication.translate("Export","Décoction", None, QCoreApplication.UnicodeUTF8),
+            QCoreApplication.translate("Export","Volume de moût (L)", None, QCoreApplication.UnicodeUTF8),
+            QCoreApplication.translate("Export","Température cible (°C)", None, QCoreApplication.UnicodeUTF8),
+            QCoreApplication.translate("Export","Température de départ (°C)", None, QCoreApplication.UnicodeUTF8),
+            QCoreApplication.translate("Export","Température d'ébullition (°C)", None, QCoreApplication.UnicodeUTF8),
+            QCoreApplication.translate("Export","Facteur de correction (%)", None, QCoreApplication.UnicodeUTF8),
+            QCoreApplication.translate("Export","Volume de décoction (L)", None, QCoreApplication.UnicodeUTF8),
+            "{{calcDecoction().decocVol}}",
+            QCoreApplication.translate("Export","Fraction du moût (%)", None, QCoreApplication.UnicodeUTF8),
+            "{{calcDecoction().fraction}}"
+            )
         
         
-        <div class="row row-tools last" id="sg">
+    resultHtml+='''<div class="row row-tools last" id="sg">
             <div ng-controller="SgPlatoToolCtrl" class="tool-block">
-                <h3>Densité spécifique - Plato</h3>
+                <h3>{0}</h3>
                 <form class="form-horizontal" role="form">
                 <div class="form-group">
-                    <label class="col-sm-3 control-label">Densité spécifique</label>
+                    <label class="col-sm-3 control-label">{1}</label>
                     <div class="col-sm-2">
                         <input type="number" class="form-control" min="0" max="10" step="0.001" ng-model="specificGravity" ng-change="sgChanged()">
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-sm-3 control-label">Plato</label>
+                    <label class="col-sm-3 control-label">{2}</label>
                     <div class="col-sm-2">
                         <input type="number" class="form-control" min="0" max="100" step="1" ng-model="plato" ng-change="platoChanged()">
                     </div>
@@ -416,11 +440,13 @@ input::-webkit-inner-spin-button {
                 </div>
                 </form>
             </div>
-        </div>
+        </div>'''.format(QCoreApplication.translate("Export","Densité spécifique - Plato", None, QCoreApplication.UnicodeUTF8),
+            QCoreApplication.translate("Export","Densité spécifique", None, QCoreApplication.UnicodeUTF8),
+            QCoreApplication.translate("Export","Plato", None, QCoreApplication.UnicodeUTF8))
 
 
 
-    <!-- Fin container -->
+    resultHtml+='''<!-- Fin container -->
     </div>
 
 
