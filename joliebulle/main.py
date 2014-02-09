@@ -945,6 +945,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
                 fileList.append(os.path.join(root,file2))
                 rootList.append(root)
                 filenameList.append(file2)
+                # print (os.path.join(root, file2))
 
         #on parse
         newFileNameList = []
