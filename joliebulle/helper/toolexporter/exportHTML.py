@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 #­*­coding: utf­8 -­*­
 
-#joliebulle 3.1
+#joliebulle 3.2
 #Copyright (C) 2010-2014 Pierre Tavares
 
 #This program is free software; you can redistribute it and/or
@@ -20,9 +20,6 @@
 
 
 from PyQt4.QtCore import QCoreApplication
-
-
-
 
 def exportHTML():
     resultHtml = '''
@@ -44,8 +41,6 @@ def exportHTML():
 <script src="controllers/tools/sgplato.js"></script>
 <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
 <link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
-
-
 <style>
     body {background:url(images/furley_bg.png);}
     .menu{text-align: right; color: #999; font-size: 24px;float:right;margin: auto; padding-top:0.6em;}
@@ -59,20 +54,12 @@ def exportHTML():
     .last{margin-bottom: 3em;}
     .row-tools{padding-left: 15px; padding-right: 15px;}
 .tool-result{margin-top:4em;}
-
-
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
-    /* display: none; <- Crashes Chrome on hover */
     -webkit-appearance: none;
-    margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
-}
-
+    margin: 0;}
 </style>
-
-</head>
-'''    
-    
+</head>'''    
 
     resultHtml +=''' <body ng-app="tools">
 

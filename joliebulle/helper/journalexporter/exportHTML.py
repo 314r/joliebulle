@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 #­*­coding: utf­8 -­*­
 
-#joliebulle 3.1
+#joliebulle 3.2
 #Copyright (C) 2010-2014 Pierre Tavares
 
 #This program is free software; you can redistribute it and/or
@@ -21,9 +21,6 @@
 
 from PyQt4.QtCore import QCoreApplication
 
-
-
-
 def exportHTML(itemsList,newItem):
     resultHtml = '''
 <!doctype html>
@@ -39,8 +36,6 @@ def exportHTML(itemsList,newItem):
 <script src="controllers/journal/journal.js"></script>
 <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
 <link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
-
-
 <style>
     body {background:url(images/furley_bg.png);}
     .journal-header {padding-bottom:1em;margin: auto;float:left;}
@@ -58,9 +53,6 @@ def exportHTML(itemsList,newItem):
     .new-form {margin-bottom:1em; background-color: white; border: 1px solid rgba(0, 0, 0, 0.1);box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.08);padding: 50px;padding-top: 1em; padding-bottom:1em;}
     .entry .saveButton {color:#428bca;}
 </style>
-
-
-
 </head>'''
 
 
