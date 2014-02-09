@@ -2277,7 +2277,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
 
         # BUG BUG BUG BUG
 
-        listSteps = self.currentMash.listeSteps
+        listSteps = self.recipe.mash.listeSteps
         
         i = currentRow
         while i < len(listSteps) - 1 :
