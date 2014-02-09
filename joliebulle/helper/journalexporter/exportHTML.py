@@ -28,7 +28,7 @@ from PyQt4.QtCore import QCoreApplication
 def exportHTML(itemsList,newItem):
     resultHtml = '''
 <!doctype html>
-<html manifest="tools.manifest">
+<html>
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0">

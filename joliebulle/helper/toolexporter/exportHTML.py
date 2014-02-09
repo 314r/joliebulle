@@ -440,15 +440,10 @@ input::-webkit-inner-spin-button {
                 </div>
                 </form>
             </div>
-        </div>'''.format(QCoreApplication.translate("Export","Densité spécifique - Plato", None, QCoreApplication.UnicodeUTF8),
-            QCoreApplication.translate("Export","Densité spécifique", None, QCoreApplication.UnicodeUTF8),
-            QCoreApplication.translate("Export","Plato", None, QCoreApplication.UnicodeUTF8))
+        </div>
 
-
-
-    resultHtml+='''<!-- Fin container -->
+    <!-- Fin container -->
     </div>
-
 
 <script type="text/javascript">
                     $(function () {
@@ -456,7 +451,9 @@ input::-webkit-inner-spin-button {
                     });
 </script>    
 </body>
-</html>'''
+</html>''' .format(QCoreApplication.translate("Export","Densité spécifique - Plato", None, QCoreApplication.UnicodeUTF8),
+            QCoreApplication.translate("Export","Densité spécifique", None, QCoreApplication.UnicodeUTF8),
+            QCoreApplication.translate("Export","Plato", None, QCoreApplication.UnicodeUTF8))
 
     
 

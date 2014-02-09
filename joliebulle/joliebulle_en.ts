@@ -150,7 +150,7 @@
     <message>
         <location filename="main.py" line="1112"/>
         <source>All (*);;BeerXML (*.xml);;BeerSmith 2 (*.bsmx)</source>
-        <translation type="unfinished"></translation>
+        <translation>All (*);;BeerXML (*.xml);;BeerSmith 2 (*.bsmx)</translation>
     </message>
 </context>
 <context>
@@ -1377,7 +1377,7 @@ p, li { white-space: pre-wrap; }
         <translation>Existing file with the same name in the library. JolieBulle has blocked importation to prevent over-writing data.</translation>
     </message>
 </context>
-<context encoding="UTF-8">
+<context>
     <name>Export</name>
     <message encoding="UTF-8">
         <location filename="helper/recipeexporter/exportBBCode.py" line="35"/>
@@ -1495,7 +1495,7 @@ p, li { white-space: pre-wrap; }
         <translation type="obsolete">Boil: </translation>
     </message>
     <message>
-        <location filename="helper/recipeexporter/exportHTML.py" line="105"/>
+        <location filename="helper/toolexporter/exportHTML.py" line="236"/>
         <source>Taux d&apos;alcool</source>
         <translation>Alcohol by Vol</translation>
     </message>
@@ -1515,7 +1515,7 @@ p, li { white-space: pre-wrap; }
         <translation>BU/GU</translation>
     </message>
     <message encoding="UTF-8">
-        <location filename="helper/recipeexporter/exportHTML.py" line="105"/>
+        <location filename="helper/toolexporter/exportHTML.py" line="236"/>
         <source>Densité finale</source>
         <translation>Final Gravity</translation>
     </message>
@@ -1525,7 +1525,7 @@ p, li { white-space: pre-wrap; }
         <translation>FG</translation>
     </message>
     <message encoding="UTF-8">
-        <location filename="helper/recipeexporter/exportHTML.py" line="105"/>
+        <location filename="helper/toolexporter/exportHTML.py" line="236"/>
         <source>Densité initiale</source>
         <translation>Original gravity</translation>
     </message>
@@ -1672,21 +1672,236 @@ p, li { white-space: pre-wrap; }
     <message encoding="UTF-8">
         <location filename="helper/journalexporter/exportHTML.py" line="100"/>
         <source>Ajouter une entrée</source>
-        <translation type="unfinished">Add entry</translation>
+        <translation>Add entry</translation>
     </message>
     <message>
         <location filename="helper/journalexporter/exportHTML.py" line="131"/>
         <source>enregistrer</source>
-        <translation type="unfinished"></translation>
+        <translation>Save</translation>
     </message>
     <message>
         <location filename="helper/journalexporter/exportHTML.py" line="131"/>
         <source>modifier</source>
-        <translation type="unfinished"></translation>
+        <translation>Edit</translation>
     </message>
     <message>
         <location filename="helper/journalexporter/exportHTML.py" line="131"/>
         <source>supprimer</source>
+        <translation>Remove</translation>
+    </message>
+    <message encoding="UTF-8">
+        <location filename="helper/toolexporter/exportHTML.py" line="133"/>
+        <source>Correction du densimètre</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="helper/toolexporter/exportHTML.py" line="202"/>
+        <source>Assistant paliers</source>
+        <translation type="unfinished">Step assistant</translation>
+    </message>
+    <message>
+        <location filename="helper/toolexporter/exportHTML.py" line="283"/>
+        <source>Dilution</source>
+        <translation type="unfinished">Dilution</translation>
+    </message>
+    <message>
+        <location filename="helper/toolexporter/exportHTML.py" line="347"/>
+        <source>Evaporation</source>
+        <translation type="unfinished">Boil off</translation>
+    </message>
+    <message encoding="UTF-8">
+        <location filename="helper/toolexporter/exportHTML.py" line="411"/>
+        <source>Décoction</source>
+        <translation type="unfinished">Decoction</translation>
+    </message>
+    <message encoding="UTF-8">
+        <location filename="helper/toolexporter/exportHTML.py" line="99"/>
+        <source>Densité - Plato</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message encoding="UTF-8">
+        <location filename="helper/toolexporter/exportHTML.py" line="133"/>
+        <source>Densité mesurée</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message encoding="UTF-8">
+        <location filename="helper/toolexporter/exportHTML.py" line="133"/>
+        <source>Température de calibration (°C)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message encoding="UTF-8">
+        <location filename="helper/toolexporter/exportHTML.py" line="133"/>
+        <source>Température mesurée (°C)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message encoding="UTF-8">
+        <location filename="helper/toolexporter/exportHTML.py" line="133"/>
+        <source>Densité corrigée</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message encoding="UTF-8">
+        <location filename="helper/toolexporter/exportHTML.py" line="411"/>
+        <source>Température cible (°C)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message encoding="UTF-8">
+        <location filename="helper/toolexporter/exportHTML.py" line="283"/>
+        <source>Volume ajouté (L)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="helper/toolexporter/exportHTML.py" line="202"/>
+        <source>Poids du grain (Kg)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message encoding="UTF-8">
+        <location filename="helper/toolexporter/exportHTML.py" line="202"/>
+        <source>Température du grain (°C)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message encoding="UTF-8">
+        <location filename="helper/toolexporter/exportHTML.py" line="202"/>
+        <source>Température de la maîche (°C)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message encoding="UTF-8">
+        <location filename="helper/toolexporter/exportHTML.py" line="202"/>
+        <source>Volume d&apos;eau dans la maîche (L)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="helper/toolexporter/exportHTML.py" line="202"/>
+        <source>Facteur de correction</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message encoding="UTF-8">
+        <location filename="helper/toolexporter/exportHTML.py" line="202"/>
+        <source>Température de l&apos;eau (°C)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="helper/toolexporter/exportHTML.py" line="202"/>
+        <source>Ratio (L/Kg)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message encoding="UTF-8">
+        <location filename="helper/toolexporter/exportHTML.py" line="236"/>
+        <source>Sucre ajouté (g/L)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="helper/toolexporter/exportHTML.py" line="236"/>
+        <source>Alcool par volume (%)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="helper/toolexporter/exportHTML.py" line="283"/>
+        <source>Volume initial (L)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message encoding="UTF-8">
+        <location filename="helper/toolexporter/exportHTML.py" line="283"/>
+        <source>Densité spécifique initiale</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message encoding="UTF-8">
+        <location filename="helper/toolexporter/exportHTML.py" line="283"/>
+        <source>Densité de l&apos;ajout</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="helper/toolexporter/exportHTML.py" line="283"/>
+        <source>1 si ajout d&apos;eau</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="helper/toolexporter/exportHTML.py" line="347"/>
+        <source>Volume final (L)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message encoding="UTF-8">
+        <location filename="helper/toolexporter/exportHTML.py" line="283"/>
+        <source>Densité spécifique finale</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message encoding="UTF-8">
+        <location filename="helper/toolexporter/exportHTML.py" line="347"/>
+        <source>Volume pré-ébullition (L)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message encoding="UTF-8">
+        <location filename="helper/toolexporter/exportHTML.py" line="347"/>
+        <source>Densité spécifique pré-ébullition</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message encoding="UTF-8">
+        <location filename="helper/toolexporter/exportHTML.py" line="347"/>
+        <source>Taux d&apos;évaporation (%/heure)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message encoding="UTF-8">
+        <location filename="helper/toolexporter/exportHTML.py" line="347"/>
+        <source>Durée d&apos;ébullition (min)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="helper/toolexporter/exportHTML.py" line="347"/>
+        <source>Pertes par refroidissement (%)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message encoding="UTF-8">
+        <location filename="helper/toolexporter/exportHTML.py" line="347"/>
+        <source>Volume évaporé (ébullition) (L)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message encoding="UTF-8">
+        <location filename="helper/toolexporter/exportHTML.py" line="347"/>
+        <source>Volume évaporé (refroidissement) (L)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message encoding="UTF-8">
+        <location filename="helper/toolexporter/exportHTML.py" line="454"/>
+        <source>Densité spécifique</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message encoding="UTF-8">
+        <location filename="helper/toolexporter/exportHTML.py" line="411"/>
+        <source>Volume de moût (L)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message encoding="UTF-8">
+        <location filename="helper/toolexporter/exportHTML.py" line="411"/>
+        <source>Température de départ (°C)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message encoding="UTF-8">
+        <location filename="helper/toolexporter/exportHTML.py" line="411"/>
+        <source>Température d&apos;ébullition (°C)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="helper/toolexporter/exportHTML.py" line="411"/>
+        <source>Facteur de correction (%)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message encoding="UTF-8">
+        <location filename="helper/toolexporter/exportHTML.py" line="411"/>
+        <source>Volume de décoction (L)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message encoding="UTF-8">
+        <location filename="helper/toolexporter/exportHTML.py" line="411"/>
+        <source>Fraction du moût (%)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message encoding="UTF-8">
+        <location filename="helper/toolexporter/exportHTML.py" line="454"/>
+        <source>Densité spécifique - Plato</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="helper/toolexporter/exportHTML.py" line="454"/>
+        <source>Plato</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
