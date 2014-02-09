@@ -30,6 +30,7 @@ SOURCES          += helper/recipeexporter/exportBeerXML.py
 SOURCES          += helper/recipeexporter/exportHTML.py
 SOURCES          += helper/recipeexporter/exportBBCode.py
 SOURCES          += helper/journalexporter/exportHTML.py
+SOURCES          += helper/journalexporter/exportHTML_old.py
 SOURCES          += helper/toolexporter/exportHTML.py
 SOURCES          += exportMash.py
 SOURCES          += errors.py

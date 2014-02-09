@@ -82,7 +82,7 @@ def exportHTML(itemsList,newItem):
             
               <div class="new row row-journal" ng-init="newEntry={1}">
                 <div class="newButton">
-                    <button ng-click="newEntry.editing = !newEntry.editing;newClicked('recette', 'événement')" ng-hide="newEntry.editing"><i class="icon-plus"> </i>Ajouter une entrée</button>
+                    <button ng-click="newEntry.editing = !newEntry.editing;newClicked('recette', 'événement')" ng-hide="newEntry.editing"><i class="icon-plus"> </i>{2}</button>
                 </div>
                 
                 <form class="form-inline new-form" role="form" ng-show="newEntry.editing">
@@ -95,17 +95,17 @@ def exportHTML(itemsList,newItem):
                   <div class="form-group">
                     <input class="form-control" type="text" ng-model="newEntryRecipe" ng-show="newEntry.editing"/>
                   </div>
-                  <button class="btn-link btn-xs" type="button" ng-click="saveNew(newEntryRecipe, newEntryDate, newEntryEvent); newEntry.editing = !newEntry.editing;" ng-show="newEntry.editing">enregistrer</button>
+                  <button class="btn-link btn-xs" type="button" ng-click="saveNew(newEntryRecipe, newEntryDate, newEntryEvent); newEntry.editing = !newEntry.editing;" ng-show="newEntry.editing">{3}</button>
                 </form>
-              </div>
+              </div>''' .format(str(itemsList) , newItem, QCoreApplication.translate("Export","Ajouter une entrée", None, QCoreApplication.UnicodeUTF8),QCoreApplication.translate("Export","enregistrer", None, QCoreApplication.UnicodeUTF8))
 
-              <div class="row row-journal">
+    resultHtml += '''<div class="row row-journal">
                 <div class="journal-list">
                   <div ng-repeat="entry in entries">
                     <div class = "entry">
-                      <div ng-hide="entry.editing"><span class="date">{2}</span> {3} a été marquée comme <span class="event"> {4}</span> 
-                      <button class="btn-link btn-xs" type="button" ng-click="edit(entry)" ng-hide="entry.editing">modifier</button>
-                      <button class="btn-link btn-xs" type="button" ng-click="delete(entry)" ng-hide="entry.editing">supprimer</button></div>
+                      <div ng-hide="entry.editing"><span class="date">{0}</span> {1} a été marquée comme <span class="event"> {2}</span> 
+                      <button class="btn-link btn-xs" type="button" ng-click="edit(entry)" ng-hide="entry.editing">{3}</button>
+                      <button class="btn-link btn-xs" type="button" ng-click="delete(entry)" ng-hide="entry.editing">{4}</button></div>
                       <form class="form-inline" role="form" ng-show="entry.editing">
                         <div class="form-group">
                           <input class="form-control" type="date" ng-model="entry.date" ng-show="entry.editing"/>
@@ -116,24 +116,19 @@ def exportHTML(itemsList,newItem):
                         <div class="form-group">
                           <input class="form-control" type="text" ng-model="entry.recipe" ng-show="entry.editing"/>
                         </div>
-                       
-                        <button class="btn-link btn-xs saveButton" ng-click="save(entry)" ng-show="entry.editing">enregistrer</button>
-                        
+                        <button class="btn-link btn-xs saveButton" ng-click="save(entry)" ng-show="entry.editing">{5}</button>
                       </form>
-
                     </div>
                   </div>
                 </div>
             </div>
         </div>
-
-       
     <!-- Fin container     -->
     </div>
 
 </script>    
 </body>
-</html>''' .format(str(itemsList) , newItem, "{{entry.date*1000 | date:'dd/MM/yy'}}", "{{entry.recipe}}", "{{entry.event}}" )
+</html>''' .format("{{entry.date*1000 | date:'dd/MM/yy'}}", "{{entry.recipe}}", "{{entry.event}}", QCoreApplication.translate("Export","modifier", None, QCoreApplication.UnicodeUTF8), QCoreApplication.translate("Export","supprimer", None, QCoreApplication.UnicodeUTF8), QCoreApplication.translate("Export","enregistrer", None, QCoreApplication.UnicodeUTF8) )
 
     return resultHtml
 
