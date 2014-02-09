@@ -3,7 +3,7 @@
 
 APP = ["joliebulle/main.py"]
 NAME = "Joliebulle"
-VERSION = "3.1.0"
+VERSION = "3.2.0"
 
 setup_info = dict(
     name = NAME,
@@ -46,6 +46,10 @@ setup_info = dict(
             "static/font-awesome/css/*",
             "static/font-awesome/font/*",
             "static/jquery/*",
+            "static/controllers/journal/*",
+            "static/controllers/tools/*",
+            "static/angular/*",
+            "static/underscore/*"
         ]
     },
     setup_requires=['py2app'],
