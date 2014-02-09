@@ -1,8 +1,8 @@
 #!/usr/bin/python3
 #­*­coding: utf­8 -­*­
 
-#joliebulle 3.1
-#Copyright (C) 2010-2013 Pierre Tavares
+#joliebulle 3.2
+#Copyright (C) 2010-2014 Pierre Tavares
 #This program is distributed in the hope that it will be useful,
 #but WITHOUT ANY WARRANTY; without even the implied warranty of
 #MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the

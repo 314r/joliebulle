@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 #­*­coding: utf­8 -­*­
 
-#joliebulle 3.1
+#joliebulle 3.2
 #Copyright (C) 2013 Thomas Gerbet
 
 #This program is free software; you can redistribute it and/or

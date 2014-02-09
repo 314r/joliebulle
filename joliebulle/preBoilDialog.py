@@ -4,8 +4,8 @@
 
 
 #JolieBulle 2.9
-#Copyright (C) 2010-2013 Pierre Tavares
-#Copyright (C) 2012-2013 joliebulle's authors
+#Copyright (C) 2010-2014 Pierre Tavares
+#Copyright (C) 2012-2014 joliebulle's authors
 #See AUTHORS file.
 
 #This program is free software; you can redistribute it and/or
