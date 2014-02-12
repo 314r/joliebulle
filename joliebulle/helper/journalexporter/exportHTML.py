@@ -94,9 +94,9 @@ def exportHTML(itemsList,newItem):
                 <div class="journal-list">
                   <div ng-repeat="entry in entries">
                     <div class = "entry">
-                      <div ng-hide="entry.editing"><span class="date">{0}</span> {1} a été marquée comme <span class="event"> {2}</span> 
-                      <button class="btn-link btn-xs" type="button" ng-click="edit(entry)" ng-hide="entry.editing">{3}</button>
-                      <button class="btn-link btn-xs" type="button" ng-click="delete(entry)" ng-hide="entry.editing">{4}</button></div>
+                      <div ng-hide="entry.editing"><span class="date">{0}</span> {1} {2}  <span class="event"> {3}</span> 
+                      <button class="btn-link btn-xs" type="button" ng-click="edit(entry)" ng-hide="entry.editing">{4}</button>
+                      <button class="btn-link btn-xs" type="button" ng-click="delete(entry)" ng-hide="entry.editing">{5}</button></div>
                       <form class="form-inline" role="form" ng-show="entry.editing">
                         <div class="form-group">
                           <input class="form-control" type="date" ng-model="entry.date" ng-show="entry.editing"/>
@@ -107,7 +107,7 @@ def exportHTML(itemsList,newItem):
                         <div class="form-group">
                           <input class="form-control" type="text" ng-model="entry.recipe" ng-show="entry.editing"/>
                         </div>
-                        <button class="btn-link btn-xs saveButton" ng-click="save(entry)" ng-show="entry.editing">{5}</button>
+                        <button class="btn-link btn-xs saveButton" ng-click="save(entry)" ng-show="entry.editing">{6}</button>
                       </form>
                     </div>
                   </div>
@@ -119,7 +119,7 @@ def exportHTML(itemsList,newItem):
 
 </script>    
 </body>
-</html>''' .format("{{entry.date*1000 | date:'dd/MM/yy'}}", "{{entry.recipe}}", "{{entry.event}}", QCoreApplication.translate("Export","modifier", None, QCoreApplication.UnicodeUTF8), QCoreApplication.translate("Export","supprimer", None, QCoreApplication.UnicodeUTF8), QCoreApplication.translate("Export","enregistrer", None, QCoreApplication.UnicodeUTF8) )
+</html>''' .format("{{entry.date*1000 | date:'dd/MM/yy'}}", "{{entry.recipe}}",QCoreApplication.translate("Export","a été marquée comme", None, QCoreApplication.UnicodeUTF8), "{{entry.event}}", QCoreApplication.translate("Export","modifier", None, QCoreApplication.UnicodeUTF8), QCoreApplication.translate("Export","supprimer", None, QCoreApplication.UnicodeUTF8), QCoreApplication.translate("Export","enregistrer", None, QCoreApplication.UnicodeUTF8) )
 
     return resultHtml
 

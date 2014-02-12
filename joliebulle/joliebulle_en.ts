@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS>
-<TS version="2.0" language="en" sourcelanguage="fr_FR">
-<context>
+<!DOCTYPE TS><TS version="2.0" language="en" sourcelanguage="fr_FR">
+<context encoding="UTF-8">
     <name>AppWindow</name>
     <message>
         <location filename="main.py" line="1635"/>
@@ -13,17 +12,17 @@
         <source>Nouvelle Recette</source>
         <translation>New Recipe</translation>
     </message>
-    <message utf8="true">
+    <message encoding="UTF-8">
         <location filename="main.py" line="1833"/>
         <source>Générique</source>
         <translation>Generic</translation>
     </message>
-    <message utf8="true">
+    <message encoding="UTF-8">
         <location filename="main.py" line="603"/>
         <source>Ingrédients</source>
         <translation>Ingredients</translation>
     </message>
-    <message utf8="true">
+    <message encoding="UTF-8">
         <location filename="main.py" line="603"/>
         <source>Quantité (g)</source>
         <translation>Amount (g)</translation>
@@ -63,7 +62,7 @@
         <source>Supprimer</source>
         <translation>Remove</translation>
     </message>
-    <message utf8="true">
+    <message encoding="UTF-8">
         <location filename="main.py" line="1094"/>
         <source>La recette sera définitivement supprimée &lt;br/&gt; Continuer ?</source>
         <translation>The recipe will be removed.&lt;br/&gt; Continue ?</translation>
@@ -73,12 +72,12 @@
         <source>Remplacer la base ?</source>
         <translation>Restore database</translation>
     </message>
-    <message utf8="true">
+    <message encoding="UTF-8">
         <location filename="main.py" line="1345"/>
         <source>La base des ingrédients actuelle va être effacée et remplacée par la base originale. Toutes vos modifications vont être effacées. Un redémarrage de l&apos;application sera nécessaire.&lt;br&gt; Continuer ?</source>
         <translation>The ingredients database is going to be removed and replaced by the original one. All changes you made will be removed. You will have to reboot JolieBulle. &lt;br/&gt; Continue ?</translation>
     </message>
-    <message utf8="true">
+    <message encoding="UTF-8">
         <location filename="main.py" line="603"/>
         <source>Étape</source>
         <translation>Step</translation>
@@ -138,7 +137,7 @@
         <source>Profils de brassage</source>
         <translation>Mash profiles</translation>
     </message>
-    <message utf8="true">
+    <message encoding="UTF-8">
         <location filename="main.py" line="1635"/>
         <source>&lt;h1&gt;JolieBulle&lt;/h1&gt; &lt;b&gt;version 2.9&lt;/b&gt;&lt;br/&gt;copyright (c) 2010-2013 Pierre Tavares.&lt;br/&gt;copyright (c) 2012-2013 Les auteurs de JolieBulle.&lt;p&gt; JolieBulle est un logiciel de lecture et de formulation de recettes de brassage.&lt;/p&gt;&lt;p&gt;&lt;a href =http://www.gnu.org/licenses/gpl-3.0.html&gt;Licence : Version 3 de la Licence Générale Publique GNU&lt;/a&gt;&lt;/p&gt;&lt;p&gt;Certaines icônes proviennent du pack Faenza par Tiheum (Matthieu James), également distribué sous licence GPL.&lt;/p&gt; &lt;p&gt;Auteurs : Pierre Tavares, Nicolas Jouanin, Thomas Gerbet&lt;/p&gt;</source>
         <translation type="obsolete">&lt;h1&gt;JolieBulle&lt;/h1&gt; &lt;b&gt;version 2.9&lt;/b&gt;&lt;br/&gt;copyright (c) 2010-2013 Pierre Tavares.&lt;br/&gt;copyright (c) 2012-2013 JolieBulle&apos;s authors.&lt;p&gt; JolieBulle is a beer brewing software.&lt;/p&gt;&lt;p&gt;&lt;a href =http://www.gnu.org/licenses/gpl-3.0.html&gt;Licence : GNU GPL v3&lt;/a&gt;&lt;/p&gt;&lt;p&gt;Some icons by Tiheum (Matthieu James), licenced under the GNU GPL&lt;/p&gt; &lt;p&gt;Authors : Pierre Tavares, Nicolas Jouanin, Thomas Gerbet&lt;/p&gt;</translation>
@@ -200,7 +199,7 @@ p, li { white-space: pre-wrap; }
 &lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;Droid Sans&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Yield&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
-    <message utf8="true">
+    <message encoding="UTF-8">
         <location filename="editorG.ui" line="101"/>
         <source>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
@@ -280,7 +279,7 @@ p, li { white-space: pre-wrap; }
 &lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;Droid Sans&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;ID&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
-    <message utf8="true">
+    <message encoding="UTF-8">
         <location filename="editorY.ui" line="103"/>
         <source>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
@@ -313,7 +312,7 @@ p, li { white-space: pre-wrap; }
         <source>Sucre</source>
         <translation>Sugar</translation>
     </message>
-    <message utf8="true">
+    <message encoding="UTF-8">
         <location filename="editgrain.py" line="55"/>
         <source>Complément</source>
         <translation>Adjunct</translation>
@@ -408,7 +407,7 @@ p, li { white-space: pre-wrap; }
 &lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;Droid Sans&apos;; font-size:10pt; font-weight:400; font-style:normal;&quot;&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Type :&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
-    <message utf8="true">
+    <message encoding="UTF-8">
         <location filename="stepEditor.ui" line="56"/>
         <source>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
@@ -434,7 +433,7 @@ p, li { white-space: pre-wrap; }
 &lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;Droid Sans&apos;; font-size:10pt; font-weight:400; font-style:normal;&quot;&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Volume :&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
-    <message utf8="true">
+    <message encoding="UTF-8">
         <location filename="stepEditor.ui" line="74"/>
         <source>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
@@ -457,7 +456,7 @@ p, li { white-space: pre-wrap; }
         <source> min</source>
         <translation> min</translation>
     </message>
-    <message utf8="true">
+    <message encoding="UTF-8">
         <location filename="stepEditor.ui" line="85"/>
         <source> °C</source>
         <translation> °C</translation>
@@ -472,7 +471,7 @@ p, li { white-space: pre-wrap; }
         <source>Date</source>
         <translation type="obsolete">Date</translation>
     </message>
-    <message utf8="true">
+    <message encoding="UTF-8">
         <location filename="journalEdit.ui" line="32"/>
         <source>Évènement</source>
         <translation type="obsolete">Event</translation>
@@ -483,19 +482,19 @@ p, li { white-space: pre-wrap; }
         <translation type="obsolete">Recipe</translation>
     </message>
 </context>
-<context>
+<context encoding="UTF-8">
     <name>DialogAbout</name>
     <message>
         <location filename="about.ui" line="14"/>
         <source>A propos</source>
         <translation>About</translation>
     </message>
-    <message utf8="true">
+    <message encoding="UTF-8">
         <location filename="about.ui" line="20"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:20pt;&quot;&gt;JolieBulle&lt;/span&gt;&lt;br/&gt;Lecture et formulation de recettes de brassage&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:9pt;&quot;&gt;copyright (c) 2010-2013 Pierre Tavares&lt;br/&gt;copyright (c) 2012-2013 Les auteurs de JolieBulle.&lt;/span&gt;&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;&lt;a href=&quot;http://www.gnu.org/licenses/gpl-3.0.html&quot;&gt;&lt;span style=&quot; font-size:9pt; text-decoration: underline; color:#0000ff;&quot;&gt;Licence : Version 3 de la Licence Générale Publique GNU&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="obsolete">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:20pt;&quot;&gt;JolieBulle&lt;/span&gt;&lt;br/&gt;Read and create beer recipes.&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:9pt;&quot;&gt;copyright (c) 2010-2013 Pierre Tavares&lt;br/&gt;copyright (c) 2012-2013 JolieBulle&apos;s authors.&lt;/span&gt;&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;&lt;a href=&quot;http://www.gnu.org/licenses/gpl-3.0.html&quot;&gt;&lt;span style=&quot; font-size:9pt; text-decoration: underline; color:#0000ff;&quot;&gt;Licence :   GNU GPLv3&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
-    <message utf8="true">
+    <message encoding="UTF-8">
         <location filename="about.ui" line="37"/>
         <source>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
@@ -548,12 +547,12 @@ p, li { white-space: pre-wrap; }
 &lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;*Recipes design (html/css) inspired by David Johnstone&apos;s Alt Reader&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
-    <message utf8="true">
+    <message encoding="UTF-8">
         <location filename="about.ui" line="27"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Crédits :&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Credits :&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
-    <message utf8="true">
+    <message encoding="UTF-8">
         <location filename="about.ui" line="44"/>
         <source>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
@@ -606,17 +605,17 @@ p, li { white-space: pre-wrap; }
 &lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;*Recipes design (html/css) inspired by David Johnstone&apos;s Alt Reader&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
-    <message utf8="true">
+    <message encoding="UTF-8">
         <location filename="about.ui" line="20"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:20pt;&quot;&gt;JolieBulle&lt;/span&gt;&lt;br/&gt;Lecture et formulation de recettes de brassage&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;version 3.1&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:9pt;&quot;&gt;copyright (c) 2010-2013 Pierre Tavares&lt;br/&gt;copyright (c) 2012-2013 Les auteurs de JolieBulle.&lt;/span&gt;&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;&lt;a href=&quot;http://www.gnu.org/licenses/gpl-3.0.html&quot;&gt;&lt;span style=&quot; font-size:9pt; text-decoration: underline; color:#0000ff;&quot;&gt;Licence : Version 3 de la Licence Générale Publique GNU&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="obsolete">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:20pt;&quot;&gt;JolieBulle&lt;/span&gt;&lt;br/&gt;Read and create beer recipes.&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;3.1&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:9pt;&quot;&gt;copyright (c) 2010-2013 Pierre Tavares&lt;br/&gt;copyright (c) 2012-2013 JolieBulle&apos;s authors.&lt;/span&gt;&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;&lt;a href=&quot;http://www.gnu.org/licenses/gpl-3.0.html&quot;&gt;&lt;span style=&quot; font-size:9pt; text-decoration: underline; color:#0000ff;&quot;&gt;Licence :   GNU GPLv3&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
-    <message utf8="true">
+    <message encoding="UTF-8">
         <location filename="about.ui" line="20"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:20pt;&quot;&gt;JolieBulle&lt;/span&gt;&lt;br/&gt;Lecture et formulation de recettes de brassage&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;version 3.2&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:9pt;&quot;&gt;copyright (c) 2010-2014 Pierre Tavares&lt;br/&gt;copyright (c) 2012-2014 Les auteurs de JolieBulle.&lt;/span&gt;&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;&lt;a href=&quot;http://www.gnu.org/licenses/gpl-3.0.html&quot;&gt;&lt;span style=&quot; font-size:9pt; text-decoration: underline; color:#0000ff;&quot;&gt;Licence : Version 3 de la Licence Générale Publique GNU&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:20pt;&quot;&gt;JolieBulle&lt;/span&gt;&lt;br/&gt;Read and create beer recipes.&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;3.2&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:9pt;&quot;&gt;copyright (c) 2010-2014 Pierre Tavares&lt;br/&gt;copyright (c) 2012-2014 JolieBulle&apos;s authors.&lt;/span&gt;&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;&lt;a href=&quot;http://www.gnu.org/licenses/gpl-3.0.html&quot;&gt;&lt;span style=&quot; font-size:9pt; text-decoration: underline; color:#0000ff;&quot;&gt;Licence :   GNU GPLv3&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
-    <message utf8="true">
+    <message encoding="UTF-8">
         <location filename="about.ui" line="44"/>
         <source>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
@@ -684,7 +683,7 @@ p, li { white-space: pre-wrap; }
 </context>
 <context>
     <name>DialogAlc</name>
-    <message utf8="true">
+    <message encoding="UTF-8">
         <location filename="outilAlc.ui" line="22"/>
         <source>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
@@ -697,7 +696,7 @@ p, li { white-space: pre-wrap; }
 &lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;Ubuntu&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Original gravity&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
-    <message utf8="true">
+    <message encoding="UTF-8">
         <location filename="outilAlc.ui" line="33"/>
         <source>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
@@ -728,7 +727,7 @@ p, li { white-space: pre-wrap; }
         <source>Calcul taux alcool</source>
         <translation type="obsolete">Alcohol by volume calculator</translation>
     </message>
-    <message utf8="true">
+    <message encoding="UTF-8">
         <location filename="outilAlc.ui" line="120"/>
         <source>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
@@ -742,7 +741,7 @@ p, li { white-space: pre-wrap; }
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Sugar addition (g/L)&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
 </context>
-<context>
+<context encoding="UTF-8">
     <name>DialogD</name>
     <message>
         <location filename="editdivers.py" line="50"/>
@@ -764,7 +763,7 @@ p, li { white-space: pre-wrap; }
         <source>Herbe</source>
         <translation>Herb</translation>
     </message>
-    <message utf8="true">
+    <message encoding="UTF-8">
         <location filename="editdivers.py" line="54"/>
         <source>Arôme</source>
         <translation>Flavor</translation>
@@ -782,7 +781,7 @@ p, li { white-space: pre-wrap; }
         <source>Densimetre</source>
         <translation>Hydrometer</translation>
     </message>
-    <message utf8="true">
+    <message encoding="UTF-8">
         <location filename="densimetre.ui" line="22"/>
         <source>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
@@ -795,7 +794,7 @@ p, li { white-space: pre-wrap; }
 &lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;Ubuntu&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Hydrometer reading&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
-    <message utf8="true">
+    <message encoding="UTF-8">
         <location filename="densimetre.ui" line="33"/>
         <source>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
@@ -808,7 +807,7 @@ p, li { white-space: pre-wrap; }
 &lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;Ubuntu&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Calibration temperature&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
-    <message utf8="true">
+    <message encoding="UTF-8">
         <location filename="densimetre.ui" line="44"/>
         <source>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
@@ -821,12 +820,12 @@ p, li { white-space: pre-wrap; }
 &lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;Ubuntu&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Sample temperature&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
-    <message utf8="true">
+    <message encoding="UTF-8">
         <location filename="densimetre.ui" line="68"/>
         <source>°C</source>
         <translation></translation>
     </message>
-    <message utf8="true">
+    <message encoding="UTF-8">
         <location filename="densimetre.ui" line="97"/>
         <source>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
@@ -845,7 +844,7 @@ p, li { white-space: pre-wrap; }
         <translation></translation>
     </message>
 </context>
-<context>
+<context encoding="UTF-8">
     <name>DialogDilution</name>
     <message>
         <location filename="outilDilution.ui" line="14"/>
@@ -865,7 +864,7 @@ p, li { white-space: pre-wrap; }
 &lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;Droid Sans&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Starting Volume(L)&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
-    <message utf8="true">
+    <message encoding="UTF-8">
         <location filename="outilDilution.ui" line="39"/>
         <source>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
@@ -878,7 +877,7 @@ p, li { white-space: pre-wrap; }
 &lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;Droid Sans&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Starting specific gravity&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
-    <message utf8="true">
+    <message encoding="UTF-8">
         <location filename="outilDilution.ui" line="66"/>
         <source>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
@@ -891,7 +890,7 @@ p, li { white-space: pre-wrap; }
 &lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;Droid Sans&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Added Volume (L)&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
-    <message utf8="true">
+    <message encoding="UTF-8">
         <location filename="outilDilution.ui" line="87"/>
         <source>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
@@ -917,7 +916,7 @@ p, li { white-space: pre-wrap; }
 &lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;Droid Sans&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Final volume (L) : &lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
-    <message utf8="true">
+    <message encoding="UTF-8">
         <location filename="outilDilution.ui" line="128"/>
         <source>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
@@ -938,7 +937,7 @@ p, li { white-space: pre-wrap; }
         <source>Evaporation</source>
         <translation type="obsolete">Boil off</translation>
     </message>
-    <message utf8="true">
+    <message encoding="UTF-8">
         <location filename="outilEvaporation.ui" line="25"/>
         <source>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
@@ -951,7 +950,7 @@ p, li { white-space: pre-wrap; }
 &lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;Droid Sans&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Pre-boil volume (L)&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
-    <message utf8="true">
+    <message encoding="UTF-8">
         <location filename="outilEvaporation.ui" line="43"/>
         <source>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
@@ -964,7 +963,7 @@ p, li { white-space: pre-wrap; }
 &lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;Droid Sans&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Pre-boil gravity&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
-    <message utf8="true">
+    <message encoding="UTF-8">
         <location filename="outilEvaporation.ui" line="73"/>
         <source>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
@@ -977,7 +976,7 @@ p, li { white-space: pre-wrap; }
 &lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;Droid Sans&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Evaporation rate (%/hour)&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
-    <message utf8="true">
+    <message encoding="UTF-8">
         <location filename="outilEvaporation.ui" line="91"/>
         <source>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
@@ -1003,7 +1002,7 @@ p, li { white-space: pre-wrap; }
 &lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;Droid Sans&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Cooling loss (%)&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
-    <message utf8="true">
+    <message encoding="UTF-8">
         <location filename="outilEvaporation.ui" line="143"/>
         <source>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
@@ -1029,7 +1028,7 @@ p, li { white-space: pre-wrap; }
 &lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;Droid Sans&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;0&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
-    <message utf8="true">
+    <message encoding="UTF-8">
         <location filename="outilEvaporation.ui" line="165"/>
         <source>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
@@ -1055,7 +1054,7 @@ p, li { white-space: pre-wrap; }
 &lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;Droid Sans&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Final volume (L) : &lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
-    <message utf8="true">
+    <message encoding="UTF-8">
         <location filename="outilEvaporation.ui" line="198"/>
         <source>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
@@ -1082,7 +1081,7 @@ p, li { white-space: pre-wrap; }
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;1.060&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
 </context>
-<context>
+<context encoding="UTF-8">
     <name>DialogH</name>
     <message>
         <location filename="edithoublon.py" line="52"/>
@@ -1094,7 +1093,7 @@ p, li { white-space: pre-wrap; }
         <source>Pellet</source>
         <translation>Pellet</translation>
     </message>
-    <message utf8="true">
+    <message encoding="UTF-8">
         <location filename="edithoublon.py" line="54"/>
         <source>Cône</source>
         <translation>Plug</translation>
@@ -1112,7 +1111,7 @@ p, li { white-space: pre-wrap; }
         <source>Poudre</source>
         <translation>Dry</translation>
     </message>
-    <message utf8="true">
+    <message encoding="UTF-8">
         <location filename="editlevures.py" line="54"/>
         <source>Gélose</source>
         <translation>Slant</translation>
@@ -1140,7 +1139,7 @@ p, li { white-space: pre-wrap; }
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;pH :&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;pH :&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
-    <message utf8="true">
+    <message encoding="UTF-8">
         <location filename="mashEditor.ui" line="45"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Température rinçage :&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Sparge Temperature :&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
@@ -1163,7 +1162,7 @@ p, li { white-space: pre-wrap; }
         <source>0</source>
         <translation>0</translation>
     </message>
-    <message utf8="true">
+    <message encoding="UTF-8">
         <location filename="mashDetail.ui" line="44"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Rinçage :&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Sparge :&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
@@ -1178,7 +1177,7 @@ p, li { white-space: pre-wrap; }
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Etapes&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Steps&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
-    <message utf8="true">
+    <message encoding="UTF-8">
         <location filename="mashDetail.py" line="47"/>
         <source>°C, </source>
         <translation>°C, </translation>
@@ -1191,7 +1190,7 @@ p, li { white-space: pre-wrap; }
 </context>
 <context>
     <name>DialogPaliers</name>
-    <message utf8="true">
+    <message encoding="UTF-8">
         <location filename="outilPaliers.py" line="39"/>
         <source>empâtage</source>
         <translation type="obsolete">initial strike</translation>
@@ -1201,7 +1200,7 @@ p, li { white-space: pre-wrap; }
         <source>palier</source>
         <translation type="obsolete">step</translation>
     </message>
-    <message utf8="true">
+    <message encoding="UTF-8">
         <location filename="outilPaliers.py" line="93"/>
         <source>Au-dessus du point d&apos;ébullition. Augmentez la quantité d&apos;eau.</source>
         <translation type="obsolete">Above boiling point. Add more water.</translation>
@@ -1211,7 +1210,7 @@ p, li { white-space: pre-wrap; }
         <source>Assistant paliers</source>
         <translation type="obsolete">Step assistant</translation>
     </message>
-    <message utf8="true">
+    <message encoding="UTF-8">
         <location filename="outilPaliers.ui" line="32"/>
         <source>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
@@ -1224,7 +1223,7 @@ p, li { white-space: pre-wrap; }
 &lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;Droid Sans&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Target temperature (°C)&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
-    <message utf8="true">
+    <message encoding="UTF-8">
         <location filename="outilPaliers.ui" line="43"/>
         <source>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
@@ -1250,7 +1249,7 @@ p, li { white-space: pre-wrap; }
 &lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;Droid Sans&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Weight of grain (Kg)&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
-    <message utf8="true">
+    <message encoding="UTF-8">
         <location filename="outilPaliers.ui" line="65"/>
         <source>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
@@ -1263,7 +1262,7 @@ p, li { white-space: pre-wrap; }
 &lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;Droid Sans&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Initiale grain temperature (°C)&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
-    <message utf8="true">
+    <message encoding="UTF-8">
         <location filename="outilPaliers.ui" line="76"/>
         <source>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
@@ -1307,7 +1306,7 @@ p, li { white-space: pre-wrap; }
 &lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;Droid Sans&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Correction factor &lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
-    <message utf8="true">
+    <message encoding="UTF-8">
         <location filename="outilPaliers.ui" line="171"/>
         <source>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
@@ -1320,7 +1319,7 @@ p, li { white-space: pre-wrap; }
 &lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;Droid Sans&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Mash temperature (°C)&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
-    <message utf8="true">
+    <message encoding="UTF-8">
         <location filename="outilPaliers.ui" line="192"/>
         <source>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
@@ -1380,7 +1379,7 @@ p, li { white-space: pre-wrap; }
         <source>Ajuster le brassage</source>
         <translation>Adjust mash</translation>
     </message>
-    <message utf8="true">
+    <message encoding="UTF-8">
         <location filename="stepAdjust.ui" line="22"/>
         <source>Température cible :</source>
         <translation>Target temperature :</translation>
@@ -1395,25 +1394,25 @@ p, li { white-space: pre-wrap; }
         <source>Ratio cible :</source>
         <translation>Target ratio :</translation>
     </message>
-    <message utf8="true">
+    <message encoding="UTF-8">
         <location filename="stepAdjust.ui" line="43"/>
         <source>Volume ajouté :</source>
         <translation>Added volume :</translation>
     </message>
-    <message utf8="true">
+    <message encoding="UTF-8">
         <location filename="stepAdjust.ui" line="50"/>
         <source>Température de l&apos;ajout :</source>
         <translation>Added water temp :</translation>
     </message>
 </context>
-<context>
+<context encoding="UTF-8">
     <name>Errors</name>
     <message>
         <location filename="errors.py" line="51"/>
         <source>Fichier incompatible</source>
         <translation>Invalid file</translation>
     </message>
-    <message utf8="true">
+    <message encoding="UTF-8">
         <location filename="errors.py" line="43"/>
         <source>La recette ne possède pas d&apos;information de brassage. 
                                     Le mode brassage fonctionnera mal. 
@@ -1427,12 +1426,12 @@ p, li { white-space: pre-wrap; }
         <source>Le fichier que vous essayez d&apos;ouvrir n&apos;est pas une recette ou n&apos;est pas compatible.</source>
         <translation>The file is not a recipe or is not valid.</translation>
     </message>
-    <message utf8="true">
+    <message encoding="UTF-8">
         <location filename="errors.py" line="57"/>
         <source>Recette déjà existante</source>
         <translation>Recipe name already exists </translation>
     </message>
-    <message utf8="true">
+    <message encoding="UTF-8">
         <location filename="errors.py" line="57"/>
         <source>Ce nom de recette existe déjà. L&apos;enregistrement a été annulé. Vous pouvez choisir un nouveau nom.</source>
         <translation>Recipe name already exists. You should choose another name.</translation>
@@ -1442,7 +1441,7 @@ p, li { white-space: pre-wrap; }
         <source>Fichier existant</source>
         <translation>File already exists</translation>
     </message>
-    <message utf8="true">
+    <message encoding="UTF-8">
         <location filename="errors.py" line="63"/>
         <source>Un fichier portant le même nom existe déjà dans la bibliothèque. JolieBulle a bloqué l&apos;importation pour éviter son écrasement.</source>
         <translation>Existing file with the same name in the library. JolieBulle has blocked importation to prevent over-writing data.</translation>
@@ -1450,7 +1449,7 @@ p, li { white-space: pre-wrap; }
 </context>
 <context>
     <name>Export</name>
-    <message utf8="true">
+    <message encoding="UTF-8">
         <location filename="helper/recipeexporter/exportBBCode.py" line="35"/>
         <source>Densité initiale : </source>
         <translation>Original gravity: </translation>
@@ -1460,7 +1459,7 @@ p, li { white-space: pre-wrap; }
         <source>Rendement : </source>
         <translation>Efficiency: </translation>
     </message>
-    <message utf8="true">
+    <message encoding="UTF-8">
         <location filename="helper/recipeexporter/exportBBCode.py" line="36"/>
         <source>Densité finale : </source>
         <translation>Final gravity: </translation>
@@ -1485,7 +1484,7 @@ p, li { white-space: pre-wrap; }
         <source>Alcool (vol) : </source>
         <translation>Alcohol (by vol): </translation>
     </message>
-    <message utf8="true">
+    <message encoding="UTF-8">
         <location filename="helper/recipeexporter/exportBBCode.py" line="42"/>
         <source>Ingrédients prévus pour un brassin de</source>
         <translation>Ingredients for a brew of </translation>
@@ -1500,7 +1499,7 @@ p, li { white-space: pre-wrap; }
         <source>Grains et sucres</source>
         <translation>Grains and sugars</translation>
     </message>
-    <message utf8="true">
+    <message encoding="UTF-8">
         <location filename="helper/recipeexporter/exportHTML.py" line="146"/>
         <source>Ajout après ébullition</source>
         <translation>Add after boil</translation>
@@ -1510,7 +1509,7 @@ p, li { white-space: pre-wrap; }
         <source>Houblons</source>
         <translation>Hops </translation>
     </message>
-    <message utf8="true">
+    <message encoding="UTF-8">
         <location filename="helper/recipeexporter/exportBBCode.py" line="59"/>
         <source>Ingrédients divers</source>
         <translation>Miscellaneous </translation>
@@ -1525,7 +1524,7 @@ p, li { white-space: pre-wrap; }
         <source>Brassage</source>
         <translation>Mash</translation>
     </message>
-    <message utf8="true">
+    <message encoding="UTF-8">
         <location filename="helper/recipeexporter/exportBBCode.py" line="77"/>
         <source>Étapes : </source>
         <translation>Steps: </translation>
@@ -1535,7 +1534,7 @@ p, li { white-space: pre-wrap; }
         <source>palier de type</source>
         <translation>step type</translation>
     </message>
-    <message utf8="true">
+    <message encoding="UTF-8">
         <location filename="helper/recipeexporter/exportBBCode.py" line="81"/>
         <source>à</source>
         <translation>at</translation>
@@ -1550,7 +1549,7 @@ p, li { white-space: pre-wrap; }
         <source>minutes</source>
         <translation>minutes</translation>
     </message>
-    <message utf8="true">
+    <message encoding="UTF-8">
         <location filename="helper/recipeexporter/exportBBCode.py" line="84"/>
         <source>Rinçage : </source>
         <translation>Sparge: </translation>
@@ -1560,13 +1559,13 @@ p, li { white-space: pre-wrap; }
         <source>Notes</source>
         <translation>Notes</translation>
     </message>
-    <message utf8="true">
+    <message encoding="UTF-8">
         <location filename="helper/recipeexporter/exportHTML.py" line="71"/>
         <source>Ébullition : </source>
         <translation type="obsolete">Boil: </translation>
     </message>
     <message>
-        <location filename="helper/toolexporter/exportHTML.py" line="235"/>
+        <location filename="helper/toolexporter/exportHTML.py" line="222"/>
         <source>Taux d&apos;alcool</source>
         <translation>Alcohol by Vol</translation>
     </message>
@@ -1575,7 +1574,7 @@ p, li { white-space: pre-wrap; }
         <source>Alc</source>
         <translation>Alc</translation>
     </message>
-    <message utf8="true">
+    <message encoding="UTF-8">
         <location filename="helper/recipeexporter/exportHTML.py" line="105"/>
         <source>Ratio amertume/densité</source>
         <translation>Bitterness/Gravity ratio</translation>
@@ -1585,8 +1584,8 @@ p, li { white-space: pre-wrap; }
         <source>BU/GU</source>
         <translation>BU/GU</translation>
     </message>
-    <message utf8="true">
-        <location filename="helper/toolexporter/exportHTML.py" line="235"/>
+    <message encoding="UTF-8">
+        <location filename="helper/toolexporter/exportHTML.py" line="222"/>
         <source>Densité finale</source>
         <translation>Final Gravity</translation>
     </message>
@@ -1595,8 +1594,8 @@ p, li { white-space: pre-wrap; }
         <source>DF</source>
         <translation>FG</translation>
     </message>
-    <message utf8="true">
-        <location filename="helper/toolexporter/exportHTML.py" line="235"/>
+    <message encoding="UTF-8">
+        <location filename="helper/toolexporter/exportHTML.py" line="222"/>
         <source>Densité initiale</source>
         <translation>Original gravity</translation>
     </message>
@@ -1670,12 +1669,12 @@ p, li { white-space: pre-wrap; }
         <source>Proportion</source>
         <translation>Ratio</translation>
     </message>
-    <message utf8="true">
+    <message encoding="UTF-8">
         <location filename="helper/recipeexporter/exportHTML.py" line="187"/>
         <source>Atténuation</source>
         <translation>Attenuation</translation>
     </message>
-    <message utf8="true">
+    <message encoding="UTF-8">
         <location filename="helper/recipeexporter/exportHTML.py" line="214"/>
         <source>Rinçage</source>
         <translation>Sparge</translation>
@@ -1685,7 +1684,7 @@ p, li { white-space: pre-wrap; }
         <source>Marquer comme</source>
         <translation>Mark as</translation>
     </message>
-    <message utf8="true">
+    <message encoding="UTF-8">
         <location filename="helper/recipeexporter/exportHTML.py" line="129"/>
         <source>Brassée</source>
         <translation>Brewed</translation>
@@ -1695,7 +1694,7 @@ p, li { white-space: pre-wrap; }
         <source>Mise en fermentation</source>
         <translation>Put into fermentation</translation>
     </message>
-    <message utf8="true">
+    <message encoding="UTF-8">
         <location filename="helper/recipeexporter/exportHTML.py" line="129"/>
         <source>Embouteillée</source>
         <translation>Bottled</translation>
@@ -1705,7 +1704,7 @@ p, li { white-space: pre-wrap; }
         <source>Voir le journal</source>
         <translation>See journal</translation>
     </message>
-    <message utf8="true">
+    <message encoding="UTF-8">
         <location filename="helper/journalexporter/exportHTML_old.py" line="90"/>
         <source>a été marquée comme</source>
         <translation>as been marked as</translation>
@@ -1720,270 +1719,270 @@ p, li { white-space: pre-wrap; }
         <source>Modifier</source>
         <translation>Edit</translation>
     </message>
-    <message utf8="true">
-        <location filename="model/journal.py" line="16"/>
+    <message encoding="UTF-8">
+        <location filename="model/journal.py" line="35"/>
         <source>brassée</source>
         <translation>brewed</translation>
     </message>
     <message>
-        <location filename="model/journal.py" line="17"/>
+        <location filename="model/journal.py" line="36"/>
         <source>mise en fermentation</source>
         <translation>put into fermentation</translation>
     </message>
-    <message utf8="true">
-        <location filename="model/journal.py" line="18"/>
+    <message encoding="UTF-8">
+        <location filename="model/journal.py" line="37"/>
         <source>embouteillée</source>
         <translation>bottled</translation>
     </message>
     <message>
-        <location filename="helper/toolexporter/exportHTML.py" line="98"/>
+        <location filename="helper/toolexporter/exportHTML.py" line="85"/>
         <source>Outils</source>
         <translation>Tools</translation>
     </message>
-    <message utf8="true">
-        <location filename="helper/journalexporter/exportHTML.py" line="99"/>
+    <message encoding="UTF-8">
+        <location filename="helper/journalexporter/exportHTML.py" line="91"/>
         <source>Ajouter une entrée</source>
         <translation>Add entry</translation>
     </message>
     <message>
-        <location filename="helper/journalexporter/exportHTML.py" line="130"/>
+        <location filename="helper/journalexporter/exportHTML.py" line="122"/>
         <source>enregistrer</source>
         <translation>save</translation>
     </message>
     <message>
-        <location filename="helper/journalexporter/exportHTML.py" line="130"/>
+        <location filename="helper/journalexporter/exportHTML.py" line="122"/>
         <source>modifier</source>
         <translation>edit</translation>
     </message>
     <message>
-        <location filename="helper/journalexporter/exportHTML.py" line="130"/>
+        <location filename="helper/journalexporter/exportHTML.py" line="122"/>
         <source>supprimer</source>
         <translation>remove</translation>
     </message>
-    <message utf8="true">
-        <location filename="helper/toolexporter/exportHTML.py" line="132"/>
+    <message encoding="UTF-8">
+        <location filename="helper/toolexporter/exportHTML.py" line="119"/>
         <source>Correction du densimètre</source>
         <translation>Hydrometer correction</translation>
     </message>
     <message>
-        <location filename="helper/toolexporter/exportHTML.py" line="201"/>
+        <location filename="helper/toolexporter/exportHTML.py" line="188"/>
         <source>Assistant paliers</source>
         <translation>Step assistant</translation>
     </message>
     <message>
-        <location filename="helper/toolexporter/exportHTML.py" line="282"/>
+        <location filename="helper/toolexporter/exportHTML.py" line="269"/>
         <source>Dilution</source>
         <translation>Dilution</translation>
     </message>
     <message>
-        <location filename="helper/toolexporter/exportHTML.py" line="346"/>
+        <location filename="helper/toolexporter/exportHTML.py" line="333"/>
         <source>Evaporation</source>
         <translation>Boil off</translation>
     </message>
-    <message utf8="true">
-        <location filename="helper/toolexporter/exportHTML.py" line="410"/>
+    <message encoding="UTF-8">
+        <location filename="helper/toolexporter/exportHTML.py" line="397"/>
         <source>Décoction</source>
         <translation>Decoction</translation>
     </message>
-    <message utf8="true">
-        <location filename="helper/toolexporter/exportHTML.py" line="98"/>
+    <message encoding="UTF-8">
+        <location filename="helper/toolexporter/exportHTML.py" line="85"/>
         <source>Densité - Plato</source>
         <translation>Specific Gravity - Plato</translation>
     </message>
-    <message utf8="true">
-        <location filename="helper/toolexporter/exportHTML.py" line="132"/>
+    <message encoding="UTF-8">
+        <location filename="helper/toolexporter/exportHTML.py" line="119"/>
         <source>Densité mesurée</source>
         <translation>Measured gravity</translation>
     </message>
-    <message utf8="true">
-        <location filename="helper/toolexporter/exportHTML.py" line="132"/>
+    <message encoding="UTF-8">
+        <location filename="helper/toolexporter/exportHTML.py" line="119"/>
         <source>Température de calibration (°C)</source>
         <translation>Calibration temperature (°C)</translation>
     </message>
-    <message utf8="true">
-        <location filename="helper/toolexporter/exportHTML.py" line="132"/>
+    <message encoding="UTF-8">
+        <location filename="helper/toolexporter/exportHTML.py" line="119"/>
         <source>Température mesurée (°C)</source>
         <translation>Measured temperature (°C)</translation>
     </message>
-    <message utf8="true">
-        <location filename="helper/toolexporter/exportHTML.py" line="132"/>
+    <message encoding="UTF-8">
+        <location filename="helper/toolexporter/exportHTML.py" line="119"/>
         <source>Densité corrigée</source>
         <translation>Calculated gravity</translation>
     </message>
-    <message utf8="true">
-        <location filename="helper/toolexporter/exportHTML.py" line="410"/>
+    <message encoding="UTF-8">
+        <location filename="helper/toolexporter/exportHTML.py" line="397"/>
         <source>Température cible (°C)</source>
         <translation>Target temperature (°C)</translation>
     </message>
-    <message utf8="true">
-        <location filename="helper/toolexporter/exportHTML.py" line="282"/>
+    <message encoding="UTF-8">
+        <location filename="helper/toolexporter/exportHTML.py" line="269"/>
         <source>Volume ajouté (L)</source>
         <translation>Added volume (L)</translation>
     </message>
     <message>
-        <location filename="helper/toolexporter/exportHTML.py" line="201"/>
+        <location filename="helper/toolexporter/exportHTML.py" line="188"/>
         <source>Poids du grain (Kg)</source>
         <translation>Grain weight (Kg)</translation>
     </message>
-    <message utf8="true">
-        <location filename="helper/toolexporter/exportHTML.py" line="201"/>
+    <message encoding="UTF-8">
+        <location filename="helper/toolexporter/exportHTML.py" line="188"/>
         <source>Température du grain (°C)</source>
         <translation>Grain temperature (°C)</translation>
     </message>
-    <message utf8="true">
-        <location filename="helper/toolexporter/exportHTML.py" line="201"/>
+    <message encoding="UTF-8">
+        <location filename="helper/toolexporter/exportHTML.py" line="188"/>
         <source>Température de la maîche (°C)</source>
         <translation>Mash temperature (°C)</translation>
     </message>
-    <message utf8="true">
-        <location filename="helper/toolexporter/exportHTML.py" line="201"/>
+    <message encoding="UTF-8">
+        <location filename="helper/toolexporter/exportHTML.py" line="188"/>
         <source>Volume d&apos;eau dans la maîche (L)</source>
         <translation>Water volume in mash (L)</translation>
     </message>
     <message>
-        <location filename="helper/toolexporter/exportHTML.py" line="201"/>
+        <location filename="helper/toolexporter/exportHTML.py" line="188"/>
         <source>Facteur de correction</source>
         <translation>Fudge factor</translation>
     </message>
-    <message utf8="true">
-        <location filename="helper/toolexporter/exportHTML.py" line="201"/>
+    <message encoding="UTF-8">
+        <location filename="helper/toolexporter/exportHTML.py" line="188"/>
         <source>Température de l&apos;eau (°C)</source>
         <translation>Water temperature (°C)</translation>
     </message>
     <message>
-        <location filename="helper/toolexporter/exportHTML.py" line="201"/>
+        <location filename="helper/toolexporter/exportHTML.py" line="188"/>
         <source>Ratio (L/Kg)</source>
         <translation>Ratio (L/Kg)</translation>
     </message>
-    <message utf8="true">
-        <location filename="helper/toolexporter/exportHTML.py" line="235"/>
+    <message encoding="UTF-8">
+        <location filename="helper/toolexporter/exportHTML.py" line="222"/>
         <source>Sucre ajouté (g/L)</source>
         <translation>Added sugar (g/L)</translation>
     </message>
     <message>
-        <location filename="helper/toolexporter/exportHTML.py" line="235"/>
+        <location filename="helper/toolexporter/exportHTML.py" line="222"/>
         <source>Alcool par volume (%)</source>
         <translation>Alcohol by vol (%)</translation>
     </message>
     <message>
-        <location filename="helper/toolexporter/exportHTML.py" line="282"/>
+        <location filename="helper/toolexporter/exportHTML.py" line="269"/>
         <source>Volume initial (L)</source>
         <translation>Initial volume (L)</translation>
     </message>
-    <message utf8="true">
-        <location filename="helper/toolexporter/exportHTML.py" line="282"/>
+    <message encoding="UTF-8">
+        <location filename="helper/toolexporter/exportHTML.py" line="269"/>
         <source>Densité spécifique initiale</source>
         <translation>Original gravity</translation>
     </message>
-    <message utf8="true">
-        <location filename="helper/toolexporter/exportHTML.py" line="282"/>
+    <message encoding="UTF-8">
+        <location filename="helper/toolexporter/exportHTML.py" line="269"/>
         <source>Densité de l&apos;ajout</source>
         <translation>Addition gravity</translation>
     </message>
     <message>
-        <location filename="helper/toolexporter/exportHTML.py" line="282"/>
+        <location filename="helper/toolexporter/exportHTML.py" line="269"/>
         <source>1 si ajout d&apos;eau</source>
         <translation>1 if water</translation>
     </message>
     <message>
-        <location filename="helper/toolexporter/exportHTML.py" line="346"/>
+        <location filename="helper/toolexporter/exportHTML.py" line="333"/>
         <source>Volume final (L)</source>
         <translation>Final volume (L)</translation>
     </message>
-    <message utf8="true">
-        <location filename="helper/toolexporter/exportHTML.py" line="282"/>
+    <message encoding="UTF-8">
+        <location filename="helper/toolexporter/exportHTML.py" line="269"/>
         <source>Densité spécifique finale</source>
         <translation>Final gravity</translation>
     </message>
-    <message utf8="true">
-        <location filename="helper/toolexporter/exportHTML.py" line="346"/>
+    <message encoding="UTF-8">
+        <location filename="helper/toolexporter/exportHTML.py" line="333"/>
         <source>Volume pré-ébullition (L)</source>
         <translation>Preboil volume (L)</translation>
     </message>
-    <message utf8="true">
-        <location filename="helper/toolexporter/exportHTML.py" line="346"/>
+    <message encoding="UTF-8">
+        <location filename="helper/toolexporter/exportHTML.py" line="333"/>
         <source>Densité spécifique pré-ébullition</source>
         <translation>Preboil gravity</translation>
     </message>
-    <message utf8="true">
-        <location filename="helper/toolexporter/exportHTML.py" line="346"/>
+    <message encoding="UTF-8">
+        <location filename="helper/toolexporter/exportHTML.py" line="333"/>
         <source>Taux d&apos;évaporation (%/heure)</source>
         <translation>Boil off rate (%/h)</translation>
     </message>
-    <message utf8="true">
-        <location filename="helper/toolexporter/exportHTML.py" line="346"/>
+    <message encoding="UTF-8">
+        <location filename="helper/toolexporter/exportHTML.py" line="333"/>
         <source>Durée d&apos;ébullition (min)</source>
         <translation>Boil time (min)</translation>
     </message>
     <message>
-        <location filename="helper/toolexporter/exportHTML.py" line="346"/>
+        <location filename="helper/toolexporter/exportHTML.py" line="333"/>
         <source>Pertes par refroidissement (%)</source>
         <translation>Cooling losses (%)</translation>
     </message>
-    <message utf8="true">
-        <location filename="helper/toolexporter/exportHTML.py" line="346"/>
+    <message encoding="UTF-8">
+        <location filename="helper/toolexporter/exportHTML.py" line="333"/>
         <source>Volume évaporé (ébullition) (L)</source>
         <translation>Boiled off volume (boiling) (L)</translation>
     </message>
-    <message utf8="true">
-        <location filename="helper/toolexporter/exportHTML.py" line="346"/>
+    <message encoding="UTF-8">
+        <location filename="helper/toolexporter/exportHTML.py" line="333"/>
         <source>Volume évaporé (refroidissement) (L)</source>
         <translation>Boiled off volume (cooling) (L)</translation>
     </message>
-    <message utf8="true">
-        <location filename="helper/toolexporter/exportHTML.py" line="449"/>
+    <message encoding="UTF-8">
+        <location filename="helper/toolexporter/exportHTML.py" line="436"/>
         <source>Densité spécifique</source>
         <translation>Specific gravity</translation>
     </message>
-    <message utf8="true">
-        <location filename="helper/toolexporter/exportHTML.py" line="410"/>
+    <message encoding="UTF-8">
+        <location filename="helper/toolexporter/exportHTML.py" line="397"/>
         <source>Volume de moût (L)</source>
         <translation>Mash volume (L)</translation>
     </message>
-    <message utf8="true">
-        <location filename="helper/toolexporter/exportHTML.py" line="410"/>
+    <message encoding="UTF-8">
+        <location filename="helper/toolexporter/exportHTML.py" line="397"/>
         <source>Température de départ (°C)</source>
         <translation>Starting temperature (°C)</translation>
     </message>
-    <message utf8="true">
-        <location filename="helper/toolexporter/exportHTML.py" line="410"/>
+    <message encoding="UTF-8">
+        <location filename="helper/toolexporter/exportHTML.py" line="397"/>
         <source>Température d&apos;ébullition (°C)</source>
         <translation>Boiling temperature (°C)</translation>
     </message>
     <message>
-        <location filename="helper/toolexporter/exportHTML.py" line="410"/>
+        <location filename="helper/toolexporter/exportHTML.py" line="397"/>
         <source>Facteur de correction (%)</source>
         <translation>Correction factor (%)</translation>
     </message>
-    <message utf8="true">
-        <location filename="helper/toolexporter/exportHTML.py" line="410"/>
+    <message encoding="UTF-8">
+        <location filename="helper/toolexporter/exportHTML.py" line="397"/>
         <source>Volume de décoction (L)</source>
         <translation>Decoction volume (L)</translation>
     </message>
-    <message utf8="true">
-        <location filename="helper/toolexporter/exportHTML.py" line="410"/>
+    <message encoding="UTF-8">
+        <location filename="helper/toolexporter/exportHTML.py" line="397"/>
         <source>Fraction du moût (%)</source>
         <translation>Volume fraction (%)</translation>
     </message>
-    <message utf8="true">
-        <location filename="helper/toolexporter/exportHTML.py" line="449"/>
+    <message encoding="UTF-8">
+        <location filename="helper/toolexporter/exportHTML.py" line="436"/>
         <source>Densité spécifique - Plato</source>
         <translation>Specific Gravity - Plato</translation>
     </message>
     <message>
-        <location filename="helper/toolexporter/exportHTML.py" line="449"/>
+        <location filename="helper/toolexporter/exportHTML.py" line="436"/>
         <source>Plato</source>
         <translation>Plato</translation>
     </message>
 </context>
-<context>
+<context encoding="UTF-8">
     <name>FermentableViewLabels</name>
     <message>
         <location filename="view/fermentableview.py" line="30"/>
         <source>Brassage</source>
         <translation>Mash</translation>
     </message>
-    <message utf8="true">
+    <message encoding="UTF-8">
         <location filename="view/fermentableview.py" line="31"/>
         <source>Après ébullition</source>
         <translation>After boil</translation>
@@ -2008,13 +2007,13 @@ p, li { white-space: pre-wrap; }
         <source>Extrait sec</source>
         <translation>Dry Extract</translation>
     </message>
-    <message utf8="true">
+    <message encoding="UTF-8">
         <location filename="view/fermentableview.py" line="38"/>
         <source>Complément</source>
         <translation>Adjunct</translation>
     </message>
 </context>
-<context>
+<context encoding="UTF-8">
     <name>HopViewLabels</name>
     <message>
         <location filename="view/hopview.py" line="34"/>
@@ -2026,12 +2025,12 @@ p, li { white-space: pre-wrap; }
         <source>Feuille</source>
         <translation>Leaf</translation>
     </message>
-    <message utf8="true">
+    <message encoding="UTF-8">
         <location filename="view/hopview.py" line="36"/>
         <source>Cône</source>
         <translation>Plug</translation>
     </message>
-    <message utf8="true">
+    <message encoding="UTF-8">
         <location filename="view/hopview.py" line="39"/>
         <source>Ébullition</source>
         <translation>Boil</translation>
@@ -2041,17 +2040,17 @@ p, li { white-space: pre-wrap; }
         <source>Dry Hop</source>
         <translation>Dry Hop</translation>
     </message>
-    <message utf8="true">
+    <message encoding="UTF-8">
         <location filename="view/hopview.py" line="41"/>
         <source>Empâtage</source>
         <translation>Mash</translation>
     </message>
-    <message utf8="true">
+    <message encoding="UTF-8">
         <location filename="view/hopview.py" line="42"/>
         <source>Premier Moût</source>
         <translation>First Wort</translation>
     </message>
-    <message utf8="true">
+    <message encoding="UTF-8">
         <location filename="view/hopview.py" line="43"/>
         <source>Arôme</source>
         <translation>Aroma</translation>
@@ -2059,12 +2058,12 @@ p, li { white-space: pre-wrap; }
 </context>
 <context>
     <name>ImportIng</name>
-    <message utf8="true">
+    <message encoding="UTF-8">
         <location filename="importIng.py" line="80"/>
         <source>Importation réussie</source>
         <translation>Importation successful</translation>
     </message>
-    <message utf8="true">
+    <message encoding="UTF-8">
         <location filename="importIng.py" line="80"/>
         <source>Importation réussie de %s houblons, %s fermentables, %s ingrédients divers, %s levures.</source>
         <translation>Successful importation of %s hops, %s fermentables, %s miscs ingredients, %s yeasts.</translation>
@@ -2236,7 +2235,7 @@ p, li { white-space: pre-wrap; }
         <source>Nouvelle recette</source>
         <translation>New recipe</translation>
     </message>
-    <message utf8="true">
+    <message encoding="UTF-8">
         <location filename="reader.ui" line="1997"/>
         <source>Correction densimètre</source>
         <translation>Hydrometer correction</translation>
@@ -2276,7 +2275,7 @@ p, li { white-space: pre-wrap; }
         <source>Aide</source>
         <translation>Help</translation>
     </message>
-    <message utf8="true">
+    <message encoding="UTF-8">
         <location filename="reader.ui" line="2039"/>
         <source>Restaurer la base des ingrédients</source>
         <translation>Restore ingredients database</translation>
@@ -2291,7 +2290,7 @@ p, li { white-space: pre-wrap; }
         <source>switch</source>
         <translation>switch</translation>
     </message>
-    <message utf8="true">
+    <message encoding="UTF-8">
         <location filename="reader.ui" line="2096"/>
         <source>Bibiliothèque de recettes</source>
         <translation>Library</translation>
@@ -2301,7 +2300,7 @@ p, li { white-space: pre-wrap; }
         <source>Editeur</source>
         <translation>Editor</translation>
     </message>
-    <message utf8="true">
+    <message encoding="UTF-8">
         <location filename="reader.ui" line="2093"/>
         <source>Bibiliothèque</source>
         <translation>Library</translation>
@@ -2332,7 +2331,7 @@ p, li { white-space: pre-wrap; }
 &lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;Droid Sans&apos;; font-size:10pt; font-weight:400; font-style:normal;&quot;&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Type :&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
-    <message utf8="true">
+    <message encoding="UTF-8">
         <location filename="reader.ui" line="397"/>
         <source>Ajuster les ingrédients (verrouiller le profil)</source>
         <translation>Scale ingredients (lock profile)</translation>
@@ -2412,7 +2411,7 @@ p, li { white-space: pre-wrap; }
 &lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;Ubuntu&apos;; font-size:11pt; font-weight:400; font-style:normal;&quot;&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:9pt; font-weight:600;&quot;&gt;PROFILE&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
-    <message utf8="true">
+    <message encoding="UTF-8">
         <location filename="reader.ui" line="614"/>
         <source>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
@@ -2425,7 +2424,7 @@ p, li { white-space: pre-wrap; }
 &lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;Ubuntu&apos;; font-size:11pt; font-weight:400; font-style:normal;&quot;&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:&apos;Droid Sans&apos;; font-size:9pt;&quot;&gt;Original Gravity :&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
-    <message utf8="true">
+    <message encoding="UTF-8">
         <location filename="reader.ui" line="635"/>
         <source>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
@@ -2490,12 +2489,12 @@ p, li { white-space: pre-wrap; }
 &lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;Droid Sans&apos;; font-size:10pt; font-weight:400; font-style:normal;&quot;&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:&apos;Ubuntu&apos;; font-size:9pt; font-weight:600;&quot;&gt;TINT&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
-    <message utf8="true">
+    <message encoding="UTF-8">
         <location filename="reader.ui" line="2110"/>
         <source>Préférences</source>
         <translation>Preferences</translation>
     </message>
-    <message utf8="true">
+    <message encoding="UTF-8">
         <location filename="reader.ui" line="62"/>
         <source>Détails</source>
         <translation>Details</translation>
@@ -2546,12 +2545,12 @@ p, li { white-space: pre-wrap; }
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;pH :&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;pH :&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
-    <message utf8="true">
+    <message encoding="UTF-8">
         <location filename="reader.ui" line="1080"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Rinçage :&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Sparge :&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
-    <message utf8="true">
+    <message encoding="UTF-8">
         <location filename="reader.ui" line="1270"/>
         <source>0 °C</source>
         <translation>0 °C</translation>
@@ -2592,7 +2591,7 @@ p, li { white-space: pre-wrap; }
 &lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;Droid Sans&apos;; font-size:10pt; font-weight:400; font-style:normal;&quot;&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Name :&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
-    <message utf8="true">
+    <message encoding="UTF-8">
         <location filename="reader.ui" line="1241"/>
         <source>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
@@ -2610,7 +2609,7 @@ p, li { white-space: pre-wrap; }
         <source>0 min</source>
         <translation>0 min</translation>
     </message>
-    <message utf8="true">
+    <message encoding="UTF-8">
         <location filename="reader.ui" line="1259"/>
         <source>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
@@ -2628,37 +2627,37 @@ p, li { white-space: pre-wrap; }
         <source>Enregistrer les profils</source>
         <translation>Save profiles</translation>
     </message>
-    <message utf8="true">
+    <message encoding="UTF-8">
         <location filename="reader.ui" line="1540"/>
         <source>Rinçage</source>
         <translation>Sparge</translation>
     </message>
-    <message utf8="true">
+    <message encoding="UTF-8">
         <location filename="reader.ui" line="1551"/>
         <source>Volume de rinçage :</source>
         <translation>Sparge volume</translation>
     </message>
-    <message utf8="true">
+    <message encoding="UTF-8">
         <location filename="reader.ui" line="1565"/>
         <source>Température de rinçage :</source>
         <translation>Sparge temperature</translation>
     </message>
-    <message utf8="true">
+    <message encoding="UTF-8">
         <location filename="reader.ui" line="1588"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;   Pas de rinçage en BIAB&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;   No sparge when BIAB&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
-    <message utf8="true">
+    <message encoding="UTF-8">
         <location filename="reader.ui" line="1651"/>
         <source>Pré-ébullition</source>
         <translation>Preboil</translation>
     </message>
-    <message utf8="true">
+    <message encoding="UTF-8">
         <location filename="reader.ui" line="1662"/>
         <source>Volume théorique pré-ébullition :</source>
         <translation>Preboil target volume</translation>
     </message>
-    <message utf8="true">
+    <message encoding="UTF-8">
         <location filename="reader.ui" line="1676"/>
         <source>Densité pré-ébullition :</source>
         <translation>Preboil gravity</translation>
@@ -2683,7 +2682,7 @@ p, li { white-space: pre-wrap; }
         <source>Volume d&apos;eau</source>
         <translation>Water volume</translation>
     </message>
-    <message utf8="true">
+    <message encoding="UTF-8">
         <location filename="reader.ui" line="1433"/>
         <source>Température de l&apos;eau</source>
         <translation>Water temperature</translation>
@@ -2698,12 +2697,12 @@ p, li { white-space: pre-wrap; }
         <source>Infos</source>
         <translation>Infos</translation>
     </message>
-    <message utf8="true">
+    <message encoding="UTF-8">
         <location filename="reader.ui" line="1460"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Le profil de brassage que vous utilisez n&apos;est pas adapté au BIAB. Vous ne devriez utiliser qu&apos;un seul palier d&apos;infusion.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Bad mash profile for BIAB. You should use only one infusion step.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
-    <message utf8="true">
+    <message encoding="UTF-8">
         <location filename="reader.ui" line="1476"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;JolieBulle ne prend pas encore en charge les décoctions. Pas encore !&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;JolieBulle can&apos;t manage decoctions. Not yet !&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
@@ -2713,7 +2712,7 @@ p, li { white-space: pre-wrap; }
         <source>Ajuster</source>
         <translation>Adjust</translation>
     </message>
-    <message utf8="true">
+    <message encoding="UTF-8">
         <location filename="reader.ui" line="1323"/>
         <source>Méthode de brassage</source>
         <translation>Brewing process</translation>
@@ -2733,7 +2732,7 @@ p, li { white-space: pre-wrap; }
         <source>Editeur de recettes</source>
         <translation>Recipe editor</translation>
     </message>
-    <message utf8="true">
+    <message encoding="UTF-8">
         <location filename="reader.ui" line="2063"/>
         <source>Bibliothèque de recettes</source>
         <translation>Recipe library</translation>
@@ -2773,7 +2772,7 @@ p, li { white-space: pre-wrap; }
         <source>Volume de grains :</source>
         <translation>Grain volume :</translation>
     </message>
-    <message utf8="true">
+    <message encoding="UTF-8">
         <location filename="reader.ui" line="1620"/>
         <source>Volume total (empâtage) :</source>
         <translation>Total volume (initial strike) :</translation>
@@ -2788,7 +2787,7 @@ p, li { white-space: pre-wrap; }
         <source>Fermer</source>
         <translation>Close</translation>
     </message>
-    <message utf8="true">
+    <message encoding="UTF-8">
         <location filename="reader.ui" line="1866"/>
         <source>Ingrédients</source>
         <translation>Ingredients</translation>
@@ -2808,12 +2807,12 @@ p, li { white-space: pre-wrap; }
         <source>Nouveau dossier</source>
         <translation>New folder</translation>
     </message>
-    <message utf8="true">
+    <message encoding="UTF-8">
         <location filename="reader.ui" line="2133"/>
         <source>Créer un nouveau dossier dans la bibliothèque</source>
         <translation>Create a new folder in library</translation>
     </message>
-    <message utf8="true">
+    <message encoding="UTF-8">
         <location filename="reader.ui" line="2141"/>
         <source>Créer une nouvelle recette</source>
         <translation>Create a new recipe</translation>
@@ -2828,7 +2827,7 @@ p, li { white-space: pre-wrap; }
         <source>Profils de brassage</source>
         <translation>Mash profiles</translation>
     </message>
-    <message utf8="true">
+    <message encoding="UTF-8">
         <location filename="reader.ui" line="2159"/>
         <source>Gérer les profils</source>
         <translation>Manage profiles</translation>
@@ -2838,7 +2837,7 @@ p, li { white-space: pre-wrap; }
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:9pt;&quot;&gt;Ratio BU/GU :&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:9pt;&quot;&gt;BU/GU  ratio :&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
-    <message utf8="true">
+    <message encoding="UTF-8">
         <location filename="reader.ui" line="1702"/>
         <source>Vérifier</source>
         <translation>Check</translation>
@@ -2848,17 +2847,17 @@ p, li { white-space: pre-wrap; }
         <source>Importer une recette</source>
         <translation>Import a recipe</translation>
     </message>
-    <message utf8="true">
+    <message encoding="UTF-8">
         <location filename="reader.ui" line="2164"/>
         <source>Importer des ingrédients</source>
         <translation>Import ingredients</translation>
     </message>
-    <message utf8="true">
+    <message encoding="UTF-8">
         <location filename="reader.ui" line="930"/>
         <source>Éditer</source>
         <translation type="obsolete">Edit</translation>
     </message>
-    <message utf8="true">
+    <message encoding="UTF-8">
         <location filename="reader.ui" line="1486"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Brassage en extrait. La plupart des fonctionnalités sont désactivées.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Extract brewing. Some features are disabled.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
@@ -2873,7 +2872,7 @@ p, li { white-space: pre-wrap; }
         <source>Ouvrir le journal</source>
         <translation>Open journal</translation>
     </message>
-    <message utf8="true">
+    <message encoding="UTF-8">
         <location filename="reader.ui" line="2177"/>
         <source>Ajouter une entrée</source>
         <translation>Add entry</translation>
@@ -2884,32 +2883,32 @@ p, li { white-space: pre-wrap; }
         <translation>All tools</translation>
     </message>
 </context>
-<context>
+<context encoding="UTF-8">
     <name>MashStepView</name>
     <message>
         <location filename="view/mashstepview.py" line="33"/>
         <source>Infusion</source>
         <translation>Infusion</translation>
     </message>
-    <message utf8="true">
+    <message encoding="UTF-8">
         <location filename="view/mashstepview.py" line="35"/>
         <source>Température</source>
         <translation>Temperature</translation>
     </message>
-    <message utf8="true">
+    <message encoding="UTF-8">
         <location filename="view/mashstepview.py" line="37"/>
         <source>Décoction</source>
         <translation>Decoction</translation>
     </message>
 </context>
-<context>
+<context encoding="UTF-8">
     <name>MiscViewLabels</name>
-    <message utf8="true">
+    <message encoding="UTF-8">
         <location filename="view/miscview.py" line="31"/>
         <source>Ébullition</source>
         <translation>Boil</translation>
     </message>
-    <message utf8="true">
+    <message encoding="UTF-8">
         <location filename="view/miscview.py" line="32"/>
         <source>Empâtage</source>
         <translation>Mash</translation>
@@ -2929,12 +2928,12 @@ p, li { white-space: pre-wrap; }
         <source>Embouteillage</source>
         <translation>Bottling</translation>
     </message>
-    <message utf8="true">
+    <message encoding="UTF-8">
         <location filename="view/miscview.py" line="39"/>
         <source>Épice</source>
         <translation>Spice</translation>
     </message>
-    <message utf8="true">
+    <message encoding="UTF-8">
         <location filename="view/miscview.py" line="40"/>
         <source>Arôme</source>
         <translation>Flavor</translation>
@@ -2962,17 +2961,17 @@ p, li { white-space: pre-wrap; }
 </context>
 <context>
     <name>PreEbullitionDialog</name>
-    <message utf8="true">
+    <message encoding="UTF-8">
         <location filename="preboil.ui" line="14"/>
         <source>Pré-Ebullition</source>
         <translation>Preboil</translation>
     </message>
-    <message utf8="true">
+    <message encoding="UTF-8">
         <location filename="preboil.ui" line="60"/>
         <source>Volume mesuré :</source>
         <translation>Measured volume :</translation>
     </message>
-    <message utf8="true">
+    <message encoding="UTF-8">
         <location filename="preboil.ui" line="86"/>
         <source>La densité devrait être :</source>
         <translation>Gravity should be : </translation>
@@ -2983,19 +2982,19 @@ p, li { white-space: pre-wrap; }
         <translation>1.000</translation>
     </message>
 </context>
-<context>
+<context encoding="UTF-8">
     <name>Preferences</name>
-    <message utf8="true">
+    <message encoding="UTF-8">
         <location filename="preferences.ui" line="14"/>
         <source>Préférences</source>
         <translation>Preferences</translation>
     </message>
-    <message utf8="true">
+    <message encoding="UTF-8">
         <location filename="preferences.ui" line="30"/>
         <source>Bibliothèque</source>
         <translation>Library</translation>
     </message>
-    <message utf8="true">
+    <message encoding="UTF-8">
         <location filename="preferences.ui" line="36"/>
         <source>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
@@ -3018,7 +3017,7 @@ p, li { white-space: pre-wrap; }
         <source>Brassage</source>
         <translation>Mash</translation>
     </message>
-    <message utf8="true">
+    <message encoding="UTF-8">
         <location filename="preferences.ui" line="86"/>
         <source>Taux d&apos;évaporation (%/h) :</source>
         <translation>Boil off rate (%/h) :</translation>
@@ -3028,17 +3027,17 @@ p, li { white-space: pre-wrap; }
         <source>Pertes par refroidissement (%) :</source>
         <translation>Cooling losses (%) :</translation>
     </message>
-    <message utf8="true">
+    <message encoding="UTF-8">
         <location filename="preferences.ui" line="106"/>
         <source>Température du grain :</source>
         <translation>Grain temperature :</translation>
     </message>
-    <message utf8="true">
+    <message encoding="UTF-8">
         <location filename="preferences.ui" line="116"/>
         <source>Facteur de correction des températures :</source>
         <translation>Temperatures fudge factor</translation>
     </message>
-    <message utf8="true">
+    <message encoding="UTF-8">
         <location filename="preferences.ui" line="126"/>
         <source>Rétention d&apos;eau par le grain (l/kg) :</source>
         <translation>Grain retention (l/kg) :</translation>
@@ -3071,12 +3070,12 @@ p, li { white-space: pre-wrap; }
         <source>Liquide</source>
         <translation>Liquid</translation>
     </message>
-    <message utf8="true">
+    <message encoding="UTF-8">
         <location filename="view/yeastview.py" line="31"/>
         <source>Sèche</source>
         <translation>Dry</translation>
     </message>
-    <message utf8="true">
+    <message encoding="UTF-8">
         <location filename="view/yeastview.py" line="32"/>
         <source>Gélose</source>
         <translation>Slant</translation>
