@@ -23,8 +23,7 @@ toolsApp.controller('JournalCtrl', ['$scope', '$http', '$filter', function ($sco
 
     $scope.save = function (entry) {
         entry.editing = !entry.editing;
-        entry.date = new Date(entry.date).getTime() / 1000 + (new Date().getHours() * 3600) + (new Date().getMinutes() * 60) + (new Date().getSeconds());;
-        entry.date = entry.date.toString();
+        entry.date = $scope.formatDate(entry.date);
         $scope.entries = _.sortBy($scope.entries, 'date').reverse();
         main.dumpJournal(JSON.stringify($scope.entries, $scope.cleanJson));
         return entry;
@@ -33,9 +32,7 @@ toolsApp.controller('JournalCtrl', ['$scope', '$http', '$filter', function ($sco
     $scope.saveNew = function (recipe, date, event) {
         var entry = {};
         entry.recipe = recipe;
-        // On veut une date plus précise, histoire d'etre sur de respecter la chronologie des entrées
-        entry.date = (new Date(date).getTime() / 1000) + (new Date().getHours() * 3600) + (new Date().getMinutes() * 60) + (new Date().getSeconds());
-        entry.date = entry.date.toString();
+        entry.date = $scope.formatDate(date);
         entry.event = event;
         $scope.entries.push(entry);
         // On trie avec Underscore
@@ -45,7 +42,7 @@ toolsApp.controller('JournalCtrl', ['$scope', '$http', '$filter', function ($sco
     };
 
     $scope.delete = function (entry) {
-        /*attention delete est un mot réservé : à remplacer*/
+        // attention delete est un mot réservé : à remplacer
         $scope.entries.splice($scope.entries.indexOf(entry), 1);
         main.dumpJournal(JSON.stringify($scope.entries, $scope.cleanJson));
     };
@@ -68,4 +65,14 @@ toolsApp.controller('JournalCtrl', ['$scope', '$http', '$filter', function ($sco
             return value;
         }
     };
+
+    $scope.formatDate = function(date) {
+        // On transforme la date pour contourner un bug sous Windows qui fait que le format yyyy-MM-dd ne passe pas.
+        date = $filter('date')(date, 'longDate');
+        // On veut une date plus précise, histoire d'etre sur de respecter la chronologie des entrées.
+        date = (new Date(date).getTime() / 1000) + (new Date().getHours() * 3600) + (new Date().getMinutes() * 60) + (new Date().getSeconds());
+        date = date.toString();
+        return date;
+    };
+
 }]);
