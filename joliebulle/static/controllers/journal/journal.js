@@ -66,7 +66,7 @@ toolsApp.controller('JournalCtrl', ['$scope', '$http', '$filter', function ($sco
         }
     };
 
-    $scope.formatDate = function(date) {
+    $scope.formatDate = function (date) {
         // On transforme la date pour contourner un bug sous Windows qui fait que le format yyyy-MM-dd ne passe pas.
         date = $filter('date')(date, 'longDate');
         // On veut une date plus précise, histoire d'etre sur de respecter la chronologie des entrées.
