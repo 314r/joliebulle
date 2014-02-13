@@ -32,7 +32,6 @@ import PyQt4
 import sys
 from PyQt4 import QtGui
 from PyQt4 import QtCore
-from gi._gi import enum_register_new_gtype_and_add
 from reader_ui import *
 from settings import *
 from about import *

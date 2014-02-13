@@ -9,7 +9,6 @@ toolsApp.controller('JournalCtrl', ['$scope', '$http', '$filter', function ($sco
         $scope.newEntryEvent = $scope.newEntry.event;
     });
 
-
     $scope.$watch('dataJson', function () {
         $scope.entries = $scope.dataJson;
         $scope.entries = _.sortBy($scope.entries, 'date').reverse();
