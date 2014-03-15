@@ -41,6 +41,7 @@ from edithoublon import *
 from editdivers import * 
 from editlevures import *
 from helper.toolExporterRepository import *
+from helper.libExporterRepository import *
 from importIng import *
 from preBoilDialog import *
 from stepEditWindow import *
@@ -646,7 +647,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         self.modeleBiblio = QtGui.QFileSystemModel()
         self.modeleBiblio.setReadOnly(False)
         self.modeleBiblio.setRootPath(recettes_dir)
-        self.setHomePage()
+        
         
         # self.listViewBiblio.setModel(self.modeleBiblio)
         # self.listViewBiblio.setRootIndex(self.modeleBiblio.index(recettes_dir))
@@ -672,6 +673,12 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         # self.pushButtonEditRecipeBiblio.clicked.connect(self.renommerBiblio)
 
         self.listdir(recettes_dir)
+        # self.setHomePage()
+        self.showLib()
+
+
+
+
         # self.delegRecipes=RecipesDelegate(self)
         # self.treeViewBiblio.setItemDelegate(self.delegRecipes)    
 
@@ -774,8 +781,8 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
 
 
 ###########################################################
-############### Journal ##################
-###########################################################
+############### Journal ##############################
+######################################################
 
     def loadJournal(self):
         self.journal=Journal()
@@ -809,6 +816,19 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         d=json.loads(journalJson)
         with open(journal_file, mode="w", encoding="utf-8") as f :
             json.dump(d,f,indent=2)
+
+
+
+############## Bibliothèque ##############################
+##########################################################
+
+    def showLib(self) :
+        pyDir = os.path.abspath(os.path.dirname(__file__))
+        baseUrl = QtCore.QUrl.fromLocalFile(os.path.join(pyDir, "static/"))
+        self.webViewBiblio.setHtml(LibExporterRepository['html'](json.dumps(self.recipesSummary)), baseUrl)
+        
+
+
         
 
 
@@ -936,6 +956,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
 
 
     def listdir(self, rootdir) :
+        self.recipesSummary=[]
         fileList=[]
         rootList=[]
         filenameList=[]
@@ -953,6 +974,8 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
             j=j+1
             recipe = fileList[j-1]
             try :
+                self.recipesSummary.append(self.jsonRecipeLib(recipe))
+                # print(self.jsonRecipeLib(recipe))
                 arbre = ET.parse(recipe)
                 presentation=arbre.find('.//RECIPE')
                 for nom in presentation :
@@ -962,7 +985,6 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
                            if nom.text == None :
                                nomRecette = " "
                            newFileNameList.append(nomRecette)
-                           print("nomRecette",nomRecette)
                     except :
                         pass
             except :
@@ -1014,6 +1036,45 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
                     check = r.rename(old,new)
                 except:
                     pass
+                    
+        print(json.dumps(self.recipesSummary))
+
+    def jsonRecipeLib(self,recipe) :
+        dic={}
+        dic['path'] = recipe
+        arbre = ET.parse(recipe)
+        presentation=arbre.find('.//RECIPE')
+        style = arbre.find('.//STYLE')
+        for nom in presentation :
+            try :
+                if nom.tag == "NAME" :
+                   nomRecette = nom.text
+                   if nom.text == None :
+                       nomRecette = " "
+                   dic['name'] = nomRecette
+            except :
+                pass
+        for auth in presentation :
+            try :
+                if auth.tag == "BREWER" :
+                   authRecipe = auth.text
+                   if auth.text == None :
+                       authRecipe = " "
+                   dic['author'] = authRecipe
+            except :
+                pass
+        for nom in style :
+            try :
+                if nom.tag == "NAME" :
+                   styleRecipe = nom.text
+                   if nom.text == None :
+                       styleRecipe = " "
+                   dic['style'] = styleRecipe
+            except :
+                pass
+
+        
+        return dic
   
     @QtCore.pyqtSlot()               
     def editCurrentRecipe(self):
