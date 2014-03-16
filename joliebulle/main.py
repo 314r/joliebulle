@@ -1302,21 +1302,8 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         
     def switchToLibrary(self) :
         self.stackedWidget.setCurrentIndex(1)        
-        self.viewRecipeLib()
-        #on remet à jour, au cas où le nom de recette aurait changé
-        # try :
-            # if self.nameChanged == True:
-        # self.listdir(recettes_dir)
-        #     #on redéfinit la sélection
-        # self.treeViewBiblio.clearSelection()
-        # path =  recettes_dir + "/" + self.recipe.name + ".xml"
-        # currentFileIndex = self.modeleBiblio.index(path)
-        # self.treeViewBiblio.setCurrentIndex(currentFileIndex)
-        # self.viewRecipeBiblio()
-        # else :
-        #     pass
-        # except :
-        #     self.treeViewBiblio.clearSelection()
+        self.viewRecipeLib(self.s)
+
  
     def switchToNotes(self) :
         self.stackedWidget.setCurrentIndex(2)        
