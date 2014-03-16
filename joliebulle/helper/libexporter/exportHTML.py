@@ -87,9 +87,9 @@ def exportHTML(recipesSummary):
           <div class="row">
             <div class="recipe-list col-md-10 col-xs-12 row">
                     <div class="recipe-item row" ng-repeat="recipe in recipes | filter:searchText.toLowerCase()">
-                        <div class="recipe-name col-md-4 col-sm-3 col-xs-6"><a href="{1}">{2}</a></div>
+                        <div class="recipe-name col-md-4 col-sm-3 col-xs-6"><a href ng-click="openRecipeClicked(recipe)">{1}</a></div>
                         <div class="col-md-4 col-sm-5 col-xs-5 recipe-info">
-                            <span class="brewer-name">{3}</span> <span class="recipe-style">{4}</span><button class="btn-link btn-xs deleteButton" ng-click="deleteLib(recipe)">supprimer</button>
+                            <span class="brewer-name">{2}</span> <span class="recipe-style">{3}</span><button class="btn-link btn-xs deleteButton" ng-click="deleteLib(recipe)">supprimer</button>
                         </div> 
                     </div>                        
             </div>
@@ -103,7 +103,7 @@ def exportHTML(recipesSummary):
 
        
 </body>
-</html>''' .format(str(recipesSummary), "{{recipe.path}}", "{{recipe.name}}", "{{recipe.author}}",  "{{recipe.style}}")
+</html>''' .format(str(recipesSummary),  "{{recipe.name}}", "{{recipe.author}}",  "{{recipe.style}}")
 
     return resultHtml
 

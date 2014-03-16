@@ -827,26 +827,12 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         baseUrl = QtCore.QUrl.fromLocalFile(os.path.join(pyDir, "static/"))
         self.webViewBiblio.setHtml(LibExporterRepository['html'](json.dumps(self.recipesSummary)), baseUrl)
         self.webViewBiblio.page().mainFrame().addToJavaScriptWindowObject("main", self)
+        self.webViewBiblio.page().settings().setAttribute(QtWebKit.QWebSettings.DeveloperExtrasEnabled, True)
+
 
     @QtCore.pyqtSlot(str)
     def deleteLib(self,path) :
-        confirmation = QtGui.QMessageBox.question(self,
-                            self.trUtf8("Supprimer"),
-                            self.trUtf8("La recette sera définitivement supprimée <br/> Continuer ?"),
-                            QtGui.QMessageBox.Yes | QtGui.QMessageBox.No)
-        if (confirmation == QtGui.QMessageBox.Yes):
-            os.remove(path)
-        else :      
-            pass
-
-
-
-        
-        
-
-
-        
-
+        os.remove(path)
 
 
 
@@ -934,34 +920,23 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
             logger.debug("Répertoire sélectionné")
 
 
-    def viewRecipeBiblio(self):
+    @QtCore.pyqtSlot(str)
+    def viewRecipeLib(self,path):
         self.actionEnregistrer.setEnabled(True)
         self.actionEnregistrer_Sous.setEnabled(True)
         self.actionExporterHtml.setEnabled(True)
         self.actionCopierBbcode.setEnabled(True)
 
-        selection = self.treeViewBiblio.selectionModel()
-        self.indexRecette = selection.currentIndex()
+        self.purge()
+        
+        self.s = path
 
-        self.chemin =self.modeleBiblio.filePath(self.indexRecette)
-        if os.path.isdir(self.chemin) == False :
-            
-            self.purge()
-            
-            self.s = self.chemin
+        self.importBeerXML()
+        pyDir = os.path.abspath(os.path.dirname(__file__))
+        baseUrl = QtCore.QUrl.fromLocalFile(os.path.join(pyDir, "static/"))
+        self.webViewBiblio.setHtml(self.recipe.export("html"), baseUrl)
+        self.webViewBiblio.page().mainFrame().addToJavaScriptWindowObject("main", self)
 
-            self.importBeerXML()
-            pyDir = os.path.abspath(os.path.dirname(__file__))
-            baseUrl = QtCore.QUrl.fromLocalFile(os.path.join(pyDir, "static/"))
-            self.webViewBiblio.setHtml(self.recipe.export("html"), baseUrl)
-            self.webViewBiblio.page().mainFrame().addToJavaScriptWindowObject("main", self)
-
-            # self.modele.blockSignals(True)
-            #logger.debug("viewRecipeBiblio -> MVC")
-            #self.MVC()
-            # self.modele.blockSignals(False)
-        else :
-            logger.debug("Répertoire sélectionné")
 
     def setHomePage(self) :
         home = HomePage()
@@ -1089,7 +1064,6 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
             except :
                 pass
 
-        
         return dic
   
     @QtCore.pyqtSlot()               
