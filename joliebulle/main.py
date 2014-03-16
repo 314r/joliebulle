@@ -665,8 +665,8 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         self.treeViewBiblio.setColumnHidden(3,True)
 
         # self.webViewBiblio.setHtml('''<html><p>hello world</p></html>''')
-        self.connect(self.treeViewBiblio, QtCore.SIGNAL("doubleClicked(const QModelIndex &)"), self.viewRecipeBiblio)
-        self.connect(self.treeViewBiblio, QtCore.SIGNAL("clicked(const QModelIndex &)"), self.viewRecipeBiblio)
+        # self.connect(self.treeViewBiblio, QtCore.SIGNAL("doubleClicked(const QModelIndex &)"), self.viewRecipeBiblio)
+        # self.connect(self.treeViewBiblio, QtCore.SIGNAL("clicked(const QModelIndex &)"), self.viewRecipeBiblio)
 
         # self.pushButtonRemoveRecipeBiblio.clicked.connect(self.supprimerBiblio)
         # self.pushButtonNewFolderBiblio.clicked.connect(self.createFolder)
@@ -2324,8 +2324,6 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         self.tableWidgetStepsBrewday.setItem(currentRow,2,QtGui.QTableWidgetItem("%.1f" %(waterTemp)))
         self.tableWidgetStepsBrewday.setItem(currentRow,3,QtGui.QTableWidgetItem("%.1f" %(targetRatio)))
         #il faut tout recalculer après la ligne modifiée
-
-        # BUG BUG BUG BUG
 
         listSteps = self.recipe.mash.listeSteps
         

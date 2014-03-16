@@ -4,6 +4,7 @@ recipesApp.controller('RecipeslibCtrl', ['$scope','$http', '$filter', function (
 
     $scope.$watch('dataJson', function () {
         $scope.recipes = $scope.dataJson;
+        // $scope.recipes = _.sortBy($scope.recipes, 'author').reverse();
         return $scope.recipes;
     });
 
