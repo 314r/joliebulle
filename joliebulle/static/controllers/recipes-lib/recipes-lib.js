@@ -7,7 +7,11 @@ recipesApp.controller('RecipeslibCtrl', ['$scope','$http', '$filter', function (
         return $scope.recipes;
 });
 
-
+    $scope.deleteLib = function (recipe) {
+		$scope.recipes.splice($scope.recipes.indexOf(recipe), 1);
+		main.deleteLib(recipe.path);
+		
+    };
 
 
 }]);

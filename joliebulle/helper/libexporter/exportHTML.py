@@ -38,11 +38,12 @@ def exportHTML(recipesSummary):
 <link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
 <link rel="stylesheet" href="css/sidebar.css">
 <style>
-    .main{padding-top:0px;}
+    .main{padding-top:0px; padding-left:60px;}
     .bar {margin-top:100px;padding:0;}
     .bar .input-group-addon {color:#6f6f6f;}
     .recipe-list{ margin-bottom:1em; margin-top:40px;background-color: white;}
-    
+    .deleteButton{color:#fff;}
+    .recipe-item:hover .deleteButton{color:#f55050;}
 
     .brewer-name{background-color:#a1b5bf;padding:0.2em 0.5em 0.2em 0.5em;color:white; margin-bottom:1em; font-size:85%%; font-weight: bold;}
     .recipe-style{background-color:#f7f7f7;padding:0.2em 0.5em 0.2em 0.5em;color:#6f6f6f; margin-bottom:1em; font-size:85%%; font-weight: bold;}
@@ -58,7 +59,7 @@ def exportHTML(recipesSummary):
       <div class="container-fluid" ng-controller="RecipeslibCtrl" ng-init='dataJson={0};'>
         
         
-          <div class="col-sm-3 col-md-2 sidebar">
+          <div class="col-sm-3 col-md-2 col-lg-2 sidebar">
             <ul class="nav nav-sidebar">
               <li class="active"><a href="#"><i class="icon-beaker"></i> Recettes</a></li>
               <li><a href="#"><i class="icon-calendar-empty"></i> Journal</a></li>
@@ -76,7 +77,7 @@ def exportHTML(recipesSummary):
             <div class="col-xs-3 small-menu-item"><i class="icon-cog"></i> Menu</div>
         </div> -->
           <div class="row">
-            <div class="input-group input-group-sm bar col-md-2">
+            <div class="input-group input-group-sm bar col-md-2 col-sm-3">
                 <span class="input-group-addon"><i class="icon-search"></i></span>
                 <input type="text" class="form-control" ng-model="searchText" placeholder="Rechercher..." />
             </div>
@@ -88,7 +89,7 @@ def exportHTML(recipesSummary):
                     <div class="recipe-item row" ng-repeat="recipe in recipes | filter:searchText.toLowerCase()">
                         <div class="recipe-name col-md-4 col-sm-3 col-xs-6"><a href="{1}">{2}</a></div>
                         <div class="col-md-4 col-sm-5 col-xs-5 recipe-info">
-                            <span class="brewer-name">{3}</span> <span class="recipe-style">{4}</span>
+                            <span class="brewer-name">{3}</span> <span class="recipe-style">{4}</span><button class="btn-link btn-xs deleteButton" ng-click="deleteLib(recipe)">supprimer</button>
                         </div> 
                     </div>                        
             </div>

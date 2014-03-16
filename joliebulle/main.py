@@ -826,6 +826,22 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         pyDir = os.path.abspath(os.path.dirname(__file__))
         baseUrl = QtCore.QUrl.fromLocalFile(os.path.join(pyDir, "static/"))
         self.webViewBiblio.setHtml(LibExporterRepository['html'](json.dumps(self.recipesSummary)), baseUrl)
+        self.webViewBiblio.page().mainFrame().addToJavaScriptWindowObject("main", self)
+
+    @QtCore.pyqtSlot(str)
+    def deleteLib(self,path) :
+        confirmation = QtGui.QMessageBox.question(self,
+                            self.trUtf8("Supprimer"),
+                            self.trUtf8("La recette sera définitivement supprimée <br/> Continuer ?"),
+                            QtGui.QMessageBox.Yes | QtGui.QMessageBox.No)
+        if (confirmation == QtGui.QMessageBox.Yes):
+            os.remove(path)
+        else :      
+            pass
+
+
+
+        
         
 
 
