@@ -4,7 +4,10 @@ recipesApp.controller('RecipeslibCtrl', ['$scope','$http', '$filter', function (
 
     $scope.$watch('dataJson', function () {
         $scope.recipes = $scope.dataJson;
-        // $scope.recipes = _.sortBy($scope.recipes, 'author').reverse();
+        $scope.recipes = _.chain($scope.recipes)
+            .sortBy(function(o){return o.name.toLowerCase();})
+        	.sortBy(function(o){return o.author.toLowerCase();})
+        	.value();
         return $scope.recipes;
     });
 

@@ -1041,7 +1041,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
                 if nom.tag == "NAME" :
                    nomRecette = nom.text
                    if nom.text == None :
-                       nomRecette = " "
+                       nomRecette = "empty"
                    dic['name'] = nomRecette
             except :
                 pass
@@ -1050,7 +1050,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
                 if auth.tag == "BREWER" :
                    authRecipe = auth.text
                    if auth.text == None :
-                       authRecipe = " "
+                       authRecipe = "anonymous"
                    dic['author'] = authRecipe
             except :
                 pass
@@ -1059,7 +1059,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
                 if nom.tag == "NAME" :
                    styleRecipe = nom.text
                    if nom.text == None :
-                       styleRecipe = " "
+                       styleRecipe = " no style"
                    dic['style'] = styleRecipe
             except :
                 pass
@@ -1302,7 +1302,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         
     def switchToLibrary(self) :
         self.stackedWidget.setCurrentIndex(1)        
-        self.viewRecipeBiblio()
+        self.viewRecipeLib()
         #on remet à jour, au cas où le nom de recette aurait changé
         # try :
             # if self.nameChanged == True:
