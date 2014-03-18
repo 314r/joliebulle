@@ -653,16 +653,11 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         # self.listViewBiblio.setRootIndex(self.modeleBiblio.index(recettes_dir))
         # self.connect(self.listViewBiblio, QtCore.SIGNAL("doubleClicked(const QModelIndex &)"), self.selectionRecette)
         
-        self.treeViewBiblio.setContextMenuPolicy(QtCore.Qt.CustomContextMenu) 
-        self.connect(self.treeViewBiblio, QtCore.SIGNAL("customContextMenuRequested(const QPoint &)"), self.menuBiblio)
+        
         #self.listViewBiblio.setEditTriggers(QtGui.QAbstractItemView.SelectedClicked | QtGui.QAbstractItemView.AnyKeyPressed) 
 
 
-        self.treeViewBiblio.setModel(self.modeleBiblio)
-        self.treeViewBiblio.setRootIndex(self.modeleBiblio.index(recettes_dir))
-        self.treeViewBiblio.setColumnHidden(1,True)
-        self.treeViewBiblio.setColumnHidden(2,True)
-        self.treeViewBiblio.setColumnHidden(3,True)
+
 
         # self.webViewBiblio.setHtml('''<html><p>hello world</p></html>''')
         # self.connect(self.treeViewBiblio, QtCore.SIGNAL("doubleClicked(const QModelIndex &)"), self.viewRecipeBiblio)
@@ -689,7 +684,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         newLibMenu.addAction(self.actionNouvelle_recette_2)
         # self.pushButtonNewFolderBiblio.setMenu(newLibMenu)
 
-        self.actionNouveau_Dossier.triggered.connect(self.createFolder)
+ 
         self.actionNouvelle_recette_2.triggered.connect(self.newRecipeFromLibrary)
 
 
@@ -900,24 +895,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         
         self.comboBoxM.clear()
         self.comboBoxM.setModel(view.base.getMiscsQtModel() )
-        
-    def selectionRecette2(self):
-        selection = self.treeViewBiblio.selectionModel()
-        self.indexRecette = selection.currentIndex()
 
-        self.chemin =self.modeleBiblio.filePath (self.indexRecette)
-        if os.path.isdir(self.chemin) == False :
-            self.purge()
-            self.s = self.chemin
-        
-            self.importBeerXML()
-            logger.debug("selectionRecette2 -> initModele")
-            self.initModele()
-            self.stackedWidget.setCurrentIndex(0)
-            self.actionVueEditeurToolBar.setChecked(True)
-            self.actionVueBibliothequeToolBar.setChecked(False)
-        else :
-            logger.debug("Répertoire sélectionné")
 
 
     @QtCore.pyqtSlot(str)
@@ -1095,68 +1073,8 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         except :
             self.comboBoxMashProfiles.setCurrentIndex(-1)
 
-        
-    def menuBiblio(self,position) :
-        selection = self.treeViewBiblio.selectionModel()
-        self.indexRecette = selection.currentIndex()
-        menu = QtGui.QMenu()
-        #EditeurAction = menu.addAction("Editeur de recette")
-        RenommerAction  = menu.addAction(self.trUtf8("Renommer"))
-        SupprimerAction = menu.addAction(self.trUtf8("Supprimer"))        
-        # CopyAction = menu.addAction(self.trUtf8("Copier"))
-        # PasteAction = menu.addAction(self.trUtf8("Coller"))
-        FolderAction = menu.addAction(self.trUtf8("Nouveau dossier"))
-        # UpAction = menu.addAction(self.trUtf8("Remonter"))
-        menu.addAction(self.actionNouvelle_recette_2)
-        
-        # PasteAction.setEnabled(False)
-        # clipboard = app.clipboard()
-        # data = clipboard.mimeData
-        # if clipboard.mimeData().hasUrls() :
-        #     PasteAction.setEnabled(True)
+              
 
-        RenommerAction.setEnabled(False)
-        if self.modeleBiblio.isDir(self.indexRecette) :
-            RenommerAction.setEnabled(True)
-               
-        action = menu.exec_(self.listViewBiblio.mapToGlobal(position))
-        #if action == EditeurAction:
-          #  self.switchToEditor()
-        if action == SupprimerAction:
-            self.supprimerBiblio()  
-        if action == RenommerAction:
-            self.renommerBiblio() 
-        if action == FolderAction:
-            self.createFolder()   
-        # if action == UpAction :
-        #     self.upFolder()
-        # if action == CopyAction :
-        #     self.copy()
-        # if action == PasteAction :
-        #     self.paste()
-
-        
-        
-                    
-    def supprimerBiblio (self) :
-        selection = self.treeViewBiblio.selectionModel()
-        self.indexRecette = selection.currentIndex()
-        confirmation = QtGui.QMessageBox.question(self,
-                            self.trUtf8("Supprimer"),
-                            self.trUtf8("La recette sera définitivement supprimée <br/> Continuer ?"),
-                            QtGui.QMessageBox.Yes | QtGui.QMessageBox.No)
-        if (confirmation == QtGui.QMessageBox.Yes):
-            self.modeleBiblio.remove(self.indexRecette)
-        else :      
-            pass
-    
-    def renommerBiblio (self) :
-        selection = self.treeViewBiblio.selectionModel()
-        self.indexRecette = selection.currentIndex()
-        if self.modeleBiblio.isDir(self.indexRecette) :
-            self.treeViewBiblio.edit(self.indexRecette)
-        else :
-            pass
 
     def importInLib (self):
         self.s = QtGui.QFileDialog.getOpenFileName(self, self.trUtf8("Ouvrir un fichier"), home_dir,
@@ -1181,45 +1099,6 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
             errors.warningXml()
      
         
-    def createFolder(self) :
-        selection = self.treeViewBiblio.selectionModel()
-        self.indexRecette = selection.currentIndex()
-        text = self.trUtf8("nouveau dossier")
-       # recettes = QtCore.QFile(recettes_dir)
-        path = self.modeleBiblio.filePath(self.treeViewBiblio.rootIndex()) + "/" + text
-        os.mkdir(path)
-        
-        
-    # def navFolder(self) :
-    #     selection = self.treeViewBiblio.selectionModel()
-    #     self.indexRecette = selection.currentIndex()        
-    #     self.listViewBiblio.setRootIndex(self.indexRecette)
-        #self.modeleBiblio.setRootPath("/home/pierre/.config/joliebulle/recettes/nouveau dossier")
-        
-    # def upFolder(self) :
-    #     self.listViewBiblio.setRootIndex(self.treeViewBiblio.rootIndex().parent())
-        
-    # def copy (self) :
-    #     data = QtCore.QMimeData()
-    #     selection = self.treeViewBiblio.selectionModel()
-    #     self.indexRecette = selection.currentIndex()  
-    #     path = self.modeleBiblio.filePath(self.indexRecette)
-    #     url = QtCore.QUrl.fromLocalFile(path)
-    #     self.lurl = [url]
-    #     data.setUrls(self.lurl)
-    #     clipboard = app.clipboard()
-    #     clipboard.setMimeData(data)
-              
-    # def paste (self) :
-    #     clipboard = app.clipboard()
-    #     data = clipboard.mimeData()
-    #     file = QtCore.QFile()
-    #     file.setFileName(self.lurl[0].toLocalFile())
-    #     info = QtCore.QFileInfo(file.fileName())
-    #     name= info.fileName()
-    #     path = self.modeleBiblio.filePath(self.treeViewBiblio.rootIndex()) + "/" + name
-    #     file.copy(path)
-    #     clipboard.clear()
        
     def cancelRecipe(self):
         self.switchToLibrary() 
