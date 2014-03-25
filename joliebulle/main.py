@@ -831,6 +831,16 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
 
 
 
+
+############# Vue recette ################################
+##########################################################
+
+
+
+
+
+
+
 ###### Outils ############################################
 ##########################################################
 
@@ -910,10 +920,14 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         self.s = path
 
         self.importBeerXML()
+
+        self.recipe.export("json")
+
         pyDir = os.path.abspath(os.path.dirname(__file__))
         baseUrl = QtCore.QUrl.fromLocalFile(os.path.join(pyDir, "static/"))
         self.webViewBiblio.setHtml(self.recipe.export("html"), baseUrl)
         self.webViewBiblio.page().mainFrame().addToJavaScriptWindowObject("main", self)
+
 
 
     def setHomePage(self) :

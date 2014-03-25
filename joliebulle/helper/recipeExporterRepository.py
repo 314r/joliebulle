@@ -23,11 +23,13 @@ from helper.recipeexporter.exportHTML import *
 from helper.recipeexporter.exportBBCode import *
 from helper.recipeexporter.exportPrint import *
 from helper.recipeexporter.exportHTMLLegacy import *
+from helper.recipeexporter.exportJson import *
 
 RecipeExporterRepository = {
     "beerxml": exportBeerXML,
     "html": exportHTML,
     "print" : exportPrint,
     "bbcode": exportBBCode,
-    "html-legacy": exportHTMLLegacy
+    "html-legacy": exportHTMLLegacy,
+    "json": exportJson
 }
