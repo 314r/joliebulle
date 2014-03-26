@@ -668,7 +668,6 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         # self.pushButtonEditRecipeBiblio.clicked.connect(self.renommerBiblio)
 
         self.listdir(recettes_dir)
-        # self.setHomePage()
         self.showLib()
 
 
@@ -930,15 +929,6 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         self.comboBoxM.clear()
         self.comboBoxM.setModel(view.base.getMiscsQtModel() )
 
-
-
-
-    def setHomePage(self) :
-        home = HomePage()
-        pyDir = os.path.abspath(os.path.dirname(__file__))
-        baseUrl = QtCore.QUrl.fromLocalFile(os.path.join(pyDir, "static/"))
-        home.generateHomePage()
-        self.webViewBiblio.setHtml(home.homePage, baseUrl)
 
 
     def listdir(self, rootdir) :
