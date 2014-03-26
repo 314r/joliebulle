@@ -11,16 +11,17 @@ recipeApp.controller('RecipeCtrl', ['$scope', '$http', '$filter', function ($sco
     
     $scope.genGraphProfile = function (recipe) {
         var stepsArray = $scope.recipe.mashProfile.steps;
-        $scope.chartData = [{"x" : "0 min", "temp" : stepsArray[0].temp}];
+        $scope.chartData = [];
         stepsArray.forEach(function (step) {
             if (step === stepsArray[0]) {
-                $scope.chartData.push({"x" : (parseFloat(_.last($scope.chartData).x) + " min"), "temp" : step.temp});
+                $scope.chartData.push({"x" : (parseFloat(0) + " min"), "temp" : step.temp});
                 $scope.chartData.push({"x" : (parseFloat(_.last($scope.chartData).x) + parseFloat(step.time)) + " min", "temp" : step.temp});
             } else {      
                 $scope.chartData.push({"x" : (parseFloat(_.last($scope.chartData).x) + 5 + " min"), "temp" : step.temp});
                 $scope.chartData.push({"x" : (parseFloat(_.last($scope.chartData).x) + parseFloat(step.time)) + " min", "temp" : step.temp});
             }
         });
+        console.log($scope.chartData)
         return $scope.chartData;
     };
     

@@ -24,7 +24,7 @@ recipeApp.directive('linechart', function() {
                     labels: ['Température'],
                     xLabelMargin: 10,
                     axes:false,
-                    parseTime:true,
+                    parseTime:false,
                     postUnits: '°C',
                     ymin:'45'
                 });
