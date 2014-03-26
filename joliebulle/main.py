@@ -819,7 +819,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
 
     def showLib(self) :
         data = json.dumps(self.recipesSummary)
-        data = data.replace("'","&rsquo;")
+        data = data.replace("'","&#39;")
 
         pyDir = os.path.abspath(os.path.dirname(__file__))
         baseUrl = QtCore.QUrl.fromLocalFile(os.path.join(pyDir, "static/"))
@@ -830,6 +830,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
 
     @QtCore.pyqtSlot(str)
     def deleteLib(self,path) :
+        # path =  ''' " ''' + path + ''' " '''
         os.remove(path)
 
 
