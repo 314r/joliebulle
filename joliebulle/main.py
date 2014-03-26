@@ -818,9 +818,12 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
 ##########################################################
 
     def showLib(self) :
+        data = json.dumps(self.recipesSummary)
+        data = data.replace("'","&rsquo;")
+
         pyDir = os.path.abspath(os.path.dirname(__file__))
         baseUrl = QtCore.QUrl.fromLocalFile(os.path.join(pyDir, "static/"))
-        self.webViewBiblio.setHtml(LibExporterRepository['html'](json.dumps(self.recipesSummary)), baseUrl)
+        self.webViewBiblio.setHtml(LibExporterRepository['html'](data), baseUrl)
         self.webViewBiblio.page().mainFrame().addToJavaScriptWindowObject("main", self)
         self.webViewBiblio.page().settings().setAttribute(QtWebKit.QWebSettings.DeveloperExtrasEnabled, True)
 
@@ -835,7 +838,27 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
 ############# Vue recette ################################
 ##########################################################
 
+    @QtCore.pyqtSlot(str)
+    def viewRecipeLib(self,path):
+        self.actionEnregistrer.setEnabled(True)
+        self.actionEnregistrer_Sous.setEnabled(True)
+        self.actionExporterHtml.setEnabled(True)
+        self.actionCopierBbcode.setEnabled(True)
 
+        self.purge()
+        
+        self.s = path
+
+        self.importBeerXML()
+
+        data = self.recipe.export("json")
+        print(data)
+
+        pyDir = os.path.abspath(os.path.dirname(__file__))
+        baseUrl = QtCore.QUrl.fromLocalFile(os.path.join(pyDir, "static/"))
+        self.webViewBiblio.setHtml(RecipeExporterRepository['html'](data), baseUrl)
+        self.webViewBiblio.page().mainFrame().addToJavaScriptWindowObject("main", self)
+        self.webViewBiblio.page().settings().setAttribute(QtWebKit.QWebSettings.DeveloperExtrasEnabled, True)
 
 
 
@@ -906,27 +929,6 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         self.comboBoxM.clear()
         self.comboBoxM.setModel(view.base.getMiscsQtModel() )
 
-
-
-    @QtCore.pyqtSlot(str)
-    def viewRecipeLib(self,path):
-        self.actionEnregistrer.setEnabled(True)
-        self.actionEnregistrer_Sous.setEnabled(True)
-        self.actionExporterHtml.setEnabled(True)
-        self.actionCopierBbcode.setEnabled(True)
-
-        self.purge()
-        
-        self.s = path
-
-        self.importBeerXML()
-
-        self.recipe.export("json")
-
-        pyDir = os.path.abspath(os.path.dirname(__file__))
-        baseUrl = QtCore.QUrl.fromLocalFile(os.path.join(pyDir, "static/"))
-        self.webViewBiblio.setHtml(self.recipe.export("html"), baseUrl)
-        self.webViewBiblio.page().mainFrame().addToJavaScriptWindowObject("main", self)
 
 
 
