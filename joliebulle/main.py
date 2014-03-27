@@ -815,7 +815,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
 
 ############## Bibliothèque ##############################
 ##########################################################
-
+    @QtCore.pyqtSlot()
     def showLib(self) :
         data = json.dumps(self.recipesSummary)
         data = data.replace("'","&#39;")
@@ -866,7 +866,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
 ###### Outils ############################################
 ##########################################################
 
-
+    @QtCore.pyqtSlot()
     def showTools(self):
         pyDir = os.path.abspath(os.path.dirname(__file__))
         baseUrl = QtCore.QUrl.fromLocalFile(os.path.join(pyDir, "static/"))

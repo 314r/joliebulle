@@ -62,6 +62,7 @@ def exportHTML(data):
     
     .recipe-buttons{margin-left:30px;/*border-bottom:solid 1px #eee;*/padding-top: 33px;padding-left:5px;}
     .edit-button{/*color:#f55050;*/ color:#7ca3fa;padding-right: 20px;}
+    .brewday-button{color:#7ca3fa;padding-right: 20px;padding-top:20px;padding-left:100px;}
     .tools-recipe{color:#222;float:right;font-size:18px;}
     .ibu {color:#7ca3fa;}
     .ebc {color:#7ca3fa;}
@@ -113,9 +114,9 @@ def exportHTML(data):
         
         <div class="sidebar col-sm-3 col-md-2 col-lg-2">
             <ul class="nav nav-sidebar">
-                <li class="active"><a href="#"><i class="icon-beaker"></i> Recettes</a></li>
-                <li><a href="#"><i class="icon-calendar-empty"></i> Journal</a></li>
-                <li><a href="#"><i class="icon-cog"></i> Outils</a></li>
+                <li class="active" onClick="main.showLib()"><a href="#"><i class="icon-beaker"></i> Recettes</a></li>
+                <li onClick="main.showJournal()"><a href="#"><i class="icon-calendar-empty"></i> Journal</a></li>
+                <li onClick="main.showTools()"><a href="#"><i class="icon-cog"></i> Outils</a></li>
             </ul>
             
             <div class="profile-sidebar">
@@ -205,17 +206,21 @@ def exportHTML(data):
                 </div>
             </div>
 
-            <div class="yeasts profile col-md-10">
-                <h3>Brassage</h3>
-                <span class="profile-name">{{recipe.mashProfile.name}}</span>
-                <span class="profile-ph">pH {{recipe.mashProfile.ph}}</span>
-                <div ng-repeat="step in recipe.mashProfile.steps">
-                    <p><span class="label-step">{{step.name}}</span> palier de type {{step.type}} à {{step.temp}} °C pendant {{step.time}} minutes</p>
-
+            <div class="yeasts profile col-md-10 row">
+                <h3 class="col-md-5">Brassage</h3>
+                <div class="recipe-buttons col-md-5">
+                    <button class="btn-link  brewday-button" type="button" onClick="main.switchToBrewday()"><i class="icon-wrench"></i> Mode brassage </button>
                 </div>
-                <p><span class="label-step">Rinçage</span> {{recipe.mashProfile.sparge}} °C</p>
-<!--                <div class="col-md-6" id="profile-graph" style="height:200px;"></div>-->
-                  <linechart xkey="xkey" ykeys="ykeys" labels="labels" data="chartData"></linechart>
+                <div class="col-md-10">
+                    <span class="profile-name">{{recipe.mashProfile.name}}</span>
+                    <span class="profile-ph">pH {{recipe.mashProfile.ph}}</span>
+                    <div ng-repeat="step in recipe.mashProfile.steps">
+                        <p><span class="label-step">{{step.name}}</span> palier de type {{step.type}} à {{step.temp}} °C pendant {{step.time}} minutes</p>
+
+                    </div>
+                    <p><span class="label-step">Rinçage</span> {{recipe.mashProfile.sparge}} °C</p>
+                    <linechart xkey="xkey" ykeys="ykeys" labels="labels" data="chartData"></linechart>
+                </div>
             </div>            
 
             <div class="yeasts notes col-md-10">
