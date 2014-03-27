@@ -829,7 +829,6 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
 
     @QtCore.pyqtSlot(str)
     def deleteLib(self,path) :
-        # path =  ''' " ''' + path + ''' " '''
         os.remove(path)
 
 

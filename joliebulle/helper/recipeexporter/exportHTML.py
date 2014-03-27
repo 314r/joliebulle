@@ -50,7 +50,11 @@ def exportHTML(data):
     .vol-value {background-color:#a1b5bf;padding:0.2em 0.5em 0.2em 0.5em;margin-right:20px;background:#f7f7f7;color:#6f6f6f;font-weight: 800;}
     .effi-label {color: #bbb;}
     .effi-value {background-color:#a1b5bf;padding:0.2em 0.5em 0.2em 0.5em;margin-right:20px;background:#f7f7f7;color:#6f6f6f;font-weight: 800;}
+    .boil-label {color: #bbb;}
+    .boil-value {background-color:#a1b5bf;padding:0.2em 0.5em 0.2em 0.5em;margin-right:20px;background:#f7f7f7;color:#6f6f6f;font-weight: 800;}
     
+    .journalMenu-description{padding-left:20px;padding-bottom:5px;padding-top:2px;display:block;}
+
     .recipe-infos{border-bottom:solid 1px #eee;padding-bottom:0px;padding-left: 10px;}
     .profile-sidebar h5 {padding-left: 20px;margin-top:25px; padding-top:9px;padding-bottom:9px;background:#fff;color:#6f6f6f;font-weight: 800;}
     .recipe-infos-list li{list-style-type: none;color:#6f6f6f;padding-top:14px;}
@@ -64,6 +68,7 @@ def exportHTML(data):
     .gravity {color:#7ca3fa;}
     .alc {color:#7ca3fa;}
     .ing{padding-bottom:1.5em;}
+    .name:hover{text-decoration:underline;}
     .grains{padding-left:30px;}
     .grains h3 {padding-bottom:18px; color:#bbb ; padding-top:40px;}
     .hops {padding-left:30px;}
@@ -80,6 +85,7 @@ def exportHTML(data):
     #profile-graph{margin-top:2em;}
 
     .notes{margin-bottom:90px;}
+    .notes pre{min-height:120px;}
 
     .row-journal{padding-left: 15px; padding-right: 15px;}
     .entry{min-height:3em;}
@@ -132,20 +138,21 @@ def exportHTML(data):
                 <div class="recipe-buttons col-md-5">
                     <button class="btn-link  edit-button" type="button" data-toggle="dropdown" ><i class="icon-flag"></i> Journal <span class="icon-caret-down"></span></button>
                     <ul class="dropdown-menu" role="menu">
-                                <i class="journalMenu-description">%s :</i>
-                                <li><a onClick="main.addToJournal('brewed')" href="#">%s</a></li>
-                                <li><a onClick="main.addToJournal('ferment')" href="#">%s</a></li>
-                                <li><a onClick="main.addToJournal('bottled')" href="#">%s</a></li>
+                                <i class="journalMenu-description">Marquer comme :</i>
+                                <li><a onClick="main.addToJournal('brewed')" href="#">Brassée</a></li>
+                                <li><a onClick="main.addToJournal('ferment')" href="#">Mise en fermentation</a></li>
+                                <li><a onClick="main.addToJournal('bottled')" href="#">Embouteillée</a></li>
                                 <li class="divider"></li>
-                                <li><a onClick="main.showJournal()" href="#">%s</a></li>
+                                <li><a onClick="main.showJournal()" href="#">Voir le journal</a></li>
                               </ul>
-                    <button class="btn-link  edit-button" type="button" ><i class="icon-wrench"></i> Editer la recette </button>
+                    <button class="btn-link  edit-button" type="button" onClick="main.editCurrentRecipe()"><i class="icon-wrench"></i> Editer la recette </button>
                 </div>
             </div>
             
             <div class="recipe-vol">
                 <span class="vol-label">Vol</span> <span class="vol-value">{{recipe.volume}}L</span>
                 <span class="effi-label"> Rendement</span> <span class="effi-value">{{recipe.efficiency}}%</span>
+                <span class="boil-label"> Ebullition</span> <span class="boil-value">{{recipe.boilTime}} min</span>
             
             </div>
 
@@ -154,7 +161,7 @@ def exportHTML(data):
                 <div class="row">
                     <div class="col-md-10" ng-repeat="fermentable in recipe.fermentables">
                         <div class="ing row">
-                            <div class="col-md-6 ing-name"><span data-toggle="popover" data-trigger="hover" data-html="true" data-placement="bottom" data-content="EBC : {{fermentable.color}} <br/> Rendement : {{fermentable.yield}}% <br/> Type : {{fermentable.type}} ">{{fermentable.name}}</span></div>
+                            <div class="col-md-6 ing-name"><span class="name" data-toggle="popover" data-trigger="hover" data-html="true" data-placement="bottom" data-content="EBC : {{fermentable.color}} <br/> Rendement : {{fermentable.yield}}% <br/> Type : {{fermentable.type}} ">{{fermentable.name}}</span></div>
                             <div class="col-md-3 ing-amount">{{fermentable.amount}} g</div>
                         </div>
                     </div>
@@ -166,7 +173,7 @@ def exportHTML(data):
                 <div class="row">
                     <div class="col-md-10" ng-repeat="hop in recipe.hops">
                         <div class="ing row">
-                            <div class="col-md-3 ing-name">{{hop.name}}</div>
+                            <div class="col-md-3 ing-name"><span class="name" data-toggle="popover" data-trigger="hover" data-html="true" data-placement="bottom" data-content="α : {{hop.alpha}}% <br/> Forme : {{hop.form}} <br/> Proportion : {{hop.ibuPart}} IBU">{{hop.name}}</span></div>
                             <div class="col-md-3 ing-amount">{{hop.amount}} g</div>
                             <div class="col-md-3 ing-amount">{{hop.time}} min ({{hop.use}})</div>
                         </div>
@@ -179,7 +186,7 @@ def exportHTML(data):
                 <div class="row">
                     <div class="col-md-10" ng-repeat="misc in recipe.miscs">
                         <div class="ing row">
-                            <div class="col-md-3 ing-name">{{misc.name}}</div>
+                            <div class="col-md-3 ing-name"><span class="name" data-toggle="popover" data-trigger="hover" data-html="true" data-placement="bottom" data-content="Type : {{misc.name}}">{{misc.name}}</span></div>
                             <div class="col-md-3 ing-amount">{{misc.amount}} g</div>
                             <div class="col-md-3 ing-amount">{{misc.time}} min ({{misc.use}})</div>
                         </div>
@@ -192,7 +199,7 @@ def exportHTML(data):
                 <div class="row">
                     <div class="col-md-7" ng-repeat="yeast in recipe.yeasts">
                         <div class="ing row">
-                            <div class="col-md-6 ing-name">{{yeast.name}} {{yeast.labo}} {{yeast.product_id}}</div>
+                            <div class="col-md-6 ing-name"><span class="name" data-toggle="popover" data-trigger="hover" data-html="true" data-placement="bottom" data-content="Atténuation : {{yeast.attenuation}}% <br/> Forme : {{yeast.form}}">{{yeast.name}} {{yeast.labo}} {{yeast.product_id}}</span></div>
                         </div>
                     </div>
                 </div>
@@ -223,32 +230,7 @@ def exportHTML(data):
     <!-- Fin container     -->
     </div>
 
-
-
-
-
-<script type="text/javascript">
-new Morris.Line({
-  element: 'profile-graph',
-  axes:false,
-  parseTime:true,
-  postUnits: '°C',
-  ymin:'45',
-  data: [
-    { y: '0 min', a: 66},
-    { y: '60 min', a: 66},
-    { y: '65 min', a: 78},
-    { y: '75 min', a: 78}
-
-  ],
-  xkey: 'y',
-  ykeys: ['a'],
-  labels: ['Température'],
-  xLabelMargin: 10,
-});
-
-</script> 
-        
+       
 
 <script type="text/javascript">
                     $(function () {
