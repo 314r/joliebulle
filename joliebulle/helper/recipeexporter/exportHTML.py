@@ -186,7 +186,7 @@ def exportHTML(data):
                 <div class="row">
                     <div class="col-md-10" ng-repeat="misc in recipe.miscs">
                         <div class="ing row">
-                            <div class="col-md-3 ing-name"><span class="name" data-toggle="popover" data-trigger="hover" data-html="true" data-placement="bottom" data-content="Type : {{misc.name}}">{{misc.name}}</span></div>
+                            <div class="col-md-3 ing-name"><span class="name" data-toggle="popover" data-trigger="hover" data-html="true" data-placement="bottom" data-content="Type : {{misc.type}}">{{misc.name}}</span></div>
                             <div class="col-md-3 ing-amount">{{misc.amount}} g</div>
                             <div class="col-md-3 ing-amount">{{misc.time}} min ({{misc.use}})</div>
                         </div>
