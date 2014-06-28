@@ -209,7 +209,7 @@ def exportHTML(data):
             <div class="yeasts profile col-md-10 row">
                 <h3 class="col-md-5">Brassage</h3>
                 <div class="recipe-buttons col-md-5">
-                    <button class="btn-link  brewday-button" type="button" onClick="main.switchToBrewday()"><i class="icon-wrench"></i> Mode brassage </button>
+                    <button class="btn-link  brewday-button" type="button" onClick="main.showBrewdayMode()"><i class="icon-wrench"></i> Mode brassage </button>
                 </div>
                 <div class="col-md-10">
                     <span class="profile-name">{{recipe.mashProfile.name}}</span>

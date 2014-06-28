@@ -26,10 +26,12 @@ from view.yeastview import *
 from view.miscview import *
 from view.recipeview import *
 from view.mashstepview import *
+from settings import * 
 
 
 def exportJson(recipe) :
 	recipeView = RecipeView(recipe)
+	settings = Settings()
 	data = []
 	dic = {}
 
@@ -45,6 +47,15 @@ def exportJson(recipe) :
 	dic['fg'] = "%.3f" %recipe.compute_FG()
 	dic['bugu'] = "%.1f" %recipe.compute_ratioBUGU()
 	dic['alc'] = "%.1f" %recipe.compute_ABV()
+
+	dic['grainWeight'] = recipe.compute_grainWeight()
+	dic['preBoilGu'] = recipe.compute_GU_PreBoil()
+	dic['coolingLossRate'] = settings.conf.value("CoolingLoss")
+	dic['boilOffRate'] = settings.conf.value("BoilOffRate")
+	dic['grainTemp'] = settings.conf.value("GrainTemp")
+	dic['fudgeFactor'] = settings.conf.value("FudgeFactor")
+	dic['grainRetention'] = settings.conf.value("GrainRetention")
+
 
 	hops = []
 	for h in recipe.listeHops:

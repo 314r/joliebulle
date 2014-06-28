@@ -6,8 +6,8 @@ recipesApp.controller('RecipeslibCtrl', ['$scope','$http', '$filter', function (
         $scope.recipes = $scope.dataJson;
         $scope.recipes = _.chain($scope.recipes)
             .sortBy(function(o){return o.name.toLowerCase();})
-        	.sortBy(function(o){return o.author.toLowerCase();})
-        	.value();
+            .sortBy(function(o){return o.author.toLowerCase();})
+            .value();
         return $scope.recipes;
     });
 
@@ -18,7 +18,7 @@ recipesApp.controller('RecipeslibCtrl', ['$scope','$http', '$filter', function (
 
     $scope.openRecipeClicked = function (recipe) {
     	main.viewRecipeLib(recipe.path);
-    	console.log("reçu")
+    	
     };
 
 

@@ -42,6 +42,7 @@ from editdivers import *
 from editlevures import *
 from helper.toolExporterRepository import *
 from helper.libExporterRepository import *
+from helper.brewdayExporterRepository import *
 from importIng import *
 from preBoilDialog import *
 from stepEditWindow import *
@@ -851,7 +852,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         self.importBeerXML()
 
         data = self.recipe.export("json")
-        print(data)
+        
 
         pyDir = os.path.abspath(os.path.dirname(__file__))
         baseUrl = QtCore.QUrl.fromLocalFile(os.path.join(pyDir, "static/"))
@@ -860,6 +861,19 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         self.webViewBiblio.page().settings().setAttribute(QtWebKit.QWebSettings.DeveloperExtrasEnabled, True)
 
 
+
+############# Mode Brassage ################################
+############################################################
+
+    @QtCore.pyqtSlot()
+    def showBrewdayMode(self):
+        print("bien reçu amiral")
+        data = self.recipe.export("json")
+        pyDir = os.path.abspath(os.path.dirname(__file__))
+        baseUrl = QtCore.QUrl.fromLocalFile(os.path.join(pyDir, "static/"))
+        self.webViewBiblio.setHtml(BrewdayExporterRepository['html'](data), baseUrl)
+        self.webViewBiblio.page().mainFrame().addToJavaScriptWindowObject("main", self)
+        self.webViewBiblio.page().settings().setAttribute(QtWebKit.QWebSettings.DeveloperExtrasEnabled, True)
 
 
 
