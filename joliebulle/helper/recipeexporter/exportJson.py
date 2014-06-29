@@ -35,9 +35,11 @@ def exportJson(recipe) :
 	data = []
 	dic = {}
 
+	dic['path'] = recipe.path
 	dic['name'] = recipe.name
 	dic['brewer'] = recipe.brewer
 	dic['type'] = recipeView.recipeTypeDisplay()
+	dic['style'] = recipe.style
 	dic['volume'] = recipe.volume
 	dic['boilTime'] = recipe.boil
 	dic['efficiency'] = recipe.efficiency

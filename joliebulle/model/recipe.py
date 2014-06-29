@@ -37,6 +37,7 @@ logger = logging.getLogger(__name__)
 class Recipe(Element):
     """A class for storing recipes attributes"""
     def __init__(self):
+        self.path=""
         self.name = ""
         self.brewer = ""
         self.type = model.constants.RECIPE_TYPE_ALL_GRAIN

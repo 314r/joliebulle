@@ -818,8 +818,12 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
 ##########################################################
     @QtCore.pyqtSlot()
     def showLib(self) :
-        data = json.dumps(self.recipesSummary)
-        data = data.replace("'","&#39;")
+        # data = json.dumps(self.recipesSummary)
+        # data = data.replace("'","&#39;")
+
+        data = self.recipesSummary
+
+
 
         pyDir = os.path.abspath(os.path.dirname(__file__))
         baseUrl = QtCore.QUrl.fromLocalFile(os.path.join(pyDir, "static/"))
@@ -944,7 +948,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
 
 
     def listdir(self, rootdir) :
-        self.recipesSummary=[]
+        self.recipesSummary="["
         fileList=[]
         rootList=[]
         filenameList=[]
@@ -962,7 +966,11 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
             j=j+1
             recipe = fileList[j-1]
             try :
-                self.recipesSummary.append(self.jsonRecipeLib(recipe))
+                self.recipesSummary += str (self.jsonRecipeLib(recipe))
+                if j < len(filenameList) :
+                    self.recipesSummary += ","
+
+
                 # print(self.jsonRecipeLib(recipe))
                 arbre = ET.parse(recipe)
                 presentation=arbre.find('.//RECIPE')
@@ -978,6 +986,8 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
             except :
                 logger.debug("le fichier %s n'est pas une recette" %(recipe))
                 newFileNameList.append(None)
+        self.recipesSummary += "]"
+
                 
 
         #on reconstitue
@@ -1024,44 +1034,48 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
                     check = r.rename(old,new)
                 except:
                     pass
-                    
-        print(json.dumps(self.recipesSummary))
+
 
     def jsonRecipeLib(self,recipe) :
-        dic={}
-        dic['path'] = recipe
-        arbre = ET.parse(recipe)
-        presentation=arbre.find('.//RECIPE')
-        style = arbre.find('.//STYLE')
-        for nom in presentation :
-            try :
-                if nom.tag == "NAME" :
-                   nomRecette = nom.text
-                   if nom.text == None :
-                       nomRecette = "empty"
-                   dic['name'] = nomRecette
-            except :
-                pass
-        for auth in presentation :
-            try :
-                if auth.tag == "BREWER" :
-                   authRecipe = auth.text
-                   if auth.text == None :
-                       authRecipe = "anonymous"
-                   dic['author'] = authRecipe
-            except :
-                pass
-        for nom in style :
-            try :
-                if nom.tag == "NAME" :
-                   styleRecipe = nom.text
-                   if nom.text == None :
-                       styleRecipe = " no style"
-                   dic['style'] = styleRecipe
-            except :
-                pass
+        # dic={}
+        # dic['path'] = recipe
+        # arbre = ET.parse(recipe)
+        # presentation=arbre.find('.//RECIPE')
+        # style = arbre.find('.//STYLE')
+        # for nom in presentation :
+        #     try :
+        #         if nom.tag == "NAME" :
+        #            nomRecette = nom.text
+        #            if nom.text == None :
+        #                nomRecette = "empty"
+        #            dic['name'] = nomRecette
+        #     except :
+        #         pass
+        # for auth in presentation :
+        #     try :
+        #         if auth.tag == "BREWER" :
+        #            authRecipe = auth.text
+        #            if auth.text == None :
+        #                authRecipe = "anonymous"
+        #            dic['author'] = authRecipe
+        #     except :
+        #         pass
+        # for nom in style :
+        #     try :
+        #         if nom.tag == "NAME" :
+        #            styleRecipe = nom.text
+        #            if nom.text == None :
+        #                styleRecipe = " no style"
+        #            dic['style'] = styleRecipe
+        #     except :
+        #         pass
+        self.s = recipe
+        self.importBeerXML()
+        data = self.recipe.export("json")
+        data = data[1:-1]
+        return data
 
-        return dic
+        # return dic
   
     @QtCore.pyqtSlot()               
     def editCurrentRecipe(self):

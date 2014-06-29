@@ -46,6 +46,7 @@ def importBeerXMLRecipe(data):
         raise
 
     recipe = Recipe()
+    recipe.path = data
 
     presentation = tree.find('.//RECIPE')
     fermentables = tree.findall('.//FERMENTABLE')

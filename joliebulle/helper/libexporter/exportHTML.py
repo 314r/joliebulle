@@ -103,7 +103,7 @@ def exportHTML(recipesSummary):
 
        
 </body>
-</html>''' .format(str(recipesSummary),  "{{recipe.name}}", "{{recipe.author}}",  "{{recipe.style}}")
+</html>''' .format(str(recipesSummary),  "{{recipe.name}}", "{{recipe.brewer}}",  "{{recipe.style}}")
 
     return resultHtml
 
