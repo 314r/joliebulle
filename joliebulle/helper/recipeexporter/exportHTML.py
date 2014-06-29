@@ -215,7 +215,7 @@ def exportHTML(data):
                     <span class="profile-name">{{recipe.mashProfile.name}}</span>
                     <span class="profile-ph">pH {{recipe.mashProfile.ph}}</span>
                     <div ng-repeat="step in recipe.mashProfile.steps">
-                        <p><span class="label-step">{{step.name}}</span> palier de type {{step.type}} à {{step.temp}} °C pendant {{step.time}} minutes</p>
+                        <p><span class="label-step">{{step.name}}</span> palier de type {{step.type_view}} à {{step.temp}} °C pendant {{step.time}} minutes</p>
 
                     </div>
                     <p><span class="label-step">Rinçage</span> {{recipe.mashProfile.sparge}} °C</p>

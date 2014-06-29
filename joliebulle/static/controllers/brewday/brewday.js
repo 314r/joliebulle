@@ -35,11 +35,11 @@ brewdayApp.controller('BrewdayCtrl', ['$scope', '$http', '$filter', function ($s
             step.waterVol = Math.round(waterVol * 10) / 10;
             step.waterTemp = Math.round($scope.strikeTemp(ratio) * 10) / 10;
             $scope.steps[index] = step;
-        } else if (index !== 0 && step.type === "temperature") {
+        } else if (index !== 0 && step.type === "Temperature") {
             step.ratio = $scope.steps[index - 1].ratio;
             step.waterVol = 0;
             $scope.steps[index] = step;
-        } else if (index !== 0 && step.type === "infusion") {
+        } else if (index !== 0 && step.type === "Infusion") {
             strikeTemp = 90;
             mashTemp = $scope.steps[index - 1].temp;
             ratio = $scope.steps[index - 1].ratio;
@@ -77,7 +77,7 @@ brewdayApp.controller('BrewdayCtrl', ['$scope', '$http', '$filter', function ($s
         $scope.steps[index] = step;
         if (index === 0) {
             _.each($scope.steps, $scope.stepsCalc);
-        } else if (index !== 0 && step.type === "infusion") {
+        } else if (index !== 0 && step.type === "Infusion") {
             mashTemp = $scope.steps[index - 1].temp;
             mashVolume = 0;
             for (i = 0; i < index; i += 1) {
@@ -88,9 +88,9 @@ brewdayApp.controller('BrewdayCtrl', ['$scope', '$http', '$filter', function ($s
             $scope.steps[index] = step;
 
             for (i = index + 1; i < $scope.steps.length; i += 1) {
-                if ($scope.steps[i].type === "temperature") {
+                if ($scope.steps[i].type === "Temperature") {
                     $scope.steps[i].ratio = $scope.steps[i - 1].ratio;
-                } else if ($scope.steps[i].type === "infusion") {
+                } else if ($scope.steps[i].type === "Infusion") {
                     strikeTemp = 90;
                     mashTemp = $scope.steps[i - 1].temp;
                     mashVolume = 0;
@@ -115,7 +115,7 @@ brewdayApp.controller('BrewdayCtrl', ['$scope', '$http', '$filter', function ($s
             step.ratio = waterVol / (parseFloat($scope.data.grainWeight) / 1000);
             step.ratio = Math.round(step.ratio * 10) / 10;
             $scope.steps[index] = step;
-        } else if (index !== 0 && step.type === "infusion") {
+        } else if (index !== 0 && step.type === "Infusion") {
             mashTemp = $scope.steps[index - 1].temp;
             ratio = $scope.steps[index - 1].ratio;
             mashVolume = 0;
@@ -132,9 +132,9 @@ brewdayApp.controller('BrewdayCtrl', ['$scope', '$http', '$filter', function ($s
         }
 
         for (i = index + 1; i < $scope.steps.length; i += 1) {
-            if ($scope.steps[i].type === "temperature") {
+            if ($scope.steps[i].type === "Temperature") {
                 $scope.steps[i].ratio = $scope.steps[i - 1].ratio;
-            } else if ($scope.steps[i].type === "infusion") {
+            } else if ($scope.steps[i].type === "Infusion") {
                 strikeTemp = 90;
                 mashTemp = $scope.steps[i - 1].temp;
                 mashVolume = 0;

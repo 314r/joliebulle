@@ -867,7 +867,6 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
 
     @QtCore.pyqtSlot()
     def showBrewdayMode(self):
-        print("bien reçu amiral")
         data = self.recipe.export("json")
         pyDir = os.path.abspath(os.path.dirname(__file__))
         baseUrl = QtCore.QUrl.fromLocalFile(os.path.join(pyDir, "static/"))

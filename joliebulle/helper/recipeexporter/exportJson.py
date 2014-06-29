@@ -123,7 +123,8 @@ def exportJson(recipe) :
 		step['name'] = s.name
 		step['time'] = s.time
 		step['temp'] = s.temp
-		step['type'] = mashStepView.mashTypeDisplay()
+		step['type_view'] = mashStepView.mashTypeDisplay()
+		step['type'] = s.type
 		steps.append(step)
 	mashProfile['steps'] = steps
 	dic['mashProfile'] = mashProfile

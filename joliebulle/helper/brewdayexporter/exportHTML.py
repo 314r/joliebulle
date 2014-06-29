@@ -55,13 +55,92 @@ def exportHTML(data):
     .form-control {min-width:75px;}
     .input-group {margin-top:1em;}
     .biab {margin-top : 1em;margin-left:-15px;}
+    input::-webkit-outer-spin-button,
+    input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;}
 </style>
 </head>'''
 
 
-    resultHtml+='''<body>
+    resultHtml+='''<body ng-app="brewday">
 
-Hello world ! You are in the new shiny brewday mode.
+    <div class="container-fluid" ng-controller="BrewdayCtrl" ng-init='init({0})'>
+    ''' .format(data)
+
+        
+    resultHtml+='''
+        <div class="sidebar col-sm-3 col-md-2 col-lg-2">
+            <ul class="nav nav-sidebar">
+                <li class="active" onClick="main.showLib()"><a href="#"><i class="icon-beaker"></i> Recettes</a></li>
+                <li onClick="main.showJournal()"><a href="#"><i class="icon-calendar-empty"></i> Journal</a></li>
+                <li onClick="main.showTools()"><a href="#"><i class="icon-cog"></i> Outils</a></li>
+            </ul>
+            
+        </div>
+        
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+
+            
+            <input ng-model="brewType" value="classic" ng-change="brewTypeChanged()" type="radio" name="options" id="option1"> Brassage classique
+            <input ng-model="brewType" value="biab" ng-change="brewTypeChanged()" type="radio" name="options" id="option2"> Brew In A Bag
+            
+            <h2>Paliers</h2>
+            <div class="row">
+                <div ng-show="invalidBiab==true" class="alert alert-warning col-md-4">Le profil de brassage doit comporter un unique palier de type infusion.</div>
+            </div>
+            
+            <div ng-repeat = "step in steps" class="row step" ng-hide="invalidBiab==true">
+                <div class="stepName">{{step.name}}</div>
+                <p class="stepDescription">{{step.time}} minutes à {{step.temp}}°C, palier de type {{step.type}}.</p>
+                <form class="form-inline formStep" role="form">
+                    <div class="input-group addedWater col-sm-7 col-md-3" ng-hide="step.type=='Temperature' || brewType=='biab'">
+                      <span class="input-group-addon">Eau ajoutée</span>
+                      <input type="number" class="form-control" ng-model="step.waterVol" ng-change="volChanged($index)">
+                        <span class="input-group-addon">L</span>
+                    </div>
+                    <div class="input-group col-sm-7 col-md-3" ng-hide="step.type=='Temperature' || brewType=='biab'">
+                      <span class="input-group-addon">Temp. eau</span>
+                      <input type="number" class="form-control" ng-model="step.waterTemp" ng-change="tempChanged($index)" >
+                      <span class="input-group-addon">°C</span>
+                    </div>
+                    <div class="input-group col-sm-7 col-md-3" ng-hide="step.type=='Temperature' || brewType=='biab'">
+                      <span class="input-group-addon">Ratio</span>
+                      <input type="number" step="0.1" class="form-control" ng-model="step.ratio" ng-change="ratioChanged($index)" >
+                    </div>
+                </form>
+                
+                <div class="col-md-3 col-sm-7 addedWater biab" ng-hide="step.type=='Temperature' || brewType=='classic'">Eau ajoutée : <span class="value">{{step.waterVol.toFixed(1)}} L</span></div>
+                <div class="col-md-3 col-sm-7 biab" ng-hide="step.type=='Temperature' || brewType=='classic'">Temp. eau : <span class="value">{{step.waterTemp.toFixed(1)}}°C</span></div>
+                <div class="col-md-3 col-sm-7 biab" ng-hide="step.type=='Temperature' || brewType=='classic'">Ratio : <span class="value">{{step.ratio.toFixed(1)}}</span></div>
+
+            </div>
+            
+        
+            <div class="sparge row">
+                <h2>Rinçage</h2>
+                <p ng-hide="brewType=='biab'">Volume d'eau de rinçage : {{spargeVol().toFixed(1)}} L</p>
+                <p ng-hide="brewType=='biab'">Température de rinçage : {{data.mashProfile.sparge}}°C</p>
+                <div ng-hide="brewType=='classic'" class="alert alert-info col-md-4">Pas de rinçage en BIAB.</div>
+            </div>
+            <div class="volumes">
+                <h2>Volumes</h2>
+                <p>Volume de grains : {{grainVolume().toFixed(1)}} L</p>
+                <p>Volume de la maische à l'empâtage : {{mashVolumeStrike().toFixed(1)}} L</p>
+                <p>Volume de la maische au dernier palier : {{mashVolumeLastStep().toFixed(1)}} L</p>
+            </div>
+            <div class="preBoil">
+                <h2>Pré-ébullition</h2>
+                <p>Volume théorique pré-ébullition : {{preBoilVol().toFixed(1)}} L</p>
+                <p>Densité théorique pré-ébullition : {{preBoilSg()}}</p>
+            </div>
+            
+            
+        </div>
+
+       
+    <!-- Fin container     -->
+    </div>
   
 </body>
 </html>''' 
