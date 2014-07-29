@@ -1,6 +1,6 @@
 recipesApp.controller('RecipeslibCtrl', ['$scope','$http', '$filter', function ($scope,$http,$filter) {
     "use strict";
-
+    $scope.active = false;
 
     $scope.$watch('dataJson', function () {
         $scope.recipes = $scope.dataJson;
@@ -19,6 +19,11 @@ recipesApp.controller('RecipeslibCtrl', ['$scope','$http', '$filter', function (
     $scope.openRecipeClicked = function (recipe) {
     	main.viewRecipeLib(recipe.path);
     	
+    };
+    $scope.recipeSelected = function (recipe) {
+        $scope.active = true;
+        $scope.currentRecipe = recipe;
+        
     };
 
 
