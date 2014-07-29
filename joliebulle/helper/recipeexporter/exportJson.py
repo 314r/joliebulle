@@ -86,6 +86,7 @@ def exportJson(recipe) :
 			fermentable['after-boil'] = 'true'
 		else : 
 			fermentable['after-boil'] = 'false'
+		fermentable['afterBoilView'] = fView.fermentableUseDisplay()	
 		fermentables.append(fermentable)
 	dic['fermentables'] = fermentables	
 
