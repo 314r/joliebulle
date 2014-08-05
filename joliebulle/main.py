@@ -823,8 +823,6 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
 
         data = self.recipesSummary
 
-
-
         pyDir = os.path.abspath(os.path.dirname(__file__))
         baseUrl = QtCore.QUrl.fromLocalFile(os.path.join(pyDir, "static/"))
         self.webViewBiblio.setHtml(LibExporterRepository['html'](data), baseUrl)
@@ -836,7 +834,11 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
     def deleteLib(self,path) :
         os.remove(path)
 
+    @QtCore.pyqtSlot()   
+    def backWebViewBiblio(self) : 
+        self.stackedWidget.setCurrentIndex(1)
 
+    
 
 
 ############# Vue recette ################################
@@ -855,15 +857,6 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
 
         self.importBeerXML()
 
-        data = self.recipe.export("json")
-        
-
-        pyDir = os.path.abspath(os.path.dirname(__file__))
-        baseUrl = QtCore.QUrl.fromLocalFile(os.path.join(pyDir, "static/"))
-        self.webViewBiblio.setHtml(RecipeExporterRepository['html'](data), baseUrl)
-        self.webViewBiblio.page().mainFrame().addToJavaScriptWindowObject("main", self)
-        self.webViewBiblio.page().settings().setAttribute(QtWebKit.QWebSettings.DeveloperExtrasEnabled, True)
-
 
 
 ############# Mode Brassage ################################
@@ -871,12 +864,19 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
 
     @QtCore.pyqtSlot()
     def showBrewdayMode(self):
+        self.stackedWidget.setCurrentIndex(2) 
+
         data = self.recipe.export("json")
         pyDir = os.path.abspath(os.path.dirname(__file__))
         baseUrl = QtCore.QUrl.fromLocalFile(os.path.join(pyDir, "static/"))
-        self.webViewBiblio.setHtml(BrewdayExporterRepository['html'](data), baseUrl)
-        self.webViewBiblio.page().mainFrame().addToJavaScriptWindowObject("main", self)
-        self.webViewBiblio.page().settings().setAttribute(QtWebKit.QWebSettings.DeveloperExtrasEnabled, True)
+        self.webViewBrewday.setHtml(BrewdayExporterRepository['html'](data), baseUrl)
+        self.webViewBrewday.page().mainFrame().addToJavaScriptWindowObject("main", self)
+        self.webViewBrewday.page().settings().setAttribute(QtWebKit.QWebSettings.DeveloperExtrasEnabled, True)
+
+
+        
+
+
 
 
 
@@ -1080,7 +1080,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
     @QtCore.pyqtSlot()               
     def editCurrentRecipe(self):
         self.switchToEditor()
-        self.s = self.chemin
+        # self.s = self.chemin
         
         self.importBeerXML()
         # self.modele.blockSignals(True)
@@ -1211,10 +1211,10 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         self.stackedWidget.setCurrentIndex(0)
         self.buttonNewRecipe.show()
 
-        
+    @QtCore.pyqtSlot()    
     def switchToLibrary(self) :
         self.stackedWidget.setCurrentIndex(1)        
-        self.viewRecipeLib(self.s)
+        # self.viewRecipeLib(self.s)
 
  
     def switchToNotes(self) :

@@ -42,7 +42,8 @@ def exportHTML(data):
 <script src="http://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
 <script src="http://cdn.oesmith.co.uk/morris-0.4.3.min.js"></script>
 <style>
-    .main {padding-top:90px; padding-left:60px;}
+    .main {padding-top:30px; margin-left:75px; margin-bottom:60px;}
+    .buttonBack{margin-bottom:30px;}
     .step {margin-top : 24px;  }
     .step + .step {border-top: 1px solid #eee; padding-top : 24px;}
     .infos {margin-top:70px;}
@@ -70,18 +71,23 @@ def exportHTML(data):
 
         
     resultHtml+='''
-        <div class="sidebar col-sm-3 col-md-2 col-lg-2">
+          <div class="sidebar">
+<!--
+              <div class="nav-header"></div>
+-->
             <ul class="nav nav-sidebar">
-                <li class="active" onClick="main.showLib()"><a href="#"><i class="icon-beaker"></i> Recettes</a></li>
-                <li onClick="main.showJournal()"><a href="#"><i class="icon-calendar-empty"></i> Journal</a></li>
-                <li onClick="main.showTools()"><a href="#"><i class="icon-cog"></i> Outils</a></li>
+              <li class="active"><a href="#"><i class="icon-beaker"></i> </a></li>
+              <li><a href="#"><i class="icon-calendar-empty"></i> </a></li>
+              <li><a href="#"><i class="icon-cog"></i> </a></li>
             </ul>
-            
-        </div>
-        
-        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+          </div>
 
-            
+        <div class="col-sm-9 col-md-10 main">
+
+            <div>
+                <button type="button" class="btn btn-default buttonBack" onClick="main.backWebViewBiblio()">Retour recette</button>
+            </div>
+
             <input ng-model="brewType" value="classic" ng-change="brewTypeChanged()" type="radio" name="options" id="option1"> Brassage classique
             <input ng-model="brewType" value="biab" ng-change="brewTypeChanged()" type="radio" name="options" id="option2"> Brew In A Bag
             

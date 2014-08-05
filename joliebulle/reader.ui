@@ -862,6 +862,25 @@ p, li { white-space: pre-wrap; }
         </item>
        </layout>
       </widget>
+      <widget class="QWidget" name="page_2">
+       <layout class="QGridLayout" name="gridLayout_2">
+        <item row="0" column="0">
+         <widget class="QWebView" name="webViewBrewday" native="true">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="url" stdset="0">
+           <url>
+            <string>about:blank</string>
+           </url>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
       <widget class="QWidget" name="page_3">
        <layout class="QGridLayout" name="gridLayout_5">
         <property name="margin">
@@ -1715,54 +1734,6 @@ p, li { white-space: pre-wrap; }
            </widget>
           </item>
          </layout>
-        </item>
-       </layout>
-      </widget>
-      <widget class="QWidget" name="page_2">
-       <layout class="QGridLayout" name="gridLayout_2">
-        <property name="margin">
-         <number>0</number>
-        </property>
-        <property name="spacing">
-         <number>0</number>
-        </property>
-        <item row="0" column="0">
-         <widget class="QWidget" name="widget" native="true">
-          <layout class="QGridLayout" name="gridLayout_3">
-           <property name="margin">
-            <number>0</number>
-           </property>
-           <item row="0" column="0">
-            <widget class="QListView" name="listViewBiblio">
-             <property name="styleSheet">
-              <string notr="true">background-color: rgb(116, 116, 116);
-color: rgb(255, 255, 255);</string>
-             </property>
-             <property name="dragEnabled">
-              <bool>true</bool>
-             </property>
-             <property name="dragDropMode">
-              <enum>QAbstractItemView::InternalMove</enum>
-             </property>
-             <property name="defaultDropAction">
-              <enum>Qt::MoveAction</enum>
-             </property>
-             <property name="movement">
-              <enum>QListView::Free</enum>
-             </property>
-             <property name="flow">
-              <enum>QListView::LeftToRight</enum>
-             </property>
-             <property name="spacing">
-              <number>30</number>
-             </property>
-             <property name="viewMode">
-              <enum>QListView::IconMode</enum>
-             </property>
-            </widget>
-           </item>
-          </layout>
-         </widget>
         </item>
        </layout>
       </widget>

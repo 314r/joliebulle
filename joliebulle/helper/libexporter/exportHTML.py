@@ -169,7 +169,7 @@ def exportHTML(recipesSummary):
             <div class="recipe-list">
                 <div class="recipe-item" ng-repeat="recipe in recipes | filter:searchText.toLowerCase()" ng-click="recipeSelected(recipe)">
                     <span class="brewer-name">{1}</span>
-                    <div class="recipe-name"><a href >{2}</a>
+                    <div class="recipe-name"><a href="toto" >{2}</a>
                         <div class="recipe-style">{3}</div> 
                         <!--<button class="btn-link btn-xs deleteButton" ng-click="delete(recipe)">supprimer</button>-->
                     </div>
@@ -200,14 +200,14 @@ def exportHTML(recipesSummary):
                     <div class="recipe-buttons col-md-5">
                         <button class="btn-link  edit-button" type="button" data-toggle="dropdown" ><i class="icon-flag"></i> Journal <span class="icon-caret-down"></span></button>
                         <ul class="dropdown-menu" role="menu">
-                                    <i class="journalMenu-description">%s :</i>
-                                    <li><a onClick="main.addToJournal('brewed')" href="#">%s</a></li>
-                                    <li><a onClick="main.addToJournal('ferment')" href="#">%s</a></li>
-                                    <li><a onClick="main.addToJournal('bottled')" href="#">%s</a></li>
-                                    <li class="divider"></li>
-                                    <li><a onClick="main.showJournal()" href="#">%s</a></li>
-                                  </ul>
-                        <button class="btn-link  edit-button" type="button" ><i class="icon-wrench"></i> Editer</button>
+                                <i class="journalMenu-description">Marquer comme :</i>
+                                <li><a onClick="main.addToJournal('brewed')" href="#">Brassée</a></li>
+                                <li><a onClick="main.addToJournal('ferment')" href="#">Mise en fermentation</a></li>
+                                <li><a onClick="main.addToJournal('bottled')" href="#">Embouteillée</a></li>
+                                <li class="divider"></li>
+                                <li><a onClick="main.showJournal()" href="#">Voir le journal</a></li>
+                        </ul>
+                        <button class="btn-link  edit-button" type="button" onClick="main.editCurrentRecipe()"><i class="icon-wrench"></i> Editer</button>
                     </div>
                 </div>
                 
@@ -257,7 +257,7 @@ def exportHTML(recipesSummary):
                 <div class="row profile-header">
                     <h3 class="col-md-6">Brassage</h3>
                     <div class="brewday-button col-md-5">    
-                        <button class="btn-link edit-button" type="button" ><i class="icon-wrench"></i> Mode brassage</button>
+                        <button class="btn-link edit-button" type="button" onClick="main.showBrewdayMode()" ><i class="icon-wrench"></i> Mode brassage</button>
                     </div>
                 </div>    
                 <div class="brew-details">
@@ -269,10 +269,7 @@ def exportHTML(recipesSummary):
                 </div>
                 <p><span class="label-step">Rinçage</span> {{currentRecipe.mashProfile.sparge}} °C</p>
                 </div>
-<!--
-                <div class="col-md-6" id="profile-graph" style="height:200px;"></div>
--->
-                  <!--<linechart xkey="xkey" ykeys="ykeys" labels="labels" data="chartData"></linechart>-->
+
             </div>            
 
             <div class="yeasts notes col-md-10">
