@@ -38,9 +38,7 @@ def exportHTML(data):
 <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
 <link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
 <link rel="stylesheet" href="css/sidebar.css">
-<link rel="stylesheet" href="http://cdn.oesmith.co.uk/morris-0.4.3.min.css">
-<script src="http://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
-<script src="http://cdn.oesmith.co.uk/morris-0.4.3.min.js"></script>
+
 <style>
     .main {padding-top:30px; margin-left:75px; margin-bottom:60px;}
     .buttonBack{margin-bottom:30px;}
