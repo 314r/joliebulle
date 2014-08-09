@@ -767,6 +767,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
 
     @QtCore.pyqtSlot()
     def showJournal(self,entry=" '' ") :
+        self.stackedWidget.setCurrentIndex(1)
         self.loadJournal()
         pyDir = os.path.abspath(os.path.dirname(__file__))
         baseUrl = QtCore.QUrl.fromLocalFile(os.path.join(pyDir, "static/"))
@@ -801,7 +802,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
     def showLib(self) :
         # data = json.dumps(self.recipesSummary)
         # data = data.replace("'","&#39;")
-
+        self.stackedWidget.setCurrentIndex(1)
         data = self.recipesSummary
 
         pyDir = os.path.abspath(os.path.dirname(__file__))
@@ -866,6 +867,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
 
     @QtCore.pyqtSlot()
     def showTools(self):
+        self.stackedWidget.setCurrentIndex(1)
         pyDir = os.path.abspath(os.path.dirname(__file__))
         baseUrl = QtCore.QUrl.fromLocalFile(os.path.join(pyDir, "static/"))
         self.webViewBiblio.setHtml(ToolExporterRepository["html"](), baseUrl)

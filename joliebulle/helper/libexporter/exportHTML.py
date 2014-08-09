@@ -146,9 +146,9 @@ def exportHTML(recipesSummary):
               <div class="nav-header"></div>
 -->
             <ul class="nav nav-sidebar">
-              <li class="active"><a href="#"><i class="icon-beaker"></i> </a></li>
-              <li><a href="#"><i class="icon-calendar-empty"></i> </a></li>
-              <li><a href="#"><i class="icon-cog"></i> </a></li>
+              <li class="active" onClick="main.showLib()"><a href="#"><i class="icon-beaker"></i> </a></li>
+              <li onClick="main.showJournal()"><a href="#"><i class="icon-calendar-empty"></i> </a></li>
+              <li onClick="main.showTools()"><a href="#"><i class="icon-cog"></i> </a></li>
             </ul>
           </div>
         

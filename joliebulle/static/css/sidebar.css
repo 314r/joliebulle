@@ -43,5 +43,6 @@ ul.nav.nav-sidebar {margin-top:30px;}
 .sidebar .active i {color:#fff;}
 .nav-sidebar li{ margin-bottom:1.5em;}
 .nav > li > a {padding-top: 5px; padding-bottom:5px; margin-top:10px;}
+.nav > li > a:hover {background : #212121;}
 .nav-header {height:55px;position:fixed;left:0px; top:0px;z-index: 1000;background-color: #3498db; width:50px;}
 
