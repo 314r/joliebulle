@@ -803,6 +803,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         # data = json.dumps(self.recipesSummary)
         # data = data.replace("'","&#39;")
         self.stackedWidget.setCurrentIndex(1)
+        self.brewdayLock = 0
         data = self.recipesSummary
 
         pyDir = os.path.abspath(os.path.dirname(__file__))
@@ -846,14 +847,21 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
 
     @QtCore.pyqtSlot()
     def showBrewdayMode(self):
-        self.stackedWidget.setCurrentIndex(2) 
+        if self.brewdayLock == 0 : 
+            self.stackedWidget.setCurrentIndex(2)
+            self.brewdayLock = 1 
 
-        data = self.recipe.export("json")
-        pyDir = os.path.abspath(os.path.dirname(__file__))
-        baseUrl = QtCore.QUrl.fromLocalFile(os.path.join(pyDir, "static/"))
-        self.webViewBrewday.setHtml(BrewdayExporterRepository['html'](data), baseUrl)
-        self.webViewBrewday.page().mainFrame().addToJavaScriptWindowObject("main", self)
-        self.webViewBrewday.page().settings().setAttribute(QtWebKit.QWebSettings.DeveloperExtrasEnabled, True)
+            data = self.recipe.export("json")
+            pyDir = os.path.abspath(os.path.dirname(__file__))
+            baseUrl = QtCore.QUrl.fromLocalFile(os.path.join(pyDir, "static/"))
+            self.webViewBrewday.setHtml(BrewdayExporterRepository['html'](data), baseUrl)
+            self.webViewBrewday.page().mainFrame().addToJavaScriptWindowObject("main", self)
+            self.webViewBrewday.page().settings().setAttribute(QtWebKit.QWebSettings.DeveloperExtrasEnabled, True)
+        else :
+            self.stackedWidget.setCurrentIndex(2)
+
+
+
 
 
         
