@@ -815,7 +815,17 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
 
     @QtCore.pyqtSlot(str)
     def deleteLib(self,path) :
-        os.remove(path)
+        confirmation = QtGui.QMessageBox.question(self,
+                            self.trUtf8("Supprimer"),
+                            self.trUtf8("La recette sera définitivement supprimée <br/> Continuer ?"),
+                            QtGui.QMessageBox.Yes | QtGui.QMessageBox.No)
+        if (confirmation == QtGui.QMessageBox.Yes):
+            os.remove(path)
+            self.listdir(recettes_dir)
+            self.showLib()
+        else :
+            self.showLib()
+        
 
     @QtCore.pyqtSlot()   
     def backWebViewBiblio(self) : 

@@ -73,9 +73,9 @@ def exportHTML(recipesSummary):
     .recipe-list-header i{font-size : 1.2em;}
     .recipe-list-header input{border:none; height:55px; margin:auto; background-color: #f7f7f7; }
     .selected{border-right: 3px solid #1abc9c;}
-    .deleteButton{color:#fff;}
+    .deleteButton{color:#fff; float:right;}
+    .selected .deleteButton{color:#c3c3c3; }
     .recipe-item{border-bottom: 1px solid #eee; padding-top:0.5em;}
-    .recipe-item:hover .deleteButton{color:#f55050; }
     .brewer-name{padding:0.2em 0.5em 0.2em 0em;color:#c3c3c3; margin-bottom:1em; font-size:90%%;}
     .recipe-style{padding:0.2em 0.5em 0.2em 0em;color:#c3c3c3; margin-bottom:0.5em; font-size:90%%; }
     .recipe-name a{color:#363636; font-weight: bold;}
@@ -169,10 +169,10 @@ def exportHTML(recipesSummary):
                 </div>
             <div class="recipe-list">
                 <div class="recipe-item" ng-class="{13}" ng-repeat="recipe in recipes | filter:searchText.toLowerCase()" ng-click="recipeSelected(recipe)">
-                    <span class="brewer-name">{1}</span>
+                    <span class="brewer-name">{1}</span> <button class="btn-link btn-xs deleteButton" ng-click="deleteLib(recipe)"><i class="icon-remove"></i></button>
                     <div class="recipe-name"><a href="toto" >{2}</a>
                         <div class="recipe-style">{3}</div> 
-                        <!--<button class="btn-link btn-xs deleteButton" ng-click="delete(recipe)">supprimer</button>-->
+                        
                     </div>
                 </div>                        
             </div>
