@@ -72,6 +72,7 @@ def exportHTML(recipesSummary):
     }
     .recipe-list-header i{font-size : 1.2em;}
     .recipe-list-header input{border:none; height:55px; margin:auto; background-color: #f7f7f7; }
+    .selected{border-right: 3px solid #1abc9c;}
     .deleteButton{color:#fff;}
     .recipe-item{border-bottom: 1px solid #eee; padding-top:0.5em;}
     .recipe-item:hover .deleteButton{color:#f55050; }
@@ -167,7 +168,7 @@ def exportHTML(recipesSummary):
                 
                 </div>
             <div class="recipe-list">
-                <div class="recipe-item" ng-repeat="recipe in recipes | filter:searchText.toLowerCase()" ng-click="recipeSelected(recipe)">
+                <div class="recipe-item" ng-class="{13}" ng-repeat="recipe in recipes | filter:searchText.toLowerCase()" ng-click="recipeSelected(recipe)">
                     <span class="brewer-name">{1}</span>
                     <div class="recipe-name"><a href="toto" >{2}</a>
                         <div class="recipe-style">{3}</div> 
@@ -192,7 +193,7 @@ def exportHTML(recipesSummary):
                     <div class="col-md-6">
                         <h1>{10}</h1>
                         <div class="author">{11} par {12}</div>
-                    </div> ''' .format(str(recipesSummary),  "{{recipe.brewer}}", "{{recipe.name}}", "{{recipe.style}}", "{{currentRecipe.ibu}}","{{currentRecipe.ebc}}","{{currentRecipe.og}}","{{currentRecipe.fg}}","{{currentRecipe.fg}}","{{currentRecipe.alc}}","{{currentRecipe.name}}","{{currentRecipe.style}}","{{currentRecipe.brewer}}")
+                    </div> ''' .format(str(recipesSummary),  "{{recipe.brewer}}", "{{recipe.name}}", "{{recipe.style}}", "{{currentRecipe.ibu}}","{{currentRecipe.ebc}}","{{currentRecipe.og}}","{{currentRecipe.fg}}","{{currentRecipe.fg}}","{{currentRecipe.alc}}","{{currentRecipe.name}}","{{currentRecipe.style}}","{{currentRecipe.brewer}}", str("{'selected' : activeClass == recipe.path}"))
 
 
     resultHtml +='''            

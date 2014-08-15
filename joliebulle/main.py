@@ -850,7 +850,6 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         if self.brewdayLock == 0 : 
             self.stackedWidget.setCurrentIndex(2)
             self.brewdayLock = 1 
-
             data = self.recipe.export("json")
             pyDir = os.path.abspath(os.path.dirname(__file__))
             baseUrl = QtCore.QUrl.fromLocalFile(os.path.join(pyDir, "static/"))

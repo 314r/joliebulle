@@ -21,8 +21,10 @@ recipesApp.controller('RecipeslibCtrl', ['$scope','$http', '$filter', function (
     	
     };
     $scope.recipeSelected = function (recipe) {
+
         $scope.active = true;
         $scope.currentRecipe = recipe;
+        $scope.activeClass = $scope.currentRecipe.path;
         main.viewRecipeLib(recipe.path);
         
     };
