@@ -2,14 +2,14 @@ recipesApp.controller('RecipeslibCtrl', ['$scope','$http', '$filter', function (
     "use strict";
     $scope.active = false;
 
-    $scope.$watch('dataJson', function () {
-        $scope.recipes = $scope.dataJson;
+    $scope.init = function(dataJson) {
+        $scope.recipes = dataJson;
         $scope.recipes = _.chain($scope.recipes)
             .sortBy(function(o){return o.name.toLowerCase();})
-            .sortBy(function(o){return o.author.toLowerCase();})
+            .sortBy(function(o){return o.brewer.toLowerCase();})
             .value();
         return $scope.recipes;
-    });
+    };
 
     $scope.deleteLib = function (recipe) {
 		$scope.recipes.splice($scope.recipes.indexOf(recipe), 1);

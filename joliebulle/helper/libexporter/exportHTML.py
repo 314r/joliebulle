@@ -139,8 +139,8 @@ def exportHTML(recipesSummary):
 
     resultHtml+='''<body ng-app="recipes-lib">
 
-      <div class="container-fluid" ng-controller="RecipeslibCtrl" ng-init='dataJson={0};'>
-        
+      <div class="container-fluid" ng-controller="RecipeslibCtrl" ng-init='init({0})'>
+                                                                  
         
           <div class="sidebar">
 <!--

@@ -37,7 +37,11 @@ def exportJson(recipe) :
 
 	dic['path'] = recipe.path
 	dic['name'] = recipe.name
-	dic['brewer'] = recipe.brewer
+	if recipe.brewer :
+		dic['brewer'] = recipe.brewer
+	else :
+		dic['brewer'] = "anonymous"
+
 	dic['type'] = recipeView.recipeTypeDisplay()
 	dic['style'] = recipe.style
 	dic['volume'] = recipe.volume
