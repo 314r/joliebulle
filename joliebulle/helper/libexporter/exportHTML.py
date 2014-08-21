@@ -133,6 +133,9 @@ def exportHTML(recipesSummary):
 
     .notes{margin-bottom:90px;padding-left:30px;}
     .notes pre {min-height:100px;}
+    .recipe-list::-webkit-scrollbar { 
+    display: none; 
+}
 </style>
 </head>'''
 
