@@ -72,6 +72,10 @@ def exportHTML(recipesSummary):
     }
     .recipe-list-header i{font-size : 1.2em;}
     .recipe-list-header input{border:none; height:55px; margin:auto; background-color: #f7f7f7; }
+    .sortButton{color:#363636;}
+    .dropdown-menu {z-index:10000;}
+    #menuSort{margin-left:50px; font-size:1em;}
+    #menuSort i{padding-left:15px;font-size:1em;} 
     .selected{border-right: 3px solid #1abc9c;}
     .deleteButton{color:#fff; float:right;}
     .selected .deleteButton{color:#c3c3c3; }
@@ -168,6 +172,12 @@ def exportHTML(recipesSummary):
                  
                 <span class=""><i class="icon-search"></i></span>
                 <input type="text" class="" ng-model="searchText" placeholder="Rechercher..." />
+                <button  class="btn-link btn-xs sortButton" type="button" data-toggle="dropdown"><i class="icon-sort-by-alphabet"></i></button>
+                <ul id="menuSort" class="dropdown-menu" role="menu">
+                                <i class="journalMenu-description">Trier par :</i>
+                                <li><a href="#" ng-click="sortByBrewer()" >Brasseur</a></li>
+                                <li><a href="#" ng-click="sortByName()" >Nom</a></li>
+                        </ul>
                 
                 </div>
             <div class="recipe-list">
@@ -202,7 +212,7 @@ def exportHTML(recipesSummary):
     resultHtml +='''            
                     
                     <div class="recipe-buttons col-md-5">
-                        <button class="btn-link  edit-button" type="button" data-toggle="dropdown" ><i class="icon-flag"></i> Journal <span class="icon-caret-down"></span></button>
+                        <button id="menuJournal" class="btn-link  edit-button" type="button" data-toggle="dropdown" ><i class="icon-flag"></i> Journal <span class="icon-caret-down"></span></button>
                         <ul class="dropdown-menu" role="menu">
                                 <i class="journalMenu-description">Marquer comme :</i>
                                 <li><a onClick="main.addToJournal('brewed')" href="#">Brassée</a></li>

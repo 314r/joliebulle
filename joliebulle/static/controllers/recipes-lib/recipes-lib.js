@@ -29,6 +29,21 @@ recipesApp.controller('RecipeslibCtrl', ['$scope','$http', '$filter', function (
         
     };
 
+    $scope.sortByName = function () {
+        $scope.recipes = _.chain($scope.recipes)
+            .sortBy(function(o){return o.brewer.toLowerCase();})
+            .sortBy(function(o){return o.name.toLowerCase();})
+            .value();
+        return $scope.recipes;
+    }
+
+    $scope.sortByBrewer = function () {
+        $scope.recipes = _.chain($scope.recipes)
+            .sortBy(function(o){return o.name.toLowerCase();})
+            .sortBy(function(o){return o.brewer.toLowerCase();})
+            .value();
+        return $scope.recipes;
+    }
 
 
 
