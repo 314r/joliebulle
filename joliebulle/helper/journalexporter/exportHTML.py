@@ -36,21 +36,22 @@ def exportHTML(itemsList,newItem):
 <script src="controllers/journal/journal.js"></script>
 <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
 <link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
+<link rel="stylesheet" href="css/sidebar.css">
 <style>
-    body {background:url(images/furley_bg.png);}
-    .journal-header {padding-bottom:1em;margin: auto;float:left;}
-    .journal-header h1 {color:#999;font-weight:bold; font-size:24px ;}
-    .journal-list{ margin-bottom:1em; background-color: white; border: 1px solid rgba(0, 0, 0, 0.1);box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.08);padding: 50px;padding-top: 2em;}
+    .main{padding-top:0px; margin-left:75px;}
+    .journal-header {margin-left:120px;margin-top:45px;}
+    .journal-header h1 {font-size:1.75em; color:#444;padding-bottom:0px;margin-top:0;padding-left:0px;}
+    .journal-list{ margin-bottom:1em; padding: 50px;padding-top: 2em;}
     .row-journal{padding-left: 15px; padding-right: 15px;}
     .entry{min-height:3em;}
     .date{background-color:#a1b5bf;padding:0.2em 0.5em 0.2em 0.5em;margin-right:20px;color:white; font-size:85%%; font-weight: bold;}
     .entry button{color:white;}
     .entry:hover button{color:#428bca;}
     .event{padding-right:20px;}
-    .newButton{padding-bottom:2em;padding-right:5px;}
-    .newButton button {background:none; border:none; color:#999;margin-left:15px;padding:0;padding-right: 3px; float:right;}
-    .newButton button:hover{color:#333333;}
-    .new-form {margin-bottom:1em; background-color: white; border: 1px solid rgba(0, 0, 0, 0.1);box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.08);padding: 50px;padding-top: 1em; padding-bottom:1em;}
+    .newButton{padding-top:3em;padding-right:10px;}
+    .newButton button {background-color: #1abc9c; color:#fff; border:none; margin-left:50px;}
+    .newButton button:hover{}
+    .new-form {margin-bottom:1em; padding: 50px;padding-top: 1em; padding-bottom:1em;}
     .entry .saveButton {color:#428bca;}
 </style>
 </head>'''
@@ -59,17 +60,28 @@ def exportHTML(itemsList,newItem):
     resultHtml+='''<body ng-app="journal">
 
 
-    <div class="container">
+    <div class="container-fluid">
+
+        <div class="sidebar">
+<!--
+            <div class="nav-header"></div>
+-->
+            <ul class="nav nav-sidebar">
+              <li onClick="main.showLib()"><a href="#"><i class="icon-beaker"></i> </a></li>
+              <li class="active" onClick="main.showJournal()"><a href="#"><i class="icon-calendar-empty"></i> </a></li>
+              <li onClick="main.showTools()"><a href="#"><i class="icon-cog"></i> </a></li>
+            </ul>
+        </div>
 
         <div class="row">
-            <div class="journal-header col-sm-3">
+            <div class="journal-header col-md-9">
                 <h1>Journal</h1>
             </div>
         </div>
 
        
         
-        <div ng-controller="JournalCtrl" ng-init='dataJson={0};'>
+        <div class="main" ng-controller="JournalCtrl" ng-init='dataJson={0};'>
             
               <div class="new row row-journal" ng-init="newEntry={1}">
                 <div class="newButton">

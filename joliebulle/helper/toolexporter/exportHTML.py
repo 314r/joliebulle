@@ -41,14 +41,17 @@ def exportHTML():
 <script src="controllers/tools/sgplato.js"></script>
 <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
 <link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
+<link rel="stylesheet" href="css/sidebar.css">
 <style>
-    body {background:url(images/furley_bg.png);}
-    .menu{text-align: right; color: #999; font-size: 24px;float:right;margin: auto; padding-top:0.6em;}
-    .menu i:hover{color:#333333;}
+    
+    .main{padding-top:0px; margin-left:75px;}
+    .menu{text-align: right; color: #fff; font-size: 24px;float:right;margin: auto; margin-top:35px;margin-right: 75px; padding:0em 0.3em 0em 0.3em; background-color:#1abc9c;}
+    .menu i:hover{color:;}
     .menu ul{text-align: left;}
-    .tools-header {padding-bottom:1em;margin: auto;float:left;}
-    .tools-header h1 {color:#999;font-weight:bold; font-size:24px ;}
-    .tool-block {margin-top:3em; margin-bottom:1em; background-color: white; border: 1px solid rgba(0, 0, 0, 0.1);box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.08);padding: 50px;padding-top: 0;}
+    .tools-header {margin-left:120px;margin-top:45px;}
+    .tools-header h1 {font-size:1.75em; color:#444;padding-bottom:0px;margin-top:0;padding-left:10px;}
+    .tool-block {margin-top:3em; margin-bottom:1em; margin-right: 60px; background-color: white; border: 1px solid #ddd; padding: 50px;padding-top: 0;}
+    .tool-block label {font-weight:bold; color:#666;}
     h3{margin-bottom: 2em;}
     .tool-result{margin-top:4em;}
     .last{margin-bottom: 3em;}
@@ -63,13 +66,23 @@ input::-webkit-inner-spin-button {
 
     resultHtml +=''' <body ng-app="tools">
 
-    <div class="container">
+    <div class="container-fluid">
+
+    	<div class="sidebar">
+<!--
+            <div class="nav-header"></div>
+-->
+            <ul class="nav nav-sidebar">
+              <li onClick="main.showLib()"><a href="#"><i class="icon-beaker"></i> </a></li>
+              <li onClick="main.showJournal()"><a href="#"><i class="icon-calendar-empty"></i> </a></li>
+              <li class="active" onClick="main.showTools()"><a href="#"><i class="icon-cog"></i> </a></li>
+            </ul>
+        </div>
+
 
         <div class="row">
-            <div class="tools-header col-sm-3">
-                <h1>{0}</h1>
-            </div>
-            <div class="menu btn-group col-sm-2 col-sm-offset-7">
+
+            <div class="menu btn-group col-sm-offset-7">
                 <i class="icon-reorder" data-toggle="dropdown"></i>
                 <ul class="dropdown-menu pull-right" role="menu">    
                                 <li><a href="#gravity">{1}</a></li>
@@ -86,7 +99,9 @@ input::-webkit-inner-spin-button {
 
 
 
-    resultHtml+='''<div class="row row-tools" id="gravity">
+    resultHtml+='''
+    <div class="main">
+    <div class="row row-tools" id="gravity">
             <div ng-controller="GravityToolCtrl" class="tool-block">
                 <h3>{0}</h3>
                 <form class="form-horizontal" role="form">
@@ -427,7 +442,7 @@ input::-webkit-inner-spin-button {
                 </form>
             </div>
         </div>
-
+        </div>
     <!-- Fin container -->
     </div>
 

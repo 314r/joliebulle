@@ -2,7 +2,7 @@
 #­*­coding: utf­8 -­*­
 
 #joliebulle 3.2
-#Copyright (C) 2013 Thomas Gerbet
+#Copyright (C) 2013-2014 Pierre Tavares
 
 #This program is free software; you can redistribute it and/or
 #modify it under the terms of the GNU General Public License
@@ -18,18 +18,9 @@
 #along with this program; if not, write to the Free Software
 #Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-from helper.recipeexporter.exportBeerXML import *
-from helper.recipeexporter.exportHTML import *
-from helper.recipeexporter.exportBBCode import *
-from helper.recipeexporter.exportPrint import *
-from helper.recipeexporter.exportHTMLLegacy import *
-from helper.recipeexporter.exportJson import *
 
-RecipeExporterRepository = {
-    "beerxml": exportBeerXML,
-    "html": exportHTML,
-    "print" : exportPrint,
-    "bbcode": exportBBCode,
-    "html-legacy": exportHTMLLegacy,
-    "json": exportJson
+from helper.libexporter.exportHTML import *
+
+LibExporterRepository = {
+    "html": exportHTML
 }

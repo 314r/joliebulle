@@ -37,6 +37,7 @@ logger = logging.getLogger(__name__)
 class Recipe(Element):
     """A class for storing recipes attributes"""
     def __init__(self):
+        self.path=""
         self.name = ""
         self.brewer = ""
         self.type = model.constants.RECIPE_TYPE_ALL_GRAIN
@@ -121,6 +122,7 @@ class Recipe(Element):
         mcuTot = 0
         for f in self.listeFermentables:
             mcuTot += 4.23*f.color*(f.amount/1000)/float(self.volume)
+            print (mcuTot)
         return 2.939*(mcuTot**0.6859)
 
     def compute_IBUPart(self):

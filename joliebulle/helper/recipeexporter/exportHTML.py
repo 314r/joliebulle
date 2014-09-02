@@ -19,286 +19,249 @@
 #along with this program; if not, write to the Free Software
 #Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-import PyQt4
+
 from PyQt4.QtCore import QCoreApplication
-import sys
-import shutil
-import os
-import os.path
-import glob
-import logging
-import logging.config
-from sys import platform
-
-from view.fermentableview import *
-from view.hopview import *
-from view.miscview import *
-from view.yeastview import *
-from view.mashstepview import *
 
 
-def exportHTML(recipe):
+def exportHTML(data):
     resultHtml = '''
-<!DOCTYPE html>
-<html lang="fr">
+<!doctype html>
+<html>
 <head>
-<title>%s</title>
 <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script src="angular/angular.min.js"></script>
+<script src="jquery/jquery.js"></script>
+<script src="bootstrap/js/bootstrap.min.js"></script>
+<script src="underscore/underscore-min.js"></script>
+<script src="controllers/recipe/main.js"></script>
+<script src="controllers/recipe/recipe.js"></script>
 <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
 <link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
-    <style>
-body {background:url(images/furley_bg.png);}
-.beer-profile{width:800px;margin:auto;padding-top:0.5em;padding-bottom:1em;}
-.beer-profile h1{color:#999;font-weight:bold;margin:auto;padding-top:0.1em; font-size:24px ;float:left;}
-.beer-profile span{padding-right:20px; color:#999;font-weight:bold;padding-top:0.7em;float:right;}
-.beer-profile-last{margin-right: -15px;}
-.part-container{margin:auto;margin-top:3em; margin-bottom:3em; background-color: white; width:800px;border: 1px solid rgba(0, 0, 0, 0.1);box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.08);}
-.tools{margin:auto;margin-top:3em;width:800px;margin-bottom:-2.5em;text-align:right;}
-.tools button {background:none; border:none; color:#999;margin-left:15px;padding:0;padding-right: 3px;}
-.tools button:hover{color:#333333;}
-.journalMenu{text-align:left; float:left;}   
-.journalMenu button {margin-left:0;}
-.journalMenu-description{padding-left:20px;padding-bottom:5px;padding-top:2px;display:block;}
-.info{padding-bottom:1.25em; padding-top:1.25em; text-align:center;}
-.info-titre{display: block;text-transform: uppercase;color:#777; font-size:0.8em;}
-.grains{padding-left: 50px;padding-right: 50px;}
-.grains a {color:#333333;}
-.grains h3 {margin-bottom:1em;}
-.hops{padding-left: 50px;padding-right: 50px;}
-.hops a {color:#333333;}
-.hops h3 {margin-bottom:1em;}
-.miscs{padding-left:50px;padding-right: 50px;}
-.miscs a {color:#333333;}
-.miscs h3 {margin-bottom:1em;}
-.yeasts{padding-left: 50px;padding-right: 50px;}
-.yeasts a {color:#333333;}
-.yeasts h3 {margin-bottom:1em;}
-.profile{padding-left: 50px;padding-right: 50px;}
-.profile a {color:#333333;}
-.profile h3 {margin-bottom:1em;}
-.notes{padding-left: 50px;padding-right: 50px;}
-.notes a {color:#333333;}
-.notes h3 {margin-bottom:1em;}
-.notes pre{border:none;background:none;font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;font-size: 14px;white-space: pre-wrap;}
-.ingredients{text-align:left; margin-bottom:2em;}
-.ingredients td {min-width: 200px;}
-.context{display:inline-block;width:150px;padding: 0.5em 0.5em 0.5em 0.5em;}
-.label-step{background-color:#a1b5bf;padding:0.2em 0.5em 0.2em 0.5em;color:white; font-size:85%%; font-weight: bold;}
-.label-sparge{background-color:#a1b5bf;padding:0.2em 0.5em 0.2em 0.5em;color:white; font-size:85%%; font-weight: bold;}
-#brewChart {margin-top:2.5em; }
+<link rel="stylesheet" href="css/sidebar.css">
+<link rel="stylesheet" href="http://cdn.oesmith.co.uk/morris-0.4.3.min.css">
+<script src="http://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
+<script src="http://cdn.oesmith.co.uk/morris-0.4.3.min.js"></script>
+<style>
+    .recipe-header {padding-left:30px;}
+    .recipe-header h1 { font-size:18px; color:#444;padding-top:15px;padding-bottom:30px;padding-left:0;}
+    .recipe-vol {padding-left:30px;padding-top:30px;}
+    .vol-label {color: #bbb;}
+    .vol-value {background-color:#a1b5bf;padding:0.2em 0.5em 0.2em 0.5em;margin-right:20px;background:#f7f7f7;color:#6f6f6f;font-weight: 800;}
+    .effi-label {color: #bbb;}
+    .effi-value {background-color:#a1b5bf;padding:0.2em 0.5em 0.2em 0.5em;margin-right:20px;background:#f7f7f7;color:#6f6f6f;font-weight: 800;}
+    .boil-label {color: #bbb;}
+    .boil-value {background-color:#a1b5bf;padding:0.2em 0.5em 0.2em 0.5em;margin-right:20px;background:#f7f7f7;color:#6f6f6f;font-weight: 800;}
+    
+    .journalMenu-description{padding-left:20px;padding-bottom:5px;padding-top:2px;display:block;}
 
-    </style>
-</head>
-<body onload="createChart();">
-''' %(recipe.name)    
+    .recipe-infos{border-bottom:solid 1px #eee;padding-bottom:0px;padding-left: 10px;}
+    .profile-sidebar h5 {padding-left: 20px;margin-top:25px; padding-top:9px;padding-bottom:9px;background:#fff;color:#6f6f6f;font-weight: 800;}
+    .recipe-infos-list li{list-style-type: none;color:#6f6f6f;padding-top:14px;}
+    ul.recipe-infos-list{padding-left:20px; padding-top:0;}
+    
+    .recipe-buttons{margin-left:30px;/*border-bottom:solid 1px #eee;*/padding-top: 33px;padding-left:5px;}
+    .edit-button{/*color:#f55050;*/ color:#7ca3fa;padding-right: 20px;}
+    .brewday-button{color:#7ca3fa;padding-right: 20px;padding-top:20px;padding-left:100px;}
+    .tools-recipe{color:#222;float:right;font-size:18px;}
+    .ibu {color:#7ca3fa;}
+    .ebc {color:#7ca3fa;}
+    .gravity {color:#7ca3fa;}
+    .alc {color:#7ca3fa;}
+    .ing{padding-bottom:1.5em;}
+    .name:hover{text-decoration:underline;}
+    .grains{padding-left:30px;}
+    .grains h3 {padding-bottom:18px; color:#bbb ; padding-top:40px;}
+    .hops {padding-left:30px;}
+    .hops h3 {padding-bottom:18px; padding-top:30px;color:#bbb}
+    .yeasts {padding-left:30px;}
+    .yeasts h3 {padding-bottom:18px;padding-top:30px;color:#bbb}
+    #donutchart{padding:0;margin:0;margin-top:-3.5em;}
+    #hopbar{margin-left:-20px;}
+    .profile p{margin-bottom: 1.5em;}
+    .profile-name{font-weight: bold;display:block;}
+    .label-step{background-color:#a1b5bf;padding:0.2em 0.5em 0.2em 0.5em;color:white; font-size:85%%; font-weight: bold;}
+    .label-sparge{background-color:#a1b5bf;padding:0.2em 0.5em 0.2em 0.5em;color:white; font-size:85%%; font-weight: bold;}
+    .profile-ph{display:inline-block;margin-top:1em;margin-bottom:1.5em;background-color:#a1b5bf;padding:0.2em 0.5em 0.2em 0.5em;background:#f7f7f7;color:#6f6f6f;font-weight: 800;}
+    #profile-graph{margin-top:2em;}
 
-    #Navbar
-    resultHtml += '''<div class="beer-profile">
-                        <h1>%s</h1> 
-                        <span class="beer-profile-last" data-toggle="tooltip" data-placement="bottom" title="%s">%s %.1f%%</span> 
-                        <span data-toggle="tooltip" data-placement="bottom" title="%s">%s %.1f</span>      
-                        <span data-toggle="tooltip" data-placement="bottom" title="%s">%s %.3f</span>
-                        <span data-toggle="tooltip" data-placement="bottom" title="%s">%s %.3f</span>
-                        <span data-toggle="tooltip" data-placement="bottom" title="%s">%.0f %s</span> 
-                        <span data-toggle="tooltip" data-placement="bottom" title="%s">%.0f %s</span>
+    .notes{margin-bottom:90px;}
+    .notes pre{min-height:120px;}
 
-                    </div>''' % (shorten(recipe.name),QCoreApplication.translate("Export", "Taux d'alcool", None, QCoreApplication.UnicodeUTF8),QCoreApplication.translate("Export", "Alc", None, QCoreApplication.UnicodeUTF8), recipe.compute_ABV(), QCoreApplication.translate("Export", "Ratio amertume/densité", None, QCoreApplication.UnicodeUTF8),QCoreApplication.translate("Export", "BU/GU", None, QCoreApplication.UnicodeUTF8),recipe.compute_ratioBUGU(), QCoreApplication.translate("Export", "Densité finale", None, QCoreApplication.UnicodeUTF8),QCoreApplication.translate("Export", "DF", None, QCoreApplication.UnicodeUTF8),recipe.compute_FG(), QCoreApplication.translate("Export", "Densité initiale", None, QCoreApplication.UnicodeUTF8), QCoreApplication.translate("Export", "DI", None, QCoreApplication.UnicodeUTF8),recipe.compute_OG(), QCoreApplication.translate("Export", "Teinte", None, QCoreApplication.UnicodeUTF8),recipe.compute_EBC(),QCoreApplication.translate("Export", "EBC", None, QCoreApplication.UnicodeUTF8), QCoreApplication.translate("Export", "Amertume", None, QCoreApplication.UnicodeUTF8),recipe.compute_IBU(),QCoreApplication.translate("Export", "IBU", None, QCoreApplication.UnicodeUTF8),)
+    .row-journal{padding-left: 15px; padding-right: 15px;}
+    .entry{min-height:3em;}
+    .date{background-color:#a1b5bf;padding:0.2em 0.5em 0.2em 0.5em;margin-right:20px;color:white; font-size:85%%; font-weight: bold;}
+    .entry button{color:white;}
+    .entry:hover button{color:#428bca;}
+    .event{padding-right:20px;}
+    .newButton{padding: 10px 0 18px; margin-top:100px;}
+    .newButton button {background:#f7f7f7; border:none; color:#6f6f6f;margin-left:0px;padding:5px 10px 5px 10px;}
+    /*.newButton button:hover{color:#333333;}*/
+    .new-form {margin-bottom:1em;padding: 50px;padding-top: 1em; padding-bottom:1em;}
+    .entry .saveButton {color:#428bca;}
+</style>
+</head>'''
+
+    resultHtml += '''
+<body ng-app="recipe">
 
 
+    <div class="container-fluid" ng-controller="RecipeCtrl" ng-init='init({0})'>
+    ''' .format(data)
 
-    #Ingredients informations
-    # resultHtml += '<h2>%s %.1f %s</h2>' % (
-    #     QCoreApplication.translate("Export", "Ingrédients prévus pour un brassin de", None, QCoreApplication.UnicodeUTF8),
-    #     recipe.volume, QCoreApplication.translate("Export", "litres", None, QCoreApplication.UnicodeUTF8))
-
-    #Outils
-    resultHtml += '''<div class="tools">
-                        <div class="btn-group journalMenu">
-                              <button type="button" data-toggle="dropdown"><i class="icon-flag"></i> %s <span class="icon-caret-down"></span></button>
-                              <ul class="dropdown-menu" role="menu">
-                                <i class="journalMenu-description">%s :</i>
-                                <li><a onClick="main.addToJournal('brewed')" href="#">%s</a></li>
-                                <li><a onClick="main.addToJournal('ferment')" href="#">%s</a></li>
-                                <li><a onClick="main.addToJournal('bottled')" href="#">%s</a></li>
+    resultHtml += '''
+        
+        
+        <div class="sidebar col-sm-3 col-md-2 col-lg-2">
+            <ul class="nav nav-sidebar">
+                <li class="active" onClick="main.showLib()"><a href="#"><i class="icon-beaker"></i> Recettes</a></li>
+                <li onClick="main.showJournal()"><a href="#"><i class="icon-calendar-empty"></i> Journal</a></li>
+                <li onClick="main.showTools()"><a href="#"><i class="icon-cog"></i> Outils</a></li>
+            </ul>
+            
+            <div class="profile-sidebar">
+                <h5>Profil</h5>
+                <ul class="recipe-infos-list">
+                    <li data-toggle="tooltip" data-placement="right" title="Amertume"><span class="ibu">{{recipe.ibu}}</span> IBU</li>
+                    <li><span class="ebc">{{recipe.ebc}}</span> EBC</li>
+                    <li><span class="gravity">{{recipe.og}}</span> DI</li>
+                    <li><span class="gravity">{{recipe.fg}}</span> DF</li>
+                    <li><span class="alc">{{recipe.bugu}}</span> BU/GU</li>
+                    <li><span class="alc">{{recipe.alc}} %</span> Alc</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="col-md-10 col-md-offset-2 main">
+                   
+            <div class="recipe-header row">
+                <h1 class="col-md-5">{{recipe.name}}</h1>
+                <div class="recipe-buttons col-md-5">
+                    <button class="btn-link  edit-button" type="button" data-toggle="dropdown" ><i class="icon-flag"></i> Journal <span class="icon-caret-down"></span></button>
+                    <ul class="dropdown-menu" role="menu">
+                                <i class="journalMenu-description">Marquer comme :</i>
+                                <li><a onClick="main.addToJournal('brewed')" href="#">Brassée</a></li>
+                                <li><a onClick="main.addToJournal('ferment')" href="#">Mise en fermentation</a></li>
+                                <li><a onClick="main.addToJournal('bottled')" href="#">Embouteillée</a></li>
                                 <li class="divider"></li>
-                                <li><a onClick="main.showJournal()" href="#">%s</a></li>
+                                <li><a onClick="main.showJournal()" href="#">Voir le journal</a></li>
                               </ul>
-                        </div> 
-                              <button type="button" value="edit" onClick="main.editCurrentRecipe()"><i class="icon-wrench"></i> %s</button> 
-                              <button type="button" value="brewday" onClick="main.switchToBrewday()"><i class="icon-dashboard"></i> %s</button>
-                    </div>'''%('Journal',QCoreApplication.translate("Export","Marquer comme", None, QCoreApplication.UnicodeUTF8),QCoreApplication.translate("Export", "Brassée", None, QCoreApplication.UnicodeUTF8),QCoreApplication.translate("Export", "Mise en fermentation", None, QCoreApplication.UnicodeUTF8),QCoreApplication.translate("Export", "Embouteillée", None, QCoreApplication.UnicodeUTF8),QCoreApplication.translate("Export", "Voir le journal", None, QCoreApplication.UnicodeUTF8),QCoreApplication.translate("Export", "Editer la recette", None, QCoreApplication.UnicodeUTF8),QCoreApplication.translate("Export", "Mode brassage", None, QCoreApplication.UnicodeUTF8))
+                    <button class="btn-link  edit-button" type="button" onClick="main.editCurrentRecipe()"><i class="icon-wrench"></i> Editer la recette </button>
+                </div>
+            </div>
+            
+            <div class="recipe-vol">
+                <span class="vol-label">Vol</span> <span class="vol-value">{{recipe.volume}}L</span>
+                <span class="effi-label"> Rendement</span> <span class="effi-value">{{recipe.efficiency}}%</span>
+                <span class="boil-label"> Ebullition</span> <span class="boil-value">{{recipe.boilTime}} min</span>
+            
+            </div>
 
-    # resultHtml += ''' <button type="button" class="btn btn-link">Editer la recette</button> <button type="button" class="btn btn-link">Mode brassage</button>'''
+            <div class="grains col-md-10">
+                <h3>Grains & sucres</h3>
+                <div class="row">
+                    <div class="col-md-10" ng-repeat="fermentable in recipe.fermentables">
+                        <div class="ing row">
+                            <div class="col-md-6 ing-name"><span class="name" data-toggle="popover" data-trigger="hover" data-html="true" data-placement="bottom" data-content="EBC : {{fermentable.color}} <br/> Rendement : {{fermentable.yield}}% <br/> Type : {{fermentable.type}} ">{{fermentable.name}}</span></div>
+                            <div class="col-md-3 ing-amount">{{fermentable.amount}} g</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="hops col-md-10">
+                <h3>Houblons</h3>
+                <div class="row">
+                    <div class="col-md-10" ng-repeat="hop in recipe.hops">
+                        <div class="ing row">
+                            <div class="col-md-3 ing-name"><span class="name" data-toggle="popover" data-trigger="hover" data-html="true" data-placement="bottom" data-content="α : {{hop.alpha}}% <br/> Forme : {{hop.form}} <br/> Proportion : {{hop.ibuPart}} IBU">{{hop.name}}</span></div>
+                            <div class="col-md-3 ing-amount">{{hop.amount}} g</div>
+                            <div class="col-md-3 ing-amount">{{hop.time}} min ({{hop.use}})</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
-    resultHtml += '''<div class="part-container info">
-                        <span class="context"><span class="info-titre">%s</span>%s</span>
-                        <span class="context"><span class="info-titre">%s</span>%.1f%%</span>
-                        <span class="context"><span class="info-titre">%s</span>%.1fL</span>
-                        <span class="context"><span class="info-titre">%s</span>%.0f min</span>
-                    </div>''' % (QCoreApplication.translate("Export", "Style", None, QCoreApplication.UnicodeUTF8),recipe.style, QCoreApplication.translate("Export", "Rendement", None, QCoreApplication.UnicodeUTF8),recipe.efficiency, QCoreApplication.translate("Export", "Volume", None, QCoreApplication.UnicodeUTF8),recipe.volume, QCoreApplication.translate("Export", "Ebullition", None, QCoreApplication.UnicodeUTF8), recipe.boil)
+            <div class="hops col-md-10">
+                <h3>Divers</h3>
+                <div class="row">
+                    <div class="col-md-10" ng-repeat="misc in recipe.miscs">
+                        <div class="ing row">
+                            <div class="col-md-3 ing-name"><span class="name" data-toggle="popover" data-trigger="hover" data-html="true" data-placement="bottom" data-content="Type : {{misc.type}}">{{misc.name}}</span></div>
+                            <div class="col-md-3 ing-amount">{{misc.amount}} g</div>
+                            <div class="col-md-3 ing-amount">{{misc.time}} min ({{misc.use}})</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="yeasts col-md-10">
+                <h3>Levures</h3>
+                <div class="row">
+                    <div class="col-md-7" ng-repeat="yeast in recipe.yeasts">
+                        <div class="ing row">
+                            <div class="col-md-6 ing-name"><span class="name" data-toggle="popover" data-trigger="hover" data-html="true" data-placement="bottom" data-content="Atténuation : {{yeast.attenuation}}% <br/> Forme : {{yeast.form}}">{{yeast.name}} {{yeast.labo}} {{yeast.product_id}}</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
-    #Grains
-    resultHtml += '<div class="part-container grains">'
-    resultHtml += '<h3>%s</h3>' % QCoreApplication.translate("Export", "Grains et sucres", None, QCoreApplication.UnicodeUTF8)
-    resultHtml += '<table class="ingredients">'
-    for f in recipe.listeFermentables:
-        fUI=FermentableView(f)
-        use = QCoreApplication.translate("Export", "Ajout après ébullition", None, QCoreApplication.UnicodeUTF8) if f.useAfterBoil else ''
-        resultHtml += '<tr><td><span data-toggle="popover" data-trigger="hover" data-html="true" data-content="%s : %0.f <br/> %s : %0.f%% <br/> %s : %s " data-placement="bottom"><a>%s</a></span></td><td>%.0f g</td><td>%s</td></tr>' % (QCoreApplication.translate("Export", "EBC", None, QCoreApplication.UnicodeUTF8),f.color,QCoreApplication.translate("Export", "Rendement", None, QCoreApplication.UnicodeUTF8), f.fyield, QCoreApplication.translate("Export", "Type", None, QCoreApplication.UnicodeUTF8),fUI.fermentableTypeDisplay(), f.name, f.amount, use)
-    resultHtml += '</table></div>'
+            <div class="yeasts profile col-md-10 row">
+                <h3 class="col-md-5">Brassage</h3>
+                <div class="recipe-buttons col-md-5">
+                    <button class="btn-link  brewday-button" type="button" onClick="main.showBrewdayMode()"><i class="icon-wrench"></i> Mode brassage </button>
+                </div>
+                <div class="col-md-10">
+                    <span class="profile-name">{{recipe.mashProfile.name}}</span>
+                    <span class="profile-ph">pH {{recipe.mashProfile.ph}}</span>
+                    <div ng-repeat="step in recipe.mashProfile.steps">
+                        <p><span class="label-step">{{step.name}}</span> palier de type {{step.type_view}} à {{step.temp}} °C pendant {{step.time}} minutes</p>
 
+                    </div>
+                    <p><span class="label-step">Rinçage</span> {{recipe.mashProfile.sparge}} °C</p>
+                    <linechart xkey="xkey" ykeys="ykeys" labels="labels" data="chartData"></linechart>
+                </div>
+            </div>            
 
-    #Houblons
-    resultHtml += '<div class="part-container hops">'
-    resultHtml += '<h3>%s</h3>' % QCoreApplication.translate("Export", "Houblons", None, QCoreApplication.UnicodeUTF8)
-    resultHtml += '<table class="ingredients">'
-    for h in recipe.listeHops:
-        hUI = HopView(h)
-        resultHtml += '<tr>'
-        resultHtml += '<td><span data-toggle="popover" data-trigger="hover" data-html="true" data-placement="bottom" data-content="α : %.1f%% <br/> %s : %s <br/> %s : %.1f IBU"><a>%s</a></span></td>' % (h.alpha,QCoreApplication.translate("Export", "Forme", None, QCoreApplication.UnicodeUTF8),hUI.hopFormDisplay(),QCoreApplication.translate("Export", "Proportion", None, QCoreApplication.UnicodeUTF8),recipe.compute_IBUPart()[h],h.name)
-        resultHtml += '<td>%.0f g</td>' % h.amount
-        # resultHtml += '<td>%s (α %.1f %%, %s)</td>' % (h.name, h.alpha, hUI.hopFormDisplay())
-        resultHtml += '<td>%.0f min (%s)</td>' % (h.time, hUI.hopUseDisplay())
+            <div class="yeasts notes col-md-10">
+                <h3>Notes</h3>
+                    <pre>{{recipe.notes}}</pre>            
+            </div>    
 
-        resultHtml += '</tr>'
-    resultHtml += '</table></div>'
+            
+        </div>
 
-    #Ingredients divers
-    if len(recipe.listeMiscs) > 0:
-        resultHtml += '<div class="part-container miscs">'
-        resultHtml += '<h3>%s</h3>' % QCoreApplication.translate("Export", "Ingrédients divers", None, QCoreApplication.UnicodeUTF8)
-        resultHtml += '<table class="ingredients">'
-        for m in recipe.listeMiscs:
-            mUI = MiscView(m)
-            resultHtml += '<tr>'
-            resultHtml += '<td><span <span data-toggle="popover" data-trigger="hover" data-html="true" data-placement="bottom" data-content="%s : %s"><a>%s</a></span></td>' % (QCoreApplication.translate("Export", "Type", None, QCoreApplication.UnicodeUTF8),mUI.miscTypeDisplay(),m.name)
-            resultHtml += '<td>%.0f g</td>' % m.amount
-            resultHtml += '<td>%.0f min (%s)</td>' % (m.time, mUI.miscUseDisplay())
-            resultHtml += '</tr>'
-        resultHtml += '</table></div>'
+       
+    <!-- Fin container     -->
+    </div>
 
-    #Levures
-    resultHtml += '<div class="part-container yeasts">'
-    resultHtml += '<h3>%s</h3>' % QCoreApplication.translate("Export", "Levures", None, QCoreApplication.UnicodeUTF8)
-    resultHtml += '<table class="ingredients">'
-    for y in recipe.listeYeasts:
-        yUI = YeastView(y)
-        resultHtml += '<tr>'   
-        resultHtml += '<td data-toggle="popover" data-trigger="hover" data-html="true" data-placement="bottom" data-content="%s : %0.f%% <br/> %s : %s"><a>%s</a></td>' % (QCoreApplication.translate("Export", "Atténuation", None, QCoreApplication.UnicodeUTF8),y.attenuation,QCoreApplication.translate("Export", "Forme", None, QCoreApplication.UnicodeUTF8),yUI.yeastFormDisplay(),yUI.yeastDetailDisplay())
-        resultHtml += '</tr>'
-    resultHtml += '</table></div>'
+       
 
-    #Brassage informations
-    resultHtml += '<div class="part-container profile">'
-    resultHtml += '<h3 class="brassage-title">%s</h3>' % QCoreApplication.translate("Export", "Brassage", None, QCoreApplication.UnicodeUTF8)
-    resultHtml += '<p class="brassage-profil"><b>%s</b></p><p>pH : %s</p>' % (recipe.mash.name, recipe.mash.ph)
-
-    #Etapes brassage
-    stepsNameString=''
-    stepsTempString=''
-    for step in recipe.mash.listeSteps:
-        mashStepUI = MashStepView(step)
-        #la chaine utilisée pour le graphique :
-        stepsNameString += '''"%s (%s min)", "",''' %(step.name[:15], step.time)
-        stepsTempString += '''%s, %s, ''' %(step.temp,step.temp)
-        resultHtml += '<p><span class="label-step">%s</span> %s %s %s %s °C %s %s %s</p>' % (step.name,
-                                                           QCoreApplication.translate("Export", "palier de type", None, QCoreApplication.UnicodeUTF8),
-                                                           mashStepUI.mashTypeDisplay(),
-                                                           QCoreApplication.translate("Export", "à", None, QCoreApplication.UnicodeUTF8), step.temp,
-                                                           QCoreApplication.translate("Export", "pendant", None, QCoreApplication.UnicodeUTF8), step.time,
-                                                           QCoreApplication.translate("Export", "minutes", None, QCoreApplication.UnicodeUTF8))
-
-    
-
-    #Rincage
-    resultHtml += '<p><span class="label-sparge">%s</span> %s °C</p>' % (QCoreApplication.translate("Export", "Rinçage", None, QCoreApplication.UnicodeUTF8), recipe.mash.spargeTemp)
-
-    #Canvas
-    resultHtml += '''<p><canvas id="brewChart" width="400" height="300"></canvas></p>'''
-    resultHtml += '</div>'
-
-    #Notes
-    if recipe.recipeNotes is not None:
-        resultHtml += '<div class="part-container notes">'
-        resultHtml += '<h3>%s</h3><pre>%s</pre>' % (QCoreApplication.translate("Export", "Notes", None, QCoreApplication.UnicodeUTF8), recipe.recipeNotes)
-        resultHtml += '</div>'
-    
-
-    #Le javascript
-    resultHtml += '''<script src="jquery/jquery.js"></script>
-                     <script src="bootstrap/js/bootstrap.min.js"></script>
-                     <script src="chartjs/Chart.js"></script>'''
-
-    #Tooltips
-    resultHtml += ''' <script type="text/javascript">
-                    $(function () {
-                    $("[data-toggle='tooltip']").tooltip();
-                    });
-                    </script>'''
-
-    #Dropdown
-    resultHtml += ''' <script type="text/javascript">
+<script type="text/javascript">
                     $(function () {
                     $("[data-toggle='dropdown']").dropdown();
                     });
-                    </script>'''
-                    
-    #Popovers
-    resultHtml += ''' <script type="text/javascript">
+</script>
+
+<script type="text/javascript">
+    $(function () {
+    $("[data-toggle='tooltip']").tooltip();
+    });
+</script>  
+
+<script type="text/javascript">
                     $(function () {
                     $("[data-toggle='popover']").popover();
                     });
-                    </script>'''
+</script>          
+</body>
+</html>
 
-    #Graphique
-    resultHtml += '''     <script type="text/javascript">
-function createChart()
-        {
-            //Get the context of the canvas element we want to select
-            var ctx = document.getElementById("brewChart").getContext("2d");
- 
-            //Create the data object to pass to the chart
-            var data = {
-                labels : [%s],
-                datasets : [
-                            {
-                                fillColor : "rgba(220,220,220,0.5)",
-                                strokeColor : "rgba(220,220,220,1)",
-                                pointColor : "rgba(220,220,220,1)",
-                                pointStrokeColor : "#fff",
-                                data : [%s]
-                            },
-                        ]
-                      };
- 
-            //The options we are going to pass to the chart
-            options = {
-                            bezierCurve : false,
-                            scaleOverride : true,
-                            //Number - The number of steps in a hard coded scale
-                            scaleSteps : 10,
-                            //Number - The value jump in the hard coded scale
-                            scaleStepWidth : 3,
-                            //Number - The scale starting value
-                            scaleStartValue : 50,
-                            
-            };
- 
-            //Create the chart
-            new Chart(ctx).Line(data, options);
-        }
-</script>''' %(stepsNameString,stepsTempString)
 
-                
 
-    resultHtml += '</body></html>'
 
+''' 
     return resultHtml
 
 
-def shorten (name) :
-    if len(name) < 25 :
-        shortName = name
-    else :
-        shortName = name[:22] + '...'
-    return shortName
+

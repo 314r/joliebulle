@@ -41,6 +41,8 @@ from edithoublon import *
 from editdivers import * 
 from editlevures import *
 from helper.toolExporterRepository import *
+from helper.libExporterRepository import *
+from helper.brewdayExporterRepository import *
 from importIng import *
 from preBoilDialog import *
 from stepEditWindow import *
@@ -48,8 +50,6 @@ from mashEditWindow import *
 from mashDetail import * 
 from exportMash import *
 from preferences import *
-from brewCalc import *
-from stepAdjustWindow import *
 from home import *
 from globals import *
 #from ui.MainWindow import *
@@ -456,12 +456,12 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         self.dlgPref = DialogPref(self)
         self.dlgStep = DialogStep(self)
         self.dlgMash = DialogMash(self)
-        self.dlgStepBrewday = DialogStepAdjust(self)
+        
         
 
         self.base = ImportBase()
         self.mashProfileExport = ExportMash()
-        self.brewCalc = CalcBrewday()
+        
         
 #        self.base.importBeerXML()
         self.s=0
@@ -501,12 +501,12 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
 
         self.connect(self.actionPreferences, QtCore.SIGNAL("triggered()"), self.dialogPreferences)
         
-        self.spinBoxBoil.valueChanged.connect(self.unlockBrewdayMode)
+        
 
         self.pushButtonSave.clicked.connect(self.enregistrer)
         self.pushButtonCancel.clicked.connect(self.cancelRecipe)
         self.pushButtonOk.clicked.connect(self.okRecipe)
-        self.pushButtonBrewdayModeClose.clicked.connect(self.closeBrewday)
+        
 
         
         #Les vues
@@ -518,7 +518,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         self.connect(self.actionVueEditeurToolBar, QtCore.SIGNAL("triggered()"), self.switchToEditor)
         self.connect(self.actionVueBibliothequeToolBar, QtCore.SIGNAL("triggered()"), self.switchToLibrary)
 
-        self.connect(self.actionBrewdayMode,QtCore.SIGNAL("triggered()"),self.switchToBrewday)
+        
 
         # self.connect(self.buttonEditor, QtCore.SIGNAL("clicked()"),self.switchToEditor)
         # self.connect(self.buttonLibrary, QtCore.SIGNAL("clicked()"), self.switchToLibrary)
@@ -646,32 +646,32 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         self.modeleBiblio = QtGui.QFileSystemModel()
         self.modeleBiblio.setReadOnly(False)
         self.modeleBiblio.setRootPath(recettes_dir)
-        self.setHomePage()
+        
         
         # self.listViewBiblio.setModel(self.modeleBiblio)
         # self.listViewBiblio.setRootIndex(self.modeleBiblio.index(recettes_dir))
         # self.connect(self.listViewBiblio, QtCore.SIGNAL("doubleClicked(const QModelIndex &)"), self.selectionRecette)
         
-        self.treeViewBiblio.setContextMenuPolicy(QtCore.Qt.CustomContextMenu) 
-        self.connect(self.treeViewBiblio, QtCore.SIGNAL("customContextMenuRequested(const QPoint &)"), self.menuBiblio)
+        
         #self.listViewBiblio.setEditTriggers(QtGui.QAbstractItemView.SelectedClicked | QtGui.QAbstractItemView.AnyKeyPressed) 
 
 
-        self.treeViewBiblio.setModel(self.modeleBiblio)
-        self.treeViewBiblio.setRootIndex(self.modeleBiblio.index(recettes_dir))
-        self.treeViewBiblio.setColumnHidden(1,True)
-        self.treeViewBiblio.setColumnHidden(2,True)
-        self.treeViewBiblio.setColumnHidden(3,True)
+
 
         # self.webViewBiblio.setHtml('''<html><p>hello world</p></html>''')
-        self.connect(self.treeViewBiblio, QtCore.SIGNAL("doubleClicked(const QModelIndex &)"), self.viewRecipeBiblio)
-        self.connect(self.treeViewBiblio, QtCore.SIGNAL("clicked(const QModelIndex &)"), self.viewRecipeBiblio)
+        # self.connect(self.treeViewBiblio, QtCore.SIGNAL("doubleClicked(const QModelIndex &)"), self.viewRecipeBiblio)
+        # self.connect(self.treeViewBiblio, QtCore.SIGNAL("clicked(const QModelIndex &)"), self.viewRecipeBiblio)
 
         # self.pushButtonRemoveRecipeBiblio.clicked.connect(self.supprimerBiblio)
         # self.pushButtonNewFolderBiblio.clicked.connect(self.createFolder)
         # self.pushButtonEditRecipeBiblio.clicked.connect(self.renommerBiblio)
 
         self.listdir(recettes_dir)
+        self.showLib()
+
+
+
+
         # self.delegRecipes=RecipesDelegate(self)
         # self.treeViewBiblio.setItemDelegate(self.delegRecipes)    
 
@@ -682,25 +682,8 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         newLibMenu.addAction(self.actionNouvelle_recette_2)
         # self.pushButtonNewFolderBiblio.setMenu(newLibMenu)
 
-        self.actionNouveau_Dossier.triggered.connect(self.createFolder)
+ 
         self.actionNouvelle_recette_2.triggered.connect(self.newRecipeFromLibrary)
-
-
-
-        ############################################################################################################################
-        ############################################################################################################################
-        
-        #Brewday Mode
-        ###############################
-        ###############################
-              
-        self.pushButtonAdjustStep.clicked.connect(self.stepAdjustBrewday)
-        self.tableWidgetStepsBrewday.itemSelectionChanged.connect(self.tableWidgetStepsBrewday_currentRowChanged)
-        self.dlgStepBrewday.stepAdjustBrewdayClosed.connect(self.stepAdjustBrewday_closed)
-        self.radioButtonClassicBrew.toggled.connect(self.brewdayModeCalc)
-        self.pushButtonCheckPreBoil.clicked.connect(self.preBoilCheck)
-
-
 
         
         ##on cree un modele pour les ingredients dispo dans la base
@@ -764,7 +747,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         self.stackedWidget.setCurrentIndex(1)
         self.actionVueEditeurToolBar.setChecked(False)
         self.actionVueBibliothequeToolBar.setChecked(True)
-        self.actionBrewdayMode.setChecked(False)
+        
         self.buttonSave.hide()
         self.buttonNewRecipe.show()
 
@@ -774,8 +757,8 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
 
 
 ###########################################################
-############### Journal ##################
-###########################################################
+############### Journal ##############################
+######################################################
 
     def loadJournal(self):
         self.journal=Journal()
@@ -784,6 +767,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
 
     @QtCore.pyqtSlot()
     def showJournal(self,entry=" '' ") :
+        self.stackedWidget.setCurrentIndex(1)
         self.loadJournal()
         pyDir = os.path.abspath(os.path.dirname(__file__))
         baseUrl = QtCore.QUrl.fromLocalFile(os.path.join(pyDir, "static/"))
@@ -809,7 +793,88 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         d=json.loads(journalJson)
         with open(journal_file, mode="w", encoding="utf-8") as f :
             json.dump(d,f,indent=2)
+
+
+
+############## Bibliothèque ##############################
+##########################################################
+    @QtCore.pyqtSlot()
+    def showLib(self) :
+        # data = json.dumps(self.recipesSummary)
+        # data = data.replace("'","&#39;")
+        self.stackedWidget.setCurrentIndex(1)
+        self.brewdayLock = 0
+        data = self.recipesSummary
+
+        pyDir = os.path.abspath(os.path.dirname(__file__))
+        baseUrl = QtCore.QUrl.fromLocalFile(os.path.join(pyDir, "static/"))
+        self.webViewBiblio.setHtml(LibExporterRepository['html'](data), baseUrl)
+        self.webViewBiblio.page().mainFrame().addToJavaScriptWindowObject("main", self)
+        self.webViewBiblio.page().settings().setAttribute(QtWebKit.QWebSettings.DeveloperExtrasEnabled, True)
+
+
+    @QtCore.pyqtSlot(str)
+    def deleteLib(self,path) :
+        confirmation = QtGui.QMessageBox.question(self,
+                            self.trUtf8("Supprimer"),
+                            self.trUtf8("La recette sera définitivement supprimée <br/> Continuer ?"),
+                            QtGui.QMessageBox.Yes | QtGui.QMessageBox.No)
+        if (confirmation == QtGui.QMessageBox.Yes):
+            os.remove(path)
+            self.listdir(recettes_dir)
+            self.showLib()
+        else :
+            self.showLib()
         
+
+    @QtCore.pyqtSlot()   
+    def backWebViewBiblio(self) : 
+        self.stackedWidget.setCurrentIndex(1)
+
+    
+
+
+############# Vue recette ################################
+##########################################################
+
+    @QtCore.pyqtSlot(str)
+    def viewRecipeLib(self,path):
+        self.actionEnregistrer.setEnabled(True)
+        self.actionEnregistrer_Sous.setEnabled(True)
+        self.actionExporterHtml.setEnabled(True)
+        self.actionCopierBbcode.setEnabled(True)
+
+        self.purge()
+        
+        self.s = path
+
+        self.importBeerXML()
+
+
+
+############# Mode Brassage ################################
+############################################################
+
+    @QtCore.pyqtSlot()
+    def showBrewdayMode(self):
+        if self.brewdayLock == 0 : 
+            self.stackedWidget.setCurrentIndex(2)
+            self.brewdayLock = 1 
+            data = self.recipe.export("json")
+            pyDir = os.path.abspath(os.path.dirname(__file__))
+            baseUrl = QtCore.QUrl.fromLocalFile(os.path.join(pyDir, "static/"))
+            self.webViewBrewday.setHtml(BrewdayExporterRepository['html'](data), baseUrl)
+            self.webViewBrewday.page().mainFrame().addToJavaScriptWindowObject("main", self)
+            self.webViewBrewday.page().settings().setAttribute(QtWebKit.QWebSettings.DeveloperExtrasEnabled, True)
+        else :
+            self.stackedWidget.setCurrentIndex(2)
+
+
+
+
+
+        
+
 
 
 
@@ -817,8 +882,9 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
 ###### Outils ############################################
 ##########################################################
 
-
+    @QtCore.pyqtSlot()
     def showTools(self):
+        self.stackedWidget.setCurrentIndex(1)
         pyDir = os.path.abspath(os.path.dirname(__file__))
         baseUrl = QtCore.QUrl.fromLocalFile(os.path.join(pyDir, "static/"))
         self.webViewBiblio.setHtml(ToolExporterRepository["html"](), baseUrl)
@@ -878,64 +944,11 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         
         self.comboBoxM.clear()
         self.comboBoxM.setModel(view.base.getMiscsQtModel() )
-        
-    def selectionRecette2(self):
-        selection = self.treeViewBiblio.selectionModel()
-        self.indexRecette = selection.currentIndex()
 
-        self.chemin =self.modeleBiblio.filePath (self.indexRecette)
-        if os.path.isdir(self.chemin) == False :
-            self.purge()
-            self.s = self.chemin
-        
-            self.importBeerXML()
-            logger.debug("selectionRecette2 -> initModele")
-            self.initModele()
-            self.stackedWidget.setCurrentIndex(0)
-            self.actionVueEditeurToolBar.setChecked(True)
-            self.actionVueBibliothequeToolBar.setChecked(False)
-        else :
-            logger.debug("Répertoire sélectionné")
-
-
-    def viewRecipeBiblio(self):
-        self.actionEnregistrer.setEnabled(True)
-        self.actionEnregistrer_Sous.setEnabled(True)
-        self.actionExporterHtml.setEnabled(True)
-        self.actionCopierBbcode.setEnabled(True)
-
-        selection = self.treeViewBiblio.selectionModel()
-        self.indexRecette = selection.currentIndex()
-
-        self.chemin =self.modeleBiblio.filePath(self.indexRecette)
-        if os.path.isdir(self.chemin) == False :
-            
-            self.purge()
-            
-            self.s = self.chemin
-
-            self.importBeerXML()
-            pyDir = os.path.abspath(os.path.dirname(__file__))
-            baseUrl = QtCore.QUrl.fromLocalFile(os.path.join(pyDir, "static/"))
-            self.webViewBiblio.setHtml(self.recipe.export("html"), baseUrl)
-            self.webViewBiblio.page().mainFrame().addToJavaScriptWindowObject("main", self)
-
-            # self.modele.blockSignals(True)
-            #logger.debug("viewRecipeBiblio -> MVC")
-            #self.MVC()
-            # self.modele.blockSignals(False)
-        else :
-            logger.debug("Répertoire sélectionné")
-
-    def setHomePage(self) :
-        home = HomePage()
-        pyDir = os.path.abspath(os.path.dirname(__file__))
-        baseUrl = QtCore.QUrl.fromLocalFile(os.path.join(pyDir, "static/"))
-        home.generateHomePage()
-        self.webViewBiblio.setHtml(home.homePage, baseUrl)
 
 
     def listdir(self, rootdir) :
+        self.recipesSummary="["
         fileList=[]
         rootList=[]
         filenameList=[]
@@ -953,6 +966,12 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
             j=j+1
             recipe = fileList[j-1]
             try :
+                self.recipesSummary += str (self.jsonRecipeLib(recipe))
+                if j < len(filenameList) :
+                    self.recipesSummary += ","
+
+
+                # print(self.jsonRecipeLib(recipe))
                 arbre = ET.parse(recipe)
                 presentation=arbre.find('.//RECIPE')
                 for nom in presentation :
@@ -962,12 +981,13 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
                            if nom.text == None :
                                nomRecette = " "
                            newFileNameList.append(nomRecette)
-                           print("nomRecette",nomRecette)
                     except :
                         pass
             except :
                 logger.debug("le fichier %s n'est pas une recette" %(recipe))
                 newFileNameList.append(None)
+        self.recipesSummary += "]"
+
                 
 
         #on reconstitue
@@ -1014,11 +1034,53 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
                     check = r.rename(old,new)
                 except:
                     pass
+
+
+    def jsonRecipeLib(self,recipe) :
+        # dic={}
+        # dic['path'] = recipe
+        # arbre = ET.parse(recipe)
+        # presentation=arbre.find('.//RECIPE')
+        # style = arbre.find('.//STYLE')
+        # for nom in presentation :
+        #     try :
+        #         if nom.tag == "NAME" :
+        #            nomRecette = nom.text
+        #            if nom.text == None :
+        #                nomRecette = "empty"
+        #            dic['name'] = nomRecette
+        #     except :
+        #         pass
+        # for auth in presentation :
+        #     try :
+        #         if auth.tag == "BREWER" :
+        #            authRecipe = auth.text
+        #            if auth.text == None :
+        #                authRecipe = "anonymous"
+        #            dic['author'] = authRecipe
+        #     except :
+        #         pass
+        # for nom in style :
+        #     try :
+        #         if nom.tag == "NAME" :
+        #            styleRecipe = nom.text
+        #            if nom.text == None :
+        #                styleRecipe = " no style"
+        #            dic['style'] = styleRecipe
+        #     except :
+        #         pass
+        self.s = recipe
+        self.importBeerXML()
+        data = self.recipe.export("json")
+        data = data[1:-1]
+        return data
+
+        # return dic
   
     @QtCore.pyqtSlot()               
     def editCurrentRecipe(self):
         self.switchToEditor()
-        self.s = self.chemin
+        # self.s = self.chemin
         
         self.importBeerXML()
         # self.modele.blockSignals(True)
@@ -1044,68 +1106,8 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         except :
             self.comboBoxMashProfiles.setCurrentIndex(-1)
 
-        
-    def menuBiblio(self,position) :
-        selection = self.treeViewBiblio.selectionModel()
-        self.indexRecette = selection.currentIndex()
-        menu = QtGui.QMenu()
-        #EditeurAction = menu.addAction("Editeur de recette")
-        RenommerAction  = menu.addAction(self.trUtf8("Renommer"))
-        SupprimerAction = menu.addAction(self.trUtf8("Supprimer"))        
-        # CopyAction = menu.addAction(self.trUtf8("Copier"))
-        # PasteAction = menu.addAction(self.trUtf8("Coller"))
-        FolderAction = menu.addAction(self.trUtf8("Nouveau dossier"))
-        # UpAction = menu.addAction(self.trUtf8("Remonter"))
-        menu.addAction(self.actionNouvelle_recette_2)
-        
-        # PasteAction.setEnabled(False)
-        # clipboard = app.clipboard()
-        # data = clipboard.mimeData
-        # if clipboard.mimeData().hasUrls() :
-        #     PasteAction.setEnabled(True)
+              
 
-        RenommerAction.setEnabled(False)
-        if self.modeleBiblio.isDir(self.indexRecette) :
-            RenommerAction.setEnabled(True)
-               
-        action = menu.exec_(self.listViewBiblio.mapToGlobal(position))
-        #if action == EditeurAction:
-          #  self.switchToEditor()
-        if action == SupprimerAction:
-            self.supprimerBiblio()  
-        if action == RenommerAction:
-            self.renommerBiblio() 
-        if action == FolderAction:
-            self.createFolder()   
-        # if action == UpAction :
-        #     self.upFolder()
-        # if action == CopyAction :
-        #     self.copy()
-        # if action == PasteAction :
-        #     self.paste()
-
-        
-        
-                    
-    def supprimerBiblio (self) :
-        selection = self.treeViewBiblio.selectionModel()
-        self.indexRecette = selection.currentIndex()
-        confirmation = QtGui.QMessageBox.question(self,
-                            self.trUtf8("Supprimer"),
-                            self.trUtf8("La recette sera définitivement supprimée <br/> Continuer ?"),
-                            QtGui.QMessageBox.Yes | QtGui.QMessageBox.No)
-        if (confirmation == QtGui.QMessageBox.Yes):
-            self.modeleBiblio.remove(self.indexRecette)
-        else :      
-            pass
-    
-    def renommerBiblio (self) :
-        selection = self.treeViewBiblio.selectionModel()
-        self.indexRecette = selection.currentIndex()
-        if self.modeleBiblio.isDir(self.indexRecette) :
-            self.treeViewBiblio.edit(self.indexRecette)
-        else :
-            pass
 
     def importInLib (self):
         self.s = QtGui.QFileDialog.getOpenFileName(self, self.trUtf8("Ouvrir un fichier"), home_dir,
@@ -1130,45 +1132,6 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
             errors.warningXml()
      
         
-    def createFolder(self) :
-        selection = self.treeViewBiblio.selectionModel()
-        self.indexRecette = selection.currentIndex()
-        text = self.trUtf8("nouveau dossier")
-       # recettes = QtCore.QFile(recettes_dir)
-        path = self.modeleBiblio.filePath(self.treeViewBiblio.rootIndex()) + "/" + text
-        os.mkdir(path)
-        
-        
-    # def navFolder(self) :
-    #     selection = self.treeViewBiblio.selectionModel()
-    #     self.indexRecette = selection.currentIndex()        
-    #     self.listViewBiblio.setRootIndex(self.indexRecette)
-        #self.modeleBiblio.setRootPath("/home/pierre/.config/joliebulle/recettes/nouveau dossier")
-        
-    # def upFolder(self) :
-    #     self.listViewBiblio.setRootIndex(self.treeViewBiblio.rootIndex().parent())
-        
-    # def copy (self) :
-    #     data = QtCore.QMimeData()
-    #     selection = self.treeViewBiblio.selectionModel()
-    #     self.indexRecette = selection.currentIndex()  
-    #     path = self.modeleBiblio.filePath(self.indexRecette)
-    #     url = QtCore.QUrl.fromLocalFile(path)
-    #     self.lurl = [url]
-    #     data.setUrls(self.lurl)
-    #     clipboard = app.clipboard()
-    #     clipboard.setMimeData(data)
-              
-    # def paste (self) :
-    #     clipboard = app.clipboard()
-    #     data = clipboard.mimeData()
-    #     file = QtCore.QFile()
-    #     file.setFileName(self.lurl[0].toLocalFile())
-    #     info = QtCore.QFileInfo(file.fileName())
-    #     name= info.fileName()
-    #     path = self.modeleBiblio.filePath(self.treeViewBiblio.rootIndex()) + "/" + name
-    #     file.copy(path)
-    #     clipboard.clear()
        
     def cancelRecipe(self):
         self.switchToLibrary() 
@@ -1180,14 +1143,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         else :
             pass
 
-    def closeBrewday(self) :
-        self.stackedWidget.setCurrentIndex(1)        
-        self.actionVueEditeurToolBar.setChecked(False)
-        self.actionVueBibliothequeToolBar.setChecked(True)
-        self.actionBrewdayMode.setChecked(False)
-        self.buttonSave.hide()
-        self.buttonNewRecipe.show()
-              
+             
     def initRep(self) :   
         home = QtCore.QDir(home_dir)
         config = QtCore.QDir(config_dir)
@@ -1248,24 +1204,11 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         self.stackedWidget.setCurrentIndex(0)
         self.buttonNewRecipe.show()
 
-        
+    @QtCore.pyqtSlot()    
     def switchToLibrary(self) :
         self.stackedWidget.setCurrentIndex(1)        
-        self.viewRecipeBiblio()
-        #on remet à jour, au cas où le nom de recette aurait changé
-        # try :
-            # if self.nameChanged == True:
-        # self.listdir(recettes_dir)
-        #     #on redéfinit la sélection
-        # self.treeViewBiblio.clearSelection()
-        # path =  recettes_dir + "/" + self.recipe.name + ".xml"
-        # currentFileIndex = self.modeleBiblio.index(path)
-        # self.treeViewBiblio.setCurrentIndex(currentFileIndex)
-        # self.viewRecipeBiblio()
-        # else :
-        #     pass
-        # except :
-        #     self.treeViewBiblio.clearSelection()
+        # self.viewRecipeLib(self.s)
+
  
     def switchToNotes(self) :
         self.stackedWidget.setCurrentIndex(2)        
@@ -1274,60 +1217,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
     def switchToMash(self) :
         self.stackedWidget.setCurrentIndex(3)        
 
-    @QtCore.pyqtSlot()     
-    def switchToBrewday(self) :
-        if not self.recipe.mash.listeSteps and self.recipe.type != 2 : 
-            errors = Errors()
-            errors.errorMashMissing()
-            self.radioButtonClassicBrew.setEnabled(False)
-            self.radioButtonBIAB.setEnabled(False)
-            self.tableWidgetStepsBrewday.setEnabled(False)
-            self.labelSpargeVol.setEnabled(False)
-            self.labelSpargeTemp.setEnabled(False)
-            self.labelGrainVolume.setEnabled(False)
-            self.labelTotalVolumeStrike.setEnabled(False)
-            self.labelTotalVolumeLast.setEnabled(False)
-            self.labelDisabledExtractBrewing.hide()
-            self.pushButtonAdjustStep.setEnabled(False)
 
-        elif self.recipe.type == 2 :
-            self.radioButtonClassicBrew.setEnabled(False)
-            self.radioButtonBIAB.setEnabled(False)
-            self.tableWidgetStepsBrewday.setEnabled(False)
-            self.tableWidgetStepsBrewday.clear()
-            self.labelSpargeVol.setEnabled(False)
-            self.labelSpargeVol.setText("0")
-            self.labelSpargeTemp.setEnabled(False)
-            self.labelSpargeTemp.setText("0")
-            self.labelGrainVolume.setEnabled(False)
-            self.labelGrainVolume.setText("0")
-            self.labelTotalVolumeStrike.setEnabled(False)
-            self.labelTotalVolumeStrike.setText("0")
-            self.labelTotalVolumeLast.setEnabled(False)
-            self.labelTotalVolumeLast.setText("0")
-            self.labelDisabledExtractBrewing.show()
-            self.pushButtonAdjustStep.setEnabled(False)
-        else :
-            self.radioButtonClassicBrew.setEnabled(True)
-            self.radioButtonBIAB.setEnabled(True)
-            self.tableWidgetStepsBrewday.setEnabled(True)
-            self.labelSpargeVol.setEnabled(True)
-            self.labelSpargeTemp.setEnabled(True)
-            self.labelGrainVolume.setEnabled(True)
-            self.labelTotalVolumeStrike.setEnabled(True)
-            self.labelTotalVolumeLast.setEnabled(True)
-            self.labelDisabledExtractBrewing.hide()
-            self.pushButtonAdjustStep.setEnabled(True)
-
-
-        logger.debug ("lock %s",self.brewdayLock)
-        self.stackedWidget.setCurrentIndex(4)        
-
-        if self.brewdayLock == 1 :
-            pass
-        else :
-            self.brewdayModeCalc()
-        self.tableWidgetStepsBrewday.setCurrentCell(0,0)
 
     def pageChanged(self, newIndex):
         self.previousPage.append(newIndex)
@@ -1538,25 +1428,18 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         self.dlgEditY.setModel()
         self.dlgEditY.show()     
 
-    def preBoilCheck(self) :
-        self.dlgPreBoil = DialogPreBoil(self)
-        self.dlgPreBoil.setData(self.brewCalc.volPreBoil, self.brewCalc.preBoilSg, self.recipe.compute_GU(), self.recipe.volume)
-        self.dlgPreBoil.setModal(True)
-        self.dlgPreBoil.show()
+    # def preBoilCheck(self) :
+    #     self.dlgPreBoil = DialogPreBoil(self)
+    #     self.dlgPreBoil.setData(self.brewCalc.volPreBoil, self.brewCalc.preBoilSg, self.recipe.compute_GU(), self.recipe.volume)
+    #     self.dlgPreBoil.setModal(True)
+    #     self.dlgPreBoil.show()
 
         
     def dialogPreferences (self) :
         self.dlgPref.setModal(True)
         self.dlgPref.show()
-        
-    def stepAdjustBrewday(self) :
-        self.tableWidgetStepsBrewday_currentRowChanged()
-        self.dlgStepBrewday.setModal(True)
-        self.dlgStepBrewday.show()
-        #logger.debug(self.)
-        self.dlgStepBrewday.setFields(self.brewdayCurrentStepTargetTemp, self.brewdayCurrentStepRatio, self.brewdayCurrentStepInfuseAmount, self.brewdayCurrentStepWaterTemp, self.recipe.compute_grainWeight(), self.stepsListVol, self.brewdayCurrentRow, self.brewdayListTemp, self.strikeTargetTemp)
-        
-        
+    
+       
     def purge (self) :
         self.clearModele()
         self.s = 0
@@ -1889,7 +1772,6 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
     def mashComboChanged (self) :
         #on remet le verrou à 0, il va falloir recalculer en repassant en brewday mode
         self.brewdayLock = 0
-        self.enableBrewdayMode()
         try :
             i =self.comboBoxMashProfiles.currentIndex()
             self.currentMash = ImportBase().listeMashes[i]
@@ -1897,7 +1779,6 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
             self.currentMash = self.currentRecipeMash
         if i == -1 :
             self.currentMash = Mash()
-        self.tableWidgetStepsBrewday_currentRowChanged()
         self.recipe.mash = self.currentMash
         
     def seeMash(self) :
@@ -2087,247 +1968,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         self.mashProfileExport.export(ImportBase().listeMashes)
         self.mashProfileExport.enregistrer(mash_file)
                
-    def brewdayModeCalc(self) :
-        self.labelWarningBiab.hide() 
-        self.brewdayLock = 1
-    
-        if self.radioButtonClassicBrew.isChecked() :
-            self.labelNoSparge.hide()
-            self.labelSparge1.show()
-            self.labelSparge2.show()
-            self.labelSpargeTemp.show()
-            self.labelSpargeVol.show()            
-        else :
-            self.labelNoSparge.show()
-            self.labelSparge1.hide()
-            self.labelSparge2.hide()
-            self.labelSpargeTemp.hide()
-            self.labelSpargeVol.hide()
-            
-        self.labelNoDecoction.hide()
-                
-        self.brewCalc.calcPreBoilVolume(self.recipe.volume, self.spinBoxBoil.value())
         
-        self.brewCalc.calcPreBoilSg(self.recipe.compute_GU_PreBoil(), self.recipe.volume)
-       
-        
-        self.labelPreBoilVol.setText("%.2f" %(self.brewCalc.volPreBoil) + " " + "L")
-        self.labelPreBoilGravity.setText("%.3f" %(self.brewCalc.preBoilSg))
-        
-        
-        listSteps = self.recipe.mash.listeSteps
-
-        spargeTemp = float(self.recipe.mash.spargeTemp)
-
-
-        
-        strikeStep = listSteps[0]
-        strikeTargetTemp = strikeStep.temp
-        strikeName = strikeStep.name
-        strikeTime = strikeStep.time
-        
-        self.tableWidgetStepsBrewday.setRowCount(len(listSteps))
-        
-#       si on n'est pas dans le cas d'un BIAB
-        if self.radioButtonClassicBrew.isChecked() :
-            self.brewCalc.calcStrikeTemp(strikeTargetTemp, 3)
-            grainWeight = self.recipe.compute_grainWeight()
-            self.brewCalc.calcStrikeVol(grainWeight, 3)
-            self.brewCalc.calcMashVolume(grainWeight)
-            self.brewCalc.calcGrainRetention(grainWeight)
-        
-            listVol = []
-            listVol.append(self.brewCalc.strikeVol)
-            self.brewdayListTemp = []
-            listName = []
-            #on traite les paliers autres que l'empâtage,
-            i = 0
-            for step in self.recipe.mash.listeSteps[1::]:
-                i += 1
-                stepName = step.name
-                stepTemp = float(step.temp)
-                stepType= step.type
-                stepTime = step.time
-                
-                listName.append(stepName)
-                self.brewdayListTemp.append(stepTemp)
-                if i == 1 :
-                    mashTemp = strikeTargetTemp
-                elif i != 1 :
-                    mashTemp = self.brewdayListTemp[i-2]
-                
-                self.brewCalc.calcInfusionStep(i, self.recipe.compute_grainWeight(), listVol, stepTemp, mashTemp, 90, stepType )
-
-                listVol.append(self.brewCalc.infuseVol)
-                
-                self.tableWidgetStepsBrewday.setItem(i,0,QtGui.QTableWidgetItem(stepName))
-                self.tableWidgetStepsBrewday.setItem(i,1,QtGui.QTableWidgetItem("%.1f" %(self.brewCalc.infuseVol)))
-                if stepType == model.constants.MASH_STEP_INFUSION :
-                    self.tableWidgetStepsBrewday.setItem(i,2,QtGui.QTableWidgetItem(str(90)))
-                elif stepType == model.constants.MASH_STEP_TEMPERATURE:
-                    self.tableWidgetStepsBrewday.setItem(i,2,QtGui.QTableWidgetItem(str(0)))
-                else : 
-                    self.labelNoDecoction.show()
-                    
-                self.tableWidgetStepsBrewday.setItem(i,3,QtGui.QTableWidgetItem("%.1f" %(self.brewCalc.newRatio))) 
-                self.tableWidgetStepsBrewday.setItem(i,4,QtGui.QTableWidgetItem("%.1f" %(stepTemp) + "°C, " + stepTime +" min"))         
-
-            
-              
-            self.tableWidgetStepsBrewday.setItem(0,0,QtGui.QTableWidgetItem(strikeName))
-            self.tableWidgetStepsBrewday.setItem(0,1,QtGui.QTableWidgetItem("%.1f" %(self.brewCalc.strikeVol)))
-            self.tableWidgetStepsBrewday.setItem(0,2,QtGui.QTableWidgetItem("%.1f" %(self.brewCalc.strikeTemp)))
-            self.tableWidgetStepsBrewday.setItem(0,3,QtGui.QTableWidgetItem("%.1f" %(self.brewCalc.strikeVol/(self.recipe.compute_grainWeight()/1000))))
-            self.tableWidgetStepsBrewday.setItem(0,4,QtGui.QTableWidgetItem(str(strikeTargetTemp) + "°C, " + str(strikeTime) +" min"))
-
-            # Vérifie si le bouton ajuster doit être utilisable.
-            j = self.tableWidgetStepsBrewday.currentRow()
-            step = listSteps[j]
-            stepType= step.type
-            if stepType == model.constants.MASH_STEP_INFUSION :
-                self.pushButtonAdjustStep.setEnabled(True)
-            else :
-                self.pushButtonAdjustStep.setEnabled(False)
-
-            self.stepsListVol = listVol
-            
-            self.brewCalc.calcSpargeVol(self.stepsListVol, self.brewCalc.volPreBoil, self.brewCalc.grainRetention)
-
-            self.labelSpargeVol.setText("%.2f" %(self.brewCalc.spargeVol) + " " + "L")
-            self.labelSpargeTemp.setText("%.1f" %(spargeTemp)+ " " + "°C")
-
-            #on calcule les volumes
-            self.brewCalc.calcMashVolume(self.recipe.compute_grainWeight())
-            self.mashVolumeLastStep = self.brewCalc.mashVolumeStrike + sum(self.stepsListVol) - self.stepsListVol[0]
-            self.labelGrainVolume.setText("%.2f" %(self.brewCalc.grainVolume) + " " + "L")       
-            self.labelTotalVolumeStrike.setText("%.2f" %(self.brewCalc.mashVolumeStrike) + " " + "L") 
-            self.labelTotalVolumeLast.setText("%.2f" %(self.mashVolumeLastStep) + " " + "L")
-    
-        else :
-            self.brewCalc.calcGrainRetention(self.recipe.compute_grainWeight())
-            self.strikeVol = self.brewCalc.volPreBoil + self.brewCalc.grainRetention
-            ratio = self.strikeVol / (self.recipe.compute_grainWeight() / 1000)
-            self.brewCalc.calcStrikeTemp(strikeTargetTemp,ratio)
-                
-            self.tableWidgetStepsBrewday.setItem(0,0,QtGui.QTableWidgetItem(strikeName))
-            self.tableWidgetStepsBrewday.setItem(0,1,QtGui.QTableWidgetItem("%.1f" %(self.strikeVol)))
-            self.tableWidgetStepsBrewday.setItem(0,2,QtGui.QTableWidgetItem("%.1f" %(self.brewCalc.strikeTemp)))
-            self.tableWidgetStepsBrewday.setItem(0,3,QtGui.QTableWidgetItem("%.1f" %(ratio)))
-            self.pushButtonAdjustStep.setEnabled(False)
-
-            #on calcule les volumes
-            self.brewCalc.calcMashVolumeBiab(self.recipe.compute_grainWeight(),self.strikeVol)
-            self.mashVolumeLastStep = self.brewCalc.grainVolume + sum(self.stepsListVol)
-            self.labelGrainVolume.setText("%.2f" %(self.brewCalc.grainVolume) + " " + "L")
-
-            self.labelTotalVolumeStrike.setText("%.2f" %(self.brewCalc.mashVolumeStrike) + " " + "L") 
-            self.labelTotalVolumeLast.setText("idem")
-            
-            #on vérifie que le profil est bien compatible avec un BIAB :
-            i = 0
-            while i < len(listSteps)-1 :
-                i = i+1 
-                step = listSteps[i]
-                stepType= step.type
-                if stepType != model.constants.MASH_STEP_TEMPERATURE:
-                    self.labelWarningBiab.show()
-                else :
-                    pass
-        
-    def tableWidgetStepsBrewday_currentRowChanged (self) :
-
-        # listSteps = self.currentMash.listeSteps
-
-        listSteps=self.recipe.mash.listeSteps
-        try:
-            strikeStep = listSteps[0]
-            strikeTargetTemp = strikeStep.temp
-            self.strikeTargetTemp = strikeTargetTemp
-            self.brewdayCurrentRow = self.tableWidgetStepsBrewday.currentRow()
-            i = self.tableWidgetStepsBrewday.currentRow()
-            if i == -1 :
-                return  #No selection in tableWidgetStepsBrewday
-            step = listSteps[i]
-            stepType= step.type
-
-            self.brewdayCurrentStepName = self.tableWidgetStepsBrewday.item(i,0).text()
-            self.brewdayCurrentStepInfuseAmount = self.tableWidgetStepsBrewday.item(i,1).text()
-            self.brewdayCurrentStepWaterTemp = self.tableWidgetStepsBrewday.item(i,2).text()
-            self.brewdayCurrentStepRatio = self.tableWidgetStepsBrewday.item(i,3).text()
-            if i == 0 :
-                self.brewdayCurrentStepTargetTemp = strikeTargetTemp
-            else :
-                self.brewdayCurrentStepTargetTemp = self.brewdayListTemp[i-1]
-
-            if stepType == 'Infusion' and self.radioButtonClassicBrew.isChecked ():
-                self.pushButtonAdjustStep.setEnabled(True)
-            else :
-                self.pushButtonAdjustStep.setEnabled(False)
-        except IndexError as e:
-            logger.debug("Le profil sélectionné '%s' n'a pas de paliers", self.currentMash.name)
-            
-            
-    def stepAdjustBrewday_closed (self, targetRatio, infuseAmount, waterTemp,listVol, currentRow, listTemp) :
-        #on insère les nouvelles données dans la table
-        self.tableWidgetStepsBrewday.setItem(currentRow,1,QtGui.QTableWidgetItem(str(infuseAmount)))
-        self.tableWidgetStepsBrewday.setItem(currentRow,2,QtGui.QTableWidgetItem("%.1f" %(waterTemp)))
-        self.tableWidgetStepsBrewday.setItem(currentRow,3,QtGui.QTableWidgetItem("%.1f" %(targetRatio)))
-        #il faut tout recalculer après la ligne modifiée
-
-        # BUG BUG BUG BUG
-
-        listSteps = self.recipe.mash.listeSteps
-        
-        i = currentRow
-        while i < len(listSteps) - 1 :
-            i = i+1
-            step = listSteps[i]
-            stepType= step.type
-            stepTemp = float(step.temp)
-            if i == 1 :
-                strikeStep = listSteps[0]
-                strikeTargetTemp = strikeStep.temp
-                mashTemp = strikeTargetTemp
-            else :
-                mashTemp = self.brewdayListTemp[i-2]
-            self.brewCalc.calcInfusionStep(i-1, self.recipe.compute_grainWeight(), listVol, stepTemp, mashTemp, 90, stepType )
-#            listVol.append(self.brewCalc.infuseVol)
-            listVol[i] = self.brewCalc.infuseVol
-            self.tableWidgetStepsBrewday.setItem(i,1,QtGui.QTableWidgetItem("%.1f" %(self.brewCalc.infuseVol)))
-            self.tableWidgetStepsBrewday.setItem(i,3,QtGui.QTableWidgetItem("%.1f" %(self.brewCalc.newRatio)))
-            if stepType == model.constants.MASH_STEP_INFUSION:
-                self.tableWidgetStepsBrewday.setItem(i,2,QtGui.QTableWidgetItem("%.1f" %(90)))
-            else :
-                self.tableWidgetStepsBrewday.setItem(i,2,QtGui.QTableWidgetItem("%.1f" %(0)))
-            
-            
-        #on calcule les volumes
-        self.brewCalc.calcStrikeVol(self.recipe.compute_grainWeight(),targetRatio)
-        self.brewCalc.calcMashVolume(self.recipe.compute_grainWeight())
-        self.mashVolumeLastStep = self.brewCalc.mashVolumeStrike + sum(self.stepsListVol) - self.stepsListVol[0]
-        self.labelTotalVolumeLast.setText("%.2f" %(self.mashVolumeLastStep) + " " + "L")
-        self.labelTotalVolumeStrike.setText("%.2f" %(self.brewCalc.mashVolumeStrike) + " " + "L")
-            
-#            print('température du moût', mashTemp)
-            
-        self.brewCalc.calcSpargeVol(self.stepsListVol, self.brewCalc.volPreBoil, self.brewCalc.grainRetention)
-        self.labelSpargeVol.setText("%.2f" %(self.brewCalc.spargeVol) + " " + "L")
-#        print('volume de rinçage :', self.brewCalc.spargeVol)
-
-        self.tableWidgetStepsBrewday_currentRowChanged()
-        
-    def unlockBrewdayMode (self) :  
-        self.brewdayLock = 0 
-
-    def enableBrewdayMode(self) :
-        if self.comboBoxMashProfiles.currentIndex() == -1 :
-            # self.pushButtonBrewdayMode.setEnabled(False)
-            pass
-        else :
-            # self.pushButtonBrewdayMode.setEnabled(True)
-            pass
-        
-
     def printRecipe (self) :
         printer=QtGui.QPrinter()
         dialog = QtGui.QPrintDialog(printer)
