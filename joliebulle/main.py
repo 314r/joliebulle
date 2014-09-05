@@ -19,7 +19,7 @@
 #You should have received a copy of the GNU General Public License
 #along with this program; if not, write to the Free Software
 #Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
-
+import time
 
 import shutil
 import os
@@ -950,17 +950,13 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
     def listdir(self, rootdir) :
         self.recipesSummary="["
         fileList=[]
-        rootList=[]
         filenameList=[]
         for root, subFolders, files in os.walk(rootdir):
             for file2 in files:
                 fileList.append(os.path.join(root,file2))
-                rootList.append(root)
                 filenameList.append(file2)
-                # print (os.path.join(root, file2))
 
         #on parse
-        newFileNameList = []
         j=0
         while j < len(filenameList) :
             j=j+1
@@ -969,113 +965,21 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
                 self.recipesSummary += str (self.jsonRecipeLib(recipe))
                 if j < len(filenameList) :
                     self.recipesSummary += ","
-
-
-                # print(self.jsonRecipeLib(recipe))
-                arbre = ET.parse(recipe)
-                presentation=arbre.find('.//RECIPE')
-                for nom in presentation :
-                    try :
-                        if nom.tag == "NAME" :
-                           nomRecette = nom.text
-                           if nom.text == None :
-                               nomRecette = " "
-                           newFileNameList.append(nomRecette)
-                    except :
-                        pass
             except :
                 logger.debug("le fichier %s n'est pas une recette" %(recipe))
-                newFileNameList.append(None)
+                
         self.recipesSummary += "]"
+        logger.debug("%s fichiers détectés" %(len(filenameList)))
+        
 
                 
-
-        #on reconstitue
-        newFileList=[]
-        i=0
-        while i < len(filenameList) :
-            i=i+1
-            folder = rootList[i-1]
-            recipe = newFileNameList[i-1]
-            try :
-                newName = os.path.join(folder,recipe)
-            except :
-                newName = None
-            if newName in newFileList and newName != None:
-                logger.debug('doublon !')
-                sameCount= 0 
-                while sameCount < len(newFileNameList) :
-                    sameCount = sameCount+1
-                    newNameModif = newName + '(' + str(sameCount) + ')'
-                    if newNameModif in newFileList :
-                        continue
-                    else :
-                        newFileList.append(newNameModif)
-                        break
-
-            else :
-                newFileList.append(newName) 
-
-        #on renomme
-        r = QtCore.QDir(recettes_dir)
-        k=0
-        while k < len(newFileNameList) :
-            k=k+1
-            #on parcourt la liste à l'envers pour éviter des collisions dans les noms, qui empechent le renommage.
-            old=fileList[-k+1]
-            try :
-                new=newFileList[-k+1]  + '.xml'
-            except :
-                pass
-            if old == new :
-                pass
-            else :
-                try :
-                    check = r.rename(old,new)
-                except:
-                    pass
-
-
     def jsonRecipeLib(self,recipe) :
-        # dic={}
-        # dic['path'] = recipe
-        # arbre = ET.parse(recipe)
-        # presentation=arbre.find('.//RECIPE')
-        # style = arbre.find('.//STYLE')
-        # for nom in presentation :
-        #     try :
-        #         if nom.tag == "NAME" :
-        #            nomRecette = nom.text
-        #            if nom.text == None :
-        #                nomRecette = "empty"
-        #            dic['name'] = nomRecette
-        #     except :
-        #         pass
-        # for auth in presentation :
-        #     try :
-        #         if auth.tag == "BREWER" :
-        #            authRecipe = auth.text
-        #            if auth.text == None :
-        #                authRecipe = "anonymous"
-        #            dic['author'] = authRecipe
-        #     except :
-        #         pass
-        # for nom in style :
-        #     try :
-        #         if nom.tag == "NAME" :
-        #            styleRecipe = nom.text
-        #            if nom.text == None :
-        #                styleRecipe = " no style"
-        #            dic['style'] = styleRecipe
-        #     except :
-        #         pass
         self.s = recipe
-        self.importBeerXML()
+        self.recipe = Recipe.parse(recipe)
         data = self.recipe.export("json")
         data = data[1:-1]
         return data
 
-        # return dic
   
     @QtCore.pyqtSlot()               
     def editCurrentRecipe(self):
@@ -1134,12 +1038,15 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         
        
     def cancelRecipe(self):
-        self.switchToLibrary() 
-
+        self.listdir(recettes_dir) 
+        self.showLib()
+        
     def okRecipe(self):
         self.enregistrer()
         if self.fileSaved :
-            self.switchToLibrary()
+            self.listdir(recettes_dir)
+            self.showLib()
+            
         else :
             pass
 
