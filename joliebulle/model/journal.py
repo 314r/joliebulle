@@ -43,15 +43,18 @@ class Journal :
         with open(jsonFile, "r", encoding="utf-8") as f :
             journal.dct=json.load(f)
             journal.itemsList = journal.dct["items"]
+            print(journal.itemsList)
         return journal
-        json.dump(self.journal,f,default=self.customEncode,indent=2)
+        # json.dump(self.journal,f,default=self.customEncode,indent=2)
 
 
     def loadJournal(self):
         self.journal = Journal().load(journal_file)
         
     def export(self,type,entry) :
-        return JournalExporterRepository[type](json.dumps(self.journal.itemsList), entry)
+        data = json.dumps(self.journal.itemsList)
+        data = data.replace("'","&#39;")
+        return JournalExporterRepository[type](data, entry)
 # '''{recipe : 'recipe', date : '1386261776',event:'event', editing :'True' }'''
 
 
