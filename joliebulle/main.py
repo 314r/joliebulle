@@ -1211,11 +1211,11 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
 
  
     def switchToNotes(self) :
-        self.stackedWidget.setCurrentIndex(2)        
+        self.stackedWidget.setCurrentIndex(3)        
 
         
     def switchToMash(self) :
-        self.stackedWidget.setCurrentIndex(3)        
+        self.stackedWidget.setCurrentIndex(4)        
 
 
 
