@@ -50,7 +50,6 @@ def exportHTML(recipesSummary):
         z-index: 1000;
         display: block;
         background-color: white;
-        border-right: 1px solid #d4d4d4;
         padding-left:30px;
         overflow-y: auto;        
     }
@@ -61,42 +60,44 @@ def exportHTML(recipesSummary):
         top:0;
         z-index: 1000;
         background-color: white;*/
+        background-color: #fff;
+        border-bottom: 1px solid #eee;
         display:block;
         position:fixed;
-        width:300px;
-        background-color: #f7f7f7;
-        padding-left :30px;
+        width:330px;
+        padding-left :60px;
         margin-left:-25px;
-        
 
     }
+
     .recipe-list-header i{font-size : 1.2em;}
-    .recipe-list-header input{border:none; height:55px; margin:auto; background-color: #f7f7f7; }
+    .recipe-list-header input{border:none; height:55px; margin:auto; background-color: #fff; border-bottom: 1px solid #eee;}
     .sortButton{color:#363636;}
     .dropdown-menu {z-index:10000;}
     #menuSort{margin-left:50px; font-size:1em;}
     #menuSort i{padding-left:15px;font-size:1em;} 
-    .selected{border-right: 3px solid #1abc9c;}
+    .selected{border-right: 3px solid #f1c40f;}
     .deleteButton{color:#fff; float:right;}
     .selected .deleteButton{color:#c3c3c3; }
-    .recipe-item{border-bottom: 1px solid #eee; padding-top:0.5em;}
+    .recipe-item{border-bottom: 1px solid #eee; padding-top:0.5em; padding-left:30px;}
     .brewer-name{padding:0.2em 0.5em 0.2em 0em;color:#c3c3c3; margin-bottom:1em; font-size:90%%;}
     .recipe-style{padding:0.2em 0.5em 0.2em 0em;color:#c3c3c3; margin-bottom:0.5em; font-size:90%%; }
-    .recipe-name a{color:#363636; font-weight: bold;}
+    .recipe-name a{color:#6f6f6f; font-weight: bold;}
     .recipe-info{padding-bottom:30px;}
     
-    .recipeView {margin:auto;margin-left:285px;background-color: #fff;}
-    .recipe-view-header {height:55px;position:fixed;left:349px;z-index: 1000;background-color: #f7f7f7; width:100%%;padding-left:10px;}
+    .recipeView {margin:auto;margin-left:315px;background-color: #fff;}
+    .recipe-view-header {width:100%%;min-height:55px;position:fixed;left:379px;z-index: 1000;background-color: #fff;padding-left:10px;border-bottom: 1px solid #eee;}
     
     
     .recipe-header{padding-top:70px;}
     .recipe-header h1 { font-size:1.75em; color:#444;padding-bottom:0px;margin-top:0;padding-left:0px;}
     .author{color:#c3c3c3;padding-left:0px;padding-bottom: 15px;}
-    .recipe-vol {padding-left:30px;padding-top:15px;}
+    .recipeProfile{background-color:#f7f7f7;margin-left:30px;max-width:768px; margin-right:30px;}
+    .recipe-vol {padding-left:30px;padding-top:30px;}
     .vol-label {color: #bbb;}
-    .vol-value {background-color:#a1b5bf;padding:0.2em 0.5em 0.2em 0.5em;margin-right:20px;background:#f7f7f7;color:#6f6f6f;font-weight: 800;}
+    .vol-value {padding:0.2em 0.5em 0.2em 0.5em;margin-right:20px;background:#f7f7f7;color:#6f6f6f;font-weight: 800;}
     .effi-label {color: #bbb;}
-    .effi-value {background-color:#a1b5bf;padding:0.2em 0.5em 0.2em 0.5em;margin-right:20px;background:#f7f7f7;color:#6f6f6f;font-weight: 800;}
+    .effi-value {padding:0.2em 0.5em 0.2em 0.5em;margin-right:20px;background:#f7f7f7;color:#6f6f6f;font-weight: 800;}
     
     .recipe-infos{border-bottom:solid 1px #eee;padding-bottom:0px;padding-left: 10px;}
     .profile-sidebar h5 {padding-left: 20px;margin-top:25px; padding-top:9px;padding-bottom:9px;background:#fff;color:#6f6f6f;font-weight: 800;}
@@ -105,8 +106,8 @@ def exportHTML(recipesSummary):
     
     .recipe-buttons{margin-left:10px;margin-bottom:15px;padding-top: 0px;padding-left:5px;}
     
-    .edit-button{/*color:#f55050;*/ background-color: #1abc9c; color:#fff;margin-right: 20px;padding-bottom:2px;}
-    .edit-button:hover {background-color: #1abc9c; color:#fff;}
+    .edit-button{/*color:#f55050;*/ background-color: #3498db; color:#fff;margin-right: 20px;padding-bottom:2px;}
+    .edit-button:hover {background-color: #3498db; color:#fff;}
     .tools-recipe{color:#222;float:right;font-size:18px;}
     .ibu {color:#7ca3fa;}
     .ebc {color:#7ca3fa;}
@@ -118,7 +119,7 @@ def exportHTML(recipesSummary):
     .use {color:#bbb;}
     .ing-name{font-weight:400; }
     
-    .calculated{display:inline-block; color:#999; font-weight: bold; padding-top: 1.1em; padding-left:30px; }
+    .calculated{color:#999; font-weight: bold; padding-top: 1.1em;padding-bottom: 1.1em; max-width:100px; min-width:75px; }
     
     .hops {padding-left:30px;}
     .hops h3 {padding-bottom:18px; padding-top:30px;color:#bbb}
@@ -190,12 +191,7 @@ def exportHTML(recipesSummary):
                 </div>                        
             </div>
           <div class="recipe-view-header">
-              <div class="calculated" ng-show="active">{4} IBU</div>
-              <div class="calculated" ng-show="active">{5} EBC</div>
-              <div class="calculated" ng-show="active">DI {6} </div>
-              <div class="calculated" ng-show="active">DF {7}</div>
-              <div class="calculated" ng-show="active">BU/GU {8}</div>
-              <div class="calculated" ng-show="active">Alc {9}%</div>
+
               
             
             </div>
@@ -223,9 +219,20 @@ def exportHTML(recipesSummary):
                         </ul>
                         <button class="btn-link  edit-button" type="button" onClick="main.editCurrentRecipe()"><i class="icon-wrench"></i> Editer</button>
                     </div>
-                </div>
-                
-                <div class="recipe-vol">
+                </div>'''
+
+    resultHtml +='''             
+                    <div class="recipeProfile row">
+                        <div class="calculated col-xs-1 col-sm-1 col-md-2" ng-show="active">{0}&nbsp;IBU</div>
+                        <div class="calculated col-xs-1 col-sm-1 col-md-2" ng-show="active">{1}&nbsp;EBC</div>
+                        <div class="calculated col-xs-1 col-sm-1 col-md-2" ng-show="active">DI&nbsp;{2}  </div>
+                        <div class="calculated col-xs-1 col-sm-1 col-md-2" ng-show="active">DF&nbsp;{3} </div>
+                        <div class="calculated col-xs-1 col-sm-1 col-md-2" ng-show="active">BU/GU&nbsp;{4}</div>
+                        <div class="calculated col-xs-1 col-sm-1 col-md-2" ng-show="active">Alc&nbsp;{5}</div>
+                    </div>'''.format("{{currentRecipe.ibu}}", "{{currentRecipe.ebc}}","{{currentRecipe.og}}","{{currentRecipe.fg}}","{{currentRecipe.bugu}}","{{currentRecipe.alc}}")
+
+    resultHtml +='''           
+                <div class="recipe-vol row col-md-12">
                     <span class="vol-label">Vol</span> <span class="vol-value">{{currentRecipe.volume}}L</span>
                     <span class="effi-label">Rendement</span> <span class="effi-value">{{currentRecipe.efficiency}}%</span>
                     <span class="effi-label">Ebullition</span> <span class="effi-value">{{currentRecipe.boilTime}} min</span>

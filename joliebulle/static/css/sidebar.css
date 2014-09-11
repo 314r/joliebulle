@@ -13,9 +13,10 @@
     width:50px;
     z-index: 1000;
     display: block;
-    padding-top:45px;
+    margin-top:54px;
+    border-top: 1px solid #eee;
     
-    background-color: #212121;
+    /*background-color: #212121;*/
     
       
       /*background-color: #fff;*/
@@ -40,7 +41,7 @@
 ul.nav.nav-sidebar {margin-top:30px;}
 .sidebar li {/*border-bottom:1px solid #dae1e8;*/}
 .sidebar i {margin-right:10px;color:#909090;font-size:1.5em;}
-.sidebar .active i {color:#fff;}
+.sidebar .active i {color:#3498db;}
 .nav-sidebar li{ margin-bottom:1.5em;}
 .nav > li > a {padding-top: 5px; padding-bottom:5px; margin-top:10px;}
 .nav > li > a:hover {background : #212121;}
