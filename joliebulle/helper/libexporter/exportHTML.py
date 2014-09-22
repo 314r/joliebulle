@@ -73,6 +73,9 @@ def exportHTML(recipesSummary):
     .recipe-list-header i{font-size : 1.2em;}
     .recipe-list-header input{border:none; height:55px; margin:auto; background-color: #fff; border-bottom: 1px solid #eee;}
     .sortButton{color:#363636;}
+    .sortButton:hover{text-decoration:none;}
+    .newRecipeButton{color:#363636;margin-left:15px;}
+    .newRecipeButton:hover{text-decoration:none;}
     .dropdown-menu {z-index:10000;}
     #menuSort{margin-left:50px; font-size:1em;}
     #menuSort i{padding-left:15px;font-size:1em;} 
@@ -178,7 +181,8 @@ def exportHTML(recipesSummary):
                                 <i class="journalMenu-description">Trier par :</i>
                                 <li><a href="#" ng-click="sortByBrewer()" >Brasseur</a></li>
                                 <li><a href="#" ng-click="sortByName()" >Nom</a></li>
-                        </ul>
+                </ul>
+                <button class="btn-link btn-xs newRecipeButton" type="button" onClick="main.newRecipeFromLibrary()"><i class="icon-plus"></i></button>
                 
                 </div>
             <div class="recipe-list">
@@ -192,7 +196,7 @@ def exportHTML(recipesSummary):
             </div>
 
 
-            
+
           <div class="recipe-view-header">
 
               

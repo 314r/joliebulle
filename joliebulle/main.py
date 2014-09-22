@@ -1352,6 +1352,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         self.s = 0
         self.nouvelle()
         
+    @QtCore.pyqtSlot()    
     def newRecipeFromLibrary (self) :
         self.switchToEditor()
         self.purge()
