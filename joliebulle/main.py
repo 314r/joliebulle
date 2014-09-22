@@ -70,37 +70,7 @@ import view.base
 import itertools
 from errors import *
 
-# class BiblioFileSystem (QtGui.QFileSystemModel) :
-#     def __init__(self, parent=None):
-#         QtGui.QFileSystemModel.__init__(self, parent)
-#     def data(self,index, role=QtCore.Qt.DisplayRole):
-#         if role == QtCore.Qt.DisplayRole:
-#             name = self.fileName(index)    
-#             return name
-          
 
-
-# class RecipesDelegate(QtGui.QStyledItemDelegate) : 
-#     def __init__(self, parent):
-#         QtGui.QStyledItemDelegate.__init__(self, parent)
-#         self.palette = parent.palette()
-#     def paint(self, painter, option, index):
-#         item_var = index.data(QtCore.Qt.DisplayRole)
-#         # item_str = item_var.toPyObject()
-#         item_info = QtCore.QFileInfo(item_var)
-#         item_name = item_info.baseName()
-       
-#         painter.save()
-#         if option.state & QtGui.QStyle.State_Selected: 
-#             #painter.fillRect(option.rect, painter.brush())
-#             painter.fillRect(option.rect, self.palette.highlight())
-#             painter.setPen(self.palette.highlightedText().color() )
-#         painter.drawText(option.rect, QtCore.Qt.AlignLeft | QtCore.Qt.AlignVCenter, item_name)
-#         target = QtCore.QRectF(0, 0, 12, 12)
-#         source = QtCore.QRectF(0, 0, 24, 24)
-#         image = QtGui.QPixmap("folder.png")
-#         painter.drawPixmap(option.rect.topLeft(), image)
-#         painter.restore()
 
 def initLogging():
     home = QtCore.QDir(home_dir)
@@ -337,112 +307,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         QtGui.QMainWindow.__init__(self, parent)
         self.setupUi(self)
 
-#####################################################################################################
-#####################################################################################################
 
-        # self.buttonLibrary=QtGui.QPushButton("Bibliothèque")
-        # self.buttonLibrary.setCheckable(True)
-        # self.buttonEditor=QtGui.QPushButton("Editeur")
-        # self.buttonEditor.setCheckable(True)
-        # self.buttonBrewday=QtGui.QPushButton("Brassage")
-        # self.buttonBrewday.setCheckable(True)
-
-        # self.buttonMenu=QtGui.QPushButton("")
-        # self.buttonMenu.setIcon(QtGui.QIcon("Images/config.png"))
-        # self.buttonMenu.setIconSize(QtCore.QSize(24,24))
-        # self.buttonMenu.setFlat(True)
-
-        # self.buttonSave=QtGui.QPushButton("")
-        # self.buttonSave.setIcon(QtGui.QIcon("Images/save.png"))
-        # self.buttonSave.setIconSize(QtCore.QSize(24,24))
-        # self.buttonSave.setFlat(True)
-        # self.buttonSave.setToolTip(self.trUtf8("Enregistrer"))
-        # self.buttonSave.setText(self.trUtf8("Enregistrer"))
-
-        # self.buttonNewRecipe=QtGui.QPushButton("")
-        # self.buttonNewRecipe.setIcon(QtGui.QIcon("Images/more.png"))
-        # self.buttonNewRecipe.setIconSize(QtCore.QSize(24,24))
-        # self.buttonNewRecipe.setFlat(True)
-        # self.buttonNewRecipe.setToolTip(self.trUtf8("Nouvelle recette"))
-        # self.buttonNewRecipe.setText(self.trUtf8("Nouvelle recette"))
-        
-        
-
-        # left_spacer = QtGui.QWidget()
-        # left_spacer.setSizePolicy(QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Expanding)
-
-        # right_spacer = QtGui.QWidget()
-        # right_spacer.setSizePolicy(QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Expanding)
-
-        # layoutToolBar=QtGui.QHBoxLayout()
-        # layoutToolBar.setContentsMargins(9,0,9,0)
-
-        # # self.toolBar.addAction(self.actionVueBibliothequeToolBar)
-        # # self.toolBar.addAction(self.actionVueEditeurToolBar)
-        # # self.toolBar.addAction(self.actionBrewdayMode)
-        # # self.toolBar.addWidget(left_spacer)
-        
-        
-        # layoutToolBar.addWidget(self.buttonMenu)
-        # # monLayout.addWidget(self.buttonEditor)
-        # # monLayout.addWidget(self.buttonBrewday)
-
-        # self.widgetToolBar=QtGui.QWidget()
-
-        # self.widgetToolBar.setLayout(layoutToolBar)
-
-        # # self.toolBar.addWidget(self.widgetToolBar)
-        # self.toolBar.addWidget(self.buttonNewRecipe)
-        # self.toolBar.addWidget(right_spacer)
-        # self.toolBar.addWidget(self.widgetToolBar)
-
-        # # self.toolBar.addWidget(self.buttonMenu)
-
-       
-        # generalMenu = QtGui.QMenu()
-        # # le menu fichier
-        # menuFile=generalMenu.addMenu(self.trUtf8('''Fichier'''))
-        # menuFile.addAction(self.actionImporter)
-        # menuFile.addAction(self.actionNouvelle_recette)
-        # menuFile.addAction(self.actionRecharger)
-        # menuFile.addAction(self.actionImprimer)
-        # menuFile.addAction(self.actionEnregistrer)
-        # menuFile.addAction(self.actionEnregistrer_Sous)
-        # menuFile.addAction(self.actionExporterHtml)
-        # menuFile.addAction(self.actionCopierBbcode)
-        # menuFile.addAction(self.actionQuitter_2)
-
-        # # le menu journal
-        # menuJournal=generalMenu.addMenu(self.trUtf8('''Journal'''))
-        # menuJournal.addAction(self.actionShowJournal)
-
-        # # le menu ingredients
-        # menuIngredients=generalMenu.addMenu(self.trUtf8('''Ingrédients'''))
-        # menuIngredients.addAction(self.actionEditGrains)
-        # menuIngredients.addAction(self.actionEditHoublons)
-        # menuIngredients.addAction(self.actionEditDivers)
-        # menuIngredients.addAction(self.actionEditLevures)
-        # menuIngredients.addAction(self.actionRestaurerIngredients)
-        # menuIngredients.addAction(self.actionImportIng)
-
-        # # le menu profils
-        # menuProfiles = generalMenu.addMenu(self.trUtf8('''Profils de brassage'''))
-        # menuProfiles.addAction(self.actionManageProfiles)
-
-        # # le menu outils
-        # menuTools=generalMenu.addMenu(self.trUtf8('''Outils'''))
-        # menuTools.addAction(self.actionAllTools)
-
-
-
-        # generalMenu.addAction(self.actionPreferences)
-        # generalMenu.addAction(self.actionAbout)
-        # self.buttonMenu.setMenu(generalMenu)
-
-        # self.buttonSave.clicked.connect(self.enregistrer)
-        # self.buttonSave.hide()
-        # self.buttonNewRecipe.hide()
-        # self.buttonNewRecipe.clicked.connect(self.newRecipeFromLibrary)
 
 
 ######################################################################################
@@ -646,34 +511,9 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         self.modeleBiblio = QtGui.QFileSystemModel()
         self.modeleBiblio.setReadOnly(False)
         self.modeleBiblio.setRootPath(recettes_dir)
-        
-        
-        # self.listViewBiblio.setModel(self.modeleBiblio)
-        # self.listViewBiblio.setRootIndex(self.modeleBiblio.index(recettes_dir))
-        # self.connect(self.listViewBiblio, QtCore.SIGNAL("doubleClicked(const QModelIndex &)"), self.selectionRecette)
-        
-        
-        #self.listViewBiblio.setEditTriggers(QtGui.QAbstractItemView.SelectedClicked | QtGui.QAbstractItemView.AnyKeyPressed) 
-
-
-
-
-        # self.webViewBiblio.setHtml('''<html><p>hello world</p></html>''')
-        # self.connect(self.treeViewBiblio, QtCore.SIGNAL("doubleClicked(const QModelIndex &)"), self.viewRecipeBiblio)
-        # self.connect(self.treeViewBiblio, QtCore.SIGNAL("clicked(const QModelIndex &)"), self.viewRecipeBiblio)
-
-        # self.pushButtonRemoveRecipeBiblio.clicked.connect(self.supprimerBiblio)
-        # self.pushButtonNewFolderBiblio.clicked.connect(self.createFolder)
-        # self.pushButtonEditRecipeBiblio.clicked.connect(self.renommerBiblio)
 
         self.listdir(recettes_dir)
-        self.showLib()
-
-
-
-
-        # self.delegRecipes=RecipesDelegate(self)
-        # self.treeViewBiblio.setItemDelegate(self.delegRecipes)    
+        self.showLib() 
 
 
         # le menu "nouveau"
@@ -713,7 +553,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         self.actionVueEditeurToolBar.setChecked(False)
 
 
-        # print("argv:",sys.argv)
+
 
 ###################################################################################################
 ######## gestion des arguments au lancement du programme  #########################################
@@ -1095,13 +935,6 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         if not settings.conf.contains("Menus") :
             settings.conf.setValue("Menus", "button")
 
-        # on configure la barre de Menus
-        # if settings.conf.value("Menus") == "button":
-        #     self.menuBar.hide()
-        #     self.buttonMenu.show()
-        # if settings.conf.value("Menus") == "menubar":
-        #     self.menuBar.show()
-        #     self.buttonMenu.hide()
 
     def prefReload(self) :
         self.initRep()
@@ -1109,7 +942,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         
     def switchToEditor(self) :
         self.stackedWidget.setCurrentIndex(0)
-        # self.buttonNewRecipe.show()
+       
 
     @QtCore.pyqtSlot()    
     def switchToLibrary(self) :
@@ -1351,7 +1184,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         self.clearModele()
         self.s = 0
         self.nouvelle()
-        
+
     @QtCore.pyqtSlot()    
     def newRecipeFromLibrary (self) :
         self.switchToEditor()
