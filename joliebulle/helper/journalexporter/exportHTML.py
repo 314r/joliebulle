@@ -39,7 +39,8 @@ def exportHTML(itemsList,newItem):
 <link rel="stylesheet" href="css/sidebar.css">
 <style>
     .main{padding-top:0px; margin-left:75px;}
-    .journal-header {margin-left:120px;margin-top:45px;}
+    .header{width:100%%;min-height:55px;position:fixed;left:50px;z-index: 1000;background-color: #fff;padding-left:10px;border-bottom: 1px solid #eee;}
+    .journal-header {margin-left:120px;margin-top:100px;}
     .journal-header h1 {font-size:1.75em; color:#444;padding-bottom:0px;margin-top:0;padding-left:0px;}
     .journal-list{ margin-bottom:1em; padding: 50px;padding-top: 2em;}
     .row-journal{padding-left: 15px; padding-right: 15px;}
@@ -49,7 +50,7 @@ def exportHTML(itemsList,newItem):
     .entry:hover button{color:#428bca;}
     .event{padding-right:20px;}
     .newButton{padding-top:3em;padding-right:10px;}
-    .newButton button {background-color: #1abc9c; color:#fff; border:none; margin-left:50px;}
+    .newButton button {background-color: #3498db; color:#fff; border:none; margin-left:50px;}
     .newButton button:hover{}
     .new-form {margin-bottom:1em; padding: 50px;padding-top: 1em; padding-bottom:1em;}
     .entry .saveButton {color:#428bca;}
@@ -71,6 +72,10 @@ def exportHTML(itemsList,newItem):
               <li class="active" onClick="main.showJournal()"><a href="#"><i class="icon-calendar-empty"></i> </a></li>
               <li onClick="main.showTools()"><a href="#"><i class="icon-cog"></i> </a></li>
             </ul>
+        </div>
+
+        <div class="header">
+   
         </div>
 
         <div class="row">

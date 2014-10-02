@@ -43,9 +43,9 @@ def exportHTML():
 <link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
 <link rel="stylesheet" href="css/sidebar.css">
 <style>
-    
+    .header{width:100%%;min-height:55px;position:fixed;left:50px;z-index: 1000;background-color: #fff;padding-left:10px;border-bottom: 1px solid #eee;}
     .main{padding-top:0px; margin-left:75px;}
-    .menu{text-align: right; color: #fff; font-size: 24px;float:right;margin: auto; margin-top:35px;margin-right: 75px; padding:0em 0.3em 0em 0.3em; background-color:#1abc9c;}
+    .menu{text-align: right; color: #fff; font-size: 24px;float:right;margin: auto; margin-top:90px;margin-right: 75px; padding:0em 0.3em 0em 0.3em; background-color:#3498db;}
     .menu i:hover{color:;}
     .menu ul{text-align: left;}
     .tools-header {margin-left:120px;margin-top:45px;}
@@ -79,7 +79,9 @@ input::-webkit-inner-spin-button {
             </ul>
         </div>
 
-
+        <div class="header">
+   
+        </div>
         <div class="row">
 
             <div class="menu btn-group col-sm-offset-7">

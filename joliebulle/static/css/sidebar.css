@@ -28,8 +28,8 @@
 /*
 .sidebar .active a {border-right: 5px solid #1abc9c; }
 */
-/*
-.nav > li > a:hover {background-color: #3e3e3e; color:#fff; border-right: 5px solid #1abc9c;}
+
+/*.nav > li > a:hover {background-color: #fff; color:#fff; border-right: 5px solid #1abc9c;}
 */
 /*.sidebar a {color:#6f6f6f;}
 .sidebar .active a {color:#333;*/}
@@ -39,8 +39,9 @@ ul.nav.nav-sidebar {margin-top:30px;}
 .sidebar li {/*border-bottom:1px solid #dae1e8;*/}
 .sidebar i {margin-right:10px;color:#909090;font-size:1.5em;}
 .sidebar .active i {color:#3498db;}
+.sidebar i:hover {color:#3498db;}
 .nav-sidebar li{ margin-bottom:1.5em;}
 .nav > li > a {padding-top: 5px; padding-bottom:5px; margin-top:10px;}
-.nav > li > a:hover {background : #212121;}
+.nav > li > a:hover {background : #fff;}
 .nav-header {height:55px;position:fixed;left:0px; top:0px;z-index: 1000;background-color: #3498db; width:50px;}
 
