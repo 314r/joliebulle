@@ -63,13 +63,6 @@ class DialogPref(QtGui.QDialog):
             self.ui.doubleSpinBoxGrainRetention.setValue(int(settings.conf.value("GrainRetention")))
         except :
             pass
-        try:
-            if settings.conf.value("Menus") == "button" :
-                self.ui.radioButtonMenuButton.setChecked(True)
-            elif settings.conf.value("Menus") == "menubar" :
-                self.ui.radioButtonMenuBar.setChecked(True)
-        except :
-            pass
             
         #les connexions
         self.ui.pushButtonChangeLib.clicked.connect(self.changePushed)
@@ -99,11 +92,6 @@ class DialogPref(QtGui.QDialog):
         settings.conf.setValue("GrainTemp", self.ui.spinBoxGrainTemp.value())
         settings.conf.setValue("FudgeFactor", self.ui.doubleSpinBoxFudgeFactor.value())
         settings.conf.setValue("GrainRetention", self.ui.doubleSpinBoxGrainRetention.value())
-
-        if self.ui.radioButtonMenuButton.isChecked():
-            settings.conf.setValue("Menus", "button")
-        else :
-            settings.conf.setValue("Menus", "menubar")
 
         self.prefAccepted.emit()
         
