@@ -19,7 +19,6 @@
 #Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 from helper.recipeexporter.exportBeerXML import *
-from helper.recipeexporter.exportHTML import *
 from helper.recipeexporter.exportBBCode import *
 from helper.recipeexporter.exportPrint import *
 from helper.recipeexporter.exportHTMLLegacy import *
@@ -27,7 +26,6 @@ from helper.recipeexporter.exportJson import *
 
 RecipeExporterRepository = {
     "beerxml": exportBeerXML,
-    "html": exportHTML,
     "print" : exportPrint,
     "bbcode": exportBBCode,
     "html-legacy": exportHTMLLegacy,
