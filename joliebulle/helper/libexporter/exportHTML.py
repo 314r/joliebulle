@@ -77,7 +77,7 @@ def exportHTML(recipesSummary):
     .newRecipeButton{color:#363636;margin-left:15px;}
     .newRecipeButton:hover{text-decoration:none;}
     .dropdown-menu {z-index:10000;}
-    #menuSort{margin-left:50px; font-size:1em;}
+    #menuSort{margin-left:100px; font-size:1em;}
     #menuSort i{padding-left:15px;font-size:1em;} 
     .selected{border-right: 3px solid #f1c40f;}
     .deleteButton{color:#fff; float:right;}
@@ -108,7 +108,7 @@ def exportHTML(recipesSummary):
     ul.recipe-infos-list{padding-left:20px; padding-top:0;}
     
     .recipe-buttons{margin-left:10px;margin-bottom:15px;padding-top: 0px;padding-left:5px;}
-    
+    i.journalMenu-description{padding-left:15px;}
     .edit-button{/*color:#f55050;*/ color: #3498db; background-color:#fff;margin-right: 20px;padding-bottom:2px;}
     .edit-button:hover {color: #3498db; background-color:#fff;}
     .tools-recipe{color:#222;float:right;font-size:18px;}
