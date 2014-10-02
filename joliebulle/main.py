@@ -874,6 +874,9 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         except (TypeError, SyntaxError, AttributeError):
             logger.debug("Fichier incompatible. L'importation a échoué")
             errors.warningXml()
+            
+        self.listdir(recettes_dir)
+        self.showLib()
      
         
        
