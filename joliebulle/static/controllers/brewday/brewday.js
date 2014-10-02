@@ -207,6 +207,10 @@ brewdayApp.controller('BrewdayCtrl', ['$scope', '$http', '$filter', function ($s
 
     };
 
+    $scope.preBoilCheck = function () {
+        main.preBoilCheck($scope.preBoilVol(),$scope.preBoilSg(), parseFloat($scope.data.gu), $scope.data.volume);
+    };
+
 
 
 

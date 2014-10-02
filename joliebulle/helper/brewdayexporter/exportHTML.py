@@ -137,6 +137,7 @@ def exportHTML(data):
                 <h2>Pré-ébullition</h2>
                 <p>Volume théorique pré-ébullition : {{preBoilVol().toFixed(1)}} L</p>
                 <p>Densité théorique pré-ébullition : {{preBoilSg()}}</p>
+                <button class="btn-link  check-button" type="button" ng-click="preBoilCheck()"><i class="icon-wrench"></i> Vérifier et ajuster</button>
             </div>
             
             

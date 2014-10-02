@@ -55,6 +55,7 @@ def exportJson(recipe) :
 
 	dic['grainWeight'] = recipe.compute_grainWeight()
 	dic['preBoilGu'] = recipe.compute_GU_PreBoil()
+	dic['gu'] = recipe.compute_GU()
 	dic['coolingLossRate'] = settings.conf.value("CoolingLoss")
 	dic['boilOffRate'] = settings.conf.value("BoilOffRate")
 	dic['grainTemp'] = settings.conf.value("GrainTemp")

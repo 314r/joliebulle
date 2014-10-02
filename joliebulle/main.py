@@ -1168,11 +1168,12 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         self.dlgEditY.setModel()
         self.dlgEditY.show()     
 
-    # def preBoilCheck(self) :
-    #     self.dlgPreBoil = DialogPreBoil(self)
-    #     self.dlgPreBoil.setData(self.brewCalc.volPreBoil, self.brewCalc.preBoilSg, self.recipe.compute_GU(), self.recipe.volume)
-    #     self.dlgPreBoil.setModal(True)
-    #     self.dlgPreBoil.show()
+    @QtCore.pyqtSlot(float, float, float, float)  
+    def preBoilCheck(self,volPreBoil,preBoilSg,GU,volume) :
+        self.dlgPreBoil = DialogPreBoil(self)
+        self.dlgPreBoil.setData(volPreBoil,preBoilSg,GU,volume)
+        self.dlgPreBoil.setModal(True)
+        self.dlgPreBoil.show()
 
         
     def dialogPreferences (self) :
