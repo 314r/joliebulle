@@ -27,6 +27,7 @@ SOURCES          += helper/recipeexporter/exportBBCode.py
 SOURCES          += helper/journalexporter/exportHTML.py
 SOURCES          += helper/journalexporter/exportHTML_old.py
 SOURCES          += helper/toolexporter/exportHTML.py
+SOURCES          += helper/libexporter/exportHTML.py
 SOURCES          += exportMash.py
 SOURCES          += errors.py
 SOURCES          += home.py
