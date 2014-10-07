@@ -162,42 +162,40 @@ def exportHTML(recipesSummary):
               <li onClick="main.showJournal()"><a href="#"><i class="icon-calendar-empty"></i> </a></li>
               <li onClick="main.showTools()"><a href="#"><i class="icon-cog"></i> </a></li>
             </ul>
-          </div>
+          </div>'''.format(str(recipesSummary))
         
             
         
         
-        <div class="main">
+    resultHtml+='''<div class="main">
 
-
-        
-        
                 <div class="recipe-list-header row">
                  
                 <span class=""><i class="icon-search"></i></span>
-                <input type="text" class="" ng-model="searchText" placeholder="Rechercher..." />
+                <input type="text" class="" ng-model="searchText" placeholder="{0}" />
                 <button  class="btn-link btn-xs sortButton" type="button" data-toggle="dropdown"><i class="icon-sort-by-alphabet"></i></button>
                 <ul id="menuSort" class="dropdown-menu" role="menu">
-                                <i class="journalMenu-description">Trier par :</i>
-                                <li><a href="#" ng-click="sortByBrewer()" >Brasseur</a></li>
-                                <li><a href="#" ng-click="sortByName()" >Nom</a></li>
+                                <i class="journalMenu-description">{1} :</i>
+                                <li><a href="#" ng-click="sortByBrewer()" >{2}</a></li>
+                                <li><a href="#" ng-click="sortByName()" >{3}</a></li>
                 </ul>
                 <button class="btn-link btn-xs newRecipeButton" type="button" onClick="main.newRecipeFromLibrary()"><i class="icon-plus"></i></button>
-                
-                </div>
-            <div class="recipe-list">
-                <div class="recipe-item" ng-class="{13}" ng-repeat="recipe in recipes | filter:searchText.toLowerCase()" ng-click="recipeSelected(recipe)">
+                </div>'''.format( QCoreApplication.translate("Export","Rechercher...", None, QCoreApplication.UnicodeUTF8),  QCoreApplication.translate("Export","Trier par", None, QCoreApplication.UnicodeUTF8),  QCoreApplication.translate("Export","Brasseur", None, QCoreApplication.UnicodeUTF8),  QCoreApplication.translate("Export","Nom", None, QCoreApplication.UnicodeUTF8))
+
+
+    resultHtml+='''<div class="recipe-list">
+                <div class="recipe-item" ng-class="{0}" ng-repeat="recipe in recipes | filter:searchText.toLowerCase()" ng-click="recipeSelected(recipe)">
                     <span class="brewer-name">{1}</span> <button class="btn-link btn-xs deleteButton" ng-click="deleteLib(recipe)"><i class="icon-remove"></i></button>
                     <div class="recipe-name"><a href="toto" >{2}</a>
                         <div class="recipe-style">{3}</div> 
                         
                     </div>
                 </div>                        
-            </div>
+            </div>'''.format(str("{'selected' : activeClass == recipe.path}"),"{{recipe.brewer}}", "{{recipe.name}}", "{{recipe.style}}")
 
 
 
-          <div class="recipe-view-header">
+    resultHtml+='''<div class="recipe-view-header">
 
               
             
@@ -207,26 +205,25 @@ def exportHTML(recipesSummary):
                 
                 <div class="recipe-header col-md-12 row">
                     <div class="col-md-6">
-                        <h1>{10}</h1>
-                        <div class="author">{11} par {12}</div>
-                    </div> ''' .format(str(recipesSummary),  "{{recipe.brewer}}", "{{recipe.name}}", "{{recipe.style}}", "{{currentRecipe.ibu}}","{{currentRecipe.ebc}}","{{currentRecipe.og}}","{{currentRecipe.fg}}","{{currentRecipe.fg}}","{{currentRecipe.alc}}","{{currentRecipe.name}}","{{currentRecipe.style}}","{{currentRecipe.brewer}}", str("{'selected' : activeClass == recipe.path}"))
+                        <h1>{0}</h1>
+                        <div class="author">{1} {3} {2}</div>
+                    </div> ''' .format("{{currentRecipe.name}}","{{currentRecipe.style}}","{{currentRecipe.brewer}}", QCoreApplication.translate("Export","par", None, QCoreApplication.UnicodeUTF8))
 
 
-    resultHtml +='''            
-                    
+    resultHtml +='''               
                     <div class="recipe-buttons col-md-5">
-                        <button id="menuJournal" class="btn-link  edit-button" type="button" data-toggle="dropdown" ><i class="icon-flag"></i> Journal <span class="icon-caret-down"></span></button>
+                        <button id="menuJournal" class="btn-link  edit-button" type="button" data-toggle="dropdown" ><i class="icon-flag"></i> {0} <span class="icon-caret-down"></span></button>
                         <ul class="dropdown-menu" role="menu">
-                                <i class="journalMenu-description">Marquer comme :</i>
-                                <li><a onClick="main.addToJournal('brewed')" href="#">Brassée</a></li>
-                                <li><a onClick="main.addToJournal('ferment')" href="#">Mise en fermentation</a></li>
-                                <li><a onClick="main.addToJournal('bottled')" href="#">Embouteillée</a></li>
+                                <i class="journalMenu-description">{1} :</i>
+                                <li><a onClick="main.addToJournal('brewed')" href="#">{2}</a></li>
+                                <li><a onClick="main.addToJournal('ferment')" href="#">{3}</a></li>
+                                <li><a onClick="main.addToJournal('bottled')" href="#">{4}</a></li>
                                 <li class="divider"></li>
-                                <li><a onClick="main.showJournal()" href="#">Voir le journal</a></li>
+                                <li><a onClick="main.showJournal()" href="#">{5}</a></li>
                         </ul>
-                        <button class="btn-link  edit-button" type="button" onClick="main.editCurrentRecipe()"><i class="icon-wrench"></i> Editer</button>
+                        <button class="btn-link  edit-button" type="button" onClick="main.editCurrentRecipe()"><i class="icon-wrench"></i> {6}</button>
                     </div>
-                </div>'''
+                </div>'''.format( QCoreApplication.translate("Export","Journal", None, QCoreApplication.UnicodeUTF8), QCoreApplication.translate("Export","Marquer comme", None, QCoreApplication.UnicodeUTF8), QCoreApplication.translate("Export","Brassée", None, QCoreApplication.UnicodeUTF8), QCoreApplication.translate("Export","Mise en fermentation", None, QCoreApplication.UnicodeUTF8),  QCoreApplication.translate("Export","Embouteillée", None, QCoreApplication.UnicodeUTF8), QCoreApplication.translate("Export","Voir le journal", None, QCoreApplication.UnicodeUTF8), QCoreApplication.translate("Export","Editer", None, QCoreApplication.UnicodeUTF8))
 
     resultHtml +='''             
                     <div class="recipeProfile row">
@@ -240,76 +237,78 @@ def exportHTML(recipesSummary):
 
     resultHtml +='''           
                 <div class="recipe-vol row col-md-12">
-                    <span class="vol-label">Vol</span> <span class="vol-value">{{currentRecipe.volume}}L</span>
-                    <span class="effi-label">Rendement</span> <span class="effi-value">{{currentRecipe.efficiency}}%</span>
-                    <span class="effi-label">Ebullition</span> <span class="effi-value">{{currentRecipe.boilTime}} min</span>
-                </div>
+                    <span class="vol-label">{0}</span> <span class="vol-value">{1}L</span>
+                    <span class="effi-label">{2}</span> <span class="effi-value">{3}%</span>
+                    <span class="effi-label">{4}</span> <span class="effi-value">{5} min</span>
+                </div>'''.format(QCoreApplication.translate("Export","Vol", None, QCoreApplication.UnicodeUTF8), "{{currentRecipe.volume}}" ,QCoreApplication.translate("Export","Rendement", None, QCoreApplication.UnicodeUTF8), "{{currentRecipe.efficiency}}" ,QCoreApplication.translate("Export","Ebullition", None, QCoreApplication.UnicodeUTF8), "{{currentRecipe.boilTime}}")
+    
+    resultHtml +='''            
                 <div class="ingredients col-md-12 row">
-                    <h3>Ingrédients</h3>
+                    <h3>{0}</h3>
                     <div class="">
                         <div class="col-sm-12 col-md-12" ng-repeat="fermentable in currentRecipe.fermentables">
                             <div class="ing row">
-                                <div class="col-sm-4 col-md-4"><span class="ing-name" data-toggle="popover" data-trigger="hover" data-html="true" data-placement="bottom" data-content="EBC : {{fermentable.color}} <br/> Rendement : {{fermentable.yield}}% <br/> Type : {{fermentable.type}} ">{{fermentable.name}}</span><div class="use">{{fermentable.afterBoilView}}</div></div>
-                                <div class="col-md-3 ing-amount">{{fermentable.amount}} g</div>
+                                <div class="col-sm-4 col-md-4"><span class="ing-name" data-toggle="popover" data-trigger="hover" data-html="true" data-placement="bottom" data-content="EBC : {1} <br/> Rendement : {2}% <br/> Type : {3} ">{4}</span><div class="use">{5}</div></div>
+                                <div class="col-md-3 ing-amount">{6} g</div>
                                 
                             </div>
-                        </div>
-                        <div class="col-sm-12 col-md-12" ng-repeat="hop in currentRecipe.hops">
+                        </div>'''.format(QCoreApplication.translate("Export","Ingrédients", None, QCoreApplication.UnicodeUTF8), "{{fermentable.color}}","{{fermentable.yield}}", "{{fermentable.type}}", "{{fermentable.name}}", "{{fermentable.afterBoilView}}", "{{fermentable.amount}}")
+
+
+    resultHtml +='''                    <div class="col-sm-12 col-md-12" ng-repeat="hop in currentRecipe.hops">
                             <div class="ing row">
-                                <div class="col-sm-4 col-md-4"><span class="ing-name">{{hop.name}}</span> <div class="use">{{hop.use}} - {{hop.time}} min</div></div>
-                                <div class="col-md-3 ing-amount">{{hop.amount}} g</div>
-<!--
-                                <div class="col-md-3 ing-amount"> {{hop.time}} min</div>
--->
+                                <div class="col-sm-4 col-md-4"><span class="ing-name">{0}</span> <div class="use">{1} - {2} min</div></div>
+                                <div class="col-md-3 ing-amount">{3} g</div>
+
                             </div>
-                        </div>
-                         <div class="col-sm-12 col-md-12" ng-repeat="misc in currentRecipe.miscs">
+                        </div>'''.format("{{hop.name}}", "{{hop.use}}", "{{hop.time}}","{{hop.amount}}")
+
+    resultHtml +='''                     <div class="col-sm-12 col-md-12" ng-repeat="misc in currentRecipe.miscs">
                             <div class="ing row">
-                                <div class="col-sm-4 col-md-4"><span class="ing-name">{{misc.name}}</span> <div class="use">{{misc.use}} - {{misc.time}} min</div></div>
+                                <div class="col-sm-4 col-md-4"><span class="ing-name">{0}</span> <div class="use">{1} - {2} min</div></div>
                                 
-                                <div class="col-md-3 ing-amount">{{misc.amount}} g</div>
-<!--
-                                <div class="col-md-3 ing-amount">{{misc.time}} min </div>
--->
+                                <div class="col-md-3 ing-amount">{3} g</div>
+
                             </div>
-                        </div>
-                        <div class="col-sm-12 col-md-12" ng-repeat="yeast in currentRecipe.yeasts">
+                        </div>'''.format("{{misc.name}}","{{misc.use}}","{{misc.time}}","{{misc.amount}}")
+
+    resultHtml +='''                    <div class="col-sm-12 col-md-12" ng-repeat="yeast in currentRecipe.yeasts">
                             <div class="ing row">
-                                <div class="col-md-6 ing-name">{{yeast.name}} {{yeast.labo}} {{yeast.product_id}}</div>
+                                <div class="col-md-6 ing-name">{0} {1} {2}</div>
                             </div>
                         </div>
                     </div>
-                </div>
+                </div>'''.format("{{yeast.name}}", "{{yeast.labo}}", "{{yeast.product_id}}")
 
-            <div class="profile col-md-12">
+    resultHtml +='''        <div class="profile col-md-12">
                 <div class="row profile-header">
-                    <h3 class="col-md-6">Brassage</h3>
+                    <h3 class="col-md-6">{0}</h3>
                     <div class="brewday-button col-md-5">    
-                        <button class="btn-link edit-button" type="button" onClick="main.showBrewdayMode()" ><i class="icon-wrench"></i> Mode brassage</button>
+                        <button class="btn-link edit-button" type="button" onClick="main.showBrewdayMode()" ><i class="icon-wrench"></i> {1}</button>
                     </div>
                 </div>    
                 <div class="brew-details">
-                <span class="profile-name">{{currentRecipe.mashProfile.name}}</span>
-                <span class="profile-ph">pH {{currentRecipe.mashProfile.ph}}</span>
+                <span class="profile-name">{2}</span>
+                <span class="profile-ph">pH {3}</span>
                 <div ng-repeat="step in currentRecipe.mashProfile.steps">
-                    <p><span class="label-step">{{step.name}}</span> palier de type {{step.type}} à {{step.temp}} °C pendant {{step.time}} minutes</p>
+                    <p><span class="label-step">{4}</span> {5} {6} {7} {8} °C {9} {10} {11}</p>
 
                 </div>
-                <p><span class="label-step">Rinçage</span> {{currentRecipe.mashProfile.sparge}} °C</p>
+                <p><span class="label-step">{12}</span> {13} °C</p>
                 </div>
 
-            </div>            
+            </div>'''.format(QCoreApplication.translate("Export","Brassage", None, QCoreApplication.UnicodeUTF8), QCoreApplication.translate("Export","Mode brassage", None, QCoreApplication.UnicodeUTF8),"{{currentRecipe.mashProfile.name}}","{{currentRecipe.mashProfile.ph}}", "{{step.name}}",QCoreApplication.translate("Export","palier de type", None, QCoreApplication.UnicodeUTF8), "{{step.type}}", QCoreApplication.translate("Export","à", None, QCoreApplication.UnicodeUTF8),"{{step.temp}}", QCoreApplication.translate("Export","pendant", None, QCoreApplication.UnicodeUTF8),"{{step.time}}", QCoreApplication.translate("Export","minutes", None, QCoreApplication.UnicodeUTF8), QCoreApplication.translate("Export","Rinçage", None, QCoreApplication.UnicodeUTF8), "{{currentRecipe.mashProfile.sparge}}")            
 
-            <div class="yeasts notes col-md-10">
-                <h3>Notes</h3>
-                    <pre>{{currentRecipe.notes}}</pre>            
-            </div>  
+    resultHtml +='''        <div class="yeasts notes col-md-10">
+                <h3>{0}</h3>
+                    <pre>{1}</pre>            
+            </div> '''.format(QCoreApplication.translate("Export","Notes", None, QCoreApplication.UnicodeUTF8), "{{currentRecipe.notes}}") 
             
             
             
             
             
-            </div>
+    resultHtml +='''        </div>
         </div>
 
        
