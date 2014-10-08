@@ -80,8 +80,8 @@ def exportHTML(recipesSummary):
     #menuSort{margin-left:100px; font-size:1em;}
     #menuSort i{padding-left:15px;font-size:1em;} 
     .selected{border-right: 3px solid #f1c40f;}
-    .deleteButton{color:#fff; float:right;}
-    .selected .deleteButton{color:#c3c3c3; }
+    .deleteButton{color:#fff; float:right; display:none;}
+    .selected .deleteButton{color:#c3c3c3; display:inline;}
     .recipe-item{border-bottom: 1px solid #eee; padding-top:0.5em; padding-left:30px;}
     .brewer-name{padding:0.2em 0.5em 0.2em 0em;color:#c3c3c3; margin-bottom:1em; font-size:90%%;}
     .recipe-style{padding:0.2em 0.5em 0.2em 0em;color:#c3c3c3; margin-bottom:0.5em; font-size:90%%; }

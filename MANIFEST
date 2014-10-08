@@ -112,8 +112,14 @@ joliebulle/static/bootstrap/css/bootstrap.min.css
 joliebulle/static/bootstrap/js/bootstrap.min.js
 joliebulle/static/chartjs/Chart.js
 joliebulle/static/chartjs/LICENSE.md
+joliebulle/static/controllers/brewday/brewday.js
+joliebulle/static/controllers/brewday/main.js
 joliebulle/static/controllers/journal/journal.js
 joliebulle/static/controllers/journal/main.js
+joliebulle/static/controllers/recipe/main.js
+joliebulle/static/controllers/recipe/recipe.js
+joliebulle/static/controllers/recipes-lib/main.js
+joliebulle/static/controllers/recipes-lib/recipes-lib.js
 joliebulle/static/controllers/tools/alcool.js
 joliebulle/static/controllers/tools/boiloff.js
 joliebulle/static/controllers/tools/decoction.js
@@ -122,6 +128,7 @@ joliebulle/static/controllers/tools/gravity.js
 joliebulle/static/controllers/tools/main.js
 joliebulle/static/controllers/tools/sgplato.js
 joliebulle/static/controllers/tools/steps.js
+joliebulle/static/css/sidebar.css
 joliebulle/static/font-awesome/css/font-awesome.min.css
 joliebulle/static/font-awesome/font/FontAwesome.otf
 joliebulle/static/font-awesome/font/fontawesome-webfont.eot
