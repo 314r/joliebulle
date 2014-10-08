@@ -3,7 +3,7 @@
 
 APP = ["joliebulle/main.py"]
 NAME = "Joliebulle"
-VERSION = "3.2.0"
+VERSION = "3.3.0"
 
 setup_info = dict(
     name = NAME,
@@ -38,6 +38,10 @@ setup_info = dict(
             "Samples/*.xml",
             "*/*.py",
             "*/*/*.py",
+            "static/beercalc/*",
+            "controllers/*",
+            "controllers/*/*.js",
+            "css/*"
             "static/bootstrap/LICENCE",
             "static/bootstrap/css/*",
             "static/bootstrap/js/*",
