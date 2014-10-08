@@ -9,7 +9,6 @@ dist/Linux/joliebulle.desktop
 joliebulle/about.py
 joliebulle/about_ui.py
 joliebulle/base.py
-joliebulle/brewCalc.py
 joliebulle/database.xml
 joliebulle/densimetre_ui.py
 joliebulle/editdivers.py
@@ -44,8 +43,6 @@ joliebulle/reader_ui.py
 joliebulle/ressources_rc.py
 joliebulle/settings.py
 joliebulle/singleton.py
-joliebulle/stepAdjustWindow.py
-joliebulle/stepAdjust_ui.py
 joliebulle/stepEditWindow.py
 joliebulle/stepEditor_ui.py
 joliebulle/window_ui.py
@@ -71,18 +68,24 @@ joliebulle/Images/stock_bookmark.png
 joliebulle/Samples/Blanche.xml
 joliebulle/Samples/SMASH Amarillo.xml
 joliebulle/helper/__init__.py
+joliebulle/helper/brewdayExporterRepository.py
 joliebulle/helper/journalExporterRepository.py
+joliebulle/helper/libExporterRepository.py
 joliebulle/helper/recipeExporterRepository.py
 joliebulle/helper/recipeImporterRepository.py
 joliebulle/helper/toolExporterRepository.py
+joliebulle/helper/brewdayexporter/__init__.py
+joliebulle/helper/brewdayexporter/exportHTML.py
 joliebulle/helper/journalexporter/__init__.py
 joliebulle/helper/journalexporter/exportHTML.py
 joliebulle/helper/journalexporter/exportHTML_old.py
+joliebulle/helper/libexporter/__init__.py
+joliebulle/helper/libexporter/exportHTML.py
 joliebulle/helper/recipeexporter/__init__.py
 joliebulle/helper/recipeexporter/exportBBCode.py
 joliebulle/helper/recipeexporter/exportBeerXML.py
-joliebulle/helper/recipeexporter/exportHTML.py
 joliebulle/helper/recipeexporter/exportHTMLLegacy.py
+joliebulle/helper/recipeexporter/exportJson.py
 joliebulle/helper/recipeexporter/exportPrint.py
 joliebulle/helper/recipeimporter/__init__.py
 joliebulle/helper/recipeimporter/importBSMX.py
@@ -104,6 +107,7 @@ joliebulle/static/angular/License
 joliebulle/static/angular/angular.min.js
 joliebulle/static/angular/version.json
 joliebulle/static/angular/version.txt
+joliebulle/static/beercalc/beercalc.js
 joliebulle/static/bootstrap/css/bootstrap.min.css
 joliebulle/static/bootstrap/js/bootstrap.min.js
 joliebulle/static/chartjs/Chart.js

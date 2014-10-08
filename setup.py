@@ -39,9 +39,9 @@ setup_info = dict(
             "*/*.py",
             "*/*/*.py",
             "static/beercalc/*",
-            "controllers/*",
-            "controllers/*/*.js",
-            "css/*"
+            "static/controllers/*",
+            "static/controllers/*/*.js",
+            "static/css/*",
             "static/bootstrap/LICENCE",
             "static/bootstrap/css/*",
             "static/bootstrap/js/*",
@@ -50,8 +50,6 @@ setup_info = dict(
             "static/font-awesome/css/*",
             "static/font-awesome/font/*",
             "static/jquery/*",
-            "static/controllers/journal/*",
-            "static/controllers/tools/*",
             "static/angular/*",
             "static/underscore/*"
         ]
