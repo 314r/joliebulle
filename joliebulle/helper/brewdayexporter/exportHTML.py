@@ -43,6 +43,7 @@ def exportHTML(data):
     .main {padding-top:45px; margin-left:80px; margin-bottom:60px;}
     .header{width:100%%;min-height:55px;position:fixed;left:50px;z-index: 1000;background-color: #fff;padding-left:10px;border-bottom: 1px solid #eee;}
     .buttonBack{margin-left:30px;margin-top:-8px;}
+    .check-button {padding-left:0;}
     .mode{margin-top:10px;padding-top:5px;margin-left:30px;display:inline-block;}
     .step {margin-top : 24px;}
     .step + .step {border-top: 1px solid #eee; padding-top : 24px;}
