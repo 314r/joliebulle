@@ -132,17 +132,17 @@ def exportHTML(data):
 
     resultHtml+='''<div class="volumes">
                 <h2>{0}</h2>
-                <p>Volume de grains : {1} L</p>
-                <p>Volume de la maische à l'empâtage : {2} L</p>
-                <p>Volume de la maische au dernier palier : {3} L</p>
-            </div>'''.format(QCoreApplication.translate("Export","Volumes", None, QCoreApplication.UnicodeUTF8),"{{grainVolume().toFixed(1)}}","{{mashVolumeStrike().toFixed(1)}}", "{{mashVolumeLastStep().toFixed(1)}}" )
+                <p>{1} : {2} L</p>
+                <p>{3} : {4} L</p>
+                <p>{5} : {6} L</p>
+            </div>'''.format(QCoreApplication.translate("Export","Volumes", None, QCoreApplication.UnicodeUTF8), QCoreApplication.translate("Export","Volume de grains", None, QCoreApplication.UnicodeUTF8), "{{grainVolume().toFixed(1)}}", QCoreApplication.translate("Export","Volume de la maische à l'empâtage", None, QCoreApplication.UnicodeUTF8), "{{mashVolumeStrike().toFixed(1)}}", QCoreApplication.translate("Export","Volume de la maische au dernier palier", None, QCoreApplication.UnicodeUTF8), "{{mashVolumeLastStep().toFixed(1)}}")
 
     resultHtml+='''<div class="preBoil">
                 <h2>{0}</h2>
-                <p>Volume théorique pré-ébullition : {1} L</p>
-                <p>Densité théorique pré-ébullition : {2}</p>
-                <button class="btn-link check-button" type="button" ng-click="preBoilCheck()"><i class="icon-wrench"></i> {3}</button>
-            </div>'''.format(QCoreApplication.translate("Export","Pré-ébullition", None, QCoreApplication.UnicodeUTF8),"{{preBoilVol().toFixed(1)}}", "{{preBoilSg()}}", QCoreApplication.translate("Export","Vérifier et ajuster", None, QCoreApplication.UnicodeUTF8))
+                <p>{1} : {2} L</p>
+                <p>{3} : {4}</p>
+                <button class="btn-link check-button" type="button" ng-click="preBoilCheck()"><i class="icon-wrench"></i> {5}</button>
+            </div>'''.format(QCoreApplication.translate("Export","Pré-ébullition", None, QCoreApplication.UnicodeUTF8),QCoreApplication.translate("Export","Volume théorique pré-ébullition", None, QCoreApplication.UnicodeUTF8),"{{preBoilVol().toFixed(1)}}", QCoreApplication.translate("Export","Densité théorique pré-ébullition", None, QCoreApplication.UnicodeUTF8), "{{preBoilSg()}}", QCoreApplication.translate("Export","Vérifier et ajuster", None, QCoreApplication.UnicodeUTF8))
             
             
     resultHtml+='''</div>
