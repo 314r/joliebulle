@@ -125,10 +125,10 @@ def exportHTML(data):
         
     resultHtml+='''<div class="sparge row">
                 <h2>{0}</h2>
-                <p ng-hide="brewType=='biab'">Volume d'eau de rinçage : {1} L</p>
-                <p ng-hide="brewType=='biab'">Température de rinçage : {2}°C</p>
-                <div ng-hide="brewType=='classic'" class="alert alert-info col-md-4">{3}</div>
-            </div>'''.format(QCoreApplication.translate("Export","Rinçage", None, QCoreApplication.UnicodeUTF8),"{{spargeVol().toFixed(1)}}", "{{data.mashProfile.sparge}}", QCoreApplication.translate("Export","Pas de rinçage en BIAB.", None, QCoreApplication.UnicodeUTF8))
+                <p ng-hide="brewType=='biab'">{1} : {2} L</p>
+                <p ng-hide="brewType=='biab'">{3} : {4}°C</p>
+                <div ng-hide="brewType=='classic'" class="alert alert-info col-md-4">{5}</div>
+            </div>'''.format(QCoreApplication.translate("Export","Rinçage", None, QCoreApplication.UnicodeUTF8), QCoreApplication.translate("Export","Volume d'eau de rinçage", None, QCoreApplication.UnicodeUTF8), "{{spargeVol().toFixed(1)}}", QCoreApplication.translate("Export","Température de rinçage", None, QCoreApplication.UnicodeUTF8),"{{data.mashProfile.sparge}}", QCoreApplication.translate("Export","Pas de rinçage en BIAB.", None, QCoreApplication.UnicodeUTF8))
 
     resultHtml+='''<div class="volumes">
                 <h2>{0}</h2>

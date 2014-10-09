@@ -2252,6 +2252,16 @@ p, li { white-space: pre-wrap; }
         <source>Densité théorique pré-ébullition</source>
         <translation>Calculated pré-boil gravity</translation>
     </message>
+    <message utf8="true">
+        <location filename="helper/brewdayexporter/exportHTML.py" line="131"/>
+        <source>Volume d&apos;eau de rinçage</source>
+        <translation>Sparge water volume</translation>
+    </message>
+    <message utf8="true">
+        <location filename="helper/brewdayexporter/exportHTML.py" line="131"/>
+        <source>Température de rinçage</source>
+        <translation>Sparge temperature</translation>
+    </message>
 </context>
 <context>
     <name>FermentableViewLabels</name>
