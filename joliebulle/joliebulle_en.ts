@@ -3338,7 +3338,7 @@ p, li { white-space: pre-wrap; }
     <message utf8="true">
         <location filename="preferences.ui" line="125"/>
         <source>Attention ! Utilisez un répertoire qui ne contient que des recettes.</source>
-        <translation>Warning ! You should use a repertory containing only recipes.</translation>
+        <translation>Warning ! You should use a repertory containing only recipe.files.</translation>
     </message>
 </context>
 <context>
