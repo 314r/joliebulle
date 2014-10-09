@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 #­*­coding: utf­8 -­*­
 
-#joliebulle 3.2
+#joliebulle 3.3
 #Copyright (C) 2010-2014 Pierre Tavares
 #Copyright (C) 2013 Thomas Gerbet
 

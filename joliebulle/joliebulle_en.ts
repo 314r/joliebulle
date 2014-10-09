@@ -1605,7 +1605,7 @@ p, li { white-space: pre-wrap; }
         <translation>Steps: </translation>
     </message>
     <message>
-        <location filename="helper/libexporter/exportHTML.py" line="300"/>
+        <location filename="helper/brewdayexporter/exportHTML.py" line="100"/>
         <source>palier de type</source>
         <translation>step type</translation>
     </message>
@@ -1750,7 +1750,7 @@ p, li { white-space: pre-wrap; }
         <translation type="obsolete">Attenuation</translation>
     </message>
     <message utf8="true">
-        <location filename="helper/libexporter/exportHTML.py" line="300"/>
+        <location filename="helper/brewdayexporter/exportHTML.py" line="131"/>
         <source>Rinçage</source>
         <translation>Sparge</translation>
     </message>
@@ -2093,6 +2093,71 @@ p, li { white-space: pre-wrap; }
         <location filename="helper/libexporter/exportHTML.py" line="255"/>
         <source>Ingrédients</source>
         <translation>Ingredients</translation>
+    </message>
+    <message>
+        <location filename="helper/brewdayexporter/exportHTML.py" line="91"/>
+        <source>Retour recette</source>
+        <translation>Back to recipe</translation>
+    </message>
+    <message>
+        <location filename="helper/brewdayexporter/exportHTML.py" line="91"/>
+        <source>Brassage classique</source>
+        <translation>classic</translation>
+    </message>
+    <message>
+        <location filename="helper/brewdayexporter/exportHTML.py" line="91"/>
+        <source>Brew In A Bag</source>
+        <translation>Brew In A Bag</translation>
+    </message>
+    <message>
+        <location filename="helper/brewdayexporter/exportHTML.py" line="96"/>
+        <source>Paliers</source>
+        <translation>Steps</translation>
+    </message>
+    <message>
+        <location filename="helper/brewdayexporter/exportHTML.py" line="96"/>
+        <source>Le profil de brassage doit comporter un unique palier de type infusion.</source>
+        <translation>Mash profile should include only one infusion step.</translation>
+    </message>
+    <message utf8="true">
+        <location filename="helper/brewdayexporter/exportHTML.py" line="100"/>
+        <source>minutes à</source>
+        <translation>minutes at</translation>
+    </message>
+    <message utf8="true">
+        <location filename="helper/brewdayexporter/exportHTML.py" line="107"/>
+        <source>Eau ajoutée</source>
+        <translation>Added water</translation>
+    </message>
+    <message>
+        <location filename="helper/brewdayexporter/exportHTML.py" line="113"/>
+        <source>Temp. eau</source>
+        <translation>Water temp.</translation>
+    </message>
+    <message>
+        <location filename="helper/brewdayexporter/exportHTML.py" line="119"/>
+        <source>Ratio</source>
+        <translation>Ratio</translation>
+    </message>
+    <message utf8="true">
+        <location filename="helper/brewdayexporter/exportHTML.py" line="131"/>
+        <source>Pas de rinçage en BIAB.</source>
+        <translation>BIAB : no sparge.</translation>
+    </message>
+    <message>
+        <location filename="helper/brewdayexporter/exportHTML.py" line="138"/>
+        <source>Volumes</source>
+        <translation>Volumes</translation>
+    </message>
+    <message utf8="true">
+        <location filename="helper/brewdayexporter/exportHTML.py" line="145"/>
+        <source>Pré-ébullition</source>
+        <translation>Preboil</translation>
+    </message>
+    <message utf8="true">
+        <location filename="helper/brewdayexporter/exportHTML.py" line="145"/>
+        <source>Vérifier et ajuster</source>
+        <translation>Check and adjust</translation>
     </message>
 </context>
 <context>
