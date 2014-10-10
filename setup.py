@@ -42,7 +42,7 @@ setup_info = dict(
             "static/controllers/brewday/*",
             "static/controllers/journal/*",
             "static/controllers/recipe/*",
-            "static/controllers/recipe-lib/*",
+            "static/controllers/recipes-lib/*",
             "static/controllers/tools/*",
             "static/css/*",
             "static/bootstrap/LICENCE",

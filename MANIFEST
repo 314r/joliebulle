@@ -118,6 +118,8 @@ joliebulle/static/controllers/journal/journal.js
 joliebulle/static/controllers/journal/main.js
 joliebulle/static/controllers/recipe/main.js
 joliebulle/static/controllers/recipe/recipe.js
+joliebulle/static/controllers/recipes-lib/main.js
+joliebulle/static/controllers/recipes-lib/recipes-lib.js
 joliebulle/static/controllers/tools/alcool.js
 joliebulle/static/controllers/tools/boiloff.js
 joliebulle/static/controllers/tools/decoction.js
