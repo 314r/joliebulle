@@ -179,7 +179,7 @@ def exportHTML(recipesSummary):
                                 <li><a href="#" ng-click="sortByBrewer()" >{2}</a></li>
                                 <li><a href="#" ng-click="sortByName()" >{3}</a></li>
                 </ul>
-                <button class="btn-link btn-xs newRecipeButton" type="button" onClick="main.newRecipeFromLibrary()"><i class="icon-plus"></i></button>
+                <button class="btn-link btn-xs newRecipeButton" type="button" onClick="main.newRecipeFromLibrary()" data-toggle="tooltip" data-placement="bottom" title="Nouvelle recette"><i class="icon-plus"></i></button>
                 </div>'''.format( QCoreApplication.translate("Export","Rechercher...", None, QCoreApplication.UnicodeUTF8),  QCoreApplication.translate("Export","Trier par", None, QCoreApplication.UnicodeUTF8),  QCoreApplication.translate("Export","Brasseur", None, QCoreApplication.UnicodeUTF8),  QCoreApplication.translate("Export","Nom", None, QCoreApplication.UnicodeUTF8))
 
 
@@ -227,19 +227,19 @@ def exportHTML(recipesSummary):
 
     resultHtml +='''             
                     <div class="recipeProfile row">
-                        <div class="calculated col-xs-1 col-sm-1 col-md-2" ng-show="active">{0}&nbsp;IBU</div>
-                        <div class="calculated col-xs-1 col-sm-1 col-md-2" ng-show="active">{1}&nbsp;EBC</div>
-                        <div class="calculated col-xs-1 col-sm-1 col-md-2" ng-show="active">DI&nbsp;{2}  </div>
-                        <div class="calculated col-xs-1 col-sm-1 col-md-2" ng-show="active">DF&nbsp;{3} </div>
-                        <div class="calculated col-xs-1 col-sm-1 col-md-2" ng-show="active">BU/GU&nbsp;{4}</div>
-                        <div class="calculated col-xs-1 col-sm-1 col-md-2" ng-show="active">Alc&nbsp;{5}</div>
+                        <div class="calculated col-xs-1 col-sm-1 col-md-2" ng-show="active" data-toggle="tooltip" data-placement="bottom" title="Amertume">{0}&nbsp;IBU</div>
+                        <div class="calculated col-xs-1 col-sm-1 col-md-2" ng-show="active" data-toggle="tooltip" data-placement="bottom" title="Teinte">{1}&nbsp;EBC</div>
+                        <div class="calculated col-xs-1 col-sm-1 col-md-2" ng-show="active" data-toggle="tooltip" data-placement="bottom" title="Densité Initiale">DI&nbsp;{2}  </div>
+                        <div class="calculated col-xs-1 col-sm-1 col-md-2" ng-show="active" data-toggle="tooltip" data-placement="bottom" title="Densité Finale">DF&nbsp;{3} </div>
+                        <div class="calculated col-xs-1 col-sm-1 col-md-2" ng-show="active" data-toggle="tooltip" data-placement="bottom" title="Rapport amertume / densité">BU/GU&nbsp;{4}</div>
+                        <div class="calculated col-xs-1 col-sm-1 col-md-2" ng-show="active" data-toggle="tooltip" data-placement="bottom" title="Alcool">Alc&nbsp;{5}</div>
                     </div>'''.format("{{currentRecipe.ibu}}", "{{currentRecipe.ebc}}","{{currentRecipe.og}}","{{currentRecipe.fg}}","{{currentRecipe.bugu}}","{{currentRecipe.alc}}")
 
     resultHtml +='''           
                 <div class="recipe-vol row col-md-12">
-                    <span class="vol-label">{0}</span> <span class="vol-value">{1}L</span>
-                    <span class="effi-label">{2}</span> <span class="effi-value">{3}%</span>
-                    <span class="effi-label">{4}</span> <span class="effi-value">{5} min</span>
+                    <span class="vol-label">{0}</span> <span class="vol-value" data-toggle="tooltip" data-placement="bottom" title="Volume du brassin">{1}L</span>
+                    <span class="effi-label">{2}</span> <span class="effi-value" data-toggle="tooltip" data-placement="bottom" title="Rendement du brassin">{3}%</span>
+                    <span class="effi-label">{4}</span> <span class="effi-value" data-toggle="tooltip" data-placement="bottom" title="Durée d'ébullition">{5} min</span>
                 </div>'''.format(QCoreApplication.translate("Export","Vol", None, QCoreApplication.UnicodeUTF8), "{{currentRecipe.volume}}" ,QCoreApplication.translate("Export","Rendement", None, QCoreApplication.UnicodeUTF8), "{{currentRecipe.efficiency}}" ,QCoreApplication.translate("Export","Ebullition", None, QCoreApplication.UnicodeUTF8), "{{currentRecipe.boilTime}}")
     
     resultHtml +='''            
@@ -315,10 +315,16 @@ def exportHTML(recipesSummary):
     <!-- Fin container     -->
     </div>
 
-
+{0}
   
 </body>
-</html>''' 
+</html>'''.format(''' 
+<script type="text/javascript">
+$(function () {
+$("[data-toggle='tooltip']").tooltip();
+});
+</script>
+    ''')
 
     return resultHtml
 
