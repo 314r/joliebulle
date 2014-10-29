@@ -179,8 +179,8 @@ def exportHTML(recipesSummary):
                                 <li><a href="#" ng-click="sortByBrewer()" >{2}</a></li>
                                 <li><a href="#" ng-click="sortByName()" >{3}</a></li>
                 </ul>
-                <button class="btn-link btn-xs newRecipeButton" type="button" onClick="main.newRecipeFromLibrary()" data-toggle="tooltip" data-placement="bottom" title="Nouvelle recette"><i class="icon-plus"></i></button>
-                </div>'''.format( QCoreApplication.translate("Export","Rechercher...", None, QCoreApplication.UnicodeUTF8),  QCoreApplication.translate("Export","Trier par", None, QCoreApplication.UnicodeUTF8),  QCoreApplication.translate("Export","Brasseur", None, QCoreApplication.UnicodeUTF8),  QCoreApplication.translate("Export","Nom", None, QCoreApplication.UnicodeUTF8))
+                <button class="btn-link btn-xs newRecipeButton" type="button" onClick="main.newRecipeFromLibrary()" data-toggle="tooltip" data-placement="bottom" title="{4}"><i class="icon-plus"></i></button>
+                </div>'''.format( QCoreApplication.translate("Export","Rechercher...", None, QCoreApplication.UnicodeUTF8),  QCoreApplication.translate("Export","Trier par", None, QCoreApplication.UnicodeUTF8),  QCoreApplication.translate("Export","Brasseur", None, QCoreApplication.UnicodeUTF8),  QCoreApplication.translate("Export","Nom", None, QCoreApplication.UnicodeUTF8), QCoreApplication.translate("Export","Nouvelle recette", None, QCoreApplication.UnicodeUTF8))
 
 
     resultHtml+='''<div class="recipe-list">
@@ -227,20 +227,20 @@ def exportHTML(recipesSummary):
 
     resultHtml +='''             
                     <div class="recipeProfile row">
-                        <div class="calculated col-xs-1 col-sm-1 col-md-2" ng-show="active" data-toggle="tooltip" data-placement="bottom" title="Amertume">{0}&nbsp;IBU</div>
-                        <div class="calculated col-xs-1 col-sm-1 col-md-2" ng-show="active" data-toggle="tooltip" data-placement="bottom" title="Teinte">{1}&nbsp;EBC</div>
-                        <div class="calculated col-xs-1 col-sm-1 col-md-2" ng-show="active" data-toggle="tooltip" data-placement="bottom" title="Densité Initiale">DI&nbsp;{2}  </div>
-                        <div class="calculated col-xs-1 col-sm-1 col-md-2" ng-show="active" data-toggle="tooltip" data-placement="bottom" title="Densité Finale">DF&nbsp;{3} </div>
-                        <div class="calculated col-xs-1 col-sm-1 col-md-2" ng-show="active" data-toggle="tooltip" data-placement="bottom" title="Rapport amertume / densité">BU/GU&nbsp;{4}</div>
-                        <div class="calculated col-xs-1 col-sm-1 col-md-2" ng-show="active" data-toggle="tooltip" data-placement="bottom" title="Alcool">Alc&nbsp;{5}</div>
-                    </div>'''.format("{{currentRecipe.ibu}}", "{{currentRecipe.ebc}}","{{currentRecipe.og}}","{{currentRecipe.fg}}","{{currentRecipe.bugu}}","{{currentRecipe.alc}}")
+                        <div class="calculated col-xs-1 col-sm-1 col-md-2" ng-show="active" data-toggle="tooltip" data-placement="bottom" title="{0}">{1}&nbsp;IBU</div>
+                        <div class="calculated col-xs-1 col-sm-1 col-md-2" ng-show="active" data-toggle="tooltip" data-placement="bottom" title="{2}">{3}&nbsp;EBC</div>
+                        <div class="calculated col-xs-1 col-sm-1 col-md-2" ng-show="active" data-toggle="tooltip" data-placement="bottom" title="{4}">DI&nbsp;{5}  </div>
+                        <div class="calculated col-xs-1 col-sm-1 col-md-2" ng-show="active" data-toggle="tooltip" data-placement="bottom" title="{6}">DF&nbsp;{7} </div>
+                        <div class="calculated col-xs-1 col-sm-1 col-md-2" ng-show="active" data-toggle="tooltip" data-placement="bottom" title="{8}">BU/GU&nbsp;{9}</div>
+                        <div class="calculated col-xs-1 col-sm-1 col-md-2" ng-show="active" data-toggle="tooltip" data-placement="bottom" title="{10}">Alc&nbsp;{11} %</div>
+                    </div>'''.format(QCoreApplication.translate("Export","Amertume", None, QCoreApplication.UnicodeUTF8), "{{currentRecipe.ibu}}",QCoreApplication.translate("Teinte","Teinte", None, QCoreApplication.UnicodeUTF8), "{{currentRecipe.ebc}}", QCoreApplication.translate("Export","Densité Initiale", None, QCoreApplication.UnicodeUTF8),"{{currentRecipe.og}}",QCoreApplication.translate("Export","Densité Finale", None, QCoreApplication.UnicodeUTF8),"{{currentRecipe.fg}}", QCoreApplication.translate("Export","Rapport amertume / densité", None, QCoreApplication.UnicodeUTF8), "{{currentRecipe.bugu}}", QCoreApplication.translate("Export","Alcool", None, QCoreApplication.UnicodeUTF8), "{{currentRecipe.alc}}")
 
     resultHtml +='''           
                 <div class="recipe-vol row col-md-12">
-                    <span class="vol-label">{0}</span> <span class="vol-value" data-toggle="tooltip" data-placement="bottom" title="Volume du brassin">{1}L</span>
-                    <span class="effi-label">{2}</span> <span class="effi-value" data-toggle="tooltip" data-placement="bottom" title="Rendement du brassin">{3}%</span>
-                    <span class="effi-label">{4}</span> <span class="effi-value" data-toggle="tooltip" data-placement="bottom" title="Durée d'ébullition">{5} min</span>
-                </div>'''.format(QCoreApplication.translate("Export","Vol", None, QCoreApplication.UnicodeUTF8), "{{currentRecipe.volume}}" ,QCoreApplication.translate("Export","Rendement", None, QCoreApplication.UnicodeUTF8), "{{currentRecipe.efficiency}}" ,QCoreApplication.translate("Export","Ebullition", None, QCoreApplication.UnicodeUTF8), "{{currentRecipe.boilTime}}")
+                    <span class="vol-label">{0}</span> <span class="vol-value" data-toggle="tooltip" data-placement="bottom" title="{1}">{2}L</span>
+                    <span class="effi-label">{3}</span> <span class="effi-value" data-toggle="tooltip" data-placement="bottom" title="{4}">{5}%</span>
+                    <span class="effi-label">{6}</span> <span class="effi-value" data-toggle="tooltip" data-placement="bottom" title="{7}">{8} min</span>
+                </div>'''.format(QCoreApplication.translate("Export","Vol", None, QCoreApplication.UnicodeUTF8), QCoreApplication.translate("Export","Volume du brassin", None, QCoreApplication.UnicodeUTF8), "{{currentRecipe.volume}}" ,QCoreApplication.translate("Export","Rendement", None, QCoreApplication.UnicodeUTF8),QCoreApplication.translate("Export","Rendement du brassin", None, QCoreApplication.UnicodeUTF8), "{{currentRecipe.efficiency}}" ,QCoreApplication.translate("Export","Ebullition", None, QCoreApplication.UnicodeUTF8), QCoreApplication.translate("Export","Durée d'ébullition", None, QCoreApplication.UnicodeUTF8), "{{currentRecipe.boilTime}}")
     
     resultHtml +='''            
                 <div class="ingredients col-md-12 row">
