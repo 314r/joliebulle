@@ -439,14 +439,19 @@ input::-webkit-inner-spin-button {
                 <div class="form-group">
                     <label class="col-sm-3 control-label">{2}</label>
                     <div class="col-sm-2">
+                        <input type="number" class="form-control" min="0" max="10" step="0.01" ng-model="wortFactor" ng-change="wortFactorChanged()">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">{3}</label>
+                    <div class="col-sm-2">
                         <input type="number" class="form-control" min="0" max="100" step="1" ng-model="plato" ng-change="platoChanged()">
                     </div>
                 </div>
                 </form>
             </div>
         </div>''' .format(QCoreApplication.translate("Export","Densité spécifique - Plato", None, QCoreApplication.UnicodeUTF8),
-            QCoreApplication.translate("Export","Densité spécifique", None, QCoreApplication.UnicodeUTF8),
-            QCoreApplication.translate("Export","Plato", None, QCoreApplication.UnicodeUTF8))
+            QCoreApplication.translate("Export","Densité spécifique", None, QCoreApplication.UnicodeUTF8), QCoreApplication.translate("Export","Facteur de correction", None, QCoreApplication.UnicodeUTF8), QCoreApplication.translate("Export","Plato", None, QCoreApplication.UnicodeUTF8))
 
     resultHtml+='''<div class="row row-tools last" id="refractoalc">
             <div ng-controller="RefractoAlcToolCtrl" class="tool-block">
