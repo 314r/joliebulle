@@ -38,6 +38,7 @@ def exportHTML():
 <script src="controllers/tools/dilution.js"></script>
 <script src="controllers/tools/boiloff.js"></script>
 <script src="controllers/tools/decoction.js"></script>
+<script src="controllers/tools/refractoalc.js"></script>
 <script src="controllers/tools/sgplato.js"></script>
 <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
 <link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
@@ -94,10 +95,11 @@ input::-webkit-inner-spin-button {
                                 <li><a href="#boiloff">{5}</a></li>
                                 <li><a href="#decoc">{6}</a></li>
                                 <li><a href="#sg">{7}</a></li>
+                                <li><a href="#refractoalc">{8}</a></li>
                               </ul>
                         
             </div>
-        </div>''' .format(QCoreApplication.translate("Export","Outils", None, QCoreApplication.UnicodeUTF8), QCoreApplication.translate("Export","Correction du densimètre", None, QCoreApplication.UnicodeUTF8), QCoreApplication.translate("Export","Assistant paliers", None, QCoreApplication.UnicodeUTF8), QCoreApplication.translate("Export","Taux d'alcool", None, QCoreApplication.UnicodeUTF8), QCoreApplication.translate("Export","Dilution", None, QCoreApplication.UnicodeUTF8), QCoreApplication.translate("Export","Evaporation", None, QCoreApplication.UnicodeUTF8), QCoreApplication.translate("Export","Décoction", None, QCoreApplication.UnicodeUTF8), QCoreApplication.translate("Export","Densité - Plato", None, QCoreApplication.UnicodeUTF8))
+        </div>''' .format(QCoreApplication.translate("Export","Outils", None, QCoreApplication.UnicodeUTF8), QCoreApplication.translate("Export","Correction du densimètre", None, QCoreApplication.UnicodeUTF8), QCoreApplication.translate("Export","Assistant paliers", None, QCoreApplication.UnicodeUTF8), QCoreApplication.translate("Export","Taux d'alcool", None, QCoreApplication.UnicodeUTF8), QCoreApplication.translate("Export","Dilution", None, QCoreApplication.UnicodeUTF8), QCoreApplication.translate("Export","Evaporation", None, QCoreApplication.UnicodeUTF8), QCoreApplication.translate("Export","Décoction", None, QCoreApplication.UnicodeUTF8), QCoreApplication.translate("Export","Densité - Plato", None, QCoreApplication.UnicodeUTF8),QCoreApplication.translate("Export","Densité finale - Plato (avec alcool)", None, QCoreApplication.UnicodeUTF8))
 
 
 
@@ -440,19 +442,52 @@ input::-webkit-inner-spin-button {
                         <input type="number" class="form-control" min="0" max="100" step="1" ng-model="plato" ng-change="platoChanged()">
                     </div>
                 </div>
+                </form>
+            </div>
+        </div>''' .format(QCoreApplication.translate("Export","Densité spécifique - Plato", None, QCoreApplication.UnicodeUTF8),
+            QCoreApplication.translate("Export","Densité spécifique", None, QCoreApplication.UnicodeUTF8),
+            QCoreApplication.translate("Export","Plato", None, QCoreApplication.UnicodeUTF8))
+
+    resultHtml+='''<div class="row row-tools last" id="refractoalc">
+            <div ng-controller="RefractoAlcToolCtrl" class="tool-block">
+                <h3>{0}</h3>
+                <form class="form-horizontal" role="form">
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">{1}</label>
+                    <div class="col-sm-2">
+                        <input type="number" class="form-control" min="0" max="100" step="0.1" ng-model="originalRi" >
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">{2}</label>
+                    <div class="col-sm-2">
+                        <input type="number" class="form-control" min="0" max="100" step="0.1" ng-model="finalRi" >
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">{3}</label>
+                    <div class="col-sm-2">
+                        <input type="number" class="form-control" min="0" max="10" step="0.01" ng-model="wortFactor" >
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">{4}</label>
+                    <div class="col-sm-2">
+                        <label class="control-label">{5}</label>
+                    </div>
                 </div>
                 </form>
             </div>
-        </div>
-        </div>
+        </div>'''.format(QCoreApplication.translate("Export","Densité spécifique - Plato (avec alcool)", None, QCoreApplication.UnicodeUTF8), QCoreApplication.translate("Export","Plato (original)", None, QCoreApplication.UnicodeUTF8), QCoreApplication.translate("Export","Plato (final)", None, QCoreApplication.UnicodeUTF8), QCoreApplication.translate("Export","Facteur de correction", None, QCoreApplication.UnicodeUTF8), QCoreApplication.translate("Export","Densité finale", None, QCoreApplication.UnicodeUTF8), "{{calcFgRefracto()}}")
+
+
+    resultHtml+='''
     <!-- Fin container -->
     </div>
 
-{3}   
+{0}   
 </body>
-</html>''' .format(QCoreApplication.translate("Export","Densité spécifique - Plato", None, QCoreApplication.UnicodeUTF8),
-            QCoreApplication.translate("Export","Densité spécifique", None, QCoreApplication.UnicodeUTF8),
-            QCoreApplication.translate("Export","Plato", None, QCoreApplication.UnicodeUTF8),
+</html>''' .format(
 '''            <script type="text/javascript">
                                 $(function () {
                                 $("[data-toggle='dropdown']").dropdown();
