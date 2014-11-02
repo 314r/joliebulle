@@ -1649,6 +1649,15 @@
     <ALPHA>6.5</ALPHA>
     <USE>Boil</USE>
   </HOP>
+  <HOP>
+    <NAME>Hallertauer Mittelfrüh</NAME>
+    <VERSION>1</VERSION>
+    <AMOUNT>0.0</AMOUNT>
+    <FORM>Leaf</FORM>
+    <TIME>0.0</TIME>
+    <ALPHA>3.5</ALPHA>
+    <USE>Boil</USE>
+  </HOP>
   <FERMENTABLE>
     <NAME>Acide (Malt)</NAME>
     <VERSION>1</VERSION>
@@ -1728,6 +1737,16 @@
     <RECOMMEND_MASH/>
     <ADD_AFTER_BOIL>FALSE</ADD_AFTER_BOIL>
     <COLOR>2.0</COLOR>
+  </FERMENTABLE>
+  <FERMENTABLE>
+    <NAME>Froment (Cru)</NAME>
+    <VERSION>1</VERSION>
+    <AMOUNT>0.0</AMOUNT>
+    <TYPE>Grain</TYPE>
+    <YIELD>77</YIELD>
+    <RECOMMEND_MASH>TRUE</RECOMMEND_MASH>
+    <ADD_AFTER_BOIL>FALSE</ADD_AFTER_BOIL>
+    <COLOR>1.6</COLOR>
   </FERMENTABLE>
   <FERMENTABLE>
     <NAME>Tourbé (Malt)</NAME>
@@ -2197,6 +2216,16 @@
     <ADD_AFTER_BOIL>FALSE</ADD_AFTER_BOIL>
     <COLOR>2.0</COLOR>
   </FERMENTABLE>
+  <FERMENTABLE>
+    <NAME>Riz, flocons</NAME>
+    <VERSION>1</VERSION>
+    <AMOUNT>0.0</AMOUNT>
+    <TYPE>Grain</TYPE>
+    <YIELD>70</YIELD>
+    <RECOMMEND_MASH>TRUE</RECOMMEND_MASH>
+    <ADD_AFTER_BOIL>FALSE</ADD_AFTER_BOIL>
+    <COLOR>1.0</COLOR>
+  </FERMENTABLE>
   <MISC>
     <NAME>Citrouille</NAME>
     <VERSION>1</VERSION>
@@ -2292,7 +2321,7 @@
     <YIELD>85</YIELD>
     <RECOMMEND_MASH/>
     <ADD_AFTER_BOIL>FALSE</ADD_AFTER_BOIL>
-    <COLOR>3.5999999999999996</COLOR>
+    <COLOR>3.6</COLOR>
   </FERMENTABLE>
   <HOP>
     <NAME>Extrait de houblon</NAME>
@@ -2313,6 +2342,13 @@
     <ADD_AFTER_BOIL>FALSE</ADD_AFTER_BOIL>
     <COLOR>190.4</COLOR>
   </FERMENTABLE>
+  <FERMENTABLE>
+    <NAME>Flaked Rye</NAME>
+    <TYPE>Grain</TYPE>
+    <YIELD>63</YIELD>
+    <COLOR>2.0</COLOR>
+    <RECOMMEND_MASH>TRUE</RECOMMEND_MASH>
+  </FERMENTABLE>
   <MISC>
     <NAME>Carbonate de Calcium</NAME>
     <VERSION>1</VERSION>
@@ -2326,6 +2362,22 @@
     <VERSION>1</VERSION>
     <AMOUNT>0.0</AMOUNT>
     <TYPE>Flavor</TYPE>
+    <TIME>0.0</TIME>
+    <USE>Boil</USE>
+  </MISC>
+  <MISC>
+    <NAME>Orange amer (curaçao)</NAME>
+    <VERSION>1</VERSION>
+    <AMOUNT>0.0</AMOUNT>
+    <TYPE>Spice</TYPE>
+    <TIME>0.0</TIME>
+    <USE>Boil</USE>
+  </MISC>
+  <MISC>
+    <NAME>Cannelle</NAME>
+    <VERSION>1</VERSION>
+    <AMOUNT>0.0</AMOUNT>
+    <TYPE>Spice</TYPE>
     <TIME>0.0</TIME>
     <USE>Boil</USE>
   </MISC>
