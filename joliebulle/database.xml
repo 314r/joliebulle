@@ -1307,6 +1307,110 @@
     <PRODUCT_ID>M10</PRODUCT_ID>
     <ATTENUATION>78</ATTENUATION>
   </YEAST>
+  <YEAST>
+      <NAME>Vermont Ale</NAME>
+      <VERSION>1</VERSION>
+      <FORM>Liquid</FORM>
+      <LABORATORY>The Yeast Bay</LABORATORY>
+      <PRODUCT_ID></PRODUCT_ID>
+      <ATTENUATION>79</ATTENUATION>
+  </YEAST>
+  <YEAST>
+      <NAME>Wallonian Farmhouse</NAME>
+      <VERSION>1</VERSION>
+      <FORM>Liquid</FORM>
+      <LABORATORY>The Yeast Bay</LABORATORY>
+      <PRODUCT_ID></PRODUCT_ID>
+      <ATTENUATION>85</ATTENUATION>
+  </YEAST>
+  <YEAST>
+      <NAME>Northeastern Abbey</NAME>
+      <VERSION>1</VERSION>
+      <FORM>Liquid</FORM>
+      <LABORATORY>The Yeast Bay</LABORATORY>
+      <PRODUCT_ID></PRODUCT_ID>
+      <ATTENUATION>79</ATTENUATION>
+  </YEAST>
+  <YEAST>
+      <NAME>Saison Blend</NAME>
+      <VERSION>1</VERSION>
+      <FORM>Liquid</FORM>
+      <LABORATORY>The Yeast Bay</LABORATORY>
+      <PRODUCT_ID></PRODUCT_ID>
+      <ATTENUATION>80</ATTENUATION>
+  </YEAST>
+  <YEAST>
+      <NAME>Dry Belgin Ale</NAME>
+      <VERSION>1</VERSION>
+      <FORM>Liquid</FORM>
+      <LABORATORY>The Yeast Bay</LABORATORY>
+      <PRODUCT_ID></PRODUCT_ID>
+      <ATTENUATION>93</ATTENUATION>
+  </YEAST>
+  <YEAST>
+      <NAME>Beersel Brettanomyces Blend</NAME>
+      <VERSION>1</VERSION>
+      <FORM>Liquid</FORM>
+      <LABORATORY>The Yeast Bay</LABORATORY>
+      <PRODUCT_ID></PRODUCT_ID>
+      <ATTENUATION>80</ATTENUATION>
+  </YEAST>
+  <YEAST>
+      <NAME>Brussels Brettanomyces Blend</NAME>
+      <VERSION>1</VERSION>
+      <FORM>Liquid</FORM>
+      <LABORATORY>The Yeast Bay</LABORATORY>
+      <PRODUCT_ID></PRODUCT_ID>
+      <ATTENUATION>85</ATTENUATION>
+  </YEAST>
+  <YEAST>
+      <NAME>Lochristi Brettanomyces Blend</NAME>
+      <VERSION>1</VERSION>
+      <FORM>Liquid</FORM>
+      <LABORATORY>The Yeast Bay</LABORATORY>
+      <PRODUCT_ID></PRODUCT_ID>
+      <ATTENUATION>85</ATTENUATION>
+  </YEAST>
+  <YEAST>
+      <NAME>Amalgamation - Brett Super Blend</NAME>
+      <VERSION>1</VERSION>
+      <FORM>Liquid</FORM>
+      <LABORATORY>The Yeast Bay</LABORATORY>
+      <PRODUCT_ID></PRODUCT_ID>
+      <ATTENUATION>90</ATTENUATION>
+  </YEAST>
+  <YEAST>
+      <NAME>Saison/Brettanomyces Blend</NAME>
+      <VERSION>1</VERSION>
+      <FORM>Liquid</FORM>
+      <LABORATORY>The Yeast Bay</LABORATORY>
+      <PRODUCT_ID></PRODUCT_ID>
+      <ATTENUATION>85</ATTENUATION>
+  </YEAST>
+  <YEAST>
+      <NAME>Funktown Pale Ale</NAME>
+      <VERSION>1</VERSION>
+      <FORM>Liquid</FORM>
+      <LABORATORY>The Yeast Bay</LABORATORY>
+      <PRODUCT_ID></PRODUCT_ID>
+      <ATTENUATION>82</ATTENUATION>
+  </YEAST>
+  <YEAST>
+      <NAME>Mélange - Sour Blend</NAME>
+      <VERSION>1</VERSION>
+      <FORM>Liquid</FORM>
+      <LABORATORY>The Yeast Bay</LABORATORY>
+      <PRODUCT_ID></PRODUCT_ID>
+      <ATTENUATION>90</ATTENUATION>
+  </YEAST>
+  <YEAST>
+      <NAME>Farmhouse Sour Ale</NAME>
+      <VERSION>1</VERSION>
+      <FORM>Liquid</FORM>
+      <LABORATORY>The Yeast Bay</LABORATORY>
+      <PRODUCT_ID></PRODUCT_ID>
+      <ATTENUATION>85</ATTENUATION>
+  </YEAST>
   <HOP>
     <NAME>Apollo</NAME>
     <VERSION>1</VERSION>
