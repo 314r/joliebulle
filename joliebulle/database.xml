@@ -259,6 +259,13 @@
     <FORM>Leaf</FORM>
   </HOP>
   <HOP>
+      <NAME>Perle</NAME>
+      <VERSION>1</VERSION>
+      <FORM>Leaf</FORM>
+      <ALPHA>6.4</ALPHA>
+      <USE>Boil</USE>
+  </HOP>
+  <HOP>
     <NAME>Bullion</NAME>
     <ALPHA>8</ALPHA>
     <FORM>Leaf</FORM>
@@ -469,7 +476,7 @@
     <FORM>Leaf</FORM>
   </HOP>
   <HOP>
-    <NAME>Strisslespalt</NAME>
+    <NAME>Strisselspalt</NAME>
     <ALPHA>4</ALPHA>
     <FORM>Leaf</FORM>
   </HOP>
@@ -477,6 +484,20 @@
     <NAME>Styrian Goldings</NAME>
     <ALPHA>5</ALPHA>
     <FORM>Leaf</FORM>
+  </HOP>
+  <HOP>
+      <NAME>Premiant</NAME>
+      <VERSION>1</VERSION>
+      <FORM>Leaf</FORM>
+      <ALPHA>7.0</ALPHA>
+      <USE>Boil</USE>
+  </HOP>
+  <HOP>
+      <NAME>Sladek</NAME>
+      <VERSION>1</VERSION>
+      <FORM>Leaf</FORM>
+      <ALPHA>7.0</ALPHA>
+      <USE>Boil</USE>
   </HOP>
   <HOP>
     <NAME>Sun</NAME>
@@ -1794,6 +1815,13 @@
     <USE>Boil</USE>
   </HOP>
   <HOP>
+      <NAME>Bouclier</NAME>
+      <VERSION>1</VERSION>
+      <FORM>Leaf</FORM>
+      <ALPHA>5.5</ALPHA>
+      <USE>Boil</USE>
+  </HOP>
+  <HOP>
     <NAME>Atlas</NAME>
     <VERSION>1</VERSION>
     <AMOUNT>0.0</AMOUNT>
@@ -2744,6 +2772,13 @@
     <TIME>0.0</TIME>
     <ALPHA>12.0</ALPHA>
     <USE>Boil</USE>
+  </HOP>
+  <HOP>
+      <NAME>Triskel</NAME>
+      <VERSION>1</VERSION>
+      <FORM>Leaf</FORM>
+      <ALPHA>3.0</ALPHA>
+      <USE>Boil</USE>
   </HOP>
   <MISC>
     <NAME>Cacao (poudre)</NAME>
