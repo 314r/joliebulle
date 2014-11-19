@@ -1024,6 +1024,13 @@
     <ATTENUATION>75</ATTENUATION>
   </YEAST>
   <YEAST>
+      <NAME>West Yorkshire Ale</NAME>
+      <FORM>Liquid</FORM>
+      <LABORATORY>Wyeast</LABORATORY>
+      <PRODUCT_ID>1469</PRODUCT_ID>
+      <ATTENUATION>69</ATTENUATION>
+  </YEAST>
+  <YEAST>
     <NAME>Dry English Ale</NAME>
     <FORM>Liquid</FORM>
     <LABORATORY>White Labs</LABORATORY>
@@ -1269,7 +1276,7 @@
     <ATTENUATION>72</ATTENUATION>
   </YEAST>
   <YEAST>
-    <NAME>Kolsch</NAME>
+    <NAME>Kölsch</NAME>
     <FORM>Liquid</FORM>
     <LABORATORY>Wyeast</LABORATORY>
     <PRODUCT_ID>2565</PRODUCT_ID>
