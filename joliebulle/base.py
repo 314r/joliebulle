@@ -100,6 +100,27 @@ class ImportBase(object,metaclass=Singleton) :
 
         logger.debug("Import %s terminé", mash_file)
 
+    @staticmethod
+    def __indent(elem, level=0):
+        i = "\n" + level*"  "
+        if len(elem):
+            if not elem.text or not elem.text.strip():
+                elem.text = i + "  "
+            if not elem.tail or not elem.tail.strip():
+                elem.tail = i
+            for elem in elem:
+                ImportBase.__indent(elem, level+1)
+            if not elem.tail or not elem.tail.strip():
+                elem.tail = i
+        else:
+            if level and (not elem.tail or not elem.tail.strip()):
+                elem.tail = i
+
+    @staticmethod
+    def save(root_node):
+        with open(database_file, 'wb') as database_xml:
+            ImportBase.__indent(root_node)
+            ET.ElementTree(root_node).write(database_xml, encoding="utf-8")
 
     @staticmethod
     def addFermentable(f):
@@ -108,14 +129,10 @@ class ImportBase(object,metaclass=Singleton) :
 
         root = ImportBase().arbre.getroot()
         root.append(f.toXml())
-        databaseXML = open(database_file, 'wb')
-        ImportBase().arbre._setroot(root)
-        ImportBase().arbre.write(databaseXML, encoding="utf-8")
-        databaseXML.close()
+        ImportBase.save(root)
 
     @staticmethod
     def delFermentable(f):
-        i = ImportBase().listeFermentables.index(f)
         ImportBase().listeFermentables.remove(f)
         root = ImportBase().arbre.getroot()
         iterator = root.iter("FERMENTABLE")
@@ -126,10 +143,7 @@ class ImportBase(object,metaclass=Singleton) :
                 item = elem
         if item is not None:
             root.remove(item)
-            databaseXML = open(database_file, 'wb')
-            ImportBase().arbre._setroot(root)
-            ImportBase().arbre.write(databaseXML, encoding="utf-8")
-            databaseXML.close() 
+            ImportBase.save(root)
 
     @staticmethod
     def addHop(h):
@@ -146,7 +160,6 @@ class ImportBase(object,metaclass=Singleton) :
 
     @staticmethod
     def delHop(h):
-        i = ImportBase().listeHops.index(h)
         ImportBase().listeHops.remove(h)
         root = ImportBase().arbre.getroot()
         iterator = root.iter("HOP")
@@ -157,10 +170,7 @@ class ImportBase(object,metaclass=Singleton) :
                 item = elem
         if item is not None:
             root.remove(item)
-            databaseXML = open(database_file, 'wb')
-            ImportBase().arbre._setroot(root)
-            ImportBase().arbre.write(databaseXML, encoding="utf-8")
-            databaseXML.close() 
+            ImportBase.save(root)
 
     @staticmethod
     def addMisc(m):
@@ -169,14 +179,10 @@ class ImportBase(object,metaclass=Singleton) :
 
         root = ImportBase().arbre.getroot()
         root.append(m.toXml())
-        databaseXML = open(database_file, 'wb')
-        ImportBase().arbre._setroot(root)
-        ImportBase().arbre.write(databaseXML, encoding="utf-8")
-        databaseXML.close()
+        ImportBase.save(root)
 
     @staticmethod
     def delMisc(m):
-        i = ImportBase().listeMiscs.index(m)
         ImportBase().listeMiscs.remove(m)
         root = ImportBase().arbre.getroot()
         iterator = root.iter("MISC")
@@ -187,10 +193,7 @@ class ImportBase(object,metaclass=Singleton) :
                 item = elem
         if item is not None:
             root.remove(item)
-            databaseXML = open(database_file, 'wb')
-            ImportBase().arbre._setroot(root)
-            ImportBase().arbre.write(databaseXML, encoding="utf-8")
-            databaseXML.close() 
+            ImportBase.save(root)
 
     @staticmethod
     def addYeast(y):
@@ -199,14 +202,10 @@ class ImportBase(object,metaclass=Singleton) :
 
         root = ImportBase().arbre.getroot()
         root.append(y.toXml())
-        databaseXML = open(database_file, 'wb')
-        ImportBase().arbre._setroot(root)
-        ImportBase().arbre.write(databaseXML, encoding="utf-8")
-        databaseXML.close()
+        ImportBase.save(root)
 
     @staticmethod
     def delYeast(y):
-        i = ImportBase().listeYeasts.index(y)
         ImportBase().listeYeasts.remove(y)
         root = ImportBase().arbre.getroot()
         iterator = root.iter("YEAST")
@@ -217,7 +216,4 @@ class ImportBase(object,metaclass=Singleton) :
                 item = elem
         if item is not None:
             root.remove(item)
-            databaseXML = open(database_file, 'wb')
-            ImportBase().arbre._setroot(root)
-            ImportBase().arbre.write(databaseXML, encoding="utf-8")
-            databaseXML.close() 
+            ImportBase.save(root)
