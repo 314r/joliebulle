@@ -37,6 +37,7 @@ def exportPrint(recipe):
 <meta charset="utf-8" />
 <style type="text/css">
 pre {white-space: pre-wrap;font-size:1.25em;}
+.ingredients tr td {padding-right: 10px;}
 </style>
 </head>
 <body>
@@ -88,8 +89,8 @@ pre {white-space: pre-wrap;font-size:1.25em;}
         for m in recipe.listeMiscs:
             mUI = MiscView(m)
             resultHtml += '<tr>'
-            resultHtml += '<td>%.0f g</td>' % m.amount
-            resultHtml += '<td>%s (%s)</td>' % (m.name, m.type)
+            resultHtml += '<td>%.0f g</td> ' % m.amount
+            resultHtml += '<td>%s (%s)</td> ' % (m.name, m.type)
             resultHtml += '<td>%.0f min (%s)</td>' % (m.time, mUI.miscUseDisplay())
             resultHtml += '</tr>'
         resultHtml += '</table>'

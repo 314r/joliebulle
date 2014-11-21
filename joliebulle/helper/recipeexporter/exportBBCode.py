@@ -44,14 +44,14 @@ def exportBBCode(recipe):
     generatedBbcode += "[b]" + QCoreApplication.translate("Export", "Grains et sucres", None, QCoreApplication.UnicodeUTF8) + "\n"
     generatedBbcode += "----------------------[/b]\n"
     for f in recipe.listeFermentables:
-        generatedBbcode += "%.0fg %s\n" % (f.amount, f.name)
+        generatedBbcode += "%.0f g %s\n" % (f.amount, f.name)
     generatedBbcode += "\n"
 
     generatedBbcode += "[b]" + QCoreApplication.translate("Export", "Houblons", None, QCoreApplication.UnicodeUTF8) + "\n"
     generatedBbcode += "----------------------[/b]\n"
     for h in recipe.listeHops:
         hView = HopView(h)
-        generatedBbcode += "%.0fg %s (α%s%%, %s) @ %s min (%s)\n" % (
+        generatedBbcode += "%.0f g %s (α %s%%, %s) @ %s min (%s)\n" % (
             h.amount, h.name, h.alpha, hView.hopFormDisplay(), h.time, hView.hopUseDisplay())
     generatedBbcode += "\n"
 
@@ -60,7 +60,7 @@ def exportBBCode(recipe):
         generatedBbcode += "----------------------[/b]\n"
         for m in recipe.listeMiscs:
             mView = MiscView(m)
-            generatedBbcode += "%.0fg %s @ %.0f min (%s)\n" % (m.amount, m.name, m.time, mView.miscUseDisplay())
+            generatedBbcode += "%.0f g %s @ %.0f min (%s)\n" % (m.amount, m.name, m.time, mView.miscUseDisplay())
         generatedBbcode += "\n"
 
     generatedBbcode += "[b]" + QCoreApplication.translate("Export", "Levures", None, QCoreApplication.UnicodeUTF8) + "\n"
