@@ -1,6 +1,6 @@
 toolsApp.controller('AlcToolCtrl', ['$scope', function ($scope) {
     "use strict";
-    var abv, og, fg, sugar;
+    var abv, og, fg, sugar, appAtten;
     
     $scope.originalGravity = 1.001;
     $scope.finalGravity = 1.001;
@@ -19,7 +19,17 @@ toolsApp.controller('AlcToolCtrl', ['$scope', function ($scope) {
          
     };
     
+    $scope.calcAppAttenuation = function () {
     
-    
+    /*
+        Apparent Attenuation = 100 * (OG – FG)/(OG – 1)
+    */
+        og = parseFloat($scope.originalGravity);
+        fg = parseFloat($scope.finalGravity);
+        
+        appAtten = 100 * (og - fg) / (og - 1);
+        return appAtten.toFixed(1);
+    };
+
 	
 }]);

@@ -236,9 +236,15 @@ input::-webkit-inner-spin-button {
                         <label class="control-label">{5}</label>
                     </div>
                 </div>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">{6}</label>
+                    <div class="col-sm-2">
+                        <label class="control-label">{7}</label>
+                    </div>
+                </div>
                 </form>
             </div>
-        </div>'''.format(QCoreApplication.translate("Export","Taux d'alcool", None, QCoreApplication.UnicodeUTF8),QCoreApplication.translate("Export","Densité initiale", None, QCoreApplication.UnicodeUTF8),QCoreApplication.translate("Export","Densité finale", None, QCoreApplication.UnicodeUTF8), QCoreApplication.translate("Export","Sucre ajouté (g/L)", None, QCoreApplication.UnicodeUTF8),QCoreApplication.translate("Export","Alcool par volume (%)", None, QCoreApplication.UnicodeUTF8),"{{calcAlcoolVol()}}")
+        </div>'''.format(QCoreApplication.translate("Export","Taux d'alcool", None, QCoreApplication.UnicodeUTF8),QCoreApplication.translate("Export","Densité initiale", None, QCoreApplication.UnicodeUTF8),QCoreApplication.translate("Export","Densité finale", None, QCoreApplication.UnicodeUTF8), QCoreApplication.translate("Export","Sucre ajouté (g/L)", None, QCoreApplication.UnicodeUTF8),QCoreApplication.translate("Export","Alcool par volume (%)", None, QCoreApplication.UnicodeUTF8),"{{calcAlcoolVol()}}",QCoreApplication.translate("Export","Atténuation apparente", None, QCoreApplication.UnicodeUTF8), "{{calcAppAttenuation()}}")
 
 
 
