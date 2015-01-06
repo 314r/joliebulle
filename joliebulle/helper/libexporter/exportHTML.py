@@ -29,6 +29,7 @@ def exportHTML(recipesSummary):
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <script src="angular/angular.min.js"></script>
+<script src="angular/angular-locale_fr-fr.js"></script>
 <script src="jquery/jquery.js"></script>
 <script src="bootstrap/js/bootstrap.min.js"></script>
 <script src="underscore/underscore-min.js"></script>
@@ -252,7 +253,7 @@ def exportHTML(recipesSummary):
                                 <div class="col-md-3 ing-amount">{6} g</div>
                                 
                             </div>
-                        </div>'''.format(QCoreApplication.translate("Export","Ingrédients", None, QCoreApplication.UnicodeUTF8), "{{fermentable.color}}","{{fermentable.yield}}", "{{fermentable.type}}", "{{fermentable.name}}", "{{fermentable.afterBoilView}}", "{{fermentable.amount}}")
+                        </div>'''.format(QCoreApplication.translate("Export","Ingrédients", None, QCoreApplication.UnicodeUTF8), "{{fermentable.color}}","{{fermentable.yield}}", "{{fermentable.type}}", "{{fermentable.name}}", "{{fermentable.afterBoilView}}", "{{fermentable.amount | number : 0}}")
 
 
     resultHtml +='''                    <div class="col-sm-12 col-md-12" ng-repeat="hop in currentRecipe.hops">
@@ -261,7 +262,7 @@ def exportHTML(recipesSummary):
                                 <div class="col-md-3 ing-amount">{3} g</div>
 
                             </div>
-                        </div>'''.format("{{hop.name}}", "{{hop.use}}", "{{hop.time}}","{{hop.amount}}")
+                        </div>'''.format("{{hop.name}}", "{{hop.use}}", "{{hop.time}}","{{hop.amount | number : 0}}")
 
     resultHtml +='''                     <div class="col-sm-12 col-md-12" ng-repeat="misc in currentRecipe.miscs">
                             <div class="ing row">
@@ -270,7 +271,7 @@ def exportHTML(recipesSummary):
                                 <div class="col-md-3 ing-amount">{3} g</div>
 
                             </div>
-                        </div>'''.format("{{misc.name}}","{{misc.use}}","{{misc.time}}","{{misc.amount}}")
+                        </div>'''.format("{{misc.name}}","{{misc.use}}","{{misc.time}}","{{misc.amount | number : 0}}")
 
     resultHtml +='''                    <div class="col-sm-12 col-md-12" ng-repeat="yeast in currentRecipe.yeasts">
                             <div class="ing row">
