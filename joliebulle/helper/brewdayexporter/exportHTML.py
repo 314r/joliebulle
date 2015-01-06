@@ -43,6 +43,8 @@ def exportHTML(data):
     .main {padding-top:45px; margin-left:80px; margin-bottom:60px;}
     .header{width:100%%;min-height:55px;position:fixed;left:50px;z-index: 1000;background-color: #fff;padding-left:10px;border-bottom: 1px solid #eee;}
     .buttonBack{margin-left:30px;margin-top:-8px;}
+    .printButton{color:#909090; font-size:150%; margin-right : 30px;}
+    .printButton:hover{text-decoration:none; color:#909090;}
     .check-button {padding-left:0;}
     .mode{margin-top:10px;padding-top:5px;margin-left:30px;display:inline-block;}
     .step {margin-top : 24px;}
@@ -81,6 +83,7 @@ def exportHTML(data):
           </div>
           <div class="header">
             <button type="button" class="btn btn-default buttonBack" onClick="main.backWebViewBiblio()">{0}</button>
+            <button class="btn-link btn-xs printButton" type="button" ng-click="printBrewday()"><i class="icon-print"></i></button>
             <div class="mode">
             <input ng-model="brewType" value="classic" ng-change="brewTypeChanged()" type="radio" name="options" id="option1"> {1}
             <input ng-model="brewType" value="biab" ng-change="brewTypeChanged()" type="radio" name="options" id="option2"> {2}

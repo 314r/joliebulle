@@ -1725,6 +1725,20 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
             stringHtml=self.recipe.export("print")
             document.setHtml(stringHtml)
             document.print(printer)
+    
+
+    @QtCore.pyqtSlot()
+    def printBrewday(self) :
+        printer=QtGui.QPrinter()
+        dialog = QtGui.QPrintDialog(printer)
+        dialog.setModal(True)
+        dialog.setWindowTitle("Print Document" )
+        if dialog.exec_() == True:
+            self.webViewBrewday.print(printer)
+            # document = self.webViewBrewday.page().currentFrame().toHtml()
+            # document.print(printer)
+        
+
                 
 
 # from plugins import PluginManager
