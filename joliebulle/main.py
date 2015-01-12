@@ -1434,6 +1434,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         if fileHtml.open(QtCore.QIODevice.WriteOnly):
             try:
                 stream = QtCore.QTextStream(fileHtml)
+                stream.setCodec("UTF-8")
                 stream << self.recipe.export("html-legacy")
             finally:
                 fileHtml.close()
