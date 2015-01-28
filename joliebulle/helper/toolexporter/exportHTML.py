@@ -74,9 +74,9 @@ input::-webkit-inner-spin-button {
             <div class="nav-header"></div>
 -->
             <ul class="nav nav-sidebar">
-              <li onClick="main.showLib()"><a href="#"><i class="icon-beaker"></i> </a></li>
-              <li onClick="main.showJournal()"><a href="#"><i class="icon-calendar-empty"></i> </a></li>
-              <li class="active" onClick="main.showTools()"><a href="#"><i class="icon-cog"></i> </a></li>
+              <li onClick="main.showLib()"><a href="#"><i class="fa fa-print"></i> </a></li>
+              <li onClick="main.showJournal()"><a href="#"><i class="fa fa-calendar-o"></i> </a></li>
+              <li class="active" onClick="main.showTools()"><a href="#"><i class="fa fa-cog"></i> </a></li>
             </ul>
         </div>
 
@@ -86,7 +86,7 @@ input::-webkit-inner-spin-button {
         <div class="row">
 
             <div class="menu btn-group col-sm-offset-7">
-                <i class="icon-reorder" data-toggle="dropdown"></i>
+                <i class="fa fa-bars" data-toggle="dropdown"></i>
                 <ul class="dropdown-menu pull-right" role="menu">    
                                 <li><a href="#gravity">{1}</a></li>
                                 <li><a href="#step">{2}</a></li>

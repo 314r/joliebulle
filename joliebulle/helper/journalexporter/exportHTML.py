@@ -68,9 +68,9 @@ def exportHTML(itemsList,newItem):
             <div class="nav-header"></div>
 -->
             <ul class="nav nav-sidebar">
-              <li onClick="main.showLib()"><a href="#"><i class="icon-beaker"></i> </a></li>
-              <li class="active" onClick="main.showJournal()"><a href="#"><i class="icon-calendar-empty"></i> </a></li>
-              <li onClick="main.showTools()"><a href="#"><i class="icon-cog"></i> </a></li>
+              <li onClick="main.showLib()"><a href="#"><i class="fa fa-flask""></i> </a></li>
+              <li class="active" onClick="main.showJournal()"><a href="#"><i class="fa fa-calendar-o""></i> </a></li>
+              <li onClick="main.showTools()"><a href="#"><i class="fa fa-cog"></i> </a></li>
             </ul>
         </div>
 
@@ -90,7 +90,7 @@ def exportHTML(itemsList,newItem):
             
               <div class="new row row-journal" ng-init="newEntry={1}">
                 <div class="newButton">
-                    <button ng-click="newEntry.editing = !newEntry.editing;newClicked('recette', 'événement')" ng-hide="newEntry.editing"><i class="icon-plus"> </i>{2}</button>
+                    <button ng-click="newEntry.editing = !newEntry.editing;newClicked('recette', 'événement')" ng-hide="newEntry.editing"><i class="fa fa-plus"> </i> {2}</button>
                 </div>
                 
                 <form class="form-inline new-form" role="form" ng-show="newEntry.editing">

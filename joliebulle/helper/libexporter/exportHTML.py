@@ -159,9 +159,9 @@ def exportHTML(recipesSummary):
               <div class="nav-header"></div>
 -->
             <ul class="nav nav-sidebar">
-              <li class="active" onClick="main.showLib()"><a href="#"><i class="icon-beaker"></i> </a></li>
-              <li onClick="main.showJournal()"><a href="#"><i class="icon-calendar-empty"></i> </a></li>
-              <li onClick="main.showTools()"><a href="#"><i class="icon-cog"></i> </a></li>
+              <li class="active" onClick="main.showLib()"><a href="#"><i class="fa fa-flask"></i> </a></li>
+              <li onClick="main.showJournal()"><a href="#"><i class="fa fa-calendar-o"></i> </a></li>
+              <li onClick="main.showTools()"><a href="#"><i class="fa fa-cog"></i> </a></li>
             </ul>
           </div>'''.format(str(recipesSummary))
         
@@ -172,21 +172,21 @@ def exportHTML(recipesSummary):
 
                 <div class="recipe-list-header row">
                  
-                <span class=""><i class="icon-search"></i></span>
+                <span class=""><i class="fa fa-search"></i></span>
                 <input type="text" class="" ng-model="searchText" placeholder="{0}" />
-                <button  class="btn-link btn-xs sortButton" type="button" data-toggle="dropdown"><i class="icon-sort-by-alphabet"></i></button>
+                <button  class="btn-link btn-xs sortButton" type="button" data-toggle="dropdown"><i class="fa fa-sort-alpha-asc"></i></button>
                 <ul id="menuSort" class="dropdown-menu" role="menu">
                                 <i class="journalMenu-description">{1} :</i>
                                 <li><a href="#" ng-click="sortByBrewer()" >{2}</a></li>
                                 <li><a href="#" ng-click="sortByName()" >{3}</a></li>
                 </ul>
-                <button class="btn-link btn-xs newRecipeButton" type="button" onClick="main.newRecipeFromLibrary()" data-toggle="tooltip" data-placement="bottom" title="{4}"><i class="icon-plus"></i></button>
+                <button class="btn-link btn-xs newRecipeButton" type="button" onClick="main.newRecipeFromLibrary()" data-toggle="tooltip" data-placement="bottom" title="{4}"><i class="fa fa-plus"></i></button>
                 </div>'''.format( QCoreApplication.translate("Export","Rechercher...", None, QCoreApplication.UnicodeUTF8),  QCoreApplication.translate("Export","Trier par", None, QCoreApplication.UnicodeUTF8),  QCoreApplication.translate("Export","Brasseur", None, QCoreApplication.UnicodeUTF8),  QCoreApplication.translate("Export","Nom", None, QCoreApplication.UnicodeUTF8), QCoreApplication.translate("Export","Nouvelle recette", None, QCoreApplication.UnicodeUTF8))
 
 
     resultHtml+='''<div class="recipe-list">
                 <div class="recipe-item" ng-class="{0}" ng-repeat="recipe in recipes | filter:searchText.toLowerCase()" ng-click="recipeSelected(recipe)">
-                    <span class="brewer-name">{1}</span> <button class="btn-link btn-xs deleteButton" ng-click="deleteLib(recipe)"><i class="icon-remove"></i></button>
+                    <span class="brewer-name">{1}</span> <button class="btn-link btn-xs deleteButton" ng-click="deleteLib(recipe)"><i class="fa fa-times"></i></button>
                     <div class="recipe-name"><a href="toto" >{2}</a>
                         <div class="recipe-style">{3}</div> 
                         
@@ -213,7 +213,7 @@ def exportHTML(recipesSummary):
 
     resultHtml +='''               
                     <div class="recipe-buttons col-md-5">
-                        <button id="menuJournal" class="btn-link  edit-button" type="button" data-toggle="dropdown" ><i class="icon-flag"></i> {0} <span class="icon-caret-down"></span></button>
+                        <button id="menuJournal" class="btn-link  edit-button" type="button" data-toggle="dropdown" ><i class="fa fa-flag"></i> {0} <span class="fa fa-caret-down"></span></button>
                         <ul class="dropdown-menu" role="menu">
                                 <i class="journalMenu-description">{1} :</i>
                                 <li><a onClick="main.addToJournal('brewed')" href="#">{2}</a></li>
@@ -222,7 +222,7 @@ def exportHTML(recipesSummary):
                                 <li class="divider"></li>
                                 <li><a onClick="main.showJournal()" href="#">{5}</a></li>
                         </ul>
-                        <button class="btn-link  edit-button" type="button" onClick="main.editCurrentRecipe()"><i class="icon-wrench"></i> {6}</button>
+                        <button class="btn-link  edit-button" type="button" onClick="main.editCurrentRecipe()"><i class="fa fa-wrench"></i> {6}</button>
                     </div>
                 </div>'''.format( QCoreApplication.translate("Export","Journal", None, QCoreApplication.UnicodeUTF8), QCoreApplication.translate("Export","Marquer comme", None, QCoreApplication.UnicodeUTF8), QCoreApplication.translate("Export","Brassée", None, QCoreApplication.UnicodeUTF8), QCoreApplication.translate("Export","Mise en fermentation", None, QCoreApplication.UnicodeUTF8),  QCoreApplication.translate("Export","Embouteillée", None, QCoreApplication.UnicodeUTF8), QCoreApplication.translate("Export","Voir le journal", None, QCoreApplication.UnicodeUTF8), QCoreApplication.translate("Export","Editer", None, QCoreApplication.UnicodeUTF8))
 
@@ -285,7 +285,7 @@ def exportHTML(recipesSummary):
                 <div class="row profile-header">
                     <h3 class="col-md-6">{0}</h3>
                     <div class="brewday-button col-md-5">    
-                        <button class="btn-link edit-button" type="button" onClick="main.showBrewdayMode()" ><i class="icon-wrench"></i> {1}</button>
+                        <button class="btn-link edit-button" type="button" onClick="main.showBrewdayMode()" ><i class="fa fa-wrench"></i> {1}</button>
                     </div>
                 </div>    
                 <div class="brew-details">

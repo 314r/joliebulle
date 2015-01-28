@@ -76,14 +76,14 @@ def exportHTML(data):
     resultHtml+='''
           <div class="sidebar">
             <ul class="nav nav-sidebar">
-              <li class="active" onClick="main.showLib()"><a href="#"><i class="icon-beaker"></i> </a></li>
-              <li onClick="main.showJournal()"><a href="#"><i class="icon-calendar-empty"></i> </a></li>
-              <li onClick="main.showTools()"><a href="#"><i class="icon-cog"></i> </a></li>
+              <li class="active" onClick="main.showLib()"><a href="#"><i class="fa fa-flask"></i> </a></li>
+              <li onClick="main.showJournal()"><a href="#"><i class="fa fa-calendar-o"></i> </a></li>
+              <li onClick="main.showTools()"><a href="#"><i class="fa fa-cog"></i> </a></li>
             </ul>
           </div>
           <div class="header">
             <button type="button" class="btn btn-default buttonBack" onClick="main.backWebViewBiblio()">{0}</button>
-            <button class="btn-link btn-xs printButton" type="button" ng-click="printBrewday()"><i class="icon-print"></i></button>
+            <button class="btn-link btn-xs printButton" type="button" ng-click="printBrewday()"><i class="fa fa-print"></i></button>
             <div class="mode">
             <input ng-model="brewType" value="classic" ng-change="brewTypeChanged()" type="radio" name="options" id="option1"> {1}
             <input ng-model="brewType" value="biab" ng-change="brewTypeChanged()" type="radio" name="options" id="option2"> {2}
@@ -144,7 +144,7 @@ def exportHTML(data):
                 <h2>{0}</h2>
                 <p>{1} : {2} L</p>
                 <p>{3} : {4}</p>
-                <button class="btn-link check-button" type="button" ng-click="preBoilCheck()"><i class="icon-wrench"></i> {5}</button>
+                <button class="btn-link check-button" type="button" ng-click="preBoilCheck()"><i class="fa fa-wrench"></i> {5}</button>
             </div>'''.format(QCoreApplication.translate("Export","Pré-ébullition", None, QCoreApplication.UnicodeUTF8),QCoreApplication.translate("Export","Volume théorique pré-ébullition", None, QCoreApplication.UnicodeUTF8),"{{preBoilVol().toFixed(1)}}", QCoreApplication.translate("Export","Densité théorique pré-ébullition", None, QCoreApplication.UnicodeUTF8), "{{preBoilSg()}}", QCoreApplication.translate("Export","Vérifier et ajuster", None, QCoreApplication.UnicodeUTF8))
             
             
