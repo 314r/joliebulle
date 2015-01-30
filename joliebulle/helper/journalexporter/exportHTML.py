@@ -136,7 +136,7 @@ def exportHTML(itemsList,newItem):
 
 </script>    
 </body>
-</html>''' .format("{{entry.date*1000 | date:'dd/MM/yy'}}", "{{entry.recipe}}",QCoreApplication.translate("Export","a été marquée comme", None, QCoreApplication.UnicodeUTF8), "{{entry.event}}", QCoreApplication.translate("Export","modifier", None, QCoreApplication.UnicodeUTF8), QCoreApplication.translate("Export","supprimer", None, QCoreApplication.UnicodeUTF8), QCoreApplication.translate("Export","enregistrer", None, QCoreApplication.UnicodeUTF8) )
+</html>''' .format("{{entry.date | date:'dd/MM/yy'}}", "{{entry.recipe}}",QCoreApplication.translate("Export","a été marquée comme", None, QCoreApplication.UnicodeUTF8), "{{entry.event}}", QCoreApplication.translate("Export","modifier", None, QCoreApplication.UnicodeUTF8), QCoreApplication.translate("Export","supprimer", None, QCoreApplication.UnicodeUTF8), QCoreApplication.translate("Export","enregistrer", None, QCoreApplication.UnicodeUTF8) )
 
     return resultHtml
 
