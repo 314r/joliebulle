@@ -4,7 +4,6 @@ toolsApp.controller('JournalCtrl', ['$scope', '$http', '$filter', function ($sco
     $scope.entries = [];
 
     $scope.$watch($scope.newEntry, function () {
-        console.log($scope.newEntry.date);
         $scope.newEntryRecipe = $scope.newEntry.recipe;
         $scope.newEntryDate = new Date(parseInt($scope.newEntry.date)*1000);
         $scope.newEntryEvent = $scope.newEntry.event;
@@ -74,14 +73,15 @@ toolsApp.controller('JournalCtrl', ['$scope', '$http', '$filter', function ($sco
         }
     };
 
-    $scope.formatDate = function (date) {
-        // On transforme la date pour contourner un bug sous Windows qui fait que le format yyyy-MM-dd ne passe pas.
-        date = $filter('date')(date, 'longDate');
-        // On veut une date plus précise, histoire d'etre sur de respecter la chronologie des entrées.
-        date = (new Date(date).getTime() / 1000) + (new Date().getHours() * 3600) + (new Date().getMinutes() * 60) + (new Date().getSeconds());
-        date = date.toString();
-        return date;
-    };
+    // Deprecated
+    // $scope.formatDate = function (date) {
+    //     // On transforme la date pour contourner un bug sous Windows qui fait que le format yyyy-MM-dd ne passe pas.
+    //     date = $filter('date')(date, 'longDate');
+    //     // On veut une date plus précise, histoire d'etre sur de respecter la chronologie des entrées.
+    //     date = (new Date(date).getTime() / 1000) + (new Date().getHours() * 3600) + (new Date().getMinutes() * 60) + (new Date().getSeconds());
+    //     date = date.toString();
+    //     return date;
+    // };
 
     $scope.convertDate = function (entry, step, array) {
         entry.date = new Date(parseInt(entry.date)*1000)
