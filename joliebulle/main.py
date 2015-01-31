@@ -940,8 +940,15 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
 
 
     def prefReload(self) :
+        if platform == 'win32':
+            recettes_dir = settings.conf.value("pathWin32")
+        else :
+            recettes_dir = settings.conf.value("pathUnix")
         self.initRep()
-  
+        self.listdir(recettes_dir)
+        self.showLib()
+        print(settings.conf.value("pathUnix"))
+
         
     def switchToEditor(self) :
         self.stackedWidget.setCurrentIndex(0)
@@ -1413,7 +1420,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         else :
             self.enregistrerRecette(self.s)
 
-        logger.debug(self.recipe.listeHops)
+        
         
   
     def enregistrerSous (self) :
