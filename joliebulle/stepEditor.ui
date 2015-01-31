@@ -88,13 +88,20 @@ p, li { white-space: pre-wrap; }
      </item>
     </layout>
    </item>
-   <item row="1" column="0">
+   <item row="2" column="0">
     <widget class="QDialogButtonBox" name="buttonBox">
      <property name="orientation">
       <enum>Qt::Horizontal</enum>
      </property>
      <property name="standardButtons">
       <set>QDialogButtonBox::Cancel|QDialogButtonBox::Ok</set>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="0">
+    <widget class="QLabel" name="label">
+     <property name="text">
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#909090;&quot;&gt;Le premier palier devrait toujours être de type Infusion.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; color:#909090;&quot;&gt;Pour les paliers par ajout d'eau chaude choisir Infusion.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; color:#909090;&quot;&gt;Pour les paliers par chauffe directe choisir Température.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
      </property>
     </widget>
    </item>
