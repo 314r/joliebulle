@@ -613,7 +613,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         baseUrl = QtCore.QUrl.fromLocalFile(os.path.join(pyDir, "static/"))
         self.webViewBiblio.setHtml(self.journal.export("html",entry), baseUrl)
         self.webViewBiblio.page().mainFrame().addToJavaScriptWindowObject("main", self)
-        self.webViewBiblio.page().settings().setAttribute(QtWebKit.QWebSettings.DeveloperExtrasEnabled, True)
+        # self.webViewBiblio.page().settings().setAttribute(QtWebKit.QWebSettings.DeveloperExtrasEnabled, True)
         # self.webInspector = QtWebKit.QWebInspector(self)
         # self.webInspector.setPage(self.webViewBiblio.page())
         # self.webInspector.setVisible(True)
@@ -650,7 +650,8 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         baseUrl = QtCore.QUrl.fromLocalFile(os.path.join(pyDir, "static/"))
         self.webViewBiblio.setHtml(LibExporterRepository['html'](data), baseUrl)
         self.webViewBiblio.page().mainFrame().addToJavaScriptWindowObject("main", self)
-        self.webViewBiblio.page().settings().setAttribute(QtWebKit.QWebSettings.DeveloperExtrasEnabled, True)
+        # self.webViewBiblio.page().settings().setAttribute(QtWebKit.QWebSettings.DeveloperExtrasEnabled, True)
+        self.webViewBiblio.page().action(QtWebKit.QWebPage.Reload).setVisible(False)
 
 
     @QtCore.pyqtSlot(str)
@@ -705,7 +706,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
             baseUrl = QtCore.QUrl.fromLocalFile(os.path.join(pyDir, "static/"))
             self.webViewBrewday.setHtml(BrewdayExporterRepository['html'](data), baseUrl)
             self.webViewBrewday.page().mainFrame().addToJavaScriptWindowObject("main", self)
-            self.webViewBrewday.page().settings().setAttribute(QtWebKit.QWebSettings.DeveloperExtrasEnabled, True)
+            # self.webViewBrewday.page().settings().setAttribute(QtWebKit.QWebSettings.DeveloperExtrasEnabled, True)
         else :
             self.stackedWidget.setCurrentIndex(2)
 
