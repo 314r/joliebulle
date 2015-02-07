@@ -51,11 +51,7 @@ recipesApp.controller('RecipeslibCtrl', ['$scope','$http', '$filter', function (
         return $scope.currentRecipe;
     }
 
-
-
-
-
-
-
-
 }]);
+
+
+

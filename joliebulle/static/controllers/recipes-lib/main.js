@@ -22,3 +22,9 @@ var recipesApp = angular.module('recipes-lib', []);
 // 	};
 
 // });
+
+recipesApp.directive('bsPopover', function() {
+    return function(scope, element, attrs) {
+        element.find("a[rel=popover]").popover({ placement: 'bottom', html: 'true', trigger:'hover'});
+    };
+});

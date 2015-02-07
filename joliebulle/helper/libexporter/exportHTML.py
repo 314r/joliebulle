@@ -145,6 +145,37 @@ def exportHTML(recipesSummary):
     .recipe-list::-webkit-scrollbar { 
     display: none; 
 }
+
+.ing-name .popover-ing {
+  background-color: rgba(0,0,0,0.90);
+  border-radius: 5px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.4);
+  display: none;
+  position: absolute;
+  bottom: -20px;
+  left: 30px;
+  width: 180px;
+  color: #fff;
+  font-size: 12px;
+  padding: 7px 10px;
+  z-index: 10;
+}
+
+.ing-name:hover .popover-ing {
+  display: block;
+  -webkit-animation: fade .4s linear 1, slide .3s linear 1;
+}
+
+@-webkit-keyframes fade {
+  from {opacity: 0;} to {opacity: 1;}
+}
+
+@-webkit-keyframes slide {
+  from {left: 50px;} to {left: 30px;}
+}
+
+
+
 </style>
 </head>'''
 
@@ -197,9 +228,7 @@ def exportHTML(recipesSummary):
 
 
     resultHtml+='''<div class="recipe-view-header">
-
-              
-            
+  
             </div>
             <div class="recipeView" ng-show="active">
                 
@@ -249,20 +278,38 @@ def exportHTML(recipesSummary):
                     <div class="">
                         <div class="col-sm-12 col-md-12" ng-repeat="fermentable in currentRecipe.fermentables">
                             <div class="ing row">
-                                <div class="col-sm-4 col-md-4"><span class="ing-name" data-toggle="popover" data-trigger="hover" data-html="true" data-placement="bottom" data-content="EBC : {1} <br/> Rendement : {2}% <br/> Type : {3} ">{4}</span><div class="use">{5}</div></div>
-                                <div class="col-md-3 ing-amount">{6} g</div>
+                                <div class="col-sm-4 col-md-4">
+                                    <span class="ing-name" >
+                                        <ul class="popover-ing">
+                                            <li>{1} : {2}</li>
+                                            <li>{3} : {4}% </li>
+                                            <li>{5} : {6}</li>
+                                        </ul>
+                                    {7}</span>
+                                    <div class="use">{8}</div>
+                                </div>
+                                <div class="col-md-3 ing-amount">{9} g</div>
                                 
                             </div>
-                        </div>'''.format(QCoreApplication.translate("Export","Ingrédients", None, QCoreApplication.UnicodeUTF8), "{{fermentable.color}}","{{fermentable.yield}}", "{{fermentable.type}}", "{{fermentable.name}}", "{{fermentable.afterBoilView}}", "{{fermentable.amount | number : 0}}")
+                        </div>'''.format(QCoreApplication.translate("Export","Ingrédients", None, QCoreApplication.UnicodeUTF8),QCoreApplication.translate("Export","EBC", None, QCoreApplication.UnicodeUTF8), "{{fermentable.color}}",QCoreApplication.translate("Export","Rendement", None, QCoreApplication.UnicodeUTF8),"{{fermentable.yield}}", QCoreApplication.translate("Export","Type", None, QCoreApplication.UnicodeUTF8),"{{fermentable.type}}", "{{fermentable.name}}", "{{fermentable.afterBoilView}}", "{{fermentable.amount | number : 0}}")
 
 
     resultHtml +='''                    <div class="col-sm-12 col-md-12" ng-repeat="hop in currentRecipe.hops">
                             <div class="ing row">
-                                <div class="col-sm-4 col-md-4"><span class="ing-name">{0}</span> <div class="use">{1} - {2} min</div></div>
-                                <div class="col-md-3 ing-amount">{3} g</div>
+                                <div class="col-sm-4 col-md-4">
+                                    <span class="ing-name">
+                                        <ul class="popover-ing"> 
+                                            <li>{0} : {1}%</li>
+                                            <li>{2} : {3}</li>
+                                        </ul>
+
+                                    {4}
+                                    </span> 
+                                    <div class="use">{5} - {6} min</div></div>
+                                <div class="col-md-3 ing-amount">{7} g</div>
 
                             </div>
-                        </div>'''.format("{{hop.name}}", "{{hop.use}}", "{{hop.time}}","{{hop.amount | number : 0}}")
+                        </div>'''.format(QCoreApplication.translate("Export","Acides Alpha", None, QCoreApplication.UnicodeUTF8), "{{hop.alpha}}", QCoreApplication.translate("Export","IBU", None, QCoreApplication.UnicodeUTF8), "{{hop.ibuPart}}", "{{hop.name}}", "{{hop.use}}", "{{hop.time}}","{{hop.amount | number : 0}}")
 
     resultHtml +='''                     <div class="col-sm-12 col-md-12" ng-repeat="misc in currentRecipe.miscs">
                             <div class="ing row">
@@ -275,11 +322,17 @@ def exportHTML(recipesSummary):
 
     resultHtml +='''                    <div class="col-sm-12 col-md-12" ng-repeat="yeast in currentRecipe.yeasts">
                             <div class="ing row">
-                                <div class="col-md-6 ing-name">{0} {1} {2}</div>
+                                <div class="col-md-6 ing-name">
+                                    <ul class="popover-ing">
+                                        <li>{0} : {1}%</li>
+                                        <li>{2} : {3}</li>
+                                    </ul>
+
+                                {4} {5} {6}</div>
                             </div>
                         </div>
                     </div>
-                </div>'''.format("{{yeast.name}}", "{{yeast.labo}}", "{{yeast.product_id}}")
+                </div>'''.format(QCoreApplication.translate("Export","Atténuation", None, QCoreApplication.UnicodeUTF8), "{{yeast.attenuation}}", QCoreApplication.translate("Export","Forme", None, QCoreApplication.UnicodeUTF8), "{{yeast.form}}","{{yeast.name}}", "{{yeast.labo}}", "{{yeast.product_id}}")
 
     resultHtml +='''        <div class="profile col-md-12">
                 <div class="row profile-header">
@@ -312,11 +365,13 @@ def exportHTML(recipesSummary):
     resultHtml +='''        </div>
         </div>
 
+
        
     <!-- Fin container     -->
     </div>
 
-{0}
+{0} 
+
   
 </body>
 </html>'''.format(''' 
@@ -328,5 +383,4 @@ $("[data-toggle='tooltip']").tooltip();
     ''')
 
     return resultHtml
-
 
