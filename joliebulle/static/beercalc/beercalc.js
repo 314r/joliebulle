@@ -1,6 +1,48 @@
 var beerCalc = (function () {
-    var i, volPreCool, volPreBoil, ratio, gus, preBoilSg, strikeTemp, strikeVol, Vm, infuseVol, newRatio, grainRetentionVol, spargeVol, grainVolume, satGrain, volSat, waterAfterSat, mashVolume, mashVolumeStrike, mashVolumeLastStep, infusionSteps;
+    var i, volPreCool, volPreBoil, ratio, gus, preBoilSg, strikeTemp, strikeVol, Vm, infuseVol, newRatio, grainRetentionVol, spargeVol, grainVolume, satGrain, volSat, waterAfterSat, mashVolume, mashVolumeStrike, mashVolumeLastStep, infusionSteps, ebc, mcu, mcuTot, _sugars, sugarEquivalents, _equivSugar;
+    
+    _equivSugar = function (fermentable) {
+        return (fermentable.amount / 1000) * (fermentable.yield / 100);
+    };
+
+    _sugars = function (fermentables) {
+        sugarEquivalents = {
+            totalSugars : 0,
+            mashedSugars : 0,
+            nonMashedSugars : 0,
+            preBoilSugars : 0,
+            preBoilMashed : 0,
+            preBoilNonMashed : 0
+        };
+        fermentables.forEach(function (fermentable) {
+            sugarEquivalents.totalSugars = sugarEquivalents.totalSugars + _equivSugar(fermentable);
+        });
+        return sugarEquivalents;
+    };
+
+
     return {
+
+        ebc : function (fermentables, volume) {
+/*          calcul de la couleur
+            calcul du MCU pour chaque grain :
+            MCU=4.23*EBC(grain)*Poids grain(Kg)/Volume(L)
+            puis addition de tous les MCU
+            puis calcul EBC total :
+            EBC=2.939*MCU^0.6859*/
+            mcuTot = 0;
+            fermentables.forEach(function (fermentable) {
+                mcu = 4.23 * fermentable.color * (fermentable.amount / 1000) / volume;
+                mcuTot = mcuTot + mcu;
+            });
+            ebc = 2.939 * Math.pow(mcuTot, 0.6859);
+            return ebc;
+
+        },
+
+        sugars : function (fermentables) {
+            return _sugars(fermentables);
+        },
       
         preBoilCalc : function (coolingLossRate, boilOffRate, boilTime, volume) {
             volPreCool = volume / (1 - coolingLossRate);

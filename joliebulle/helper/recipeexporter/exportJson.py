@@ -47,7 +47,7 @@ def exportJson(recipe) :
 	dic['boilTime'] = recipe.boil
 	dic['efficiency'] = recipe.efficiency
 	dic['ibu'] = "%.0f" %recipe.compute_IBU()
-	dic['ebc'] = "%.0f" %recipe.compute_EBC()
+	# dic['ebc'] = "%.0f" %recipe.compute_EBC()
 	dic['og'] = "%.3f" %recipe.compute_OG()
 	dic['fg'] = "%.3f" %recipe.compute_FG()
 	dic['bugu'] = "%.2f" %recipe.compute_ratioBUGU()
@@ -82,7 +82,7 @@ def exportJson(recipe) :
 		fView = FermentableView(f)
 		fermentable = {}
 		fermentable['name'] = f.name
-		fermentable['type'] = fView.fermentableTypeDisplay()
+		fermentable['type'] = f.type
 		fermentable['yield'] = "%.1f" %f.fyield
 		fermentable['color'] = "%.0f" %f.color
 		fermentable['amount'] = f.amount

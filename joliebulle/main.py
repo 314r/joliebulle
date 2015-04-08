@@ -650,7 +650,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         baseUrl = QtCore.QUrl.fromLocalFile(os.path.join(pyDir, "static/"))
         self.webViewBiblio.setHtml(LibExporterRepository['html'](data), baseUrl)
         self.webViewBiblio.page().mainFrame().addToJavaScriptWindowObject("main", self)
-        # self.webViewBiblio.page().settings().setAttribute(QtWebKit.QWebSettings.DeveloperExtrasEnabled, True)
+        self.webViewBiblio.page().settings().setAttribute(QtWebKit.QWebSettings.DeveloperExtrasEnabled, True)
         self.webViewBiblio.page().action(QtWebKit.QWebPage.Reload).setVisible(False)
 
 

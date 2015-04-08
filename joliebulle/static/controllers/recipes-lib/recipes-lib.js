@@ -23,6 +23,7 @@ recipesApp.controller('RecipeslibCtrl', ['$scope','$http', '$filter', function (
     $scope.recipeSelected = function (recipe) {
         $scope.active = true;
         $scope.currentRecipe = recipe;
+        $scope.calcProfile(recipe);
         $scope.sortRecipe();
         $scope.activeClass = $scope.currentRecipe.path;
         main.viewRecipeLib(recipe.path);
@@ -49,6 +50,12 @@ recipesApp.controller('RecipeslibCtrl', ['$scope','$http', '$filter', function (
         $scope.currentRecipe.hops = _.sortBy($scope.currentRecipe.hops, function (o) {return parseInt(o.time)}).reverse();
         $scope.currentRecipe.miscs = _.sortBy($scope.currentRecipe.miscs, function (o) {return parseInt(o.amount)}).reverse();
         return $scope.currentRecipe;
+    };
+
+    $scope.calcProfile = function (recipe) {
+        recipe.ebc = Math.round(beerCalc.ebc(recipe.fermentables, recipe.volume));
+        recipe.sugars= beerCalc.sugars(recipe.fermentables);
+        console.log(beerCalc.sugars(recipe.fermentables).totalSugars);
     }
 
 }]);

@@ -104,6 +104,7 @@ joliebulle/model/recipe.py
 joliebulle/model/yeast.py
 joliebulle/model/constants/__init__.py
 joliebulle/static/angular/License
+joliebulle/static/angular/angular-locale_fr-fr.js
 joliebulle/static/angular/angular.min.js
 joliebulle/static/angular/version.json
 joliebulle/static/angular/version.txt
@@ -126,15 +127,11 @@ joliebulle/static/controllers/tools/decoction.js
 joliebulle/static/controllers/tools/dilution.js
 joliebulle/static/controllers/tools/gravity.js
 joliebulle/static/controllers/tools/main.js
+joliebulle/static/controllers/tools/refractoalc.js
 joliebulle/static/controllers/tools/sgplato.js
 joliebulle/static/controllers/tools/steps.js
 joliebulle/static/css/sidebar.css
 joliebulle/static/font-awesome/css/font-awesome.min.css
-joliebulle/static/font-awesome/font/FontAwesome.otf
-joliebulle/static/font-awesome/font/fontawesome-webfont.eot
-joliebulle/static/font-awesome/font/fontawesome-webfont.svg
-joliebulle/static/font-awesome/font/fontawesome-webfont.ttf
-joliebulle/static/font-awesome/font/fontawesome-webfont.woff
 joliebulle/static/images/furley_bg.png
 joliebulle/static/jquery/MIT-LICENSE.txt
 joliebulle/static/jquery/jquery.js

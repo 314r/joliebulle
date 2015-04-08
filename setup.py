@@ -3,7 +3,7 @@
 
 APP = ["joliebulle/main.py"]
 NAME = "Joliebulle"
-VERSION = "3.3.0"
+VERSION = "3.4.0"
 
 setup_info = dict(
     name = NAME,
