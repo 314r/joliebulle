@@ -48,7 +48,7 @@ def exportJson(recipe) :
 	dic['efficiency'] = recipe.efficiency
 	dic['ibu'] = "%.0f" %recipe.compute_IBU()
 	# dic['ebc'] = "%.0f" %recipe.compute_EBC()
-	dic['og'] = "%.3f" %recipe.compute_OG()
+	# dic['og'] = "%.3f" %recipe.compute_OG()
 	dic['fg'] = "%.3f" %recipe.compute_FG()
 	dic['bugu'] = "%.2f" %recipe.compute_ratioBUGU()
 	dic['alc'] = "%.1f" %recipe.compute_ABV()

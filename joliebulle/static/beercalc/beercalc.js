@@ -36,6 +36,14 @@ var beerCalc = (function () {
         return sugarEquivalents;
     };
 
+    _gravityUnits = function (fermentables, volume, efficiency) {
+        return (383.89 * _sugars(fermentables).mashedSugars / volume) * (efficiency/100) + (383.89 * _sugars(fermentables).nonMashedSugars / volume);
+    };
+
+    _originalGravity = function (recipe) {
+        return 1 + (_gravityUnits(recipe.fermentables, recipe.volume, recipe.efficiency) / 1000);
+    };
+
 
     return {
 
@@ -57,6 +65,10 @@ var beerCalc = (function () {
 
         sugars : function (fermentables) {
             return _sugars(fermentables);
+        },
+
+        originalGravity : function (recipe) {
+            return _originalGravity(recipe);
         },
       
         preBoilCalc : function (coolingLossRate, boilOffRate, boilTime, volume) {
