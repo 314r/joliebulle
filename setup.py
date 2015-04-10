@@ -51,7 +51,7 @@ setup_info = dict(
             "static/chartjs/*",
             "static/images/*",
             "static/font-awesome/css/*",
-            "static/font-awesome/font/*",
+            "static/font-awesome/fonts/*",
             "static/jquery/*",
             "static/angular/*",
             "static/underscore/*"
