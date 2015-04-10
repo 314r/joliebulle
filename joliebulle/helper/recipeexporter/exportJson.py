@@ -87,9 +87,9 @@ def exportJson(recipe) :
 		fermentable['color'] = "%.0f" %f.color
 		fermentable['amount'] = f.amount
 		if f.useAfterBoil :
-			fermentable['after-boil'] = 'true'
+			fermentable['afterBoil'] = 'true'
 		else : 
-			fermentable['after-boil'] = 'false'
+			fermentable['afterBoil'] = 'false'
 		fermentable['afterBoilView'] = fView.fermentableUseDisplay()	
 		fermentables.append(fermentable)
 	dic['fermentables'] = fermentables	

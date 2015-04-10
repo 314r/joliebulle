@@ -15,7 +15,23 @@ var beerCalc = (function () {
             preBoilNonMashed : 0
         };
         fermentables.forEach(function (fermentable) {
-            sugarEquivalents.totalSugars = sugarEquivalents.totalSugars + _equivSugar(fermentable);
+            sugarEquivalents.totalSugars +=  _equivSugar(fermentable);
+            if (fermentable.type === "Sugar" || fermentable.type === "Dry Extract" || fermentable.type === "Extract") {
+                sugarEquivalents.nonMashedSugars +=  _equivSugar(fermentable);
+            } else {
+                sugarEquivalents.mashedSugars +=  _equivSugar(fermentable);
+            }
+
+            /* Sugars added after boil, to compute pre-boil gravity. Impact on IBU.  */
+            if (fermentable.afterBoil == 'false') {
+                sugarEquivalents.preBoilSugars += _equivSugar(fermentable);
+                if (fermentable.type === "Sugar" || fermentable.type === "Dry Extract" || fermentable.type === "Extract") {
+                    sugarEquivalents.preBoilNonMashed += _equivSugar(fermentable);
+                } else {
+                    sugarEquivalents.preBoilMashed += _equivSugar(fermentable);
+                }
+            }
+            
         });
         return sugarEquivalents;
     };
@@ -37,7 +53,6 @@ var beerCalc = (function () {
             });
             ebc = 2.939 * Math.pow(mcuTot, 0.6859);
             return ebc;
-
         },
 
         sugars : function (fermentables) {

@@ -55,7 +55,7 @@ recipesApp.controller('RecipeslibCtrl', ['$scope','$http', '$filter', function (
     $scope.calcProfile = function (recipe) {
         recipe.ebc = Math.round(beerCalc.ebc(recipe.fermentables, recipe.volume));
         recipe.sugars= beerCalc.sugars(recipe.fermentables);
-        console.log(beerCalc.sugars(recipe.fermentables).totalSugars);
+        console.log(beerCalc.sugars(recipe.fermentables));
     }
 
 }]);
