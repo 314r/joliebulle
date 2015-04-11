@@ -1,8 +1,10 @@
+/*jslint nomen: true */
 var beerCalc = (function () {
-    var i, volPreCool, volPreBoil, ratio, gus, preBoilSg, strikeTemp, strikeVol, Vm, infuseVol, newRatio, grainRetentionVol, spargeVol, grainVolume, satGrain, volSat, waterAfterSat, mashVolume, mashVolumeStrike, mashVolumeLastStep, infusionSteps, ebc, mcu, mcuTot, _sugars, sugarEquivalents, _equivSugar;
+    "use strict";
+    var i, volPreCool, volPreBoil, ratio, gus, preBoilSg, strikeTemp, strikeVol, Vm, infuseVol, newRatio, grainRetentionVol, spargeVol, grainVolume, satGrain, volSat, waterAfterSat, mashVolume, mashVolumeStrike, mashVolumeLastStep, infusionSteps, ebc, mcu, mcuTot, _sugars, sugarEquivalents, _equivSugar, _gravityUnits, _originalGravity;
     
     _equivSugar = function (fermentable) {
-        return (fermentable.amount / 1000) * (fermentable.yield / 100);
+        return (fermentable.amount / 1000) * (fermentable.fyield / 100);
     };
 
     _sugars = function (fermentables) {
@@ -23,7 +25,7 @@ var beerCalc = (function () {
             }
 
             /* Sugars added after boil, to compute pre-boil gravity. Impact on IBU.  */
-            if (fermentable.afterBoil == 'false') {
+            if (fermentable.afterBoil === 'false') {
                 sugarEquivalents.preBoilSugars += _equivSugar(fermentable);
                 if (fermentable.type === "Sugar" || fermentable.type === "Dry Extract" || fermentable.type === "Extract") {
                     sugarEquivalents.preBoilNonMashed += _equivSugar(fermentable);
@@ -37,7 +39,7 @@ var beerCalc = (function () {
     };
 
     _gravityUnits = function (fermentables, volume, efficiency) {
-        return (383.89 * _sugars(fermentables).mashedSugars / volume) * (efficiency/100) + (383.89 * _sugars(fermentables).nonMashedSugars / volume);
+        return (383.89 * _sugars(fermentables).mashedSugars / volume) * (efficiency / 100) + (383.89 * _sugars(fermentables).nonMashedSugars / volume);
     };
 
     _originalGravity = function (recipe) {
@@ -160,10 +162,6 @@ var beerCalc = (function () {
             } else {
                 return true;
             }
-            
-            
         }
-    
     };
- 
-})();
+}());

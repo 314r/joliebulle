@@ -83,7 +83,7 @@ def exportJson(recipe) :
 		fermentable = {}
 		fermentable['name'] = f.name
 		fermentable['type'] = f.type
-		fermentable['yield'] = "%.1f" %f.fyield
+		fermentable['fyield'] = "%.1f" %f.fyield
 		fermentable['color'] = "%.0f" %f.color
 		fermentable['amount'] = f.amount
 		if f.useAfterBoil :
