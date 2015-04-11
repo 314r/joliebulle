@@ -1,7 +1,7 @@
 /*jslint nomen: true */
 var beerCalc = (function () {
     "use strict";
-    var i, volPreCool, volPreBoil, ratio, gus, preBoilSg, strikeTemp, strikeVol, Vm, infuseVol, newRatio, grainRetentionVol, spargeVol, grainVolume, satGrain, volSat, waterAfterSat, mashVolume, mashVolumeStrike, mashVolumeLastStep, infusionSteps, ebc, mcu, mcuTot, _sugars, sugarEquivalents, _equivSugar, _gravityUnits, _originalGravity;
+    var i, volPreCool, volPreBoil, ratio, gus, preBoilSg, strikeTemp, strikeVol, Vm, infuseVol, newRatio, grainRetentionVol, spargeVol, grainVolume, satGrain, volSat, waterAfterSat, mashVolume, mashVolumeStrike, mashVolumeLastStep, infusionSteps, ebc, mcu, mcuTot, _sugars, sugarEquivalents, _equivSugar, _gravityUnits, _originalGravity, hiAtten, gu;
     
     _equivSugar = function (fermentable) {
         return (fermentable.amount / 1000) * (fermentable.fyield / 100);
@@ -71,6 +71,18 @@ var beerCalc = (function () {
 
         originalGravity : function (recipe) {
             return _originalGravity(recipe);
+        },
+
+        finalGravity : function (recipe) {
+            /* Use the highest attenuation in a list of yeasts */
+            recipe.yeasts = _.sortBy(recipe.yeasts, 'attenuation');
+            hiAtten = _.last(recipe.yeasts).attenuation;
+            if (hiAtten === 'undefined') {
+                hiAtten = 75;
+            }
+            hiAtten = hiAtten / 100;
+            gu = _gravityUnits(recipe.fermentables, recipe.volume, recipe.efficiency) * ( 1 - hiAtten);
+            return 1 + gu / 1000;
         },
       
         preBoilCalc : function (coolingLossRate, boilOffRate, boilTime, volume) {
