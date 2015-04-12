@@ -46,7 +46,7 @@ def exportJson(recipe) :
 	dic['volume'] = recipe.volume
 	dic['boilTime'] = recipe.boil
 	dic['efficiency'] = recipe.efficiency
-	dic['ibu'] = "%.0f" %recipe.compute_IBU()
+	# dic['ibu'] = "%.0f" %recipe.compute_IBU()
 	# dic['ebc'] = "%.0f" %recipe.compute_EBC()
 	# dic['og'] = "%.3f" %recipe.compute_OG()
 	# dic['fg'] = "%.3f" %recipe.compute_FG()
@@ -68,9 +68,9 @@ def exportJson(recipe) :
 		hView = HopView(h)
 		hop = {}
 		hop['name'] = h.name
-		hop['form'] = hView.hopFormDisplay()
+		hop['form'] = h.form
 		hop['alpha'] = h.alpha
-		hop['use'] = hView.hopUseDisplay()
+		hop['use'] = h.use
 		hop['time'] = h.time
 		hop['amount'] = h.amount
 		hop['ibuPart'] = "%.1f" %recipe.compute_IBUPart()[h]

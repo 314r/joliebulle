@@ -56,6 +56,7 @@ recipesApp.controller('RecipeslibCtrl', ['$scope','$http', '$filter', function (
         recipe.ebc = Math.round(beerCalc.ebc(recipe.fermentables, recipe.volume));
         recipe.og = (Math.round(beerCalc.originalGravity(recipe) * 1000) / 1000).toFixed(3);
         recipe.fg = (Math.round(beerCalc.finalGravity(recipe) * 1000) / 1000).toFixed(3);
+        recipe.ibu = Math.round(beerCalc.ibus(recipe));
     }
 
 }]);
