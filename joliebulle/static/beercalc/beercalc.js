@@ -1,7 +1,7 @@
 /*jslint nomen: true */
 var beerCalc = (function () {
     "use strict";
-    var i, volPreCool, volPreBoil, ratio, gus, preBoilSg, strikeTemp, strikeVol, Vm, infuseVol, newRatio, grainRetentionVol, spargeVol, grainVolume, satGrain, volSat, waterAfterSat, mashVolume, mashVolumeStrike, mashVolumeLastStep, infusionSteps, ebc, mcu, mcuTot, _sugars, sugarEquivalents, _equivSugar, _gravityUnits, _originalGravity, hiAtten, gu, _preBoilGravityUnits, _ibuPart, bignessFactor, totalIbus, decimalUtil, btFactor, mgAcid, ibu, _preBoilGravity;
+    var i, volPreCool, volPreBoil, ratio, gus, preBoilSg, strikeTemp, strikeVol, Vm, infuseVol, newRatio, grainRetentionVol, spargeVol, grainVolume, satGrain, volSat, waterAfterSat, mashVolume, mashVolumeStrike, mashVolumeLastStep, infusionSteps, ebc, mcu, mcuTot, _sugars, sugarEquivalents, _equivSugar, _gravityUnits, _originalGravity, hiAtten, gu, _preBoilGravityUnits, _ibuPart, bignessFactor, totalIbus, decimalUtil, btFactor, mgAcid, ibu, _preBoilGravity, _ibus;
     
     _equivSugar = function (fermentable) {
         return (fermentable.amount / 1000) * (fermentable.fyield / 100);
@@ -54,6 +54,38 @@ var beerCalc = (function () {
         return 1 + (_gravityUnits(recipe.fermentables, recipe.volume, recipe.efficiency) / 1000);
     };
 
+    _ibus = function (recipe) {
+/*      #Tinseth method
+        #IBUs = decimal alpha acid utilization * mg/l of added alpha acids
+        
+        #mg/l of added alpha acids = decimal AA rating * grams hops * 1000 / liters of wort
+        #Decimal Alpha Acid Utilization = Bigness Factor * Boil Time Factor
+        #Bigness factor = 1.65 * 0.000125^(wort gravity - 1)
+        #Boil Time factor = 1 - e^(-0.04 * time in mins) / 4.15
+        */
+        totalIbus = 0;
+        bignessFactor = 1.65 * (Math.pow(0.000125, (_preBoilGravity(recipe.fermentables, recipe.volume, recipe.efficiency) - 1)));
+        recipe.hops.forEach(function (hop) {
+            btFactor = (1 - Math.pow(2.71828182845904523536, (-0.04 * hop.time))) / 4.15;
+            decimalUtil = btFactor * bignessFactor;
+            mgAcid = (hop.alpha / 100) * (hop.amount * 1000) / recipe.volume;
+
+            if (hop.use !== "Dry Hop" && hop.use !== "Aroma") {
+                ibu = mgAcid * decimalUtil;
+                if (hop.form === 0) {
+                    ibu = ibu + 0.1 * ibu;
+                }
+            } else {
+                ibu = 0;
+
+            }
+            totalIbus += ibu;
+            console.log(hop.name, hop.use,hop.form, ibu);
+        });
+        console.log(totalIbus);
+        return totalIbus;
+    };
+
 
 
     return {
@@ -101,35 +133,7 @@ var beerCalc = (function () {
         },
 
         ibus : function (recipe) {
-/*      #Tinseth method
-        #IBUs = decimal alpha acid utilization * mg/l of added alpha acids
-        
-        #mg/l of added alpha acids = decimal AA rating * grams hops * 1000 / liters of wort
-        #Decimal Alpha Acid Utilization = Bigness Factor * Boil Time Factor
-        #Bigness factor = 1.65 * 0.000125^(wort gravity - 1)
-        #Boil Time factor = 1 - e^(-0.04 * time in mins) / 4.15
-        */
-            totalIbus = 0;
-            bignessFactor = 1.65 * (Math.pow(0.000125, (_preBoilGravity(recipe.fermentables, recipe.volume, recipe.efficiency) - 1)));
-            recipe.hops.forEach(function (hop) {
-                btFactor = (1 - Math.pow(2.71828182845904523536, (-0.04 * hop.time))) / 4.15;
-                decimalUtil = btFactor * bignessFactor;
-                mgAcid = (hop.alpha / 100) * (hop.amount * 1000) / recipe.volume;
-
-                if (hop.use !== "Dry Hop" && hop.use !== "Aroma") {
-                    ibu = mgAcid * decimalUtil;
-                    if (hop.form === 0) {
-                        ibu = ibu + 0.1 * ibu;
-                    }
-                } else {
-                    ibu = 0;
-
-                }
-                totalIbus += ibu;
-                console.log(hop.name, hop.use,hop.form, ibu);
-            });
-            console.log(totalIbus);
-            return totalIbus;
+            return _ibus(recipe);
 
         },
       
