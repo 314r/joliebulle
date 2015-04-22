@@ -122,7 +122,7 @@ var beerCalc = (function () {
             } catch(e) {
                 hiAtten = 75;
             }
-                      
+
             if (hiAtten === 'undefined') {
                 hiAtten = 75;
             }
@@ -136,10 +136,15 @@ var beerCalc = (function () {
         },
 
         bugu : function (recipe) {
-            if (reipe.ibu === "undefined") {
+            if (recipe.ibu === "undefined") {
                 recipe.ibu = 0;
             }
             return _ibus(recipe) / _gravityUnits(recipe.fermentables, recipe.volume, recipe.efficiency);
+        },
+
+        alc : function(recipe) {
+        /* ABV = 0.130((OG-1)-(FG-1))*1000 */
+            return 0.130*((recipe.og-1) -(recipe.fg-1))*1000;
         },
       
         preBoilCalc : function (coolingLossRate, boilOffRate, boilTime, volume) {

@@ -50,8 +50,8 @@ def exportJson(recipe) :
 	# dic['ebc'] = "%.0f" %recipe.compute_EBC()
 	# dic['og'] = "%.3f" %recipe.compute_OG()
 	# dic['fg'] = "%.3f" %recipe.compute_FG()
-	dic['bugu'] = "%.2f" %recipe.compute_ratioBUGU()
-	dic['alc'] = "%.1f" %recipe.compute_ABV()
+	# dic['bugu'] = "%.2f" %recipe.compute_ratioBUGU()
+	# dic['alc'] = "%.1f" %recipe.compute_ABV()
 
 	dic['grainWeight'] = recipe.compute_grainWeight()
 	dic['preBoilGu'] = recipe.compute_GU_PreBoil()
