@@ -134,7 +134,14 @@ var beerCalc = (function () {
 
         ibus : function (recipe) {
             return _ibus(recipe);
+        },
 
+        bugu : function (recipe) {
+            // prevoir le cas où ibu = 0
+            if (reipe.ibu === "undefined") {
+                recipe.ibu = 0;
+            }
+            return _ibus(recipe) / _gravityUnits(recipe.fermentables, recipe.volume, recipe.efficiency);
         },
       
         preBoilCalc : function (coolingLossRate, boilOffRate, boilTime, volume) {
