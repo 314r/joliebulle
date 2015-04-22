@@ -122,8 +122,7 @@ var beerCalc = (function () {
             } catch(e) {
                 hiAtten = 75;
             }
-            
-            
+                      
             if (hiAtten === 'undefined') {
                 hiAtten = 75;
             }
@@ -137,7 +136,6 @@ var beerCalc = (function () {
         },
 
         bugu : function (recipe) {
-            // prevoir le cas où ibu = 0
             if (reipe.ibu === "undefined") {
                 recipe.ibu = 0;
             }
