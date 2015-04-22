@@ -292,7 +292,7 @@ def exportHTML(recipesSummary):
                                 <div class="col-md-3 ing-amount">{9} g</div>
                                 
                             </div>
-                        </div>'''.format(QCoreApplication.translate("Export","Ingrédients", None, QCoreApplication.UnicodeUTF8),QCoreApplication.translate("Export","EBC", None, QCoreApplication.UnicodeUTF8), "{{fermentable.color}}",QCoreApplication.translate("Export","Rendement", None, QCoreApplication.UnicodeUTF8),"{{fermentable.yield}}", QCoreApplication.translate("Export","Type", None, QCoreApplication.UnicodeUTF8),"{{fermentable.type}}", "{{fermentable.name}}", "{{fermentable.afterBoilView}}", "{{fermentable.amount | number : 0}}")
+                        </div>'''.format(QCoreApplication.translate("Export","Ingrédients", None, QCoreApplication.UnicodeUTF8),QCoreApplication.translate("Export","EBC", None, QCoreApplication.UnicodeUTF8), "{{fermentable.color}}",QCoreApplication.translate("Export","Rendement", None, QCoreApplication.UnicodeUTF8),"{{fermentable.fyield}}", QCoreApplication.translate("Export","Type", None, QCoreApplication.UnicodeUTF8),"{{fermentable.type}}", "{{fermentable.name}}", "{{fermentable.afterBoilView}}", "{{fermentable.amount | number : 0}}")
 
 
     resultHtml +='''                    <div class="col-sm-12 col-md-12" ng-repeat="hop in currentRecipe.hops">
