@@ -21,7 +21,7 @@
 
 from PyQt4.QtCore import QCoreApplication
 
-def exportHTML(recipesSummary):
+def exportHTML(recipesSummary,ingredients):
     resultHtml = '''
 <!doctype html>
 <html>
@@ -91,6 +91,7 @@ def exportHTML(recipesSummary):
     .recipe-info{padding-bottom:30px;}
     
     .recipeView {margin:auto;margin-left:315px;background-color: #fff;}
+    
     .recipe-view-header {width:100%%;min-height:55px;position:fixed;left:379px;z-index: 1000;background-color: #fff;padding-left:10px;border-bottom: 1px solid #eee;}
     
     
@@ -141,7 +142,7 @@ def exportHTML(recipesSummary):
     .profile-ph{display:inline-block;margin-top:1em;margin-bottom:1.5em;padding:0.2em 0.5em 0.2em 0.5em;background:#f7f7f7;color:#6f6f6f;font-weight: 800;}
     #profile-graph{margin-top:2em;}
 
-    .notes{margin-bottom:90px;padding-left:30px;}
+    .notes{margin-bottom:300px;padding-left:30px;}
     .notes pre {min-height:100px;}
     .recipe-list::-webkit-scrollbar { 
     display: none; 
@@ -175,7 +176,18 @@ def exportHTML(recipesSummary):
   from {left: 50px;} to {left: 30px;}
 }
 
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+-webkit-appearance: none;
+margin: 0;}
 
+.editFermentable{
+    display:none;
+}
+
+.editVisible .editFermentable{
+    display:block;
+}
 
 </style>
 </head>'''
@@ -183,10 +195,10 @@ def exportHTML(recipesSummary):
 
     resultHtml+='''<body ng-app="recipes-lib">
 
-      <div class="container-fluid" ng-controller="RecipeslibCtrl" ng-init='init({0})'>
+      <div class="container-fluid" ng-controller="RecipeslibCtrl" ng-init='init({0}, {1})'>
                                                                   
         
-          <div class="sidebar">
+          <div class="sidebar" ng-hide="showIngredientEditor">
 <!--
               <div class="nav-header"></div>
 -->
@@ -195,19 +207,19 @@ def exportHTML(recipesSummary):
               <li onClick="main.showJournal()"><a href="#"><i class="fa fa-calendar-o"></i> </a></li>
               <li onClick="main.showTools()"><a href="#"><i class="fa fa-cog"></i> </a></li>
             </ul>
-          </div>'''.format(str(recipesSummary))
+          </div>'''.format(str(recipesSummary), str(ingredients))
         
             
         
         
-    resultHtml+='''<div class="main">
+    resultHtml+='''<div class="main" ng-hide="showIngredientEditor">
 
                 <div class="recipe-list-header row">
                  
-                <span class=""><i class="fa fa-search"></i></span>
+                <span class="" ><i class="fa fa-search"></i></span>
                 <input type="text" class="" ng-model="searchText" placeholder="{0}" />
-                <button  class="btn-link btn-xs sortButton" type="button" data-toggle="dropdown"><i class="fa fa-sort-alpha-asc"></i></button>
-                <ul id="menuSort" class="dropdown-menu" role="menu">
+                <button  class="btn-link btn-xs sortButton" type="button" data-toggle="dropdown" ><i class="fa fa-sort-alpha-asc"></i></button>
+                <ul id="menuSort" class="dropdown-menu" role="menu" >
                                 <i class="journalMenu-description">{1} :</i>
                                 <li><a href="#" ng-click="sortByBrewer()" >{2}</a></li>
                                 <li><a href="#" ng-click="sortByName()" >{3}</a></li>
@@ -229,7 +241,7 @@ def exportHTML(recipesSummary):
 
 
     resultHtml+='''<div class="recipe-view-header">
-  
+                <button class="btn-link  editRecipe" type="button" ng-click="save(currentRecipe)">Enregistrer</button>
             </div>
             <div class="recipeView" ng-show="active">
                 
@@ -280,7 +292,7 @@ def exportHTML(recipesSummary):
                         <div class="col-sm-12 col-md-12" ng-repeat="fermentable in currentRecipe.fermentables">
                             <div class="ing row">
                                 <div class="col-sm-4 col-md-4">
-                                    <span class="ing-name" >
+                                    <span class="ing-name">
                                         <ul class="popover-ing">
                                             <li>{1} : {2}</li>
                                             <li>{3} : {4}% </li>
@@ -289,9 +301,10 @@ def exportHTML(recipesSummary):
                                     {7}</span>
                                     <div class="use">{8}</div>
                                 </div>
-                                <div class="col-md-3 ing-amount">{9} g</div>
-                                
+                                <div class="col-md-3 ing-amount">{9} g</div>  
+                                <button class="btn-link" type="button" ng-click="editIngredient($index)">Editer</button>
                             </div>
+                            
                         </div>'''.format(QCoreApplication.translate("Export","Ingrédients", None, QCoreApplication.UnicodeUTF8),QCoreApplication.translate("Export","EBC", None, QCoreApplication.UnicodeUTF8), "{{fermentable.color}}",QCoreApplication.translate("Export","Rendement", None, QCoreApplication.UnicodeUTF8),"{{fermentable.fyield}}", QCoreApplication.translate("Export","Type", None, QCoreApplication.UnicodeUTF8),"{{fermentable.type}}", "{{fermentable.name}}", "{{fermentable.afterBoilView}}", "{{fermentable.amount | number : 0}}")
 
 
@@ -360,13 +373,50 @@ def exportHTML(recipesSummary):
             </div> '''.format(QCoreApplication.translate("Export","Notes", None, QCoreApplication.UnicodeUTF8), "{{currentRecipe.notes}}") 
             
             
-            
+     
             
             
     resultHtml +='''        </div>
         </div>
 
+        <div class="ingredientEditor" ng-show="showIngredientEditor"> 
+            <button ng-click="closeIngredientEditor()">Ok</button>
+            <form class="form-inline" role="form" >
+                <div class="form-group">
+                    <label for="exampleInputName2">Nom</label>
+                    <input type="text" class="form-control" ng-model="currentIng.name">
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputName2">Quantité</label>
+                    <input type="number" class="form-control" ng-model="currentIng.amount" ng-change="calcProfile(currentRecipe)">
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputName2">Rendement</label>
+                    <input type="number" class="form-control" ng-model="currentIng.fyield" ng-change="calcProfile(currentRecipe)">
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputName2">Couleur</label>
+                    <input type="number" class="form-control" ng-model="currentIng.color" ng-change="calcProfile(currentRecipe)">
+                </div>
+                <select ng-model="currentIng.type" ng-change="calcProfile(currentRecipe)">
+                    <option>Grain</option>
+                    <option>Extract</option>
+                    <option>Dry Extract</option>
+                    <option>Sugar</option>
+                </select>
+                <select ng-model="currentIng.afterBoil" ng-change="calcProfile(currentRecipe)">
+                    <option>TRUE</option>
+                    <option>FALSE</option>
+                </select>
+            </form>
+             <div ng-repeat="fermentable in ingredients.fermentables" ng-click="fermentableSelected(fermentable)">
+                <span>
+                    {1}
+                </span>
 
+            </div>
+
+        </div>
        
     <!-- Fin container     -->
     </div>
@@ -381,7 +431,7 @@ $(function () {
 $("[data-toggle='tooltip']").tooltip();
 });
 </script>
-    ''')
+    ''', "{{fermentable.name}}")
 
     return resultHtml
 

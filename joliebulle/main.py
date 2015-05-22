@@ -648,7 +648,8 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
 
         pyDir = os.path.abspath(os.path.dirname(__file__))
         baseUrl = QtCore.QUrl.fromLocalFile(os.path.join(pyDir, "static/"))
-        self.webViewBiblio.setHtml(LibExporterRepository['html'](data), baseUrl)
+        self.webViewBiblio.setHtml(LibExporterRepository['html'](data,ImportBase().exportjson()), baseUrl)
+
         self.webViewBiblio.page().mainFrame().addToJavaScriptWindowObject("main", self)
         self.webViewBiblio.page().settings().setAttribute(QtWebKit.QWebSettings.DeveloperExtrasEnabled, True)
         self.webViewBiblio.page().action(QtWebKit.QWebPage.Reload).setVisible(False)
@@ -673,6 +674,23 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         self.stackedWidget.setCurrentIndex(1)
 
     
+    @QtCore.pyqtSlot(str, str)
+    def saveRecipe(self, recipe, path) :
+        recipeFile = QtCore.QFile(path)
+        if recipeFile.open(QtCore.QIODevice.WriteOnly):
+            try:
+                stream = QtCore.QTextStream(recipeFile)
+                stream.setCodec("UTF-8")
+                stream << recipe
+            finally:
+                recipeFile.close()
+                print(recipe)
+        else:
+            # TODO : Prévenir l'utilisateur en cas d'échec de l'enregistrement
+            pass  
+
+
+
 
 
 ############# Vue recette ################################
@@ -820,6 +838,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         data = self.recipe.export("json")
         data = data[1:-1]
         return data
+   
 
   
     @QtCore.pyqtSlot()               

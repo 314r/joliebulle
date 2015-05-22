@@ -29,6 +29,7 @@ import PyQt4
 import sys
 import logging
 from PyQt4 import QtCore
+import json
 import xml.etree.ElementTree as ET
 from globals import *
 from model.fermentable import *
@@ -217,3 +218,21 @@ class ImportBase(object,metaclass=Singleton) :
         if item is not None:
             root.remove(item)
             ImportBase.save(root)
+
+    @staticmethod
+    def exportjson() :
+        # data = []
+        dic ={}
+
+        fermentables=[]
+        for f in ImportBase().listeFermentables :
+            fermentable =  {}
+            fermentable['name'] = f.name
+            fermentables.append(fermentable)
+        dic['fermentables'] = fermentables
+
+        # data.append(dic)
+        dic = json.dumps(dic)
+        dic = dic.replace("'","&#39;")
+
+        return dic

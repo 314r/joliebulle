@@ -25,7 +25,7 @@ var beerCalc = (function () {
             }
 
             /* Sugars added after boil, to compute pre-boil gravity. Impact on IBU.  */
-            if (fermentable.afterBoil === 'false') {
+            if (fermentable.afterBoil === 'FALSE') {
                 sugarEquivalents.preBoilSugars += _equivSugar(fermentable);
                 if (fermentable.type === "Sugar" || fermentable.type === "Dry Extract" || fermentable.type === "Extract") {
                     sugarEquivalents.preBoilNonMashed += _equivSugar(fermentable);
