@@ -49,7 +49,7 @@ def exportHTML(recipesSummary,ingredients):
       <div class="container-fluid" ng-controller="RecipeslibCtrl" ng-init='init({0}, {1})'>
                                                                   
         
-          <div class="sidebar" ng-hide="showIngredientEditor">
+          <div class="sidebar" ng-hide="showFermentableEditor">
 <!--
               <div class="nav-header"></div>
 -->
@@ -63,7 +63,7 @@ def exportHTML(recipesSummary,ingredients):
             
         
         
-    resultHtml+='''<div class="main" ng-hide="showIngredientEditor">
+    resultHtml+='''<div class="main" ng-hide="showFermentableEditor">
 
                 <div class="recipe-list-header row">
                  
@@ -153,7 +153,7 @@ def exportHTML(recipesSummary,ingredients):
                                     <div class="use">{8}</div>
                                 </div>
                                 <div class="col-md-3 ing-amount">{9} g</div>  
-                                <button class="btn-link" type="button" ng-click="editIngredient($index)">Editer</button>
+                                <button class="btn-link" type="button" ng-click="editFermentable($index)">Editer</button>
                             </div>
                             
                         </div>'''.format(QCoreApplication.translate("Export","Ingrédients", None, QCoreApplication.UnicodeUTF8),QCoreApplication.translate("Export","EBC", None, QCoreApplication.UnicodeUTF8), "{{fermentable.color}}",QCoreApplication.translate("Export","Rendement", None, QCoreApplication.UnicodeUTF8),"{{fermentable.fyield}}", QCoreApplication.translate("Export","Type", None, QCoreApplication.UnicodeUTF8),"{{fermentable.type}}", "{{fermentable.name}}", "{{fermentable.afterBoilView}}", "{{fermentable.amount | number : 0}}")
@@ -230,8 +230,8 @@ def exportHTML(recipesSummary,ingredients):
     resultHtml +='''        </div>
         </div>
 
-        <div class="ingredientEditor" ng-show="showIngredientEditor"> 
-            <button ng-click="closeIngredientEditor()">Ok</button>
+        <div class="ingredientEditor" ng-show="showFermentableEditor"> 
+            <button ng-click="closeFermentableEditor()">Ok</button>
             <form class="form-inline" role="form" >
                 <div class="form-group">
                     <label for="exampleInputName2">Nom</label>

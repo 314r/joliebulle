@@ -26,14 +26,14 @@ recipesApp.controller('RecipeslibCtrl', ['$scope', '$http', '$filter', function 
         main.viewRecipeLib(recipe.path);
     };
 
-    $scope.editIngredient = function (index) {
-        $scope.showIngredientEditor = true;
+    $scope.editFermentable = function (index) {
+        $scope.showFermentableEditor = true;
         $scope.currentIng = $scope.currentRecipe.fermentables[index];
         // $scope.currentIng.index = index;
     };
 
-    $scope.closeIngredientEditor = function () {
-        $scope.showIngredientEditor = false;
+    $scope.closeFermentableEditor = function () {
+        $scope.showFermentableEditor = false;
         // $scope.currentRecipe.fermentables[$scope.currentIng.index] = $scope.currentIng; 
 
     };
