@@ -36,6 +36,7 @@ def exportHTML(recipesSummary,ingredients):
 <script src="controllers/recipes-lib/main.js"></script>
 <script src="controllers/recipes-lib/recipes-lib.js"></script>
 <script src="beercalc/beercalc.js"></script>
+<script src="beercalc/jb2xml.js"></script>
 <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
 <link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
 <link rel="stylesheet" href="css/sidebar.css">
