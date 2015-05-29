@@ -48,7 +48,7 @@ var jb2xml = (function () {
 	            string += "<ALPHA>" + hop.alpha + "</ALPHA>";
 	            string += "<USE>" + hop.use + "</USE>";
 	            string += "</HOP>";
-	            // revoir form
+	            
 	        });
 	        string += "</HOPS>";
 	        string += "<YEASTS>";

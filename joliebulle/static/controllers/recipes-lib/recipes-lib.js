@@ -28,15 +28,42 @@ recipesApp.controller('RecipeslibCtrl', ['$scope', '$http', '$filter', function 
 
     $scope.editFermentable = function (index) {
         $scope.showFermentableEditor = true;
-        $scope.currentIng = $scope.currentRecipe.fermentables[index];
+        $scope.currentFerm = $scope.currentRecipe.fermentables[index];
         // $scope.currentIng.index = index;
     };
 
     $scope.closeFermentableEditor = function () {
         $scope.showFermentableEditor = false;
         // $scope.currentRecipe.fermentables[$scope.currentIng.index] = $scope.currentIng; 
-
     };
+
+    $scope.editHop = function (index) {
+        $scope.showHopEditor = true;
+        $scope.currentHop = $scope.currentRecipe.hops[index];
+    };
+
+    $scope.closeHopEditor = function () {
+        $scope.showHopEditor = false;
+    };
+
+    $scope.editMisc = function (index) {
+        $scope.showMiscEditor = true;
+        $scope.currentMisc = $scope.currentRecipe.miscs[index];
+    };
+
+    $scope.closeMiscEditor = function () {
+        $scope.showMiscEditor = false;
+    };
+
+    $scope.editYeast = function (index) {
+        $scope.showYeastEditor = true;
+        $scope.currentYeast = $scope.currentRecipe.yeasts[index];
+    };
+
+    $scope.closeYeastEditor = function () {
+        $scope.showYeastEditor = false;
+    };
+
 
     $scope.recipeSelected = function (recipe) {
         $scope.active = true;
@@ -80,8 +107,22 @@ recipesApp.controller('RecipeslibCtrl', ['$scope', '$http', '$filter', function 
     };
 
     $scope.fermentableSelected = function (fermentable) {
-        $scope.currentIng.name = fermentable.name;
+        $scope.currentFerm.name = fermentable.name;
     };
+
+    $scope.hopSelected = function (hop) {
+        $scope.currentHop.name = hop.name;
+    };
+
+    $scope.miscSelected = function (misc) {
+        $scope.currentMisc.name = misc.name;
+    };
+
+    $scope.yeastSelected = function (yeast) {
+        $scope.currentYeast.name = yeast.name;
+    };
+
+
     
     $scope.save = function (recipe) {
         main.saveRecipe(jb2xml.exportString(recipe), recipe.path);

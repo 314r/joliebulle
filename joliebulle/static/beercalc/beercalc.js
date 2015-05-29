@@ -72,13 +72,13 @@ var beerCalc = (function () {
 
             if (hop.use !== "Dry Hop" && hop.use !== "Aroma") {
                 ibu = mgAcid * decimalUtil;
-                if (hop.form === 0) {
+                if (hop.form === "Pellet") {
                     ibu = ibu + 0.1 * ibu;
                 }
             } else {
                 ibu = 0;
-
             }
+
             totalIbus += ibu;
             console.log(hop.name, hop.use,hop.form, ibu);
         });

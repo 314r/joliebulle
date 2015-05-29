@@ -231,6 +231,27 @@ class ImportBase(object,metaclass=Singleton) :
             fermentables.append(fermentable)
         dic['fermentables'] = fermentables
 
+        hops=[]
+        for h in ImportBase().listeHops :
+            hop={}
+            hop['name'] = h.name
+            hops.append(hop)
+        dic['hops'] = hops
+
+        miscs=[]
+        for m in ImportBase().listeMiscs :
+            misc = {}
+            misc['name'] = m.name
+            miscs.append(misc)
+        dic['miscs'] = miscs
+
+        yeasts=[]
+        for y in ImportBase().listeYeasts :
+            yeast = {}
+            yeast['name'] = y.name
+            yeasts.append(yeast)
+        dic['yeasts'] = yeasts
+
         # data.append(dic)
         dic = json.dumps(dic)
         dic = dic.replace("'","&#39;")

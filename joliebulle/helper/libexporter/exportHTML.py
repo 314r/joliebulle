@@ -49,7 +49,7 @@ def exportHTML(recipesSummary,ingredients):
       <div class="container-fluid" ng-controller="RecipeslibCtrl" ng-init='init({0}, {1})'>
                                                                   
         
-          <div class="sidebar" ng-hide="showFermentableEditor">
+          <div class="sidebar" ng-hide="showFermentableEditor || showHopEditor || showMiscEditor || showYeastEditor">
 <!--
               <div class="nav-header"></div>
 -->
@@ -63,7 +63,7 @@ def exportHTML(recipesSummary,ingredients):
             
         
         
-    resultHtml+='''<div class="main" ng-hide="showFermentableEditor">
+    resultHtml+='''<div class="main" ng-hide="showFermentableEditor || showHopEditor || showMiscEditor || showYeastEditor">
 
                 <div class="recipe-list-header row">
                  
@@ -172,6 +172,7 @@ def exportHTML(recipesSummary,ingredients):
                                     </span> 
                                     <div class="use">{5} - {6} min</div></div>
                                 <div class="col-md-3 ing-amount">{7} g</div>
+                                <button class="btn-link" type="button" ng-click="editHop($index)">Editer</button>
 
                             </div>
                         </div>'''.format(QCoreApplication.translate("Export","Acides Alpha", None, QCoreApplication.UnicodeUTF8), "{{hop.alpha}}", QCoreApplication.translate("Export","IBU", None, QCoreApplication.UnicodeUTF8), "{{hop.ibuPart}}", "{{hop.name}}", "{{hop.use}}", "{{hop.time}}","{{hop.amount | number : 0}}")
@@ -181,6 +182,7 @@ def exportHTML(recipesSummary,ingredients):
                                 <div class="col-sm-4 col-md-4"><span class="ing-name">{0}</span> <div class="use">{1} - {2} min</div></div>
                                 
                                 <div class="col-md-3 ing-amount">{3} g</div>
+                                <button class="btn-link" type="button" ng-click="editMisc($index)">Editer</button>
 
                             </div>
                         </div>'''.format("{{misc.name}}","{{misc.use}}","{{misc.time}}","{{misc.amount | number : 0}}")
@@ -194,6 +196,7 @@ def exportHTML(recipesSummary,ingredients):
                                     </ul>
 
                                 {4} {5} {6}</div>
+                                <button class="btn-link" type="button" ng-click="editYeast($index)">Editer</button>
                             </div>
                         </div>
                     </div>
@@ -235,39 +238,162 @@ def exportHTML(recipesSummary,ingredients):
             <form class="form-inline" role="form" >
                 <div class="form-group">
                     <label for="exampleInputName2">Nom</label>
-                    <input type="text" class="form-control" ng-model="currentIng.name">
+                    <input type="text" class="form-control" ng-model="currentFerm.name">
                 </div>
                 <div class="form-group">
                     <label for="exampleInputName2">Quantité</label>
-                    <input type="number" class="form-control" ng-model="currentIng.amount" ng-change="calcProfile(currentRecipe)">
+                    <input type="number" class="form-control" ng-model="currentFerm.amount" ng-change="calcProfile(currentRecipe)">
                 </div>
                 <div class="form-group">
                     <label for="exampleInputName2">Rendement</label>
-                    <input type="number" class="form-control" ng-model="currentIng.fyield" ng-change="calcProfile(currentRecipe)">
+                    <input type="number" class="form-control" ng-model="currentFerm.fyield" ng-change="calcProfile(currentRecipe)">
                 </div>
                 <div class="form-group">
                     <label for="exampleInputName2">Couleur</label>
-                    <input type="number" class="form-control" ng-model="currentIng.color" ng-change="calcProfile(currentRecipe)">
+                    <input type="number" class="form-control" ng-model="currentFerm.color" ng-change="calcProfile(currentRecipe)">
                 </div>
-                <select ng-model="currentIng.type" ng-change="calcProfile(currentRecipe)">
+                <select ng-model="currentFerm.type" ng-change="calcProfile(currentRecipe)">
                     <option>Grain</option>
                     <option>Extract</option>
                     <option>Dry Extract</option>
                     <option>Sugar</option>
                 </select>
-                <select ng-model="currentIng.afterBoil" ng-change="calcProfile(currentRecipe)">
+                <select ng-model="currentFerm.afterBoil" ng-change="calcProfile(currentRecipe)">
                     <option>TRUE</option>
                     <option>FALSE</option>
                 </select>
             </form>
              <div ng-repeat="fermentable in ingredients.fermentables" ng-click="fermentableSelected(fermentable)">
                 <span>
-                    {1}
+                    {0}
                 </span>
 
             </div>
 
+        </div>'''.format("{{fermentable.name}}")
+
+    resultHtml += ''' 
+
+        <div class="ingredientEditor" ng-show="showHopEditor"> 
+            <button ng-click="closeHopEditor()">Ok</button>
+            <form class="form-inline" role="form" >
+                <div class="form-group">
+                    <label for="exampleInputName2">Nom</label>
+                    <input type="text" class="form-control" ng-model="currentHop.name">
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputName2">Durée</label>
+                    <input type="number" class="form-control" ng-model="currentHop.time" ng-change="calcProfile(currentRecipe)">
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputName2">Alpha</label>
+                    <input type="number" class="form-control" ng-model="currentHop.alpha" ng-change="calcProfile(currentRecipe)">
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputName2">Quantité</label>
+                    <input type="number" class="form-control" ng-model="currentHop.amount" ng-change="calcProfile(currentRecipe)">
+                </div>
+                <select ng-model="currentHop.use" ng-change="calcProfile(currentRecipe)">
+                    <option>Boil</option>
+                    <option>Dry Hop</option>
+                    <option>Mash</option>
+                    <option>First Wort</option>
+                    <option>Aroma</option>
+                </select>
+                <select ng-model="currentHop.form" ng-change="calcProfile(currentRecipe)">
+                    <option>Pellet</option>
+                    <option>Plug</option>
+                    <option>Leaf</option>
+                </select>
+            </form>
+             <div ng-repeat="hop in ingredients.hops" ng-click="hopSelected(hop)">
+                <span>
+                    {0}
+                </span>
+            </div>
         </div>
+
+    '''.format("{{hop.name}}")
+
+    resultHtml += '''
+
+        <div class="ingredientEditor" ng-show="showMiscEditor"> 
+            <button ng-click="closeMiscEditor()">Ok</button>
+            <form class="form-inline" role="form" >
+                <div class="form-group">
+                    <label for="exampleInputName2">Nom</label>
+                    <input type="text" class="form-control" ng-model="currentMisc.name">
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputName2">Quantité</label>
+                    <input type="number" class="form-control" ng-model="currentMisc.amount" ng-change="calcProfile(currentRecipe)">
+                </div>
+                <select ng-model="currentMisc.type" ng-change="calcProfile(currentRecipe)">
+                    <option>Spice</option>
+                    <option>Flavor</option>
+                    <option>Water Agent</option>
+                    <option>Herb</option>
+                    <option>Fining</option>
+                    <option>Other</option>
+                </select>
+                <select ng-model="currentMisc.use" ng-change="calcProfile(currentRecipe)">
+                    <option>Boil</option>
+                    <option>Mash</option>
+                    <option>Primary</option>
+                    <option>Secondary</option>
+                    <option>Bottling</option>
+                </select>
+                <div class="form-group">
+                    <label for="exampleInputName2">Durée</label>
+                    <input type="number" class="form-control" ng-model="currentMisc.time" ng-change="calcProfile(currentRecipe)">
+                </div>
+                
+            </form>
+             <div ng-repeat="misc in ingredients.miscs" ng-click="miscSelected(misc)">
+                <span>
+                    {0}
+                </span>
+            </div>
+        </div>
+
+    '''.format("{{misc.name}}")
+
+    resultHtml += '''
+        <div class="ingredientEditor" ng-show="showYeastEditor"> 
+            <button ng-click="closeYeastEditor()">Ok</button>
+            <form class="form-inline" role="form" >
+                <div class="form-group">
+                    <label for="exampleInputName2">Nom</label>
+                    <input type="text" class="form-control" ng-model="currentYeast.name">
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputName2">Labo</label>
+                    <input type="text" class="form-control" ng-model="currentYeast.labo">
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputName2">ID</label>
+                    <input type="text" class="form-control" ng-model="currentYeast.product_id">
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputName2">Rendement</label>
+                    <input type="text" class="form-control" ng-model="currentYeast.attenuation">
+                </div>
+                <select ng-model="currentYeast.form" ng-change="calcProfile(currentRecipe)">
+                    <option>Liquid</option>
+                    <option>Dry</option>
+                    <option>Slant</option>
+                    <option>Culture</option>
+                </select>
+            </form>
+             <div ng-repeat="yeast in ingredients.yeasts" ng-click="yeastSelected(yeast)">
+                <span>
+                    {0}
+                </span>
+            </div>
+        </div>
+    '''.format("{{yeast.name}}")
+
+    resultHtml += '''   
        
     <!-- Fin container     -->
     </div>
@@ -282,7 +408,7 @@ $(function () {
 $("[data-toggle='tooltip']").tooltip();
 });
 </script>
-    ''', "{{fermentable.name}}")
+    ''')
 
     return resultHtml
 

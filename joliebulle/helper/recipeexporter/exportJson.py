@@ -75,7 +75,12 @@ def exportJson(recipe) :
         hView = HopView(h)
         hop = {}
         hop['name'] = h.name
-        hop['form'] = h.form
+        if h.form == HOP_FORM_PELLET :
+            hop['form'] = "Pellet"
+        elif h.form == HOP_FORM_LEAF :
+            hop['form'] = "Leaf"
+        elif h.form == HOP_FORM_PLUG :
+            hop['form'] = "Plug"
         hop['alpha'] = h.alpha
         hop['use'] = h.use
         hop['time'] = h.time
