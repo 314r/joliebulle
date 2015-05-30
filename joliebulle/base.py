@@ -37,6 +37,7 @@ from model.hop import *
 from model.yeast import *
 from model.misc import *
 from model.mash import *
+from model.constants import *
 from operator import attrgetter
 from singleton import Singleton
 
@@ -228,6 +229,9 @@ class ImportBase(object,metaclass=Singleton) :
         for f in ImportBase().listeFermentables :
             fermentable =  {}
             fermentable['name'] = f.name
+            fermentable['color'] = f.color
+            fermentable['type'] = f.type
+            fermentable['fyield'] = f.fyield
             fermentables.append(fermentable)
         dic['fermentables'] = fermentables
 
@@ -235,6 +239,13 @@ class ImportBase(object,metaclass=Singleton) :
         for h in ImportBase().listeHops :
             hop={}
             hop['name'] = h.name
+            hop['alpha'] = h.alpha
+            if h.form == HOP_FORM_PELLET :
+                hop['form'] = "Pellet"
+            elif h.form == HOP_FORM_LEAF :
+                hop['form'] = "Leaf"
+            elif h.form == HOP_FORM_PLUG :
+                hop['form'] = "Plug"
             hops.append(hop)
         dic['hops'] = hops
 
@@ -249,6 +260,10 @@ class ImportBase(object,metaclass=Singleton) :
         for y in ImportBase().listeYeasts :
             yeast = {}
             yeast['name'] = y.name
+            yeast['product_id'] = y.productId
+            yeast['labo'] = y.labo
+            yeast['form'] = y.form
+            yeast['attenuation'] = y.attenuation
             yeasts.append(yeast)
         dic['yeasts'] = yeasts
 

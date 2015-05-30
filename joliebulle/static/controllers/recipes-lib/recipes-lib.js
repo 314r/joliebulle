@@ -108,10 +108,15 @@ recipesApp.controller('RecipeslibCtrl', ['$scope', '$http', '$filter', function 
 
     $scope.fermentableSelected = function (fermentable) {
         $scope.currentFerm.name = fermentable.name;
+        $scope.currentFerm.color = fermentable.color;
+        $scope.currentFerm.type = fermentable.type;
+        $scope.currentFerm.fyield = fermentable.fyield;
     };
 
     $scope.hopSelected = function (hop) {
         $scope.currentHop.name = hop.name;
+        $scope.currentHop.alpha = hop.alpha;
+        $scope.currentHop.form = hop.form;
     };
 
     $scope.miscSelected = function (misc) {
@@ -120,6 +125,10 @@ recipesApp.controller('RecipeslibCtrl', ['$scope', '$http', '$filter', function 
 
     $scope.yeastSelected = function (yeast) {
         $scope.currentYeast.name = yeast.name;
+        $scope.currentYeast.form = yeast.form;
+        $scope.currentYeast.product_id = yeast.product_id;
+        $scope.currentYeast.labo = yeast.labo;
+        $scope.currentYeast.attenuation = yeast.attenuation;
     };
 
 
