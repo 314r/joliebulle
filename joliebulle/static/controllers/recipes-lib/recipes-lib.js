@@ -121,6 +121,8 @@ recipesApp.controller('RecipeslibCtrl', ['$scope', '$http', '$filter', function 
 
     $scope.miscSelected = function (misc) {
         $scope.currentMisc.name = misc.name;
+        $scope.currentMisc.use = misc.use;
+        $scope.currentMisc.type = misc.type;
     };
 
     $scope.yeastSelected = function (yeast) {

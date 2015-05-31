@@ -253,6 +253,8 @@ class ImportBase(object,metaclass=Singleton) :
         for m in ImportBase().listeMiscs :
             misc = {}
             misc['name'] = m.name
+            misc['type'] = m.type
+            misc['use'] = m.use
             miscs.append(misc)
         dic['miscs'] = miscs
 
