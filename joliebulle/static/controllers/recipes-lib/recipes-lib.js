@@ -2,7 +2,7 @@
 /*global main, _, beerCalc, recipesApp*/
 recipesApp.controller('RecipeslibCtrl', ['$scope', '$http', '$filter', function ($scope, $http, $filter) {
     "use strict";
-    var parser, xml, string, jb2xml;
+    var parser, xml, string;
     
     $scope.active = false;
     
