@@ -7,13 +7,15 @@ recipesApp.controller('RecipeslibCtrl', ['$scope', '$http', '$filter', function 
     $scope.active = false;
     
 
-    $scope.init = function (dataJson, ingredients) {
+    $scope.init = function (dataJson, ingredients, profiles) {
         $scope.recipes = dataJson;
         $scope.recipes = _.chain($scope.recipes)
             .sortBy(function (o) {return o.name.toLowerCase(); })
             .sortBy(function (o) {return o.brewer.toLowerCase(); })
             .value();
         $scope.ingredients = ingredients;
+        $scope.profiles = profiles;
+        console.log($scope.profiles);
         // return $scope.recipes;
     };
 

@@ -67,6 +67,29 @@ class ExportMash :
             
     def enregistrer (self, s) :    
         ET.ElementTree(self.database).write(s,encoding="utf-8")
+
+
+    def exportJson(self, listMash) :
+        listMash = sorted(listMash, key=attrgetter('name')) 
+        # print(listMash)
+
+        dic = {}
+
+        mashes=[]
+        for m in listMash :
+            mash = {}
+            mash['name'] = m.name
+            mashes.append(mash)
+        dic['mashes'] = mashes
+        dic = json.dumps(dic)
+        dic = dic.replace("'","&#39;")
+
+        return dic
+
+
+
+
+
             
             
                 
