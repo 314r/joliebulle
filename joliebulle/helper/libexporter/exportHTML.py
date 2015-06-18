@@ -210,6 +210,9 @@ def exportHTML(recipesSummary,ingredients, profiles):
                     </div>
                 </div>    
                 <div class="brew-details">
+                <select ng-model="currentRecipe.mashProfile" ng-options="profile.name for profile in mashProfiles">
+                <option value="">-- Choisir un profil de brassage --</option>
+                </select>
                 <span class="profile-name">{2}</span>
                 <span class="profile-ph">pH {3}</span>
                 <div ng-repeat="step in currentRecipe.mashProfile.steps">

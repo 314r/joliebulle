@@ -1,5 +1,5 @@
 /*jslint nomen: true */
-/*global main, _, beerCalc, recipesApp*/
+/*global main, _, beerCalc, recipesApp, jb2xml*/
 recipesApp.controller('RecipeslibCtrl', ['$scope', '$http', '$filter', function ($scope, $http, $filter) {
     "use strict";
     var parser, xml, string;
@@ -14,9 +14,7 @@ recipesApp.controller('RecipeslibCtrl', ['$scope', '$http', '$filter', function 
             .sortBy(function (o) {return o.brewer.toLowerCase(); })
             .value();
         $scope.ingredients = ingredients;
-        $scope.profiles = profiles;
-        console.log($scope.profiles);
-        // return $scope.recipes;
+        $scope.mashProfiles = profiles.mashes;
     };
 
     $scope.deleteLib = function (recipe) {
