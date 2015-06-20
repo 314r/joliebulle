@@ -5,6 +5,7 @@ recipesApp.controller('RecipeslibCtrl', ['$scope', '$http', '$filter', function 
     var parser, xml, string;
     
     $scope.active = false;
+    $scope.editMode =false;
     
 
     $scope.init = function (dataJson, ingredients, profiles) {
@@ -132,13 +133,15 @@ recipesApp.controller('RecipeslibCtrl', ['$scope', '$http', '$filter', function 
         $scope.currentYeast.labo = yeast.labo;
         $scope.currentYeast.attenuation = yeast.attenuation;
     };
-
-
     
     $scope.save = function (recipe) {
         main.saveRecipe(jb2xml.exportString(recipe), recipe.path);
+        $scope.editMode = false;
     };
 
+    $scope.editRecipe = function () {
+        $scope.editMode = true ;
+    };
     
 }]);
 

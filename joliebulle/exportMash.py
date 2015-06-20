@@ -79,7 +79,19 @@ class ExportMash :
         for m in listMash :
             mash = {}
             mash['name'] = m.name
+            mash['ph'] = m.ph
+            mash['sparge'] = m.spargeTemp
+            steps=[]
             mashes.append(mash)
+            for s in m.listeSteps :
+                step = {}
+                step['name'] = s.name
+                step['temp'] = s.temp
+                step['time'] = s.time
+                step['type'] = s.type
+                steps.append(step)
+            mash['steps'] = steps
+            
         dic['mashes'] = mashes
         dic = json.dumps(dic)
         dic = dic.replace("'","&#39;")

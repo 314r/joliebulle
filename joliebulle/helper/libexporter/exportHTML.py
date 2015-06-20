@@ -92,20 +92,21 @@ def exportHTML(recipesSummary,ingredients, profiles):
 
 
     resultHtml+='''<div class="recipe-view-header">
-                <button class="btn-link  editRecipe" type="button" ng-click="save(currentRecipe)">Enregistrer</button>
+                <button class="btn-link  editRecipe" type="button" ng-click="save(currentRecipe)" ng-show="editMode">Enregistrer</button>
+                <button class="btn-link  editRecipe" type="button" ng-click="editRecipe()" ng-hide="editMode">Editer</button>
             </div>
             <div class="recipeView" ng-show="active">
                 
                 
                 <div class="recipe-header col-md-12 row">
-                    <div class="col-md-6">
+                    <div class="col-md-6" ng-hide="editMode">
                         <h1>{0}</h1>
                         <div class="author">{1} {3} {2}</div>
                     </div> ''' .format("{{currentRecipe.name}}","{{currentRecipe.style}}","{{currentRecipe.brewer}}", QCoreApplication.translate("Export","par", None, QCoreApplication.UnicodeUTF8))
 
 
     resultHtml +='''               
-                    <div class="recipe-buttons col-md-5">
+                    <div class="recipe-buttons col-md-5" ng-hide="editMode">
                         <button id="menuJournal" class="btn-link  edit-button" type="button" data-toggle="dropdown" ><i class="fa fa-flag"></i> {0} <span class="fa fa-caret-down"></span></button>
                         <ul class="dropdown-menu" role="menu">
                                 <i class="journalMenu-description">{1} :</i>
@@ -120,7 +121,7 @@ def exportHTML(recipesSummary,ingredients, profiles):
                 </div>'''.format( QCoreApplication.translate("Export","Journal", None, QCoreApplication.UnicodeUTF8), QCoreApplication.translate("Export","Marquer comme", None, QCoreApplication.UnicodeUTF8), QCoreApplication.translate("Export","Brassée", None, QCoreApplication.UnicodeUTF8), QCoreApplication.translate("Export","Mise en fermentation", None, QCoreApplication.UnicodeUTF8),  QCoreApplication.translate("Export","Embouteillée", None, QCoreApplication.UnicodeUTF8), QCoreApplication.translate("Export","Voir le journal", None, QCoreApplication.UnicodeUTF8), QCoreApplication.translate("Export","Editer", None, QCoreApplication.UnicodeUTF8))
 
     resultHtml +='''             
-                    <div class="recipeProfile row">
+                    <div class="recipeProfile row" >
                         <div class="calculated col-xs-1 col-sm-1 col-md-2" ng-show="active" data-toggle="tooltip" data-placement="bottom" title="{0}">{1}&nbsp;IBU</div>
                         <div class="calculated col-xs-1 col-sm-1 col-md-2" ng-show="active" data-toggle="tooltip" data-placement="bottom" title="{2}">{3}&nbsp;EBC</div>
                         <div class="calculated col-xs-1 col-sm-1 col-md-2" ng-show="active" data-toggle="tooltip" data-placement="bottom" title="{4}">DI&nbsp;{5}  </div>
@@ -129,12 +130,49 @@ def exportHTML(recipesSummary,ingredients, profiles):
                         <div class="calculated col-xs-1 col-sm-1 col-md-2" ng-show="active" data-toggle="tooltip" data-placement="bottom" title="{10}">Alc&nbsp;{11} %</div>
                     </div>'''.format(QCoreApplication.translate("Export","Amertume", None, QCoreApplication.UnicodeUTF8), "{{currentRecipe.ibu}}",QCoreApplication.translate("Teinte","Teinte", None, QCoreApplication.UnicodeUTF8), "{{currentRecipe.ebc}}", QCoreApplication.translate("Export","Densité Initiale", None, QCoreApplication.UnicodeUTF8),"{{currentRecipe.og}}",QCoreApplication.translate("Export","Densité Finale", None, QCoreApplication.UnicodeUTF8),"{{currentRecipe.fg}}", QCoreApplication.translate("Export","Rapport amertume / densité", None, QCoreApplication.UnicodeUTF8), "{{currentRecipe.bugu}}", QCoreApplication.translate("Export","Alcool", None, QCoreApplication.UnicodeUTF8), "{{currentRecipe.alc}}")
 
+    resultHtml+= ''' 
+                    <form class="baseInfos form-inline row col-md-12" role="form" ng-show="editMode">
+                    <div class="form-group col-xs-1 col-sm-1 col-md-2">
+                        <label for="exampleInputName2">Nom de la recette</label>
+                        <input type="text" class="form-control" ng-model="currentRecipe.name">
+                    </div>
+                    <div class="form-group col-xs-1 col-sm-1 col-md-2">
+                        <label for="exampleInputName2">Style</label>
+                        <input type="text" class="form-control" ng-model="currentRecipe.style">
+                    </div>
+                    <div class="form-group col-xs-1 col-sm-1 col-md-2">
+                        <label for="exampleInputName2">Auteur</label>
+                        <input type="text" class="form-control" ng-model="currentRecipe.brewer">
+                    </div>
+                </form>
+    ''' 
+
+    resultHtml += ''' 
+                    <form class="form-inline row col-md-12" role="form" ng-show="editMode">
+                        <div class="form-group col-xs-1 col-sm-1 col-md-2">
+                            <label for="exampleInputName2">Volume</label>
+                            <input type="number" class="form-control" ng-model="currentRecipe.volume" ng-change="calcProfile(currentRecipe)">
+                        </div>
+                        <div class="form-group col-xs-1 col-sm-1 col-md-2">
+                            <label for="exampleInputName2">Rendement</label>
+                            <input type="number" class="form-control" ng-model="currentRecipe.efficiency" ng-change="calcProfile(currentRecipe)">
+                        </div>
+                        <div class="form-group col-xs-1 col-sm-1 col-md-2">
+                            <label for="exampleInputName2">Durée d'ébullition</label>
+                            <input type="number" class="form-control" ng-model="currentRecipe.boilTime" ng-change="calcProfile(currentRecipe)">
+                        </div>
+                    </form>
+    '''               
+
     resultHtml +='''           
-                <div class="recipe-vol row col-md-12">
+                <div class="recipe-vol row col-md-12" ng-hide="editMode">
                     <span class="vol-label">{0}</span> <span class="vol-value" data-toggle="tooltip" data-placement="bottom" title="{1}">{2}L</span>
                     <span class="effi-label">{3}</span> <span class="effi-value" data-toggle="tooltip" data-placement="bottom" title="{4}">{5}%</span>
                     <span class="effi-label">{6}</span> <span class="effi-value" data-toggle="tooltip" data-placement="bottom" title="{7}">{8} min</span>
-                </div>'''.format(QCoreApplication.translate("Export","Vol", None, QCoreApplication.UnicodeUTF8), QCoreApplication.translate("Export","Volume du brassin", None, QCoreApplication.UnicodeUTF8), "{{currentRecipe.volume}}" ,QCoreApplication.translate("Export","Rendement", None, QCoreApplication.UnicodeUTF8),QCoreApplication.translate("Export","Rendement du brassage", None, QCoreApplication.UnicodeUTF8), "{{currentRecipe.efficiency}}" ,QCoreApplication.translate("Export","Ebullition", None, QCoreApplication.UnicodeUTF8), QCoreApplication.translate("Export","Durée d'ébullition", None, QCoreApplication.UnicodeUTF8), "{{currentRecipe.boilTime}}")
+                </div>
+                
+
+                '''.format(QCoreApplication.translate("Export","Vol", None, QCoreApplication.UnicodeUTF8), QCoreApplication.translate("Export","Volume du brassin", None, QCoreApplication.UnicodeUTF8), "{{currentRecipe.volume}}" ,QCoreApplication.translate("Export","Rendement", None, QCoreApplication.UnicodeUTF8),QCoreApplication.translate("Export","Rendement du brassage", None, QCoreApplication.UnicodeUTF8), "{{currentRecipe.efficiency}}" ,QCoreApplication.translate("Export","Ebullition", None, QCoreApplication.UnicodeUTF8), QCoreApplication.translate("Export","Durée d'ébullition", None, QCoreApplication.UnicodeUTF8), "{{currentRecipe.boilTime}}")
     
     resultHtml +='''            
                 <div class="ingredients col-md-12 row">
@@ -153,7 +191,7 @@ def exportHTML(recipesSummary,ingredients, profiles):
                                     <div class="use">{8}</div>
                                 </div>
                                 <div class="col-md-3 ing-amount">{9} g</div>  
-                                <button class="btn-link" type="button" ng-click="editFermentable($index)">Editer</button>
+                                <button class="btn-link" type="button" ng-click="editFermentable($index)" ng-show="editMode">Editer</button>
                             </div>
                             
                         </div>'''.format(QCoreApplication.translate("Export","Ingrédients", None, QCoreApplication.UnicodeUTF8),QCoreApplication.translate("Export","EBC", None, QCoreApplication.UnicodeUTF8), "{{fermentable.color}}",QCoreApplication.translate("Export","Rendement", None, QCoreApplication.UnicodeUTF8),"{{fermentable.fyield}}", QCoreApplication.translate("Export","Type", None, QCoreApplication.UnicodeUTF8),"{{fermentable.type}}", "{{fermentable.name}}", "{{fermentable.afterBoilView}}", "{{fermentable.amount | number : 0}}")
@@ -172,7 +210,7 @@ def exportHTML(recipesSummary,ingredients, profiles):
                                     </span> 
                                     <div class="use">{5} - {6} min</div></div>
                                 <div class="col-md-3 ing-amount">{7} g</div>
-                                <button class="btn-link" type="button" ng-click="editHop($index)">Editer</button>
+                                <button class="btn-link" type="button" ng-click="editHop($index)" ng-show="editMode">Editer</button>
 
                             </div>
                         </div>'''.format(QCoreApplication.translate("Export","Acides Alpha", None, QCoreApplication.UnicodeUTF8), "{{hop.alpha}}", QCoreApplication.translate("Export","IBU", None, QCoreApplication.UnicodeUTF8), "{{hop.ibuPart}}", "{{hop.name}}", "{{hop.use}}", "{{hop.time}}","{{hop.amount | number : 0}}")
@@ -182,7 +220,7 @@ def exportHTML(recipesSummary,ingredients, profiles):
                                 <div class="col-sm-4 col-md-4"><span class="ing-name">{0}</span> <div class="use">{1} - {2} min</div></div>
                                 
                                 <div class="col-md-3 ing-amount">{3} g</div>
-                                <button class="btn-link" type="button" ng-click="editMisc($index)">Editer</button>
+                                <button class="btn-link" type="button" ng-click="editMisc($index)" ng-show="editMode">Editer</button>
 
                             </div>
                         </div>'''.format("{{misc.name}}","{{misc.use}}","{{misc.time}}","{{misc.amount | number : 0}}")
@@ -196,7 +234,7 @@ def exportHTML(recipesSummary,ingredients, profiles):
                                     </ul>
 
                                 {4} {5} {6}</div>
-                                <button class="btn-link" type="button" ng-click="editYeast($index)">Editer</button>
+                                <button class="btn-link" type="button" ng-click="editYeast($index)" ng-show="editMode">Editer</button>
                             </div>
                         </div>
                     </div>
@@ -210,7 +248,7 @@ def exportHTML(recipesSummary,ingredients, profiles):
                     </div>
                 </div>    
                 <div class="brew-details">
-                <select ng-model="currentRecipe.mashProfile" ng-options="profile.name for profile in mashProfiles">
+                <select ng-model="currentRecipe.mashProfile" ng-options="profile.name for profile in mashProfiles" ng-show="editMode">
                 <option value="">-- Choisir un profil de brassage --</option>
                 </select>
                 <span class="profile-name">{2}</span>
@@ -226,7 +264,10 @@ def exportHTML(recipesSummary,ingredients, profiles):
 
     resultHtml +='''        <div class="yeasts notes col-md-10">
                 <h3>{0}</h3>
-                    <pre>{1}</pre>            
+                    <pre>{1}</pre>
+                    <div class="noteEditor">
+                        <textarea ng-model="currentRecipe.notes" class="col-md-10" ng-show="editMode"></textarea>
+                    </div>            
             </div> '''.format(QCoreApplication.translate("Export","Notes", None, QCoreApplication.UnicodeUTF8), "{{currentRecipe.notes}}") 
             
             

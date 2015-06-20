@@ -103,6 +103,8 @@ i.journalMenu-description{padding-left:15px;}
 
 .notes{margin-bottom:300px;padding-left:30px;}
 .notes pre {min-height:100px;}
+.notes textarea{min-height:100px;}
+
 .recipe-list::-webkit-scrollbar { 
 display: none; 
 }
