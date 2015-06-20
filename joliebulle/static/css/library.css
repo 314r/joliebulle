@@ -142,10 +142,55 @@ input::-webkit-inner-spin-button {
 -webkit-appearance: none;
 margin: 0;}
 
-.editFermentable{
-    display:none;
+/*
+Mode édition
+*/
+
+.baseInfos {
+    margin-left:30px;
+    max-width:768px; 
+    margin-right:30px;
+    margin-top : 2em;
+    padding:0.5em 0 0.5em 0;
+    
 }
 
-.editVisible .editFermentable{
-    display:block;
+.baseInfos input {
+    border-radius: 0;
+    border:1px solid #eee;
+    box-shadow:0px 0px 0px;
 }
+
+.baseInfos label {
+    font-weight: normal;
+    background: #3498db;  
+    color: #fff;
+    padding:0.5em;
+    margin-bottom: -5px;
+    font-size : 0.9em;
+}
+
+.baseConstants {
+    margin-left:30px;
+    max-width:768px; 
+    margin-right:30px;
+    margin-top : 2em;
+    padding:0.5em 0 0.5em 0;
+    
+}
+
+.baseConstants input {
+    border-radius: 0;
+    border:1px solid #eee;
+    box-shadow:0px 0px 0px;
+}
+
+.baseConstants label {
+    font-weight: normal;
+    background: #f1c40f;  
+    color: #fff;
+    padding:0.5em;
+    margin-bottom: -5px;
+    font-size : 0.9em;
+}
+

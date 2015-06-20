@@ -132,15 +132,15 @@ def exportHTML(recipesSummary,ingredients, profiles):
 
     resultHtml+= ''' 
                     <form class="baseInfos form-inline row col-md-12" role="form" ng-show="editMode">
-                    <div class="form-group col-xs-1 col-sm-1 col-md-2">
+                    <div class="form-group col-xs-1 col-sm-1 col-md-3">
                         <label for="exampleInputName2">Nom de la recette</label>
                         <input type="text" class="form-control" ng-model="currentRecipe.name">
                     </div>
-                    <div class="form-group col-xs-1 col-sm-1 col-md-2">
+                    <div class="form-group col-xs-1 col-sm-1 col-md-3">
                         <label for="exampleInputName2">Style</label>
                         <input type="text" class="form-control" ng-model="currentRecipe.style">
                     </div>
-                    <div class="form-group col-xs-1 col-sm-1 col-md-2">
+                    <div class="form-group col-xs-1 col-sm-1 col-md-3">
                         <label for="exampleInputName2">Auteur</label>
                         <input type="text" class="form-control" ng-model="currentRecipe.brewer">
                     </div>
@@ -148,16 +148,16 @@ def exportHTML(recipesSummary,ingredients, profiles):
     ''' 
 
     resultHtml += ''' 
-                    <form class="form-inline row col-md-12" role="form" ng-show="editMode">
-                        <div class="form-group col-xs-1 col-sm-1 col-md-2">
+                    <form class="baseConstants form-inline row col-md-12" role="form" ng-show="editMode">
+                        <div class="form-group col-xs-1 col-sm-1 col-md-3">
                             <label for="exampleInputName2">Volume</label>
                             <input type="number" class="form-control" ng-model="currentRecipe.volume" ng-change="calcProfile(currentRecipe)">
                         </div>
-                        <div class="form-group col-xs-1 col-sm-1 col-md-2">
+                        <div class="form-group col-xs-1 col-sm-1 col-md-3">
                             <label for="exampleInputName2">Rendement</label>
                             <input type="number" class="form-control" ng-model="currentRecipe.efficiency" ng-change="calcProfile(currentRecipe)">
                         </div>
-                        <div class="form-group col-xs-1 col-sm-1 col-md-2">
+                        <div class="form-group col-xs-1 col-sm-1 col-md-3">
                             <label for="exampleInputName2">Durée d'ébullition</label>
                             <input type="number" class="form-control" ng-model="currentRecipe.boilTime" ng-change="calcProfile(currentRecipe)">
                         </div>
