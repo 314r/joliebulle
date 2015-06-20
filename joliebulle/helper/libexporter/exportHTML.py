@@ -144,6 +144,14 @@ def exportHTML(recipesSummary,ingredients, profiles):
                         <label for="exampleInputName2">Auteur</label>
                         <input type="text" class="form-control" ng-model="currentRecipe.brewer">
                     </div>
+                    <div class="form-group col-xs-1 col-sm-1 col-md-3">
+                        <label for="exampleInputName2">Type</label>
+                        <select class="form-control" ng-model="currentRecipe.type">
+                            <option>All Grain</option>
+                            <option>Extract</option>
+                            <option>Partial Mash</option>
+                        </select>
+                    </div>
                 </form>
     ''' 
 
