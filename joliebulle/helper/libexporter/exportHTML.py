@@ -272,7 +272,7 @@ def exportHTML(recipesSummary,ingredients, profiles):
 
     resultHtml +='''        <div class="yeasts notes col-md-10">
                 <h3>{0}</h3>
-                    <pre>{1}</pre>
+                    <pre ng-hide="editMode">{1}</pre>
                     <div class="noteEditor">
                         <textarea ng-model="currentRecipe.notes" class="col-md-10" ng-show="editMode"></textarea>
                     </div>            
