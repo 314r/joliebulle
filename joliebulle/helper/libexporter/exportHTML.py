@@ -93,6 +93,7 @@ def exportHTML(recipesSummary,ingredients, profiles):
 
     resultHtml+='''<div class="recipe-view-header">
                 <button class="btn-link  editRecipe" type="button" ng-click="save(currentRecipe)" ng-show="editMode">Enregistrer</button>
+                <button class="btn-link  editRecipe" type="button" ng-click="cancel()" ng-show="editMode">Annuler</button>
                 <button class="btn-link  editRecipe" type="button" ng-click="editRecipe()" ng-hide="editMode">Editer</button>
             </div>
             <div class="recipeView" ng-show="active">
@@ -251,7 +252,7 @@ def exportHTML(recipesSummary,ingredients, profiles):
     resultHtml +='''        <div class="profile col-md-12">
                 <div class="row profile-header">
                     <h3 class="col-md-6">{0}</h3>
-                    <div class="brewday-button col-md-5">    
+                    <div class="brewday-button col-md-5" ng-hide="editMode">    
                         <button class="btn-link edit-button" type="button" onClick="main.showBrewdayMode()" ><i class="fa fa-wrench"></i> {1}</button>
                     </div>
                 </div>    
@@ -263,7 +264,6 @@ def exportHTML(recipesSummary,ingredients, profiles):
                 <span class="profile-ph">pH {3}</span>
                 <div ng-repeat="step in currentRecipe.mashProfile.steps">
                     <p><span class="label-step">{4}</span> {5} {6} {7} {8} °C {9} {10} {11}</p>
-
                 </div>
                 <p><span class="label-step">{12}</span> {13} °C</p>
                 </div>

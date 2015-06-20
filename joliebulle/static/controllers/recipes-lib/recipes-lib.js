@@ -5,7 +5,7 @@ recipesApp.controller('RecipeslibCtrl', ['$scope', '$http', '$filter', function 
     var parser, xml, string;
     
     $scope.active = false;
-    $scope.editMode =false;
+    $scope.editMode = false;
     
 
     $scope.init = function (dataJson, ingredients, profiles) {
@@ -140,7 +140,15 @@ recipesApp.controller('RecipeslibCtrl', ['$scope', '$http', '$filter', function 
     };
 
     $scope.editRecipe = function () {
-        $scope.editMode = true ;
+        $scope.editMode = true;
+        $scope.oldRecipes = angular.copy($scope.recipes);
+        $scope.oldCurrentRecipe = angular.copy($scope.currentRecipe);
+    };
+    
+    $scope.cancel = function () {
+        $scope.recipes = $scope.oldRecipes;
+        $scope.currentRecipe = $scope.oldCurrentRecipe;
+        $scope.editMode = false;
     };
     
 }]);
