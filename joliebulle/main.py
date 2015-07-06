@@ -650,6 +650,8 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         pyDir = os.path.abspath(os.path.dirname(__file__))
         baseUrl = QtCore.QUrl.fromLocalFile(os.path.join(pyDir, "static/"))
         self.webViewBiblio.setHtml(LibExporterRepository['html'](data,ImportBase().exportjson(), profiles), baseUrl)
+        # url = QtCore.QUrl("http://google.com")
+        # self.webViewBiblio.load(url)
 
         
 

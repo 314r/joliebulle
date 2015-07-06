@@ -112,18 +112,21 @@ recipesApp.controller('RecipeslibCtrl', ['$scope', '$http', '$filter', function 
         $scope.currentFerm.color = fermentable.color;
         $scope.currentFerm.type = fermentable.type;
         $scope.currentFerm.fyield = fermentable.fyield;
+        $scope.calcProfile($scope.currentRecipe);
     };
 
     $scope.hopSelected = function (hop) {
         $scope.currentHop.name = hop.name;
         $scope.currentHop.alpha = hop.alpha;
         $scope.currentHop.form = hop.form;
+        $scope.calcProfile($scope.currentRecipe);
     };
 
     $scope.miscSelected = function (misc) {
         $scope.currentMisc.name = misc.name;
         $scope.currentMisc.use = misc.use;
         $scope.currentMisc.type = misc.type;
+        $scope.calcProfile($scope.currentRecipe);
     };
 
     $scope.yeastSelected = function (yeast) {
@@ -132,6 +135,7 @@ recipesApp.controller('RecipeslibCtrl', ['$scope', '$http', '$filter', function 
         $scope.currentYeast.product_id = yeast.product_id;
         $scope.currentYeast.labo = yeast.labo;
         $scope.currentYeast.attenuation = yeast.attenuation;
+        $scope.calcProfile($scope.currentRecipe);
     };
     
     $scope.save = function (recipe) {

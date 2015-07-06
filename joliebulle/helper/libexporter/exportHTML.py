@@ -38,7 +38,7 @@ def exportHTML(recipesSummary,ingredients, profiles):
 <script src="beercalc/beercalc.js"></script>
 <script src="beercalc/jb2xml.js"></script>
 <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
-<link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="css/sidebar.css">
 <link rel="stylesheet" type="text/css" href="css/library.css"/>
 </head>'''
