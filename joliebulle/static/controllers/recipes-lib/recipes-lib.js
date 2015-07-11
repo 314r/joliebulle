@@ -2,7 +2,7 @@
 /*global main, _, beerCalc, recipesApp, jb2xml*/
 recipesApp.controller('RecipeslibCtrl', ['$scope', '$http', '$filter', function ($scope, $http, $filter) {
     "use strict";
-    var parser, xml, string;
+    var parser, xml, string, fermentable, hop, misc, yeast;
     
     $scope.active = false;
     $scope.editMode = false;
@@ -154,6 +154,83 @@ recipesApp.controller('RecipeslibCtrl', ['$scope', '$http', '$filter', function 
         $scope.currentRecipe = $scope.oldCurrentRecipe;
         $scope.editMode = false;
     };
+
+    $scope.newFermentable = function () {
+        fermentable = {};
+        fermentable.name = "grain";
+        fermentable.color = 5;
+        fermentable.type = "Grain";
+        fermentable.fyield = 90;
+        fermentable.amount = 0;
+        fermentable.afterBoil = "FALSE";
+        $scope.currentRecipe.fermentables.push(fermentable);
+        $scope.showFermentableEditor = true;
+        $scope.currentFerm = fermentable;
+        $scope.calcProfile($scope.currentRecipe);
+    };
+
+    $scope.newHop = function () {
+        hop = {};
+        hop.name = "generic";
+        hop.alpha = 0;
+        hop.use = "Boil";
+        hop.form= "Plug";
+        hop.time = 0;
+        hop.amount = 0;
+        $scope.currentRecipe.hops.push(hop);
+        $scope.showHopEditor = true;
+        $scope.currentHop = hop;
+        $scope.calcProfile($scope.currentRecipe);
+    };
+
+    $scope.newMisc = function () {
+        misc = {};
+        misc.name = "generic";
+        misc.amount = 0;
+        misc.type = "Spice";
+        misc.use = "Boil";
+        misc.time = 0;
+        $scope.currentRecipe.miscs.push(misc);
+        $scope.showMiscEditor = true;
+        $scope.currentMisc = misc;
+        $scope.calcProfile($scope.currentRecipe);
+    };
+
+    $scope.newYeast = function () {
+        yeast = {};
+        yeast.name = "generic";
+        yeast.labo = "generic";
+        yeast.product_id = "generic";
+        yeast.form = "Dry";
+        yeast.attenuation = 75;
+        $scope.currentRecipe.yeasts.push(yeast);
+        $scope.showYeastEditor = true;
+        $scope.currentYeast = yeast;
+        $scope.calcProfile($scope.currentRecipe);
+    };
+
+    $scope.removeFermentable = function (index) {
+        $scope.currentRecipe.fermentables.splice(index,1);
+        $scope.calcProfile($scope.currentRecipe);
+    };
+
+    $scope.removeHop = function (index) {
+        $scope.currentRecipe.hops.splice(index,1);
+        $scope.calcProfile($scope.currentRecipe);
+    };
+
+    $scope.removeMisc = function (index) {
+        $scope.currentRecipe.miscs.splice(index,1);
+        $scope.calcProfile($scope.currentRecipe);
+    };
+
+    $scope.removeYeast = function (index) {
+        $scope.currentRecipe.yeasts.splice(index,1);
+        $scope.calcProfile($scope.currentRecipe);
+    };
+
+
+
     
 }]);
 

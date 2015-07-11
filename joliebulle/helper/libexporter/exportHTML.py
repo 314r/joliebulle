@@ -201,9 +201,12 @@ def exportHTML(recipesSummary,ingredients, profiles):
                                 </div>
                                 <div class="col-md-3 ing-amount">{9} g</div>  
                                 <button class="btn-link" type="button" ng-click="editFermentable($index)" ng-show="editMode">Editer</button>
+                                <button class="btn-link" type="button" ng-show="editMode" ng-click="removeFermentable($index)">Supprimer</button> 
                             </div>
-                            
-                        </div>'''.format(QCoreApplication.translate("Export","Ingrédients", None, QCoreApplication.UnicodeUTF8),QCoreApplication.translate("Export","EBC", None, QCoreApplication.UnicodeUTF8), "{{fermentable.color}}",QCoreApplication.translate("Export","Rendement", None, QCoreApplication.UnicodeUTF8),"{{fermentable.fyield}}", QCoreApplication.translate("Export","Type", None, QCoreApplication.UnicodeUTF8),"{{fermentable.type}}", "{{fermentable.name}}", "{{fermentable.afterBoilView}}", "{{fermentable.amount | number : 0}}")
+                        </div>
+                        <button class="btn-link" type="button" ng-show="editMode" ng-click="newFermentable()">Ajouter un grain ou un sucre</button> 
+
+                        '''.format(QCoreApplication.translate("Export","Ingrédients", None, QCoreApplication.UnicodeUTF8),QCoreApplication.translate("Export","EBC", None, QCoreApplication.UnicodeUTF8), "{{fermentable.color}}",QCoreApplication.translate("Export","Rendement", None, QCoreApplication.UnicodeUTF8),"{{fermentable.fyield}}", QCoreApplication.translate("Export","Type", None, QCoreApplication.UnicodeUTF8),"{{fermentable.type}}", "{{fermentable.name}}", "{{fermentable.afterBoilView}}", "{{fermentable.amount | number : 0}}")
 
 
     resultHtml +='''                    <div class="col-sm-12 col-md-12" ng-repeat="hop in currentRecipe.hops">
@@ -220,9 +223,12 @@ def exportHTML(recipesSummary,ingredients, profiles):
                                     <div class="use">{5} - {6} min</div></div>
                                 <div class="col-md-3 ing-amount">{7} g</div>
                                 <button class="btn-link" type="button" ng-click="editHop($index)" ng-show="editMode">Editer</button>
+                                <button class="btn-link" type="button" ng-show="editMode" ng-click="removeHop($index)">Supprimer</button> 
 
                             </div>
-                        </div>'''.format(QCoreApplication.translate("Export","Acides Alpha", None, QCoreApplication.UnicodeUTF8), "{{hop.alpha}}", QCoreApplication.translate("Export","IBU", None, QCoreApplication.UnicodeUTF8), "{{hop.ibuPart}}", "{{hop.name}}", "{{hop.use}}", "{{hop.time}}","{{hop.amount | number : 0}}")
+                        </div>
+                        <button class="btn-link" type="button" ng-show="editMode" ng-click="newHop()">Ajouter un houblon</button> 
+                        '''.format(QCoreApplication.translate("Export","Acides Alpha", None, QCoreApplication.UnicodeUTF8), "{{hop.alpha}}", QCoreApplication.translate("Export","IBU", None, QCoreApplication.UnicodeUTF8), "{{hop.ibuPart}}", "{{hop.name}}", "{{hop.use}}", "{{hop.time}}","{{hop.amount | number : 0}}")
 
     resultHtml +='''                     <div class="col-sm-12 col-md-12" ng-repeat="misc in currentRecipe.miscs">
                             <div class="ing row">
@@ -230,9 +236,12 @@ def exportHTML(recipesSummary,ingredients, profiles):
                                 
                                 <div class="col-md-3 ing-amount">{3} g</div>
                                 <button class="btn-link" type="button" ng-click="editMisc($index)" ng-show="editMode">Editer</button>
+                                <button class="btn-link" type="button" ng-show="editMode" ng-click="removeMisc($index)">Supprimer</button> 
 
                             </div>
-                        </div>'''.format("{{misc.name}}","{{misc.use}}","{{misc.time}}","{{misc.amount | number : 0}}")
+                        </div>
+                        <button class="btn-link" type="button" ng-show="editMode" ng-click="newMisc()">Ajouter un ingrédient divers</button> 
+                        '''.format("{{misc.name}}","{{misc.use}}","{{misc.time}}","{{misc.amount | number : 0}}")
 
     resultHtml +='''                    <div class="col-sm-12 col-md-12" ng-repeat="yeast in currentRecipe.yeasts">
                             <div class="ing row">
@@ -244,10 +253,13 @@ def exportHTML(recipesSummary,ingredients, profiles):
 
                                 {4} {5} {6}</div>
                                 <button class="btn-link" type="button" ng-click="editYeast($index)" ng-show="editMode">Editer</button>
+                                <button class="btn-link" type="button" ng-show="editMode" ng-click="removeYeast($index)">Supprimer</button> 
                             </div>
                         </div>
                     </div>
-                </div>'''.format(QCoreApplication.translate("Export","Atténuation", None, QCoreApplication.UnicodeUTF8), "{{yeast.attenuation}}", QCoreApplication.translate("Export","Forme", None, QCoreApplication.UnicodeUTF8), "{{yeast.form}}","{{yeast.name}}", "{{yeast.labo}}", "{{yeast.product_id}}")
+                </div>
+                <button class="btn-link" type="button" ng-show="editMode" ng-click="newYeast()">Ajouter une levure</button> 
+                '''.format(QCoreApplication.translate("Export","Atténuation", None, QCoreApplication.UnicodeUTF8), "{{yeast.attenuation}}", QCoreApplication.translate("Export","Forme", None, QCoreApplication.UnicodeUTF8), "{{yeast.form}}","{{yeast.name}}", "{{yeast.labo}}", "{{yeast.product_id}}")
 
     resultHtml +='''        <div class="profile col-md-12">
                 <div class="row profile-header">
