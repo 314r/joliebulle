@@ -104,9 +104,6 @@ def initLogging():
     logging.config.dictConfig(config)
 
 
-
-
-
 class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
     def __init__(self, parent = None):
         QtGui.QMainWindow.__init__(self, parent)
@@ -166,10 +163,6 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         self.connect(self.actionPreferences, QtCore.SIGNAL("triggered()"), self.dialogPreferences)
         
         
-
-        
-
-       
         
         #######################################################################################################
         # Profil de brassage       #########################################################################################################
@@ -659,22 +652,6 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
     def copierBbcode (self):
         app.clipboard().setText(self.recipe.export("bbcode"))
 
-
-    def nouvelle(self) :
-        self.recipe = Recipe()
-        self.recipe.name = self.trUtf8('Nouvelle Recette')
-        self.recipe.efficiency = 75
-        self.recipe.volume = 10
-        self.recipe.boil = 60
-        self.recipe.style = self.trUtf8('''Générique''')
-        self.recipe.recipeNotes =''
-
-            
-        self.currentMash = None
-        self.dicMashDetail = {}
-        self.mashName=None
-        self.brewdayLock = 0
-        
 
     def importIng(self):
         s = QtGui.QFileDialog.getOpenFileName(self,
