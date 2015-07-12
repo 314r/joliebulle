@@ -180,16 +180,8 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         self.dlgMash.mashChanged.connect(self.mashReload)
         self.pushButtonNewProfile.clicked.connect(self.addMash)
         self.pushButtonRemoveProfile.clicked.connect(self.removeMash)
-        
-        
-
-
-        
         self.pushButtonSaveProfile.clicked.connect(self.saveProfile)
-
-        
-  
-        
+   
         #La bibliotheque
         ###################################################################################################################
         ###################################################################################################################
@@ -319,7 +311,6 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
                 stream << recipe
             finally:
                 recipeFile.close()
-                print(recipe)
         else:
             # TODO : Prévenir l'utilisateur en cas d'échec de l'enregistrement
             pass  
@@ -370,18 +361,18 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
     #Une fonction qui gère l'aperçu des couleurs. 
     #Contient un tupple avec plusieurs références de couleurs, classées par rang selon la valeur SRM.
     #################################################################################################
-    def colorPreview (self) :
-        self.colorTuppleSrm = ('FFE699', 'FFD878', 'FFCA5A', 'FFBF42', 'FBB123', 'F8A600', 'F39C00', 'EA8F00', 'E58500', 'DE7C00', 'D77200', 'CF6900', 'CB6200', 'C35900','BB5100', 'B54C00', 'B04500', 'A63E00', 'A13700', '9B3200', '952D00', '8E2900', '882300', '821E00', '7B1A00', '771900', '701400', '6A0E00', '660D00','5E0B00','5A0A02','600903', '520907', '4C0505', '470606', '440607', '3F0708', '3B0607', '3A070B', '36080A')
+    # def colorPreview (self) :
+    #     self.colorTuppleSrm = ('FFE699', 'FFD878', 'FFCA5A', 'FFBF42', 'FBB123', 'F8A600', 'F39C00', 'EA8F00', 'E58500', 'DE7C00', 'D77200', 'CF6900', 'CB6200', 'C35900','BB5100', 'B54C00', 'B04500', 'A63E00', 'A13700', '9B3200', '952D00', '8E2900', '882300', '821E00', '7B1A00', '771900', '701400', '6A0E00', '660D00','5E0B00','5A0A02','600903', '520907', '4C0505', '470606', '440607', '3F0708', '3B0607', '3A070B', '36080A')
         
-        colorRef= round(self.recipe.compute_EBC()/1.97)
+    #     colorRef= round(self.recipe.compute_EBC()/1.97)
         
-        if colorRef >= 30 :
-            color = "#" + self.colorTuppleSrm[30]
-        elif colorRef <= 1 :
-            color = "#" + self.colorTuppleSrm[0]
-        else :
-            color = "#" + self.colorTuppleSrm[colorRef-1]
-        self.widgetColor.setStyleSheet("background-color :" + color)
+    #     if colorRef >= 30 :
+    #         color = "#" + self.colorTuppleSrm[30]
+    #     elif colorRef <= 1 :
+    #         color = "#" + self.colorTuppleSrm[0]
+    #     else :
+    #         color = "#" + self.colorTuppleSrm[colorRef-1]
+    #     self.widgetColor.setStyleSheet("background-color :" + color)
         
         
 
@@ -503,9 +494,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         self.initRep()
         self.listdir(recettes_dir)
         self.showLib()
-        print(settings.conf.value("pathUnix"))
-
-       
+  
 
     @QtCore.pyqtSlot()    
     def switchToLibrary(self) :
@@ -821,7 +810,6 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
     def mashReload(self,mash) :
         #on remet le verrou à 0, il va falloir recalculer en repassant en brewday mode
         self.brewdayLock = 0
-        
         f = self.listWidgetMashProfiles.currentRow()
         selected_mash = ImportBase().listeMashes[f]
         selected_mash.name = mash.name
@@ -831,8 +819,6 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         selected_mash.spargeTemp = mash.spargeTemp
         self.popMashList()
         self.listWidgetMashProfiles.setCurrentRow(f)
-        
-#        print(self.dicMashDetail)
 
     def addMash(self) :
         new_mash = Mash()
@@ -890,10 +876,6 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
             # document.print(printer)
         
 
-                
-
-# from plugins import PluginManager
-# from plugins.ExtensionPoints import AppLifecycleExtensionPoint
 
 if __name__ == "__main__":
 
@@ -901,16 +883,12 @@ if __name__ == "__main__":
 
     logger = logging.getLogger(__name__)
 
-    # for p in AppLifecycleExtensionPoint.plugins:
-    #     p().startup()
-
     logger.debug("Initializing UI");
     QtCore.QTextCodec.setCodecForCStrings(QtCore.QTextCodec.codecForName("utf-8"))
     app = QtGui.QApplication(sys.argv)
     
     locale = QtCore.QLocale.system().name()
     translator=QtCore.QTranslator ()
-    #~ translator.load(("qt_") +locale, QtCore.QLibraryInfo.location(QtCore.QLibraryInfo.TranslationsPath))
     translator.load('joliebulle_' + locale)
     app.installTranslator(translator)
 
@@ -927,6 +905,4 @@ if __name__ == "__main__":
 
     app.exec_()
 
-    # for p in AppLifecycleExtensionPoint.plugins:
-    #     p().shutdown()
 
