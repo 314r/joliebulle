@@ -1,5 +1,5 @@
 /*jslint nomen: true */
-/*global main, _, beerCalc, recipesApp, jb2xml*/
+/*global main, _, beerCalc, recipesApp, jb2xml,angular*/
 recipesApp.controller('RecipeslibCtrl', ['$scope', '$http', '$filter', function ($scope, $http, $filter) {
     "use strict";
     var parser, xml, string, fermentable, hop, misc, yeast;
@@ -7,7 +7,6 @@ recipesApp.controller('RecipeslibCtrl', ['$scope', '$http', '$filter', function 
     $scope.active = false;
     $scope.editMode = false;
     
-
     $scope.init = function (dataJson, ingredients, profiles) {
         $scope.recipes = dataJson;
         $scope.recipes = _.chain($scope.recipes)
@@ -16,6 +15,64 @@ recipesApp.controller('RecipeslibCtrl', ['$scope', '$http', '$filter', function 
             .value();
         $scope.ingredients = ingredients;
         $scope.mashProfiles = profiles.mashes;
+    };
+    
+    $scope.locale_fr = {
+        "Grain" : "Grain",
+        "Extract" : "Extrait",
+        "Dry Extract" : "Extrait Sec",
+        "Sugar" : "Sucre",
+        "TRUE" : "Après Ebullition",
+        "FALSE" : "Brassage",
+        "Plug" : "Cône",
+        "Leaf" : "Feuille",
+        "Pellet" : "Pellet",
+        "Boil" : "Ebullition",
+        "Dry Hop" : "Dry Hop",
+        "First Wort" : "Premier Moût",
+        "Mash" : "Empâtage",
+        "Aroma" : "Aromatique",
+        "Spice" : "Epice",
+        "Flavor" : "Arôme",
+        "Water Agent" : "Traitement Eau",
+        "Herb" : "Herbe",
+        "Fining" : "Clarifiant",
+        "Other" : "Autre",
+        "Primary" : "Primaire",
+        "Secondary" : "Secondaire",
+        "Bottling" : "Embouteillage",
+        "Liquid" : "Liquide",
+        "Dry" : "Poudre",
+        "Slant" : "Gélose",
+        "Culture" : "Culture"
+    };
+
+    $scope.translate_fr = function (recipe) {
+        recipe.hops.forEach(function (hop) {
+            if (typeof hop.formView !== 'undefined') {
+                hop.form = (_.invert($scope.locale_fr))[hop.formView];
+            } else {
+                hop.formView = $scope.locale_fr[hop.form];
+            }
+            if (typeof hop.useView !== 'undefined') {
+                hop.use = (_.invert($scope.locale_fr))[hop.useView];
+            } else {
+                hop.useView = $scope.locale_fr[hop.use];
+            }
+        });
+        recipe.fermentables.forEach(function (fermentable) {
+            if (typeof fermentable.typeView !== 'undefined') {
+                fermentable.type = (_.invert($scope.locale_fr))[fermentable.typeView];
+            } else {
+                fermentable.typeView = $scope.locale_fr[fermentable.type];
+            }
+            if (typeof fermentable.afterBoilView !== 'undefined') {
+                fermentable.afterBoil = (_.invert($scope.locale_fr))[fermentable.afterBoilView];
+            } else {
+                fermentable.afterBoilView = $scope.locale_fr[fermentable.afterBoil];
+            }
+        });
+        return recipe;
     };
 
     $scope.deleteLib = function (recipe) {
@@ -69,9 +126,11 @@ recipesApp.controller('RecipeslibCtrl', ['$scope', '$http', '$filter', function 
     $scope.recipeSelected = function (recipe) {
         $scope.active = true;
         $scope.currentRecipe = recipe;
+        $scope.currentRecipe = $scope.translate_fr($scope.currentRecipe);
         $scope.calcProfile(recipe);
         $scope.sortRecipe();
         $scope.activeClass = $scope.currentRecipe.path;
+//        console.log($scope.currentRecipe.hops);
         main.viewRecipeLib(recipe.path);
     };
 
@@ -99,6 +158,8 @@ recipesApp.controller('RecipeslibCtrl', ['$scope', '$http', '$filter', function 
     };
 
     $scope.calcProfile = function (recipe) {
+        recipe = $scope.translate_fr(recipe);
+        console.log(recipe);
         recipe.ebc = Math.round(beerCalc.ebc(recipe.fermentables, recipe.volume));
         recipe.og = (Math.round(beerCalc.originalGravity(recipe) * 1000) / 1000).toFixed(3);
         recipe.fg = (Math.round(beerCalc.finalGravity(recipe) * 1000) / 1000).toFixed(3);
@@ -174,7 +235,7 @@ recipesApp.controller('RecipeslibCtrl', ['$scope', '$http', '$filter', function 
         hop.name = "generic";
         hop.alpha = 0;
         hop.use = "Boil";
-        hop.form= "Plug";
+        hop.form = "Plug";
         hop.time = 0;
         hop.amount = 0;
         $scope.currentRecipe.hops.push(hop);
@@ -210,22 +271,22 @@ recipesApp.controller('RecipeslibCtrl', ['$scope', '$http', '$filter', function 
     };
 
     $scope.removeFermentable = function (index) {
-        $scope.currentRecipe.fermentables.splice(index,1);
+        $scope.currentRecipe.fermentables.splice(index, 1);
         $scope.calcProfile($scope.currentRecipe);
     };
 
     $scope.removeHop = function (index) {
-        $scope.currentRecipe.hops.splice(index,1);
+        $scope.currentRecipe.hops.splice(index, 1);
         $scope.calcProfile($scope.currentRecipe);
     };
 
     $scope.removeMisc = function (index) {
-        $scope.currentRecipe.miscs.splice(index,1);
+        $scope.currentRecipe.miscs.splice(index, 1);
         $scope.calcProfile($scope.currentRecipe);
     };
 
     $scope.removeYeast = function (index) {
-        $scope.currentRecipe.yeasts.splice(index,1);
+        $scope.currentRecipe.yeasts.splice(index, 1);
         $scope.calcProfile($scope.currentRecipe);
     };
 

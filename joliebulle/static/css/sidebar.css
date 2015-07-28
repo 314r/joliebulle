@@ -45,3 +45,17 @@ ul.nav.nav-sidebar {margin-top:30px;}
 .nav > li > a:hover {background : #fff;}
 .nav-header {height:55px;position:fixed;left:0px; top:0px;z-index: 1000;background-color: #3498db; width:50px;}
 
+
+.sidebarIng {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width:200px;
+    padding-left : 15px;
+    display: block;
+    overflow-y:auto;
+    overflow-x: hidden;
+
+}
+
