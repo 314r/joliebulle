@@ -49,6 +49,8 @@ recipesApp.controller('RecipeslibCtrl', ['$scope', '$http', '$filter', function 
 
     $scope.translate_fr = function (recipe) {
         recipe.hops.forEach(function (hop) {
+            // If formView is in french (not undefined), we translate hop.form to english/beerxml. 
+            // If formView is undefined, we translate hop.form to french.
             if (typeof hop.formView !== 'undefined') {
                 hop.form = (_.invert($scope.locale_fr))[hop.formView];
             } else {
@@ -72,6 +74,30 @@ recipesApp.controller('RecipeslibCtrl', ['$scope', '$http', '$filter', function 
                 fermentable.afterBoilView = $scope.locale_fr[fermentable.afterBoil];
             }
         });
+
+        recipe.miscs.forEach(function (misc) {
+            if (typeof misc.useView !== 'undefined') {
+                misc.use = (_.invert($scope.locale_fr))[misc.useView];
+            } else {
+                misc.useView = $scope.locale_fr[misc.use];
+            }
+            if (typeof misc.typeView !== 'undefined') {
+                misc.type = (_.invert($scope.locale_fr))[misc.ftypeView];
+            } else {
+                misc.typeView = $scope.locale_fr[misc.type];
+            }
+
+        });
+
+        recipe.yeasts.forEach(function (yeast) {
+            if (typeof yeast.formView !== 'undefined') {
+                yeast.form = (_.invert($scope.locale_fr))[yeast.formView];
+            } else {
+                yeast.formView = $scope.locale_fr[yeast.form];
+            }
+        });
+
+
         return recipe;
     };
 

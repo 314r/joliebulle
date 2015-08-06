@@ -397,7 +397,7 @@ def exportHTML(recipesSummary,ingredients, profiles):
                     <label for="exampleInputName2">Quantité</label>
                     <input type="number" class="form-control" ng-model="currentMisc.amount" ng-change="calcProfile(currentRecipe)">
                 </div>
-                <select ng-model="currentMisc.type" ng-change="calcProfile(currentRecipe)">
+                <select ng-model="currentMisc.typeView" ng-change="calcProfile(currentRecipe)">
                     <option>Epice</option>
                     <option>Arôme</option>
                     <option>Traitement Eau</option>
@@ -405,7 +405,7 @@ def exportHTML(recipesSummary,ingredients, profiles):
                     <option>Clarifiant</option>
                     <option>Autre</option>
                 </select>
-                <select ng-model="currentMisc.use" ng-change="calcProfile(currentRecipe)">
+                <select ng-model="currentMisc.useView" ng-change="calcProfile(currentRecipe)">
                     <option>Ebullition</option>
                     <option>Empâtage</option>
                     <option>Primaire</option>
@@ -447,7 +447,7 @@ def exportHTML(recipesSummary,ingredients, profiles):
                     <label for="exampleInputName2">Rendement</label>
                     <input type="text" class="form-control" ng-model="currentYeast.attenuation">
                 </div>
-                <select ng-model="currentYeast.form" ng-change="calcProfile(currentRecipe)">
+                <select ng-model="currentYeast.formView" ng-change="calcProfile(currentRecipe)">
                     <option>Liquide</option>
                     <option>Poudre</option>
                     <option>Gélose</option>
