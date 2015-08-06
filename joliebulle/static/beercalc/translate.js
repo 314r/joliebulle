@@ -53,11 +53,11 @@ var translate = (function () {
             });
 
             recipe.fermentables.forEach(function (fermentable) {
-                // if (typeof fermentable.typeView !== 'undefined') {
-                //     fermentable.type = (_.invert(_.locale_fr))[fermentable.typeView];
-                // } else {
-                //     fermentable.typeView = _locale_fr[fermentable.type];
-                // }
+                if (typeof fermentable.typeView !== 'undefined') {
+                    fermentable.type = (_.invert(_locale_fr))[fermentable.typeView];
+                } else {
+                    fermentable.typeView = _locale_fr[fermentable.type];
+                }
                 if (typeof fermentable.afterBoilView !== 'undefined') {
                     fermentable.afterBoil = (_.invert(_locale_fr))[fermentable.afterBoilView];
                 } else {
