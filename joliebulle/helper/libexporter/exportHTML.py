@@ -35,6 +35,7 @@ def exportHTML(recipesSummary,ingredients, profiles):
 <script src="underscore/underscore-min.js"></script>
 <script src="controllers/recipes-lib/main.js"></script>
 <script src="controllers/recipes-lib/recipes-lib.js"></script>
+<script src="beercalc/translate.js"></script>
 <script src="beercalc/beercalc.js"></script>
 <script src="beercalc/jb2xml.js"></script>
 <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
