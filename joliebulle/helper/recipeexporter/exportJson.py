@@ -155,7 +155,7 @@ def exportJson(recipe) :
 
     data.append(dic)
     data = json.dumps(data)
-    data = data.replace("'","&#39;")
+    # data = data.replace("'","&#39;")
 
     return data
     

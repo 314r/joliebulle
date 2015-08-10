@@ -266,12 +266,11 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         # data = data.replace("'","&#39;")
         self.stackedWidget.setCurrentIndex(0)
         self.brewdayLock = 0
-        data = self.recipesSummary
         profiles = self.mashProfileExport.exportJson(ImportBase().listeMashes)
 
         pyDir = os.path.abspath(os.path.dirname(__file__))
         baseUrl = QtCore.QUrl.fromLocalFile(os.path.join(pyDir, "static/"))
-        self.webViewBiblio.setHtml(LibExporterRepository['html'](data,ImportBase().exportjson(), profiles), baseUrl)
+        self.webViewBiblio.setHtml(LibExporterRepository['html'](ImportBase().exportjson(), profiles), baseUrl)
         # url = QtCore.QUrl("http://google.com")
         # self.webViewBiblio.load(url)
 
@@ -354,6 +353,11 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         
 
 
+    @QtCore.pyqtSlot(result=str)
+    def dataRecipes(self) :
+        return self.recipesSummary
+
+
 
 
 
@@ -399,6 +403,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
                 
         self.recipesSummary += "]"
         logger.debug("%s fichiers détectés" %(len(filenameList)))
+
         
 
                 

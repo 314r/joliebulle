@@ -7,8 +7,8 @@ recipesApp.controller('RecipeslibCtrl', ['$scope', '$http', '$filter', function 
     $scope.active = false;
     $scope.editMode = false;
     
-    $scope.init = function (dataJson, ingredients, profiles) {
-        $scope.recipes = dataJson;
+    $scope.init = function (ingredients, profiles) {
+        $scope.recipes = JSON.parse(main.dataRecipes());
         $scope.recipes = _.chain($scope.recipes)
             .sortBy(function (o) {return o.name.toLowerCase(); })
             .sortBy(function (o) {return o.brewer.toLowerCase(); })
@@ -74,6 +74,7 @@ recipesApp.controller('RecipeslibCtrl', ['$scope', '$http', '$filter', function 
         $scope.activeClass = $scope.currentRecipe.path;
 //        console.log($scope.currentRecipe.hops);
         main.viewRecipeLib(recipe.path);
+
     };
 
     $scope.sortByName = function () {
