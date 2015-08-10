@@ -94,7 +94,6 @@ class ExportMash :
             
         dic['mashes'] = mashes
         dic = json.dumps(dic)
-        dic = dic.replace("'","&#39;")
 
         return dic
 
