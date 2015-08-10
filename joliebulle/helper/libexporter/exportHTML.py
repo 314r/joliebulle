@@ -21,7 +21,7 @@
 
 from PyQt4.QtCore import QCoreApplication
 
-def exportHTML(ingredients):
+def exportHTML():
     resultHtml = '''
 <!doctype html>
 <html>
@@ -47,7 +47,7 @@ def exportHTML(ingredients):
 
     resultHtml+='''<body ng-app="recipes-lib">
 
-      <div class="container-fluid" ng-controller="RecipeslibCtrl" ng-init='init({0})'>
+      <div class="container-fluid" ng-controller="RecipeslibCtrl" ng-init='init()'>
                                                                   
         
           <div class="sidebar" ng-hide="showFermentableEditor || showHopEditor || showMiscEditor || showYeastEditor">
@@ -59,7 +59,7 @@ def exportHTML(ingredients):
               <li onClick="main.showJournal()"><a href="#"><i class="fa fa-calendar-o"></i> </a></li>
               <li onClick="main.showTools()"><a href="#"><i class="fa fa-cog"></i> </a></li>
             </ul>
-          </div>'''.format(str(ingredients))
+          </div>'''
         
             
         
