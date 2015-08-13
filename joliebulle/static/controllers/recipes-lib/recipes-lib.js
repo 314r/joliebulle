@@ -13,7 +13,7 @@ recipesApp.controller('RecipeslibCtrl', ['$scope', '$http', '$filter', function 
             .sortBy(function (o) {return o.name.toLowerCase(); })
             .sortBy(function (o) {return o.brewer.toLowerCase(); })
             .value();
-        $scope.ingredients = JSON.parse(main.dataIngredients());;
+        $scope.ingredients = JSON.parse(main.dataIngredients());
         $scope.mashProfiles = JSON.parse(main.dataProfiles()).mashes;
 
     };
