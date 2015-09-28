@@ -267,6 +267,9 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         self.stackedWidget.setCurrentIndex(0)
         self.brewdayLock = 0
 
+        self.webSettings = self.webViewBiblio.settings()
+        self.webSettings.setAttribute(QtWebKit.QWebSettings.LocalContentCanAccessRemoteUrls, True)
+
         pyDir = os.path.abspath(os.path.dirname(__file__))
         baseUrl = QtCore.QUrl.fromLocalFile(os.path.join(pyDir, "static/html/"))
         self.webViewBiblio.setHtml(LibExporterRepository['html'](), baseUrl)
@@ -354,6 +357,8 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
 
     @QtCore.pyqtSlot(result=str)
     def dataRecipes(self) :
+        # f = open(recipeData_file, 'w')
+        # f.write(self.recipesSummary)
         return self.recipesSummary
 
     @QtCore.pyqtSlot(result=str)
@@ -418,6 +423,8 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
                 
         self.recipesSummary += "]"
         logger.debug("%s fichiers détectés" %(len(filenameList)))
+
+
 
         
 
