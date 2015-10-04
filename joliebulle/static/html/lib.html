@@ -287,29 +287,30 @@
         </div>
       </div>
       <div class="mainIng">
-        <form class="form-inline" role="form" >
-          <div class="form-group">
-            <label for="exampleInputName2">Nom</label>
-            <input type="text" class="form-control" ng-model="currentHop.name">
+        
+          <div >
+            <label>Nom</label>
+            <input type="text" ng-model="currentHop.name">
           </div>
-          <div class="form-group">
-            <label for="exampleInputName2">Alpha</label>
-            <input type="number" class="form-control" ng-model="currentHop.alpha" ng-change="calcProfile(currentRecipe)">
+          <div>
+            <label >Alpha</label>
+            <input type="number"  ng-model="currentHop.alpha" ng-change="calcProfile(currentRecipe)">
           </div>   
-        </form>
-        <form class="form-inline" role="form"> 
-          <div class="form-group">
-            <label for="exampleInputName2">Durée</label>
-            <input type="number" class="form-control" ng-model="currentHop.time" ng-change="calcProfile(currentRecipe)">
+        
+        
+          <div>
+            <label >Durée</label>
+            <input type="number" ng-model="currentHop.time" ng-change="calcProfile(currentRecipe)">
           </div>
-          <div class="form-group">
-            <label for="exampleInputName2">Quantité</label>
-            <input type="number" class="form-control" ng-model="currentHop.amount" ng-change="calcProfile(currentRecipe)">
+          <div>
+            <label>Quantité</label>
+            <input type="number" ng-model="currentHop.amount" ng-change="calcProfile(currentRecipe)">
           </div>
-        </form>
-        <form class="form-inline" role="form">
-          <div class="form-group">   
-            <select ng-model="currentHop.useView" class="form-control" ng-change="calcProfile(currentRecipe)">
+        
+        
+          <div>   
+            <label>Usage</label>
+            <select ng-model="currentHop.useView"  ng-change="calcProfile(currentRecipe)">
               <option>Ebullition</option>
               <option>Dry Hop</option>
               <option>Empâtage</option>
@@ -317,15 +318,17 @@
               <option>Aromatique</option>
             </select>
           </div>
-          <div class="form-group">
-            <select ng-model="currentHop.formView" class="form-control" ng-change="calcProfile(currentRecipe)">
+          <div>
+            <label>Forme</label>
+            <select ng-model="currentHop.formView" ng-change="calcProfile(currentRecipe)">
               <option>Pellet</option>
               <option>Cône</option>
               <option>Feuille</option>
             </select>
           </div>
-        </form>
-        <button ng-click="closeHopEditor()">Ok</button>  
+          <button ng-click="closeHopEditor()" class="cancelIng">Annuler</button> 
+          <button ng-click="closeHopEditor()" class="okIng">Ajouter</button>
+           
       </div>
     </div>
 
