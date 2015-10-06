@@ -14,8 +14,8 @@ recipesApp.controller('RecipeslibCtrl', ['$scope', '$http', '$filter', function 
             .sortBy(function (o) {return o.name.toLowerCase(); })
             .sortBy(function (o) {return o.brewer.toLowerCase(); })
             .value();
-         $scope.ingredients = JSON.parse(main.dataIngredients());
-         $scope.mashProfiles = JSON.parse(main.dataProfiles()).mashes;
+        $scope.ingredients = JSON.parse(main.dataIngredients());
+        $scope.mashProfiles = JSON.parse(main.dataProfiles()).mashes;
 
     };
 
@@ -40,6 +40,7 @@ recipesApp.controller('RecipeslibCtrl', ['$scope', '$http', '$filter', function 
     };
 
     $scope.editHop = function (index) {
+        $scope.freezeRecipe();
         $scope.showHopEditor = true;
         $scope.currentHop = $scope.currentRecipe.hops[index];
     };
@@ -148,6 +149,15 @@ recipesApp.controller('RecipeslibCtrl', ['$scope', '$http', '$filter', function 
         $scope.calcProfile($scope.currentRecipe);
     };
     
+    $scope.cancelIngredient = function () {
+        $scope.currentRecipe = $scope.freezedRecipe;
+        $scope.showHopEditor = false;
+    };
+    
+    $scope.freezeRecipe = function () {
+        $scope.freezedRecipe = angular.copy($scope.currentRecipe);
+    };
+    
     $scope.save = function (recipe) {
         main.saveRecipe(jb2xml.exportString(recipe), recipe.path);
         $scope.editMode = false;
@@ -180,6 +190,7 @@ recipesApp.controller('RecipeslibCtrl', ['$scope', '$http', '$filter', function 
     };
 
     $scope.newHop = function () {
+        $scope.freezeRecipe();
         hop = {};
         hop.name = "generic";
         hop.alpha = 0;
