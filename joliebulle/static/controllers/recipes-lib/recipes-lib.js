@@ -29,6 +29,7 @@ recipesApp.controller('RecipeslibCtrl', ['$scope', '$http', '$filter', function 
     };
 
     $scope.editFermentable = function (index) {
+        $scope.freezeRecipe();
         $scope.showFermentableEditor = true;
         $scope.currentFerm = $scope.currentRecipe.fermentables[index];
         // $scope.currentIng.index = index;
@@ -50,6 +51,7 @@ recipesApp.controller('RecipeslibCtrl', ['$scope', '$http', '$filter', function 
     };
 
     $scope.editMisc = function (index) {
+        $scope.freezeRecipe();
         $scope.showMiscEditor = true;
         $scope.currentMisc = $scope.currentRecipe.miscs[index];
     };
@@ -59,6 +61,7 @@ recipesApp.controller('RecipeslibCtrl', ['$scope', '$http', '$filter', function 
     };
 
     $scope.editYeast = function (index) {
+        $scope.freezeRecipe();
         $scope.showYeastEditor = true;
         $scope.currentYeast = $scope.currentRecipe.yeasts[index];
     };
@@ -151,7 +154,10 @@ recipesApp.controller('RecipeslibCtrl', ['$scope', '$http', '$filter', function 
     
     $scope.cancelIngredient = function () {
         $scope.currentRecipe = $scope.freezedRecipe;
+        $scope.showFermentableEditor = false;
         $scope.showHopEditor = false;
+        $scope.showMiscEditor = false;
+        $scope.showYeastEditor = false;
     };
     
     $scope.freezeRecipe = function () {
@@ -176,6 +182,7 @@ recipesApp.controller('RecipeslibCtrl', ['$scope', '$http', '$filter', function 
     };
 
     $scope.newFermentable = function () {
+        $scope.freezeRecipe();
         fermentable = {};
         fermentable.name = "grain";
         fermentable.color = 5;
@@ -205,6 +212,7 @@ recipesApp.controller('RecipeslibCtrl', ['$scope', '$http', '$filter', function 
     };
 
     $scope.newMisc = function () {
+        $scope.freezeRecipe();
         misc = {};
         misc.name = "generic";
         misc.amount = 0;
@@ -218,6 +226,7 @@ recipesApp.controller('RecipeslibCtrl', ['$scope', '$http', '$filter', function 
     };
 
     $scope.newYeast = function () {
+        $scope.freezeRecipe();
         yeast = {};
         yeast.name = "generic";
         yeast.labo = "generic";

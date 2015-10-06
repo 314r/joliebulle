@@ -241,41 +241,50 @@
       </div>
     </div>
 
-    <div class="ingredientEditor" ng-show="showFermentableEditor"> 
-      <button ng-click="closeFermentableEditor()">Ok</button>
-      <form class="form-inline" role="form" >
-      <div class="form-group">
-        <label for="exampleInputName2">Nom</label>
-        <input type="text" class="form-control" ng-model="currentFerm.name">
-      </div>
-      <div class="form-group">
-        <label for="exampleInputName2">Quantité</label>
-        <input type="number" class="form-control" ng-model="currentFerm.amount" ng-change="calcProfile(currentRecipe)">
-      </div>
-      <div class="form-group">
-        <label for="exampleInputName2">Rendement</label>
-        <input type="number" class="form-control" ng-model="currentFerm.fyield" ng-change="calcProfile(currentRecipe)">
-      </div>
-      <div class="form-group">
-        <label for="exampleInputName2">Couleur</label>
-        <input type="number" class="form-control" ng-model="currentFerm.color" ng-change="calcProfile(currentRecipe)">
-      </div>
-      <select ng-model="currentFerm.typeView" ng-change="calcProfile(currentRecipe)">
-        <option>Grain</option>
-        <option>Extrait</option>
-        <option>Extrait Sec</option>
-        <option>Sucre</option>
-      </select>
-      <select ng-model="currentFerm.afterBoilView" ng-change="calcProfile(currentRecipe)">
-        <option>Après Ebullition</option>
-        <option>Brassage</option>
-      </select>
-      </form>
-      <div ng-repeat="fermentable in ingredients.fermentables" ng-click="fermentableSelected(fermentable)">
-        <span>
-        {{fermentable.name}}
-        </span>
-      </div>
+    <div class="ingredientEditor" ng-show="showFermentableEditor">
+        <div class="sidebarIng" >
+            <div ng-repeat="fermentable in ingredients.fermentables" ng-click="fermentableSelected(fermentable)">
+              <span>
+              {{fermentable.name}}
+              </span>
+            </div>
+        </div>
+        <div class="mainIng">
+          <div>
+            <label>Nom</label>
+            <input type="text" ng-model="currentFerm.name">
+          </div>
+          <div>
+            <label for="exampleInputName2">Quantité</label>
+            <input type="number" ng-model="currentFerm.amount" ng-change="calcProfile(currentRecipe)">
+          </div>
+          <div>
+            <label for="exampleInputName2">Rendement</label>
+            <input type="number" ng-model="currentFerm.fyield" ng-change="calcProfile(currentRecipe)">
+          </div>
+          <div>
+            <label for="exampleInputName2">Couleur</label>
+            <input type="number" ng-model="currentFerm.color" ng-change="calcProfile(currentRecipe)">
+          </div>
+          <div> 
+              <label>Type</label>
+              <select ng-model="currentFerm.typeView" ng-change="calcProfile(currentRecipe)">
+                <option>Grain</option>
+                <option>Extrait</option>
+                <option>Extrait Sec</option>
+                <option>Sucre</option>
+              </select>
+          </div>
+          <div>
+              <label>Usage</label>
+              <select ng-model="currentFerm.afterBoilView" ng-change="calcProfile(currentRecipe)">
+                <option>Après Ebullition</option>
+                <option>Brassage</option>
+              </select>
+          </div>      
+              <button ng-click="cancelIngredient()" class="cancelIng">Annuler</button> 
+              <button ng-click="closeFermentableEditor()" class="okIng">Ajouter</button>
+        </div>
     </div>
 
     <div class="ingredientEditor" ng-show="showHopEditor"> 
