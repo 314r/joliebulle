@@ -249,21 +249,27 @@
               </span>
             </div>
         </div>
+        <div class="HUD">
+            <span>{{currentRecipe.ibu}} IBU</span>
+            <span>{{currentRecipe.ebc}} EBC</span>
+            <span>{{currentRecipe.og}}</span>
+            <span>{{currentRecipe.fg}}</span>  
+        </div>
         <div class="mainIng">
           <div>
             <label>Nom</label>
             <input type="text" ng-model="currentFerm.name">
           </div>
           <div>
-            <label for="exampleInputName2">Quantité</label>
+            <label>Quantité</label>
             <input type="number" ng-model="currentFerm.amount" ng-change="calcProfile(currentRecipe)">
           </div>
           <div>
-            <label for="exampleInputName2">Rendement</label>
+            <label>Rendement</label>
             <input type="number" ng-model="currentFerm.fyield" ng-change="calcProfile(currentRecipe)">
           </div>
           <div>
-            <label for="exampleInputName2">Couleur</label>
+            <label>Couleur</label>
             <input type="number" ng-model="currentFerm.color" ng-change="calcProfile(currentRecipe)">
           </div>
           <div> 
