@@ -301,6 +301,12 @@
           </span>
         </div>
       </div>
+      <div class="HUD">
+            <span>{{currentRecipe.ibu}} IBU</span>
+            <span>{{currentRecipe.ebc}} EBC</span>
+            <span>{{currentRecipe.og}}</span>
+            <span>{{currentRecipe.fg}}</span>  
+        </div>    
       <div class="mainIng">
         
           <div >
@@ -355,6 +361,12 @@
           </span>
         </div>
       </div>
+        <div class="HUD">
+            <span>{{currentRecipe.ibu}} IBU</span>
+            <span>{{currentRecipe.ebc}} EBC</span>
+            <span>{{currentRecipe.og}}</span>
+            <span>{{currentRecipe.fg}}</span>  
+        </div>
         <div class="mainIng">
           <div>
             <label>Nom</label>
@@ -402,7 +414,12 @@
           </span>
         </div>
       </div>
-      <button ng-click="closeYeastEditor()">Ok</button>
+      <div class="HUD">
+            <span>{{currentRecipe.ibu}} IBU</span>
+            <span>{{currentRecipe.ebc}} EBC</span>
+            <span>{{currentRecipe.og}}</span>
+            <span>{{currentRecipe.fg}}</span>  
+        </div>
       
       <div class="mainIng">
         <div>
@@ -418,8 +435,8 @@
           <input type="text" ng-model="currentYeast.product_id">
         </div>
         <div>
-          <label>Rendement</label>
-          <input type="text" ng-model="currentYeast.attenuation">
+          <label>Atténuation</label>
+          <input type="number" ng-model="currentYeast.attenuation" ng-change="calcProfile(currentRecipe)">
         </div>
         <div>
           <label>Forme</label>
