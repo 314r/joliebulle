@@ -25,16 +25,7 @@
   </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QGridLayout" name="gridLayout_4">
-    <property name="leftMargin">
-     <number>0</number>
-    </property>
-    <property name="topMargin">
-     <number>0</number>
-    </property>
-    <property name="rightMargin">
-     <number>0</number>
-    </property>
-    <property name="bottomMargin">
+    <property name="margin">
      <number>0</number>
     </property>
     <item row="0" column="0">
@@ -50,16 +41,7 @@
       </property>
       <widget class="QWidget" name="page_6">
        <layout class="QGridLayout" name="gridLayout_13">
-        <property name="leftMargin">
-         <number>0</number>
-        </property>
-        <property name="topMargin">
-         <number>0</number>
-        </property>
-        <property name="rightMargin">
-         <number>0</number>
-        </property>
-        <property name="bottomMargin">
+        <property name="margin">
          <number>0</number>
         </property>
         <item row="0" column="0">
@@ -76,14 +58,14 @@
              <number>0</number>
             </property>
             <item>
-             <widget class="QWebView" name="webViewBiblio">
+             <widget class="QWebView" name="webViewBiblio" native="true">
               <property name="sizePolicy">
                <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
                 <horstretch>0</horstretch>
                 <verstretch>0</verstretch>
                </sizepolicy>
               </property>
-              <property name="url">
+              <property name="url" stdset="0">
                <url>
                 <string>about:blank</string>
                </url>
@@ -98,27 +80,18 @@
       </widget>
       <widget class="QWidget" name="page_2">
        <layout class="QGridLayout" name="gridLayout_2">
-        <property name="leftMargin">
-         <number>0</number>
-        </property>
-        <property name="topMargin">
-         <number>0</number>
-        </property>
-        <property name="rightMargin">
-         <number>0</number>
-        </property>
-        <property name="bottomMargin">
+        <property name="margin">
          <number>0</number>
         </property>
         <item row="0" column="0">
-         <widget class="QWebView" name="webViewBrewday">
+         <widget class="QWebView" name="webViewBrewday" native="true">
           <property name="sizePolicy">
            <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
             <horstretch>0</horstretch>
             <verstretch>0</verstretch>
            </sizepolicy>
           </property>
-          <property name="url">
+          <property name="url" stdset="0">
            <url>
             <string>about:blank</string>
            </url>
@@ -510,7 +483,7 @@ p, li { white-space: pre-wrap; }
      <x>0</x>
      <y>0</y>
      <width>1238</width>
-     <height>22</height>
+     <height>25</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuFichier">
@@ -518,12 +491,8 @@ p, li { white-space: pre-wrap; }
      <string>Fichier</string>
     </property>
     <addaction name="actionImporter"/>
-    <addaction name="actionEnregistrer"/>
-    <addaction name="actionEnregistrer_Sous"/>
     <addaction name="actionExporterHtml"/>
     <addaction name="actionCopierBbcode"/>
-    <addaction name="actionNouvelle_recette"/>
-    <addaction name="actionRecharger"/>
     <addaction name="actionImprimer"/>
     <addaction name="actionQuitter"/>
    </widget>

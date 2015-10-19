@@ -137,8 +137,6 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
 
         #Les connexions
         self.connect(self.actionEnregistrer, QtCore.SIGNAL("triggered()"), self.enregistrer)
-        self.connect(self.actionEnregistrerToolBar, QtCore.SIGNAL("triggered()"), self.enregistrer)
-        self.connect(self.actionEnregistrer_Sous, QtCore.SIGNAL("triggered()"), self.enregistrerSous)
         self.connect(self.actionExporterHtml, QtCore.SIGNAL("triggered()"), self.exporterHtml)
         self.connect(self.actionCopierBbcode, QtCore.SIGNAL("triggered()"), self.copierBbcode)
         #self.connect(self.actionSwitch, QtCore.SIGNAL("triggered()"), self.switch)
