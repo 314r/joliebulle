@@ -139,6 +139,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         self.connect(self.actionEnregistrer, QtCore.SIGNAL("triggered()"), self.enregistrer)
         self.connect(self.actionExporterHtml, QtCore.SIGNAL("triggered()"), self.exporterHtml)
         self.connect(self.actionCopierBbcode, QtCore.SIGNAL("triggered()"), self.copierBbcode)
+        self.actionImprimer.triggered.connect(self.printRecipe)
         #self.connect(self.actionSwitch, QtCore.SIGNAL("triggered()"), self.switch)
         self.actionImporter.triggered.connect(self.importInLib)
         self.connect(self.actionQuitter, QtCore.SIGNAL("triggered()"), app, QtCore.SLOT("quit()"))
@@ -882,11 +883,11 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         dialog.setModal(True)
         dialog.setWindowTitle("Print Document" )
         if dialog.exec_() == True:
-            # self.webViewBiblio.print(printer)
-            document=QtGui.QTextDocument()
-            stringHtml=self.recipe.export("print")
-            document.setHtml(stringHtml)
-            document.print(printer)
+            self.webViewBiblio.print(printer)
+            # document=QtGui.QTextDocument()
+            # stringHtml=self.recipe.export("print")
+            # document.setHtml(stringHtml)
+            # document.print(printer)
     
 
     @QtCore.pyqtSlot()
