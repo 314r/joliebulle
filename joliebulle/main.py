@@ -137,11 +137,9 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
 
         #Les connexions
         self.connect(self.actionEnregistrer, QtCore.SIGNAL("triggered()"), self.enregistrer)
-        self.connect(self.actionExporterHtml, QtCore.SIGNAL("triggered()"), self.exporterHtml)
         self.connect(self.actionCopierBbcode, QtCore.SIGNAL("triggered()"), self.copierBbcode)
         self.actionImprimer.triggered.connect(self.printRecipe)
         #self.connect(self.actionSwitch, QtCore.SIGNAL("triggered()"), self.switch)
-        self.actionImporter.triggered.connect(self.importInLib)
         self.connect(self.actionQuitter, QtCore.SIGNAL("triggered()"), app, QtCore.SLOT("quit()"))
 
         self.actionShowJournal.triggered.connect(self.showJournal)
@@ -435,38 +433,8 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         data = data[1:-1]
         return data
 
-              
 
-
-    def importInLib (self):
-        self.s = QtGui.QFileDialog.getOpenFileName(self, self.trUtf8("Ouvrir un fichier"), home_dir,
-                                                   self.trUtf8("All (*);;BeerXML (*.xml);;BeerSmith 2 (*.bsmx)"))
-        errors = Errors()
-        try:
-            filename = os.path.basename(self.s)
-            if filename.endswith('.bsmx'):
-                recipe = Recipe.parse(self.s, 'bsmx')
-            # By default BeerXML is used
-            else:
-                recipe = Recipe.parse(self.s, 'beerxml')
-            finalDest = recettes_dir + "/" + recipe.name.replace('/', ' ') + ".xml"
-            if os.path.exists(finalDest):
-                logger.debug("Le fichier existe déjà dans la bibliothèque")
-                errors.warningExistingFile()
-            else:
-                self.recipe = recipe
-                self.enregistrerRecette(finalDest)
-        except (TypeError, SyntaxError, AttributeError):
-            logger.debug("Fichier incompatible. L'importation a échoué")
-            errors.warningXml()
-            
-        self.listdir(recettes_dir)
-        self.showLib()
-     
-        
-       
-
-             
+                  
     def initRep(self) :   
         home = QtCore.QDir(home_dir)
         config = QtCore.QDir(config_dir)
@@ -645,24 +613,6 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
                                                     "BeerXML (*.xml)")
         self.enregistrerRecette(self.s)
 
-    def exporterHtml (self) :
-        self.recipe.name = self.lineEditRecette.text()
-        self.recipe.style = self.lineEditGenre.text()
-        fichier = QtGui.QFileDialog.getSaveFileName (self,
-                                                    self.trUtf8("Enregistrer dans un fichier"),
-                                                    self.recipe.name+".html",
-                                                    "HTML (*.html)")
-        fileHtml = QtCore.QFile(fichier)
-        if fileHtml.open(QtCore.QIODevice.WriteOnly):
-            try:
-                stream = QtCore.QTextStream(fileHtml)
-                stream.setCodec("UTF-8")
-                stream << self.recipe.export("html-legacy")
-            finally:
-                fileHtml.close()
-        else:
-            # TODO : Prévenir l'utilisateur en cas d'échec de l'export
-            pass
     
     def copierBbcode (self):
         app.clipboard().setText(self.recipe.export("bbcode"))

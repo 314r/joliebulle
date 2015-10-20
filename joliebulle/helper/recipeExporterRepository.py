@@ -20,14 +20,10 @@
 
 from helper.recipeexporter.exportBeerXML import *
 from helper.recipeexporter.exportBBCode import *
-from helper.recipeexporter.exportPrint import *
-from helper.recipeexporter.exportHTMLLegacy import *
 from helper.recipeexporter.exportJson import *
 
 RecipeExporterRepository = {
     "beerxml": exportBeerXML,
-    "print" : exportPrint,
     "bbcode": exportBBCode,
-    "html-legacy": exportHTMLLegacy,
     "json": exportJson
 }
