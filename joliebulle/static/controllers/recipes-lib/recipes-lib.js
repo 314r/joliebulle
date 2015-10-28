@@ -1,5 +1,5 @@
 /*jslint nomen: true */
-/*global main, _, beerCalc, recipesApp, jb2xml,angular, translate*/
+/*global main, _, beerCalc, recipesApp, jb2xml,angular, translate, jb2bb */
 recipesApp.controller('RecipeslibCtrl', ['$scope', '$http', '$filter', function ($scope, $http, $filter) {
     "use strict";
     var parser, xml, string, fermentable, hop, misc, yeast;
@@ -265,7 +265,9 @@ recipesApp.controller('RecipeslibCtrl', ['$scope', '$http', '$filter', function 
         $scope.calcProfile($scope.currentRecipe);
     };
 
-
+    $scope.exportToBb = function () {
+        main.copyBbcode(jb2bb.exportString($scope.currentRecipe));
+    };
 
     
 }]);

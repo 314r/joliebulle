@@ -14,6 +14,7 @@
 <script src="../beercalc/beercalc.js"></script>
 <script src="../beercalc/jb2xml.js"></script>
 <script src="../beercalc/xml2json.js"></script>
+<script src="../beercalc/jb2bb.js"></script>
 <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
 <link rel="stylesheet" href="../font-awesome/css/font-awesome.min.css">
 <link rel="stylesheet" href="../css/sidebar.css" media="screen">
@@ -57,7 +58,7 @@
         <button class="cancelRecipe" type="button" ng-click="cancel()" ng-show="editMode"> <i class="fa fa-undo"></i><br/>Annuler</button>
         <button class="editRecipe" type="button" ng-click="editRecipe()" ng-hide="editMode || !active"><i class="fa fa-wrench"></i> <br/> Modifier</button>
         <button id="menuJournal" class="" type="button" data-toggle="dropdown" ng-hide="editMode || !active"><i class="fa fa-flag"></i> <br/> Journal <span class="fa fa-caret-down"></span></button>
-        <ul class="dropdown-menu" role="menu">
+        <ul class="dropdown-menu" role="menu" aria-labelledby="menuJournal">
               <i class="journalMenu-description">Marquer comme :</i>
               <li><a onClick="main.addToJournal('brewed')" href="#">Brassée</a></li>
               <li><a onClick="main.addToJournal('ferment')" href="#">Mise en fermentation</a></li>
@@ -67,6 +68,17 @@
         </ul>
         
         <button class="brewday-switch" type="button" onClick="main.showBrewdayMode()" ng-hide="editMode || !active" ><i class="fa fa-magic"></i> <br/> Brassage</button>
+        
+        <div class="btn-group">
+        <button id="menuRecipe" class="optionsRecipe" type="button" data-toggle="dropdown" ng-hide="editMode || !active"><i class="fa fa-bars"></i> <br/> Options  <span class="fa fa-caret-down"></span></button>
+        <ul class="dropdown-menu" role="menu" aria-labelledby="menuRecipe">
+              <li><a onClick="main.printRecipe()" href="#">Imprimer</a></li>
+              <li><a ng-click="exportToBb()" href="#">Copier le BBCode (format forum) dans le presse-papier</a></li>
+        </ul>
+        </div>
+
+
+
       </div>
       <div class="recipeView" ng-show="active">
 

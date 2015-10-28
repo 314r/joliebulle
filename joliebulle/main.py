@@ -137,9 +137,6 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
 
         #Les connexions
         self.connect(self.actionEnregistrer, QtCore.SIGNAL("triggered()"), self.enregistrer)
-        self.connect(self.actionCopierBbcode, QtCore.SIGNAL("triggered()"), self.copierBbcode)
-        self.actionImprimer.triggered.connect(self.printRecipe)
-        #self.connect(self.actionSwitch, QtCore.SIGNAL("triggered()"), self.switch)
         self.connect(self.actionQuitter, QtCore.SIGNAL("triggered()"), app, QtCore.SLOT("quit()"))
 
         self.actionShowJournal.triggered.connect(self.showJournal)
@@ -613,9 +610,9 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
                                                     "BeerXML (*.xml)")
         self.enregistrerRecette(self.s)
 
-    
-    def copierBbcode (self):
-        app.clipboard().setText(self.recipe.export("bbcode"))
+    @QtCore.pyqtSlot(str)
+    def copyBbcode (self, bbcode):
+        app.clipboard().setText(bbcode)
 
 
     def importIng(self):
@@ -826,7 +823,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         self.mashProfileExport.export(ImportBase().listeMashes)
         self.mashProfileExport.enregistrer(mash_file)
                
-        
+    @QtCore.pyqtSlot()    
     def printRecipe (self) :
         printer=QtGui.QPrinter()
         dialog = QtGui.QPrintDialog(printer)

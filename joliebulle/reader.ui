@@ -490,8 +490,6 @@ p, li { white-space: pre-wrap; }
     <property name="title">
      <string>Fichier</string>
     </property>
-    <addaction name="actionCopierBbcode"/>
-    <addaction name="actionImprimer"/>
     <addaction name="actionQuitter"/>
    </widget>
    <widget class="QMenu" name="menuIngr_dients">

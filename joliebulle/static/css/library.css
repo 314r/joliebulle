@@ -98,6 +98,26 @@ button.brewday-switch i {
   padding-bottom: 5px;
 }
 
+button.optionsRecipe {
+  background-color :#fff;
+  margin-left : 15px;
+  margin-top: 11px;
+  text-align: center;
+  border:none;
+  text-transform: uppercase;
+  font-size: 10px;  
+}
+
+button.optionsRecipe i {
+  padding-bottom: 5px;
+}
+
+.recipe-view-header .btn-group {
+  display: inline;
+
+}
+
+
 button.editRecipe:hover{
   /*background-color: #16A085;*/
 }
