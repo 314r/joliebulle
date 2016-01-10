@@ -236,6 +236,22 @@ var beerCalc = (function () {
             } else {
                 return true;
             }
-        }
+        },
+        
+        scaleIngredients : function (ratio, fermentables, hops, miscs) {
+            fermentables = fermentables.map(function (item) {
+            item.amount *= ratio;
+            return item;
+            });
+            hops = hops.map(function (item) {
+            item.amount *= ratio;
+            return item;
+            });
+            miscs = miscs.map(function (item) {
+            item.amount *= ratio;
+            return item;
+            });
+    
+        }   
     };
 }());

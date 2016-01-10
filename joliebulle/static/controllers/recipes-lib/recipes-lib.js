@@ -114,12 +114,21 @@ recipesApp.controller('RecipeslibCtrl', ['$scope', '$http', '$filter', function 
 
     $scope.calcProfile = function (recipe) {
         recipe = translate.translate_fr(recipe);
-        recipe.ebc = Math.round(beerCalc.ebc(recipe.fermentables, recipe.volume));
-        recipe.og = (Math.round(beerCalc.originalGravity(recipe) * 1000) / 1000).toFixed(3);
-        recipe.fg = (Math.round(beerCalc.finalGravity(recipe) * 1000) / 1000).toFixed(3);
-        recipe.ibu = Math.round(beerCalc.ibus(recipe));
-        recipe.bugu = Math.round(beerCalc.bugu(recipe) * 10) / 10;
-        recipe.alc = Math.round(beerCalc.alc(recipe) * 10) / 10;
+
+        if ($scope.scaleIngredients) {
+            $scope.scaleRatio = recipe.volume / recipe.oldVolume;
+            beerCalc.scaleIngredients($scope.scaleRatio, recipe.fermentables, recipe.hops, recipe.miscs);
+        } else {
+            $scope.scaleRatio = 1;
+            recipe.ebc = Math.round(beerCalc.ebc(recipe.fermentables, recipe.volume));
+            recipe.og = (Math.round(beerCalc.originalGravity(recipe) * 1000) / 1000).toFixed(3);
+            recipe.fg = (Math.round(beerCalc.finalGravity(recipe) * 1000) / 1000).toFixed(3);
+            recipe.ibu = Math.round(beerCalc.ibus(recipe));
+            recipe.bugu = Math.round(beerCalc.bugu(recipe) * 10) / 10;
+            recipe.alc = Math.round(beerCalc.alc(recipe) * 10) / 10;
+        }
+        console.log("ratio", $scope.scaleRatio);
+        recipe.oldVolume = recipe.volume;
     };
 
     $scope.fermentableSelected = function (fermentable) {
