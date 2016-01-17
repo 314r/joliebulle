@@ -352,6 +352,13 @@ input.nameInput{
   margin-bottom: 0px;
 }
 
+.scaleInput {
+    float: right;
+    padding: 15px 15px 25px 0;
+    
+    color: #16A085;
+}
+
 span.param-title {
   display: block;
   background-color: #f7f7f7;

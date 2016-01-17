@@ -144,9 +144,11 @@
             <div class="form-group">
             <label class="col-sm-6 control-label">Volume</label>
               <div class="col-sm-6">
-                <input type="number" class="form-control" ng-model="currentRecipe.volume" ng-change="calcProfile(currentRecipe)">
+                <input type="number" class="form-control" ng-model="currentRecipe.volume" ng-change="calcProfile(currentRecipe)" min="1">
               </div>
             </div>
+ 
+              
             <div class="form-group">
             <label class="col-sm-6 control-label">Rendement</label>
               <div class="col-sm-6">
@@ -159,6 +161,10 @@
                 <input type="number" class="form-control" ng-model="currentRecipe.boilTime" ng-change="calcProfile(currentRecipe)">
               </div>
             </div>
+            <div class="scaleInput">
+               <input type="checkbox" aria-label="" ng-model="scaleIngredients">  Mettre à l'échelle les ingrédients
+            </div>  
+              
           </div>
           <div class="col-md-6">
             <div class="form-group">
@@ -184,7 +190,6 @@
               </div>
             </div>
           </div>
-          <input type="checkbox" aria-label="" ng-model="scaleIngredients">  Verrouiller le profil de la recette (mettre à l'échelle les ingrédients)
         </form>
 
 

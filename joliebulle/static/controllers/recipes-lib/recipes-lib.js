@@ -127,8 +127,8 @@ recipesApp.controller('RecipeslibCtrl', ['$scope', '$http', '$filter', function 
             recipe.bugu = Math.round(beerCalc.bugu(recipe) * 10) / 10;
             recipe.alc = Math.round(beerCalc.alc(recipe) * 10) / 10;
         }
-        console.log("ratio", $scope.scaleRatio);
         recipe.oldVolume = recipe.volume;
+        
     };
 
     $scope.fermentableSelected = function (fermentable) {
