@@ -298,6 +298,9 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
     
     @QtCore.pyqtSlot(str, str)
     def saveRecipe(self, recipe, path) :
+        # if not path :
+        #     path = recettes_dir + "/" + str(int(time.time())) + ".xml"
+        print(path)
         recipeFile = QtCore.QFile(path)
         if recipeFile.open(QtCore.QIODevice.WriteOnly):
             try:
@@ -309,6 +312,13 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         else:
             # TODO : Prévenir l'utilisateur en cas d'échec de l'enregistrement
             pass  
+
+    @QtCore.pyqtSlot(result=str)
+    def createPath(self) :
+        path = recettes_dir + "/" + str(int(time.time()*10)) + ".xml"
+        print (path)
+        return path
+
 
 
 

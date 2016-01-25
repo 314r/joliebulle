@@ -1,8 +1,8 @@
 /*jslint nomen: true */
-/*global main, _, beerCalc, recipesApp, jb2xml,angular, translate, jb2bb */
+/*global main, _, beerCalc, recipesApp, jb2xml, jbrecipe, angular, translate, jb2bb */
 recipesApp.controller('RecipeslibCtrl', ['$scope', '$http', '$filter', function ($scope, $http, $filter) {
     "use strict";
-    var parser, xml, string, fermentable, hop, misc, yeast;
+    var parser, xml, string, fermentable, hop, misc, yeast, generatedRecipe;
     
     $scope.active = false;
     $scope.editMode = false;
@@ -84,7 +84,7 @@ recipesApp.controller('RecipeslibCtrl', ['$scope', '$http', '$filter', function 
             $scope.sortRecipe();
             $scope.activeClass = $scope.currentRecipe.path;
     //        console.log($scope.currentRecipe.hops);
-            main.viewRecipeLib(recipe.path);
+//            main.viewRecipeLib($scope.currentRecipe.path);
         }
 
     };
@@ -276,6 +276,14 @@ recipesApp.controller('RecipeslibCtrl', ['$scope', '$http', '$filter', function 
 
     $scope.exportToBb = function () {
         main.copyBbcode(jb2bb.exportString($scope.currentRecipe));
+    };
+    
+    $scope.newRecipe = function () {
+        generatedRecipe = jbrecipe.newRecipe();
+        $scope.recipes.push(generatedRecipe);
+        $scope.recipeSelected(generatedRecipe);
+        $scope.save($scope.currentRecipe, $scope.currentRecipe.path);
+        
     };
 
     

@@ -12,6 +12,7 @@
 <script src="../controllers/recipes-lib/recipes-lib.js"></script>
 <script src="../beercalc/translate.js"></script>
 <script src="../beercalc/beercalc.js"></script>
+<script src="../beercalc/jbrecipe.js"></script>
 <script src="../beercalc/jb2xml.js"></script>
 <script src="../beercalc/xml2json.js"></script>
 <script src="../beercalc/jb2bb.js"></script>
@@ -41,7 +42,7 @@
           <li><a href="#" ng-click="sortByBrewer()" >Brasseur</a></li>
           <li><a href="#" ng-click="sortByName()" >Nom</a></li>
         </ul>
-        <button class="btn-link btn-xs newRecipeButton" type="button" onClick="main.newRecipeFromLibrary()" data-toggle="tooltip" data-placement="bottom" title="Nouvelle recette"><i class="fa fa-plus"></i></button>
+        <button class="btn-link btn-xs newRecipeButton" type="button" ng-click="newRecipe()" data-toggle="tooltip" data-placement="bottom" title="Nouvelle recette"><i class="fa fa-plus"></i></button>
       </div>
 
       <div class="recipe-list">
