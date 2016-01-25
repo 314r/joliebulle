@@ -1,4 +1,5 @@
 /*jslint nomen: true */
+/*global _ */
 var beerCalc = (function () {
     "use strict";
     var i, volPreCool, volPreBoil, ratio, gus, preBoilSg, strikeTemp, strikeVol, Vm, infuseVol, newRatio, grainRetentionVol, spargeVol, grainVolume, satGrain, volSat, waterAfterSat, mashVolume, mashVolumeStrike, mashVolumeLastStep, infusionSteps, ebc, mcu, mcuTot, _sugars, sugarEquivalents, _equivSugar, _gravityUnits, _originalGravity, hiAtten, gu, _preBoilGravityUnits, _ibuPart, bignessFactor, totalIbus, decimalUtil, btFactor, mgAcid, ibu, _preBoilGravity, _ibus;
@@ -80,9 +81,9 @@ var beerCalc = (function () {
             }
 
             totalIbus += ibu;
-            console.log(hop.name, hop.use,hop.form, ibu);
+            
         });
-        console.log(totalIbus);
+        
         return totalIbus;
     };
 
@@ -119,7 +120,7 @@ var beerCalc = (function () {
             try {
                 recipe.yeasts = _.sortBy(recipe.yeasts, 'attenuation');
                 hiAtten = _.last(recipe.yeasts).attenuation;
-            } catch(e) {
+            } catch (e) {
                 hiAtten = 75;
             }
 
@@ -142,9 +143,9 @@ var beerCalc = (function () {
             return _ibus(recipe) / _gravityUnits(recipe.fermentables, recipe.volume, recipe.efficiency);
         },
 
-        alc : function(recipe) {
+        alc : function (recipe) {
         /* ABV = 0.130((OG-1)-(FG-1))*1000 */
-            return 0.130*((recipe.og-1) -(recipe.fg-1))*1000;
+            return 0.130 * ((recipe.og - 1) - (recipe.fg - 1)) * 1000;
         },
       
         preBoilCalc : function (coolingLossRate, boilOffRate, boilTime, volume) {
@@ -240,18 +241,18 @@ var beerCalc = (function () {
         
         scaleIngredients : function (ratio, fermentables, hops, miscs) {
             fermentables = fermentables.map(function (item) {
-            item.amount *= ratio;
-            return item;
+                item.amount *= ratio;
+                return item;
             });
             hops = hops.map(function (item) {
-            item.amount *= ratio;
-            return item;
+                item.amount *= ratio;
+                return item;
             });
             miscs = miscs.map(function (item) {
-            item.amount *= ratio;
-            return item;
+                item.amount *= ratio;
+                return item;
             });
     
-        }   
+        }
     };
 }());
