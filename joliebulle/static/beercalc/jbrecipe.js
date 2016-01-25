@@ -1,4 +1,5 @@
 /*jslint nomen: true */
+/*global main */
 var jbrecipe = (function () {
     "use strict";
     var recipe;
