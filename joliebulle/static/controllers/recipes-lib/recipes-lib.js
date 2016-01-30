@@ -2,7 +2,7 @@
 /*global main, _, beerCalc, recipesApp, jb2xml, jbrecipe, angular, translate, jb2bb */
 recipesApp.controller('RecipeslibCtrl', ['$scope', '$http', '$filter', function ($scope, $http, $filter) {
     "use strict";
-    var parser, xml, string, fermentable, hop, misc, yeast, generatedRecipe;
+    var parser, xml, string, fermentable, hop, misc, yeast, generatedRecipe, clone;
     
     $scope.active = false;
     $scope.editMode = false;
@@ -290,6 +290,18 @@ recipesApp.controller('RecipeslibCtrl', ['$scope', '$http', '$filter', function 
         }
         
     };
+    
+    $scope.cloneRecipe = function () {
+        clone = angular.copy($scope.currentRecipe);
+        clone.path = main.createPath();
+        clone.name = clone.name + " - clone";
+        $scope.recipes.unshift(clone);
+        $scope.recipeSelected(clone);
+        $scope.save($scope.currentRecipe, $scope.currentRecipe.path);
+        $scope.editRecipe();
+    };
+    
+    
 
     
 }]);
