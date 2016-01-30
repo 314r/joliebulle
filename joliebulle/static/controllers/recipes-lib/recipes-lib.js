@@ -279,10 +279,15 @@ recipesApp.controller('RecipeslibCtrl', ['$scope', '$http', '$filter', function 
     };
     
     $scope.newRecipe = function () {
-        generatedRecipe = jbrecipe.newRecipe();
-        $scope.recipes.push(generatedRecipe);
-        $scope.recipeSelected(generatedRecipe);
-        $scope.save($scope.currentRecipe, $scope.currentRecipe.path);
+        if ($scope.editMode) {
+            return null;
+        } else {
+            generatedRecipe = jbrecipe.newRecipe();
+            $scope.recipes.push(generatedRecipe);
+            $scope.recipeSelected(generatedRecipe);
+            $scope.save($scope.currentRecipe, $scope.currentRecipe.path);
+            $scope.editRecipe();
+        }
         
     };
 
