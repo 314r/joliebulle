@@ -185,7 +185,7 @@ i.journalMenu-description{padding-left:15px;}
 
 table.ing-table{
   font-size: 14px;
-  margin-left:15px;max-width:650px; margin-right:30px;
+  margin-left:15px;max-width:650px; margin-right:30px; padding-right: 30px;
   border-collapse : separate;
 }
 
@@ -218,6 +218,35 @@ button.addIngredient:hover{
 
 button.addIngredient i {
   padding-right: 8px;
+}
+
+span.clickEdit {
+  background-color: rgba(0,0,0,0.90);
+  border-radius: 5px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.4);
+  display: none;    
+  width: 120px;
+  font-size: 12px;    
+  text-align: center;    
+  padding : 3px 3px 3px 3px;
+  color: #fff;
+  position: absolute; 
+  left : 40%;      
+  z-index: 100;    
+
+    
+}
+
+tr:hover td span.clickEdit {
+    display: block;
+    -webkit-animation: fade .4s linear 1;
+    
+}
+
+
+tr:hover td:not(.buttonTd) {
+    background-color: #f8f8f8;
+    
 }
 
 button.btn-link.btn-xs.table-button {

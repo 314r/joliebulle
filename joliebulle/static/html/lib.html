@@ -210,8 +210,10 @@
               <h3>Ingrédients</h3>
               <table class="table table-condensed ing-table">
                   <tbody>
+                     
                     <tr ng-repeat="fermentable in currentRecipe.fermentables" ng-click="editFermentable($index)">
-                      <td>{{fermentable.name}}</td> 
+                      
+                      <td>{{fermentable.name}} <span class="clickEdit" ng-show="editMode">Cliquer pour éditer</span>      </td>  
                       <td>{{fermentable.amount | number : 0}} g</td>
                       <td>{{fermentable.afterBoilView}}</td>
                       <td ng-show="editMode"><button class="btn-link btn-xs table-button removeIngredient" type="button" ng-show="editMode" ng-click="removeFermentable($index)"><i class="fa fa-times"></i></button></td>
@@ -219,7 +221,7 @@
                   </tbody>
                   <tbody ng-show="editMode" ng-click="newFermentable()">
                     <tr>
-                      <td>
+                      <td  class="buttonTd">
                       <button class="addIngredient" type="button"> <i class="fa fa-plus"></i>Ajouter un grain ou un sucre</button>
                       </td>
                     </tr>
@@ -229,7 +231,7 @@
                 
                   <tbody>
                     <tr ng-repeat="hop in currentRecipe.hops" ng-click="editHop($index)">
-                      <td>{{hop.name}}</td> 
+                      <td>{{hop.name}} <span class="clickEdit" ng-show="editMode">Cliquer pour éditer</span></td> 
                       <td>{{hop.amount | number : 0}} g</td>
                       <td>{{hop.useView}} - {{hop.time}} min</td>
                       <td ng-show="editMode"><button class="btn-link btn-xs table-button removeIngredient" type="button" ng-show="editMode" ng-click="removeHop($index)"><i class="fa fa-times"></i></button></td>
@@ -237,7 +239,7 @@
                   </tbody>
                   <tbody ng-show="editMode" ng-click="newHop()">
                     <tr>
-                      <td>
+                      <td  class="buttonTd">
                       <button class="addIngredient" type="button"><i class="fa fa-plus"></i>Ajouter un houblon</button>
                       </td>
                     </tr>
@@ -246,7 +248,7 @@
                 
                   <tbody>
                     <tr ng-repeat="misc in currentRecipe.miscs" ng-click="editMisc($index)" >
-                      <td>{{misc.name}}</td> 
+                      <td>{{misc.name}} <span class="clickEdit" ng-show="editMode">Cliquer pour éditer</span></td> 
                       <td>{{misc.amount | number : 0}} g</td>
                       <td>{{misc.useView}} - {{misc.time}} min</td>
                       <td ng-show="editMode">
@@ -257,7 +259,7 @@
                   </tbody>
                 <tbody ng-show="editMode" ng-click="newMisc()">
                     <tr>
-                      <td>
+                      <td class="buttonTd">
                       <button class="addIngredient" type="button"><i class="fa fa-plus"></i>Ajouter un ingrédient divers</button>
                       </td>
                     </tr>
@@ -265,7 +267,7 @@
                 
                   <tbody>
                     <tr ng-repeat="yeast in currentRecipe.yeasts" ng-click="editYeast($index)">
-                     <td>{{yeast.name}} {{yeast.labo}} {{yeast.product_id}} </td>
+                     <td>{{yeast.name}} {{yeast.labo}} {{yeast.product_id}}  <span class="clickEdit" ng-show="editMode">Cliquer pour éditer</span></td>
                      <td>Atténuation {{yeast.attenuation}} %</td>
                       <td>Forme {{yeast.formView}}</td>
                       <td ng-show="editMode">
@@ -276,7 +278,7 @@
                   </tbody>
                   <tbody ng-show="editMode" ng-click="newYeast()">
                     <tr>
-                      <td>
+                      <td class="buttonTd">
                       <button class="addIngredient" type="button"><i class="fa fa-plus"></i>Ajouter une levure</button>
                       </td>
                     </tr>
