@@ -71,13 +71,17 @@ var beerCalc = (function () {
             decimalUtil = btFactor * bignessFactor;
             mgAcid = (hop.alpha / 100) * (hop.amount * 1000) / recipe.volume;
 
-            if (hop.use !== "Dry Hop" && hop.use !== "Aroma") {
+            if (hop.use !== "Dry Hop") {
                 ibu = mgAcid * decimalUtil;
                 if (hop.form === "Pellet") {
                     ibu = ibu + 0.1 * ibu;
                 }
             } else {
                 ibu = 0;
+            }
+            
+            if (hop.use === "Aroma") {
+                ibu = 0.5 * ibu;
             }
 
             totalIbus += ibu;
