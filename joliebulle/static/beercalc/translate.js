@@ -18,7 +18,7 @@ var translate = (function () {
         "Dry Hop" : "Dry Hop",
         "First Wort" : "Premier Moût",
         "Mash" : "Empâtage",
-        "Aroma" : "Aromatique",
+        "Aroma" : "Hors Flamme",
         "Spice" : "Epice",
         "Flavor" : "Arôme",
         "Water Agent" : "Traitement Eau",
