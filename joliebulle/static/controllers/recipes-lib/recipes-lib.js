@@ -30,10 +30,13 @@ recipesApp.controller('RecipeslibCtrl', ['$scope', '$http', '$filter', function 
     };
 
     $scope.editFermentable = function (index) {
-        $scope.freezeRecipe();
-        $scope.showFermentableEditor = true;
-        $scope.currentFerm = $scope.currentRecipe.fermentables[index];
-        // $scope.currentIng.index = index;
+        if ($scope.editMode) {
+            $scope.freezeRecipe();
+            $scope.showFermentableEditor = true;
+            $scope.currentFerm = $scope.currentRecipe.fermentables[index];
+        } else {
+            return null;
+        }
     };
 
     $scope.closeFermentableEditor = function () {
@@ -42,9 +45,14 @@ recipesApp.controller('RecipeslibCtrl', ['$scope', '$http', '$filter', function 
     };
 
     $scope.editHop = function (index) {
-        $scope.freezeRecipe();
-        $scope.showHopEditor = true;
-        $scope.currentHop = $scope.currentRecipe.hops[index];
+        if ($scope.editMode) {
+            $scope.freezeRecipe();
+            $scope.showHopEditor = true;
+            $scope.currentHop = $scope.currentRecipe.hops[index];
+        } else {
+            return null;
+        }
+
     };
 
     $scope.closeHopEditor = function () {
@@ -52,9 +60,13 @@ recipesApp.controller('RecipeslibCtrl', ['$scope', '$http', '$filter', function 
     };
 
     $scope.editMisc = function (index) {
-        $scope.freezeRecipe();
-        $scope.showMiscEditor = true;
-        $scope.currentMisc = $scope.currentRecipe.miscs[index];
+        if ($scope.editMode) {
+            $scope.freezeRecipe();
+            $scope.showMiscEditor = true;
+            $scope.currentMisc = $scope.currentRecipe.miscs[index];
+        } else {
+            return null;
+        }
     };
 
     $scope.closeMiscEditor = function () {
@@ -62,9 +74,13 @@ recipesApp.controller('RecipeslibCtrl', ['$scope', '$http', '$filter', function 
     };
 
     $scope.editYeast = function (index) {
-        $scope.freezeRecipe();
-        $scope.showYeastEditor = true;
-        $scope.currentYeast = $scope.currentRecipe.yeasts[index];
+        if ($scope.editMode) {
+            $scope.freezeRecipe();
+            $scope.showYeastEditor = true;
+            $scope.currentYeast = $scope.currentRecipe.yeasts[index];
+        } else {
+            return null;
+        }
     };
 
     $scope.closeYeastEditor = function () {
