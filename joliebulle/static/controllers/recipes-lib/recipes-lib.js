@@ -122,8 +122,36 @@ recipesApp.controller('RecipeslibCtrl', ['$scope', '$http', '$filter', function 
     };
 
     $scope.sortRecipe = function () {
+        var h, aromaArray, dryArray, boilArray, firstArray, mashArray, concanArray;
         $scope.currentRecipe.fermentables = _.sortBy($scope.currentRecipe.fermentables, function (o) {return parseInt(o.amount, 10); }).reverse();
         $scope.currentRecipe.hops = _.sortBy($scope.currentRecipe.hops, function (o) {return parseInt(o.time, 10); }).reverse();
+        
+        aromaArray = [];
+        dryArray = [];
+        boilArray = [];
+        firstArray = [];
+        mashArray = [];
+        $scope.currentRecipe.hops.forEach(function (h) {
+            if (h.use === "Aroma") {
+                aromaArray.push(h);
+            }
+            if (h.use === "Dry Hop") {
+                dryArray.push(h);
+            }
+            if (h.use === "Boil") {
+                boilArray.push(h);
+            }
+            if (h.use === "First Wort") {
+                firstArray.push(h);
+            }
+            if (h.use === "Mash") {
+                mashArray.push(h);
+            }
+            
+        });
+        concanArray = mashArray.concat(firstArray, boilArray, aromaArray, dryArray);
+        $scope.currentRecipe.hops = concanArray;
+        
         $scope.currentRecipe.miscs = _.sortBy($scope.currentRecipe.miscs, function (o) {return parseInt(o.amount, 10); }).reverse();
         return $scope.currentRecipe;
     };
