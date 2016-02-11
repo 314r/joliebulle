@@ -226,6 +226,7 @@ recipesApp.controller('RecipeslibCtrl', ['$scope', '$http', '$filter', function 
     $scope.save = function (recipe) {
         main.saveRecipe(jb2xml.exportString(recipe), recipe.path);
         $scope.editMode = false;
+        $scope.sortRecipe();
     };
 
     $scope.editRecipe = function () {
