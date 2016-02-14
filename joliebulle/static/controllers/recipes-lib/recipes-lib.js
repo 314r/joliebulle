@@ -14,10 +14,18 @@ recipesApp.controller('RecipeslibCtrl', ['$scope', '$http', '$filter', function 
             .sortBy(function (o) {return o.name.toLowerCase(); })
             .sortBy(function (o) {return o.brewer.toLowerCase(); })
             .value();
+        $scope.importIngredients();
+        $scope.importMashProfiles();
+
+    };
+    
+    $scope.importIngredients = function () {
         $scope.ingredients = JSON.parse(main.dataIngredients());
         $scope.ingredients = translate.translate_fr($scope.ingredients);
+    };
+    
+    $scope.importMashProfiles = function () {
         $scope.mashProfiles = JSON.parse(main.dataProfiles()).mashes;
-
     };
 
     $scope.deleteLib = function (recipe) {
@@ -30,6 +38,7 @@ recipesApp.controller('RecipeslibCtrl', ['$scope', '$http', '$filter', function 
     };
 
     $scope.editFermentable = function (index) {
+        $scope.importIngredients();
         if ($scope.editMode) {
             $scope.freezeRecipe();
             $scope.showFermentableEditor = true;
@@ -45,6 +54,7 @@ recipesApp.controller('RecipeslibCtrl', ['$scope', '$http', '$filter', function 
     };
 
     $scope.editHop = function (index) {
+        $scope.importIngredients();
         if ($scope.editMode) {
             $scope.freezeRecipe();
             $scope.showHopEditor = true;
@@ -60,6 +70,7 @@ recipesApp.controller('RecipeslibCtrl', ['$scope', '$http', '$filter', function 
     };
 
     $scope.editMisc = function (index) {
+        $scope.importIngredients();
         if ($scope.editMode) {
             $scope.freezeRecipe();
             $scope.showMiscEditor = true;
@@ -74,6 +85,7 @@ recipesApp.controller('RecipeslibCtrl', ['$scope', '$http', '$filter', function 
     };
 
     $scope.editYeast = function (index) {
+        $scope.importIngredients();
         if ($scope.editMode) {
             $scope.freezeRecipe();
             $scope.showYeastEditor = true;
@@ -242,6 +254,7 @@ recipesApp.controller('RecipeslibCtrl', ['$scope', '$http', '$filter', function 
     };
 
     $scope.newFermentable = function () {
+        $scope.importIngredients();
         $scope.freezeRecipe();
         fermentable = {};
         fermentable.name = "grain";
@@ -257,6 +270,7 @@ recipesApp.controller('RecipeslibCtrl', ['$scope', '$http', '$filter', function 
     };
 
     $scope.newHop = function () {
+        $scope.importIngredients();
         $scope.freezeRecipe();
         hop = {};
         hop.name = "generic";
@@ -272,6 +286,7 @@ recipesApp.controller('RecipeslibCtrl', ['$scope', '$http', '$filter', function 
     };
 
     $scope.newMisc = function () {
+        $scope.importIngredients();
         $scope.freezeRecipe();
         misc = {};
         misc.name = "generic";
@@ -286,6 +301,7 @@ recipesApp.controller('RecipeslibCtrl', ['$scope', '$http', '$filter', function 
     };
 
     $scope.newYeast = function () {
+        $scope.importIngredients();
         $scope.freezeRecipe();
         yeast = {};
         yeast.name = "generic";
