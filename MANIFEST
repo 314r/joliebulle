@@ -132,6 +132,12 @@ joliebulle/static/controllers/tools/sgplato.js
 joliebulle/static/controllers/tools/steps.js
 joliebulle/static/css/sidebar.css
 joliebulle/static/font-awesome/css/font-awesome.min.css
+joliebulle/static/font-awesome/fonts/FontAwesome.otf
+joliebulle/static/font-awesome/fonts/fontawesome-webfont.eot
+joliebulle/static/font-awesome/fonts/fontawesome-webfont.svg
+joliebulle/static/font-awesome/fonts/fontawesome-webfont.ttf
+joliebulle/static/font-awesome/fonts/fontawesome-webfont.woff
+joliebulle/static/font-awesome/fonts/fontawesome-webfont.woff2
 joliebulle/static/images/furley_bg.png
 joliebulle/static/jquery/MIT-LICENSE.txt
 joliebulle/static/jquery/jquery.js
