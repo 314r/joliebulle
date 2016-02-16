@@ -41,6 +41,7 @@ if platform == 'win32':
     samples_target = os.path.join(os.path.expanduser("~"), "AppData", "Local", "joliebulle", "recettes","Samples")
     journal_root = 'journal.json'
     journal_file = os.path.join(os.path.expanduser("~"), "AppData", "Local", "joliebulle", "journal.json")
+    recipeData_file = os.path.join(os.path.expanduser("~"), "AppData", "Local", "joliebulle", "data.json")
     
 elif platform == 'darwin':
     home_dir = os.path.expanduser("~")
@@ -58,6 +59,7 @@ elif platform == 'darwin':
     samples_target = os.path.join(os.path.expanduser("~"), ".config", "joliebulle", "recettes", "Samples")
     journal_root = os.path.join(resourcePath, "journal.json")
     journal_file = os.path.join(os.path.expanduser("~"), ".config", "joliebulle", "journal.json")
+    recipeData_file = os.path.join(os.path.expanduser("~"), ".config", "joliebulle", "data.json")
 
     
 else:
@@ -74,4 +76,5 @@ else:
     samples_target = os.path.join(os.path.expanduser("~"), ".config", "joliebulle", "recettes", "Samples")
     journal_root = '/usr/share/joliebulle/journal.json'
     journal_file = os.path.join(os.path.expanduser("~"), ".config", "joliebulle", "journal.json")
+    recipeData_file = os.path.join(os.path.expanduser("~"), ".config", "joliebulle", "data.json")
 

@@ -74,7 +74,7 @@ def exportHTML(data):
 
         
     resultHtml+='''
-          <div class="sidebar">
+          <div class="sidebar" ng-hide="editMode">
             <ul class="nav nav-sidebar">
               <li class="active" onClick="main.showLib()"><a href="#"><i class="fa fa-flask"></i> </a></li>
               <li onClick="main.showJournal()"><a href="#"><i class="fa fa-calendar-o"></i> </a></li>

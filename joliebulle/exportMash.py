@@ -67,6 +67,40 @@ class ExportMash :
             
     def enregistrer (self, s) :    
         ET.ElementTree(self.database).write(s,encoding="utf-8")
+
+
+    def exportJson(self, listMash) :
+        listMash = sorted(listMash, key=attrgetter('name')) 
+        # print(listMash)
+
+        dic = {}
+
+        mashes=[]
+        for m in listMash :
+            mash = {}
+            mash['name'] = m.name
+            mash['ph'] = m.ph
+            mash['sparge'] = m.spargeTemp
+            steps=[]
+            mashes.append(mash)
+            for s in m.listeSteps :
+                step = {}
+                step['name'] = s.name
+                step['temp'] = s.temp
+                step['time'] = s.time
+                step['type'] = s.type
+                steps.append(step)
+            mash['steps'] = steps
+            
+        dic['mashes'] = mashes
+        dic = json.dumps(dic)
+
+        return dic
+
+
+
+
+
             
             
                 

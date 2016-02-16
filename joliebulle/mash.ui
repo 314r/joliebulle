@@ -153,16 +153,6 @@ p, li { white-space: pre-wrap; }
     </widget>
    </item>
   </layout>
-  <zorder>buttonBox</zorder>
-  <zorder>listWidget</zorder>
-  <zorder>listWidget_2</zorder>
-  <zorder>label_6</zorder>
-  <zorder>lineEdit_2</zorder>
-  <zorder>lineEdit_2</zorder>
-  <zorder>label_2</zorder>
-  <zorder>label_7</zorder>
-  <zorder>label_8</zorder>
-  <zorder>lineEdit</zorder>
  </widget>
  <resources/>
  <connections>
