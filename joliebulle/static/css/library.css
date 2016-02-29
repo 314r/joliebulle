@@ -222,7 +222,7 @@ button.addIngredient i {
 
 span.clickEdit {
   background-color: rgba(0,0,0,0.90);
-  border-radius: 5px;
+  border-radius: 3px;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.4);
   display: none;    
   width: 120px;
