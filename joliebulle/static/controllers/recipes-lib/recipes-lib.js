@@ -362,6 +362,16 @@ recipesApp.controller('RecipeslibCtrl', ['$scope', '$http', '$filter', function 
         $scope.editRecipe();
     };
     
+//    Pour le futur
+//    $scope.convertUnits = function (amount) {
+//        if (amount.slice(-2) === 'kg') {
+//            amount = amount.slice(0, -2);
+//            amount *= 1000;
+//            $scope.currentFerm.amount = amount;
+//            return $scope.currentFerm.amount;
+//        }
+//        
+//    };
     
 
     
