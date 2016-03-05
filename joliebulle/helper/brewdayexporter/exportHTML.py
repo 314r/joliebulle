@@ -42,11 +42,23 @@ def exportHTML(data):
 <style>
     .main {padding-top:45px; margin-left:80px; margin-bottom:60px;}
     .header{width:100%%;min-height:55px;position:fixed;left:50px;z-index: 1000;background-color: #fff;padding-left:10px;border-bottom: 1px solid #eee;}
-    .buttonBack{margin-left:30px;margin-top:-8px;}
-    .printButton{color:#909090; font-size:150%; margin-right : 30px;}
-    .printButton:hover{text-decoration:none; color:#909090;}
+    .buttonBack{margin-left:30px;margin-top:-25px;}
+    button.printButton{
+      margin-left:30px;
+      background-color :#fff;
+      margin-top:11px;
+      text-align: center;
+      border:none;
+      text-transform: uppercase;
+      font-size: 10px;
+    }
+    button.printButton i {
+    padding-bottom: 5px; 
+    font-size:150%%;
+    }
+    
     .check-button {padding-left:0;}
-    .mode{margin-top:10px;padding-top:5px;margin-left:30px;display:inline-block;}
+    .mode{margin-top:10px;margin-bottom:15px;margin-left:0px;display:inline-block;}
     .step {margin-top : 24px;}
     .step + .step {border-top: 1px solid #eee; padding-top : 24px;}
     .infos {margin-top:70px;}
@@ -83,20 +95,21 @@ def exportHTML(data):
           </div>
           <div class="header">
             <button type="button" class="btn btn-default buttonBack" onClick="main.backWebViewBiblio()">{0}</button>
-            <button class="btn-link btn-xs printButton" type="button" ng-click="printBrewday()"><i class="fa fa-print"></i></button>
-            <div class="mode">
-            <input ng-model="brewType" value="classic" ng-change="brewTypeChanged()" type="radio" name="options" id="option1"> {1}
-            <input ng-model="brewType" value="biab" ng-change="brewTypeChanged()" type="radio" name="options" id="option2"> {2}
-            </div>
+            <button class="printButton" type="button" ng-click="printBrewday()"><i class="fa fa-print"></i><br/>Imprimer</button>
+
         </div>
         <div class="col-sm-9 col-md-10 main">
 
-            '''.format(QCoreApplication.translate("Export","Retour recette", None, QCoreApplication.UnicodeUTF8), QCoreApplication.translate("Export","Brassage classique", None, QCoreApplication.UnicodeUTF8), QCoreApplication.translate("Export","Brew In A Bag", None, QCoreApplication.UnicodeUTF8))
+            '''.format(QCoreApplication.translate("Export","Retour recette", None, QCoreApplication.UnicodeUTF8))
             
     resultHtml+='''<h2>{0}</h2>
             <div class="row">
                 <div ng-show="invalidBiab==true" class="alert alert-warning col-md-4">{1}</div>
-            </div>'''.format(QCoreApplication.translate("Export","Paliers", None, QCoreApplication.UnicodeUTF8), QCoreApplication.translate("Export","Le profil de brassage doit comporter un unique palier de type infusion.", None, QCoreApplication.UnicodeUTF8))
+                            <div class="mode">
+                            <input ng-model="brewType" value="classic" ng-change="brewTypeChanged()" type="radio" name="options" id="option1"> {2}
+                            <input ng-model="brewType" value="biab" ng-change="brewTypeChanged()" type="radio" name="options" id="option2"> {3}
+                            </div>
+            </div>'''.format(QCoreApplication.translate("Export","Paliers", None, QCoreApplication.UnicodeUTF8), QCoreApplication.translate("Export","Le profil de brassage doit comporter un unique palier de type infusion.", None, QCoreApplication.UnicodeUTF8),QCoreApplication.translate("Export","Brassage classique", None, QCoreApplication.UnicodeUTF8), QCoreApplication.translate("Export","Brew In A Bag", None, QCoreApplication.UnicodeUTF8))
             
     resultHtml+='''<div ng-repeat = "step in steps" class="row step" ng-hide="invalidBiab==true">
                 <div class="stepName">{0}</div>
