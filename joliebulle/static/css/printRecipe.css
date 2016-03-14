@@ -1,0 +1,76 @@
+body {
+    background-color :#fff;
+    font-family :Serif;
+    font-size :15pt;
+    margin-right: 10%;
+    margin-left: 10%;
+}
+
+h1 {
+	margin-left :0;
+	padding:0;
+}
+
+.profile h3 {
+	margin-left :0;
+	padding:0;
+}
+
+.recipe-header {
+	margin-left: 0;
+	padding-left: 0;
+}
+
+.profile-header {
+	margin-left: 0;
+	padding-left: 0;
+}
+
+.sidebar {
+	display :none;
+}
+
+.recipe-list {
+	display:none;
+}
+
+.recipe-list-header {
+	display: none;
+}
+
+.recipe-view-header {
+	display:none;
+}
+
+.author {
+	display: inline-block;
+	margin-bottom: 23pt;
+}
+
+.calculated {
+	margin-bottom: 15pt;
+}
+
+.recipe-vol {
+	margin-bottom: 20pt;
+}
+
+.baseInfos {
+	margin-bottom: 23pt;
+}
+
+.vol-value, .effi-value {
+	padding-right:30pt;
+}
+
+.profile-name {
+	display: block;
+}
+
+.profile-ph {
+	display: block;
+	margin-bottom: 23pt;
+}
+
+
+
