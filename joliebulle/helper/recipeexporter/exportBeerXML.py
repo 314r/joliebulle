@@ -1,9 +1,9 @@
 #!/usr/bin/python3
 #­*­coding: utf­8 -­*­
 
-#joliebulle 3.4
-#Copyright (C) 2010-2014 Pierre Tavares
-#Copyright (C) 2013 Thomas Gerbet
+#joliebulle 3.5
+#Copyright (C) 2010-2016 Pierre Tavares
+#Copyright (C) 2012-2015 joliebulle's authors
 
 #This program is free software; you can redistribute it and/or
 #modify it under the terms of the GNU General Public License
