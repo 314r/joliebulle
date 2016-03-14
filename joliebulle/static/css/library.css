@@ -316,8 +316,9 @@ Mode édition
 */
 
 input.nameInput{
-    background: #fff;
+    background: #fff; 
     border: none;
+    border-bottom: #eee 2px solid;
     font-size: 36px;
     font-weight: 100;
     color: #444;
