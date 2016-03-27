@@ -318,6 +318,10 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         path = recettes_dir + "/" + str(int(time.time()*10)) + ".xml"
         print (path)
         return path
+    
+    @QtCore.pyqtSlot()
+    def resetLock(self):
+        self.brewdayLock = 0;
 
 
 
@@ -325,19 +329,21 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
 ############# Mode Brassage ################################
 ############################################################
 
-    @QtCore.pyqtSlot()
-    def showBrewdayMode(self):
+    @QtCore.pyqtSlot(str)
+    def showBrewdayMode(self, data):
         if self.brewdayLock == 0 : 
             self.stackedWidget.setCurrentIndex(1)
             self.brewdayLock = 1 
-            data = self.recipe.export("json")
+            data = data.replace("'","&#39;")
             pyDir = os.path.abspath(os.path.dirname(__file__))
             baseUrl = QtCore.QUrl.fromLocalFile(os.path.join(pyDir, "static/"))
             self.webViewBrewday.setHtml(BrewdayExporterRepository['html'](data), baseUrl)
             self.webViewBrewday.page().mainFrame().addToJavaScriptWindowObject("main", self)
-            # self.webViewBrewday.page().settings().setAttribute(QtWebKit.QWebSettings.DeveloperExtrasEnabled, True)
+            self.webViewBrewday.page().settings().setAttribute(QtWebKit.QWebSettings.DeveloperExtrasEnabled, True)
         else :
             self.stackedWidget.setCurrentIndex(1)
+            
+    
 
 
 

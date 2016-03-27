@@ -7,10 +7,9 @@ brewdayApp.controller('BrewdayCtrl', ['$scope', '$http', '$filter', function ($s
     $scope.brewType = "classic";
 
     $scope.init = function (dataJson) {
-        $scope.data = dataJson[0];
+        $scope.data = dataJson;
         $scope.steps = $scope.data.mashProfile.steps;
         $scope.steps[0].ratio = 3;
-        /*$scope.steps.forEach($scope.stepsCalc);*/
         _.each($scope.steps, $scope.stepsCalc);
 
     };
@@ -31,6 +30,7 @@ brewdayApp.controller('BrewdayCtrl', ['$scope', '$http', '$filter', function ($s
     $scope.stepsCalc = function (step, index, array) {
         if (index === 0) {
             ratio = step.ratio;
+            
             waterVol = beerCalc.strikeVolCalc(parseFloat($scope.data.grainWeight), ratio);
             step.waterVol = Math.round(waterVol * 10) / 10;
             step.waterTemp = Math.round($scope.strikeTemp(ratio) * 10) / 10;

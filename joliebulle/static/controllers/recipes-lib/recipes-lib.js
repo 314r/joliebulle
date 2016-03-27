@@ -36,6 +36,10 @@ recipesApp.controller('RecipeslibCtrl', ['$scope', '$http', '$filter', function 
     $scope.openRecipeClicked = function (recipe) {
         main.viewRecipeLib(recipe.path);
     };
+    
+    $scope.switchToBrewday = function () {
+        main.showBrewdayMode(JSON.stringify($scope.currentRecipe));
+    };
 
     $scope.editFermentable = function (index) {
         $scope.importIngredients();
@@ -102,6 +106,7 @@ recipesApp.controller('RecipeslibCtrl', ['$scope', '$http', '$filter', function 
 
     $scope.recipeSelected = function (recipe) {
         $scope.active = true;
+        main.resetLock();
 //        if editMode do nothing
         if ($scope.editMode) {
             return null;
