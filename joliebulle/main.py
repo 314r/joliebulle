@@ -236,10 +236,10 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         # self.verticalLayout_13.addWidget(self.webInspector)
 
 
-    @QtCore.pyqtSlot(str)
-    def addToJournal(self,event) :
+    @QtCore.pyqtSlot(str, str)
+    def addToJournal(self,event, recipeName) :
         self.loadJournal()
-        entry = '''{recipe:%s,date:%s,event:%s,editing:'True'} ''' %( "'" + self.recipe.name + "'", "'" + str(int(time.time())) + "'" , "'" + self.journal.eventsLabels[event] + "'")
+        entry = '''{recipe:%s,date:%s,event:%s,editing:'True'} ''' %( "'" + recipeName + "'", "'" + str(int(time.time())) + "'" , "'" + self.journal.eventsLabels[event] + "'")
         self.showJournal(entry)
 
 

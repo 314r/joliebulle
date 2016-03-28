@@ -60,9 +60,9 @@
         <button id="menuJournal" class="" type="button" data-toggle="dropdown" ng-hide="editMode || !active"><i class="fa fa-flag"></i> <br/> Journal <span class="fa fa-caret-down"></span></button>
         <ul class="dropdown-menu" role="menu" aria-labelledby="menuJournal">
               <i class="journalMenu-description">Marquer comme :</i>
-              <li><a onClick="main.addToJournal('brewed')" href="#">Brassée</a></li>
-              <li><a onClick="main.addToJournal('ferment')" href="#">Mise en fermentation</a></li>
-              <li><a onClick="main.addToJournal('bottled')" href="#">Embouteillée</a></li>
+              <li><a ng-click="addToJournal('brewed')" href="#">Brassée</a></li>
+              <li><a ng-click="addToJournal('ferment')" href="#">Mise en fermentation</a></li>
+              <li><a ng-click="addToJournal('bottled')" href="#">Embouteillée</a></li>
               <li class="divider"></li>
               <li><a onClick="main.showJournal()" href="#">Voir le journal</a></li>
         </ul>
