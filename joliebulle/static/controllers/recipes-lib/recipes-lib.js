@@ -382,7 +382,6 @@ recipesApp.controller('RecipeslibCtrl', ['$scope', '$http', '$filter', function 
     $scope.addToJournal = function (event) {
         main.addToJournal(event, $scope.currentRecipe.name);
         
-        
     };
     
 
