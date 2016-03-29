@@ -267,10 +267,6 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         pyDir = os.path.abspath(os.path.dirname(__file__))
         baseUrl = QtCore.QUrl.fromLocalFile(os.path.join(pyDir, "static/html/"))
         self.webViewBiblio.setHtml(LibExporterRepository['html'](), baseUrl)
-
-
-        
-
         self.webViewBiblio.page().mainFrame().addToJavaScriptWindowObject("main", self)
         self.webViewBiblio.page().settings().setAttribute(QtWebKit.QWebSettings.DeveloperExtrasEnabled, True)
         self.webViewBiblio.page().action(QtWebKit.QWebPage.Reload).setVisible(False)
