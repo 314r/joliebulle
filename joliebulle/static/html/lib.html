@@ -70,14 +70,14 @@
         
         <button class="brewday-switch" type="button" ng-click="switchToBrewday()" ng-hide="editMode || !active" ><i class="fa fa-magic"></i> <br/> Brassage</button>
         
-        <div class="btn-group">
+        <span>
         <button id="menuRecipe" class="optionsRecipe" type="button" data-toggle="dropdown" ng-hide="editMode || !active"><i class="fa fa-bars"></i> <br/> Options  <span class="fa fa-caret-down"></span></button>
         <ul class="dropdown-menu" role="menu" aria-labelledby="menuRecipe">
               <li><a onClick="main.printRecipe()" href="#">Imprimer</a></li>
               <li><a ng-click="exportToBb()" href="#">Copier le BBCode (format forum) dans le presse-papier</a></li>
             <li><a ng-click="cloneRecipe()" href="#">Cloner la recette</a></li> 
         </ul>
-        </div>
+        </span>
 
 
 
