@@ -335,6 +335,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
             self.webViewBrewday.setHtml(BrewdayExporterRepository['html'](data), baseUrl)
             self.webViewBrewday.page().mainFrame().addToJavaScriptWindowObject("main", self)
             self.webViewBrewday.page().settings().setAttribute(QtWebKit.QWebSettings.DeveloperExtrasEnabled, False)
+            self.webViewBrewday.page().action(QtWebKit.QWebPage.Reload).setVisible(False)
         else :
             self.stackedWidget.setCurrentIndex(1)
             
