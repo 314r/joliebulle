@@ -22,7 +22,7 @@
 from PyQt4.QtCore import QCoreApplication
 
 def exportHTML():
-    f = open('static/html/lib.html', 'r')
+    f = open('static/html/lib.html', 'r', encoding="utf-8")
     # print (f.read())
     resultHtml= str(f.read())
     return resultHtml
