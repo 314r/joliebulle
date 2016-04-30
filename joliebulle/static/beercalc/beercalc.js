@@ -2,7 +2,7 @@
 /*global _ */
 var beerCalc = (function () {
     "use strict";
-    var i, volPreCool, volPreBoil, ratio, gus, preBoilSg, strikeTemp, strikeVol, Vm, infuseVol, newRatio, grainRetentionVol, spargeVol, grainVolume, satGrain, volSat, waterAfterSat, mashVolume, mashVolumeStrike, mashVolumeLastStep, infusionSteps, ebc, mcu, mcuTot, _sugars, sugarEquivalents, _equivSugar, _gravityUnits, _originalGravity, hiAtten, gu, _preBoilGravityUnits, _ibuPart, bignessFactor, totalIbus, decimalUtil, btFactor, mgAcid, ibu, _preBoilGravity, _ibus;
+    var i, volPreCool, volPreBoil, ratio, gus, preBoilSg, strikeTemp, strikeVol, Vm, infuseVol, newRatio, grainRetentionVol, spargeVol, grainVolume, satGrain, volSat, waterAfterSat, mashVolume, mashVolumeStrike, mashVolumeLastStep, infusionSteps, ebc, mcu, mcuTot, _sugars, sugarEquivalents, _equivSugar, _gravityUnits, _originalGravity, hiAtten, gu, _preBoilGravityUnits, _ibuPart, bignessFactor, totalIbus, decimalUtil, btFactor, mgAcid, ibu, _preBoilGravity, _ibus, weight;
     
     _equivSugar = function (fermentable) {
         return (fermentable.amount / 1000) * (fermentable.fyield / 100);
@@ -114,6 +114,16 @@ var beerCalc = (function () {
         sugars : function (fermentables) {
             return _sugars(fermentables);
         },
+        
+        weight : function (fermentables) {
+            weight = 0;
+            fermentables.forEach(function (fermentable) {
+                if (fermentable.type === "Grain") {
+                    weight += fermentable.amount;
+                }
+            });
+            return weight;
+        },
 
         originalGravity : function (recipe) {
             return _originalGravity(recipe);
@@ -138,6 +148,14 @@ var beerCalc = (function () {
 
         ibus : function (recipe) {
             return _ibus(recipe);
+        },
+        
+        gu : function (recipe) {
+            return _gravityUnits(recipe.fermentables, recipe.volume, recipe.efficiency);
+        },
+        
+        preBoilGu : function (recipe) {
+            return _preBoilGravityUnits(recipe.fermentables, recipe.volume, recipe.efficiency);
         },
 
         bugu : function (recipe) {

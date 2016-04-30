@@ -16,6 +16,7 @@ recipesApp.controller('RecipeslibCtrl', ['$scope', '$http', '$filter', function 
             .value();
         $scope.importIngredients();
         $scope.importMashProfiles();
+        $scope.importPref();
 
     };
     
@@ -30,6 +31,10 @@ recipesApp.controller('RecipeslibCtrl', ['$scope', '$http', '$filter', function 
     
     $scope.importMashProfiles = function () {
         $scope.mashProfiles = JSON.parse(main.dataProfiles()).mashes;
+    };
+    
+    $scope.importPref = function () {
+        $scope.globalPref = JSON.parse(main.dataPref());
     };
 
     $scope.deleteLib = function (recipe) {
@@ -120,6 +125,7 @@ recipesApp.controller('RecipeslibCtrl', ['$scope', '$http', '$filter', function 
             $scope.calcProfile($scope.currentRecipe);
             $scope.sortRecipe();
             $scope.activeClass = $scope.currentRecipe.path;
+            
     //        console.log($scope.currentRecipe.hops);
 //            main.viewRecipeLib($scope.currentRecipe.path);
         }
@@ -245,6 +251,9 @@ recipesApp.controller('RecipeslibCtrl', ['$scope', '$http', '$filter', function 
     };
     
     $scope.save = function (recipe) {
+        recipe.grainWeight = beerCalc.weight(recipe.fermentables);
+        recipe.gu = beerCalc.gu(recipe);
+        recipe.preBoilGu = beerCalc.preBoilGu(recipe);
         main.saveRecipe(jb2xml.exportString(recipe), recipe.path);
         $scope.editMode = false;
         $scope.sortRecipe();
@@ -252,6 +261,7 @@ recipesApp.controller('RecipeslibCtrl', ['$scope', '$http', '$filter', function 
 
     $scope.editRecipe = function () {
         $scope.editMode = true;
+        main.resetLock();
         $scope.oldRecipes = angular.copy($scope.recipes);
         $scope.oldCurrentRecipe = angular.copy($scope.currentRecipe);
     };
@@ -353,10 +363,12 @@ recipesApp.controller('RecipeslibCtrl', ['$scope', '$http', '$filter', function 
             return null;
         } else {
             generatedRecipe = jbrecipe.newRecipe();
+            generatedRecipe = _.extend(generatedRecipe, $scope.globalPref);
             $scope.recipes.push(generatedRecipe);
             $scope.recipeSelected(generatedRecipe);
             $scope.save($scope.currentRecipe, $scope.currentRecipe.path);
             $scope.editRecipe();
+            
         }
         
     };

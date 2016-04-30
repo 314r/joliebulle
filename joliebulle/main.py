@@ -268,7 +268,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         baseUrl = QtCore.QUrl.fromLocalFile(os.path.join(pyDir, "static/html/"))
         self.webViewBiblio.setHtml(LibExporterRepository['html'](), baseUrl)
         self.webViewBiblio.page().mainFrame().addToJavaScriptWindowObject("main", self)
-        self.webViewBiblio.page().settings().setAttribute(QtWebKit.QWebSettings.DeveloperExtrasEnabled, False)
+        self.webViewBiblio.page().settings().setAttribute(QtWebKit.QWebSettings.DeveloperExtrasEnabled, True)
         self.webViewBiblio.page().action(QtWebKit.QWebPage.Reload).setVisible(False)
 
 
@@ -334,7 +334,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
             baseUrl = QtCore.QUrl.fromLocalFile(os.path.join(pyDir, "static/"))
             self.webViewBrewday.setHtml(BrewdayExporterRepository['html'](data), baseUrl)
             self.webViewBrewday.page().mainFrame().addToJavaScriptWindowObject("main", self)
-            self.webViewBrewday.page().settings().setAttribute(QtWebKit.QWebSettings.DeveloperExtrasEnabled, False)
+            self.webViewBrewday.page().settings().setAttribute(QtWebKit.QWebSettings.DeveloperExtrasEnabled, True)
             self.webViewBrewday.page().action(QtWebKit.QWebPage.Reload).setVisible(False)
         else :
             self.stackedWidget.setCurrentIndex(1)
@@ -377,6 +377,16 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         return ImportBase().exportjson()
 
     
+    @QtCore.pyqtSlot(result=str)
+    def dataPref(self) :
+        dic = {}
+        dic["boilOffRate"] = settings.conf.value("BoilOffRate")
+        dic["coolingLossRate"] = settings.conf.value("CoolingLoss")
+        dic["grainTemp"] = settings.conf.value("GrainTemp")
+        dic["fudgeFactor"] = settings.conf.value("FudgeFactor")
+        dic["grainRetention"] = settings.conf.value("GrainRetention")
+        dic = json.dumps(dic)
+        return dic
 
 
 
