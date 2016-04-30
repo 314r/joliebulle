@@ -107,6 +107,7 @@ def initLogging():
 class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
     def __init__(self, parent = None):
         QtGui.QMainWindow.__init__(self, parent)
+        self.setAttribute(QtCore.Qt.WA_DeleteOnClose)
         self.setupUi(self)
 
 
