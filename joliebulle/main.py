@@ -182,7 +182,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         ###################################################################################################################
 
 
-        self.listdir(recettes_dir)
+        # self.listdir(recettes_dir)
         self.showLib() 
 
 ###################################################################################################
@@ -366,6 +366,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
     def dataRecipes(self) :
         # f = open(recipeData_file, 'w')
         # f.write(self.recipesSummary)
+        self.listdir(recettes_dir)
         return self.recipesSummary
 
     @QtCore.pyqtSlot(result=str)
