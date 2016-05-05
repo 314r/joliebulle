@@ -2,11 +2,11 @@
 /*global main, _, beerCalc, recipesApp, jb2xml, jbrecipe, angular, translate, jb2bb */
 recipesApp.controller('RecipeslibCtrl', ['$scope', '$http', '$filter', function ($scope, $http, $filter) {
     "use strict";
-    var parser, xml, string, fermentable, hop, misc, yeast, generatedRecipe, clone;
-    
+    var fermentable, hop, misc, yeast, generatedRecipe, clone;
+
     $scope.active = false;
     $scope.editMode = false;
-    
+
     $scope.init = function () {
         $scope.recipes = $scope.importRecipes();
 //        $scope.recipes = [{"name": "Blanche", "type": "All Grain", "hops": [{"name": "Hallertauer Mittelfrueh", "ibuPart": "11.6", "use": "Boil", "amount": 10.0, "alpha": 5.0, "form": "Leaf", "time": 60.0}, {"name": "Hallertauer Mittelfrueh", "ibuPart": "4.2", "use": "Boil", "amount": 10.0, "alpha": 5.0, "form": "Leaf", "time": 10.0}], "fudgeFactor": 1.7, "notes": "Essai de notes.", "grainRetention": 1, "coolingLossRate": 5, "miscs": [{"name": "Zeste dorange", "type": "Flavor", "amount": 10.0, "use": "Boil", "time": 0.0}, {"name": "Coriandre", "type": "Spice", "amount": 5.0, "use": "Boil", "time": 0.0}], "path": "/Users/pierre/.config/joliebulle/recettes/Samples/Blanche.xml", "gu": 49.4719043, "style": "Blanche", "efficiency": 70.0, "boilTime": 60.0, "grainTemp": 20, "brewer": "314r", "preBoilGu": 49.4719043, "grainWeight": 2300.0, "yeasts": [{"name": "Belgian Wit Ale", "labo": "White Labs", "product_id": "WLP400", "form": "Liquid", "attenuation": 76.0}], "boilOffRate": 10, "volume": 10.0, "fermentables": [{"name": "Pale Wheat Malt", "type": "Grain", "color": 3.94, "recoMash": "TRUE", "amount": 1000.0, "fyield": 80.0, "afterBoil": "FALSE"}, {"name": "Pilsner", "type": "Grain", "color": 3.94, "recoMash": "TRUE", "amount": 1000.0, "fyield": 81.0, "afterBoil": "FALSE"}, {"name": "Flaked Wheat", "type": "Grain", "color": 3.94, "recoMash": "TRUE", "amount": 300.0, "fyield": 77.0, "afterBoil": "FALSE"}], "mashProfile": {"name": "Infusion simple, corps moyen", "sparge": "78.0", "ph": "5.4", "tunTemp": "20", "steps": [{"name": "Emp\u00e2tage", "type_view": "Infusion", "type": "Infusion", "temp": "67.0", "time": "60"}, {"name": "Mash Out", "type_view": "Temp\u00e9rature", "type": "Temperature", "temp": "75.0", "time": "10"}]}},{"name": "SMASH Amarillo", "type": "All Grain", "hops": [{"name": "Amarillo", "ibuPart": "0.0", "use": "Boil", "amount": 10.0, "alpha": 9.0, "form": "Leaf", "time": 0.0}, {"name": "Amarillo", "ibuPart": "7.1", "use": "Boil", "amount": 10.0, "alpha": 9.0, "form": "Leaf", "time": 10.0}, {"name": "Amarillo", "ibuPart": "29.6", "use": "Boil", "amount": 15.0, "alpha": 9.0, "form": "Leaf", "time": 60.0}], "fudgeFactor": 1.7, "notes": null, "grainRetention": 1, "coolingLossRate": 5, "miscs": [], "path": "/Users/pierre/.config/joliebulle/recettes/Samples/SMASH Amarillo.xml", "gu": 55.760022499999984, "style": "Pale Ale", "efficiency": 70.0, "boilTime": 60.0, "grainTemp": 20, "brewer": "314r", "preBoilGu": 55.760022499999984, "grainWeight": 2500.0, "yeasts": [{"name": "Safale", "labo": "Fermentis", "product_id": "S-04", "form": "Dry", "attenuation": 73.0}], "boilOffRate": 10, "volume": 10.0, "fermentables": [{"name": "Marris Otter", "type": "Grain", "color": 5.91, "recoMash": "TRUE", "amount": 2500.0, "fyield": 83.0, "afterBoil": "FALSE"}], "mashProfile": {"name": "Infusion simple, corps moyen", "sparge": "78.0", "ph": "5.4", "tunTemp": "20", "steps": [{"name": "Emp\u00e2tage", "type_view": "Infusion", "type": "Infusion", "temp": "67.0", "time": "60"}, {"name": "Mash Out", "type_view": "Temp\u00e9rature", "type": "Temperature", "temp": "75.0", "time": "10"}]}}];
@@ -19,33 +19,33 @@ recipesApp.controller('RecipeslibCtrl', ['$scope', '$http', '$filter', function 
         $scope.importPref();
 
     };
-    
+
     $scope.importRecipes = function () {
         return JSON.parse(main.dataRecipes());
     };
-    
+
     $scope.importIngredients = function () {
         $scope.ingredients = JSON.parse(main.dataIngredients());
         $scope.ingredients = translate.translate_fr($scope.ingredients);
     };
-    
+
     $scope.importMashProfiles = function () {
         $scope.mashProfiles = JSON.parse(main.dataProfiles()).mashes;
     };
-    
+
     $scope.importPref = function () {
         $scope.globalPref = JSON.parse(main.dataPref());
     };
 
     $scope.deleteLib = function (recipe) {
-		$scope.recipes.splice($scope.recipes.indexOf(recipe), 1);
+        $scope.recipes.splice($scope.recipes.indexOf(recipe), 1);
         main.deleteLib(recipe.path);
     };
 
     $scope.openRecipeClicked = function (recipe) {
         main.viewRecipeLib(recipe.path);
     };
-    
+
     $scope.switchToBrewday = function () {
         main.showBrewdayMode(JSON.stringify($scope.currentRecipe));
     };
@@ -63,7 +63,7 @@ recipesApp.controller('RecipeslibCtrl', ['$scope', '$http', '$filter', function 
 
     $scope.closeFermentableEditor = function () {
         $scope.showFermentableEditor = false;
-        // $scope.currentRecipe.fermentables[$scope.currentIng.index] = $scope.currentIng; 
+        // $scope.currentRecipe.fermentables[$scope.currentIng.index] = $scope.currentIng;
     };
 
     $scope.editHop = function (index) {
@@ -119,16 +119,12 @@ recipesApp.controller('RecipeslibCtrl', ['$scope', '$http', '$filter', function 
 //        if editMode do nothing
         if ($scope.editMode) {
             return null;
-        } else {
-            $scope.currentRecipe = recipe;
-            // $scope.currentRecipe = $scope.translate_fr($scope.currentRecipe);
-            $scope.calcProfile($scope.currentRecipe);
-            $scope.sortRecipe();
-            $scope.activeClass = $scope.currentRecipe.path;
-            
-    //        console.log($scope.currentRecipe.hops);
-//            main.viewRecipeLib($scope.currentRecipe.path);
         }
+        $scope.currentRecipe = recipe;
+        $scope.calcProfile($scope.currentRecipe);
+        $scope.sortRecipe();
+        $scope.activeClass = $scope.currentRecipe.path;
+
 
     };
 
@@ -149,10 +145,10 @@ recipesApp.controller('RecipeslibCtrl', ['$scope', '$http', '$filter', function 
     };
 
     $scope.sortRecipe = function () {
-        var h, aromaArray, dryArray, boilArray, firstArray, mashArray, concanArray;
+        var aromaArray, dryArray, boilArray, firstArray, mashArray, concanArray;
         $scope.currentRecipe.fermentables = _.sortBy($scope.currentRecipe.fermentables, function (o) {return parseInt(o.amount, 10); }).reverse();
         $scope.currentRecipe.hops = _.sortBy($scope.currentRecipe.hops, function (o) {return parseInt(o.time, 10); }).reverse();
-        
+
         aromaArray = [];
         dryArray = [];
         boilArray = [];
@@ -174,11 +170,11 @@ recipesApp.controller('RecipeslibCtrl', ['$scope', '$http', '$filter', function 
             if (h.use === "Mash") {
                 mashArray.push(h);
             }
-            
+
         });
         concanArray = mashArray.concat(firstArray, boilArray, aromaArray, dryArray);
         $scope.currentRecipe.hops = concanArray;
-        
+
         $scope.currentRecipe.miscs = _.sortBy($scope.currentRecipe.miscs, function (o) {return parseInt(o.amount, 10); }).reverse();
         return $scope.currentRecipe;
     };
@@ -200,7 +196,7 @@ recipesApp.controller('RecipeslibCtrl', ['$scope', '$http', '$filter', function 
             recipe.colorHtml = beerCalc.colorHtml($scope.currentRecipe.ebc);
         }
         recipe.oldVolume = recipe.volume;
-        
+
     };
 
     $scope.fermentableSelected = function (fermentable) {
@@ -238,7 +234,7 @@ recipesApp.controller('RecipeslibCtrl', ['$scope', '$http', '$filter', function 
         $scope.currentYeast.attenuation = yeast.attenuation;
         $scope.calcProfile($scope.currentRecipe);
     };
-    
+
     $scope.cancelIngredient = function () {
         $scope.currentRecipe = $scope.freezedRecipe;
         $scope.showFermentableEditor = false;
@@ -246,11 +242,11 @@ recipesApp.controller('RecipeslibCtrl', ['$scope', '$http', '$filter', function 
         $scope.showMiscEditor = false;
         $scope.showYeastEditor = false;
     };
-    
+
     $scope.freezeRecipe = function () {
         $scope.freezedRecipe = angular.copy($scope.currentRecipe);
     };
-    
+
     $scope.save = function (recipe) {
         recipe.grainWeight = beerCalc.weight(recipe.fermentables);
         recipe.gu = beerCalc.gu(recipe);
@@ -266,7 +262,7 @@ recipesApp.controller('RecipeslibCtrl', ['$scope', '$http', '$filter', function 
         $scope.oldRecipes = angular.copy($scope.recipes);
         $scope.oldCurrentRecipe = angular.copy($scope.currentRecipe);
     };
-    
+
     $scope.cancel = function () {
         $scope.recipes = $scope.oldRecipes;
         $scope.currentRecipe = $scope.oldCurrentRecipe;
@@ -358,22 +354,22 @@ recipesApp.controller('RecipeslibCtrl', ['$scope', '$http', '$filter', function 
     $scope.exportToBb = function () {
         main.copyBbcode(jb2bb.exportString($scope.currentRecipe));
     };
-    
+
     $scope.newRecipe = function () {
         if ($scope.editMode) {
             return null;
-        } else {
-            generatedRecipe = jbrecipe.newRecipe();
-            generatedRecipe = _.extend(generatedRecipe, $scope.globalPref);
-            $scope.recipes.push(generatedRecipe);
-            $scope.recipeSelected(generatedRecipe);
-            $scope.save($scope.currentRecipe, $scope.currentRecipe.path);
-            $scope.editRecipe();
-            
         }
-        
+        generatedRecipe = jbrecipe.newRecipe();
+        generatedRecipe = _.extend(generatedRecipe, $scope.globalPref);
+        $scope.recipes.push(generatedRecipe);
+        $scope.recipeSelected(generatedRecipe);
+        $scope.save($scope.currentRecipe, $scope.currentRecipe.path);
+        $scope.editRecipe();
+
+
+
     };
-    
+
     $scope.cloneRecipe = function () {
         clone = angular.copy($scope.currentRecipe);
         clone.path = main.createPath();
@@ -383,7 +379,7 @@ recipesApp.controller('RecipeslibCtrl', ['$scope', '$http', '$filter', function 
         $scope.save($scope.currentRecipe, $scope.currentRecipe.path);
         $scope.editRecipe();
     };
-    
+
 //    Pour le futur
 //    $scope.convertUnits = function (amount) {
 //        if (amount.slice(-2) === 'kg') {
@@ -392,18 +388,15 @@ recipesApp.controller('RecipeslibCtrl', ['$scope', '$http', '$filter', function 
 //            $scope.currentFerm.amount = amount;
 //            return $scope.currentFerm.amount;
 //        }
-//        
+//
 //    };
-    
-    
+
+
     $scope.addToJournal = function (event) {
         main.addToJournal(event, $scope.currentRecipe.name);
-        
+
     };
-    
 
-    
+
+
 }]);
-
-
-
