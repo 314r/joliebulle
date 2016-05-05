@@ -197,6 +197,7 @@ recipesApp.controller('RecipeslibCtrl', ['$scope', '$http', '$filter', function 
             recipe.ibu = Math.round(beerCalc.ibus(recipe));
             recipe.bugu = Math.round(beerCalc.bugu(recipe) * 10) / 10;
             recipe.alc = Math.round(beerCalc.alc(recipe) * 10) / 10;
+            recipe.colorHtml = beerCalc.colorHtml($scope.currentRecipe.ebc);
         }
         recipe.oldVolume = recipe.volume;
         

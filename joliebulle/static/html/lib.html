@@ -85,6 +85,9 @@
       <div class="recipeView" ng-show="active">
 
         <div class="recipe-header col-md-12 row">
+          <div class="col-md-1">
+              <span class="colorPreview" ng-style="{'background-color' : currentRecipe.colorHtml}"></span>
+          </div>    
           <div class="col-md-6" ng-hide="editMode">
             <h1>{{currentRecipe.name}}</h1>
             <div class="author">{{currentRecipe.style}} par {{currentRecipe.brewer}}</div>

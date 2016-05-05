@@ -153,6 +153,15 @@ button.cancelRecipe i {
   padding-bottom: 5px;
 }
 
+.colorPreview {
+    display: block;
+    margin-top : 10px;
+    height : 2.5em;
+    width: 40px;
+    border-radius: 10px;
+}
+
+
 .recipe-header{padding-top:70px;}
 .recipe-header h1 { font-size:1.75em; color:#444;padding-bottom:0px;margin-top:0;padding-left:0px;}
 .author{color:#c3c3c3;padding-left:0px;padding-bottom: 15px;}
@@ -464,4 +473,5 @@ button.cancelIng {
     border-radius: 0;
     border:1px solid #eee;
 }
+
 
