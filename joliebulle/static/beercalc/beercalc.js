@@ -282,6 +282,16 @@ var beerCalc = (function () {
     
         },
         
+        ingRatio : function (ingredients, amount) {
+            weight = 0;
+            ingredients.forEach(function (ingredient) {
+                weight += ingredient.amount;
+            });
+            ratio = amount / weight;
+            return ratio;
+            
+        },
+        
         colorHtml : function (ebc) {
             srm = Math.round(parseFloat(ebc) / 1.97);
             if (srm <= 1) {

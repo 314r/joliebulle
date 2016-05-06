@@ -442,6 +442,11 @@ span.param-title {
     box-shadow:0px 0px 0px;
 }
 
+.amountRatio {
+    color: #cccccc;
+    font-weight: bold;
+}
+
 button.okIng {
     display: inline-block;
     border-radius: 3px;
