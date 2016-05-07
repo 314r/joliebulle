@@ -198,6 +198,10 @@ recipesApp.controller('RecipeslibCtrl', ['$scope', '$http', '$filter', function 
                 fermentable.amountRatio = (beerCalc.ingRatio(recipe.fermentables, fermentable.amount) * 100).toFixed(1);
                 return fermentable;
             });
+            recipe.hops.forEach(function (hop) {
+                hop.amountRatio = (beerCalc.ingRatio(recipe.hops, hop.amount) * 100).toFixed(1);
+                return hop;
+            });
         }
         recipe.oldVolume = recipe.volume;
 
