@@ -1,7 +1,7 @@
 /*jslint nomen: true */
 var jb2xml = (function () {
 	"use strict";
-	var parser, string, xml ;
+	var parser, string, xml;
 	return {
 
 		exportString : function (recipe) {
@@ -37,18 +37,18 @@ var jb2xml = (function () {
 	            string += "<NAME>" + hop.name + "</NAME>";
 	            string += "<VERSION>1</VERSION>";
 	            string += "<AMOUNT>" + hop.amount / 1000 + "</AMOUNT>";
-	            if (hop.form === 0) {
+	            if (hop.form === 0 || hop.form === 'Pellet') {
 	                string += "<FORM>Pellet</FORM>";
-	            } else if (hop.form === 1) {
+	            } else if (hop.form === 1 || hop.form === 'Leaf') {
 	                string += "<FORM>Leaf</FORM>";
-	            } else if (hop.form === 2) {
+	            } else if (hop.form === 2 || hop.form === 'Plug') {
 	                string += "<FORM>Plug</FORM>";
 	            }
 	            string += "<TIME>" + hop.time + "</TIME>";
 	            string += "<ALPHA>" + hop.alpha + "</ALPHA>";
 	            string += "<USE>" + hop.use + "</USE>";
 	            string += "</HOP>";
-	            
+
 	        });
 	        string += "</HOPS>";
 	        string += "<YEASTS>";
@@ -99,7 +99,7 @@ var jb2xml = (function () {
 	        string += "</MASH>";
 	        string += "<NOTES>" + recipe.notes + "</NOTES>";
 	        string += "</RECIPE></RECIPES>";
-	        
+
 	        xml = parser.parseFromString(string, "application/xml");
 	        console.log(xml);
 	        return string;

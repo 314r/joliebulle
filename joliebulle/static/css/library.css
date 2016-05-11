@@ -240,7 +240,7 @@ span.clickEdit {
   padding : 3px 3px 3px 3px;
   color: #fff;
   position: absolute;
-  left : 40%;
+  left : 20%;
   z-index: 100;
 
 
@@ -249,13 +249,42 @@ span.clickEdit {
 tr:hover td span.clickEdit {
     display: block;
     -webkit-animation: fade .4s linear 1;
+}
 
+
+span.bulle {
+    background-color: rgba(0,0,0,0.90);
+    border-radius: 3px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.4);
+    display: none;
+    width: 150px;
+    font-size: 12px;
+    text-align: left;
+    padding : 3px 3px 3px 3px;
+    color: #fff;
+    position: absolute;
+    left : 20%;
+    z-index: 100;
+}
+
+span.bulle ul {
+    margin:0;
+    padding:3px;
+}
+
+span.bulle li{
+    list-style: none;
+    margin:0
+}
+
+tr:hover td span.bulle {
+    display: block;
+    -webkit-animation: fade .4s linear 1;
 }
 
 
 tr:hover td:not(.buttonTd) {
     background-color: #f8f8f8;
-
 }
 
 button.btn-link.btn-xs.table-button {

@@ -161,8 +161,6 @@
         </form>
 
 
-
-
         <div class="recipe-vol row col-md-12" ng-hide="editMode">
           <span class="vol-label">Vol</span> <span class="vol-value" data-toggle="tooltip" data-placement="bottom" title="Volume du brassin">{{currentRecipe.volume}}L</span>
           <span class="effi-label">Rendement</span> <span class="effi-value" data-toggle="tooltip" data-placement="bottom" title="Rendement du brassage">{{currentRecipe.efficiency}}%</span>
@@ -178,9 +176,17 @@
                   <tbody>
 
                     <tr ng-repeat="fermentable in currentRecipe.fermentables" ng-click="editFermentable($index)">
+                      <span class=bulle>essai de bulle</span>
 
-                      <td>{{fermentable.name}} <span class="clickEdit" ng-show="editMode">Cliquer pour éditer</span>      </td>
-                      <td>{{fermentable.amount | number : 0}} g</td>
+                      <td>{{fermentable.name}}
+                          <span class="bulle" ng-hide="editMode"><ul>
+                            <li>EBC : {{fermentable.color | number : 0}}</li>
+                            <li>Rendement : {{fermentable.fyield | number : 0}} %</li>
+                            <li>Type : {{fermentable.typeView}}</li>
+                            <li>Proportion : {{fermentable.amountRatio | number : 1}} %</li>
+                          </ul></span>
+                          <span class="clickEdit" ng-show="editMode">Cliquer pour éditer</span></td>
+                      <td>{{fermentable.amount | number : 0}} g <span ng-show="editMode" class="amountRatio">   ({{fermentable.amountRatio}} %)</span></td>
                       <td>{{fermentable.afterBoilView}}</td>
                       <td ng-show="editMode"><button class="btn-link btn-xs table-button removeIngredient" type="button" ng-show="editMode" ng-click="removeFermentable($index)"><i class="fa fa-times"></i></button></td>
                     </tr>
@@ -193,10 +199,12 @@
                     </tr>
                   </tbody>
 
+
+
                   <tbody>
                     <tr ng-repeat="hop in currentRecipe.hops" ng-click="editHop($index)">
                       <td>{{hop.name}} <span class="clickEdit" ng-show="editMode">Cliquer pour éditer</span></td>
-                      <td>{{hop.amount | number : 0}} g</td>
+                      <td>{{hop.amount | number : 0}} g <span ng-show="editMode" class="amountRatio">   ({{hop.amountRatio}} %)</span></td>
                       <td>{{hop.useView}} - {{hop.time}} min</td>
                       <td ng-show="editMode"><button class="btn-link btn-xs table-button removeIngredient" type="button" ng-show="editMode" ng-click="removeHop($index)"><i class="fa fa-times"></i></button></td>
                     </tr>

@@ -260,6 +260,7 @@ recipesApp.controller('RecipeslibCtrl', ['$scope', '$http', '$filter', function 
         recipe.gu = beerCalc.gu(recipe);
         recipe.preBoilGu = beerCalc.preBoilGu(recipe);
         main.saveRecipe(jb2xml.exportString(recipe), recipe.path);
+        console.log(recipe);
         $scope.editMode = false;
         $scope.sortRecipe();
     };
