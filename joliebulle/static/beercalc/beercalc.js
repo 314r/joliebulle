@@ -90,10 +90,11 @@ var beerCalc = (function () {
             }
 
             totalIbus += ibu;
+            hop.ibuPart = ibu;
             
         });
-        
-        return totalIbus;
+        recipe.ibu = totalIbus;
+        return recipe;
     };
 
 
@@ -167,7 +168,7 @@ var beerCalc = (function () {
             if (recipe.ibu === "undefined") {
                 recipe.ibu = 0;
             }
-            return _ibus(recipe) / _gravityUnits(recipe.fermentables, recipe.volume, recipe.efficiency);
+            return recipe.ibu / _gravityUnits(recipe.fermentables, recipe.volume, recipe.efficiency);
         },
 
         alc : function (recipe) {

@@ -176,7 +176,6 @@
                   <tbody>
 
                     <tr ng-repeat="fermentable in currentRecipe.fermentables" ng-click="editFermentable($index)">
-                      <span class=bulle>essai de bulle</span>
 
                       <td>{{fermentable.name}}
                           <span class="bulle" ng-hide="editMode"><ul>
@@ -203,8 +202,13 @@
 
                   <tbody>
                     <tr ng-repeat="hop in currentRecipe.hops" ng-click="editHop($index)">
-                      <td>{{hop.name}} <span class="clickEdit" ng-show="editMode">Cliquer pour éditer</span></td>
-                      <td>{{hop.amount | number : 0}} g <span ng-show="editMode" class="amountRatio">   ({{hop.amountRatio}} %)</span></td>
+                      <td>{{hop.name}} 
+                          <span class="bulle" ng-hide="editMode"><ul>
+                            <li>Alpha : {{hop.alpha | number : 1}} %</li>
+                            <li>Contribution : {{hop.ibuPart | number : 1}} IBU</li>
+                          </ul></span>
+                          <span class="clickEdit" ng-show="editMode">Cliquer pour éditer</span></td>
+                      <td>{{hop.amount | number : 0}} g <span ng-show="editMode" class="amountRatio">   ({{hop.ibuPart | number : 1}} IBU)</span></td>
                       <td>{{hop.useView}} - {{hop.time}} min</td>
                       <td ng-show="editMode"><button class="btn-link btn-xs table-button removeIngredient" type="button" ng-show="editMode" ng-click="removeHop($index)"><i class="fa fa-times"></i></button></td>
                     </tr>
@@ -371,7 +375,7 @@
           </div>
           <div>
             <label>Quantité (g)</label>
-            <input type="number" ng-model="currentHop.amount" ng-change="calcProfile(currentRecipe)"> <span class="amountRatio">{{currentHop.amountRatio}} %</span>
+            <input type="number" ng-model="currentHop.amount" ng-change="calcProfile(currentRecipe)"> <span class="amountRatio">{{currentHop.ibuPart | number : 1}} IBU</span>
           </div>
 
 
