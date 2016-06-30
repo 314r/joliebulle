@@ -18,8 +18,8 @@
 #Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 
-from PyQt4 import QtCore
-from PyQt4 import QtGui
+from PyQt5 import QtCore
+from PyQt5 import QtGui
 import model.constants
 import view.constants
 import logging
@@ -30,9 +30,9 @@ class recipeViewLabels(QtCore.QObject):
     def __init__(self):
         QtCore.QObject.__init__(self)
         self.typeLabels = {
-            model.constants.RECIPE_TYPE_ALL_GRAIN   : self.trUtf8('Tout grain'),
-            model.constants.RECIPE_TYPE_PARTIAL_MASH    : self.trUtf8('Extrait'),
-            model.constants.RECIPE_TYPE_EXTRACT : self.trUtf8('Partial mash'),
+            model.constants.RECIPE_TYPE_ALL_GRAIN   : self.tr('Tout grain'),
+            model.constants.RECIPE_TYPE_PARTIAL_MASH    : self.tr('Extrait'),
+            model.constants.RECIPE_TYPE_EXTRACT : self.tr('Partial mash'),
         }
 
 class RecipeView(QtCore.QObject):

@@ -18,8 +18,8 @@
 #Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 
-from PyQt4 import QtCore
-from PyQt4 import QtGui
+from PyQt5 import QtCore
+from PyQt5 import QtGui
 import model.constants
 import view.constants
 import re
@@ -28,20 +28,20 @@ class MiscViewLabels(QtCore.QObject):
 	def __init__(self):
 		QtCore.QObject.__init__(self)
 		self.useLabels = {
-			model.constants.MISC_USE_BOIL	: self.trUtf8('Ébullition'),
-			model.constants.MISC_USE_MASH	: self.trUtf8('Empâtage'),
-			model.constants.MISC_USE_PRIMARY	: self.trUtf8('Primaire'),
-			model.constants.MISC_USE_SECONDARY	: self.trUtf8('Secondaire'),
-			model.constants.MISC_USE_BOTTLING	: self.trUtf8('Embouteillage')
+			model.constants.MISC_USE_BOIL	: self.tr('Ébullition'),
+			model.constants.MISC_USE_MASH	: self.tr('Empâtage'),
+			model.constants.MISC_USE_PRIMARY	: self.tr('Primaire'),
+			model.constants.MISC_USE_SECONDARY	: self.tr('Secondaire'),
+			model.constants.MISC_USE_BOTTLING	: self.tr('Embouteillage')
 		}
 
 		self.typeLabels = {
-			model.constants.MISC_TYPE_SPICE : self.trUtf8('Épice'),
-			model.constants.MISC_TYPE_FLAVOR : self.trUtf8('Arôme'),
-			model.constants.MISC_TYPE_WATER : self.trUtf8('Traitement Eau'),
-			model.constants.MISC_TYPE_HERB : self.trUtf8('Herbe'),
-			model.constants.MISC_TYPE_FINING : self.trUtf8('Clarifiant'),
-			model.constants.MISC_TYPE_OTHER : self.trUtf8('Autre')
+			model.constants.MISC_TYPE_SPICE : self.tr('Épice'),
+			model.constants.MISC_TYPE_FLAVOR : self.tr('Arôme'),
+			model.constants.MISC_TYPE_WATER : self.tr('Traitement Eau'),
+			model.constants.MISC_TYPE_HERB : self.tr('Herbe'),
+			model.constants.MISC_TYPE_FINING : self.tr('Clarifiant'),
+			model.constants.MISC_TYPE_OTHER : self.tr('Autre')
 		}
 
 class MiscView(QtCore.QObject):

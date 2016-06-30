@@ -20,7 +20,7 @@
 #Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 
-from PyQt4.QtCore import QCoreApplication
+from PyQt5.QtCore import QCoreApplication
 import json
 from globals import *
 from helper.journalExporterRepository import *
@@ -33,9 +33,9 @@ class Journal :
         self.text=""
 
         self.eventsLabels = {
-            'brewed': QCoreApplication.translate("Export", "brassée", None, QCoreApplication.UnicodeUTF8),
-            'ferment': QCoreApplication.translate("Export", "mise en fermentation", None, QCoreApplication.UnicodeUTF8),
-            'bottled': QCoreApplication.translate("Export", "embouteillée", None, QCoreApplication.UnicodeUTF8)
+            'brewed': QCoreApplication.translate("Export", "brassée"),
+            'ferment': QCoreApplication.translate("Export", "mise en fermentation"),
+            'bottled': QCoreApplication.translate("Export", "embouteillée")
         }
 
     @staticmethod
@@ -51,11 +51,9 @@ class Journal :
 
     def loadJournal(self):
         self.journal = Journal().load(journal_file)
-        
+
     def export(self,type,entry) :
         data = json.dumps(self.journal.itemsList)
         data = data.replace("'","&#39;")
         return JournalExporterRepository[type](data, entry)
 # '''{recipe : 'recipe', date : '1386261776',event:'event', editing :'True' }'''
-
-

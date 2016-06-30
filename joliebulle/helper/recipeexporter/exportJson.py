@@ -6,7 +6,7 @@
 
 #This program is free software; you can redistribute it and/or
 #modify it under the terms of the GNU General Public License
-#as published by the Free Software Foundation; either version 3        
+#as published by the Free Software Foundation; either version 3
 #of the License, or (at your option) any later version.
 
 #This program is distributed in the hope that it will be useful,
@@ -18,7 +18,7 @@
 #along with this program; if not, write to the Free Software
 #Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-from PyQt4.QtCore import QCoreApplication
+from PyQt5.QtCore import QCoreApplication
 import json
 from view.fermentableview import *
 from view.hopview import *
@@ -27,7 +27,7 @@ from view.miscview import *
 from view.recipeview import *
 from view.mashstepview import *
 from model.constants import *
-from settings import * 
+from settings import *
 
 
 def exportJson(recipe) :
@@ -100,12 +100,12 @@ def exportJson(recipe) :
         fermentable['amount'] = f.amount
         if f.useAfterBoil :
             fermentable['afterBoil'] = 'TRUE'
-        else : 
+        else :
             fermentable['afterBoil'] = 'FALSE'
-        # fermentable['afterBoilView'] = fView.fermentableUseDisplay()  
+        # fermentable['afterBoilView'] = fView.fermentableUseDisplay()
         fermentable['recoMash'] = f.recommendMash
         fermentables.append(fermentable)
-    dic['fermentables'] = fermentables  
+    dic['fermentables'] = fermentables
 
     yeasts = []
     for y in recipe.listeYeasts :
@@ -136,7 +136,7 @@ def exportJson(recipe) :
     mashProfile['ph'] = recipe.mash.ph
     mashProfile['sparge'] = recipe.mash.spargeTemp
     mashProfile['tunTemp'] = recipe.mash.tunTemp
-    
+
     steps = []
     for s in recipe.mash.listeSteps :
         mashStepView = MashStepView(s)
@@ -151,14 +151,10 @@ def exportJson(recipe) :
     dic['mashProfile'] = mashProfile
 
     dic['notes'] = recipe.recipeNotes
-    
+
 
     data.append(dic)
     data = json.dumps(data)
     # data = data.replace("'","&#39;")
 
     return data
-    
-
-
-

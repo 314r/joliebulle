@@ -1,11 +1,11 @@
-import PyQt4
+import PyQt5
 import sys
-from PyQt4 import QtGui
-from PyQt4 import QtCore
+from PyQt5 import QtWidgets
+from PyQt5 import QtCore
 from about_ui import *
 
-class DialogAbout(QtGui.QDialog):
+class DialogAbout(QtWidgets.QDialog):
     def __init__(self, parent = None):
-        QtGui.QDialog.__init__(self,parent)
+        QtWidgets.QDialog.__init__(self,parent)
         self.ui = Ui_DialogAbout()
         self.ui.setupUi(self)

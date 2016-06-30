@@ -17,8 +17,8 @@
 #along with this program; if not, write to the Free Software
 #Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-from PyQt4 import QtCore
-from PyQt4 import QtGui
+from PyQt5 import QtCore
+from PyQt5 import QtGui
 import model.constants
 import view.constants
 import re
@@ -27,15 +27,15 @@ class FermentableViewLabels(QtCore.QObject):
 	def __init__(self):
 		QtCore.QObject.__init__(self)
 		self.useLabels = {
-			model.constants.FERMENTABLE_USE_BOIL	: self.trUtf8('Brassage'),
-			model.constants.FERMENTABLE_USE_AFTER_BOIL	: self.trUtf8('Après ébullition')
+			model.constants.FERMENTABLE_USE_BOIL	: self.tr('Brassage'),
+			model.constants.FERMENTABLE_USE_AFTER_BOIL	: self.tr('Après ébullition')
 		}
 		self.typeLabels = {
-			model.constants.FERMENTABLE_TYPE_GRAIN	: self.trUtf8('Grain'),
-			model.constants.FERMENTABLE_TYPE_SUGAR	: self.trUtf8('Sucre'),
-			model.constants.FERMENTABLE_TYPE_EXTRACT	: self.trUtf8('Extrait'),
-			model.constants.FERMENTABLE_TYPE_DRY_EXTRACT	: self.trUtf8('Extrait sec'),
-			model.constants.FERMENTABLE_TYPE_ADJUNCT	: self.trUtf8('Complément')
+			model.constants.FERMENTABLE_TYPE_GRAIN	: self.tr('Grain'),
+			model.constants.FERMENTABLE_TYPE_SUGAR	: self.tr('Sucre'),
+			model.constants.FERMENTABLE_TYPE_EXTRACT	: self.tr('Extrait'),
+			model.constants.FERMENTABLE_TYPE_DRY_EXTRACT	: self.tr('Extrait sec'),
+			model.constants.FERMENTABLE_TYPE_ADJUNCT	: self.tr('Complément')
 		}
 
 class FermentableView(QtCore.QObject):

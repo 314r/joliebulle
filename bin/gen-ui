@@ -3,5 +3,5 @@
 WORKING_DIR="../joliebulle/"
 
 find $WORKING_DIR -type f -name "*.ui" | while read file; do
-    pyuic4 "$file" -o "${file%.*}_ui.py"
+    pyuic5 "$file" -o "${file%.*}_ui.py"
 done

@@ -20,7 +20,7 @@
 #Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 
-from PyQt4.QtCore import QCoreApplication
+from PyQt5.QtCore import QCoreApplication
 
 
 
@@ -47,8 +47,8 @@ def exportHTML(itemsList):
     </style>
 </head>
 <body>
-'''    
-    
+'''
+
 
     resultHtml +=''' <div class="journal">
                         <h1>Journal</h1>
@@ -71,9 +71,9 @@ def exportHTML(itemsList):
                     }
                 </script>'''
 
-    resultHtml += '''<script type="text/javascript"> 
+    resultHtml += '''<script type="text/javascript">
 
-                        var entryLists = %s 
+                        var entryLists = %s
                         for(var i=0;i<entryLists.length;i++)
                             {
                                 tableau=entryLists[i];
@@ -87,7 +87,7 @@ def exportHTML(itemsList):
                                 $(".journal-list").append("<div class =%s id="+i+">" + '<span class="date">'+ date + ' </span>' + tableau["recipe"] + ' %s <span class="event">' + tableau["event"] + '.</span><button class="btn btn-link btn-xs" type="button" value="delete" onClick="main.delJournal('+tableau["date"]+');deleteEntry('+i+ ')" > %s </button><button class="btn btn-link btn-xs" type="button" value="delete" onClick="main.editJournalEntry('+stringSignal+')" > %s </button></div>');
 
                             }
-                     </script>''' %(str(itemsList), "entry",QCoreApplication.translate("Export","a été marquée comme", None, QCoreApplication.UnicodeUTF8),QCoreApplication.translate("Export","Supprimer", None, QCoreApplication.UnicodeUTF8),QCoreApplication.translate("Export","Modifier", None, QCoreApplication.UnicodeUTF8))
+                     </script>''' %(str(itemsList), "entry",QCoreApplication.translate("Export","a été marquée comme"),QCoreApplication.translate("Export","Supprimer"),QCoreApplication.translate("Export","Modifier"))
 
 
 
@@ -106,5 +106,3 @@ def exportHTML(itemsList):
     resultHtml += ''' </body></html>'''
 
     return resultHtml
-
-

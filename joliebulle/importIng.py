@@ -26,11 +26,12 @@
 
 import os
 import os.path
-import PyQt4
+import PyQt5
 import sys
 from sys import platform
 import logging
-from PyQt4 import QtCore
+from PyQt5 import QtWidgets
+from PyQt5 import QtCore
 import xml.etree.ElementTree as ET
 from globals import *
 from model.fermentable import *
@@ -44,9 +45,9 @@ import view.base
 
 logger = logging.getLogger(__name__)
 
-class ImportIng (QtGui.QDialog) :
+class ImportIng (QtWidgets.QDialog) :
     def __init__(self,parent=None):
-        QtGui.QDialog.__init__(self, parent)
+        QtWidgets.QDialog.__init__(self, parent)
 
     def parseFile(self, s) :
         fichierBeerXML = s
@@ -69,25 +70,18 @@ class ImportIng (QtGui.QDialog) :
         except:
             self.warningFile()
 
-        self.hopsNum = len(hops) 
+        self.hopsNum = len(hops)
         self.fermNum = len(fermentables)
         self.miscNum = len(misc)
-        self.yeastNum = len(levures)   
+        self.yeastNum = len(levures)
 
-        self.info()    
+        self.info()
 
     def info(self):
-        info = QtGui.QMessageBox.information(self, self.trUtf8("Importation réussie"), self.trUtf8("Importation réussie de %s houblons, %s fermentables, %s ingrédients divers, %s levures." %(self.hopsNum, self.fermNum, self.miscNum, self.yeastNum)))
+        info = QtWidgets.QMessageBox.information(self, self.tr("Importation réussie"), self.tr("Importation réussie de %s houblons, %s fermentables, %s ingrédients divers, %s levures." %(self.hopsNum, self.fermNum, self.miscNum, self.yeastNum)))
 
     def warningFile(self):
-        warning = QtGui.QMessageBox.warning(self,
-                        self.trUtf8("Fichier non compatible"),
-                        self.trUtf8("Le fichier n'est pas compatible.")
+        warning = QtWidgets.QMessageBox.warning(self,
+                        self.tr("Fichier non compatible"),
+                        self.tr("Le fichier n'est pas compatible.")
                         )
-
-
-        
-
-
-
- 

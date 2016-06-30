@@ -15,11 +15,11 @@
 
 import os
 from sys import platform
-import PyQt4
+import PyQt5
 import sys
 from operator import itemgetter
-from PyQt4 import QtGui
-from PyQt4 import QtCore
+from PyQt5 import QtGui
+from PyQt5 import QtCore
 from preferences import *
 from globals import *
 import xml.etree.ElementTree as ET

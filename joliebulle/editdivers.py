@@ -24,10 +24,10 @@
 
 
 import codecs
-import PyQt4
+import PyQt5
 import sys
-from PyQt4 import QtGui
-from PyQt4 import QtCore
+from PyQt5 import QtWidgets
+from PyQt5 import QtCore
 from base import *
 from globals import *
 import view.base
@@ -38,37 +38,37 @@ from xml.dom import minidom
 
 
 
-class DialogD(QtGui.QDialog):
+class DialogD(QtWidgets.QDialog):
     baseChanged = QtCore.pyqtSignal()
     def __init__(self, parent = None):
-        QtGui.QDialog.__init__(self,parent)
+        QtWidgets.QDialog.__init__(self,parent)
         self.ui = Ui_Dialog()
         self.ui.setupUi(self)
         self.base = ImportBase()
 
         self.ui.listViewDivers.setModel(view.base.getMiscsQtModel())
-        self.ui.comboBoxType.addItem(self.trUtf8("Epice"))
-        self.ui.comboBoxType.addItem(self.trUtf8("Clarifiant"))
-        self.ui.comboBoxType.addItem(self.trUtf8("Traitement Eau"))
-        self.ui.comboBoxType.addItem(self.trUtf8("Herbe"))
-        self.ui.comboBoxType.addItem(self.trUtf8("Arôme"))
-        self.ui.comboBoxType.addItem(self.trUtf8("Autre"))
-        
-        self.connect(self.ui.listViewDivers.selectionModel(), QtCore.SIGNAL("currentChanged(const QModelIndex &, const QModelIndex &)"), self.voir)
-        self.connect(self.ui.pushButtonNouveau, QtCore.SIGNAL("clicked()"), self.nouveau)
-        self.connect(self.ui.pushButtonEnlever, QtCore.SIGNAL("clicked()"), self.enlever)
-        self.connect(self.ui.pushButtonAjouter, QtCore.SIGNAL("clicked()"), self.ajouter)
+        self.ui.comboBoxType.addItem(self.tr("Epice"))
+        self.ui.comboBoxType.addItem(self.tr("Clarifiant"))
+        self.ui.comboBoxType.addItem(self.tr("Traitement Eau"))
+        self.ui.comboBoxType.addItem(self.tr("Herbe"))
+        self.ui.comboBoxType.addItem(self.tr("Arôme"))
+        self.ui.comboBoxType.addItem(self.tr("Autre"))
+
+        self.ui.listViewDivers.selectionModel().currentChanged.connect(self.voir)
+        self.ui.pushButtonNouveau.clicked.connect(self.nouveau)
+        self.ui.pushButtonEnlever.clicked.connect(self.enlever)
+        self.ui.pushButtonAjouter.clicked.connect(self.ajouter)
         self.ui.buttonBox.rejected.connect(self.rejected)
-        
+
         self.ui.lineEditNom.setEnabled(False)
         self.ui.comboBoxType.setEnabled(False)
         self.ui.pushButtonAjouter.setEnabled(False)
-        
-       
+
+
     def setModel(self):
-        self.ui.listViewDivers.setModel( view.base.getMiscsQtModel()) 
-        self.connect(self.ui.listViewDivers.selectionModel(), QtCore.SIGNAL("currentChanged(const QModelIndex &, const QModelIndex &)"), self.voir) 
-        
+        self.ui.listViewDivers.setModel( view.base.getMiscsQtModel())
+        self.ui.listViewDivers.selectionModel().currentChanged.connect(self.voir)
+
     def voir(self, current, previous) :
         self.ui.lineEditNom.setEnabled(True)
         self.ui.comboBoxType.setEnabled(True)
@@ -91,11 +91,11 @@ class DialogD(QtGui.QDialog):
             self.ui.comboBoxType.setCurrentIndex(5)
         else :
             self.ui.comboBoxType.setCurrentIndex(0)
-            
+
     def ajouter(self) :
         m = Misc()
         m.name = self.ui.lineEditNom.text()
-        
+
         if self.ui.comboBoxType.currentIndex() is 0 :
             m.type = 'Spice'
         elif self.ui.comboBoxType.currentIndex() is 1 :
@@ -112,21 +112,21 @@ class DialogD(QtGui.QDialog):
               m.type = 'Spice'
         ImportBase.addMisc(m)
         self.setModel()
-        
+
     def nouveau(self) :
         self.ui.lineEditNom.setEnabled(True)
         self.ui.comboBoxType.setEnabled(True)
         self.ui.pushButtonAjouter.setEnabled(True)
-        
+
         self.ui.lineEditNom.setText('')
         self.ui.comboBoxType.setCurrentIndex(0)
-        
+
     def enlever(self) :
         selection = self.ui.listViewDivers.selectionModel().selectedIndexes()
         for index in selection :
             m = index.data(view.constants.MODEL_DATA_ROLE)
             ImportBase().delMisc(m)
         self.setModel()
-        
-    def rejected(self) :     
-        self.baseChanged.emit()    
+
+    def rejected(self) :
+        self.baseChanged.emit()

@@ -25,10 +25,10 @@
 
 
 
-import PyQt4
+import PyQt5
 import sys
 import logging
-from PyQt4 import QtCore
+from PyQt5 import QtCore
 import json
 import xml.etree.ElementTree as ET
 from globals import *

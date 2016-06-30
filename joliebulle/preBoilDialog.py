@@ -23,17 +23,17 @@
 #Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 
-import PyQt4
+import PyQt5
 import sys
-from PyQt4 import QtGui
-from PyQt4 import QtCore
+from PyQt5 import QtWidgets
+from PyQt5 import QtCore
 from preboil_ui import *
 
 
 
-class DialogPreBoil(QtGui.QDialog):
+class DialogPreBoil(QtWidgets.QDialog):
     def __init__(self, parent = None):
-        QtGui.QDialog.__init__(self,parent)
+        QtWidgets.QDialog.__init__(self,parent)
         self.ui = Ui_PreEbullitionDialog()
         self.ui.setupUi(self)
 
@@ -52,4 +52,3 @@ class DialogPreBoil(QtGui.QDialog):
 	    GUS = self.recipeGu * indice
 	    SG = 1+(GUS/1000)
 	    self.ui.labelGravity.setText("%.3f" %SG)
-
