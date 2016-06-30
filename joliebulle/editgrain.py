@@ -39,7 +39,6 @@ logger = logging.getLogger(__name__)
 
 class Dialog(QtWidgets.QDialog):
     baseChanged = QtCore.pyqtSignal()
-#    currentChanged = QtCore.pyqtSignal(const QModelIndex &, const QModelIndex &)
     def __init__(self, parent = None):
         QtWidgets.QDialog.__init__(self,parent)
         self.ui = Ui_Dialog()
