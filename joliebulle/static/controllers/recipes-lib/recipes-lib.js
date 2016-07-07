@@ -181,6 +181,7 @@ recipesApp.controller('RecipeslibCtrl', ['$scope', '$http', '$filter', function 
 
     $scope.calcProfile = function (recipe) {
         recipe = translate.translate_fr(recipe);
+        console.log(recipe);
 
         if ($scope.scaleIngredients) {
             $scope.scaleRatio = recipe.volume / recipe.oldVolume;
