@@ -21,7 +21,8 @@ recipesApp.controller('RecipeslibCtrl', ['$scope', '$http', '$filter', function 
     };
 
     $scope.importRecipes = function () {
-        return JSON.parse(main.dataRecipes());
+        return JSON.parse(main.dataRecipes().replace(/\bNaN\b/g, "null"));
+//        On remplace les Nan éventuellement produits en amont non compatibles json
     };
 
     $scope.importIngredients = function () {
