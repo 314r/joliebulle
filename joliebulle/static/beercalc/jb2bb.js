@@ -55,7 +55,7 @@ var jb2bb = (function () {
 			string += "\n";
 			string += "Étapes :" + "\n";
 			recipe.mashProfile.steps.forEach(function (step) {
-				string += step.name + " : palier de type " + step.typeView + " à " + step.temp + " °C pendant " + step.time + " minutes" + "\n";
+				string += step.name + " : palier de type " + step.type + " à " + step.temp + " °C pendant " + step.time + " minutes" + "\n";
 			});
 			string += "\n";
 			string += "Rinçage : " + recipe.mashProfile.sparge + " °C \n";
