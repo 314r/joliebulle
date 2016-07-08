@@ -184,7 +184,7 @@ recipesApp.controller('RecipeslibCtrl', ['$scope', '$http', '$filter', function 
         recipe = translate.translate_fr(recipe);
         console.log(recipe);
 
-        if ($scope.scaleIngredients) {
+        if ($scope.scaleIngredients && recipe.volume.lenght !== 0) {
             $scope.scaleRatio = recipe.volume / recipe.oldVolume;
             beerCalc.scaleIngredients($scope.scaleRatio, recipe.fermentables, recipe.hops, recipe.miscs);
         } else {
