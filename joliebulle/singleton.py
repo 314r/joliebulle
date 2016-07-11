@@ -3,7 +3,7 @@
 
 
 
-#joliebulle 3.5
+#joliebulle 3.6
 #Copyright (C) 2010-2016 Pierre Tavares
 #Copyright (C) 2012-2015 joliebulle's authors
 #See AUTHORS file.

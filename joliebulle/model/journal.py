@@ -1,7 +1,7 @@
 #!/usr/bin/python3.1
 #­*­coding: utf­8 -­*­
 
-#joliebulle 3.5
+#joliebulle 3.6
 #Copyright (C) 2010-2016 Pierre Tavares
 
 
