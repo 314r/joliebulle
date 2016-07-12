@@ -18,7 +18,7 @@
 #Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 
-from PyQt4 import QtGui
+from PyQt5 import QtGui
 from base import ImportBase
 from view.yeastview import *
 

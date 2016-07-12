@@ -25,10 +25,10 @@
 
 
 
-import PyQt4
+import PyQt5
 import sys
-from PyQt4 import QtGui
-from PyQt4 import QtCore
+from PyQt5 import QtWidgets
+from PyQt5 import QtCore
 from base import *
 from globals import *
 import view.base
@@ -39,27 +39,27 @@ import xml.etree.ElementTree as ET
 from xml.dom import minidom
 
 
-class DialogL(QtGui.QDialog):
+class DialogL(QtWidgets.QDialog):
     baseChanged = QtCore.pyqtSignal()
     def __init__(self, parent = None):
-        QtGui.QDialog.__init__(self,parent)
+        QtWidgets.QDialog.__init__(self,parent)
         self.ui = Ui_Dialog()
         self.ui.setupUi(self)
         self.base = ImportBase()
-        #self.base.importBeerXML() 
-        
+        #self.base.importBeerXML()
+
         self.ui.listViewLevures.setModel( view.base.getYeastsQtModel() )
-        self.ui.comboBoxForme.addItem(self.trUtf8('Liquide'))
-        self.ui.comboBoxForme.addItem(self.trUtf8('Poudre'))
-        self.ui.comboBoxForme.addItem(self.trUtf8('Gélose'))
-        self.ui.comboBoxForme.addItem(self.trUtf8('Culture'))
-        
-        self.connect(self.ui.listViewLevures.selectionModel(), QtCore.SIGNAL("currentChanged(const QModelIndex &, const QModelIndex &)"), self.voir)  
-        self.connect(self.ui.pushButtonNouveau, QtCore.SIGNAL("clicked()"), self.nouveau)
-        self.connect(self.ui.pushButtonEnlever, QtCore.SIGNAL("clicked()"), self.enlever)
-        self.connect(self.ui.pushButtonAjouter, QtCore.SIGNAL("clicked()"), self.ajouter)
+        self.ui.comboBoxForme.addItem(self.tr('Liquide'))
+        self.ui.comboBoxForme.addItem(self.tr('Poudre'))
+        self.ui.comboBoxForme.addItem(self.tr('Gélose'))
+        self.ui.comboBoxForme.addItem(self.tr('Culture'))
+
+        self.ui.listViewLevures.selectionModel().currentChanged.connect(self.voir)
+        self.ui.pushButtonNouveau.clicked.connect(self.nouveau)
+        self.ui.pushButtonEnlever.clicked.connect(self.enlever)
+        self.ui.pushButtonAjouter.clicked.connect(self.ajouter)
         self.ui.buttonBox.rejected.connect(self.rejected)
-        
+
         self.ui.lineEditNom.setEnabled(False)
         self.ui.comboBoxForme.setEnabled(False)
         self.ui.lineEditLabo.setEnabled(False)
@@ -68,9 +68,9 @@ class DialogL(QtGui.QDialog):
         self.ui.pushButtonAjouter.setEnabled(False)
 
     def setModel(self) :
-        self.ui.listViewLevures.setModel( view.base.getYeastsQtModel() ) 
-        self.connect(self.ui.listViewLevures.selectionModel(), QtCore.SIGNAL("currentChanged(const QModelIndex &, const QModelIndex &)"), self.voir) 
-        
+        self.ui.listViewLevures.setModel( view.base.getYeastsQtModel() )
+        self.ui.listViewLevures.selectionModel().currentChanged.connect(self.voir)
+
     def voir(self, current, previous) :
         self.ui.lineEditNom.setEnabled(True)
         self.ui.comboBoxForme.setEnabled(True)
@@ -78,14 +78,14 @@ class DialogL(QtGui.QDialog):
         self.ui.lineEditID.setEnabled(True)
         self.ui.spinBoxAtten.setEnabled(True)
         self.ui.pushButtonAjouter.setEnabled(True)
-        
+
         y = current.data(view.constants.MODEL_DATA_ROLE)
 
         self.ui.lineEditNom.setText(y.name)
         self.ui.lineEditLabo.setText(y.labo)
         self.ui.lineEditID.setText(y.productId)
         self.ui.spinBoxAtten.setValue(y.attenuation)
-        
+
         if y.form == 'Liquid' :
             self.ui.comboBoxForme.setCurrentIndex(0)
         elif y.form == 'Dry' :
@@ -96,7 +96,7 @@ class DialogL(QtGui.QDialog):
             self.ui.comboBoxForme.setCurrentIndex(3)
         else :
             self.ui.comboBoxForme.setCurrentIndex(0)
-            
+
     def ajouter(self) :
         y = Yeast()
         y.name = self.ui.lineEditNom.text()
@@ -117,7 +117,7 @@ class DialogL(QtGui.QDialog):
 
         ImportBase.addYeast(y)
         self.setModel()
-        
+
     def nouveau(self) :
         self.ui.lineEditNom.setEnabled(True)
         self.ui.comboBoxForme.setEnabled(True)
@@ -125,21 +125,19 @@ class DialogL(QtGui.QDialog):
         self.ui.lineEditID.setEnabled(True)
         self.ui.spinBoxAtten.setEnabled(True)
         self.ui.pushButtonAjouter.setEnabled(True)
-        
+
         self.ui.lineEditNom.setText('')
         self.ui.lineEditLabo.setText('')
         self.ui.lineEditID.setText('')
         self.ui.comboBoxForme.setCurrentIndex(0)
         self.ui.spinBoxAtten.setValue(0)
-        
+
     def enlever(self) :
         selection = self.ui.listViewLevures.selectionModel().selectedIndexes()
         for index in selection :
             y = index.data(view.constants.MODEL_DATA_ROLE)
             ImportBase().delYeast(y)
         self.setModel()
-        
-    def rejected(self) :     
+
+    def rejected(self) :
         self.baseChanged.emit()
-        
-        

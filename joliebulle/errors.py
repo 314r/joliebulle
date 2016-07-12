@@ -10,7 +10,7 @@
 
 #This program is free software; you can redistribute it and/or
 #modify it under the terms of the GNU General Public License
-#as published by the Free Software Foundation; either version 3        
+#as published by the Free Software Foundation; either version 3
 #of the License, or (at your option) any later version.
 
 #This program is distributed in the hope that it will be useful,
@@ -29,38 +29,38 @@ import glob
 import logging
 import logging.config
 from sys import platform
-import PyQt4
+import PyQt5
 import sys
-from PyQt4 import QtGui
-from PyQt4 import QtCore
+from PyQt5 import QtWidgets
+from PyQt5 import QtCore
 
-class Errors (QtGui.QWidget) :
+class Errors (QtWidgets.QWidget) :
     def __init__(self, parent=None):
-        QtGui.QWidget.__init__(self, parent)
+        QtWidgets.QWidget.__init__(self, parent)
 
 
     def errorMashMissing(self) :
-        warning = QtGui.QMessageBox.warning(self,
-                                self.trUtf8("Fichier incompatible"),
-                                self.trUtf8("La recette ne possède pas d'information de brassage. \
+        warning = QtWidgets.QMessageBox.warning(self,
+                                self.tr("Fichier incompatible"),
+                                self.tr("La recette ne possède pas d'information de brassage. \
                                     Le mode brassage fonctionnera mal. \
                                     Vous devriez éditer la recette et définir un profil de brassage.")
                                 )
 
     def warningXml(self) :
-        warning = QtGui.QMessageBox.warning(self,
-                                self.trUtf8("Fichier incompatible"),
-                                self.trUtf8("Le fichier que vous essayez d'ouvrir n'est pas une recette ou n'est pas compatible.")
+        warning = QtWidgets.QMessageBox.warning(self,
+                                self.tr("Fichier incompatible"),
+                                self.tr("Le fichier que vous essayez d'ouvrir n'est pas une recette ou n'est pas compatible.")
                                 )
 
     def warningExistingPath(self) :
-        warning = QtGui.QMessageBox.warning(self,
-                            self.trUtf8("Recette déjà existante"),
-                            self.trUtf8("Ce nom de recette existe déjà. L'enregistrement a été annulé. Vous pouvez choisir un nouveau nom.")
+        warning = QtWidgets.QMessageBox.warning(self,
+                            self.tr("Recette déjà existante"),
+                            self.tr("Ce nom de recette existe déjà. L'enregistrement a été annulé. Vous pouvez choisir un nouveau nom.")
                             )
 
     def warningExistingFile(self):
-        warning = QtGui.QMessageBox.warning(self,
-                        self.trUtf8("Fichier existant"),
-                        self.trUtf8("Un fichier portant le même nom existe déjà dans la bibliothèque. JolieBulle a bloqué l'importation pour éviter son écrasement.")
+        warning = QtWidgets.QMessageBox.warning(self,
+                        self.tr("Fichier existant"),
+                        self.tr("Un fichier portant le même nom existe déjà dans la bibliothèque. JolieBulle a bloqué l'importation pour éviter son écrasement.")
                         )

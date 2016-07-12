@@ -23,10 +23,10 @@
 
 
 import codecs
-import PyQt4
+import PyQt5
 import sys
-from PyQt4 import QtGui
-from PyQt4 import QtCore
+from PyQt5 import QtGui
+from PyQt5 import QtCore
 
 
 class HomePage (QtCore.QObject) :

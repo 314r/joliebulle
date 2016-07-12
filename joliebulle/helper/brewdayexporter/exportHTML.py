@@ -19,7 +19,7 @@
 #Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 
-from PyQt4.QtCore import QCoreApplication
+from PyQt5.QtCore import QCoreApplication
 
 def exportHTML(data):
     resultHtml = '''
@@ -53,10 +53,10 @@ def exportHTML(data):
       font-size: 10px;
     }
     button.printButton i {
-    padding-bottom: 5px; 
+    padding-bottom: 5px;
     font-size:150%%;
     }
-    
+
     .check-button {padding-left:0;}
     .mode{margin-top:10px;margin-bottom:15px;margin-left:0px;display:inline-block;}
     .step {margin-top : 24px;}
@@ -84,7 +84,7 @@ def exportHTML(data):
     <div class="container-fluid" ng-controller="BrewdayCtrl" ng-init='init({0})'>
     ''' .format(data)
 
-        
+
     resultHtml+='''
           <div class="sidebar" ng-hide="editMode">
             <ul class="nav nav-sidebar">
@@ -100,8 +100,8 @@ def exportHTML(data):
         </div>
         <div class="col-sm-9 col-md-10 main">
 
-            '''.format(QCoreApplication.translate("Export","Retour recette", None, QCoreApplication.UnicodeUTF8))
-            
+            '''.format(QCoreApplication.translate("Export","Retour recette"))
+
     resultHtml+='''<h2>{0}</h2>
             <div class="row">
                 <div ng-show="invalidBiab==true" class="alert alert-warning col-md-4">{1}</div>
@@ -109,67 +109,65 @@ def exportHTML(data):
                             <input ng-model="brewType" value="classic" ng-change="brewTypeChanged()" type="radio" name="options" id="option1"> {2}
                             <input ng-model="brewType" value="biab" ng-change="brewTypeChanged()" type="radio" name="options" id="option2"> {3}
                             </div>
-            </div>'''.format(QCoreApplication.translate("Export","Paliers", None, QCoreApplication.UnicodeUTF8), QCoreApplication.translate("Export","Le profil de brassage doit comporter un unique palier de type infusion.", None, QCoreApplication.UnicodeUTF8),QCoreApplication.translate("Export","Brassage classique", None, QCoreApplication.UnicodeUTF8), QCoreApplication.translate("Export","Brew In A Bag", None, QCoreApplication.UnicodeUTF8))
-            
+            </div>'''.format(QCoreApplication.translate("Export","Paliers"), QCoreApplication.translate("Export","Le profil de brassage doit comporter un unique palier de type infusion."),QCoreApplication.translate("Export","Brassage classique"), QCoreApplication.translate("Export","Brew In A Bag"))
+
     resultHtml+='''<div ng-repeat = "step in steps" class="row step" ng-hide="invalidBiab==true">
                 <div class="stepName">{0}</div>
-                <p class="stepDescription">{1} {2} {3}°C, {4} {5}.</p>'''.format("{{step.name}}", "{{step.time}}", QCoreApplication.translate("Export","minutes à", None, QCoreApplication.UnicodeUTF8), "{{step.temp}}", QCoreApplication.translate("Export","palier de type", None, QCoreApplication.UnicodeUTF8), "{{step.type}}")
+                <p class="stepDescription">{1} {2} {3}°C, {4} {5}.</p>'''.format("{{step.name}}", "{{step.time}}", QCoreApplication.translate("Export","minutes à"), "{{step.temp}}", QCoreApplication.translate("Export","palier de type"), "{{step.type}}")
 
     resultHtml+='''<form class="form-inline formStep" role="form">
                     <div class="input-group addedWater col-sm-7 col-md-3" ng-hide="step.type=='Temperature' || brewType=='biab'">
                       <span class="input-group-addon">{0}</span>
                       <input type="number" class="form-control" ng-model="step.waterVol" ng-change="volChanged($index)">
                         <span class="input-group-addon">L</span>
-                    </div>'''.format(QCoreApplication.translate("Export","Eau ajoutée", None, QCoreApplication.UnicodeUTF8),)
+                    </div>'''.format(QCoreApplication.translate("Export","Eau ajoutée"),)
 
     resultHtml+='''<div class="input-group col-sm-7 col-md-3" ng-hide="step.type=='Temperature' || brewType=='biab'">
                       <span class="input-group-addon">{0}</span>
                       <input type="number" class="form-control" ng-model="step.waterTemp" ng-change="tempChanged($index)" >
                       <span class="input-group-addon">°C</span>
-                    </div>'''.format(QCoreApplication.translate("Export","Temp. eau", None, QCoreApplication.UnicodeUTF8),)
+                    </div>'''.format(QCoreApplication.translate("Export","Temp. eau"),)
 
     resultHtml+='''<div class="input-group col-sm-7 col-md-3" ng-hide="step.type=='Temperature' || brewType=='biab'">
                       <span class="input-group-addon">{0}</span>
                       <input type="number" step="0.1" class="form-control" ng-model="step.ratio" ng-change="ratioChanged($index)" >
                     </div>
-                </form>'''.format(QCoreApplication.translate("Export","Ratio", None, QCoreApplication.UnicodeUTF8),)
-                
+                </form>'''.format(QCoreApplication.translate("Export","Ratio"),)
+
     resultHtml+='''<div class="col-md-3 col-sm-7 addedWater biab" ng-hide="step.type=='Temperature' || brewType=='classic'">Eau ajoutée : <span class="value">{0} L</span></div>
                 <div class="col-md-3 col-sm-7 biab" ng-hide="step.type=='Temperature' || brewType=='classic'">Temp. eau : <span class="value">{1}°C</span></div>
                 <div class="col-md-3 col-sm-7 biab" ng-hide="step.type=='Temperature' || brewType=='classic'">Ratio : <span class="value">{2}</span></div>
             </div>'''.format("{{step.waterVol.toFixed(1)}}", "{{step.waterTemp.toFixed(1)}}","{{step.ratio.toFixed(1)}}" )
-        
+
     resultHtml+='''<div class="sparge row">
                 <h2>{0}</h2>
                 <p ng-hide="brewType=='biab'">{1} : {2} L</p>
                 <p ng-hide="brewType=='biab'">{3} : {4}°C</p>
                 <div ng-hide="brewType=='classic'" class="alert alert-info col-md-4">{5}</div>
-            </div>'''.format(QCoreApplication.translate("Export","Rinçage", None, QCoreApplication.UnicodeUTF8), QCoreApplication.translate("Export","Volume d'eau de rinçage", None, QCoreApplication.UnicodeUTF8), "{{spargeVol().toFixed(1)}}", QCoreApplication.translate("Export","Température de rinçage", None, QCoreApplication.UnicodeUTF8),"{{data.mashProfile.sparge}}", QCoreApplication.translate("Export","Pas de rinçage en BIAB.", None, QCoreApplication.UnicodeUTF8))
+            </div>'''.format(QCoreApplication.translate("Export","Rinçage"), QCoreApplication.translate("Export","Volume d'eau de rinçage"), "{{spargeVol().toFixed(1)}}", QCoreApplication.translate("Export","Température de rinçage"),"{{data.mashProfile.sparge}}", QCoreApplication.translate("Export","Pas de rinçage en BIAB."))
 
     resultHtml+='''<div class="volumes">
                 <h2>{0}</h2>
                 <p>{1} : {2} L</p>
                 <p>{3} : {4} L</p>
                 <p>{5} : {6} L</p>
-            </div>'''.format(QCoreApplication.translate("Export","Volumes", None, QCoreApplication.UnicodeUTF8), QCoreApplication.translate("Export","Volume de grains", None, QCoreApplication.UnicodeUTF8), "{{grainVolume().toFixed(1)}}", QCoreApplication.translate("Export","Volume de la maische à l'empâtage", None, QCoreApplication.UnicodeUTF8), "{{mashVolumeStrike().toFixed(1)}}", QCoreApplication.translate("Export","Volume de la maische au dernier palier", None, QCoreApplication.UnicodeUTF8), "{{mashVolumeLastStep().toFixed(1)}}")
+            </div>'''.format(QCoreApplication.translate("Export","Volumes"), QCoreApplication.translate("Export","Volume de grains"), "{{grainVolume().toFixed(1)}}", QCoreApplication.translate("Export","Volume de la maische à l'empâtage"), "{{mashVolumeStrike().toFixed(1)}}", QCoreApplication.translate("Export","Volume de la maische au dernier palier"), "{{mashVolumeLastStep().toFixed(1)}}")
 
     resultHtml+='''<div class="preBoil">
                 <h2>{0}</h2>
                 <p>{1} : {2} L</p>
                 <p>{3} : {4}</p>
                 <button class="btn-link check-button" type="button" ng-click="preBoilCheck()"><i class="fa fa-wrench"></i> {5}</button>
-            </div>'''.format(QCoreApplication.translate("Export","Pré-ébullition", None, QCoreApplication.UnicodeUTF8),QCoreApplication.translate("Export","Volume théorique pré-ébullition", None, QCoreApplication.UnicodeUTF8),"{{preBoilVol().toFixed(1)}}", QCoreApplication.translate("Export","Densité théorique pré-ébullition", None, QCoreApplication.UnicodeUTF8), "{{preBoilSg()}}", QCoreApplication.translate("Export","Vérifier et ajuster", None, QCoreApplication.UnicodeUTF8))
-            
-            
+            </div>'''.format(QCoreApplication.translate("Export","Pré-ébullition"),QCoreApplication.translate("Export","Volume théorique pré-ébullition"),"{{preBoilVol().toFixed(1)}}", QCoreApplication.translate("Export","Densité théorique pré-ébullition"), "{{preBoilSg()}}", QCoreApplication.translate("Export","Vérifier et ajuster"))
+
+
     resultHtml+='''</div>
 
-       
+
     <!-- Fin container     -->
     </div>
-  
+
 </body>
-</html>''' 
+</html>'''
 
     return resultHtml
-
-
