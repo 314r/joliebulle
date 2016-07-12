@@ -20,7 +20,7 @@
 #Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 
-from PyQt4.QtCore import QCoreApplication
+from PyQt5.QtCore import QCoreApplication
 
 def exportHTML(itemsList,newItem):
     resultHtml = '''
@@ -76,7 +76,7 @@ def exportHTML(itemsList,newItem):
         </div>
 
         <div class="header">
-   
+
         </div>
 
         <div class="row">
@@ -85,15 +85,15 @@ def exportHTML(itemsList,newItem):
             </div>
         </div>
 
-       
-        
+
+
         <div class="main" ng-controller="JournalCtrl" ng-init='dataJson={0};'>
-            
+
               <div class="new row row-journal" ng-init="newEntry={1}">
                 <div class="newButton">
                     <button ng-click="newEntry.editing = !newEntry.editing;newClicked('recette', 'événement')" ng-hide="newEntry.editing"><i class="fa fa-plus"> </i> {2}</button>
                 </div>
-                
+
                 <form class="form-inline new-form" role="form" ng-show="newEntry.editing">
                   <div class="form-group">
                     <input class="form-control" type="date" ng-model="newEntryDate" ng-show="newEntry.editing" />
@@ -106,13 +106,13 @@ def exportHTML(itemsList,newItem):
                   </div>
                   <button class="btn-link btn-xs" type="button" ng-click="saveNew(newEntryRecipe, newEntryDate, newEntryEvent); newEntry.editing = !newEntry.editing;" ng-show="newEntry.editing">{3}</button>
                 </form>
-              </div>''' .format(str(itemsList) , newItem, QCoreApplication.translate("Export","Ajouter une entrée", None, QCoreApplication.UnicodeUTF8),QCoreApplication.translate("Export","enregistrer", None, QCoreApplication.UnicodeUTF8))
+              </div>''' .format(str(itemsList) , newItem, QCoreApplication.translate("Export","Ajouter une entrée"),QCoreApplication.translate("Export","enregistrer"))
 
     resultHtml += '''<div class="row row-journal">
                 <div class="journal-list">
                   <div ng-repeat="entry in entries">
                     <div class = "entry">
-                      <div ng-hide="entry.editing"><span class="date">{0}</span> {1} {2}  <span class="event"> {3}</span> 
+                      <div ng-hide="entry.editing"><span class="date">{0}</span> {1} {2}  <span class="event"> {3}</span>
                       <button class="btn-link btn-xs" type="button" ng-click="edit(entry)" ng-hide="entry.editing">{4}</button>
                       <button class="btn-link btn-xs" type="button" ng-click="delete(entry)" ng-hide="entry.editing">{5}</button></div>
                       <form class="form-inline" role="form" ng-show="entry.editing">
@@ -135,10 +135,8 @@ def exportHTML(itemsList,newItem):
     <!-- Fin container     -->
     </div>
 
-</script>    
+</script>
 </body>
-</html>''' .format("{{entry.date | date:'dd/MM/yy'}}", "{{entry.recipe}}",QCoreApplication.translate("Export","a été marquée comme", None, QCoreApplication.UnicodeUTF8), "{{entry.event}}", QCoreApplication.translate("Export","modifier", None, QCoreApplication.UnicodeUTF8), QCoreApplication.translate("Export","supprimer", None, QCoreApplication.UnicodeUTF8), QCoreApplication.translate("Export","enregistrer", None, QCoreApplication.UnicodeUTF8) )
+</html>''' .format("{{entry.date | date:'dd/MM/yy'}}", "{{entry.recipe}}",QCoreApplication.translate("Export","a été marquée comme"), "{{entry.event}}", QCoreApplication.translate("Export","modifier"), QCoreApplication.translate("Export","supprimer"), QCoreApplication.translate("Export","enregistrer") )
 
     return resultHtml
-
-

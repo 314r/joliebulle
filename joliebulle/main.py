@@ -8,7 +8,7 @@
 
 #This program is free software; you can redistribute it and/or
 #modify it under the terms of the GNU General Public License
-#as published by the Free Software Foundation; either version 3        
+#as published by the Free Software Foundation; either version 3
 #of the License, or (at your option) any later version.
 
 #This program is distributed in the hope that it will be useful,
@@ -28,17 +28,20 @@ import glob
 import logging
 import logging.config
 from sys import platform
-import PyQt4
+import PyQt5
 import sys
-from PyQt4 import QtGui
-from PyQt4 import QtCore
+from PyQt5 import QtWebKit
+from PyQt5 import QtWebKitWidgets
+from PyQt5 import QtWidgets
+from PyQt5 import QtCore
+from PyQt5 import QtPrintSupport
 from reader_ui import *
 from settings import *
 from about import *
 from base import *
 from editgrain import *
 from edithoublon import *
-from editdivers import * 
+from editdivers import *
 from editlevures import *
 from helper.toolExporterRepository import *
 from helper.libExporterRepository import *
@@ -47,7 +50,7 @@ from importIng import *
 from preBoilDialog import *
 from stepEditWindow import *
 from mashEditWindow import *
-from mashDetail import * 
+from mashDetail import *
 from exportMash import *
 from preferences import *
 from home import *
@@ -78,7 +81,7 @@ def initLogging():
     if not config.exists() :
         home.mkpath (config_dir)
     config = {
-        'version': 1,              
+        'version': 1,
         'root': {
             'handlers': ['console'],
             'level': 'DEBUG'
@@ -104,9 +107,9 @@ def initLogging():
     logging.config.dictConfig(config)
 
 
-class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
+class AppWindow(QtWidgets.QMainWindow,Ui_MainWindow):
     def __init__(self, parent = None):
-        QtGui.QMainWindow.__init__(self, parent)
+        QtWidgets.QMainWindow.__init__(self, parent)
         self.setAttribute(QtCore.Qt.WA_DeleteOnClose)
         self.setupUi(self)
 
@@ -124,45 +127,46 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         self.dlgPref = DialogPref(self)
         self.dlgStep = DialogStep(self)
         self.dlgMash = DialogMash(self)
-        
-        
+
+
 
         self.base = ImportBase()
         self.mashProfileExport = ExportMash()
-        
-        
+
+
 #        self.base.importBeerXML()
         self.s=0
         self.recipe = None
-        
+
 
         #Les connexions
-        self.connect(self.actionEnregistrer, QtCore.SIGNAL("triggered()"), self.enregistrer)
-        self.connect(self.actionQuitter, QtCore.SIGNAL("triggered()"), app, QtCore.SLOT("quit()"))
+        self.actionEnregistrer.triggered.connect(self.enregistrer)
+        self.actionQuitter.triggered.connect(app.quit)
+#        self.connect(self.actionQuitter, QtCore.SIGNAL("triggered()"), app, QtCore.SLOT("quit()"))
 
         self.actionShowJournal.triggered.connect(self.showJournal)
-        
-        
-        self.connect(self.actionEditGrains, QtCore.SIGNAL("triggered()"), self.editGrains)
-        self.connect(self.actionEditHoublons, QtCore.SIGNAL("triggered()"), self.editHoublons)
-        self.connect(self.actionEditDivers, QtCore.SIGNAL("triggered()"), self.editDivers)
-        self.connect(self.actionEditLevures, QtCore.SIGNAL("triggered()"), self.editLevures)
-        self.connect(self.actionRestaurerIngredients, QtCore.SIGNAL("triggered()"), self.restoreDataBase)
+
+
+        self.actionEditGrains.triggered.connect(self.editGrains)
+        self.actionEditHoublons.triggered.connect(self.editHoublons)
+        self.actionEditDivers.triggered.connect(self.editDivers)
+        self.actionEditLevures.triggered.connect(self.editLevures)
+        self.actionRestaurerIngredients.triggered.connect(self.restoreDataBase)
         self.actionImportIng.triggered.connect(self.importIng)
         self.actionManageProfiles.triggered.connect(self.seeMash)
-        
-        self.connect(self.actionAbout, QtCore.SIGNAL("triggered()"), self.about)
 
-        self.connect(self.actionAllTools, QtCore.SIGNAL("triggered()"), self.showTools)
+        self.actionAbout.triggered.connect(self.about)
 
-        self.connect(self.actionPreferences, QtCore.SIGNAL("triggered()"), self.dialogPreferences)
-        
-        
-        
+        self.actionAllTools.triggered.connect(self.showTools)
+
+        self.actionPreferences.triggered.connect(self.dialogPreferences)
+
+
+
         #######################################################################################################
         # Profil de brassage       #########################################################################################################
-        
-        
+
+
         self.listWidgetSteps.itemSelectionChanged.connect (self.stepDetails)
         self.listWidgetMashProfiles.itemSelectionChanged.connect (self.mashClicked)
         self.buttonBoxMashDetails.rejected.connect(self.mashRejected)
@@ -176,20 +180,20 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         self.pushButtonNewProfile.clicked.connect(self.addMash)
         self.pushButtonRemoveProfile.clicked.connect(self.removeMash)
         self.pushButtonSaveProfile.clicked.connect(self.saveProfile)
-   
+
         #La bibliotheque
         ###################################################################################################################
         ###################################################################################################################
 
 
         # self.listdir(recettes_dir)
-        self.showLib() 
+        self.showLib()
 
 ###################################################################################################
 ######## gestion des arguments au lancement du programme  #########################################
 
 
-        argumentsList=QtGui.QApplication.arguments()
+        argumentsList=QtWidgets.QApplication.arguments()
         if len(argumentsList) > 1 :
             logger.debug("la liste d'arguments: %s",argumentsList)
             logger.debug("le chemin: %s",argumentsList[1])
@@ -199,13 +203,13 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
                 recipePath= argumentsList[1]
                 for part in argumentsList[2:] :
                     recipePath= recipePath +" " + part
-                
+
                 self.openRecipeFile(recipePath)
             except :
                 pass
         else:
             pass
-            
+
 ########################################################################################################################
 ####################################################################################################################
 # le signal émit à la fermeture de la fenêtre de préférences
@@ -220,7 +224,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
     def loadJournal(self):
         self.journal=Journal()
         self.journal.loadJournal()
-        # self.actionEditJournal.setEnabled(True)     
+        # self.actionEditJournal.setEnabled(True)
 
     @QtCore.pyqtSlot()
     def showJournal(self,entry=" '' ") :
@@ -246,7 +250,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
 
     @QtCore.pyqtSlot(str)
     def dumpJournal(self,journalJson) :
-        journalJson= '{"name":"journal","items": %s }' %journalJson 
+        journalJson= '{"name":"journal","items": %s }' %journalJson
         d=json.loads(journalJson)
         with open(journal_file, mode="w", encoding="utf-8") as f :
             json.dump(d,f,indent=2)
@@ -270,28 +274,28 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         self.webViewBiblio.setHtml(LibExporterRepository['html'](), baseUrl)
         self.webViewBiblio.page().mainFrame().addToJavaScriptWindowObject("main", self)
         self.webViewBiblio.page().settings().setAttribute(QtWebKit.QWebSettings.DeveloperExtrasEnabled, True)
-        self.webViewBiblio.page().action(QtWebKit.QWebPage.Reload).setVisible(False)
+        self.webViewBiblio.page().action(QtWebKitWidgets.QWebPage.Reload).setVisible(False)
 
 
     @QtCore.pyqtSlot(str)
     def deleteLib(self,path) :
-        confirmation = QtGui.QMessageBox.question(self,
-                            self.trUtf8("Supprimer"),
-                            self.trUtf8("La recette sera définitivement supprimée <br/> Continuer ?"),
-                            QtGui.QMessageBox.Yes | QtGui.QMessageBox.No)
-        if (confirmation == QtGui.QMessageBox.Yes):
+        confirmation = QtWidgets.QMessageBox.question(self,
+                            self.tr("Supprimer"),
+                            self.tr("La recette sera définitivement supprimée <br/> Continuer ?"),
+                            QtWidgets.QMessageBox.Yes | QtWidgets.QMessageBox.No)
+        if (confirmation == QtWidgets.QMessageBox.Yes):
             os.remove(path)
             self.listdir(recettes_dir)
             self.showLib()
         else :
             self.showLib()
-        
 
-    @QtCore.pyqtSlot()   
-    def backWebViewBiblio(self) : 
+
+    @QtCore.pyqtSlot()
+    def backWebViewBiblio(self) :
         self.stackedWidget.setCurrentIndex(0)
 
-    
+
     @QtCore.pyqtSlot(str, str)
     def saveRecipe(self, recipe, path) :
         # if not path :
@@ -307,14 +311,14 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
                 recipeFile.close()
         else:
             # TODO : Prévenir l'utilisateur en cas d'échec de l'enregistrement
-            pass  
+            pass
 
     @QtCore.pyqtSlot(result=str)
     def createPath(self) :
         path = recettes_dir + "/" + str(int(time.time()*10)) + ".xml"
         print (path)
         return path
-    
+
     @QtCore.pyqtSlot()
     def resetLock(self):
         self.brewdayLock = 0;
@@ -327,20 +331,20 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
 
     @QtCore.pyqtSlot(str)
     def showBrewdayMode(self, data):
-        if self.brewdayLock == 0 : 
+        if self.brewdayLock == 0 :
             self.stackedWidget.setCurrentIndex(1)
-            self.brewdayLock = 1 
+            self.brewdayLock = 1
             data = data.replace("'","&#39;")
             pyDir = os.path.abspath(os.path.dirname(__file__))
             baseUrl = QtCore.QUrl.fromLocalFile(os.path.join(pyDir, "static/"))
             self.webViewBrewday.setHtml(BrewdayExporterRepository['html'](data), baseUrl)
             self.webViewBrewday.page().mainFrame().addToJavaScriptWindowObject("main", self)
             self.webViewBrewday.page().settings().setAttribute(QtWebKit.QWebSettings.DeveloperExtrasEnabled, True)
-            self.webViewBrewday.page().action(QtWebKit.QWebPage.Reload).setVisible(False)
+            self.webViewBrewday.page().action(QtWebKitWidgets.QWebPage.Reload).setVisible(False)
         else :
             self.stackedWidget.setCurrentIndex(1)
-            
-    
+
+
 
 
 
@@ -359,7 +363,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         # self.webInspector.setPage(self.webViewBiblio.page())
         # self.webInspector.setVisible(True)
         # self.verticalLayout_13.addWidget(self.webInspector)
-        
+
 
 
     @QtCore.pyqtSlot(result=str)
@@ -378,7 +382,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
     def dataIngredients(self) :
         return ImportBase().exportjson()
 
-    
+
     @QtCore.pyqtSlot(result=str)
     def dataPref(self) :
         dic = {}
@@ -399,15 +403,15 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
 
 
 
-        
-    #Une fonction qui gère l'aperçu des couleurs. 
+
+    #Une fonction qui gère l'aperçu des couleurs.
     #Contient un tupple avec plusieurs références de couleurs, classées par rang selon la valeur SRM.
     #################################################################################################
     # def colorPreview (self) :
     #     self.colorTuppleSrm = ('FFE699', 'FFD878', 'FFCA5A', 'FFBF42', 'FBB123', 'F8A600', 'F39C00', 'EA8F00', 'E58500', 'DE7C00', 'D77200', 'CF6900', 'CB6200', 'C35900','BB5100', 'B54C00', 'B04500', 'A63E00', 'A13700', '9B3200', '952D00', '8E2900', '882300', '821E00', '7B1A00', '771900', '701400', '6A0E00', '660D00','5E0B00','5A0A02','600903', '520907', '4C0505', '470606', '440607', '3F0708', '3B0607', '3A070B', '36080A')
-        
+
     #     colorRef= round(self.recipe.compute_EBC()/1.97)
-        
+
     #     if colorRef >= 30 :
     #         color = "#" + self.colorTuppleSrm[30]
     #     elif colorRef <= 1 :
@@ -415,8 +419,8 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
     #     else :
     #         color = "#" + self.colorTuppleSrm[colorRef-1]
     #     self.widgetColor.setStyleSheet("background-color :" + color)
-        
-        
+
+
 
     def listdir(self, rootdir) :
         self.recipesSummary="["
@@ -438,15 +442,15 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
                     self.recipesSummary += ","
             except :
                 logger.debug("le fichier %s n'est pas une recette" %(recipe))
-                
+
         self.recipesSummary += "]"
         logger.debug("%s fichiers détectés" %(len(filenameList)))
 
 
 
-        
 
-                
+
+
     def jsonRecipeLib(self,recipe) :
         self.s = recipe
         self.recipe = Recipe.parse(recipe)
@@ -455,8 +459,8 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         return data
 
 
-                  
-    def initRep(self) :   
+
+    def initRep(self) :
         home = QtCore.QDir(home_dir)
         config = QtCore.QDir(config_dir)
         logger.debug (config)
@@ -485,7 +489,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
             journal.copy(journal_root, journal_file)
         else :
             pass
-        
+
         # on configure des valeurs par défaut
         if not settings.conf.contains("BoilOffRate") :
             settings.conf.setValue("BoilOffRate", 10)
@@ -509,83 +513,83 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         self.initRep()
         self.listdir(recettes_dir)
         self.showLib()
-  
 
-    @QtCore.pyqtSlot()    
+
+    @QtCore.pyqtSlot()
     def switchToLibrary(self) :
-        self.stackedWidget.setCurrentIndex(0)        
+        self.stackedWidget.setCurrentIndex(0)
         # self.viewRecipeLib(self.s)
-        
+
     def switchToMash(self) :
-        self.stackedWidget.setCurrentIndex(2)        
+        self.stackedWidget.setCurrentIndex(2)
 
 
     def restoreDataBase(self) :
         home = QtCore.QDir(home_dir)
         config = QtCore.QDir(config_dir)
         database = QtCore.QFile(database_file)
-        confirmation = QtGui.QMessageBox.question(self,
-                                    self.trUtf8("Remplacer la base ?"),
-                                    self.trUtf8("La base des ingrédients actuelle va être effacée et remplacée par la base originale. Toutes vos modifications vont être effacées. Un redémarrage de l'application sera nécessaire.<br> Continuer ?"),
-                                    QtGui.QMessageBox.Yes | QtGui.QMessageBox.No)
-        if (confirmation == QtGui.QMessageBox.Yes):
+        confirmation = QtWidgets.QMessageBox.question(self,
+                                    self.tr("Remplacer la base ?"),
+                                    self.tr("La base des ingrédients actuelle va être effacée et remplacée par la base originale. Toutes vos modifications vont être effacées. Un redémarrage de l'application sera nécessaire.<br> Continuer ?"),
+                                    QtWidgets.QMessageBox.Yes | QtWidgets.QMessageBox.No)
+        if (confirmation == QtWidgets.QMessageBox.Yes):
             database.remove(database_file)
             database.copy(database_root, database_file)
         else :
-            
+
             pass
-         
-                
+
+
     def editGrains(self) :
         self.dlgEditG.setModal(True)
         self.dlgEditG.setModel()
         self.dlgEditG.show()
-        
+
     def editHoublons(self) :
         self.dlgEditH.setModal(True)
         self.dlgEditH.setModel()
         self.dlgEditH.show()
-        
+
     def editDivers(self) :
         self.dlgEditD.setModal(True)
         self.dlgEditD.setModel()
-        self.dlgEditD.show()   
-    
+        self.dlgEditD.show()
+
     def editLevures(self) :
         self.dlgEditY.setModal(True)
         self.dlgEditY.setModel()
-        self.dlgEditY.show()     
+        self.dlgEditY.show()
 
-    @QtCore.pyqtSlot(float, float, float, float)  
+    @QtCore.pyqtSlot(float, float, float, float)
     def preBoilCheck(self,volPreBoil,preBoilSg,GU,volume) :
         self.dlgPreBoil = DialogPreBoil(self)
         self.dlgPreBoil.setData(volPreBoil,preBoilSg,GU,volume)
         self.dlgPreBoil.setModal(True)
         self.dlgPreBoil.show()
 
-        
+
     def dialogPreferences (self) :
         self.dlgPref.setModal(True)
         self.dlgPref.show()
-    
-            
-   
+
+
+
 
     def importBeerXML(self) :
         fichierBeerXML = self.s
         try:
-            self.recipe = Recipe.parse(fichierBeerXML)       
+            self.recipe = Recipe.parse(fichierBeerXML)
             self.currentRecipeMash = self.recipe.mash
 
         except :
             errors = Errors()
             errors.warningXml()
-               
 
-    def about(self) : 
+
+    def about(self) :
         about = DialogAbout(self)
         about.show()
-                                        
+
 
     def enregistrerRecette(self, destination):
         recipeFile = QtCore.QFile(destination)
@@ -598,13 +602,13 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
                 recipeFile.close()
         else:
             # TODO : Prévenir l'utilisateur en cas d'échec de l'enregistrement
-            pass  
-        self.fileSaved = True    
+            pass
+        self.fileSaved = True
 
-               
+
     def enregistrer (self) :
         if self.recipe.name != self.lineEditRecette.text() :
-            self.nameChanged = True       
+            self.nameChanged = True
         else :
             self.nameChanged = False
 
@@ -624,12 +628,12 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         else :
             self.enregistrerRecette(self.s)
 
-        
-        
-  
+
+
+
     def enregistrerSous (self) :
         self.s = QtGui.QFileDialog.getSaveFileName (self,
-                                                    self.trUtf8("Enregistrer dans un fichier"),
+                                                    self.tr("Enregistrer dans un fichier"),
                                                     recettes_dir + "/" + self.recipe.name.replace('/', ' ') + ".xml",
                                                     "BeerXML (*.xml)")
         self.enregistrerRecette(self.s)
@@ -641,7 +645,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
 
     def importIng(self):
         s = QtGui.QFileDialog.getOpenFileName(self,
-            self.trUtf8("Ouvrir un fichier"),
+            self.tr("Ouvrir un fichier"),
             home_dir,
             )
         if not s :
@@ -649,7 +653,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         else :
             self.importIngList = ImportIng()
             self.importIngList.parseFile(s)
-            
+
 
     def mashComboChanged (self) :
         #on remet le verrou à 0, il va falloir recalculer en repassant en brewday mode
@@ -662,7 +666,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         if i == -1 :
             self.currentMash = Mash()
         self.recipe.mash = self.currentMash
-        
+
     def seeMash(self) :
         self.switchToMash()
         index = self.listWidgetMashProfiles.currentRow()
@@ -681,12 +685,12 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         self.listWidgetSteps.setCurrentRow(i)
 
     def popMashList(self) :
-        self.listWidgetMashProfiles.clear() 
+        self.listWidgetMashProfiles.clear()
         for mash in ImportBase().listeMashes :
-           self.listWidgetMashProfiles.addItem(mash.name)    
-            
+           self.listWidgetMashProfiles.addItem(mash.name)
+
     def mashClicked(self) :
-        self.listWidgetSteps.clear()         
+        self.listWidgetSteps.clear()
         index = self.listWidgetMashProfiles.currentRow()
         if index > -1:
             mash = ImportBase().listeMashes[index]
@@ -709,15 +713,15 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
     #        print(self.dicMashDetail)
             self.pushButtonMashEdit.setEnabled(True)
             self.pushButtonRemoveProfile.setEnabled(True)
-            
+
     def mashDetails(self) :
         self.dlgMashDetail = DialogMashDetail(self)
         self.dlgMashDetail.setModal(True)
         self.dlgMashDetail.show()
         self.dlgMashDetail.setFields(self.currentMash)
-        self.dlgMashDetail.setAttribute( QtCore.Qt.WA_DeleteOnClose, True ) 
+        self.dlgMashDetail.setAttribute( QtCore.Qt.WA_DeleteOnClose, True )
 
-        
+
     def stepDetails(self) :
         index = self.listWidgetMashProfiles.currentRow()
         if index > -1:
@@ -735,8 +739,8 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
                     self.pushButtonStepEdit.setEnabled(True)
                 except:
                     pass
-        
-        
+
+
     def stepEdit(self) :
         index = self.listWidgetMashProfiles.currentRow()
         if  index > -1:
@@ -747,7 +751,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
 
                 self.dlgStep.show()
                 self.dlgStep.fields (selected_step)
-    
+
     def stepReload(self, step) :
         index = self.listWidgetMashProfiles.currentRow()
         if index > -1:
@@ -764,7 +768,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
                 self.stepDetails()
                 self.listWidgetMashProfiles.setCurrentRow(index)
                 self.listWidgetSteps.setCurrentRow(i)
-        
+
     def removeStep(self) :
         index = self.listWidgetMashProfiles.currentRow()
         if index > -1:
@@ -778,7 +782,7 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
                 #On force la sélection sur la ligne précédente
                 self.listWidgetSteps.setCurrentRow(i-1)
                 self.seeMash()
-        
+
     def addStep(self) :
         index = self.listWidgetMashProfiles.currentRow()
         selected_mash = ImportBase().listeMashes[index]
@@ -793,17 +797,17 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
 
         self.listWidgetMashProfiles.setCurrentRow(index)
         self.seeMash()
-        self.stepDetails()      
+        self.stepDetails()
         self.listWidgetMashProfiles.setCurrentRow(index)
         # self.listWidgetSteps.setCurrentRow(i-1)
         # self.stepEdit()
-        
+
     def mashEdit(self) :
         index = self.listWidgetMashProfiles.currentRow()
         selected_mash = ImportBase().listeMashes[index]
         self.dlgMash.show()
         self.dlgMash.fields(selected_mash)
-        
+
     def mashReload(self,mash) :
         #on remet le verrou à 0, il va falloir recalculer en repassant en brewday mode
         self.brewdayLock = 0
@@ -833,24 +837,24 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
         ImportBase().listeMashes.append(new_mash)
         self.seeMash()
         self.listWidgetMashProfiles.setCurrentRow(len(ImportBase().listeMashes)-1)
-        
+
     def removeMash(self) :
         i = self.listWidgetMashProfiles.currentRow()
         del ImportBase().listeMashes[i]
         self.seeMash()
-        self.listWidgetSteps.clear() 
-        
+        self.listWidgetSteps.clear()
+
     def mashRejected (self) :
         self.showLib()
 
-    def saveProfile(self) : 
+    def saveProfile(self) :
         self.mashProfileExport.export(ImportBase().listeMashes)
         self.mashProfileExport.enregistrer(mash_file)
-               
-    @QtCore.pyqtSlot()    
+
+    @QtCore.pyqtSlot()
     def printRecipe (self) :
-        printer=QtGui.QPrinter()
-        dialog = QtGui.QPrintDialog(printer)
+        printer=QtPrintSupport.QPrinter()
+        dialog = QtPrintSupport.QPrintDialog(printer)
         dialog.setModal(True)
         dialog.setWindowTitle("Print Document" )
         if dialog.exec_() == True:
@@ -859,19 +863,19 @@ class AppWindow(QtGui.QMainWindow,Ui_MainWindow):
             # stringHtml=self.recipe.export("print")
             # document.setHtml(stringHtml)
             # document.print(printer)
-    
+
 
     @QtCore.pyqtSlot()
     def printBrewday(self) :
-        printer=QtGui.QPrinter()
-        dialog = QtGui.QPrintDialog(printer)
+        printer=QtPrintSupport.QPrinter()
+        dialog = QtPrintSupport.QPrintDialog(printer)
         dialog.setModal(True)
         dialog.setWindowTitle("Print Document" )
         if dialog.exec_() == True:
             self.webViewBrewday.print(printer)
             # document = self.webViewBrewday.page().currentFrame().toHtml()
             # document.print(printer)
-        
+
 
 
 if __name__ == "__main__":
@@ -881,9 +885,9 @@ if __name__ == "__main__":
     logger = logging.getLogger(__name__)
 
     logger.debug("Initializing UI");
-    QtCore.QTextCodec.setCodecForCStrings(QtCore.QTextCodec.codecForName("utf-8"))
-    app = QtGui.QApplication(sys.argv)
-    
+    QtCore.QTextCodec.setCodecForLocale(QtCore.QTextCodec.codecForName("utf-8"))
+    app = QtWidgets.QApplication(sys.argv)
+
     locale = QtCore.QLocale.system().name()
     translator=QtCore.QTranslator ()
     translator.load('joliebulle_' + locale)
@@ -901,5 +905,3 @@ if __name__ == "__main__":
     logger.debug("UI initialized");
 
     app.exec_()
-
-

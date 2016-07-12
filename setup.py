@@ -21,7 +21,7 @@ setup_info = dict(
                 CFBundleIdentifier         = "com.joliebulle",
             ),
             argv_emulation=True,
-            includes=['sip', 'PyQt4','PyQt4.QtNetwork'],
+            includes=['sip', 'PyQt5','PyQt5.QtNetwork'],
         ),
     ),
     description = "JolieBulle, logiciel de brassage libre",

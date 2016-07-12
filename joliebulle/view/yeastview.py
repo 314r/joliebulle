@@ -18,8 +18,8 @@
 #Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 
-from PyQt4 import QtCore
-from PyQt4 import QtGui
+from PyQt5 import QtCore
+from PyQt5 import QtGui
 import model.constants
 import view.constants
 
@@ -27,10 +27,10 @@ class YeastViewLabels(QtCore.QObject):
     def __init__(self):
         QtCore.QObject.__init__(self)
         self.formLabels = {
-            model.constants.YEAST_FORM_LIQUID : self.trUtf8('Liquide'),
-            model.constants.YEAST_FORM_DRY : self.trUtf8('Sèche'),
-            model.constants.YEAST_FORM_SLANT : self.trUtf8('Gélose'),
-            model.constants.YEAST_FORM_CULTURE : self.trUtf8('Culture')
+            model.constants.YEAST_FORM_LIQUID : self.tr('Liquide'),
+            model.constants.YEAST_FORM_DRY : self.tr('Sèche'),
+            model.constants.YEAST_FORM_SLANT : self.tr('Gélose'),
+            model.constants.YEAST_FORM_CULTURE : self.tr('Culture')
         }
 
 
@@ -42,7 +42,7 @@ class YeastView(QtCore.QObject):
 
     def yeastFormDisplay(self) :
         try:
-            return self.yeastLabels.formLabels[self.model.form] 
+            return self.yeastLabels.formLabels[self.model.form]
         except KeyError :
             return '?yeastFormDisplay?'
 
