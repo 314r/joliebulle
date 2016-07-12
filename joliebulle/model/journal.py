@@ -33,11 +33,11 @@ class Journal :
         self.text=""
 
         self.eventsLabels = {
-            'brewed': QCoreApplication.translate("Export", "brassée", None, QCoreApplication.UnicodeUTF8),
-            'ferment': QCoreApplication.translate("Export", "mise en fermentation", None, QCoreApplication.UnicodeUTF8),
-            'dryhop': QCoreApplication.translate("Export", "dryhopée", None, QCoreApplication.UnicodeUTF8),
-            'bottled': QCoreApplication.translate("Export", "embouteillée", None, QCoreApplication.UnicodeUTF8),
-            'maturation': QCoreApplication.translate("Export", "mise en garde", None, QCoreApplication.UnicodeUTF8)
+            'brewed': "brassée",
+            'ferment': "mise en fermentation",
+            'dryhop': "dryhopée",
+            'bottled': "embouteillée",
+            'maturation': "mise en garde", 
         }
 
     @staticmethod
