@@ -644,7 +644,7 @@ class AppWindow(QtWidgets.QMainWindow,Ui_MainWindow):
 
 
     def importIng(self):
-        s = QtGui.QFileDialog.getOpenFileName(self,
+        s = QtWidgets.QFileDialog.getOpenFileName(self,
             self.tr("Ouvrir un fichier"),
             home_dir,
             )
