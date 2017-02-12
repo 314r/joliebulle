@@ -83,7 +83,7 @@ def initLogging():
     config = {
         'version': 1,
         'root': {
-            'handlers': ['console'],
+            'handlers': ['console', 'file'],
             'level': 'DEBUG'
         },
         'disable_existing_loggers': False,
@@ -102,6 +102,13 @@ def initLogging():
                 'stream':'ext://sys.stdout',
                 'formatter':'standard'
             },
+            'file': {
+                'class':'logging.FileHandler',
+                'level':'INFO',
+                'formatter':'detailed',
+                'mode':'a',
+                'filename':os.path.join(config_dir,'joliebulle.log')
+            }
         }
     }
     logging.config.dictConfig(config)
@@ -889,6 +896,7 @@ if __name__ == "__main__":
     app = QtWidgets.QApplication(sys.argv)
 
     locale = QtCore.QLocale.system().name()
+    logger.info("Locale courante: %s", locale)
     translator=QtCore.QTranslator ()
     translator.load('joliebulle_' + locale)
     app.installTranslator(translator)
