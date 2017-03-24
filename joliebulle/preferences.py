@@ -70,10 +70,9 @@ class DialogPref(QtWidgets.QDialog):
         self.ui.buttonBox.rejected.connect(self.rejected)
 
     def changePushed (self) :
-        self.d = QtGui.QFileDialog.getExistingDirectory(self,
-            self.tr("Choisir un dossier"),
-            home_dir,
-            )
+        self.d = PyQt5.QtWidgets.QFileDialog.getExistingDirectory(self,
+                                                                  self.tr("Choisir un dossier"),
+                                                                  home_dir)
         if not self.d :
             pass
         else :
