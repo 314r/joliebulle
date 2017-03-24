@@ -1,5 +1,15 @@
 /*jslint nomen: true */
 /*global  DOMParser*/
+
+function htmlEscape(str) {
+    return str
+        .replace(/&/g, '&amp;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#39;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;');
+}
+
 var jb2xml = (function () {
     "use strict";
     var parser, string, xml;
@@ -98,7 +108,7 @@ var jb2xml = (function () {
             });
             string += "</MASH_STEPS>";
             string += "</MASH>";
-            string += "<NOTES>" + recipe.notes + "</NOTES>";
+            string += "<NOTES>" + htmlEscape(recipe.notes) + "</NOTES>";
             string += "</RECIPE></RECIPES>";
 
             xml = parser.parseFromString(string, "application/xml");
