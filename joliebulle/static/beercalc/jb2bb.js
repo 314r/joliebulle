@@ -29,8 +29,12 @@ var jb2bb = (function () {
 
 			string += "[b]Houblons \n";
 			string += "------------------------ [/b] \n";
-			recipe.hops.forEach(function (hop) {
-				string += hop.amount + " g " + hop.name + " (α" + hop.alpha + "%, " + hop.formView + ") @ " + hop.time + " min (" + hop.useView + ")" + "\n";
+		        recipe.hops.forEach(function (hop) {
+                            var unit_time = "min";
+                            if (hop.use === 'Dry Hop') {
+                                unit_time = "jours";
+                            }
+			    string += hop.amount + " g " + hop.name + " (α" + hop.alpha + "%, " + hop.formView + ") @ " + hop.time + " " + unit_time + " (" + hop.useView + ")" + "\n";
 			});
 			string += "\n";
 
