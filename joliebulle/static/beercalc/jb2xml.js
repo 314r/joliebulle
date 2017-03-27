@@ -47,6 +47,7 @@ var jb2xml = (function () {
                 }
                 if (hop.use === 'Dry Hop') {
                     string += "<TIME>" + hop.time*24*60 + "</TIME>";
+                    string += "<DISPLAY_TIME>" + hop.time + " days</DISPLAY_TIME>";
                 } else {
                     string += "<TIME>" + hop.time + "</TIME>";
                 }
