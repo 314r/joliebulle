@@ -204,14 +204,14 @@
 
                   <tbody>
                     <tr ng-repeat="hop in currentRecipe.hops" ng-click="editHop($index)">
-                      <td>{{hop.name}} 
+                      <td>{{hop.name}}
                           <span class="bulle" ng-hide="editMode"><ul>
                             <li>Alpha : {{hop.alpha | number : 1}} %</li>
                             <li>Contribution : {{hop.ibuPart | number : 1}} IBU</li>
                           </ul></span>
                           <span class="clickEdit" ng-show="editMode">Cliquer pour éditer</span></td>
                       <td>{{hop.amount | number : 0}} g <span ng-show="editMode" class="amountRatio">   ({{hop.ibuPart | number : 1}} IBU)</span></td>
-                      <td>{{hop.useView}} - {{hop.time}} min</td>
+                      <td>{{hop.useView}} - {{hop.time}} {{hop.useView=='Dry Hop' ? 'jours' : 'min'}}</td>
                       <td ng-show="editMode"><button class="btn-link btn-xs table-button removeIngredient" type="button" ng-show="editMode" ng-click="removeHop($index)"><i class="fa fa-times"></i></button></td>
                     </tr>
                   </tbody>
@@ -372,7 +372,7 @@
 
 
           <div>
-            <label >Durée (min)</label>
+            <label>Durée ({{currentHop.useView=='Dry Hop' ? 'jours' : 'min'}})</label>
             <input type="number" ng-model="currentHop.time" ng-change="calcProfile(currentRecipe)">
           </div>
           <div>
