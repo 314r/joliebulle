@@ -408,6 +408,7 @@ recipesApp.controller('RecipeslibCtrl', ['$scope', '$http', '$filter', function 
 
     };
 
-
-
+    $scope.exportRecipeToHTMLLegacy = function (event) {
+        main.exportRecipeToHTMLLegacy($scope.currentRecipe.path);
+    };
 }]);

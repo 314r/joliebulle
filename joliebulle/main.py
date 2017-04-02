@@ -43,7 +43,6 @@ from editgrain import *
 from edithoublon import *
 from editdivers import *
 from editlevures import *
-from helper.toolExporterRepository import *
 from helper.libExporterRepository import *
 from helper.brewdayExporterRepository import *
 from importIng import *
@@ -146,7 +145,6 @@ class AppWindow(QtWidgets.QMainWindow,Ui_MainWindow):
 
         self.actionShowJournal.triggered.connect(self.showJournal)
 
-
         self.actionEditGrains.triggered.connect(self.editGrains)
         self.actionEditHoublons.triggered.connect(self.editHoublons)
         self.actionEditDivers.triggered.connect(self.editDivers)
@@ -161,7 +159,8 @@ class AppWindow(QtWidgets.QMainWindow,Ui_MainWindow):
 
         self.actionPreferences.triggered.connect(self.dialogPreferences)
 
-
+        # (re) Enable recipes HTML export
+        self.actionExporterHtml.setEnabled(True)
 
         #######################################################################################################
         # Profil de brassage       #########################################################################################################
@@ -184,7 +183,6 @@ class AppWindow(QtWidgets.QMainWindow,Ui_MainWindow):
         #La bibliotheque
         ###################################################################################################################
         ###################################################################################################################
-
 
         # self.listdir(recettes_dir)
         self.showLib()
@@ -350,7 +348,6 @@ class AppWindow(QtWidgets.QMainWindow,Ui_MainWindow):
 
 ###### Outils ############################################
 ##########################################################
-
     @QtCore.pyqtSlot()
     def showTools(self):
         self.stackedWidget.setCurrentIndex(0)
@@ -446,10 +443,22 @@ class AppWindow(QtWidgets.QMainWindow,Ui_MainWindow):
         self.recipesSummary += "]"
         logger.debug("%s fichiers détectés" %(len(filenameList)))
 
+    @QtCore.pyqtSlot(str)
+    def exportRecipeToHTMLLegacy(self, recipe_path):
+        export_dir= settings.conf.value('EXPORT_DIR')
 
-
-
-
+        try:
+            recipe = Recipe.parse(recipe_path)
+            html_export_path = "{}/{}.html".format(export_dir, int(time.time()), 
+                                                   recipe.name)
+            html_data = recipe.export("html")
+            self.saveRecipe(html_data, html_export_path)
+        except Exception as e:
+            logger.error("Cannot convert recipe {} to HTML: {}".format(recipe.name, e))
+            warn = QtWidgets.QMessageBox.warning(self,
+                                                 'Cannot convert recipe to HTML',
+                                                 'Cannot convert recipe {} to HTML: {}'.format(recipe.name, e))
+            return
 
     def jsonRecipeLib(self,recipe) :
         self.s = recipe
@@ -503,7 +512,8 @@ class AppWindow(QtWidgets.QMainWindow,Ui_MainWindow):
             settings.conf.setValue("GrainRetention", 1)
         if not settings.conf.contains("Menus") :
             settings.conf.setValue("Menus", "button")
-
+        if not settings.conf.contains("EXPORT_DIR"):
+            settings.conf.setValue("EXPORT_DIR", "/dev/shm/")
 
     def prefReload(self) :
         if platform == 'win32':
