@@ -2121,12 +2121,39 @@
     <USE>Boil</USE>
   </HOP>
   <HOP>
+    <NAME>Motueka</NAME>
+    <VERSION>1</VERSION>
+    <AMOUNT>0.0</AMOUNT>
+    <FORM>Pellet</FORM>
+    <TIME>0.0</TIME>
+    <ALPHA>8.0</ALPHA>
+    <USE>Boil</USE>
+  </HOP>
+  <HOP>
+    <NAME>Barbe rouge</NAME>
+    <VERSION>1</VERSION>
+    <AMOUNT>0.0</AMOUNT>
+    <FORM>Pellet</FORM>
+    <TIME>0.0</TIME>
+    <ALPHA>6.6</ALPHA>
+    <USE>Boil</USE>
+  </HOP>
+  <HOP>
     <NAME>Summer</NAME>
     <VERSION>1</VERSION>
     <AMOUNT>0.0</AMOUNT>
     <FORM>Leaf</FORM>
     <TIME>0.0</TIME>
     <ALPHA>6.5</ALPHA>
+    <USE>Boil</USE>
+  </HOP>
+  <HOP>
+    <NAME>Equinox</NAME>
+    <VERSION>1</VERSION>
+    <AMOUNT>0.0</AMOUNT>
+    <FORM>Pellet</FORM>
+    <TIME>0.0</TIME>
+    <ALPHA>15.0</ALPHA>
     <USE>Boil</USE>
   </HOP>
   <HOP>
@@ -2207,6 +2234,46 @@
     <RECOMMEND_MASH />
     <ADD_AFTER_BOIL>FALSE</ADD_AFTER_BOIL>
     <COLOR>375.0</COLOR>
+  </FERMENTABLE>
+  <FERMENTABLE>
+    <NAME>Chocolate rye (malt)</NAME>
+    <VERSION>1</VERSION>
+    <AMOUNT>0.0</AMOUNT>
+    <TYPE>Grain</TYPE>
+    <YIELD>0</YIELD>
+    <RECOMMEND_MASH />
+    <ADD_AFTER_BOIL>FALSE</ADD_AFTER_BOIL>
+    <COLOR>329.9</COLOR>
+  </FERMENTABLE>
+  <FERMENTABLE>
+    <NAME>Victory malt</NAME>
+    <VERSION>1</VERSION>
+    <AMOUNT>0.0</AMOUNT>
+    <TYPE>Grain</TYPE>
+    <YIELD>75</YIELD>
+    <RECOMMEND_MASH />
+    <ADD_AFTER_BOIL>FALSE</ADD_AFTER_BOIL>
+    <COLOR>25.0</COLOR>
+  </FERMENTABLE>
+  <FERMENTABLE>
+    <NAME>Special W</NAME>
+    <VERSION>1</VERSION>
+    <AMOUNT>0.0</AMOUNT>
+    <TYPE>Grain</TYPE>
+    <YIELD>75</YIELD>
+    <RECOMMEND_MASH />
+    <ADD_AFTER_BOIL>FALSE</ADD_AFTER_BOIL>
+    <COLOR>300.0</COLOR>
+  </FERMENTABLE>
+  <FERMENTABLE>
+    <NAME>Sarrasin (Malt)</NAME>
+    <VERSION>1</VERSION>
+    <AMOUNT>0.0</AMOUNT>
+    <TYPE>Grain</TYPE>
+    <YIELD>0</YIELD>
+    <RECOMMEND_MASH />
+    <ADD_AFTER_BOIL>FALSE</ADD_AFTER_BOIL>
+    <COLOR>5.1</COLOR>
   </FERMENTABLE>
   <FERMENTABLE>
     <NAME>Froment Blond (Malt)</NAME>
