@@ -183,7 +183,10 @@ def importBeerXMLHop(data):
             else :
                 logger.warn ("Unkown hop use '%s', assuming 'Boil' by default", child.text)
                 hop.use = model.constants.HOP_USE_BOIL
-    
+
+    if hop.use == 'Dry Hop':
+        hop.time /= 24*60
+
     return hop
 
 
@@ -205,7 +208,7 @@ def importBeerXMLMash(data):
     mashStep = data.findall('.//MASH_STEP')
     for element in mashStep:
         mash.listeSteps.append(importBeerXMLMashStep(element))
-    
+
     return mash
 
 
@@ -230,7 +233,7 @@ def importBeerXMLMashStep(data):
             mashStep.temp = "%.1f" % float(child.text)
         if 'INFUSE_AMOUNT' == child.tag:
             mashStep.infuseAmount = float(child.text)
-    
+
     return mashStep
 
 

@@ -55,7 +55,12 @@ var jb2xml = (function () {
                 } else if (hop.form === 2 || hop.form === 'Plug') {
                     string += "<FORM>Plug</FORM>";
                 }
-                string += "<TIME>" + hop.time + "</TIME>";
+                if (hop.use === 'Dry Hop') {
+                    string += "<TIME>" + hop.time*24*60 + "</TIME>";
+                    string += "<DISPLAY_TIME>" + hop.time + " days</DISPLAY_TIME>";
+                } else {
+                    string += "<TIME>" + hop.time + "</TIME>";
+                }
                 string += "<ALPHA>" + hop.alpha + "</ALPHA>";
                 string += "<USE>" + hop.use + "</USE>";
                 string += "</HOP>";
