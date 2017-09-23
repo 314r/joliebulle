@@ -180,31 +180,44 @@ recipesApp.controller('RecipeslibCtrl', ['$scope', '$http', '$filter', function 
         return $scope.currentRecipe;
     };
 
+
+    $scope.volumeChanged = function (recipe) {
+        if ($scope.scaleIngredients && recipe.volume.lenght !== 0)  {
+            $scope.scaleRecipe(recipe);
+        } else {
+                $scope.calcProfile(recipe);
+            }
+    };
+
+    $scope.scaleRecipe = function (recipe) {
+        recipe = translate.translate_fr(recipe);
+        $scope.scaleRatio = recipe.volume / recipe.oldVolume;
+        beerCalc.scaleIngredients($scope.scaleRatio, recipe.fermentables, recipe.hops, recipe.miscs);
+        recipe.oldVolume = recipe.volume;
+    };
+
+
     $scope.calcProfile = function (recipe) {
         recipe = translate.translate_fr(recipe);
         console.log(recipe);
 
-        if ($scope.scaleIngredients && recipe.volume.lenght !== 0) {
-            $scope.scaleRatio = recipe.volume / recipe.oldVolume;
-            beerCalc.scaleIngredients($scope.scaleRatio, recipe.fermentables, recipe.hops, recipe.miscs);
-        } else {
-            $scope.scaleRatio = 1;
-            recipe.ebc = Math.round(beerCalc.ebc(recipe.fermentables, recipe.volume));
-            recipe.og = (Math.round(beerCalc.originalGravity(recipe) * 1000) / 1000).toFixed(3);
-            recipe.fg = (Math.round(beerCalc.finalGravity(recipe) * 1000) / 1000).toFixed(3);
-            recipe.ibu = Math.round(beerCalc.ibus(recipe).ibu);
-            recipe.bugu = Math.round(beerCalc.bugu(recipe) * 10) / 10;
-            recipe.alc = Math.round(beerCalc.alc(recipe) * 10) / 10;
-            recipe.colorHtml = beerCalc.colorHtml($scope.currentRecipe.ebc);
-            recipe.fermentables.forEach(function (fermentable) {
-                fermentable.amountRatio = (beerCalc.ingRatio(recipe.fermentables, fermentable.amount) * 100).toFixed(1);
-                return fermentable;
-            });
-            recipe.hops.forEach(function (hop) {
-                hop.amountRatio = (beerCalc.ingRatio(recipe.hops, hop.amount) * 100).toFixed(1);
-                return hop;
-            });
-        }
+        $scope.scaleRatio = 1;
+        recipe.ebc = Math.round(beerCalc.ebc(recipe.fermentables, recipe.volume));
+        recipe.og = (Math.round(beerCalc.originalGravity(recipe) * 1000) / 1000).toFixed(3);
+        recipe.fg = (Math.round(beerCalc.finalGravity(recipe) * 1000) / 1000).toFixed(3);
+        recipe.ibu = Math.round(beerCalc.ibus(recipe).ibu);
+        recipe.bugu = Math.round(beerCalc.bugu(recipe) * 10) / 10;
+        recipe.alc = Math.round(beerCalc.alc(recipe) * 10) / 10;
+        recipe.colorHtml = beerCalc.colorHtml($scope.currentRecipe.ebc);
+        recipe.fermentables.forEach(function (fermentable) {
+            fermentable.amountRatio = (beerCalc.ingRatio(recipe.fermentables, fermentable.amount) * 100).toFixed(1);
+            return fermentable;
+        });
+        recipe.hops.forEach(function (hop) {
+            hop.amountRatio = (beerCalc.ingRatio(recipe.hops, hop.amount) * 100).toFixed(1);
+            return hop;
+        });
+ 
         recipe.oldVolume = recipe.volume;
 
     };
