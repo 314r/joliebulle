@@ -259,11 +259,11 @@
     <FORM>Leaf</FORM>
   </HOP>
   <HOP>
-      <NAME>Perle</NAME>
-      <VERSION>1</VERSION>
-      <FORM>Leaf</FORM>
-      <ALPHA>6.4</ALPHA>
-      <USE>Boil</USE>
+    <NAME>Perle</NAME>
+    <VERSION>1</VERSION>
+    <FORM>Leaf</FORM>
+    <ALPHA>6.4</ALPHA>
+    <USE>Boil</USE>
   </HOP>
   <HOP>
     <NAME>Bullion</NAME>
@@ -486,18 +486,18 @@
     <FORM>Leaf</FORM>
   </HOP>
   <HOP>
-      <NAME>Premiant</NAME>
-      <VERSION>1</VERSION>
-      <FORM>Leaf</FORM>
-      <ALPHA>7.0</ALPHA>
-      <USE>Boil</USE>
+    <NAME>Premiant</NAME>
+    <VERSION>1</VERSION>
+    <FORM>Leaf</FORM>
+    <ALPHA>7.0</ALPHA>
+    <USE>Boil</USE>
   </HOP>
   <HOP>
-      <NAME>Sladek</NAME>
-      <VERSION>1</VERSION>
-      <FORM>Leaf</FORM>
-      <ALPHA>7.0</ALPHA>
-      <USE>Boil</USE>
+    <NAME>Sladek</NAME>
+    <VERSION>1</VERSION>
+    <FORM>Leaf</FORM>
+    <ALPHA>7.0</ALPHA>
+    <USE>Boil</USE>
   </HOP>
   <HOP>
     <NAME>Sun</NAME>
@@ -604,67 +604,67 @@
     <ATTENUATION>77</ATTENUATION>
   </YEAST>
   <YEAST>
-      <NAME>American Whiskey</NAME>
-      <FORM>Liquid</FORM>
-      <LABORATORY>White Labs</LABORATORY>
-      <PRODUCT_ID>WLP065</PRODUCT_ID>
-      <ATTENUATION>79</ATTENUATION>
+    <NAME>American Whiskey</NAME>
+    <FORM>Liquid</FORM>
+    <LABORATORY>White Labs</LABORATORY>
+    <PRODUCT_ID>WLP065</PRODUCT_ID>
+    <ATTENUATION>79</ATTENUATION>
   </YEAST>
   <YEAST>
-      <NAME>Bourbon</NAME>
-      <FORM>Liquid</FORM>
-      <LABORATORY>White Labs</LABORATORY>
-      <PRODUCT_ID>WLP070</PRODUCT_ID>
-      <ATTENUATION>78</ATTENUATION>
+    <NAME>Bourbon</NAME>
+    <FORM>Liquid</FORM>
+    <LABORATORY>White Labs</LABORATORY>
+    <PRODUCT_ID>WLP070</PRODUCT_ID>
+    <ATTENUATION>78</ATTENUATION>
   </YEAST>
   <YEAST>
-      <NAME>French Ale</NAME>
-      <FORM>Liquid</FORM>
-      <LABORATORY>White Labs</LABORATORY>
-      <PRODUCT_ID>WLP072</PRODUCT_ID>
-      <ATTENUATION>72</ATTENUATION>
+    <NAME>French Ale</NAME>
+    <FORM>Liquid</FORM>
+    <LABORATORY>White Labs</LABORATORY>
+    <PRODUCT_ID>WLP072</PRODUCT_ID>
+    <ATTENUATION>72</ATTENUATION>
   </YEAST>
   <YEAST>
-      <NAME>Old Sonoma Ale</NAME>
-      <FORM>Liquid</FORM>
-      <LABORATORY>White Labs</LABORATORY>
-      <PRODUCT_ID>WLP076</PRODUCT_ID>
-      <ATTENUATION>72</ATTENUATION>
+    <NAME>Old Sonoma Ale</NAME>
+    <FORM>Liquid</FORM>
+    <LABORATORY>White Labs</LABORATORY>
+    <PRODUCT_ID>WLP076</PRODUCT_ID>
+    <ATTENUATION>72</ATTENUATION>
   </YEAST>
   <YEAST>
-      <NAME>Neutral Grain</NAME>
-      <FORM>Liquid</FORM>
-      <LABORATORY>White Labs</LABORATORY>
-      <PRODUCT_ID>WLP078</PRODUCT_ID>
-      <ATTENUATION>81</ATTENUATION>
+    <NAME>Neutral Grain</NAME>
+    <FORM>Liquid</FORM>
+    <LABORATORY>White Labs</LABORATORY>
+    <PRODUCT_ID>WLP078</PRODUCT_ID>
+    <ATTENUATION>81</ATTENUATION>
   </YEAST>
   <YEAST>
-      <NAME>Cream Ale Blend</NAME>
-      <FORM>Liquid</FORM>
-      <LABORATORY>White Labs</LABORATORY>
-      <PRODUCT_ID>WLP080</PRODUCT_ID>
-      <ATTENUATION>78</ATTENUATION>
+    <NAME>Cream Ale Blend</NAME>
+    <FORM>Liquid</FORM>
+    <LABORATORY>White Labs</LABORATORY>
+    <PRODUCT_ID>WLP080</PRODUCT_ID>
+    <ATTENUATION>78</ATTENUATION>
   </YEAST>
   <YEAST>
-      <NAME>English Ale Blend</NAME>
-      <FORM>Liquid</FORM>
-      <LABORATORY>White Labs</LABORATORY>
-      <PRODUCT_ID>WLP085</PRODUCT_ID>
-      <ATTENUATION>73</ATTENUATION>
+    <NAME>English Ale Blend</NAME>
+    <FORM>Liquid</FORM>
+    <LABORATORY>White Labs</LABORATORY>
+    <PRODUCT_ID>WLP085</PRODUCT_ID>
+    <ATTENUATION>73</ATTENUATION>
   </YEAST>
   <YEAST>
-      <NAME>San Diego Super Yeast</NAME>
-      <FORM>Liquid</FORM>
-      <LABORATORY>White Labs</LABORATORY>
-      <PRODUCT_ID>WLP090</PRODUCT_ID>
-      <ATTENUATION>80</ATTENUATION>
+    <NAME>San Diego Super Yeast</NAME>
+    <FORM>Liquid</FORM>
+    <LABORATORY>White Labs</LABORATORY>
+    <PRODUCT_ID>WLP090</PRODUCT_ID>
+    <ATTENUATION>80</ATTENUATION>
   </YEAST>
   <YEAST>
-      <NAME>Super High Gravity Ale</NAME>
-      <FORM>Liquid</FORM>
-      <LABORATORY>White Labs</LABORATORY>
-      <PRODUCT_ID>WLP099</PRODUCT_ID>
-      <ATTENUATION>83</ATTENUATION>
+    <NAME>Super High Gravity Ale</NAME>
+    <FORM>Liquid</FORM>
+    <LABORATORY>White Labs</LABORATORY>
+    <PRODUCT_ID>WLP099</PRODUCT_ID>
+    <ATTENUATION>83</ATTENUATION>
   </YEAST>
   <YEAST>
     <NAME>American Ale II</NAME>
@@ -744,18 +744,18 @@
     <ATTENUATION>76</ATTENUATION>
   </YEAST>
   <YEAST>
-      <NAME>Belgian Style Ale Blend</NAME>
-      <FORM>Liquid</FORM>
-      <LABORATORY>White Labs</LABORATORY>
-      <PRODUCT_ID>WLP575</PRODUCT_ID>
-      <ATTENUATION>77</ATTENUATION>
+    <NAME>Belgian Style Ale Blend</NAME>
+    <FORM>Liquid</FORM>
+    <LABORATORY>White Labs</LABORATORY>
+    <PRODUCT_ID>WLP575</PRODUCT_ID>
+    <ATTENUATION>77</ATTENUATION>
   </YEAST>
   <YEAST>
-      <NAME>Belgian Saison III</NAME>
-      <FORM>Liquid</FORM>
-      <LABORATORY>White Labs</LABORATORY>
-      <PRODUCT_ID>WLP585</PRODUCT_ID>
-      <ATTENUATION>72</ATTENUATION>
+    <NAME>Belgian Saison III</NAME>
+    <FORM>Liquid</FORM>
+    <LABORATORY>White Labs</LABORATORY>
+    <PRODUCT_ID>WLP585</PRODUCT_ID>
+    <ATTENUATION>72</ATTENUATION>
   </YEAST>
   <YEAST>
     <NAME>Belgian Lager</NAME>
@@ -765,11 +765,11 @@
     <ATTENUATION>75</ATTENUATION>
   </YEAST>
   <YEAST>
-      <NAME>Oktoberfest/Märzen Lager</NAME>
-      <FORM>Liquid</FORM>
-      <LABORATORY>White Labs</LABORATORY>
-      <PRODUCT_ID>WLP820</PRODUCT_ID>
-      <ATTENUATION>69</ATTENUATION>
+    <NAME>Oktoberfest/Märzen Lager</NAME>
+    <FORM>Liquid</FORM>
+    <LABORATORY>White Labs</LABORATORY>
+    <PRODUCT_ID>WLP820</PRODUCT_ID>
+    <ATTENUATION>69</ATTENUATION>
   </YEAST>
   <YEAST>
     <NAME>Belgian Lambic Blend</NAME>
@@ -793,18 +793,18 @@
     <ATTENUATION>70</ATTENUATION>
   </YEAST>
   <YEAST>
-      <NAME>Belgian Saison II</NAME>
-      <FORM>Liquid</FORM>
-      <LABORATORY>White Labs</LABORATORY>
-      <PRODUCT_ID>WLP566</PRODUCT_ID>
-      <ATTENUATION>82</ATTENUATION>
+    <NAME>Belgian Saison II</NAME>
+    <FORM>Liquid</FORM>
+    <LABORATORY>White Labs</LABORATORY>
+    <PRODUCT_ID>WLP566</PRODUCT_ID>
+    <ATTENUATION>82</ATTENUATION>
   </YEAST>
   <YEAST>
-      <NAME>Belgian Style Saison Ale Blend</NAME>
-      <FORM>Liquid</FORM>
-      <LABORATORY>White Labs</LABORATORY>
-      <PRODUCT_ID>WLP568</PRODUCT_ID>
-      <ATTENUATION>75</ATTENUATION>
+    <NAME>Belgian Style Saison Ale Blend</NAME>
+    <FORM>Liquid</FORM>
+    <LABORATORY>White Labs</LABORATORY>
+    <PRODUCT_ID>WLP568</PRODUCT_ID>
+    <ATTENUATION>75</ATTENUATION>
   </YEAST>
   <YEAST>
     <NAME>Belgian Sour Mix I</NAME>
@@ -814,46 +814,46 @@
     <ATTENUATION>75</ATTENUATION>
   </YEAST>
   <YEAST>
-      <NAME>Pediococcus Damnosus</NAME>
-      <FORM>Liquid</FORM>
-      <LABORATORY>White Labs</LABORATORY>
-      <PRODUCT_ID>WLP661</PRODUCT_ID>
-      <ATTENUATION>65</ATTENUATION>
+    <NAME>Pediococcus Damnosus</NAME>
+    <FORM>Liquid</FORM>
+    <LABORATORY>White Labs</LABORATORY>
+    <PRODUCT_ID>WLP661</PRODUCT_ID>
+    <ATTENUATION>65</ATTENUATION>
   </YEAST>
   <YEAST>
-      <NAME>Flemish Ale Blend</NAME>
-      <FORM>Liquid</FORM>
-      <LABORATORY>White Labs</LABORATORY>
-      <PRODUCT_ID>WLP665</PRODUCT_ID>
-      <ATTENUATION>84</ATTENUATION>
+    <NAME>Flemish Ale Blend</NAME>
+    <FORM>Liquid</FORM>
+    <LABORATORY>White Labs</LABORATORY>
+    <PRODUCT_ID>WLP665</PRODUCT_ID>
+    <ATTENUATION>84</ATTENUATION>
   </YEAST>
   <YEAST>
-      <NAME>American Farmhouse Blend</NAME>
-      <FORM>Liquid</FORM>
-      <LABORATORY>White Labs</LABORATORY>
-      <PRODUCT_ID>WLP670</PRODUCT_ID>
-      <ATTENUATION>79</ATTENUATION>
+    <NAME>American Farmhouse Blend</NAME>
+    <FORM>Liquid</FORM>
+    <LABORATORY>White Labs</LABORATORY>
+    <PRODUCT_ID>WLP670</PRODUCT_ID>
+    <ATTENUATION>79</ATTENUATION>
   </YEAST>
   <YEAST>
-      <NAME>Lactobacillus Brevis</NAME>
-      <FORM>Liquid</FORM>
-      <LABORATORY>White Labs</LABORATORY>
-      <PRODUCT_ID>WLP672</PRODUCT_ID>
-      <ATTENUATION>80</ATTENUATION>
+    <NAME>Lactobacillus Brevis</NAME>
+    <FORM>Liquid</FORM>
+    <LABORATORY>White Labs</LABORATORY>
+    <PRODUCT_ID>WLP672</PRODUCT_ID>
+    <ATTENUATION>80</ATTENUATION>
   </YEAST>
   <YEAST>
-      <NAME>Lactobacillus Delbrueckii Bacteria</NAME>
-      <FORM>Liquid</FORM>
-      <LABORATORY>White Labs</LABORATORY>
-      <PRODUCT_ID>WLP677</PRODUCT_ID>
-      <ATTENUATION>79</ATTENUATION>
+    <NAME>Lactobacillus Delbrueckii Bacteria</NAME>
+    <FORM>Liquid</FORM>
+    <LABORATORY>White Labs</LABORATORY>
+    <PRODUCT_ID>WLP677</PRODUCT_ID>
+    <ATTENUATION>79</ATTENUATION>
   </YEAST>
   <YEAST>
-      <NAME>Champagne Yeast</NAME>
-      <FORM>Liquid</FORM>
-      <LABORATORY>White Labs</LABORATORY>
-      <PRODUCT_ID>WLP715</PRODUCT_ID>
-      <ATTENUATION>77</ATTENUATION>
+    <NAME>Champagne Yeast</NAME>
+    <FORM>Liquid</FORM>
+    <LABORATORY>White Labs</LABORATORY>
+    <PRODUCT_ID>WLP715</PRODUCT_ID>
+    <ATTENUATION>77</ATTENUATION>
   </YEAST>
   <YEAST>
     <NAME>Belgian Strong Ale</NAME>
@@ -877,11 +877,11 @@
     <ATTENUATION>76</ATTENUATION>
   </YEAST>
   <YEAST>
-      <NAME>Belgian Wit II Ale</NAME>
-      <FORM>Liquid</FORM>
-      <LABORATORY>White Labs</LABORATORY>
-      <PRODUCT_ID>WLP410</PRODUCT_ID>
-      <ATTENUATION>73</ATTENUATION>
+    <NAME>Belgian Wit II Ale</NAME>
+    <FORM>Liquid</FORM>
+    <LABORATORY>White Labs</LABORATORY>
+    <PRODUCT_ID>WLP410</PRODUCT_ID>
+    <ATTENUATION>73</ATTENUATION>
   </YEAST>
   <YEAST>
     <NAME>Belgian Witbier</NAME>
@@ -898,32 +898,32 @@
     <ATTENUATION>77</ATTENUATION>
   </YEAST>
   <YEAST>
-      <NAME>Brettanomyces Bruxellensis Trois</NAME>
-      <FORM>Liquid</FORM>
-      <LABORATORY>White Labs</LABORATORY>
-      <PRODUCT_ID>WLP644</PRODUCT_ID>
-      <ATTENUATION>87</ATTENUATION>
+    <NAME>Brettanomyces Bruxellensis Trois</NAME>
+    <FORM>Liquid</FORM>
+    <LABORATORY>White Labs</LABORATORY>
+    <PRODUCT_ID>WLP644</PRODUCT_ID>
+    <ATTENUATION>87</ATTENUATION>
   </YEAST>
   <YEAST>
-      <NAME>Brettanomyces Claussenii</NAME>
-      <FORM>Liquid</FORM>
-      <LABORATORY>White Labs</LABORATORY>
-      <PRODUCT_ID>WLP645</PRODUCT_ID>
-      <ATTENUATION>78</ATTENUATION>
+    <NAME>Brettanomyces Claussenii</NAME>
+    <FORM>Liquid</FORM>
+    <LABORATORY>White Labs</LABORATORY>
+    <PRODUCT_ID>WLP645</PRODUCT_ID>
+    <ATTENUATION>78</ATTENUATION>
   </YEAST>
   <YEAST>
-      <NAME>Brettanomyces Bruxellensis</NAME>
-      <FORM>Liquid</FORM>
-      <LABORATORY>White Labs</LABORATORY>
-      <PRODUCT_ID>WLP650</PRODUCT_ID>
-      <ATTENUATION>78</ATTENUATION>
+    <NAME>Brettanomyces Bruxellensis</NAME>
+    <FORM>Liquid</FORM>
+    <LABORATORY>White Labs</LABORATORY>
+    <PRODUCT_ID>WLP650</PRODUCT_ID>
+    <ATTENUATION>78</ATTENUATION>
   </YEAST>
   <YEAST>
-      <NAME>Brettanomyces Lambicus</NAME>
-      <FORM>Liquid</FORM>
-      <LABORATORY>White Labs</LABORATORY>
-      <PRODUCT_ID>WLP653</PRODUCT_ID>
-      <ATTENUATION>78</ATTENUATION>
+    <NAME>Brettanomyces Lambicus</NAME>
+    <FORM>Liquid</FORM>
+    <LABORATORY>White Labs</LABORATORY>
+    <PRODUCT_ID>WLP653</PRODUCT_ID>
+    <ATTENUATION>78</ATTENUATION>
   </YEAST>
   <YEAST>
     <NAME>Bohemian Lager</NAME>
@@ -961,11 +961,11 @@
     <ATTENUATION>72</ATTENUATION>
   </YEAST>
   <YEAST>
-      <NAME>Bedford British</NAME>
-      <FORM>Liquid</FORM>
-      <LABORATORY>White Labs</LABORATORY>
-      <PRODUCT_ID>WLP006</PRODUCT_ID>
-      <ATTENUATION>76</ATTENUATION>
+    <NAME>Bedford British</NAME>
+    <FORM>Liquid</FORM>
+    <LABORATORY>White Labs</LABORATORY>
+    <PRODUCT_ID>WLP006</PRODUCT_ID>
+    <ATTENUATION>76</ATTENUATION>
   </YEAST>
   <YEAST>
     <NAME>British Ale II</NAME>
@@ -1017,11 +1017,11 @@
     <ATTENUATION>77</ATTENUATION>
   </YEAST>
   <YEAST>
-      <NAME>San Francisco Lager</NAME>
-      <FORM>Liquid</FORM>
-      <LABORATORY>White Labs</LABORATORY>
-      <PRODUCT_ID>WLP810</PRODUCT_ID>
-      <ATTENUATION>68</ATTENUATION>
+    <NAME>San Francisco Lager</NAME>
+    <FORM>Liquid</FORM>
+    <LABORATORY>White Labs</LABORATORY>
+    <PRODUCT_ID>WLP810</PRODUCT_ID>
+    <ATTENUATION>68</ATTENUATION>
   </YEAST>
   <YEAST>
     <NAME>Czech Pils</NAME>
@@ -1045,11 +1045,11 @@
     <ATTENUATION>75</ATTENUATION>
   </YEAST>
   <YEAST>
-      <NAME>West Yorkshire Ale</NAME>
-      <FORM>Liquid</FORM>
-      <LABORATORY>Wyeast</LABORATORY>
-      <PRODUCT_ID>1469</PRODUCT_ID>
-      <ATTENUATION>69</ATTENUATION>
+    <NAME>West Yorkshire Ale</NAME>
+    <FORM>Liquid</FORM>
+    <LABORATORY>Wyeast</LABORATORY>
+    <PRODUCT_ID>1469</PRODUCT_ID>
+    <ATTENUATION>69</ATTENUATION>
   </YEAST>
   <YEAST>
     <NAME>Dry English Ale</NAME>
@@ -1059,25 +1059,25 @@
     <ATTENUATION>75</ATTENUATION>
   </YEAST>
   <YEAST>
-      <NAME>East Coast Ale</NAME>
-      <FORM>Liquid</FORM>
-      <LABORATORY>White Labs</LABORATORY>
-      <PRODUCT_ID>WLP008</PRODUCT_ID>
-      <ATTENUATION>73</ATTENUATION>
+    <NAME>East Coast Ale</NAME>
+    <FORM>Liquid</FORM>
+    <LABORATORY>White Labs</LABORATORY>
+    <PRODUCT_ID>WLP008</PRODUCT_ID>
+    <ATTENUATION>73</ATTENUATION>
   </YEAST>
   <YEAST>
-      <NAME>Australian Ale</NAME>
-      <FORM>Liquid</FORM>
-      <LABORATORY>White Labs</LABORATORY>
-      <PRODUCT_ID>WLP009</PRODUCT_ID>
-      <ATTENUATION>73</ATTENUATION>
+    <NAME>Australian Ale</NAME>
+    <FORM>Liquid</FORM>
+    <LABORATORY>White Labs</LABORATORY>
+    <PRODUCT_ID>WLP009</PRODUCT_ID>
+    <ATTENUATION>73</ATTENUATION>
   </YEAST>
   <YEAST>
-      <NAME>European Ale</NAME>
-      <FORM>Liquid</FORM>
-      <LABORATORY>White Labs</LABORATORY>
-      <PRODUCT_ID>WLP011</PRODUCT_ID>
-      <ATTENUATION>68</ATTENUATION>
+    <NAME>European Ale</NAME>
+    <FORM>Liquid</FORM>
+    <LABORATORY>White Labs</LABORATORY>
+    <PRODUCT_ID>WLP011</PRODUCT_ID>
+    <ATTENUATION>68</ATTENUATION>
   </YEAST>
   <YEAST>
     <NAME>Edinburgh Scottish Ale</NAME>
@@ -1094,11 +1094,11 @@
     <ATTENUATION>67</ATTENUATION>
   </YEAST>
   <YEAST>
-      <NAME>German Ale II</NAME>
-      <FORM>Liquid</FORM>
-      <LABORATORY>White Labs</LABORATORY>
-      <PRODUCT_ID>WLP003</PRODUCT_ID>
-      <ATTENUATION>77</ATTENUATION>
+    <NAME>German Ale II</NAME>
+    <FORM>Liquid</FORM>
+    <LABORATORY>White Labs</LABORATORY>
+    <PRODUCT_ID>WLP003</PRODUCT_ID>
+    <ATTENUATION>77</ATTENUATION>
   </YEAST>
   <YEAST>
     <NAME>Essex Ale</NAME>
@@ -1143,53 +1143,53 @@
     <ATTENUATION>73</ATTENUATION>
   </YEAST>
   <YEAST>
-      <NAME>Southern German Lager</NAME>
-      <FORM>Liquid</FORM>
-      <LABORATORY>White Labs</LABORATORY>
-      <PRODUCT_ID>WLP838</PRODUCT_ID>
-      <ATTENUATION>72</ATTENUATION>
+    <NAME>Southern German Lager</NAME>
+    <FORM>Liquid</FORM>
+    <LABORATORY>White Labs</LABORATORY>
+    <PRODUCT_ID>WLP838</PRODUCT_ID>
+    <ATTENUATION>72</ATTENUATION>
   </YEAST>
   <YEAST>
-      <NAME>American Lager</NAME>
-      <FORM>Liquid</FORM>
-      <LABORATORY>White Labs</LABORATORY>
-      <PRODUCT_ID>WLP840</PRODUCT_ID>
-      <ATTENUATION>78</ATTENUATION>
+    <NAME>American Lager</NAME>
+    <FORM>Liquid</FORM>
+    <LABORATORY>White Labs</LABORATORY>
+    <PRODUCT_ID>WLP840</PRODUCT_ID>
+    <ATTENUATION>78</ATTENUATION>
   </YEAST>
   <YEAST>
-      <NAME>Munich Helles</NAME>
-      <FORM>Liquid</FORM>
-      <LABORATORY>White Labs</LABORATORY>
-      <PRODUCT_ID>WLP860</PRODUCT_ID>
-      <ATTENUATION>70</ATTENUATION>
+    <NAME>Munich Helles</NAME>
+    <FORM>Liquid</FORM>
+    <LABORATORY>White Labs</LABORATORY>
+    <PRODUCT_ID>WLP860</PRODUCT_ID>
+    <ATTENUATION>70</ATTENUATION>
   </YEAST>
   <YEAST>
-      <NAME>Cry Havoc</NAME>
-      <FORM>Liquid</FORM>
-      <LABORATORY>White Labs</LABORATORY>
-      <PRODUCT_ID>WLP862</PRODUCT_ID>
-      <ATTENUATION>68</ATTENUATION>
+    <NAME>Cry Havoc</NAME>
+    <FORM>Liquid</FORM>
+    <LABORATORY>White Labs</LABORATORY>
+    <PRODUCT_ID>WLP862</PRODUCT_ID>
+    <ATTENUATION>68</ATTENUATION>
   </YEAST>
   <YEAST>
-      <NAME>Zurich Lager</NAME>
-      <FORM>Liquid</FORM>
-      <LABORATORY>White Labs</LABORATORY>
-      <PRODUCT_ID>WLP885</PRODUCT_ID>
-      <ATTENUATION>75</ATTENUATION>
+    <NAME>Zurich Lager</NAME>
+    <FORM>Liquid</FORM>
+    <LABORATORY>White Labs</LABORATORY>
+    <PRODUCT_ID>WLP885</PRODUCT_ID>
+    <ATTENUATION>75</ATTENUATION>
   </YEAST>
   <YEAST>
-      <NAME>Old Bavarian Lager</NAME>
-      <FORM>Liquid</FORM>
-      <LABORATORY>White Labs</LABORATORY>
-      <PRODUCT_ID>WLP920</PRODUCT_ID>
-      <ATTENUATION>70</ATTENUATION>
+    <NAME>Old Bavarian Lager</NAME>
+    <FORM>Liquid</FORM>
+    <LABORATORY>White Labs</LABORATORY>
+    <PRODUCT_ID>WLP920</PRODUCT_ID>
+    <ATTENUATION>70</ATTENUATION>
   </YEAST>
   <YEAST>
-      <NAME>Mexican Lager</NAME>
-      <FORM>Liquid</FORM>
-      <LABORATORY>White Labs</LABORATORY>
-      <PRODUCT_ID>WLP940</PRODUCT_ID>
-      <ATTENUATION>74</ATTENUATION>
+    <NAME>Mexican Lager</NAME>
+    <FORM>Liquid</FORM>
+    <LABORATORY>White Labs</LABORATORY>
+    <PRODUCT_ID>WLP940</PRODUCT_ID>
+    <ATTENUATION>74</ATTENUATION>
   </YEAST>
   <YEAST>
     <NAME>German Kolsch Ale</NAME>
@@ -1199,46 +1199,46 @@
     <ATTENUATION>75</ATTENUATION>
   </YEAST>
   <YEAST>
-      <NAME>Dusseldorf Alt</NAME>
-      <FORM>Liquid</FORM>
-      <LABORATORY>White Labs</LABORATORY>
-      <PRODUCT_ID>WLP036</PRODUCT_ID>
-      <ATTENUATION>69</ATTENUATION>
+    <NAME>Dusseldorf Alt</NAME>
+    <FORM>Liquid</FORM>
+    <LABORATORY>White Labs</LABORATORY>
+    <PRODUCT_ID>WLP036</PRODUCT_ID>
+    <ATTENUATION>69</ATTENUATION>
   </YEAST>
   <YEAST>
-      <NAME>Manchester Ale</NAME>
-      <FORM>Liquid</FORM>
-      <LABORATORY>White Labs</LABORATORY>
-      <PRODUCT_ID>WLP038</PRODUCT_ID>
-      <ATTENUATION>72</ATTENUATION>
+    <NAME>Manchester Ale</NAME>
+    <FORM>Liquid</FORM>
+    <LABORATORY>White Labs</LABORATORY>
+    <PRODUCT_ID>WLP038</PRODUCT_ID>
+    <ATTENUATION>72</ATTENUATION>
   </YEAST>
   <YEAST>
-      <NAME>East Midlands Ale</NAME>
-      <FORM>Liquid</FORM>
-      <LABORATORY>White Labs</LABORATORY>
-      <PRODUCT_ID>WLP039</PRODUCT_ID>
-      <ATTENUATION>78</ATTENUATION>
+    <NAME>East Midlands Ale</NAME>
+    <FORM>Liquid</FORM>
+    <LABORATORY>White Labs</LABORATORY>
+    <PRODUCT_ID>WLP039</PRODUCT_ID>
+    <ATTENUATION>78</ATTENUATION>
   </YEAST>
   <YEAST>
-      <NAME>Pacific Ale</NAME>
-      <FORM>Liquid</FORM>
-      <LABORATORY>White Labs</LABORATORY>
-      <PRODUCT_ID>WLP041</PRODUCT_ID>
-      <ATTENUATION>68</ATTENUATION>
+    <NAME>Pacific Ale</NAME>
+    <FORM>Liquid</FORM>
+    <LABORATORY>White Labs</LABORATORY>
+    <PRODUCT_ID>WLP041</PRODUCT_ID>
+    <ATTENUATION>68</ATTENUATION>
   </YEAST>
   <YEAST>
-      <NAME>Scotch Whisky</NAME>
-      <FORM>Liquid</FORM>
-      <LABORATORY>White Labs</LABORATORY>
-      <PRODUCT_ID>WLP045</PRODUCT_ID>
-      <ATTENUATION>78</ATTENUATION>
+    <NAME>Scotch Whisky</NAME>
+    <FORM>Liquid</FORM>
+    <LABORATORY>White Labs</LABORATORY>
+    <PRODUCT_ID>WLP045</PRODUCT_ID>
+    <ATTENUATION>78</ATTENUATION>
   </YEAST>
   <YEAST>
-      <NAME>Tennessee Whiskey</NAME>
-      <FORM>Liquid</FORM>
-      <LABORATORY>White Labs</LABORATORY>
-      <PRODUCT_ID>WLP050</PRODUCT_ID>
-      <ATTENUATION>78</ATTENUATION>
+    <NAME>Tennessee Whiskey</NAME>
+    <FORM>Liquid</FORM>
+    <LABORATORY>White Labs</LABORATORY>
+    <PRODUCT_ID>WLP050</PRODUCT_ID>
+    <ATTENUATION>78</ATTENUATION>
   </YEAST>
   <YEAST>
     <NAME>German Lager</NAME>
@@ -1262,18 +1262,18 @@
     <ATTENUATION>74</ATTENUATION>
   </YEAST>
   <YEAST>
-      <NAME>American Hefeweizen Ale</NAME>
-      <FORM>Liquid</FORM>
-      <LABORATORY>White Labs</LABORATORY>
-      <PRODUCT_ID>WLP320</PRODUCT_ID>
-      <ATTENUATION>73</ATTENUATION>
+    <NAME>American Hefeweizen Ale</NAME>
+    <FORM>Liquid</FORM>
+    <LABORATORY>White Labs</LABORATORY>
+    <PRODUCT_ID>WLP320</PRODUCT_ID>
+    <ATTENUATION>73</ATTENUATION>
   </YEAST>
   <YEAST>
-      <NAME>Bavarian Weizen</NAME>
-      <FORM>Liquid</FORM>
-      <LABORATORY>White Labs</LABORATORY>
-      <PRODUCT_ID>WLP351</PRODUCT_ID>
-      <ATTENUATION>75</ATTENUATION>
+    <NAME>Bavarian Weizen</NAME>
+    <FORM>Liquid</FORM>
+    <LABORATORY>White Labs</LABORATORY>
+    <PRODUCT_ID>WLP351</PRODUCT_ID>
+    <ATTENUATION>75</ATTENUATION>
   </YEAST>
   <YEAST>
     <NAME>Hefeweizen IV</NAME>
@@ -1325,11 +1325,11 @@
     <ATTENUATION>71</ATTENUATION>
   </YEAST>
   <YEAST>
-      <NAME>Whitbread Ale</NAME>
-      <FORM>Liquid</FORM>
-      <LABORATORY>White Labs</LABORATORY>
-      <PRODUCT_ID>WLP017</PRODUCT_ID>
-      <ATTENUATION>70</ATTENUATION>
+    <NAME>Whitbread Ale</NAME>
+    <FORM>Liquid</FORM>
+    <LABORATORY>White Labs</LABORATORY>
+    <PRODUCT_ID>WLP017</PRODUCT_ID>
+    <ATTENUATION>70</ATTENUATION>
   </YEAST>
   <YEAST>
     <NAME>London Ale III</NAME>
@@ -1500,11 +1500,11 @@
     <ATTENUATION>78</ATTENUATION>
   </YEAST>
   <YEAST>
-      <NAME>Bastogne Belgian Ale</NAME>
-      <FORM>Liquid</FORM>
-      <LABORATORY>White Labs</LABORATORY>
-      <PRODUCT_ID>WLP510</PRODUCT_ID>
-      <ATTENUATION>78</ATTENUATION>
+    <NAME>Bastogne Belgian Ale</NAME>
+    <FORM>Liquid</FORM>
+    <LABORATORY>White Labs</LABORATORY>
+    <PRODUCT_ID>WLP510</PRODUCT_ID>
+    <ATTENUATION>78</ATTENUATION>
   </YEAST>
   <YEAST>
     <NAME>Trappist High Gravity</NAME>
@@ -1544,25 +1544,25 @@
     <ATTENUATION>78</ATTENUATION>
   </YEAST>
   <YEAST>
-      <NAME>Abbey IV Ale</NAME>
-      <FORM>Liquid</FORM>
-      <LABORATORY>White Labs</LABORATORY>
-      <PRODUCT_ID>WLP540</PRODUCT_ID>
-      <ATTENUATION>78</ATTENUATION>
+    <NAME>Abbey IV Ale</NAME>
+    <FORM>Liquid</FORM>
+    <LABORATORY>White Labs</LABORATORY>
+    <PRODUCT_ID>WLP540</PRODUCT_ID>
+    <ATTENUATION>78</ATTENUATION>
   </YEAST>
   <YEAST>
-      <NAME>Belgian Strong Ale</NAME>
-      <FORM>Liquid</FORM>
-      <LABORATORY>White Labs</LABORATORY>
-      <PRODUCT_ID>WLP545</PRODUCT_ID>
-      <ATTENUATION>82</ATTENUATION>
+    <NAME>Belgian Strong Ale</NAME>
+    <FORM>Liquid</FORM>
+    <LABORATORY>White Labs</LABORATORY>
+    <PRODUCT_ID>WLP545</PRODUCT_ID>
+    <ATTENUATION>82</ATTENUATION>
   </YEAST>
   <YEAST>
-      <NAME>Belgian Ale</NAME>
-      <FORM>Liquid</FORM>
-      <LABORATORY>White Labs</LABORATORY>
-      <PRODUCT_ID>WLP550</PRODUCT_ID>
-      <ATTENUATION>82</ATTENUATION>
+    <NAME>Belgian Ale</NAME>
+    <FORM>Liquid</FORM>
+    <LABORATORY>White Labs</LABORATORY>
+    <PRODUCT_ID>WLP550</PRODUCT_ID>
+    <ATTENUATION>82</ATTENUATION>
   </YEAST>
   <YEAST>
     <NAME>Abbaye Belgian Ale</NAME>
@@ -1693,92 +1693,92 @@
     <ATTENUATION>78</ATTENUATION>
   </YEAST>
   <YEAST>
-      <NAME>Northeastern Abbey</NAME>
-      <VERSION>1</VERSION>
-      <FORM>Liquid</FORM>
-      <LABORATORY>The Yeast Bay</LABORATORY>
-      <PRODUCT_ID />
-      <ATTENUATION>79</ATTENUATION>
+    <NAME>Northeastern Abbey</NAME>
+    <VERSION>1</VERSION>
+    <FORM>Liquid</FORM>
+    <LABORATORY>The Yeast Bay</LABORATORY>
+    <PRODUCT_ID />
+    <ATTENUATION>79</ATTENUATION>
   </YEAST>
   <YEAST>
-      <NAME>Saison Blend</NAME>
-      <VERSION>1</VERSION>
-      <FORM>Liquid</FORM>
-      <LABORATORY>The Yeast Bay</LABORATORY>
-      <PRODUCT_ID />
-      <ATTENUATION>80</ATTENUATION>
+    <NAME>Saison Blend</NAME>
+    <VERSION>1</VERSION>
+    <FORM>Liquid</FORM>
+    <LABORATORY>The Yeast Bay</LABORATORY>
+    <PRODUCT_ID />
+    <ATTENUATION>80</ATTENUATION>
   </YEAST>
   <YEAST>
-      <NAME>Dry Belgin Ale</NAME>
-      <VERSION>1</VERSION>
-      <FORM>Liquid</FORM>
-      <LABORATORY>The Yeast Bay</LABORATORY>
-      <PRODUCT_ID />
-      <ATTENUATION>93</ATTENUATION>
+    <NAME>Dry Belgin Ale</NAME>
+    <VERSION>1</VERSION>
+    <FORM>Liquid</FORM>
+    <LABORATORY>The Yeast Bay</LABORATORY>
+    <PRODUCT_ID />
+    <ATTENUATION>93</ATTENUATION>
   </YEAST>
   <YEAST>
-      <NAME>Beersel Brettanomyces Blend</NAME>
-      <VERSION>1</VERSION>
-      <FORM>Liquid</FORM>
-      <LABORATORY>The Yeast Bay</LABORATORY>
-      <PRODUCT_ID />
-      <ATTENUATION>80</ATTENUATION>
+    <NAME>Beersel Brettanomyces Blend</NAME>
+    <VERSION>1</VERSION>
+    <FORM>Liquid</FORM>
+    <LABORATORY>The Yeast Bay</LABORATORY>
+    <PRODUCT_ID />
+    <ATTENUATION>80</ATTENUATION>
   </YEAST>
   <YEAST>
-      <NAME>Brussels Brettanomyces Blend</NAME>
-      <VERSION>1</VERSION>
-      <FORM>Liquid</FORM>
-      <LABORATORY>The Yeast Bay</LABORATORY>
-      <PRODUCT_ID />
-      <ATTENUATION>85</ATTENUATION>
+    <NAME>Brussels Brettanomyces Blend</NAME>
+    <VERSION>1</VERSION>
+    <FORM>Liquid</FORM>
+    <LABORATORY>The Yeast Bay</LABORATORY>
+    <PRODUCT_ID />
+    <ATTENUATION>85</ATTENUATION>
   </YEAST>
   <YEAST>
-      <NAME>Lochristi Brettanomyces Blend</NAME>
-      <VERSION>1</VERSION>
-      <FORM>Liquid</FORM>
-      <LABORATORY>The Yeast Bay</LABORATORY>
-      <PRODUCT_ID />
-      <ATTENUATION>85</ATTENUATION>
+    <NAME>Lochristi Brettanomyces Blend</NAME>
+    <VERSION>1</VERSION>
+    <FORM>Liquid</FORM>
+    <LABORATORY>The Yeast Bay</LABORATORY>
+    <PRODUCT_ID />
+    <ATTENUATION>85</ATTENUATION>
   </YEAST>
   <YEAST>
-      <NAME>Amalgamation - Brett Super Blend</NAME>
-      <VERSION>1</VERSION>
-      <FORM>Liquid</FORM>
-      <LABORATORY>The Yeast Bay</LABORATORY>
-      <PRODUCT_ID />
-      <ATTENUATION>90</ATTENUATION>
+    <NAME>Amalgamation - Brett Super Blend</NAME>
+    <VERSION>1</VERSION>
+    <FORM>Liquid</FORM>
+    <LABORATORY>The Yeast Bay</LABORATORY>
+    <PRODUCT_ID />
+    <ATTENUATION>90</ATTENUATION>
   </YEAST>
   <YEAST>
-      <NAME>Saison/Brettanomyces Blend</NAME>
-      <VERSION>1</VERSION>
-      <FORM>Liquid</FORM>
-      <LABORATORY>The Yeast Bay</LABORATORY>
-      <PRODUCT_ID />
-      <ATTENUATION>85</ATTENUATION>
+    <NAME>Saison/Brettanomyces Blend</NAME>
+    <VERSION>1</VERSION>
+    <FORM>Liquid</FORM>
+    <LABORATORY>The Yeast Bay</LABORATORY>
+    <PRODUCT_ID />
+    <ATTENUATION>85</ATTENUATION>
   </YEAST>
   <YEAST>
-      <NAME>Funktown Pale Ale</NAME>
-      <VERSION>1</VERSION>
-      <FORM>Liquid</FORM>
-      <LABORATORY>The Yeast Bay</LABORATORY>
-      <PRODUCT_ID />
-      <ATTENUATION>82</ATTENUATION>
+    <NAME>Funktown Pale Ale</NAME>
+    <VERSION>1</VERSION>
+    <FORM>Liquid</FORM>
+    <LABORATORY>The Yeast Bay</LABORATORY>
+    <PRODUCT_ID />
+    <ATTENUATION>82</ATTENUATION>
   </YEAST>
   <YEAST>
-      <NAME>Mélange - Sour Blend</NAME>
-      <VERSION>1</VERSION>
-      <FORM>Liquid</FORM>
-      <LABORATORY>The Yeast Bay</LABORATORY>
-      <PRODUCT_ID />
-      <ATTENUATION>90</ATTENUATION>
+    <NAME>Mélange - Sour Blend</NAME>
+    <VERSION>1</VERSION>
+    <FORM>Liquid</FORM>
+    <LABORATORY>The Yeast Bay</LABORATORY>
+    <PRODUCT_ID />
+    <ATTENUATION>90</ATTENUATION>
   </YEAST>
   <YEAST>
-      <NAME>Farmhouse Sour Ale</NAME>
-      <VERSION>1</VERSION>
-      <FORM>Liquid</FORM>
-      <LABORATORY>The Yeast Bay</LABORATORY>
-      <PRODUCT_ID />
-      <ATTENUATION>85</ATTENUATION>
+    <NAME>Farmhouse Sour Ale</NAME>
+    <VERSION>1</VERSION>
+    <FORM>Liquid</FORM>
+    <LABORATORY>The Yeast Bay</LABORATORY>
+    <PRODUCT_ID />
+    <ATTENUATION>85</ATTENUATION>
   </YEAST>
   <HOP>
     <NAME>Apollo</NAME>
@@ -1799,11 +1799,11 @@
     <USE>Boil</USE>
   </HOP>
   <HOP>
-      <NAME>Bouclier</NAME>
-      <VERSION>1</VERSION>
-      <FORM>Leaf</FORM>
-      <ALPHA>5.5</ALPHA>
-      <USE>Boil</USE>
+    <NAME>Bouclier</NAME>
+    <VERSION>1</VERSION>
+    <FORM>Leaf</FORM>
+    <ALPHA>5.5</ALPHA>
+    <USE>Boil</USE>
   </HOP>
   <HOP>
     <NAME>Atlas</NAME>
@@ -2121,12 +2121,39 @@
     <USE>Boil</USE>
   </HOP>
   <HOP>
+    <NAME>Motueka</NAME>
+    <VERSION>1</VERSION>
+    <AMOUNT>0.0</AMOUNT>
+    <FORM>Pellet</FORM>
+    <TIME>0.0</TIME>
+    <ALPHA>8.0</ALPHA>
+    <USE>Boil</USE>
+  </HOP>
+  <HOP>
+    <NAME>Barbe rouge</NAME>
+    <VERSION>1</VERSION>
+    <AMOUNT>0.0</AMOUNT>
+    <FORM>Pellet</FORM>
+    <TIME>0.0</TIME>
+    <ALPHA>6.6</ALPHA>
+    <USE>Boil</USE>
+  </HOP>
+  <HOP>
     <NAME>Summer</NAME>
     <VERSION>1</VERSION>
     <AMOUNT>0.0</AMOUNT>
     <FORM>Leaf</FORM>
     <TIME>0.0</TIME>
     <ALPHA>6.5</ALPHA>
+    <USE>Boil</USE>
+  </HOP>
+  <HOP>
+    <NAME>Equinox</NAME>
+    <VERSION>1</VERSION>
+    <AMOUNT>0.0</AMOUNT>
+    <FORM>Pellet</FORM>
+    <TIME>0.0</TIME>
+    <ALPHA>15.0</ALPHA>
     <USE>Boil</USE>
   </HOP>
   <HOP>
@@ -2207,6 +2234,46 @@
     <RECOMMEND_MASH />
     <ADD_AFTER_BOIL>FALSE</ADD_AFTER_BOIL>
     <COLOR>375.0</COLOR>
+  </FERMENTABLE>
+  <FERMENTABLE>
+    <NAME>Chocolate rye (malt)</NAME>
+    <VERSION>1</VERSION>
+    <AMOUNT>0.0</AMOUNT>
+    <TYPE>Grain</TYPE>
+    <YIELD>0</YIELD>
+    <RECOMMEND_MASH />
+    <ADD_AFTER_BOIL>FALSE</ADD_AFTER_BOIL>
+    <COLOR>329.9</COLOR>
+  </FERMENTABLE>
+  <FERMENTABLE>
+    <NAME>Victory malt</NAME>
+    <VERSION>1</VERSION>
+    <AMOUNT>0.0</AMOUNT>
+    <TYPE>Grain</TYPE>
+    <YIELD>75</YIELD>
+    <RECOMMEND_MASH />
+    <ADD_AFTER_BOIL>FALSE</ADD_AFTER_BOIL>
+    <COLOR>25.0</COLOR>
+  </FERMENTABLE>
+  <FERMENTABLE>
+    <NAME>Special W</NAME>
+    <VERSION>1</VERSION>
+    <AMOUNT>0.0</AMOUNT>
+    <TYPE>Grain</TYPE>
+    <YIELD>75</YIELD>
+    <RECOMMEND_MASH />
+    <ADD_AFTER_BOIL>FALSE</ADD_AFTER_BOIL>
+    <COLOR>300.0</COLOR>
+  </FERMENTABLE>
+  <FERMENTABLE>
+    <NAME>Sarrasin (Malt)</NAME>
+    <VERSION>1</VERSION>
+    <AMOUNT>0.0</AMOUNT>
+    <TYPE>Grain</TYPE>
+    <YIELD>0</YIELD>
+    <RECOMMEND_MASH />
+    <ADD_AFTER_BOIL>FALSE</ADD_AFTER_BOIL>
+    <COLOR>5.1</COLOR>
   </FERMENTABLE>
   <FERMENTABLE>
     <NAME>Froment Blond (Malt)</NAME>
@@ -2758,11 +2825,11 @@
     <USE>Boil</USE>
   </HOP>
   <HOP>
-      <NAME>Triskel</NAME>
-      <VERSION>1</VERSION>
-      <FORM>Leaf</FORM>
-      <ALPHA>3.0</ALPHA>
-      <USE>Boil</USE>
+    <NAME>Triskel</NAME>
+    <VERSION>1</VERSION>
+    <FORM>Leaf</FORM>
+    <ALPHA>3.0</ALPHA>
+    <USE>Boil</USE>
   </HOP>
   <MISC>
     <NAME>Cacao (poudre)</NAME>
@@ -2868,4 +2935,103 @@
     <TIME>0.0</TIME>
     <USE>Boil</USE>
   </MISC>
-<YEAST><NAME>Wallonian Farmhouse</NAME><VERSION>1</VERSION><TYPE /><FORM>Liquid</FORM><LABORATORY>The Yeast Bay</LABORATORY><PRODUCT_ID>*</PRODUCT_ID><ATTENUATION>85</ATTENUATION></YEAST><YEAST><NAME>Vermont Ale</NAME><VERSION>1</VERSION><TYPE /><FORM>Liquid</FORM><LABORATORY>The Yeast Bay</LABORATORY><PRODUCT_ID>*</PRODUCT_ID><ATTENUATION>79</ATTENUATION></YEAST><YEAST><NAME>Saison Blend</NAME><VERSION>1</VERSION><TYPE /><FORM>Liquid</FORM><LABORATORY>The Yeast Bay</LABORATORY><PRODUCT_ID>*</PRODUCT_ID><ATTENUATION>79</ATTENUATION></YEAST><YEAST><NAME>Dry Belgian Ale</NAME><VERSION>1</VERSION><TYPE /><FORM>Liquid</FORM><LABORATORY>The Yeast Bay</LABORATORY><PRODUCT_ID>*</PRODUCT_ID><ATTENUATION>93</ATTENUATION></YEAST><YEAST><NAME>Northeastern Abbey</NAME><VERSION>1</VERSION><TYPE /><FORM>Liquid</FORM><LABORATORY>The Yeast Bay</LABORATORY><PRODUCT_ID>*</PRODUCT_ID><ATTENUATION>79</ATTENUATION></YEAST><YEAST><NAME>Franconian Dark Lager</NAME><VERSION>1</VERSION><TYPE /><FORM>Liquid</FORM><LABORATORY>The Yeast Bay</LABORATORY><PRODUCT_ID>*</PRODUCT_ID><ATTENUATION>72</ATTENUATION></YEAST><YEAST><NAME>Hessian Pils</NAME><VERSION>1</VERSION><TYPE /><FORM>Liquid</FORM><LABORATORY>The Yeast Bay</LABORATORY><PRODUCT_ID>*</PRODUCT_ID><ATTENUATION>75</ATTENUATION></YEAST><YEAST><NAME>Belgian Saison III</NAME><VERSION>1</VERSION><TYPE /><FORM>Liquid</FORM><LABORATORY>White Labs</LABORATORY><PRODUCT_ID>WLP585 </PRODUCT_ID><ATTENUATION>72</ATTENUATION></YEAST><YEAST><NAME>Saison II Ale Yeast</NAME><VERSION>1</VERSION><TYPE /><FORM>Liquid</FORM><LABORATORY>White Labs</LABORATORY><PRODUCT_ID>WLP566 </PRODUCT_ID><ATTENUATION>82</ATTENUATION></YEAST><YEAST><NAME>Super High Gravity Ale</NAME><VERSION>1</VERSION><TYPE /><FORM>Liquid</FORM><LABORATORY>White Labs</LABORATORY><PRODUCT_ID>WLP099</PRODUCT_ID><ATTENUATION>85</ATTENUATION></YEAST><YEAST><NAME>Yorkshire Square Ale</NAME><VERSION>1</VERSION><TYPE /><FORM>Liquid</FORM><LABORATORY>White Labs</LABORATORY><PRODUCT_ID>WLP037</PRODUCT_ID><ATTENUATION>70</ATTENUATION></YEAST></DATABASE>
+  <YEAST>
+    <NAME>Wallonian Farmhouse</NAME>
+    <VERSION>1</VERSION>
+    <TYPE />
+    <FORM>Liquid</FORM>
+    <LABORATORY>The Yeast Bay</LABORATORY>
+    <PRODUCT_ID>*</PRODUCT_ID>
+    <ATTENUATION>85</ATTENUATION>
+  </YEAST>
+  <YEAST>
+    <NAME>Vermont Ale</NAME>
+    <VERSION>1</VERSION>
+    <TYPE />
+    <FORM>Liquid</FORM>
+    <LABORATORY>The Yeast Bay</LABORATORY>
+    <PRODUCT_ID>*</PRODUCT_ID>
+    <ATTENUATION>79</ATTENUATION>
+  </YEAST>
+  <YEAST>
+    <NAME>Saison Blend</NAME>
+    <VERSION>1</VERSION>
+    <TYPE />
+    <FORM>Liquid</FORM>
+    <LABORATORY>The Yeast Bay</LABORATORY>
+    <PRODUCT_ID>*</PRODUCT_ID>
+    <ATTENUATION>79</ATTENUATION>
+  </YEAST>
+  <YEAST>
+    <NAME>Dry Belgian Ale</NAME>
+    <VERSION>1</VERSION>
+    <TYPE />
+    <FORM>Liquid</FORM>
+    <LABORATORY>The Yeast Bay</LABORATORY>
+    <PRODUCT_ID>*</PRODUCT_ID>
+    <ATTENUATION>93</ATTENUATION>
+  </YEAST>
+  <YEAST>
+    <NAME>Northeastern Abbey</NAME>
+    <VERSION>1</VERSION>
+    <TYPE />
+    <FORM>Liquid</FORM>
+    <LABORATORY>The Yeast Bay</LABORATORY>
+    <PRODUCT_ID>*</PRODUCT_ID>
+    <ATTENUATION>79</ATTENUATION>
+  </YEAST>
+  <YEAST>
+    <NAME>Franconian Dark Lager</NAME>
+    <VERSION>1</VERSION>
+    <TYPE />
+    <FORM>Liquid</FORM>
+    <LABORATORY>The Yeast Bay</LABORATORY>
+    <PRODUCT_ID>*</PRODUCT_ID>
+    <ATTENUATION>72</ATTENUATION>
+  </YEAST>
+  <YEAST>
+    <NAME>Hessian Pils</NAME>
+    <VERSION>1</VERSION>
+    <TYPE />
+    <FORM>Liquid</FORM>
+    <LABORATORY>The Yeast Bay</LABORATORY>
+    <PRODUCT_ID>*</PRODUCT_ID>
+    <ATTENUATION>75</ATTENUATION>
+  </YEAST>
+  <YEAST>
+    <NAME>Belgian Saison III</NAME>
+    <VERSION>1</VERSION>
+    <TYPE />
+    <FORM>Liquid</FORM>
+    <LABORATORY>White Labs</LABORATORY>
+    <PRODUCT_ID>WLP585</PRODUCT_ID>
+    <ATTENUATION>72</ATTENUATION>
+  </YEAST>
+  <YEAST>
+    <NAME>Saison II Ale Yeast</NAME>
+    <VERSION>1</VERSION>
+    <TYPE />
+    <FORM>Liquid</FORM>
+    <LABORATORY>White Labs</LABORATORY>
+    <PRODUCT_ID>WLP566</PRODUCT_ID>
+    <ATTENUATION>82</ATTENUATION>
+  </YEAST>
+  <YEAST>
+    <NAME>Super High Gravity Ale</NAME>
+    <VERSION>1</VERSION>
+    <TYPE />
+    <FORM>Liquid</FORM>
+    <LABORATORY>White Labs</LABORATORY>
+    <PRODUCT_ID>WLP099</PRODUCT_ID>
+    <ATTENUATION>85</ATTENUATION>
+  </YEAST>
+  <YEAST>
+    <NAME>Yorkshire Square Ale</NAME>
+    <VERSION>1</VERSION>
+    <TYPE />
+    <FORM>Liquid</FORM>
+    <LABORATORY>White Labs</LABORATORY>
+    <PRODUCT_ID>WLP037</PRODUCT_ID>
+    <ATTENUATION>70</ATTENUATION>
+  </YEAST>
+</DATABASE>
