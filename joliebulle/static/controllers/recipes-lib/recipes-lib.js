@@ -147,8 +147,14 @@ recipesApp.controller('RecipeslibCtrl', ['$scope', '$http', '$filter', function 
 
     $scope.sortRecipe = function () {
         var aromaArray, dryArray, boilArray, firstArray, mashArray, concanArray;
-        $scope.currentRecipe.fermentables = _.sortBy($scope.currentRecipe.fermentables, function (o) {return parseInt(o.amount, 10); }).reverse();
-        $scope.currentRecipe.hops = _.sortBy($scope.currentRecipe.hops, function (o) {return parseInt(o.time, 10); }).reverse();
+        $scope.currentRecipe.fermentables = _.chain($scope.currentRecipe.fermentables)
+            .sortBy(function (o) {return o.name.toLowerCase(); }).reverse()
+            .sortBy(function (o) {return parseInt(o.amount,10); }).reverse()
+            .value();
+        $scope.currentRecipe.hops = _.chain($scope.currentRecipe.hops)
+            .sortBy(function (o) {return o.name.toLowerCase(); }).reverse()
+            .sortBy(function (o) {return parseInt(o.time, 10); }).reverse()
+            .value();
 
         aromaArray = [];
         dryArray = [];
@@ -176,7 +182,10 @@ recipesApp.controller('RecipeslibCtrl', ['$scope', '$http', '$filter', function 
         concanArray = mashArray.concat(firstArray, boilArray, aromaArray, dryArray);
         $scope.currentRecipe.hops = concanArray;
 
-        $scope.currentRecipe.miscs = _.sortBy($scope.currentRecipe.miscs, function (o) {return parseInt(o.amount, 10); }).reverse();
+        $scope.currentRecipe.miscs = _.chain($scope.currentRecipe.miscs)
+            .sortBy(function (o) {return o.name.toLowerCase();}).reverse()
+            .sortBy(function (o) {return parseInt(o.amount, 10); }).reverse()
+            .value();
         return $scope.currentRecipe;
     };
 
