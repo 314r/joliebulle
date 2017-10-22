@@ -1,0 +1,516 @@
+<html>
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="../font-awesome/css/font-awesome.min.css" >
+<script src="../angular/angular.min.js"></script>
+<script src="../angular/angular-locale_fr-fr.js"></script>
+<script src="../jquery/jquery.js"></script>
+<script src="../bootstrap/js/bootstrap.min.js"></script>
+<script src="../underscore/underscore-min.js"></script>
+<script src="../controllers/recipes-lib/main.js"></script>
+<script src="../controllers/recipes-lib/recipes-lib.js"></script>
+<script src="../beercalc/translate.js"></script>
+<script src="../beercalc/beercalc.js"></script>
+<script src="../beercalc/xml2json.js"></script>
+<script src="../beercalc/jbrecipe.js"></script>
+<script src="../beercalc/jb2xml.js"></script>
+<script src="../beercalc/jb2bb.js"></script>
+<link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
+<link rel="stylesheet" href="../font-awesome/css/font-awesome.min.css">
+<link rel="stylesheet" href="../css/sidebar.css" media="screen">
+<link rel="stylesheet" type="text/css" href="../css/library.css" media="screen"/>
+<link rel="stylesheet" type="text/css" href="../css/printRecipe.css" media="print"/>
+</head>
+
+<body ng-app="recipes-lib">
+  <div class="container-fluid" ng-controller="RecipeslibCtrl" ng-init='init()'>
+    <div class="sidebar" ng-hide="showFermentableEditor || showHopEditor || showMiscEditor || showYeastEditor">
+      <ul class="nav nav-sidebar">
+        <li class="active" onClick="main.showLib()"><a href="#"><i class="fa fa-flask"></i> </a></li>
+        <li onClick="main.showJournal()"><a href="#"><i class="fa fa-calendar-o"></i> </a></li>
+        <li onClick="main.showTools()"><a href="#"><i class="fa fa-cog"></i> </a></li>
+      </ul>
+    </div>
+    <div class="main" ng-hide="showFermentableEditor || showHopEditor || showMiscEditor || showYeastEditor">
+      <div class="recipe-list-header row">
+        <span class="" ><i class="fa fa-search"></i></span>
+        <input type="text" class="" ng-model="searchText" placeholder="Rechercher... " />
+        <button  class="btn-link btn-xs sortButton" type="button" data-toggle="dropdown" ><i class="fa fa-sort-alpha-asc"></i></button>
+        <ul id="menuSort" class="dropdown-menu" role="menu" >
+          <i class="journalMenu-description">Trier par :</i>
+          <li><a href="#" ng-click="sortByBrewer()" >Brasseur</a></li>
+          <li><a href="#" ng-click="sortByName()" >Nom</a></li>
+        </ul>
+        <button class="btn-link btn-xs newRecipeButton" type="button" ng-click="newRecipe()" data-toggle="tooltip" data-placement="bottom" title="Nouvelle recette"><i class="fa fa-plus"></i></button>
+      </div>
+
+      <div class="recipe-list">
+        <div class="recipe-item" ng-class="{'selected' : activeClass == recipe.path}" ng-repeat="recipe in recipes | filter:searchText.toLowerCase()" ng-click="recipeSelected(recipe)">
+          <span class="brewer-name">{{recipe.brewer}}</span> <button class="btn-link btn-xs deleteButton" ng-click="deleteLib(recipe)"><i class="fa fa-times"></i></button>
+          <div class="recipe-name"><a href="toto" >{{recipe.name}}</a>
+            <div class="recipe-style">{{recipe.style}}</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="recipe-view-header">
+        <button class="saveRecipe" type="button" ng-click="save(currentRecipe)" ng-show="editMode"> <i class="fa fa-save"></i><br/>Enregistrer</button>
+        <button class="cancelRecipe" type="button" ng-click="cancel()" ng-show="editMode"> <i class="fa fa-undo"></i><br/>Annuler</button>
+        <button class="editRecipe" type="button" ng-click="editRecipe()" ng-hide="editMode || !active"><i class="fa fa-wrench"></i> <br/> Modifier</button>
+        <button id="menuJournal" class="" type="button" data-toggle="dropdown" ng-hide="editMode || !active"><i class="fa fa-flag"></i> <br/> Journal <span class="fa fa-caret-down"></span></button>
+        <ul class="dropdown-menu" role="menu" aria-labelledby="menuJournal">
+              <i class="journalMenu-description">Marquer comme :</i>
+              <li><a ng-click="addToJournal('brewed')" href="#">Brassée</a></li>
+              <li><a ng-click="addToJournal('ferment')" href="#">Mise en fermentation</a></li>
+              <li><a ng-click="addToJournal('dryhop')" href="#">Dryhoppée</a></li>
+              <li><a ng-click="addToJournal('bottled')" href="#">Embouteillée</a></li>
+              <li><a ng-click="addToJournal('maturation')" href="#">Mise en garde</a></li>
+              <li class="divider"></li>
+              <li><a onClick="main.showJournal()" href="#">Voir le journal</a></li>
+        </ul>
+
+        <button class="brewday-switch" type="button" ng-click="switchToBrewday()" ng-hide="editMode || !active" ><i class="fa fa-magic"></i> <br/> Brassage</button>
+
+        <span>
+        <button id="menuRecipe" class="optionsRecipe" type="button" data-toggle="dropdown" ng-hide="editMode || !active"><i class="fa fa-bars"></i> <br/> Options  <span class="fa fa-caret-down"></span></button>
+        <ul class="dropdown-menu" role="menu" aria-labelledby="menuRecipe">
+              <li><a onClick="main.printRecipe()" href="#">Imprimer</a></li>
+              <li><a ng-click="exportToBb()" href="#">Copier le BBCode (format forum) dans le presse-papier</a></li>
+            <li><a ng-click="cloneRecipe()" href="#">Cloner la recette</a></li>
+        </ul>
+        </span>
+
+
+
+      </div>
+      <div class="recipeView" ng-show="active">
+
+        <div class="recipe-header col-md-12 row">
+          <div class="col-md-1">
+              <span class="colorPreview" ng-style="{'background-color' : currentRecipe.colorHtml}"></span>
+          </div>
+          <div class="col-md-6" ng-hide="editMode">
+            <h1>{{currentRecipe.name}}</h1>
+            <div class="author">{{currentRecipe.style}} par {{currentRecipe.brewer}}</div>
+          </div>
+          <input type="text" class="nameInput" ng-model="currentRecipe.name" ng-show="editMode">
+        </div>
+
+        <div class="recipeProfile row" >
+          <div class="calculated col-xs-1 col-sm-1 col-md-2" ng-show="active" data-toggle="tooltip" data-placement="bottom" title="Amertume">{{currentRecipe.ibu}}&nbsp;IBU</div>
+          <div class="calculated col-xs-1 col-sm-1 col-md-2" ng-show="active" data-toggle="tooltip" data-placement="bottom" title="Teinte">{{currentRecipe.ebc}}&nbsp;EBC</div>
+          <div class="calculated col-xs-1 col-sm-1 col-md-2" ng-show="active" data-toggle="tooltip" data-placement="bottom" title="Densité initiale">DI&nbsp;{{currentRecipe.og}}  </div>
+          <div class="calculated col-xs-1 col-sm-1 col-md-2" ng-show="active" data-toggle="tooltip" data-placement="bottom" title="Densité finale">DF&nbsp;{{currentRecipe.fg}} </div>
+          <div class="calculated col-xs-1 col-sm-1 col-md-2" ng-show="active" data-toggle="tooltip" data-placement="bottom" title="Rapport amertume / densité">BU/GU&nbsp;{{currentRecipe.bugu}}</div>
+          <div class="calculated col-xs-1 col-sm-1 col-md-2" ng-show="active" data-toggle="tooltip" data-placement="bottom" title="Alcool">Alc&nbsp;{{currentRecipe.alc}} %</div>
+        </div>
+
+
+
+        <form class="baseConstants form-horizontal row" ng-show="editMode">
+          <span class="param-title">Paramètres de la recette</span>
+          <div class="col-md-6">
+            <div class="form-group">
+            <label class="col-sm-6 control-label">Volume (L)</label>
+              <div class="col-sm-6">
+                <input type="number" class="form-control" ng-model="currentRecipe.volume" ng-change="volumeChanged(currentRecipe)" min="1">
+              </div>
+            </div>
+
+
+            <div class="form-group">
+            <label class="col-sm-6 control-label">Rendement (%)</label>
+              <div class="col-sm-6">
+                <input type="number" class="form-control" ng-model="currentRecipe.efficiency" ng-change="calcProfile(currentRecipe)" min="0">
+              </div>
+            </div>
+            <div class="form-group">
+            <label class="col-sm-6 control-label">Durée d'ébullition (min)</label>
+              <div class="col-sm-6">
+                <input type="number" class="form-control" ng-model="currentRecipe.boilTime" ng-change="calcProfile(currentRecipe)" min="0">
+              </div>
+            </div>
+            <div class="scaleInput">
+               <input type="checkbox" aria-label="" ng-model="scaleIngredients">  Mettre à l'échelle les ingrédients
+            </div>
+
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+            <label class="col-sm-6 control-label">Style</label>
+              <div class="col-sm-6">
+                <input type="text" class="form-control" ng-model="currentRecipe.style">
+              </div>
+            </div>
+            <div class="form-group">
+            <label class="col-sm-6 control-label">Auteur</label>
+              <div class="col-sm-6">
+                <input type="text" class="form-control" ng-model="currentRecipe.brewer">
+              </div>
+            </div>
+            <div class="form-group">
+            <label class="col-sm-6 control-label">Type</label>
+              <div class="col-sm-6">
+                  <select class="form-control" ng-model="currentRecipe.type">
+                  <option>All Grain</option>
+                  <option>Extract</option>
+                  <option>Partial Mash</option>
+                  </select>
+              </div>
+            </div>
+          </div>
+        </form>
+
+
+        <div class="recipe-vol row col-md-12" ng-hide="editMode">
+          <span class="vol-label">Vol</span> <span class="vol-value" data-toggle="tooltip" data-placement="bottom" title="Volume du brassin">{{currentRecipe.volume}}L</span>
+          <span class="effi-label">Rendement</span> <span class="effi-value" data-toggle="tooltip" data-placement="bottom" title="Rendement du brassage">{{currentRecipe.efficiency}}%</span>
+          <span class="effi-label">Ebullition</span> <span class="effi-value" data-toggle="tooltip" data-placement="bottom" title="Durée de l'ébullition">{{currentRecipe.boilTime}} min</span>
+        </div>
+
+
+        <div class="ingredients col-md-12 row">
+
+            <div class="table-responsive" >
+              <h3>Ingrédients</h3>
+              <table class="table table-condensed ing-table">
+                  <tbody>
+
+                    <tr ng-repeat="fermentable in currentRecipe.fermentables" ng-click="editFermentable($index)">
+
+                      <td>{{fermentable.name}}
+                          <span class="bulle" ng-hide="editMode"><ul>
+                            <li>EBC : {{fermentable.color | number : 0}}</li>
+                            <li>Rendement : {{fermentable.fyield | number : 0}} %</li>
+                            <li>Type : {{fermentable.typeView}}</li>
+                            <li>Proportion : {{fermentable.amountRatio | number : 1}} %</li>
+                          </ul></span>
+                          <span class="clickEdit" ng-show="editMode">Cliquer pour éditer</span></td>
+                      <td>{{fermentable.amount | number : 0}} g <span ng-show="editMode" class="amountRatio">   ({{fermentable.amountRatio}} %)</span></td>
+                      <td>{{fermentable.afterBoilView}}</td>
+                      <td ng-show="editMode"><button class="btn-link btn-xs table-button removeIngredient" type="button" ng-show="editMode" ng-click="removeFermentable($index)"><i class="fa fa-times"></i></button></td>
+                    </tr>
+                  </tbody>
+                  <tbody ng-show="editMode" ng-click="newFermentable()">
+                    <tr>
+                      <td  class="buttonTd">
+                      <button class="addIngredient" type="button"> <i class="fa fa-plus"></i>Ajouter un grain ou un sucre</button>
+                      </td>
+                    </tr>
+                  </tbody>
+
+
+
+                  <tbody>
+                    <tr ng-repeat="hop in currentRecipe.hops" ng-click="editHop($index)">
+                      <td>{{hop.name}}
+                          <span class="bulle" ng-hide="editMode"><ul>
+                            <li>Alpha : {{hop.alpha | number : 1}} %</li>
+                            <li>Contribution : {{hop.ibuPart | number : 1}} IBU</li>
+                          </ul></span>
+                          <span class="clickEdit" ng-show="editMode">Cliquer pour éditer</span></td>
+                      <td>{{hop.amount | number : 0}} g <span ng-show="editMode" class="amountRatio">   ({{hop.ibuPart | number : 1}} IBU)</span></td>
+                      <td>{{hop.useView}} - {{hop.time}} {{hop.useView=='Dry Hop' ? 'jours' : 'min'}}</td>
+                      <td ng-show="editMode"><button class="btn-link btn-xs table-button removeIngredient" type="button" ng-show="editMode" ng-click="removeHop($index)"><i class="fa fa-times"></i></button></td>
+                    </tr>
+                  </tbody>
+                  <tbody ng-show="editMode" ng-click="newHop()">
+                    <tr>
+                      <td  class="buttonTd">
+                      <button class="addIngredient" type="button"><i class="fa fa-plus"></i>Ajouter un houblon</button>
+                      </td>
+                    </tr>
+                  </tbody>
+
+
+                  <tbody>
+                    <tr ng-repeat="misc in currentRecipe.miscs" ng-click="editMisc($index)" >
+                      <td>{{misc.name}} <span class="clickEdit" ng-show="editMode">Cliquer pour éditer</span></td>
+                      <td>{{misc.amount | number : 0}} g</td>
+                      <td>{{misc.useView}} - {{misc.time}} min</td>
+                      <td ng-show="editMode">
+
+                  <button class="btn-link btn-xs removeIngredient" type="button" ng-show="editMode" ng-click="removeMisc($index)"><i class="fa fa-times"></i></button>
+                      </td>
+                    </tr>
+                  </tbody>
+                <tbody ng-show="editMode" ng-click="newMisc()">
+                    <tr>
+                      <td class="buttonTd">
+                      <button class="addIngredient" type="button"><i class="fa fa-plus"></i>Ajouter un ingrédient divers</button>
+                      </td>
+                    </tr>
+                  </tbody>
+
+                  <tbody>
+                    <tr ng-repeat="yeast in currentRecipe.yeasts" ng-click="editYeast($index)">
+                     <td>{{yeast.name}} {{yeast.labo}} {{yeast.product_id}}  <span class="clickEdit" ng-show="editMode">Cliquer pour éditer</span></td>
+                     <td>Atténuation {{yeast.attenuation}} %</td>
+                      <td>Forme {{yeast.formView}}</td>
+                      <td ng-show="editMode">
+
+                  <button class="btn-link btn-xs removeIngredient" type="button" ng-show="editMode" ng-click="removeYeast($index)"><i class="fa fa-times"></i></button>
+                      </td>
+                    </tr>
+                  </tbody>
+                  <tbody ng-show="editMode" ng-click="newYeast()">
+                    <tr>
+                      <td class="buttonTd">
+                      <button class="addIngredient" type="button"><i class="fa fa-plus"></i>Ajouter une levure</button>
+                      </td>
+                    </tr>
+                  </tbody>
+              </table>
+            </div>
+        </div>
+
+        <div class="profile col-md-12">
+          <div class="row profile-header">
+            <h3 class="col-md-6">Brassage</h3>
+          </div>
+          <div class="brew-details">
+            <select ng-model="currentRecipe.mashProfile" ng-options="profile.name for profile in mashProfiles" ng-show="editMode">
+              <option value="">-- Choisir un profil de brassage --</option>
+            </select>
+            <span class="profile-name">{{currentRecipe.mashProfile.name}}</span>
+            <span class="profile-ph">pH {{currentRecipe.mashProfile.ph}}</span>
+            <div ng-repeat="step in currentRecipe.mashProfile.steps">
+              <p><span class="label-step">{{step.name}}</span> palier de type {{step.type}} à {{step.temp}} °C pendant {{step.time}} minutes</p>
+            </div>
+            <p><span class="label-step">Rinçage</span> {{currentRecipe.mashProfile.sparge}} °C</p>
+          </div>
+        </div>
+
+        <div class="yeasts notes col-md-10">
+          <h3>Notes</h3>
+          <pre ng-hide="editMode">{{currentRecipe.notes}}</pre>
+          <div class="noteEditor">
+            <textarea ng-model="currentRecipe.notes" class="col-md-10" ng-show="editMode"></textarea>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="ingredientEditor" ng-show="showFermentableEditor">
+        <div class="sidebarIng" >
+            <div ng-repeat="fermentable in ingredients.fermentables" ng-click="fermentableSelected(fermentable)">
+              <span>
+              {{fermentable.name}}
+              </span>
+            </div>
+        </div>
+        <div class="HUD">
+            <span>{{currentRecipe.ibu}} IBU</span>
+            <span>{{currentRecipe.ebc}} EBC</span>
+            <span>{{currentRecipe.og}}</span>
+            <span>{{currentRecipe.fg}}</span>
+        </div>
+        <div class="mainIng">
+          <div>
+            <label>Nom</label>
+            <input type="text" ng-model="currentFerm.name">
+          </div>
+          <div>
+            <label>Quantité (g)</label>
+            <input type="number" ng-model="currentFerm.amount" ng-change="calcProfile(currentRecipe)" min="0"> <span class="amountRatio">{{currentFerm.amountRatio}} %</span>
+          </div>
+
+          <div>
+            <label>Rendement (%)</label>
+            <input type="number" ng-model="currentFerm.fyield" ng-change="calcProfile(currentRecipe)" min="0">
+          </div>
+          <div>
+            <label>Couleur (EBC)</label>
+            <input type="number" ng-model="currentFerm.color" ng-change="calcProfile(currentRecipe)" min="0">
+          </div>
+          <div>
+              <label>Type</label>
+              <select ng-model="currentFerm.typeView" ng-change="calcProfile(currentRecipe)">
+                <option>Grain</option>
+                <option>Extrait</option>
+                <option>Extrait Sec</option>
+                <option>Sucre</option>
+              </select>
+          </div>
+          <div>
+              <label>Usage</label>
+              <select ng-model="currentFerm.afterBoilView" ng-change="calcProfile(currentRecipe)">
+                <option>Après Ebullition</option>
+                <option>Brassage</option>
+              </select>
+          </div>
+              <button ng-click="cancelIngredient()" class="cancelIng">Annuler</button>
+              <button ng-click="closeFermentableEditor()" class="okIng">Ajouter</button>
+        </div>
+    </div>
+
+    <div class="ingredientEditor" ng-show="showHopEditor">
+      <div class="sidebarIng" >
+        <div ng-repeat="hop in ingredients.hops" ng-click="hopSelected(hop)">
+          <span>
+          {{hop.name}}
+          </span>
+        </div>
+      </div>
+      <div class="HUD">
+            <span>{{currentRecipe.ibu}} IBU</span>
+            <span>{{currentRecipe.ebc}} EBC</span>
+            <span>{{currentRecipe.og}}</span>
+            <span>{{currentRecipe.fg}}</span>
+        </div>
+      <div class="mainIng">
+
+          <div >
+            <label>Nom</label>
+            <input type="text" ng-model="currentHop.name">
+          </div>
+          <div>
+            <label >Alpha (%)</label>
+            <input type="number"  ng-model="currentHop.alpha" ng-change="calcProfile(currentRecipe)">
+          </div>
+
+
+          <div>
+            <label>Durée ({{currentHop.useView=='Dry Hop' ? 'jours' : 'min'}})</label>
+            <input type="number" ng-model="currentHop.time" ng-change="calcProfile(currentRecipe)">
+          </div>
+          <div>
+            <label>Quantité (g)</label>
+            <input type="number" ng-model="currentHop.amount" ng-change="calcProfile(currentRecipe)"> <span class="amountRatio">{{currentHop.ibuPart | number : 1}} IBU</span>
+          </div>
+
+
+          <div>
+            <label>Usage</label>
+            <select ng-model="currentHop.useView"  ng-change="calcProfile(currentRecipe)">
+              <option>Ebullition</option>
+              <option>Dry Hop</option>
+              <option>Empâtage</option>
+              <option>Premier Moût</option>
+              <option>Hors Flamme</option>
+            </select>
+          </div>
+          <div>
+            <label>Forme</label>
+            <select ng-model="currentHop.formView" ng-change="calcProfile(currentRecipe)">
+              <option>Pellet</option>
+              <option>Cône</option>
+              <option>Feuille</option>
+            </select>
+          </div>
+          <button ng-click="cancelIngredient()" class="cancelIng">Annuler</button>
+          <button ng-click="closeHopEditor()" class="okIng">Ajouter</button>
+
+      </div>
+    </div>
+
+    <div class="ingredientEditor" ng-show="showMiscEditor">
+      <div class="sidebarIng" >
+        <div ng-repeat="misc in ingredients.miscs" ng-click="miscSelected(misc)">
+          <span>
+          {{misc.name}}
+          </span>
+        </div>
+      </div>
+        <div class="HUD">
+            <span>{{currentRecipe.ibu}} IBU</span>
+            <span>{{currentRecipe.ebc}} EBC</span>
+            <span>{{currentRecipe.og}}</span>
+            <span>{{currentRecipe.fg}}</span>
+        </div>
+        <div class="mainIng">
+          <div>
+            <label>Nom</label>
+            <input type="text" ng-model="currentMisc.name">
+          </div>
+          <div>
+            <label>Quantité (g)</label>
+            <input type="number" ng-model="currentMisc.amount" ng-change="calcProfile(currentRecipe)" min="0">
+          </div>
+          <div>
+            <label>Type</label>
+            <select ng-model="currentMisc.typeView" ng-change="calcProfile(currentRecipe)">
+              <option>Epice</option>
+              <option>Arôme</option>
+              <option>Traitement Eau</option>
+              <option>Herbe</option>
+              <option>Clarifiant</option>
+              <option>Autre</option>
+            </select>
+          </div>
+          <div>
+            <label>Usage</label>
+            <select ng-model="currentMisc.useView" ng-change="calcProfile(currentRecipe)">
+              <option>Ebullition</option>
+              <option>Empâtage</option>
+              <option>Primaire</option>
+              <option>Secondaire</option>
+              <option>Embouteillage</option>
+            </select>
+          </div>
+          <div>
+            <label>Durée (min)</label>
+            <input type="number" ng-model="currentMisc.time" ng-change="calcProfile(currentRecipe)" min="0">
+          </div>
+          <button ng-click="cancelIngredient()" class="cancelIng">Annuler</button>
+          <button ng-click="closeMiscEditor()" class="okIng">Ajouter</button>
+        </div>
+    </div>
+
+    <div class="ingredientEditor" ng-show="showYeastEditor">
+      <div class="sidebarIng" >
+        <div ng-repeat="yeast in ingredients.yeasts" ng-click="yeastSelected(yeast)">
+          <span>
+          {{yeast.name}} {{yeast.product_id}}
+          </span>
+        </div>
+      </div>
+      <div class="HUD">
+            <span>{{currentRecipe.ibu}} IBU</span>
+            <span>{{currentRecipe.ebc}} EBC</span>
+            <span>{{currentRecipe.og}}</span>
+            <span>{{currentRecipe.fg}}</span>
+        </div>
+
+      <div class="mainIng">
+        <div>
+          <label>Nom</label>
+          <input type="text" ng-model="currentYeast.name">
+        </div>
+        <div>
+          <label>Labo</label>
+          <input type="text" ng-model="currentYeast.labo">
+        </div>
+        <div>
+          <label>ID</label>
+          <input type="text" ng-model="currentYeast.product_id">
+        </div>
+        <div>
+          <label>Atténuation</label>
+          <input type="number" ng-model="currentYeast.attenuation" ng-change="calcProfile(currentRecipe)">
+        </div>
+        <div>
+          <label>Forme</label>
+          <select ng-model="currentYeast.formView" ng-change="calcProfile(currentRecipe)">
+            <option>Liquide</option>
+            <option>Poudre</option>
+            <option>Gélose</option>
+            <option>Culture</option>
+          </select>
+        </div>
+        <button ng-click="cancelIngredient()" class="cancelIng">Annuler</button>
+        <button ng-click="closeYeastEditor()" class="okIng">Ajouter</button>
+      </div>
+    </div>
+
+  <!-- Fin container     -->
+  </div>
+
+  <script type="text/javascript">
+  $(function () {
+  $("[data-toggle='tooltip']").tooltip();
+  });
+  </script>
+</body>
+</html>
