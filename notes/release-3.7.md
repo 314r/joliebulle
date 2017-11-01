@@ -15,3 +15,7 @@ Les contributeurs extérieurs ont joué un rôle important dans cette sortie.
 Et enfin, Flagos a fournit une amélioration réclamée de longue date : l'unité de temps pour le dry-hopping passe en jours.
 
 C'est tout pour cette fois ! 
+
+## 3.7.1
+
+Correction d'un bug critique qui empêchait la modification de certaines recettes.

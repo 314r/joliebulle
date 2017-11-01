@@ -1,1 +1,0 @@
-var toolsApp = angular.module('tools', []);

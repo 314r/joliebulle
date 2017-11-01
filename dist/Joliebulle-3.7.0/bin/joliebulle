@@ -1,5 +1,0 @@
-#!/bin/sh
-
-cd /usr/share/joliebulle
-
-python3 main.py $@
