@@ -113,7 +113,7 @@ var jb2xml = (function () {
             });
             string += "</MASH_STEPS>";
             string += "</MASH>";
-            string += "<NOTES>" + htmlEscape(recipe.notes) + "</NOTES>";
+            string += "<NOTES>" + recipe.notes ? htmlEscape(recipe.notes) : " " + "</NOTES>";
             string += "</RECIPE></RECIPES>";
 
             xml = parser.parseFromString(string, "application/xml");
