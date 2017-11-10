@@ -1,0 +1,66 @@
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width:50px;
+    z-index: 1000;
+    display: block;
+    margin-top:54px;
+    border-top: 1px solid #eee;
+    
+    /*background-color: #212121;*/
+    
+      
+      /*background-color: #fff;*/
+    
+      
+    overflow-y:auto;
+    overflow-x: hidden;
+  }
+
+
+.sidebar a {color:#333;}
+/*
+.sidebar .active a {border-right: 5px solid #1abc9c; }
+*/
+
+/*.nav > li > a:hover {background-color: #fff; color:#fff; border-right: 5px solid #1abc9c;}
+*/
+/*.sidebar a {color:#6f6f6f;}
+.sidebar .active a {color:#333;*/}
+.sidebar .active i {color:#fff;}
+.nav-sidebar {/*border-bottom:1px solid #dae1e8;*/ padding-bottom:14px; padding-left:-20px;margin-right:-20px;}
+ul.nav.nav-sidebar {margin-top:30px;}
+.sidebar li {/*border-bottom:1px solid #dae1e8;*/}
+.sidebar i {margin-right:10px;color:#909090;font-size:1.5em;}
+.sidebar .active i {color:#3498db;}
+.sidebar i:hover {color:#3498db;}
+.nav-sidebar li{ margin-bottom:1.5em;}
+.nav > li > a {padding-top: 5px; padding-bottom:5px; margin-top:10px;}
+.nav > li > a:hover {background : #fff;}
+.nav-header {height:55px;position:fixed;left:0px; top:0px;z-index: 1000;background-color: #3498db; width:50px;}
+
+
+.sidebarIng {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width:220px;
+    display: block;
+    overflow-y:auto;
+    overflow-x: hidden;
+    background :#4e4e4e;
+    color: #e5e5e5;
+}
+
+.sidebarIng span {
+    display: block;
+    padding : 3px 0px 3px 15px;
+}
+
+.sidebarIng span:hover {
+    background: #363636;
+}
+
