@@ -94,20 +94,11 @@
                             <li>Type : {{fermentable.typeView}}</li>
                             <li>Proportion : {{fermentable.amountRatio | number : 1}} %</li>
                           </ul></span>
-                          <span class="clickEdit" ng-show="editMode">Cliquer pour éditer</span></td>
-                      <td>{{fermentable.amount | number : 0}} g <span ng-show="editMode" class="amountRatio">   ({{fermentable.amountRatio}} %)</span></td>
-                      <td>{{fermentable.afterBoilView}}</td>
-                      <td ng-show="editMode"><button class="btn-link btn-xs table-button removeIngredient" type="button" ng-show="editMode" ng-click="removeFermentable($index)"><i class="fa fa-times"></i></button></td>
-                    </tr>
-                  </tbody>
-                  <tbody ng-show="editMode" ng-click="newFermentable()">
-                    <tr>
-                      <td  class="buttonTd">
-                      <button class="addIngredient" type="button"> <i class="fa fa-plus"></i>Ajouter un grain ou un sucre</button>
                       </td>
+                      <td>{{fermentable.amount | number : 0}} g </td>
+                      <td>{{fermentable.afterBoilView}}</td>
                     </tr>
                   </tbody>
-
 
 
                   <tbody>
@@ -117,56 +108,25 @@
                             <li>Alpha : {{hop.alpha | number : 1}} %</li>
                             <li>Contribution : {{hop.ibuPart | number : 1}} IBU</li>
                           </ul></span>
-                          <span class="clickEdit" ng-show="editMode">Cliquer pour éditer</span></td>
-                      <td>{{hop.amount | number : 0}} g <span ng-show="editMode" class="amountRatio">   ({{hop.ibuPart | number : 1}} IBU)</span></td>
-                      <td>{{hop.useView}} - {{hop.time}} {{hop.useView=='Dry Hop' ? 'jours' : 'min'}}</td>
-                      <td ng-show="editMode"><button class="btn-link btn-xs table-button removeIngredient" type="button" ng-show="editMode" ng-click="removeHop($index)"><i class="fa fa-times"></i></button></td>
-                    </tr>
-                  </tbody>
-                  <tbody ng-show="editMode" ng-click="newHop()">
-                    <tr>
-                      <td  class="buttonTd">
-                      <button class="addIngredient" type="button"><i class="fa fa-plus"></i>Ajouter un houblon</button>
                       </td>
+                      <td>{{hop.amount | number : 0}} g</td>
+                      <td>{{hop.useView}} - {{hop.time}} {{hop.useView=='Dry Hop' ? 'jours' : 'min'}}</td>
                     </tr>
                   </tbody>
-
 
                   <tbody>
                     <tr ng-repeat="misc in currentRecipe.miscs" ng-click="editMisc($index)" >
-                      <td>{{misc.name}} <span class="clickEdit" ng-show="editMode">Cliquer pour éditer</span></td>
+                      <td>{{misc.name}}</td>
                       <td>{{misc.amount | number : 0}} g</td>
                       <td>{{misc.useView}} - {{misc.time}} min</td>
-                      <td ng-show="editMode">
-
-                  <button class="btn-link btn-xs removeIngredient" type="button" ng-show="editMode" ng-click="removeMisc($index)"><i class="fa fa-times"></i></button>
-                      </td>
-                    </tr>
-                  </tbody>
-                <tbody ng-show="editMode" ng-click="newMisc()">
-                    <tr>
-                      <td class="buttonTd">
-                      <button class="addIngredient" type="button"><i class="fa fa-plus"></i>Ajouter un ingrédient divers</button>
-                      </td>
                     </tr>
                   </tbody>
 
                   <tbody>
                     <tr ng-repeat="yeast in currentRecipe.yeasts" ng-click="editYeast($index)">
-                     <td>{{yeast.name}} {{yeast.labo}} {{yeast.product_id}}  <span class="clickEdit" ng-show="editMode">Cliquer pour éditer</span></td>
+                     <td>{{yeast.name}} {{yeast.labo}} {{yeast.product_id}}</td>
                      <td>Attenuation {{yeast.attenuation}} %</td>
                       <td>{{yeast.formView}}</td>
-                      <td ng-show="editMode">
-
-                  <button class="btn-link btn-xs removeIngredient" type="button" ng-show="editMode" ng-click="removeYeast($index)"><i class="fa fa-times"></i></button>
-                      </td>
-                    </tr>
-                  </tbody>
-                  <tbody ng-show="editMode" ng-click="newYeast()">
-                    <tr>
-                      <td class="buttonTd">
-                      <button class="addIngredient" type="button"><i class="fa fa-plus"></i>Ajouter une levure</button>
-                      </td>
                     </tr>
                   </tbody>
               </table>
@@ -178,9 +138,7 @@
             <h3 class="col-md-6">Brassage</h3>
           </div>
           <div class="brew-details">
-            <select ng-model="currentRecipe.mashProfile" ng-options="profile.name for profile in mashProfiles" ng-show="editMode">
-              <option value="">-- Choisir un profil de brassage --</option>
-            </select>
+
             <span class="profile-name">{{currentRecipe.mash.name}}</span>
             <span class="profile-ph">pH {{currentRecipe.mash.ph}}</span>
             <div ng-repeat="step in currentRecipe.mash.mash_steps">
@@ -193,14 +151,9 @@
         <div class="yeasts notes col-md-10">
           <h3>Notes</h3>
           <pre ng-hide="editMode">{{currentRecipe.notes}}</pre>
-          <div class="noteEditor">
-            <textarea ng-model="currentRecipe.notes" class="col-md-10" ng-show="editMode"></textarea>
-          </div>
         </div>
       </div>
     </div>
 </div>
-
-
 </body>
 </html>
