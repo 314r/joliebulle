@@ -251,6 +251,6 @@ class ImportBase(object,metaclass=Singleton) :
 
         # data.append(dic)
         dic = json.dumps(dic)
-        dic = dic.replace("'","&#39;")
+        # dic = dic.replace("'","&#39;")
 
         return dic
