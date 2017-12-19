@@ -19,3 +19,9 @@ C'est tout pour cette fois !
 ## 3.7.1
 
 Correction d'un bug critique qui empêchait la modification de certaines recettes.
+
+## 3.7.2
+
+Correction d'un bug lié à l'enregistrement des notes.
+Correction d'un problème d'encodage dans la liste des ingrédients.
+Suppression d'une balise inutilisée dans le fichier BeerXml
