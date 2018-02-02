@@ -1,0 +1,1 @@
+var brewdayApp = angular.module('brewday', []);
