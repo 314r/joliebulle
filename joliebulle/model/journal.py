@@ -1,7 +1,7 @@
 #!/usr/bin/python3.1
 #­*­coding: utf­8 -­*­
 
-#joliebulle 3.5
+#joliebulle 3.6
 #Copyright (C) 2010-2016 Pierre Tavares
 
 
@@ -33,9 +33,11 @@ class Journal :
         self.text=""
 
         self.eventsLabels = {
-            'brewed': QCoreApplication.translate("Export", "brassée"),
-            'ferment': QCoreApplication.translate("Export", "mise en fermentation"),
-            'bottled': QCoreApplication.translate("Export", "embouteillée")
+            'brewed': "brassée",
+            'ferment': "mise en fermentation",
+            'dryhop': "dryhopée",
+            'bottled': "embouteillée",
+            'maturation': "mise en garde", 
         }
 
     @staticmethod

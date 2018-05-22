@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 #­*­coding: utf­8 -­*­
 
-#joliebulle 3.5
+#joliebulle 3.6
 #Copyright (C) 2010-2016 Pierre Tavares
 
 #This program is free software; you can redistribute it and/or
@@ -42,7 +42,7 @@ def exportHTML(data):
 <style>
     .main {padding-top:45px; margin-left:80px; margin-bottom:60px;}
     .header{width:100%%;min-height:55px;position:fixed;left:50px;z-index: 1000;background-color: #fff;padding-left:10px;border-bottom: 1px solid #eee;}
-    .buttonBack{margin-left:30px;margin-top:-25px;}
+    .buttonBack{margin-left:30px;margin-top:12px;}
     button.printButton{
       margin-left:30px;
       background-color :#fff;

@@ -72,7 +72,7 @@ var translate = (function () {
                     misc.useView = _locale_fr[misc.use];
                 }
                 if (typeof misc.typeView !== 'undefined') {
-                    misc.type = (_.invert(_locale_fr))[misc.ftypeView];
+                    misc.type = (_.invert(_locale_fr))[misc.typeView];
                 } else {
                     misc.typeView = _locale_fr[misc.type];
                 }

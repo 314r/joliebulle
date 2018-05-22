@@ -1,9 +1,9 @@
 #!/usr/bin/python3
 #­*­coding: utf­8 -­*­
 
-#joliebulle 3.5
-#Copyright (C) 2010-2016 Pierre Tavares
-#Copyright (C) 2012-2015 joliebulle's authors
+#joliebulle 3.7
+#Copyright (C) 2010-2017 Pierre Tavares
+#Copyright (C) 2012-2017 joliebulle's authors
 #See AUTHORS file.
 
 #This program is free software; you can redistribute it and/or
@@ -644,7 +644,7 @@ class AppWindow(QtWidgets.QMainWindow,Ui_MainWindow):
 
 
     def importIng(self):
-        s = QtGui.QFileDialog.getOpenFileName(self,
+        s = QtWidgets.QFileDialog.getOpenFileName(self,
             self.tr("Ouvrir un fichier"),
             home_dir,
             )

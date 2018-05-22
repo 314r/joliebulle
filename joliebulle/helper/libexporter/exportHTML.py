@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 #­*­coding: utf­8 -­*­
 
-#joliebulle 3.5
+#joliebulle 3.6
 #Copyright (C) 2010-2016 Pierre Tavares
 
 #This program is free software; you can redistribute it and/or

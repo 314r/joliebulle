@@ -6,7 +6,7 @@ eggs
 develop-eggs
 __pycache__
 sdist
-build
+
 
 #Windows
 Thumbs.db
@@ -20,3 +20,5 @@ Desktop.ini
 
 #JolieBulle
 *_ui.py
+
+node_modules

@@ -1,0 +1,26 @@
+{
+  "name": "nextbulle",
+  "version": "1.0.0",
+  "description": "A minimal beer brewing application",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "repository": "",
+  "keywords": [
+    "Electron",
+    "quick",
+    "start",
+    "tutorial",
+    "demo"
+  ],
+  "author": "314r",
+  "license": "GPLv3",
+  "devDependencies": {
+    "electron": "~1.6.2",
+    "pixl-xml": "^1.0.13"
+  },
+  "dependencies": {
+    "xml2js": "^0.4.17"
+  }
+}
