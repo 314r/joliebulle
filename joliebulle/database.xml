@@ -3034,4 +3034,119 @@
     <PRODUCT_ID>WLP037</PRODUCT_ID>
     <ATTENUATION>70</ATTENUATION>
   </YEAST>
+  <YEAST>
+    <NAME>Bavarian Lager</NAME>
+    <VERSION>1</VERSION>
+    <TYPE />
+    <FORM>Dry</FORM>
+    <LABORATORY>Mangrove Jack's</LABORATORY>
+    <PRODUCT_ID>M76</PRODUCT_ID>
+    <ATTENUATION>77</ATTENUATION>
+  </YEAST>
+  <YEAST>
+    <NAME>Bavarian Wheat</NAME>
+    <VERSION>1</VERSION>
+    <TYPE />
+    <FORM>Dry</FORM>
+    <LABORATORY>Mangrove Jack's</LABORATORY>
+    <PRODUCT_ID>M20</PRODUCT_ID>
+    <ATTENUATION>72</ATTENUATION>
+  </YEAST>
+  <YEAST>
+    <NAME>Belgian Abbey</NAME>
+    <VERSION>1</VERSION>
+    <TYPE />
+    <FORM>Dry</FORM>
+    <LABORATORY>Mangrove Jack's</LABORATORY>
+    <PRODUCT_ID>M47</PRODUCT_ID>
+    <ATTENUATION>75</ATTENUATION>
+  </YEAST>
+    <NAME>Belgian Ale</NAME>
+    <VERSION>1</VERSION>
+    <TYPE />
+    <FORM>Dry</FORM>
+    <LABORATORY>Mangrove Jack's</LABORATORY>
+    <PRODUCT_ID>M41</PRODUCT_ID>
+    <ATTENUATION>85</ATTENUATION>
+  </YEAST>
+  </YEAST>
+    <NAME>Belgian Tripel</NAME>
+    <VERSION>1</VERSION>
+    <TYPE />
+    <FORM>Dry</FORM>
+    <LABORATORY>Mangrove Jack's</LABORATORY>
+    <PRODUCT_ID>M31</PRODUCT_ID>
+    <ATTENUATION>85</ATTENUATION>
+  </YEAST>
+    <NAME>Belgian Wit</NAME>
+    <VERSION>1</VERSION>
+    <TYPE />
+    <FORM>Dry</FORM>
+    <LABORATORY>Mangrove Jack's</LABORATORY>
+    <PRODUCT_ID>M21</PRODUCT_ID>
+    <ATTENUATION>72</ATTENUATION>
+  </YEAST>
+  <YEAST>
+    <NAME>Bohemian Lager</NAME>
+    <VERSION>1</VERSION>
+    <TYPE />
+    <FORM>Dry</FORM>
+    <LABORATORY>Mangrove Jack's</LABORATORY>
+    <PRODUCT_ID>M84</PRODUCT_ID>
+    <ATTENUATION>74</ATTENUATION>
+  </YEAST>
+  <YEAST>
+    <NAME>Californian Lager</NAME>
+    <VERSION>1</VERSION>
+    <TYPE />
+    <FORM>Dry</FORM>
+    <LABORATORY>Mangrove Jack's</LABORATORY>
+    <PRODUCT_ID>M54</PRODUCT_ID>
+    <ATTENUATION>80</ATTENUATION>
+  </YEAST>
+  <YEAST>
+    <NAME>Empire Ale</NAME>
+    <VERSION>1</VERSION>
+    <TYPE />
+    <FORM>Dry</FORM>
+    <LABORATORY>Mangrove Jack's</LABORATORY>
+    <PRODUCT_ID>M15</PRODUCT_ID>
+    <ATTENUATION>72</ATTENUATION>
+  </YEAST>
+  <YEAST>
+    <NAME>French Saison Ale</NAME>
+    <VERSION>1</VERSION>
+    <TYPE />
+    <FORM>Dry</FORM>
+    <LABORATORY>Mangrove Jack's</LABORATORY>
+    <PRODUCT_ID>M29</PRODUCT_ID>
+    <ATTENUATION>87</ATTENUATION>
+  </YEAST>
+  <YEAST>
+    <NAME>Liberty Bell Ale</NAME>
+    <VERSION>1</VERSION>
+    <TYPE />
+    <FORM>Dry</FORM>
+    <LABORATORY>Mangrove Jack's</LABORATORY>
+    <PRODUCT_ID>M36</PRODUCT_ID>
+    <ATTENUATION>76</ATTENUATION>
+  </YEAST>
+  <YEAST>
+    <NAME>New World Strong Ale</NAME>
+    <VERSION>1</VERSION>
+    <TYPE />
+    <FORM>Dry</FORM>
+    <LABORATORY>Mangrove Jack's</LABORATORY>
+    <PRODUCT_ID>M42</PRODUCT_ID>
+    <ATTENUATION>79</ATTENUATION>
+  </YEAST>
+  <YEAST>
+    <NAME>US West Coast</NAME>
+    <VERSION>1</VERSION>
+    <TYPE />
+    <FORM>Dry</FORM>
+    <LABORATORY>Mangrove Jack's</LABORATORY>
+    <PRODUCT_ID>M44</PRODUCT_ID>
+    <ATTENUATION>82</ATTENUATION>
+  </YEAST>
 </DATABASE>
