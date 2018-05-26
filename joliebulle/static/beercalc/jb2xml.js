@@ -3,11 +3,47 @@
 
 function htmlEscape(str) {
     return str
-        .replace(/&/g, '&amp;')
-        .replace(/"/g, '&quot;')
-        .replace(/'/g, '&#39;')
-        .replace(/</g, '&lt;')
-        .replace(/>/g, '&gt;');
+        .replace(/&/g, "&amp;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#39;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;");
+}
+
+
+function consolidateRecipe (recipe) {
+    recipe.boilTime ? (recipe.boilTime = recipe.boilTime) : (recipe.boilTime = 0);
+    recipe.efficiency ? (recipe.efficiency = recipe.efficiency) : (recipe.efficiency = 70);
+    recipe.volume ? (recipe.volume = recipe.volume) : (recipe.volume = 10);
+    recipe.style ? (recipe.style = recipe.style) : (recipe.style = "generic");
+    recipe.brewer ? (recipe.brewer = recipe.brewer) : (recipe.brewer = "anonymous");
+    recipe.fermentables.map(function (fermentable) {
+        fermentable.name ? (fermentable.name = fermentable.name) : (fermentable.name = "noname");
+        fermentable.amount ? (fermentable.amount = fermentable.amount) : (fermentable.amount = 1);
+        fermentable.fyield ? (fermentable.fyield = fermentable.fyield) : (fermentable.fyield = 0);
+        fermentable.color ? (fermentable.color = fermentable.color) : (fermentable.color = 0);
+    });
+    recipe.hops.map(function (hop) {
+        hop.name ? (hop.name = hop.name) : (hop.name = "noname");
+        hop.amount ? (hop.amount = hop.amount) : (hop.amount = 1);
+        hop.time ? (hop.time = hop.time) : (hop.time = 0);
+        hop.alpha ? (hop.alpha = hop.alpha) : (hop.alpha = 1);
+    });
+    recipe.yeasts.map(function (yeast) {
+        yeast.attenuation ? (yeast.attenuation = yeast.attenuation) : (yeast.attenuation = 75);
+        yeast.labo ? (yeast.labo = yeast.labo) : (yeast.labo = "noname");
+        yeast.product_id ? (yeast.product_id = yeast.product_id) : (yeast.product_id = "noname");
+    });
+    recipe.miscs.map(function (misc) {
+        misc.name ? (misc.name = misc.name) : (misc.name = "noname");
+        misc.amount ? (misc.amount = misc.amount) : (misc.amount = 1);
+        misc.time ? (misc.time = misc.time) : (misc.time = 0);
+    });
+
+
+
+
+    return recipe;
 }
 
 var jb2xml = (function () {
@@ -16,6 +52,7 @@ var jb2xml = (function () {
     return {
 
         exportString : function (recipe) {
+            recipe = consolidateRecipe(recipe);
             parser = new DOMParser();
             string = "<RECIPES><RECIPE>";
             string += "<NAME>" + htmlEscape(recipe.name) + "</NAME>";
@@ -55,11 +92,11 @@ var jb2xml = (function () {
                 } else if (hop.form === 2 || hop.form === 'Plug') {
                     string += "<FORM>Plug</FORM>";
                 }
-                if (hop.use === 'Dry Hop') {
-                    string += "<TIME>" + hop.time*24*60 + "</TIME>";
-                    string += "<DISPLAY_TIME>" + hop.time + " days</DISPLAY_TIME>";
+                if (hop.use === "Dry Hop") {
+                    string += "<TIME>" + hop.time*24*60  + "</TIME>";
+                    string += "<DISPLAY_TIME>" + hop.time  + " days</DISPLAY_TIME>";
                 } else {
-                    string += "<TIME>" + hop.time + "</TIME>";
+                    string += "<TIME>" + hop.time  + "</TIME>";
                 }
                 string += "<ALPHA>" + hop.alpha + "</ALPHA>";
                 string += "<USE>" + hop.use + "</USE>";
