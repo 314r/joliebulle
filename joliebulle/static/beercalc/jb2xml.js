@@ -54,14 +54,15 @@ var jb2xml = (function () {
         exportString : function (recipe) {
             recipe = consolidateRecipe(recipe);
             parser = new DOMParser();
-            string = "<RECIPES><RECIPE>";
+            string = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>";
+            string += "<RECIPES><RECIPE>";
             string += "<NAME>" + htmlEscape(recipe.name) + "</NAME>";
             string += "<VERSION>1</VERSION>";
             string += "<TYPE>" + htmlEscape(recipe.type) + "</TYPE>";
             string += "<BREWER>" + htmlEscape(recipe.brewer) + "</BREWER>";
             string += "<STYLE><NAME>" + htmlEscape(recipe.style) + "</NAME><VERSION>1</VERSION><CATEGORY /><CATEGORY_NUMBER /><STYLE_LETTER /><STYLE_GUIDE /><TYPE /><OG_MIN /><OG_MAX /><FG_MIN /><FG_MAX /><IBU_MIN /><IBU_MAX /><COLOR_MIN /><COLOR_MAX /></STYLE>";
             string += "<BATCH_SIZE>" + recipe.volume + "</BATCH_SIZE>";
-            string += "<BOIL_SIZE />";
+            string += "<BOIL_SIZE>" + (recipe.volume * 0.1 + recipe.volume) + "</BOIL_SIZE>";
             string += "<BOIL_TIME>" + recipe.boilTime + "</BOIL_TIME>";
             string += "<EFFICIENCY>" + recipe.efficiency + "</EFFICIENCY>";
             string += "<OG>" + recipe.og + "</OG><FG>" + recipe.fg + "</FG>";
@@ -85,11 +86,11 @@ var jb2xml = (function () {
                 string += "<NAME>" + htmlEscape(hop.name) + "</NAME>";
                 string += "<VERSION>1</VERSION>";
                 string += "<AMOUNT>" + hop.amount / 1000 + "</AMOUNT>";
-                if (hop.form === 0 || hop.form === 'Pellet') {
+                if (hop.form === 0 || hop.form === "Pellet") {
                     string += "<FORM>Pellet</FORM>";
-                } else if (hop.form === 1 || hop.form === 'Leaf') {
+                } else if (hop.form === 1 || hop.form === "Leaf") {
                     string += "<FORM>Leaf</FORM>";
-                } else if (hop.form === 2 || hop.form === 'Plug') {
+                } else if (hop.form === 2 || hop.form === "Plug") {
                     string += "<FORM>Plug</FORM>";
                 }
                 if (hop.use === "Dry Hop") {
