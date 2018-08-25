@@ -2,8 +2,8 @@
 #­*­coding: utf­8 -­*­
 
 #joliebulle 3.7
-#Copyright (C) 2010-2017 Pierre Tavares
-#Copyright (C) 2012-2017 joliebulle's authors
+#Copyright (C) 2010-2018 Pierre Tavares
+#Copyright (C) 2012-2018 joliebulle's authors
 #See AUTHORS file.
 
 #This program is free software; you can redistribute it and/or

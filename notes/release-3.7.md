@@ -25,3 +25,8 @@ Correction d'un bug critique qui empêchait la modification de certaines recette
 Correction d'un bug lié à l'enregistrement des notes.
 Correction d'un problème d'encodage dans la liste des ingrédients.
 Suppression d'une balise inutilisée dans le fichier BeerXml
+
+## 3.7.3
+
+Amélioration de la compatibilité Beerxml
+Correction de plusieurs plantages en cas de valeurs nulles dans des formulaires
