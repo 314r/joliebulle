@@ -18,7 +18,7 @@ toolsApp.controller('JournalCtrl', ['$scope', '$http', '$filter', function ($sco
 
     $scope.edit = function (entry) {
         entry.editing = !entry.editing;
-        // entry.date = $filter('date')(entry.date * 1000, "yyyy-MM-dd");  
+        // entry.date = $filter('date')(entry.date * 1000, "yyyy-MM-dd");
     };
 
     $scope.save = function (entry) {
@@ -91,5 +91,64 @@ toolsApp.controller('JournalCtrl', ['$scope', '$http', '$filter', function ($sco
         entry.date = new Date(entry.date).getTime() / 1000;
         entry.date.toString();
     };
+
+    $scope.importRecipes = function () {
+        return JSON.parse(main.dataRecipes().replace(/\bNaN\b/g, "null"));
+    };
+
+    $(document).ready(function(){
+        $scope.recipes = $scope.importRecipes();
+        var recipes_name = [];
+        $scope.recipes.forEach(function(r){
+            recipes_name.push(r.name);
+        });
+        $( "#new-entry-recipe" ).autocomplete({
+            source: recipes_name,
+            select: function( event, ui ) {
+                if (ui.item.label != null) {
+                    $scope.newEntryRecipe= ui.item.label;
+                }
+                return true;
+            },
+            change: function( event, ui ) {
+                if (ui.item.label != null) {
+                    $scope.newEntryRecipe= ui.item.label;
+                }
+                return true;
+            },
+
+        });
+    });
+
+    $(document).on("click", ".edit-entry-recipe", function() {
+        var recipes_name = [];
+        $scope.recipes.forEach(function(r){
+            recipes_name.push(r.name);
+        });
+        $( ".edit-entry-recipe" ).autocomplete({
+            source: recipes_name,
+            select: function( event, ui ) {
+                if (ui.item.label != null) {
+                    $scope.entries.forEach(function(e){
+                        if(e.editing){
+                            e.recipe= ui.item.label;
+                        }
+                    });
+                }
+                return true;
+            },
+            change: function( event, ui ) {
+                if (ui.item.label != null) {
+                    $scope.entries.forEach(function(e){
+                        if(e.editing){
+                            e.recipe= ui.item.label;
+                        }
+                    });
+                }
+                return true;
+            },
+
+        });
+    })
 
 }]);

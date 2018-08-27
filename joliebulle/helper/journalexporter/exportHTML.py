@@ -33,10 +33,12 @@ def exportHTML(itemsList,newItem):
 <script src="jquery/jquery.js"></script>
 <script src="bootstrap/js/bootstrap.min.js"></script>
 <script src="underscore/underscore-min.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <script src="controllers/journal/main.js"></script>
 <script src="controllers/journal/journal.js"></script>
 <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
 <link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 <link rel="stylesheet" href="css/sidebar.css">
 <style>
     .main{padding-top:0px; margin-left:75px;}
@@ -102,7 +104,7 @@ def exportHTML(itemsList,newItem):
                     <input class="form-control" type="text" ng-model="newEntryEvent" ng-show="newEntry.editing"/>
                   </div>
                   <div class="form-group">
-                    <input class="form-control" type="text" ng-model="newEntryRecipe" ng-show="newEntry.editing"/>
+                    <input class="form-control" id="new-entry-recipe" type="text" ng-model="newEntryRecipe" ng-show="newEntry.editing"/>
                   </div>
                   <button class="btn-link btn-xs" type="button" ng-click="saveNew(newEntryRecipe, newEntryDate, newEntryEvent); newEntry.editing = !newEntry.editing;" ng-show="newEntry.editing">{3}</button>
                 </form>
@@ -123,7 +125,7 @@ def exportHTML(itemsList,newItem):
                           <input class="form-control" type="text" ng-model="entry.event" ng-show="entry.editing"/>
                         </div>
                         <div class="form-group">
-                          <input class="form-control" type="text" ng-model="entry.recipe" ng-show="entry.editing"/>
+                          <input class="form-control edit-entry-recipe" type="text" ng-model="entry.recipe" ng-show="entry.editing"/>
                         </div>
                         <button class="btn-link btn-xs saveButton" ng-click="save(entry)" ng-show="entry.editing">{6}</button>
                       </form>
