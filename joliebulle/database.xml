@@ -2903,6 +2903,1056 @@
     <COLOR>2.0</COLOR>
     <RECOMMEND_MASH>TRUE</RECOMMEND_MASH>
   </FERMENTABLE>
+  <FERMENTABLE>
+      <NAME>Château Pilsen 2RP</NAME>
+      <TYPE>Grain</TYPE>
+      <YIELD>81</YIELD>
+      <COLOR>1.9</COLOR>
+      <RECOMMEND_MASH>TRUE</RECOMMEND_MASH>
+  </FERMENTABLE>
+  <FERMENTABLE>
+      <NAME>Château Pilsen 6RH</NAME>
+      <TYPE>Grain</TYPE>
+      <YIELD>80</YIELD>
+      <COLOR>1.8</COLOR>
+      <RECOMMEND_MASH>TRUE</RECOMMEND_MASH>
+  </FERMENTABLE>
+  <FERMENTABLE>
+      <NAME>Château 2RH</NAME>
+      <TYPE>Grain</TYPE>
+      <YIELD>80</YIELD>
+      <COLOR>1.8</COLOR>
+      <RECOMMEND_MASH>TRUE</RECOMMEND_MASH>
+  </FERMENTABLE>
+  <FERMENTABLE>
+      <NAME>Château Tourbé</NAME>
+      <TYPE>Grain</TYPE>
+      <YIELD>80</YIELD>
+      <COLOR>2.1</COLOR>
+      <RECOMMEND_MASH>TRUE</RECOMMEND_MASH>
+  </FERMENTABLE>
+  <FERMENTABLE>
+      <NAME>Château Diastasique</NAME>
+      <TYPE>Grain</TYPE>
+      <YIELD>80</YIELD>
+      <COLOR>2.0</COLOR>
+      <RECOMMEND_MASH>TRUE</RECOMMEND_MASH>
+  </FERMENTABLE>
+  <FERMENTABLE>
+      <NAME>Château Froment Blanc</NAME>
+      <TYPE>Grain</TYPE>
+      <YIELD>83</YIELD>
+      <COLOR>5.5</COLOR>
+      <RECOMMEND_MASH>TRUE</RECOMMEND_MASH>
+  </FERMENTABLE>
+  <FERMENTABLE>
+      <NAME>Château Vienna</NAME>
+      <TYPE>Grain</TYPE>
+      <YIELD>80</YIELD>
+      <COLOR>3.2</COLOR>
+      <RECOMMEND_MASH>TRUE</RECOMMEND_MASH>
+  </FERMENTABLE>
+  <FERMENTABLE>
+      <NAME>Château Pale Ale</NAME>
+      <TYPE>Grain</TYPE>
+      <YIELD>81</YIELD>
+      <COLOR>4.3</COLOR>
+      <RECOMMEND_MASH>TRUE</RECOMMEND_MASH>
+  </FERMENTABLE>
+  <FERMENTABLE>
+      <NAME>Château Froment Munich Light</NAME>
+      <TYPE>Grain</TYPE>
+      <YIELD>84</YIELD>
+      <COLOR>6.1</COLOR>
+      <RECOMMEND_MASH>TRUE</RECOMMEND_MASH>
+  </FERMENTABLE>
+  <FERMENTABLE>
+      <NAME>Château Munich Light</NAME>
+      <TYPE>Grain</TYPE>
+      <YIELD>80</YIELD>
+      <COLOR>6.15</COLOR>
+      <RECOMMEND_MASH>TRUE</RECOMMEND_MASH>
+  </FERMENTABLE>
+  <FERMENTABLE>
+      <NAME>Château Cara Clair</NAME>
+      <TYPE>Grain</TYPE>
+      <YIELD>78</YIELD>
+      <COLOR>3.2</COLOR>
+      <RECOMMEND_MASH>TRUE</RECOMMEND_MASH>
+  </FERMENTABLE>
+  <FERMENTABLE>
+      <NAME>Château Froment Munich 25</NAME>
+      <TYPE>Grain</TYPE>
+      <YIELD>83</YIELD>
+      <COLOR>9.75</COLOR>
+      <RECOMMEND_MASH>TRUE</RECOMMEND_MASH>
+  </FERMENTABLE>
+  <FERMENTABLE>
+      <NAME>Château Cara Blond</NAME>
+      <TYPE>Grain</TYPE>
+      <YIELD>78</YIELD>
+      <COLOR>8.25</COLOR>
+      <RECOMMEND_MASH>TRUE</RECOMMEND_MASH>
+  </FERMENTABLE>
+  <FERMENTABLE>
+      <NAME>Château Munich</NAME>
+      <TYPE>Grain</TYPE>
+      <YIELD>80</YIELD>
+      <COLOR>9.75</COLOR>
+      <RECOMMEND_MASH>TRUE</RECOMMEND_MASH>
+  </FERMENTABLE>
+  <FERMENTABLE>
+      <NAME>Château Melano Light</NAME>
+      <TYPE>Grain</TYPE>
+      <YIELD>79</YIELD>
+      <COLOR>15.6</COLOR>
+      <RECOMMEND_MASH>TRUE</RECOMMEND_MASH>
+  </FERMENTABLE>
+  <FERMENTABLE>
+      <NAME>Château Abbaye</NAME>
+      <TYPE>Grain</TYPE>
+      <YIELD>78</YIELD>
+      <COLOR>17.4</COLOR>
+      <RECOMMEND_MASH>TRUE</RECOMMEND_MASH>
+  </FERMENTABLE>
+  <FERMENTABLE>
+      <NAME>Château Cara Ruby</NAME>
+      <TYPE>Grain</TYPE>
+      <YIELD>78</YIELD>
+      <COLOR>19.3</COLOR>
+      <RECOMMEND_MASH>TRUE</RECOMMEND_MASH>
+  </FERMENTABLE>
+  <FERMENTABLE>
+      <NAME>Château Biscuit</NAME>
+      <TYPE>Grain</TYPE>
+      <YIELD>77</YIELD>
+      <COLOR>19.3</COLOR>
+      <RECOMMEND_MASH>TRUE</RECOMMEND_MASH>
+  </FERMENTABLE>
+  <FERMENTABLE>
+      <NAME>Château Melano</NAME>
+      <TYPE>Grain</TYPE>
+      <YIELD>78</YIELD>
+      <COLOR>30.55</COLOR>
+      <RECOMMEND_MASH>TRUE</RECOMMEND_MASH>
+  </FERMENTABLE>
+  <FERMENTABLE>
+      <NAME>Château Arôme</NAME>
+      <TYPE>Grain</TYPE>
+      <YIELD>78</YIELD>
+      <COLOR>37.9</COLOR>
+      <RECOMMEND_MASH>TRUE</RECOMMEND_MASH>
+  </FERMENTABLE>
+  <FERMENTABLE>
+      <NAME>Château Cara Gold</NAME>
+      <TYPE>Grain</TYPE>
+      <YIELD>78</YIELD>
+      <COLOR>45.55</COLOR>
+      <RECOMMEND_MASH>TRUE</RECOMMEND_MASH>
+  </FERMENTABLE>
+  <FERMENTABLE>
+      <NAME>Château Crystal</NAME>
+      <TYPE>Grain</TYPE>
+      <YIELD>78</YIELD>
+      <COLOR>56.8</COLOR>
+      <RECOMMEND_MASH>TRUE</RECOMMEND_MASH>
+  </FERMENTABLE>
+  <FERMENTABLE>
+      <NAME>Château Café Light</NAME>
+      <TYPE>Grain</TYPE>
+      <YIELD>77</YIELD>
+      <COLOR>94.35</COLOR>
+      <RECOMMEND_MASH>TRUE</RECOMMEND_MASH>
+  </FERMENTABLE>
+  <FERMENTABLE>
+      <NAME>Château Spécial B</NAME>
+      <TYPE>Grain</TYPE>
+      <YIELD>77</YIELD>
+      <COLOR>109.35</COLOR>
+      <RECOMMEND_MASH>TRUE</RECOMMEND_MASH>
+  </FERMENTABLE>
+  <FERMENTABLE>
+      <NAME>Château Café</NAME>
+      <TYPE>Grain</TYPE>
+      <YIELD>75.5</YIELD>
+      <COLOR>176.85</COLOR>
+      <RECOMMEND_MASH>TRUE</RECOMMEND_MASH>
+  </FERMENTABLE>
+  <FERMENTABLE>
+      <NAME>Château Chocolat</NAME>
+      <TYPE>Grain</TYPE>
+      <YIELD>75</YIELD>
+      <COLOR>338.1</COLOR>
+      <RECOMMEND_MASH>TRUE</RECOMMEND_MASH>
+  </FERMENTABLE>
+  <FERMENTABLE>
+      <NAME>Château Black</NAME>
+      <TYPE>Grain</TYPE>
+      <YIELD>73</YIELD>
+      <COLOR>497.45</COLOR>
+      <RECOMMEND_MASH>TRUE</RECOMMEND_MASH>
+  </FERMENTABLE>
+  <FERMENTABLE>
+      <NAME>Château Roasted Barley</NAME>
+      <TYPE>Grain</TYPE>
+      <YIELD>65</YIELD>
+      <COLOR>431.85</COLOR>
+      <RECOMMEND_MASH>TRUE</RECOMMEND_MASH>
+  </FERMENTABLE>
+  <FERMENTABLE>
+      <NAME>Château Black Of Black</NAME>
+      <TYPE>Grain</TYPE>
+      <YIELD>72</YIELD>
+      <COLOR>188.1</COLOR>
+      <RECOMMEND_MASH>TRUE</RECOMMEND_MASH>
+  </FERMENTABLE>
+  <FERMENTABLE>
+      <NAME>Château Acide</NAME>
+      <TYPE>Grain</TYPE>
+      <YIELD>74</YIELD>
+      <COLOR>3.95</COLOR>
+      <RECOMMEND_MASH>TRUE</RECOMMEND_MASH>
+  </FERMENTABLE>
+  <FERMENTABLE>
+      <NAME>Château Buckwheat</NAME>
+      <TYPE>Grain</TYPE>
+      <YIELD>65.3</YIELD>
+      <COLOR>4.15</COLOR>
+      <RECOMMEND_MASH>TRUE</RECOMMEND_MASH>
+  </FERMENTABLE>
+  <FERMENTABLE>
+      <NAME>Château Oat</NAME>
+      <TYPE>Grain</TYPE>
+      <YIELD>59</YIELD>
+      <COLOR>2.6</COLOR>
+      <RECOMMEND_MASH>TRUE</RECOMMEND_MASH>
+  </FERMENTABLE>
+  <FERMENTABLE>
+      <NAME>Château Rye</NAME>
+      <TYPE>Grain</TYPE>
+      <YIELD>81</YIELD>
+      <COLOR>3.2</COLOR>
+      <RECOMMEND_MASH>TRUE</RECOMMEND_MASH>
+  </FERMENTABLE>
+  <FERMENTABLE>
+      <NAME>Château Smoked</NAME>
+      <TYPE>Grain</TYPE>
+      <YIELD>80</YIELD>
+      <COLOR>2.1</COLOR>
+      <RECOMMEND_MASH>TRUE</RECOMMEND_MASH>
+  </FERMENTABLE>
+  <FERMENTABLE>
+      <NAME>Château Spelt</NAME>
+      <TYPE>Grain</TYPE>
+      <YIELD>79</YIELD>
+      <COLOR>2.45</COLOR>
+      <RECOMMEND_MASH>TRUE</RECOMMEND_MASH>
+  </FERMENTABLE>
+  <FERMENTABLE>
+      <NAME>Château Pilsen Nature</NAME>
+      <TYPE>Grain</TYPE>
+      <YIELD>80</YIELD>
+      <COLOR>1.9</COLOR>
+      <RECOMMEND_MASH>TRUE</RECOMMEND_MASH>
+  </FERMENTABLE>
+  <FERMENTABLE>
+      <NAME>Château Tourbé Nature</NAME>
+      <TYPE>Grain</TYPE>
+      <YIELD>80</YIELD>
+      <COLOR>2.1</COLOR>
+      <RECOMMEND_MASH>TRUE</RECOMMEND_MASH>
+  </FERMENTABLE>
+  <FERMENTABLE>
+      <NAME>Château Vienna Nature</NAME>
+      <TYPE>Grain</TYPE>
+      <YIELD>80</YIELD>
+      <COLOR>2.65</COLOR>
+      <RECOMMEND_MASH>TRUE</RECOMMEND_MASH>
+  </FERMENTABLE>
+  <FERMENTABLE>
+      <NAME>Château Cara Wheat Blond Nature</NAME>
+      <TYPE>Grain</TYPE>
+      <YIELD>68</YIELD>
+      <COLOR>6.2</COLOR>
+      <RECOMMEND_MASH>TRUE</RECOMMEND_MASH>
+  </FERMENTABLE>
+  <FERMENTABLE>
+      <NAME>Château Wheat Blanc Nature</NAME>
+      <TYPE>Grain</TYPE>
+      <YIELD>83</YIELD>
+      <COLOR>2.15</COLOR>
+      <RECOMMEND_MASH>TRUE</RECOMMEND_MASH>
+  </FERMENTABLE>
+  <FERMENTABLE>
+      <NAME>Château Pale Ale Nature</NAME>
+      <TYPE>Grain</TYPE>
+      <YIELD>80</YIELD>
+      <COLOR>3.75</COLOR>
+      <RECOMMEND_MASH>TRUE</RECOMMEND_MASH>
+  </FERMENTABLE>
+  <FERMENTABLE>
+      <NAME>Château Munich Light Nature</NAME>
+      <TYPE>Grain</TYPE>
+      <YIELD>80</YIELD>
+      <COLOR>6.15</COLOR>
+      <RECOMMEND_MASH>TRUE</RECOMMEND_MASH>
+  </FERMENTABLE>
+  <FERMENTABLE>
+      <NAME>Château Munich Nature</NAME>
+      <TYPE>Grain</TYPE>
+      <YIELD>80</YIELD>
+      <COLOR>9.75</COLOR>
+      <RECOMMEND_MASH>TRUE</RECOMMEND_MASH>
+  </FERMENTABLE>
+  <FERMENTABLE>
+      <NAME>Château Abbaye Nature</NAME>
+      <TYPE>Grain</TYPE>
+      <YIELD>78</YIELD>
+      <COLOR>17.4</COLOR>
+      <RECOMMEND_MASH>TRUE</RECOMMEND_MASH>
+  </FERMENTABLE>
+  <FERMENTABLE>
+      <NAME>Château Biscuit Nature</NAME>
+      <TYPE>Grain</TYPE>
+      <YIELD>77</YIELD>
+      <COLOR>19.3</COLOR>
+      <RECOMMEND_MASH>TRUE</RECOMMEND_MASH>
+  </FERMENTABLE>
+  <FERMENTABLE>
+      <NAME>Château Cara Blond Nature</NAME>
+      <TYPE>Grain</TYPE>
+      <YIELD>78</YIELD>
+      <COLOR>8.25</COLOR>
+      <RECOMMEND_MASH>TRUE</RECOMMEND_MASH>
+  </FERMENTABLE>
+  <FERMENTABLE>
+      <NAME>Château Cara Ruby</NAME>
+      <TYPE>Grain</TYPE>
+      <YIELD>76</YIELD>
+      <COLOR>19.3</COLOR>
+      <RECOMMEND_MASH>TRUE</RECOMMEND_MASH>
+  </FERMENTABLE>
+  <FERMENTABLE>
+      <NAME>Château Cara Gold Nature</NAME>
+      <TYPE>Grain</TYPE>
+      <YIELD>74</YIELD>
+      <COLOR>45.55</COLOR>
+      <RECOMMEND_MASH>TRUE</RECOMMEND_MASH>
+  </FERMENTABLE>
+  <FERMENTABLE>
+      <NAME>Château Crystal Nature</NAME>
+      <TYPE>Grain</TYPE>
+      <YIELD>78</YIELD>
+      <COLOR>56.8</COLOR>
+      <RECOMMEND_MASH>TRUE</RECOMMEND_MASH>
+  </FERMENTABLE>
+  <FERMENTABLE>
+      <NAME>Château Special B Nature</NAME>
+      <TYPE>Grain</TYPE>
+      <YIELD>76</YIELD>
+      <COLOR>109.35</COLOR>
+      <RECOMMEND_MASH>TRUE</RECOMMEND_MASH>
+  </FERMENTABLE>
+  <FERMENTABLE>
+      <NAME>Château Chocolat Nature</NAME>
+      <TYPE>Grain</TYPE>
+      <YIELD>75</YIELD>
+      <COLOR>338.1</COLOR>
+      <RECOMMEND_MASH>TRUE</RECOMMEND_MASH>
+  </FERMENTABLE>
+  <FERMENTABLE>
+      <NAME>Château Black Nature</NAME>
+      <TYPE>Grain</TYPE>
+      <YIELD>73</YIELD>
+      <COLOR>497.45</COLOR>
+      <RECOMMEND_MASH>TRUE</RECOMMEND_MASH>
+  </FERMENTABLE>
+  <FERMENTABLE>
+      <NAME>Château Acide Nature</NAME>
+      <TYPE>Grain</TYPE>
+      <YIELD>74</YIELD>
+      <COLOR>3.95</COLOR>
+      <RECOMMEND_MASH>TRUE</RECOMMEND_MASH>
+  </FERMENTABLE>
+  <FERMENTABLE>
+      <NAME>Château Buckwheat Nature</NAME>
+      <TYPE>Grain</TYPE>
+      <YIELD>65</YIELD>
+      <COLOR>4.15</COLOR>
+      <RECOMMEND_MASH>TRUE</RECOMMEND_MASH>
+  </FERMENTABLE>
+  <FERMENTABLE>
+      <NAME>Château Rye Nature</NAME>
+      <TYPE>Grain</TYPE>
+      <YIELD>81</YIELD>
+      <COLOR>3.2</COLOR>
+      <RECOMMEND_MASH>TRUE</RECOMMEND_MASH>
+  </FERMENTABLE>
+  <FERMENTABLE>
+      <NAME>Château Smoked Nature</NAME>
+      <TYPE>Grain</TYPE>
+      <YIELD>77</YIELD>
+      <COLOR>3.6</COLOR>
+      <RECOMMEND_MASH>TRUE</RECOMMEND_MASH>
+  </FERMENTABLE>
+  <FERMENTABLE>
+      <NAME>Château Spelt Nature</NAME>
+      <TYPE>Grain</TYPE>
+      <YIELD>79</YIELD>
+      <COLOR>2.45</COLOR>
+      <RECOMMEND_MASH>TRUE</RECOMMEND_MASH>
+  </FERMENTABLE>
+  <FERMENTABLE>
+      <NAME>Weyermann Abbey</NAME>
+      <TYPE>Grain</TYPE>
+      <YIELD>75</YIELD>
+      <COLOR>17.5</COLOR>
+      <RECOMMEND_MASH>TRUE</RECOMMEND_MASH>
+  </FERMENTABLE>
+  <FERMENTABLE>
+      <NAME>Weyermann Acidulated</NAME>
+      <TYPE>Grain</TYPE>
+      <YIELD>74</YIELD>
+      <COLOR>3.3</COLOR>
+      <RECOMMEND_MASH>TRUE</RECOMMEND_MASH>
+  </FERMENTABLE>
+  <FERMENTABLE>
+      <NAME>Weyermann Barke Munich</NAME>
+      <TYPE>Grain</TYPE>
+      <YIELD>78</YIELD>
+      <COLOR>19.5</COLOR>
+      <RECOMMEND_MASH>TRUE</RECOMMEND_MASH>
+  </FERMENTABLE>
+  <FERMENTABLE>
+      <NAME>Weyermann Barke Pilsner</NAME>
+      <TYPE>Grain</TYPE>
+      <YIELD>80</YIELD>
+      <COLOR>1.85</COLOR>
+      <RECOMMEND_MASH>TRUE</RECOMMEND_MASH>
+  </FERMENTABLE>
+  <FERMENTABLE>
+      <NAME>Weyermann Barke Vienna</NAME>
+      <TYPE>Grain</TYPE>
+      <YIELD>79</YIELD>
+      <COLOR>3.35</COLOR>
+      <RECOMMEND_MASH>TRUE</RECOMMEND_MASH>
+  </FERMENTABLE>
+  <FERMENTABLE>
+      <NAME>Weyermann Beech Smoked</NAME>
+      <TYPE>Grain</TYPE>
+      <YIELD>77</YIELD>
+      <COLOR>2.85</COLOR>
+      <RECOMMEND_MASH>TRUE</RECOMMEND_MASH>
+  </FERMENTABLE>
+  <FERMENTABLE>
+      <NAME>Weyermann Bioland Caraaroma</NAME>
+      <TYPE>Grain</TYPE>
+      <YIELD>74</YIELD>
+      <COLOR>150.5</COLOR>
+      <RECOMMEND_MASH>TRUE</RECOMMEND_MASH>
+  </FERMENTABLE>
+  <FERMENTABLE>
+      <NAME>Weyermann Bioland Carafa</NAME>
+      <TYPE>Grain</TYPE>
+      <YIELD>65</YIELD>
+      <COLOR>413.5</COLOR>
+      <RECOMMEND_MASH>TRUE</RECOMMEND_MASH>
+  </FERMENTABLE>
+  <FERMENTABLE>
+      <NAME>Weyermann Bioland Carahell</NAME>
+      <TYPE>Grain</TYPE>
+      <YIELD>74</YIELD>
+      <COLOR>9.95</COLOR>
+      <RECOMMEND_MASH>TRUE</RECOMMEND_MASH>
+  </FERMENTABLE>
+  <FERMENTABLE>
+      <NAME>Weyermann Bioland Caramunich</NAME>
+      <TYPE>Grain</TYPE>
+      <YIELD>73</YIELD>
+      <COLOR>61</COLOR>
+      <RECOMMEND_MASH>TRUE</RECOMMEND_MASH>
+  </FERMENTABLE>
+  <FERMENTABLE>
+      <NAME>Weyermann Bioland Carapils</NAME>
+      <TYPE>Grain</TYPE>
+      <YIELD>75</YIELD>
+      <COLOR>2.25</COLOR>
+      <RECOMMEND_MASH>TRUE</RECOMMEND_MASH>
+  </FERMENTABLE>
+  <FERMENTABLE>
+      <NAME>Weyermann Bioland Carared</NAME>
+      <TYPE>Grain</TYPE>
+      <YIELD>74</YIELD>
+      <COLOR>19.35</COLOR>
+      <RECOMMEND_MASH>TRUE</RECOMMEND_MASH>
+  </FERMENTABLE>
+  <FERMENTABLE>
+      <NAME>Weyermann Bioland Carawheat</NAME>
+      <TYPE>Grain</TYPE>
+      <YIELD>68</YIELD>
+      <COLOR>47.5</COLOR>
+      <RECOMMEND_MASH>TRUE</RECOMMEND_MASH>
+  </FERMENTABLE>
+  <FERMENTABLE>
+      <NAME>Weyermann Bioland Chocolate Rye</NAME>
+      <TYPE>Grain</TYPE>
+      <YIELD>65</YIELD>
+      <COLOR>650</COLOR>
+      <RECOMMEND_MASH>TRUE</RECOMMEND_MASH>
+  </FERMENTABLE>
+  <FERMENTABLE>
+      <NAME>Weyermann Bioland Munich Type 1</NAME>
+      <TYPE>Grain</TYPE>
+      <YIELD>78</YIELD>
+      <COLOR>7.6</COLOR>
+      <RECOMMEND_MASH>TRUE</RECOMMEND_MASH>
+  </FERMENTABLE>
+  <FERMENTABLE>
+      <NAME>Weyermann Bioland Munich Type 2</NAME>
+      <TYPE>Grain</TYPE>
+      <YIELD>78</YIELD>
+      <COLOR>11.4</COLOR>
+      <RECOMMEND_MASH>TRUE</RECOMMEND_MASH>
+  </FERMENTABLE>
+  <FERMENTABLE>
+      <NAME>Weyermann Bioland Pale Rye</NAME>
+      <TYPE>Grain</TYPE>
+      <YIELD>81</YIELD>
+      <COLOR>4.0</COLOR>
+      <RECOMMEND_MASH>TRUE</RECOMMEND_MASH>
+  </FERMENTABLE>
+  <FERMENTABLE>
+      <NAME>Weyermann Pale Wheat</NAME>
+      <TYPE>Grain</TYPE>
+      <YIELD>81</YIELD>
+      <COLOR>2.0</COLOR>
+      <RECOMMEND_MASH>TRUE</RECOMMEND_MASH>
+  </FERMENTABLE>
+  <FERMENTABLE>
+      <NAME>Weyermann Bioland Pilsner</NAME>
+      <TYPE>Grain</TYPE>
+      <YIELD>78</YIELD>
+      <COLOR>1.9</COLOR>
+      <RECOMMEND_MASH>TRUE</RECOMMEND_MASH>
+  </FERMENTABLE>
+  <FERMENTABLE>
+      <NAME>Weyermann Bioland Spelt</NAME>
+      <TYPE>Grain</TYPE>
+      <YIELD>80</YIELD>
+      <COLOR>5.1</COLOR>
+      <RECOMMEND_MASH>TRUE</RECOMMEND_MASH>
+  </FERMENTABLE>
+  <FERMENTABLE>
+      <NAME>Weyermann Bioland Vienna</NAME>
+      <TYPE>Grain</TYPE>
+      <YIELD>79</YIELD>
+      <COLOR>3.8</COLOR>
+      <RECOMMEND_MASH>TRUE</RECOMMEND_MASH>
+  </FERMENTABLE>
+  <FERMENTABLE>
+      <NAME>Weyermann Bohemian Pilsner</NAME>
+      <TYPE>Grain</TYPE>
+      <YIELD>80</YIELD>
+      <COLOR>2.0</COLOR>
+      <RECOMMEND_MASH>TRUE</RECOMMEND_MASH>
+  </FERMENTABLE>
+  <FERMENTABLE>
+      <NAME>Weyermann Caraamber</NAME>
+      <TYPE>Grain</TYPE>
+      <YIELD>75</YIELD>
+      <COLOR>35.6</COLOR>
+      <RECOMMEND_MASH>TRUE</RECOMMEND_MASH>
+  </FERMENTABLE>
+  <FERMENTABLE>
+      <NAME>Weyermann Caraaroma</NAME>
+      <TYPE>Grain</TYPE>
+      <YIELD>74</YIELD>
+      <COLOR>203.2</COLOR>
+      <RECOMMEND_MASH>TRUE</RECOMMEND_MASH>
+  </FERMENTABLE>
+  <FERMENTABLE>
+      <NAME>Weyermann Carabelge</NAME>
+      <TYPE>Grain</TYPE>
+      <YIELD>74</YIELD>
+      <COLOR>16.5</COLOR>
+      <RECOMMEND_MASH>TRUE</RECOMMEND_MASH>
+  </FERMENTABLE>
+  <FERMENTABLE>
+      <NAME>Weyermann Carabohemian</NAME>
+      <TYPE>Grain</TYPE>
+      <YIELD>73</YIELD>
+      <COLOR>99.0</COLOR>
+      <RECOMMEND_MASH>TRUE</RECOMMEND_MASH>
+  </FERMENTABLE>
+  <FERMENTABLE>
+      <NAME>Weyermann Carafa Special Type 1</NAME>
+      <TYPE>Grain</TYPE>
+      <YIELD>65</YIELD>
+      <COLOR>355.6</COLOR>
+      <RECOMMEND_MASH>TRUE</RECOMMEND_MASH>
+  </FERMENTABLE>
+  <FERMENTABLE>
+      <NAME>Weyermann Carafa Special Type 2</NAME>
+      <TYPE>Grain</TYPE>
+      <YIELD>65</YIELD>
+      <COLOR>584.2</COLOR>
+      <RECOMMEND_MASH>TRUE</RECOMMEND_MASH>
+  </FERMENTABLE>
+  <FERMENTABLE>
+      <NAME>Weyermann Carafa Special Type 3</NAME>
+      <TYPE>Grain</TYPE>
+      <YIELD>65</YIELD>
+      <COLOR>711.2</COLOR>
+      <RECOMMEND_MASH>TRUE</RECOMMEND_MASH>
+  </FERMENTABLE>
+  <FERMENTABLE>
+      <NAME>Weyermann Carafa Type 1</NAME>
+      <TYPE>Grain</TYPE>
+      <YIELD>65</YIELD>
+      <COLOR>457.2</COLOR>
+      <RECOMMEND_MASH>TRUE</RECOMMEND_MASH>
+  </FERMENTABLE>
+  <FERMENTABLE>
+      <NAME>Weyermann Carafa Type 2</NAME>
+      <TYPE>Grain</TYPE>
+      <YIELD>65</YIELD>
+      <COLOR>584.2</COLOR>
+      <RECOMMEND_MASH>TRUE</RECOMMEND_MASH>
+  </FERMENTABLE>
+  <FERMENTABLE>
+      <NAME>Weyermann Carafa Type 3</NAME>
+      <TYPE>Grain</TYPE>
+      <YIELD>65</YIELD>
+      <COLOR>711.2</COLOR>
+      <RECOMMEND_MASH>TRUE</RECOMMEND_MASH>
+  </FERMENTABLE>
+  <FERMENTABLE>
+      <NAME>Weyermann Carafoam</NAME>
+      <TYPE>Grain</TYPE>
+      <YIELD>75</YIELD>
+      <COLOR>2.3</COLOR>
+      <RECOMMEND_MASH>TRUE</RECOMMEND_MASH>
+  </FERMENTABLE>
+  <FERMENTABLE>
+      <NAME>Weyermann Carahell</NAME>
+      <TYPE>Grain</TYPE>
+      <YIELD>74</YIELD>
+      <COLOR>12.7</COLOR>
+      <RECOMMEND_MASH>TRUE</RECOMMEND_MASH>
+  </FERMENTABLE>
+  <FERMENTABLE>
+      <NAME>Weyermann Caramunich Type 1</NAME>
+      <TYPE>Grain</TYPE>
+      <YIELD>73</YIELD>
+      <COLOR>45.7</COLOR>
+      <RECOMMEND_MASH>TRUE</RECOMMEND_MASH>
+  </FERMENTABLE>
+  <FERMENTABLE>
+      <NAME>Weyermann Caramunich Type 2</NAME>
+      <TYPE>Grain</TYPE>
+      <YIELD>73</YIELD>
+      <COLOR>61.0</COLOR>
+      <RECOMMEND_MASH>TRUE</RECOMMEND_MASH>
+  </FERMENTABLE>
+  <FERMENTABLE>
+      <NAME>Weyermann Caramunich Type 3</NAME>
+      <TYPE>Grain</TYPE>
+      <YIELD>73</YIELD>
+      <COLOR>76.2</COLOR>
+      <RECOMMEND_MASH>TRUE</RECOMMEND_MASH>
+  </FERMENTABLE>
+  <FERMENTABLE>
+      <NAME>Weyermann Carapils</NAME>
+      <TYPE>Grain</TYPE>
+      <YIELD>75</YIELD>
+      <COLOR>2.3</COLOR>
+      <RECOMMEND_MASH>TRUE</RECOMMEND_MASH>
+  </FERMENTABLE>
+  <FERMENTABLE>
+      <NAME>Weyermann Carared</NAME>
+      <TYPE>Grain</TYPE>
+      <YIELD>74</YIELD>
+      <COLOR>25.4</COLOR>
+      <RECOMMEND_MASH>TRUE</RECOMMEND_MASH>
+  </FERMENTABLE>
+  <FERMENTABLE>
+      <NAME>Weyermann Cararye</NAME>
+      <TYPE>Grain</TYPE>
+      <YIELD>74</YIELD>
+      <COLOR>88.9</COLOR>
+      <RECOMMEND_MASH>TRUE</RECOMMEND_MASH>
+  </FERMENTABLE>
+  <FERMENTABLE>
+      <NAME>Weyermann Carawheat</NAME>
+      <TYPE>Grain</TYPE>
+      <YIELD>68</YIELD>
+      <COLOR>63.5</COLOR>
+      <RECOMMEND_MASH>TRUE</RECOMMEND_MASH>
+  </FERMENTABLE>
+  <FERMENTABLE>
+      <NAME>Weyermann Chitmalt</NAME>
+      <TYPE>Grain</TYPE>
+      <YIELD>75</YIELD>
+      <COLOR>1.9</COLOR>
+      <RECOMMEND_MASH>TRUE</RECOMMEND_MASH>
+  </FERMENTABLE>
+  <FERMENTABLE>
+      <NAME>Weyermann Chocolate Rye</NAME>
+      <TYPE>Grain</TYPE>
+      <YIELD>65</YIELD>
+      <COLOR>330.2</COLOR>
+      <RECOMMEND_MASH>TRUE</RECOMMEND_MASH>
+  </FERMENTABLE>
+  <FERMENTABLE>
+      <NAME>Weyermann Chocolate Spelt</NAME>
+      <TYPE>Grain</TYPE>
+      <YIELD>65</YIELD>
+      <COLOR>279.4</COLOR>
+      <RECOMMEND_MASH>TRUE</RECOMMEND_MASH>
+  </FERMENTABLE>
+  <FERMENTABLE>
+      <NAME>Weyermann Chocolate Wheat</NAME>
+      <TYPE>Grain</TYPE>
+      <YIELD>65</YIELD>
+      <COLOR>533.4</COLOR>
+      <RECOMMEND_MASH>TRUE</RECOMMEND_MASH>
+  </FERMENTABLE>
+  <FERMENTABLE>
+      <NAME>Weyermann Dark Rye</NAME>
+      <TYPE>Grain</TYPE>
+      <YIELD>79</YIELD>
+      <COLOR>10.2</COLOR>
+      <RECOMMEND_MASH>TRUE</RECOMMEND_MASH>
+  </FERMENTABLE>
+  <FERMENTABLE>
+      <NAME>Weyermann Dark Wheat</NAME>
+      <TYPE>Grain</TYPE>
+      <YIELD>81</YIELD>
+      <COLOR>8.9</COLOR>
+      <RECOMMEND_MASH>TRUE</RECOMMEND_MASH>
+  </FERMENTABLE>
+  <FERMENTABLE>
+      <NAME>Weyermann Demeter Caraaroma</NAME>
+      <TYPE>Grain</TYPE>
+      <YIELD>74</YIELD>
+      <COLOR>177.8</COLOR>
+      <RECOMMEND_MASH>TRUE</RECOMMEND_MASH>
+  </FERMENTABLE>
+  <FERMENTABLE>
+      <NAME>Weyermann Demeter Carafa</NAME>
+      <TYPE>Grain</TYPE>
+      <YIELD>65</YIELD>
+      <COLOR>279.4</COLOR>
+      <RECOMMEND_MASH>TRUE</RECOMMEND_MASH>
+  </FERMENTABLE>
+  <FERMENTABLE>
+      <NAME>Weyermann Demeter Chocolate Rye</NAME>
+      <TYPE>Grain</TYPE>
+      <YIELD>65</YIELD>
+      <COLOR>330.2</COLOR>
+      <RECOMMEND_MASH>TRUE</RECOMMEND_MASH>
+  </FERMENTABLE>
+  <FERMENTABLE>
+      <NAME>Weyermann Demeter Pilsner</NAME>
+      <TYPE>Grain</TYPE>
+      <YIELD>78</YIELD>
+      <COLOR>1.9</COLOR>
+      <RECOMMEND_MASH>TRUE</RECOMMEND_MASH>
+  </FERMENTABLE>
+  <FERMENTABLE>
+      <NAME>Weyermann Demeter Roasted Spelt</NAME>
+      <TYPE>Grain</TYPE>
+      <YIELD>65</YIELD>
+      <COLOR>381.0</COLOR>
+      <RECOMMEND_MASH>TRUE</RECOMMEND_MASH>
+  </FERMENTABLE>
+  <FERMENTABLE>
+      <NAME>Weyermann Demeter Roasted Wheat</NAME>
+      <TYPE>Grain</TYPE>
+      <COLOR>381.0</COLOR>
+      <YIELD>60</YIELD>
+      <RECOMMEND_MASH>TRUE</RECOMMEND_MASH>
+  </FERMENTABLE>
+  <FERMENTABLE>
+      <NAME>Weyermann Diastatic Barley</NAME>
+      <TYPE>Grain</TYPE>
+      <YIELD>78</YIELD>
+      <COLOR>1.7</COLOR>
+      <RECOMMEND_MASH>TRUE</RECOMMEND_MASH>
+  </FERMENTABLE>
+  <FERMENTABLE>
+      <NAME>Weyermann Diastatic Wheat</NAME>
+      <TYPE>Grain</TYPE>
+      <YIELD>81</YIELD>
+      <COLOR>2.0</COLOR>
+      <RECOMMEND_MASH>TRUE</RECOMMEND_MASH>
+  </FERMENTABLE>
+  <FERMENTABLE>
+      <NAME>Weyermann Floor-Malted Bohemian Dark</NAME>
+      <TYPE>Grain</TYPE>
+      <YIELD>78</YIELD>
+      <COLOR>8.1</COLOR>
+      <RECOMMEND_MASH>TRUE</RECOMMEND_MASH>
+  </FERMENTABLE>
+  <FERMENTABLE>
+      <NAME>Weyermann Floor-Malted Bohemian Pilsner</NAME>
+      <TYPE>Grain</TYPE>
+      <YIELD>79</YIELD>
+      <COLOR>2.0</COLOR>
+      <RECOMMEND_MASH>TRUE</RECOMMEND_MASH>
+  </FERMENTABLE>
+  <FERMENTABLE>
+      <NAME>Weyermann Floor-Malted Bohemian Wheat</NAME>
+      <TYPE>Grain</TYPE>
+      <YIELD>81</YIELD>
+      <COLOR>2.2</COLOR>
+      <RECOMMEND_MASH>TRUE</RECOMMEND_MASH>
+  </FERMENTABLE>
+  <FERMENTABLE>
+      <NAME>Weyermann Malted Oat</NAME>
+      <TYPE>Grain</TYPE>
+      <YIELD>74</YIELD>
+      <COLOR>3.8</COLOR>
+      <RECOMMEND_MASH>TRUE</RECOMMEND_MASH>
+  </FERMENTABLE>
+  <FERMENTABLE>
+      <NAME>Weyermann Melanoidin</NAME>
+      <TYPE>Grain</TYPE>
+      <YIELD>75</YIELD>
+      <COLOR>35.6</COLOR>
+      <RECOMMEND_MASH>TRUE</RECOMMEND_MASH>
+  </FERMENTABLE>
+  <FERMENTABLE>
+      <NAME>Weyermann Munich Type 1</NAME>
+      <TYPE>Grain</TYPE>
+      <YIELD>78</YIELD>
+      <COLOR>7.6</COLOR>
+      <RECOMMEND_MASH>TRUE</RECOMMEND_MASH>
+  </FERMENTABLE>
+  <FERMENTABLE>
+      <NAME>Weyermann Munich Type 2</NAME>
+      <TYPE>Grain</TYPE>
+      <YIELD>78</YIELD>
+      <COLOR>11.4</COLOR>
+      <RECOMMEND_MASH>TRUE</RECOMMEND_MASH>
+  </FERMENTABLE>
+  <FERMENTABLE>
+      <NAME>Weyermann Oak Smoked Wheat</NAME>
+      <TYPE>Grain</TYPE>
+      <YIELD>82</YIELD>
+      <COLOR>2.5</COLOR>
+      <RECOMMEND_MASH>TRUE</RECOMMEND_MASH>
+  </FERMENTABLE>
+  <FERMENTABLE>
+      <NAME>Weyermann Organic Caraaroma</NAME>
+      <TYPE>Grain</TYPE>
+      <YIELD>74</YIELD>
+      <COLOR>190.5</COLOR>
+      <RECOMMEND_MASH>TRUE</RECOMMEND_MASH>
+  </FERMENTABLE>
+  <FERMENTABLE>
+      <NAME>Weyermann Organic Carabohemian</NAME>
+      <TYPE>Grain</TYPE>
+      <YIELD>73</YIELD>
+      <COLOR>99.1</COLOR>
+      <RECOMMEND_MASH>TRUE</RECOMMEND_MASH>
+  </FERMENTABLE>
+  <FERMENTABLE>
+      <NAME>Weyermann Organic Carafa</NAME>
+      <TYPE>Grain</TYPE>
+      <YIELD>65</YIELD>
+      <COLOR>558.8</COLOR>
+      <RECOMMEND_MASH>TRUE</RECOMMEND_MASH>
+  </FERMENTABLE>
+  <FERMENTABLE>
+      <NAME>Weyermann Organic Carahell</NAME>
+      <TYPE>Grain</TYPE>
+      <YIELD>74</YIELD>
+      <COLOR>12.7</COLOR>
+      <RECOMMEND_MASH>TRUE</RECOMMEND_MASH>
+  </FERMENTABLE>
+  <FERMENTABLE>
+      <NAME>Weyermann Organic Caramunich</NAME>
+      <TYPE>Grain</TYPE>
+      <YIELD>73</YIELD>
+      <COLOR>61.0</COLOR>
+      <RECOMMEND_MASH>TRUE</RECOMMEND_MASH>
+  </FERMENTABLE>
+  <FERMENTABLE>
+      <NAME>Weyermann Organic Carapils</NAME>
+      <TYPE>Grain</TYPE>
+      <YIELD>75</YIELD>
+      <COLOR>2.3</COLOR>
+      <RECOMMEND_MASH>TRUE</RECOMMEND_MASH>
+  </FERMENTABLE>
+  <FERMENTABLE>
+      <NAME>Weyermann Organic Carared</NAME>
+      <TYPE>Grain</TYPE>
+      <YIELD>74</YIELD>
+      <COLOR>25.4</COLOR>
+      <RECOMMEND_MASH>TRUE</RECOMMEND_MASH>
+  </FERMENTABLE>
+  <FERMENTABLE>
+      <NAME>Weyermann Organic Chocolate Rye</NAME>
+      <TYPE>Grain</TYPE>
+      <YIELD>65</YIELD>
+      <COLOR>330.2</COLOR>
+      <RECOMMEND_MASH>TRUE</RECOMMEND_MASH>
+  </FERMENTABLE>
+  <FERMENTABLE>
+      <NAME>Weyermann Organic Chocolate Spelt</NAME>
+      <TYPE>Grain</TYPE>
+      <YIELD>65</YIELD>
+      <COLOR>279.4</COLOR>
+      <RECOMMEND_MASH>TRUE</RECOMMEND_MASH>
+  </FERMENTABLE>
+  <FERMENTABLE>
+      <NAME>Weyermann Organic Chocolate Wheat</NAME>
+      <TYPE>Grain</TYPE>
+      <YIELD>65</YIELD>
+      <COLOR>279.4</COLOR>
+      <RECOMMEND_MASH>TRUE</RECOMMEND_MASH>
+  </FERMENTABLE>
+  <FERMENTABLE>
+      <NAME>Weyermann Organic Munich Type 1</NAME>
+      <TYPE>Grain</TYPE>
+      <YIELD>78</YIELD>
+      <COLOR>7.6</COLOR>
+      <RECOMMEND_MASH>TRUE</RECOMMEND_MASH>
+  </FERMENTABLE>
+  <FERMENTABLE>
+      <NAME>Weyermann Organic Munich Type 1</NAME>
+      <TYPE>Grain</TYPE>
+      <YIELD>78</YIELD>
+      <COLOR>11.4</COLOR>
+      <RECOMMEND_MASH>TRUE</RECOMMEND_MASH>
+  </FERMENTABLE>
+  <FERMENTABLE>
+      <NAME>Weyermann Organic Pale Ale</NAME>
+      <TYPE>Grain</TYPE>
+      <YIELD>79</YIELD>
+      <COLOR>3.3</COLOR>
+      <RECOMMEND_MASH>TRUE</RECOMMEND_MASH>
+  </FERMENTABLE>
+  <FERMENTABLE>
+      <NAME>Weyermann Organic Pale Wheat</NAME>
+      <TYPE>Grain</TYPE>
+      <YIELD>81</YIELD>
+      <COLOR>2.0</COLOR>
+      <RECOMMEND_MASH>TRUE</RECOMMEND_MASH>
+  </FERMENTABLE>
+  <FERMENTABLE>
+      <NAME>Weyermann Organic Pilsner</NAME>
+      <TYPE>Grain</TYPE>
+      <YIELD>78</YIELD>
+      <COLOR>1.9</COLOR>
+      <RECOMMEND_MASH>TRUE</RECOMMEND_MASH>
+  </FERMENTABLE>
+  <FERMENTABLE>
+      <NAME>Weyermann Organic Roasted Spelt</NAME>
+      <TYPE>Grain</TYPE>
+      <YIELD>65</YIELD>
+      <COLOR>279.4</COLOR>
+      <RECOMMEND_MASH>TRUE</RECOMMEND_MASH>
+  </FERMENTABLE>
+  <FERMENTABLE>
+      <NAME>Weyermann Organic Rye</NAME>
+      <TYPE>Grain</TYPE>
+      <YIELD>81</YIELD>
+      <COLOR>7</COLOR>
+      <RECOMMEND_MASH>TRUE</RECOMMEND_MASH>
+  </FERMENTABLE>
+  <FERMENTABLE>
+      <NAME>Weyermann Organic Spelt</NAME>
+      <TYPE>Grain</TYPE>
+      <YIELD>80</YIELD>
+      <COLOR>2.3</COLOR>
+      <RECOMMEND_MASH>TRUE</RECOMMEND_MASH>
+  </FERMENTABLE>
+  <FERMENTABLE>
+      <NAME>Weyermann Organic Vienna</NAME>
+      <TYPE>Grain</TYPE>
+      <YIELD>78</YIELD>
+      <COLOR>3.8</COLOR>
+      <RECOMMEND_MASH>TRUE</RECOMMEND_MASH>
+  </FERMENTABLE>
+  <FERMENTABLE>
+      <NAME>Weyermann Pale Ale</NAME>
+      <TYPE>Grain</TYPE>
+      <YIELD>79</YIELD>
+      <COLOR>3.3</COLOR>
+      <RECOMMEND_MASH>TRUE</RECOMMEND_MASH>
+  </FERMENTABLE>
+  <FERMENTABLE>
+      <NAME>Weyermann Pale Rye</NAME>
+      <TYPE>Grain</TYPE>
+      <YIELD>81</YIELD>
+      <COLOR>3.6</COLOR>
+      <RECOMMEND_MASH>TRUE</RECOMMEND_MASH>
+  </FERMENTABLE>
+  <FERMENTABLE>
+      <NAME>Weyermann Pale Wheat</NAME>
+      <TYPE>Grain</TYPE>
+      <YIELD>82</YIELD>
+      <COLOR>2.0</COLOR>
+      <RECOMMEND_MASH>TRUE</RECOMMEND_MASH>
+  </FERMENTABLE>
+  <FERMENTABLE>
+      <NAME>Weyermann Pilsner</NAME>
+      <TYPE>Grain</TYPE>
+      <YIELD>80</YIELD>
+      <COLOR>1.8</COLOR>
+      <RECOMMEND_MASH>TRUE</RECOMMEND_MASH>
+  </FERMENTABLE>
+  <FERMENTABLE>
+      <NAME>Weyermann Premium Pilsner Extra Pale</NAME>
+      <TYPE>Grain</TYPE>
+      <YIELD>80</YIELD>
+      <COLOR>1.1</COLOR>
+      <RECOMMEND_MASH>TRUE</RECOMMEND_MASH>
+  </FERMENTABLE>
+  <FERMENTABLE>
+      <NAME>Weyermann Roasted Barley</NAME>
+      <TYPE>Grain</TYPE>
+      <YIELD>65</YIELD>
+      <COLOR>584.2</COLOR>
+      <RECOMMEND_MASH>TRUE</RECOMMEND_MASH>
+  </FERMENTABLE>
+  <FERMENTABLE>
+      <NAME>Weyermann Roasted Rye</NAME>
+      <TYPE>Grain</TYPE>
+      <YIELD>65</YIELD>
+      <COLOR>330.2</COLOR>
+      <RECOMMEND_MASH>TRUE</RECOMMEND_MASH>
+  </FERMENTABLE>
+  <FERMENTABLE>
+      <NAME>Weyermann Roasted Wheat</NAME>
+      <TYPE>Grain</TYPE>
+      <YIELD>65</YIELD>
+      <COLOR>279.4</COLOR>
+      <RECOMMEND_MASH>TRUE</RECOMMEND_MASH>
+  </FERMENTABLE>
+  <FERMENTABLE>
+      <NAME>Weyermann Special W</NAME>
+      <TYPE>Grain</TYPE>
+      <YIELD>73</YIELD>
+      <COLOR>152.4</COLOR>
+      <RECOMMEND_MASH>TRUE</RECOMMEND_MASH>
+  </FERMENTABLE>
+  <FERMENTABLE>
+      <NAME>Weyermann Spelt</NAME>
+      <TYPE>Grain</TYPE>
+      <YIELD>80</YIELD>
+      <COLOR>2.5</COLOR>
+      <RECOMMEND_MASH>TRUE</RECOMMEND_MASH>
+  </FERMENTABLE>
+  <FERMENTABLE>
+      <NAME>Weyermann Vienna</NAME>
+      <TYPE>Grain</TYPE>
+      <YIELD>79</YIELD>
+      <COLOR>3.8</COLOR>
+      <RECOMMEND_MASH>TRUE</RECOMMEND_MASH>
+  </FERMENTABLE>
   <MISC>
     <NAME>Carbonate de Calcium</NAME>
     <VERSION>1</VERSION>
