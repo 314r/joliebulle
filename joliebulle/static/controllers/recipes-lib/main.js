@@ -22,5 +22,3 @@ var recipesApp = angular.module('recipes-lib', []);
 // 	};
 
 // });
-
-

@@ -207,7 +207,39 @@ border:none;
   border:none;
 }
 
-.calculated{color:#999; font-weight: bold; padding-top: 1.1em;padding-bottom: 1.1em; max-width:100px; min-width:75px; }
+.calculated{
+    color:#999;
+    font-weight: bold;
+    padding-top: 1.1em;
+    padding-bottom: 1.1em;
+    min-width:75px;
+    height : 51px;
+}
+
+.calculated bubble {
+    max-width:100px;
+}
+
+.calculated .background-range {
+    width: 100%;
+    background: rgb(224, 224, 224);
+    height: 5px;
+    margin-top: 10px;
+}
+
+
+.beer-style {
+    background: rgba(255, 165, 0, 0.66);
+    height: 5px;
+    position: absolute;
+}
+
+.beer-marker {
+    background: red;
+    width: 2px;
+    height: 5px;
+    position: absolute;
+}
 
 button.addIngredient {
   color : #3498db;

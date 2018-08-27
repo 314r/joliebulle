@@ -6,6 +6,7 @@
 <script src="../angular/angular.min.js"></script>
 <script src="../angular/angular-locale_fr-fr.js"></script>
 <script src="../jquery/jquery.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <script src="../bootstrap/js/bootstrap.min.js"></script>
 <script src="../underscore/underscore-min.js"></script>
 <script src="../controllers/recipes-lib/main.js"></script>
@@ -21,6 +22,7 @@
 <link rel="stylesheet" href="../css/sidebar.css" media="screen">
 <link rel="stylesheet" type="text/css" href="../css/library.css" media="screen"/>
 <link rel="stylesheet" type="text/css" href="../css/printRecipe.css" media="print"/>
+<link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 </head>
 
 <body ng-app="recipes-lib">
@@ -98,12 +100,54 @@
         </div>
 
         <div class="recipeProfile row" >
-          <div class="calculated col-xs-1 col-sm-1 col-md-2" ng-show="active" data-toggle="tooltip" data-placement="bottom" title="Amertume">{{currentRecipe.ibu}}&nbsp;IBU</div>
-          <div class="calculated col-xs-1 col-sm-1 col-md-2" ng-show="active" data-toggle="tooltip" data-placement="bottom" title="Teinte">{{currentRecipe.ebc}}&nbsp;EBC</div>
-          <div class="calculated col-xs-1 col-sm-1 col-md-2" ng-show="active" data-toggle="tooltip" data-placement="bottom" title="Densité initiale">DI&nbsp;{{currentRecipe.og}}  </div>
-          <div class="calculated col-xs-1 col-sm-1 col-md-2" ng-show="active" data-toggle="tooltip" data-placement="bottom" title="Densité finale">DF&nbsp;{{currentRecipe.fg}} </div>
-          <div class="calculated col-xs-1 col-sm-1 col-md-2" ng-show="active" data-toggle="tooltip" data-placement="bottom" title="Rapport amertume / densité">BU/GU&nbsp;{{currentRecipe.bugu}}</div>
-          <div class="calculated col-xs-1 col-sm-1 col-md-2" ng-show="active" data-toggle="tooltip" data-placement="bottom" title="Alcool">Alc&nbsp;{{currentRecipe.alc}} %</div>
+          <div class="calculated bubble col-xs-1 col-sm-1 col-md-2" ng-show="active" data-toggle="tooltip" data-placement="bottom" title="Amertume">{{currentRecipe.ibu}}&nbsp;IBU</div>
+          <div class="calculated col-xs-10 col-sm-10 col-md-10" ng-show="active" data-toggle="tooltip" data-placement="bottom" title="Plage Amertume">
+            <div class="background-range">
+              <div class="beer-style" style="margin-left:{{clip(style_ref.ibu.low, 150, 0)}}%; width:{{clip(style_ref.ibu.high, 150, 0) - clip(style_ref.ibu.low, 150, 0)}}%;"></div>
+              <div class="beer-marker" style="margin-left:{{clip(currentRecipe.ibu, 150, 0)}}%"></div>
+            </div>
+          </div>
+
+          <div class="calculated bubble col-xs-1 col-sm-1 col-md-2" ng-show="active" data-toggle="tooltip" data-placement="bottom" title="Teinte">{{currentRecipe.ebc}}&nbsp;EBC</div>
+          <div class="calculated col-xs-10 col-sm-10 col-md-10" ng-show="active" data-toggle="tooltip" data-placement="bottom" title="Plage Teinte">
+            <div class="background-range">
+              <div class="beer-style" style="margin-left:{{clip(style_ref.ebc.low, 100, 0)}}%; width:{{clip(style_ref.ebc.high, 100, 0) - clip(style_ref.ebc.low, 100, 0)}}%;"></div>
+              <div class="beer-marker" style="margin-left:{{clip(currentRecipe.ebc, 100, 0)}}%"></div>
+            </div>
+          </div>
+
+          <div class="calculated bubble col-xs-1 col-sm-1 col-md-2" ng-show="active" data-toggle="tooltip" data-placement="bottom" title="Densité initiale">DI&nbsp;{{currentRecipe.og}}  </div>
+          <div class="calculated col-xs-10 col-sm-10 col-md-10" ng-show="active" data-toggle="tooltip" data-placement="bottom" title="Plage Densite initiale">
+            <div class="background-range">
+              <div class="beer-style" style="margin-left:{{clip(style_ref.og.low, 1.120, 1.020)}}%; width:{{clip(style_ref.og.high, 1.120, 1.020) - clip(style_ref.og.low, 1.120, 1.020)}}%;"></div>
+              <div class="beer-marker" style="margin-left:{{clip(currentRecipe.og, 1.120, 1.020)}}%"></div>
+            </div>
+          </div>
+
+          <div class="calculated bubble col-xs-1 col-sm-1 col-md-2" ng-show="active" data-toggle="tooltip" data-placement="bottom" title="Densité finale">DF&nbsp;{{currentRecipe.fg}} </div>
+          <div class="calculated col-xs-10 col-sm-10 col-md-10" ng-show="active" data-toggle="tooltip" data-placement="bottom" title="Plage Densite finale">
+            <div class="background-range">
+              <div class="beer-style" style="margin-left:{{clip(style_ref.fg.low, 1.060, 1.000)}}%; width:{{clip(style_ref.fg.high, 1.060, 1.000) - clip(style_ref.fg.low, 1.060, 1.000)}}%;"></div>
+              <div class="beer-marker" style="margin-left:{{clip(currentRecipe.fg, 1.060, 1.000)}}%"></div>
+            </div>
+          </div>
+
+          <div class="calculated bubble col-xs-1 col-sm-1 col-md-2" ng-show="active" data-toggle="tooltip" data-placement="bottom" title="Rapport amertume / densité">BU/GU&nbsp;{{currentRecipe.bugu}}</div>
+          <div class="calculated col-xs-10 col-sm-10 col-md-10" ng-show="active" data-toggle="tooltip" data-placement="bottom" title="Plage rapport">
+            <div class="background-range">
+              <div class="beer-style" style="margin-left:{{clip(style_ref.bugu.low, 2, 0)}}%; width:{{clip(style_ref.bugu.high, 2, 0) - clip(style_ref.bugu.low, 2, 0)}}%;"></div>
+              <div class="beer-marker" style="margin-left:{{clip(currentRecipe.bugu, 2, 0)}}%"></div>
+            </div>
+          </div>
+
+          <div class="calculated bubble col-xs-1 col-sm-1 col-md-2" ng-show="active" data-toggle="tooltip" data-placement="bottom" title="Alcool">Alc&nbsp;{{currentRecipe.alc}} %</div>
+          <div class="calculated col-xs-10 col-sm-10 col-md-10" ng-show="active" data-toggle="tooltip" data-placement="bottom" title="Plage Alcool">
+            <div class="background-range">
+              <div class="beer-style" style="margin-left:{{clip(style_ref.abv.low, 14, 0)}}%; width:{{clip(style_ref.abv.high, 14, 0) - clip(style_ref.abv.low, 14, 0)}}%;"></div>
+              <div class="beer-marker" style="margin-left:{{clip(currentRecipe.alc, 14, 0)}}%"></div>
+            </div>
+          </div>
+
         </div>
 
 
@@ -140,7 +184,7 @@
             <div class="form-group">
             <label class="col-sm-6 control-label">Style</label>
               <div class="col-sm-6">
-                <input type="text" class="form-control" ng-model="currentRecipe.style">
+                <input type="text" id="currentRecipeStyle" class="form-control"  ng-model="currentRecipe.style">
               </div>
             </div>
             <div class="form-group">
