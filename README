@@ -16,3 +16,20 @@
 #You should have received a copy of the GNU General Public License
 #along with this program; if not, write to the Free Software
 #Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
+
+Setup requirements
+------------------
+
+To be able to run joliebulle you will need to install python3, python3-qt bindings and qt development tools.
+On Debian this can be done by running:
+
+	sudo apt install pyqt5-dev-tools python3-qt-dev
+
+Then you will need to generate python modules interfaces from qtWebDesigner files. This can be done thanks to a script in `bin` which call `pyuic5` on the correct files.
+
+	./bin/gen-ui
+
+You should be now able to run the development version of joliebulle:
+
+	cd joliebulle
+	python3 main.py
